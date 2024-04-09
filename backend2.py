@@ -1,8 +1,8 @@
 import selenium
 from selenium import webdriver
-from selenium import By
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 #driver.get('https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673')
 link='https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673'
 headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0"}
@@ -30,16 +30,14 @@ for materia in matérias:
         pass
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[1]/ul/li[3]/a').click() #esse é pra abrir a pagina disciplinas ministradas
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div[1]/ul/li[6]/a[2]/em/span').click() #clicar em graduação
+    
 
-
-
-
-    link2=(f'https://sigaa.unb.br{link_editado6[1:]}')
-    print(link2)
-    headers2 = {"User-agent":"Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0"}
-    requisição2=requests.get(link2, headers=headers2)
-    site_bs4 = BeautifulSoup(requisição2.text, "html.parser")
-    codigo_materia= site_bs4.find_all("td", class_="codigo")
+    site_bs4 = BeautifulSoup(driver.page_source, "html.parser")
+    tabela = site_bs4.find("table", attrs={'class':'listagem'})
+    print(type(tabela))
+    codigo_materia= tabela.findAll("td", class_="codigo")
+    #df = pd.read_html(link2)[0]
+    #print(df.head(10))
     # disciplina_ministrada=site.find_all("a", name="href")
     print(f'{codigo_materia}','6')
     break
