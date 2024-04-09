@@ -40,5 +40,4 @@ for materia in matérias:
     #print(df.head(10))
     # disciplina_ministrada=site.find_all("a", name="href")
     print(f'{codigo_materia}','6')
-    break
     
