@@ -13,7 +13,7 @@ site=BeautifulSoup(requisição.text, "html.parser")
 matérias = site.find_all("span", class_="pagina")
 #link de cada professor e matéria
 driver = webdriver.Firefox()
-
+dados_sigaa=[]
 for materia in matérias:
     materia =str(materia)
     link_editado= materia.replace('<a href="','')
@@ -22,7 +22,7 @@ for materia in matérias:
     link_editado4=link_editado3.replace('</a>','')
     link_editado5=link_editado4.replace('</span>','')
     link_editado6=link_editado5.replace('<span class="pagina">','')
-    print(link_editado6)
+    #print(link_editado6)
     
     
     driver.get(f'https://sigaa.unb.br{link_editado6}')
@@ -33,7 +33,7 @@ for materia in matérias:
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[1]/ul/li[3]/a').click() #esse é pra abrir a pagina disciplinas ministradas
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div[1]/ul/li[6]/a[2]/em/span').click() #clicar em graduação
 
-    time.sleep(5)
+    #time.sleep(5)
     
 
     site_bs4 = BeautifulSoup(driver.page_source, "html.parser")
@@ -43,9 +43,17 @@ for materia in matérias:
     
     todas_as_informacoes = tabela.find_all("td")
     contador = 0
+    print(dados_sigaa)
     while True:
         if len(todas_as_informacoes[contador].text) == 1:
             break
         else:
             print(todas_as_informacoes[contador].text)
+            todas_as_informacoes2=(todas_as_informacoes[contador].text)
             contador += 1
+            dados_sigaa.append(todas_as_informacoes2)
+            
+              
+
+
+#separação por 7 letras
