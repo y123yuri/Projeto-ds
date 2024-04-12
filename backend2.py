@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
-
+import re 
 #driver.get('https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673')
 link='https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673'
 headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0"}
@@ -14,6 +14,9 @@ matérias = site.find_all("span", class_="pagina")
 #link de cada professor e matéria
 driver = webdriver.Firefox()
 dados_sigaa=[]
+materia_lista = []
+codigo_lista = []
+carga_horaria_lista = []
 for materia in matérias:
     materia =str(materia)
     link_editado= materia.replace('<a href="','')
@@ -43,17 +46,51 @@ for materia in matérias:
     
     todas_as_informacoes = tabela.find_all("td")
     contador = 0
-    print(dados_sigaa)
+    
+   
+    contador2=0
     while True:
         if len(todas_as_informacoes[contador].text) == 1:
             break
         else:
-            print(todas_as_informacoes[contador].text)
+            #print(todas_as_informacoes[contador].text)
             todas_as_informacoes2=(todas_as_informacoes[contador].text)
-            contador += 1
             dados_sigaa.append(todas_as_informacoes2)
+            contador += 1
+        for i in dados_sigaa:
+            print(i)
+            print(type(i),len(i))
+            if 7<len(i)<10:
+                pre_codigo=i
+                print(pre_codigo)
+                if pre_codigo not in codigo_materia:
+                    codigo_materia.append(pre_codigo)
+            elif len(i)>9:
+                pre_materia=i
+                if pre_materia not in materia_lista:
+                    materia_lista.append(pre_materia)
+            elif len(i)==5:
+                pre_horas=i
+                if pre_horas not in carga_horaria_lista:
+                    carga_horaria_lista.append(pre_horas)
+            else:
+                pre_semestre=i
             
-              
+        #codigo_materia.append(' ')
+        #materia_lista.append(' ')
+        #carga_horaria_lista.append(' ')
+        print(materia_lista)
+        print(codigo_lista)
+        print(carga_horaria_lista)
+ 
+    #print(dados_sigaa)
+    
+            
+                          
 
 
 #separação por 7 letras
+
+
+
+
