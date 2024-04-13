@@ -245,7 +245,7 @@ excel_dados['Semestre']='2024.1'
 
 
 
-
+excel_dados.to_excel()
 print('')
 print(excel_dados)
 print('')
