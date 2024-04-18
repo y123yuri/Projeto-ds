@@ -7,8 +7,6 @@ import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-import openpyxl as xls
-from openpyxl.utils.dataframe import dataframe_to_rows
 
 #driver.get('https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673')
 link='https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673'
@@ -246,18 +244,11 @@ excel_dados['Fotografias']=fotos_multiplicadas
 excel_dados['Semestre']='2024.1'
 
 
-wb = xls.Workbook()
-ws = wb.active
 
-#excel_dados.to_excel()
+excel_dados.to_excel()
 print('')
 print(excel_dados)
 print('')
-
-for r in dataframe_to_rows(excel_dados, index=True, header=True):
-    ws.append(r)
-wb.save("pandas_openpyxl.xlsx")
-
 
 # print(materia_lista)
 # print('')
