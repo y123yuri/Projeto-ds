@@ -202,61 +202,68 @@ while i != 466:
         i += 1
     except IndexError:
         i += 1
+print(lista_lista)
+# #removendo os ''
+# for o in lista_lista:
+#     del o[0]
 
-#removendo os ''
-for o in lista_lista:
-    del o[0]
+# for o in codigo_lista:
+#     if o == '':
+#         codigo_lista.remove(o)
 
-for o in codigo_lista:
-    if o == '':
-        codigo_lista.remove(o)
+# for o in materia_lista:
+#     if o == '':
+#         materia_lista.remove(o)
 
-for o in materia_lista:
-    if o == '':
-        materia_lista.remove(o)
+# for o in carga_horaria_lista:
+#     if o == '':
+#         carga_horaria_lista.remove(o)
 
-for o in carga_horaria_lista:
-    if o == '':
-        carga_horaria_lista.remove(o)
+# nomes_multiplicados = []
+# fotos_multiplicadas=[]
+# contador = 0
+# contador1 = 0
+# contador67=0
 
-nomes_multiplicados = []
-fotos_multiplicadas=[]
-contador = 0
-contador1 = 0
-contador67=0
+# #multiplicando nomes pela carga horaria
+# for sublist in lista_lista:
+#     for _ in sublist:
+#         nomes_multiplicados.append(nomes_lista[contador1])
+#     contador1 += 1
 
-#multiplicando nomes pela carga horaria
-for sublist in lista_lista:
-    for _ in sublist:
-        nomes_multiplicados.append(nomes_lista[contador1])
-    contador1 += 1
+# for sublist in lista_lista:
+#     for _ in sublist:
+#         fotos_multiplicadas.append(IMGS[contador67])
+#     contador67 += 1
 
-for sublist in lista_lista:
-    for _ in sublist:
-        fotos_multiplicadas.append(IMGS[contador67])
-    contador67 += 1
-
-coluna=['Matérias']
+# coluna=['Matérias']
 
 
-excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
-excel_dados['Códigos']=codigo_lista
-excel_dados['Carga horária']=carga_horaria_lista
-excel_dados['Fotografias']=fotos_multiplicadas
-excel_dados['Semestre']='2024.1'
 
-wb = xls.Workbook()
-ws = wb.active
+# lista_class_professor=[]
+
+# for m in nome_lista:
+#     lista_class_professor
+# for in no
+
+# excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
+# excel_dados['Códigos']=codigo_lista
+# excel_dados['Carga horária']=carga_horaria_lista
+# excel_dados['Fotografias']=fotos_multiplicadas
+# excel_dados['Semestre']='2024.1'
+
+# wb = xls.Workbook()
+# ws = wb.active
 
 #excel_dados.to_excel()
-print('')
-print(excel_dados)
-print('')
+# print('')
+# print(excel_dados)
+# print('')
 
-for r in dataframe_to_rows(excel_dados, index=True, header=True):
-    ws.append(r)
+# for r in dataframe_to_rows(excel_dados, index=True, header=True):
+#     ws.append(r)
 
-wb.save("pandas_openpyxl.xlsx")
+# wb.save("pandas_openpyxl.xlsx")
 
 # print(materia_lista)
 # print('')
