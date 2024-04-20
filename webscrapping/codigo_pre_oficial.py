@@ -202,49 +202,65 @@ while i != 466:
         i += 1
     except IndexError:
         i += 1
-print(lista_lista)
-# #removendo os ''
-# for o in lista_lista:
-#     del o[0]
 
-# for o in codigo_lista:
-#     if o == '':
-#         codigo_lista.remove(o)
+#removendo os ''
+for o in lista_lista:
+    del o[0]
 
-# for o in materia_lista:
-#     if o == '':
-#         materia_lista.remove(o)
+for o in codigo_lista:
+    if o == '':
+        codigo_lista.remove(o)
 
-# for o in carga_horaria_lista:
-#     if o == '':
-#         carga_horaria_lista.remove(o)
+for o in materia_lista:
+    if o == '':
+        materia_lista.remove(o)
 
-# nomes_multiplicados = []
-# fotos_multiplicadas=[]
-# contador = 0
-# contador1 = 0
-# contador67=0
+for o in carga_horaria_lista:
+    if o == '':
+        carga_horaria_lista.remove(o)
 
-# #multiplicando nomes pela carga horaria
-# for sublist in lista_lista:
-#     for _ in sublist:
-#         nomes_multiplicados.append(nomes_lista[contador1])
-#     contador1 += 1
+nomes_multiplicados = []
+fotos_multiplicadas=[]
+contador = 0
+contador1 = 0
+contador67=0
 
-# for sublist in lista_lista:
-#     for _ in sublist:
-#         fotos_multiplicadas.append(IMGS[contador67])
-#     contador67 += 1
+#multiplicando nomes pela carga horaria
+for sublist in lista_lista:
+    for _ in sublist:
+        nomes_multiplicados.append(nomes_lista[contador1])
+    contador1 += 1
 
-# coluna=['Matérias']
+for sublist in lista_lista:
+    for _ in sublist:
+        fotos_multiplicadas.append(IMGS[contador67])
+    contador67 += 1
+
+coluna=['Matérias']
 
 
 
-# lista_class_professor=[]
 
-# for m in nome_lista:
-#     lista_class_professor
-# for in no
+lista_class_professor=[]
+lista_class_materia=[]
+lista_nomeprofessor_codigo=[]
+
+lista_nomeprofessor_foto = [[nomes_lista[i], IMGS[i]] for i in range(min(len(nomes_lista), len(IMGS)))]
+
+lista_codigo_nomemateria_cargahoraria = [[codigo_lista[i], materia_lista[i], carga_horaria_lista[i]] for i in range(min(len(codigo_materia), len(materia_lista),len(carga_horaria_lista)))]
+
+lista_nomeprofessor_codigo = [[nomes_lista[i], codigo_lista[i]] for i in range(min(len(nomes_lista), len(codigo_lista)))]
+
+with open('Nome_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(nomes_lista))
+with open('Codigos_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(codigo_lista))
+with open('Fotos_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(IMGS))
+with open('Carga_horaria_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(carga_horaria_lista))
+with open('Materia_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(materia_lista))
 
 # excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
 # excel_dados['Códigos']=codigo_lista
@@ -252,10 +268,12 @@ print(lista_lista)
 # excel_dados['Fotografias']=fotos_multiplicadas
 # excel_dados['Semestre']='2024.1'
 
+
+
 # wb = xls.Workbook()
 # ws = wb.active
 
-#excel_dados.to_excel()
+# excel_dados.to_excel()
 # print('')
 # print(excel_dados)
 # print('')
@@ -265,10 +283,4 @@ print(lista_lista)
 
 # wb.save("pandas_openpyxl.xlsx")
 
-# print(materia_lista)
-# print('')
-# print(carga_horaria_lista)
-# print('')
-# print(codigo_lista)
-# print('')
-# print(nomes_multiplicados)
+
