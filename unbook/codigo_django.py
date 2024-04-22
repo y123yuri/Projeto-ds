@@ -1,13 +1,13 @@
 
-with open('pasta_arquivos\\Nome_lista.txt','r') as arquivo:
+with open('arquivos/Nome_lista.txt','r') as arquivo:
     nomes_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Codigos_lista.txt','r') as arquivo:
+with open('arquivos/Codigos_lista.txt','r') as arquivo:
     codigo_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Fotos_lista.txt','r') as arquivo:
+with open('arquivos/Fotos_lista.txt','r') as arquivo:
     IMGS=arquivo.read().split(',')
-with open('pasta_arquivos\\Carga_horaria_lista.txt','r') as arquivo:
+with open('arquivos/Carga_horaria_lista.txt','r') as arquivo:
     carga_horaria_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Materia_lista.txt','r',encoding='utf-8') as arquivo:
+with open('arquivos/Materia_lista.txt','r',encoding='utf-8') as arquivo:
     materia_lista=arquivo.read().split(',')
      
 

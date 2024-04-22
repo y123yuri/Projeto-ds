@@ -1,18 +1,19 @@
-from unbook.models import Professor
-from unbook.models import Materia 
-from unbook.models import Turma 
+# from unbook.models import Professor
+# from unbook.models import Materia 
+# from unbook.models import Turma 
 #from .models import Member 
-import manage
+# import manage
 
-with open('pasta_arquivos\\Nome_lista.txt','r') as arquivo:
+
+with open('arquivos/Nome_lista.txt','r') as arquivo:
     nomes_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Codigos_lista.txt','r') as arquivo:
+with open('arquivos/Codigos_lista.txt','r') as arquivo:
     codigo_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Fotos_lista.txt','r') as arquivo:
+with open('arquivos/Fotos_lista.txt','r') as arquivo:
     IMGS=arquivo.read().split(',')
-with open('pasta_arquivos\\Carga_horaria_lista.txt','r') as arquivo:
+with open('arquivos/Carga_horaria_lista.txt','r') as arquivo:
     carga_horaria_lista=arquivo.read().split(',')
-with open('pasta_arquivos\\Materia_lista.txt','r',encoding='utf-8') as arquivo:
+with open('arquivos/Materia_lista.txt','r',encoding='utf-8') as arquivo:
     materia_lista=arquivo.read().split(',')
      
 
@@ -22,20 +23,26 @@ lista_codigo_nomemateria_cargahoraria = [[codigo_lista[i].strip(), materia_lista
 
 lista_nomeprofessor_codigo = [[nomes_lista[i].strip(), codigo_lista[i].strip()] for i in range(min(len(nomes_lista), len(codigo_lista)))]
 
+#print(lista_codigo_nomemateria_cargahoraria)
+#print("-="*25)
+#print(lista_nomeprofessor_codigo)
+#print("-="*25)
+#print(lista_nomeprofessor_foto)
 
 lista_turma_class = []
 lista_professor_class = []
 lista_materia_class = []
 
+"""
 for materia_linha in lista_codigo_nomemateria_cargahoraria: 
-    ob_materia = Materia(codigo=materia_linha[0], nome_materia=materia_linha[1], carga_horaria= materia_linha[2])
+    ob_materia = Materia(codigo=materia_linha[0], nome=materia_linha[1], carga_horaria= materia_linha[2])
     lista_materia_class.append(ob_materia)
 
 for x in lista_materia_class:
     x.save()
 
 for professor_linha in lista_nomeprofessor_foto:
-    ob_professor = Professor(nome_professor=professor_linha[0], foto=professor_linha[1])
+    ob_professor = Professor(nome=professor_linha[0], foto=professor_linha[1])
     lista_professor_class.append(ob_professor)
 
 for y in lista_professor_class:
@@ -47,4 +54,4 @@ for turma_linha in lista_nomeprofessor_codigo:
 
 for z in lista_turma_class:
     z.save()
-
+"""

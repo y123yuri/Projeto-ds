@@ -55,7 +55,8 @@ for materia in matérias:
     except NoSuchElementException:
         pass
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[1]/ul/li[3]/a').click() #esse é pra abrir a pagina disciplinas ministradas
-    driver.find_element("xpath", '/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div[1]/ul/li[6]/a[2]/em/span').click() #clicar em graduação
+    
+    driver.find_element("xpath", '//*[@id="ext-comp-1001__ext-comp-1007"]').click() #clicar em graduação
 
     site_bs4 = BeautifulSoup(driver.page_source, "html.parser")
     tabela = site_bs4.find("table", attrs={'class':'listagem'})
@@ -126,6 +127,11 @@ options2 = webdriver.FirefoxOptions()
 options2.page_load_strategy = 'eager'
 fire= webdriver.Firefox(options=options2)
 fire.get("https://sigaa.unb.br/sigaa/public/docente/busca_docentes.jsf?aba=p-academico")
+try:
+    fire.find_element(By.XPATH, "/html/body/dialog/button").click()
+except:
+    pass
+
 fire.find_element(By.XPATH, '//*[@id="form:departamento"]').click()
 fire.find_element(By.XPATH, "/html/body/div/div/div[2]/form/table/tbody/tr[2]/td/select/option[79]").click()
 fire.find_element(By.XPATH, '//*[@id="form:buscar"]').click()
