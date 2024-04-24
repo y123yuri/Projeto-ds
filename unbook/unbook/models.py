@@ -2,14 +2,18 @@ from django.db import models
 
 # Create your models here.
 
+
+
+
 class Professor(models.Model):
-    nome = models.CharField(max_length=100, primary_key=True)
+    nome_professor = models.CharField(max_length=100, primary_key=True)
     foto = models.URLField()
 
 
 class Materia(models.Model):
     codigo = models.CharField(max_length=9, primary_key=True)
-    nome = models.CharField(max_length=100)
+    nome_materia = models.CharField(max_length=100)
+    carga_horaria = models.CharField(max_length=5)
 
 class Comentario(models.Model):
     autor_nick = models.CharField(max_length=100)
@@ -25,6 +29,3 @@ class Turma(models.Model):
     avaliação_1 = models.FloatField()
     avaliação_2 = models.FloatField()
     avaliação_3 = models.FloatField()
-
-
-

@@ -267,6 +267,8 @@ with open('Carga_horaria_lista.txt','w') as arquivo:
     arquivo.writelines(','.join(carga_horaria_lista))
 with open('Materia_lista.txt','w') as arquivo:
     arquivo.writelines(','.join(materia_lista))
+with open('Nomes_professor_multiplicado.txt','w') as arquivo:
+    arquivo.writelines(','.join(nomes_multiplicados))
 
 # excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
 # excel_dados['Códigos']=codigo_lista
