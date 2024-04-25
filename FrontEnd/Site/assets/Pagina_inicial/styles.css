@@ -31,9 +31,18 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
+.fundo_branco {
+
+    width: 100%;
+    height: 650px;
+    display: flex;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    background-color: whitesmoke;
+    z-index: -1;
+}
 .qmsomos a {
     text-decoration: none;
-    font-size: 46px;
+    font-size: 32px;
     font-weight: bolder;
 
     padding-top: 1rem;
@@ -57,7 +66,7 @@ ul {
 .UnB {
 
     display: block;
-    top: 250px;
+    top: 150px;
     margin-right: auto;
     margin-left: auto;
     position: relative;
@@ -93,13 +102,13 @@ ul {
     position: relative;
     text-align: center;
 
-    top: -150px;
+    top: -120px;
     display: block;
 }
 
 .botao_arrasta a {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 0 1.5px black;
     text-decoration: none;
 
@@ -120,7 +129,7 @@ ul {
 
 .UnBook_logo {
     width: 100%;
-    font-size: 250px;
+    font-size: 200px;
     font-weight: 1000px;
     letter-spacing: -30px;
     -webkit-text-stroke-width: 5px;
@@ -132,20 +141,12 @@ ul {
 
 }
 
-.fundo_branco {
 
-    width: 100%;
-    height: 842px;
-    display: flex;
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-    background-color: whitesmoke;
-    z-index: -1;
-}
 
 /*PAGINA2*/
 
 .page2 {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.224);
     width: 100%;
     height: 100vh;
 
@@ -156,7 +157,7 @@ ul {
     top: 250px;
     margin-right: auto;
     margin-left: auto;
-    position: relative;
+    position: static;
 
     font-size: 250px;
     -webkit-text-stroke-width: 5px;
@@ -189,12 +190,12 @@ ul {
     top: 250px;
     margin-right: auto;
     margin-left: auto;
-    position: relative;
+    position: static;
 
     font-size: 250px;
     -webkit-text-stroke-width: 5px;
 
-    background-image: url("unb-logo.jpeg");
+    background-image: url("Logo_UnB.png");
     background-size: cover;
     background-position: center center;
     color: transparent;
@@ -222,19 +223,19 @@ ul {
     height: 100vh;
 }
 
-.UnBook_logo_mini {
-    font-size: 100px;
-    letter-spacing: -9px;
+.UnBook_logo_mini a {
+    font-size: 50px;
     display: block;
-    -webkit-text-stroke-width: 10px;
+    -webkit-text-stroke-width: 5px;
+    text-decoration: none;
 
     margin-right: auto;
     margin-left: auto;
     position: relative;
     color:whitesmoke;
 
-    margin-left: 50px;
-    top: 50px;
+    margin-left: 30px;
+    top: 30px;
 
 }
 
@@ -251,13 +252,13 @@ ul {
     width: auto;
     height: auto;
 
-    top: 32rem;
-    font-size: 3em;
+    top: 200px;
+    font-size: 2rem;
 }
 
 .botao_professor a {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 1 1.5px black;
     text-decoration: none;
 
@@ -269,17 +270,17 @@ ul {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 35rem;
+    margin-top: 225px;
     text-align: center;
 
-    width: 520px;
-    height: 100px;
-    padding: 0.4em 1em;
+    width: 350px;
+    height: auto;
+    padding: 0.5em 0.5em;
 }
 
 .botao_materia a {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 1 1.5px black;
     text-decoration: none;
 
@@ -294,9 +295,9 @@ ul {
     margin-top: 10px;
     text-align: center;
 
-    width: 520px;
-    height: 100px;
-    padding: 0.4em 1em;
+    width: 350px;
+    height: auto;
+    padding: 0.5em 0.5em ;
 }
 
 .botao_professor:hover {
@@ -313,7 +314,7 @@ ul {
 
 .janela_pesquisa {
 
-    width: 800px;
+    width: 570px;
     height: 600px;
     min-height: 200px;
     
@@ -327,20 +328,23 @@ ul {
 }
 
 .janela_pesquisa h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 10px 0;
     color:white;
     width: auto;
     text-align: center;
+    display: block;
+    margin-top: 150px;
 }
 
 .janela_pesquisa .pesquisa {
-    width: 800px;
+    width: 570px;
     height: 70px;
+
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50px;
-    font-size:42px;
-    padding: 0 0 0 70px;
+    font-size:32px;
+    padding: 0 0 0 40px;
     text-align: left;
     font-weight: 200;
     border: none;
@@ -357,8 +361,8 @@ ul {
     color: rgb(33, 33, 33);
     font-size: 2em;
 
-    width: 800px;
-    height: 500px;
+    width: 570px;
+    height: 285px;
 
     text-align: center ;
 }
