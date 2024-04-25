@@ -21,19 +21,25 @@
         UnBook
     </div>
 
-    <div class="box">
+    <div id="box" class="box">
 
         <h1 class="login"> Login </h1>
         <h3 class="campoFalado"> Nome do usuário ou e-mail:</h3>
-        <input class="campoEscrito" id="campoEscritaEmail" type="email" placeholder="Digite seu login">
+        <input class="campoEscrito , required", id="campoEscritaEmail" type="email" placeholder="Digite seu login">
 
         <h3 class="campoFalado"> Senha: </h3>
-        <input class="campoEscrito" id="campoEscritaSenha" type="password" placeholder="Digite sua senha">
+        <input class="campoEscrito , required" id="campoEscritaSenha" type="password" placeholder="Digite sua senha">
 
-        <a class="botao_entrar" href="../pagina_inicial/UnBook.html"> Entrar> </a>
+        <a class="botao_entrar" onclick="verificar()" href="../pagina_inicial/UnBook.html"> Entrar> </a>
+
+        
+        <a class="cadastro" href="#opa"> Cadastre-se aqui </a>
+        <a class="senha" href="#opa2"> Esqueceu a senha? </a>
 
     </div>
 
 </body>
+
+<script src="script.js"></script>
 
 </html>

@@ -122,3 +122,22 @@ ul {
     transform: scale(0.9);
 }
 
+.cadastro {
+    display: grid;
+    text-align: center;
+    margin-top: 1rem;
+    color:#0C36A1;
+
+    width: auto;
+    height: auto;
+}
+
+.senha {
+    display: grid;
+    text-align: center;
+    margin-top: 0.5rem;
+    color:#0C36A1;
+
+    width: auto;
+    height: auto;
+}
