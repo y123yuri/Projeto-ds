@@ -86,8 +86,7 @@ ul {
 
     top: 10px;
     right: 10px;
-    display: flex;
-    justify-content: flex-end;
+    display: block;
 }
 
 .botao_arrasta {
