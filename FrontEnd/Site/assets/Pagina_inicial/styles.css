@@ -1,0 +1,383 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #0C36A1, #068a4e);
+    width: 100%;
+
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+}
+
+ul {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* inicio das paginas */
+/*PAGINA1*/
+
+.qmsomos a {
+    text-decoration: none;
+    font-size: 46px;
+    font-weight: bolder;
+
+    padding-top: 1rem;
+
+    color: black;
+    position: relative;
+    text-align: center;
+
+    width: auto;
+    height: auto;
+
+    top: 0;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.qmsomos:hover {
+    transform: scale(1.05);
+}
+
+.UnB {
+
+    display: block;
+    top: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    font-size: 250px;
+    letter-spacing: -30px;
+    -webkit-text-stroke-width: 5px;
+    color: #068a4e;
+
+}
+
+
+.unbloguinho {
+    position: absolute;
+    width: 156px;
+    height: 77px;
+
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botao_arrasta {
+
+    margin-right: auto;
+    margin-left: auto;
+
+
+    width: 520px;
+    height: 100px;
+
+    position: relative;
+    text-align: center;
+
+    top: -150px;
+    display: block;
+}
+
+.botao_arrasta a {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 1.5px black;
+    text-decoration: none;
+
+    background-color: #133E79;
+    border: 5px solid #133E79;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao_arrasta:hover {
+    transform: scale(1.05);
+}
+
+
+
+.UnBook_logo {
+    width: 100%;
+    font-size: 250px;
+    font-weight: 1000px;
+    letter-spacing: -30px;
+    -webkit-text-stroke-width: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+
+}
+
+.fundo_branco {
+
+    width: 100%;
+    height: 842px;
+    display: flex;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    background-color: whitesmoke;
+    z-index: -1;
+}
+
+/*PAGINA2*/
+
+.page2 {
+    background-color: transparent;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.uNb {
+    display: block;
+    top: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    font-size: 250px;
+    -webkit-text-stroke-width: 5px;
+
+    background-image: url("Unbolasvai.png");
+    background-size: cover;
+    background-position: center center;
+    color: transparent;
+
+    letter-spacing: -30px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-attachment: absolute;
+    background-position: static;
+
+
+    text-align: left;
+    align-items: flex-start;
+    padding: 0 0 114px 90px;
+
+    width: auto;
+    height: auto;
+    max-width: auto;
+    max-height: auto;
+
+}
+
+.uNb2 {
+    display: block;
+    top: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    font-size: 250px;
+    -webkit-text-stroke-width: 5px;
+
+    background-image: url("unb-logo.jpeg");
+    background-size: cover;
+    background-position: center center;
+    color: transparent;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-attachment: absolute;
+    background-position: static;
+
+
+    text-align: center;
+    padding: 10px 0 0 0;
+
+    width: auto;
+    height: auto;
+    max-width: 640px;
+    max-height: 320px;
+
+}
+
+/*PAGINA3*/
+
+.page3 {
+    background-color: transparent;
+    height: 100vh;
+}
+
+.UnBook_logo_mini {
+    font-size: 100px;
+    letter-spacing: -9px;
+    display: block;
+    -webkit-text-stroke-width: 10px;
+
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    color:whitesmoke;
+
+    margin-left: 50px;
+    top: 50px;
+
+}
+
+
+.pergunta {
+    color: white;
+    display: block;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    width: auto;
+    height: auto;
+
+    top: 32rem;
+    font-size: 3em;
+}
+
+.botao_professor a {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 1 1.5px black;
+    text-decoration: none;
+
+    background-color: #133E79;
+    border-radius: 50px;
+    align-items: center;
+
+
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 35rem;
+    text-align: center;
+
+    width: 520px;
+    height: 100px;
+    padding: 0.4em 1em;
+}
+
+.botao_materia a {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 1 1.5px black;
+    text-decoration: none;
+
+    background-color: #133E79;
+    border-radius: 50px;
+    align-items: center;
+
+
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    text-align: center;
+
+    width: 520px;
+    height: 100px;
+    padding: 0.4em 1em;
+}
+
+.botao_professor:hover {
+    justify-content: center;
+    transform: scale(1.05);
+}
+
+.botao_materia:hover {
+    justify-content: center;
+    transform: scale(1.05);
+}
+
+/*JANELA*/
+
+.janela_pesquisa {
+
+    width: 800px;
+    height: 600px;
+    min-height: 200px;
+    
+    margin-top: -500px;
+    text-align: center;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 999;
+    
+}
+
+.janela_pesquisa h1 {
+    font-size: 3rem;
+    padding: 10px 0;
+    color:white;
+    width: auto;
+    text-align: center;
+}
+
+.janela_pesquisa .pesquisa {
+    width: 800px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    font-size:42px;
+    padding: 0 0 0 70px;
+    text-align: left;
+    font-weight: 200;
+    border: none;
+    display: flex;
+    
+
+}
+.janela_pesquisa h2 {
+
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter:blur(10px);
+    border-radius: 50px;
+    margin-top: 10px;
+    color: rgb(33, 33, 33);
+    font-size: 2em;
+
+    width: 800px;
+    height: 500px;
+
+    text-align: center ;
+}
+
+@keyframes abrir_janelas {
+    from{
+        opacity: 0;
+        transform: translate3d(0,-5px,-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+}
+
+.abrir {
+    animation: abrir_janelas 0.3s;
+    display: block;
+}
+
+
+/* CABOUJANELA */

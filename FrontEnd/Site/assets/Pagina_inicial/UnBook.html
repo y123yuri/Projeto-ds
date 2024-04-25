@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+    <section class="page1">
+
+        <div class="fundo_branco">
+
+            <h1 class="UnB">UnBook</h1>
+
+
+            <nav>
+                <ul>
+                    <li class="qmsomos"><a style="text-decoration:none" href="#">
+
+                            quem somos?
+                        </a></li>
+                </ul>
+
+                <ul>
+                    <li><img class="unbloguinho" src="./unb-logo.jpeg"></li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="botao_arrasta">
+            <h2><a href="#anchor">Iniciar pesquisa</a></h2>
+
+
+        </div>
+
+    </section>
+
+    <br>
+
+    <section class="page2">
+        <h1 class="uNb">UnBook</h1>
+
+        <h1 class="uNb2">UnB</h1>
+    </section>
+
+
+    <section class="page3">
+        <div id="anchor">
+
+            <div class="UnBook_logo_mini">
+                UnBook
+            </div>
+
+
+
+
+            <h2 class="pergunta"> Deseja iniciar sua pesquisa?</h2>
+
+            <h2 onclick="abrir_modal()" class="botao_professor"><a href="#janela_pesquisa">professor</a> </h2>
+
+            <h2 class="botao_materia"><a href="#opa2">matéria</a> </h2>
+
+
+            <div class="janela_pesquisa" id="janela_pesquisa">
+
+                <h1> Informe o nome do professor:</h1>
+                <input class="pesquisa" type="text" name="pesquisar" placeholder="pesquisar"></input>
+                <h2></h2>
+            </div>
+
+
+
+
+            <script src="script.js"></script>
+
+        </div>
+    </section>
+</body>
+
+</html>
