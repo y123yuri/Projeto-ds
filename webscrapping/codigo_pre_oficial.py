@@ -7,6 +7,8 @@ import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+import openpyxl as xls
+from openpyxl.utils.dataframe import dataframe_to_rows
 
 #driver.get('https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673')
 link='https://sigaa.unb.br/sigaa/public/departamento/professores.jsf?id=673'
@@ -53,7 +55,8 @@ for materia in matérias:
     except NoSuchElementException:
         pass
     driver.find_element("xpath", '/html/body/div/div/div[2]/div[1]/ul/li[3]/a').click() #esse é pra abrir a pagina disciplinas ministradas
-    driver.find_element("xpath", '/html/body/div/div/div[2]/div[2]/div[2]/div[1]/div/div[1]/div[1]/ul/li[6]/a[2]/em/span').click() #clicar em graduação
+    
+    driver.find_element("xpath", '//*[@id="ext-comp-1001__ext-comp-1007"]').click() #clicar em graduação
 
     site_bs4 = BeautifulSoup(driver.page_source, "html.parser")
     tabela = site_bs4.find("table", attrs={'class':'listagem'})
@@ -124,6 +127,11 @@ options2 = webdriver.FirefoxOptions()
 options2.page_load_strategy = 'eager'
 fire= webdriver.Firefox(options=options2)
 fire.get("https://sigaa.unb.br/sigaa/public/docente/busca_docentes.jsf?aba=p-academico")
+try:
+    fire.find_element(By.XPATH, "/html/body/dialog/button").click()
+except:
+    pass
+
 fire.find_element(By.XPATH, '//*[@id="form:departamento"]').click()
 fire.find_element(By.XPATH, "/html/body/div/div/div[2]/form/table/tbody/tr[2]/td/select/option[79]").click()
 fire.find_element(By.XPATH, '//*[@id="form:buscar"]').click()
@@ -237,23 +245,50 @@ for sublist in lista_lista:
 coluna=['Matérias']
 
 
-excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
-excel_dados['Códigos']=codigo_lista
-excel_dados['Carga horária']=carga_horaria_lista
-excel_dados['Fotografias']=fotos_multiplicadas
-excel_dados['Semestre']='2024.1'
+
+
+lista_class_professor=[]
+lista_class_materia=[]
+lista_nomeprofessor_codigo=[]
+
+lista_nomeprofessor_foto = [[nomes_lista[i], IMGS[i]] for i in range(min(len(nomes_lista), len(IMGS)))]
+
+lista_codigo_nomemateria_cargahoraria = [[codigo_lista[i], materia_lista[i], carga_horaria_lista[i]] for i in range(min(len(codigo_materia), len(materia_lista),len(carga_horaria_lista)))]
+
+lista_nomeprofessor_codigo = [[nomes_lista[i], codigo_lista[i]] for i in range(min(len(nomes_lista), len(codigo_lista)))]
+
+with open('Nome_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(nomes_lista))
+with open('Codigos_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(codigo_lista))
+with open('Fotos_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(IMGS))
+with open('Carga_horaria_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(carga_horaria_lista))
+with open('Materia_lista.txt','w') as arquivo:
+    arquivo.writelines(','.join(materia_lista))
+with open('Nomes_professor_multiplicado.txt','w') as arquivo:
+    arquivo.writelines(','.join(nomes_multiplicados))
+
+# excel_dados=pd.DataFrame(data=materia_lista,index=nomes_multiplicados,columns=coluna)
+# excel_dados['Códigos']=codigo_lista
+# excel_dados['Carga horária']=carga_horaria_lista
+# excel_dados['Fotografias']=fotos_multiplicadas
+# excel_dados['Semestre']='2024.1'
 
 
 
-excel_dados.to_excel()
-print('')
-print(excel_dados)
-print('')
+# wb = xls.Workbook()
+# ws = wb.active
 
-# print(materia_lista)
+# excel_dados.to_excel()
 # print('')
-# print(carga_horaria_lista)
+# print(excel_dados)
 # print('')
-# print(codigo_lista)
-# print('')
-# print(nomes_multiplicados)
+
+# for r in dataframe_to_rows(excel_dados, index=True, header=True):
+#     ws.append(r)
+
+# wb.save("pandas_openpyxl.xlsx")
+
+
