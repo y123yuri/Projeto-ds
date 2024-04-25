@@ -59,6 +59,8 @@ lista_junta = [[materia[i], codigos[i], horas[i]] for i in range(min(len(materia
 
 
 
-with open('Materia_lista.txt','w',encoding='utf-8') as arquivo:
-    arquivo.writelines(','.join(materia))
+# with open('Materia_lista.txt','w',encoding='utf-8') as arquivo:
+    #arquivo.writelines(','.join(materia))
 
+with open('Nomes_professor_multiplicado.txt','w') as arquivo:
+    arquivo.writelines(','.join(nomes_multiplicados))
