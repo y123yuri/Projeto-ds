@@ -7,11 +7,13 @@
 html {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right, #0C36A1, #068a4e);
+    background-image: linear-gradient(135deg, #0C36A1, #068a4e);
     width: 100%;
 
+    background-attachment: fixed;
     height: 100vh;
     scroll-behavior: smooth;
+
 }
 
 body {
@@ -31,13 +33,25 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
+.UnBookLogo {
+    width:60em;
+    height: 25em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top:6%;
+}
+
+
 .fundo_branco {
 
     width: 100%;
     height: 650px;
     display: flex;
     clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-    background-color: whitesmoke;
+    
+    background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
     z-index: -1;
 }
 .qmsomos a {
@@ -62,22 +76,6 @@ ul {
 .qmsomos:hover {
     transform: scale(1.05);
 }
-
-.UnB {
-
-    display: block;
-    top: 150px;
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
-
-    font-size: 250px;
-    letter-spacing: -30px;
-    -webkit-text-stroke-width: 5px;
-    color: #068a4e;
-
-}
-
 
 .unbloguinho {
     position: absolute;
@@ -128,61 +126,12 @@ ul {
     transform: scale(1);
 }
 
-.UnBook_logo {
-    width: 100%;
-    font-size: 200px;
-    font-weight: 1000px;
-    letter-spacing: -30px;
-    -webkit-text-stroke-width: 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 15px;
-
-}
-
-
-
 /*PAGINA2*/
 
 .page2 {
     background-color: transparent;
     width: 100%;
     height: 100vh;
-
-}
-
-.uNb {
-    display: block;
-    top: 250px;
-    margin-right: auto;
-    margin-left: auto;
-    position: static;
-
-    font-size: 250px;
-    -webkit-text-stroke-width: 5px;
-
-    background-image: url("Unbolasvai.png");
-    background-size: cover;
-    background-position: center center;
-    color: transparent;
-
-    letter-spacing: -30px;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-attachment: absolute;
-    background-position: static;
-
-
-    text-align: left;
-    align-items: flex-start;
-    padding: 0 0 114px 90px;
-
-    width: auto;
-    height: auto;
-    max-width: auto;
-    max-height: auto;
 
 }
 
@@ -226,31 +175,32 @@ ul {
     height: 100vh;
 }
 
-.UnBook_logo_mini a {
-    font-size: 50px;
-    display: block;
-    -webkit-text-stroke-width: 5px;
-    text-decoration: none;
+ .UnBook_logo_mini{
+    display: inline;
+    
+    width:20em;
+    height: auto;
 
-    margin-right: auto;
-    margin-left: auto;
     position: relative;
-    color:whitesmoke;
 
-    margin-left: 30px;
-    top: 30px;
-    transition: all 0.3s ease;
+    margin-left: 10px;
+    top: 10px;
 }
 
 .Login_icon a {
     font-size: 1.5em;
     display: block;
     position: relative;
-    color:whitesmoke;
+
+
+    color: #0B4C8C;
     text-decoration: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #0B4C8C;
+    text-shadow: 0 0 50px #0B4C8C;
 
     margin-left: 90%;
-    top:-1.5rem;
+    top:-60px;
     transition: all 0.3s ease;
 }
 
