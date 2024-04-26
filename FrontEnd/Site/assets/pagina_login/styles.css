@@ -141,3 +141,9 @@ ul {
     width: auto;
     height: auto;
 }
+
+.spans_required {
+    color: #ff0000;
+    margin-left: 3em;
+    display:none;
+}
