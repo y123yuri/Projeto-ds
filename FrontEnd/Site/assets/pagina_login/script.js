@@ -3,7 +3,7 @@
     const campos = document.querySelectorAll('.required');
     const spans = document.querySelectorAll('.spans_required');
     const emailRegex = /^\S+@\S+\.\S+$/;
-
+    let contador = 1;
 
     function setError(index) {
         campos[index].style.border = '2px solid #e63636';
@@ -29,6 +29,7 @@ function senhaValidade(){
         console.log('VALIDADO A SENHA');
         removeError(1);
         goBackUnBook(1);
+        contador++;
     }
 }
 
@@ -37,7 +38,8 @@ function senhaValidade(){
 
             console.log('VALIDADO O EMAIL');
             removeError(0);
-            goBackUnBook(1);
+            goBackUnBook(0);
+            contador++;
         }
         else {
            
@@ -47,13 +49,16 @@ function senhaValidade(){
     }
 
     function goBackUnBook (index) {
-        
-        var contador = 1;
-        contador = contador + 1;
+    
         console.log(contador);
 
         if (contador == 2) {
-            window.location.href = "../pagina_inicial/UnBook.html"
+            window.location.href = "../pagina_inicial/UnBook.html";
             contador = 0;
-        }
+        } 
+        else {
+            contador = 0;
+            campos[index].value = '';
+        }        
+
     }
