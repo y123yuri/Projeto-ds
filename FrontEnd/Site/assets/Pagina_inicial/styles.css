@@ -135,39 +135,6 @@ ul {
 
 }
 
-.uNb2 {
-    display: block;
-    top: 250px;
-    margin-right: auto;
-    margin-left: auto;
-    position: static;
-    letter-spacing: -30px;
-
-    font-size: 250px;
-    -webkit-text-stroke-width: 5px;
-
-    background-image: url("Logo_UnB.png");
-    background-size: cover;
-    background-position: center center;
-    color: transparent;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-attachment: absolute;
-    background-position: static;
-
-
-    text-align: center;
-    padding: 10px 0 0 0;
-
-    width: auto;
-    height: auto;
-    max-width: 640px;
-    max-height: 320px;
-
-}
-
-
 /*PAGINA3*/
 
 .page3 {
@@ -178,13 +145,13 @@ ul {
  .UnBook_logo_mini{
     display: inline;
     
-    width:20em;
+    width:35em;
     height: auto;
 
     position: relative;
 
     margin-left: 10px;
-    top: 10px;
+    top: -30px;
 }
 
 .Login_icon a {
@@ -200,7 +167,7 @@ ul {
     text-shadow: 0 0 50px #0B4C8C;
 
     margin-left: 90%;
-    top:-60px;
+    top:-150px;
     transition: all 0.3s ease;
 }
 
@@ -221,7 +188,7 @@ ul {
     width: auto;
     height: auto;
 
-    top: 200px;
+    top: 10px;
     font-size: 2rem;
 }
 
@@ -239,7 +206,7 @@ ul {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 225px;
+    margin-top: 30px;
     text-align: center;
 
     width: 350px;
@@ -261,7 +228,7 @@ ul {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
 
     width: 350px;
