@@ -192,6 +192,7 @@ ul {
     margin-right: auto;
     margin-left: auto;
     position: static;
+    letter-spacing: -25px;
 
     font-size: 250px;
     -webkit-text-stroke-width: 5px;
