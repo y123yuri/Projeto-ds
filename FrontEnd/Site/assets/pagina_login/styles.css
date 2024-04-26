@@ -31,7 +31,7 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
-.UnBook_logo_mini {
+.UnBook_logo_mini a {
     font-size: 50px;
     display: block;
     -webkit-text-stroke-width: 5px;

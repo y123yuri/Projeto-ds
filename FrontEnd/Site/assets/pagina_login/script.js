@@ -56,9 +56,6 @@ function senhaValidade(){
             window.location.href = "../pagina_inicial/UnBook.html";
             contador = 0;
         } 
-        else {
-            contador = 0;
-            campos[index].value = '';
-        }        
+        
 
     }
