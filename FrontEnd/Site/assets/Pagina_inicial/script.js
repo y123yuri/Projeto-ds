@@ -7,7 +7,7 @@ function abrir_modal(){
 }
 
 function fechar_modal () {
-    var modal= document.getElementById('janela_pesquisa');
+    var modal= document.getElementById('janela_pesquisas');
 
     
 
