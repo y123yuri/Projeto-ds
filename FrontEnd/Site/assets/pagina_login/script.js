@@ -2,7 +2,7 @@
     const box = document.getElementById('box');
     const campos = document.querySelectorAll('.required');
     const spans = document.querySelectorAll('.spans_required');
-    const emailRegex = /^\S+@\S+\.\S+$/;
+    const emailRegex = /^\d{9}@aluno\.unb\.br$/;
     let contador = 1;
 
     function setError(index) {

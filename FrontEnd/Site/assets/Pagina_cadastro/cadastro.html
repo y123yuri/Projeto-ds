@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pagina de cadastro</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagina de cadastro</title>
 
-        <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
-  </head>
+  <link rel="stylesheet" href="styles_cadastro.css">
 
-  <body>
-    <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+</head>
 
-    <div class="divprincipal">
-      <h1 style="font-size: 3em;
+<body>
+  <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+
+  <form class="form" id="form">
+    
+    <h1 style="font-size: 3em;
     padding: 40px 5px 5px 40px;">Cadastro</h1>
 
-      <h3 class="campoFalado">Insira um nome para o usuario:</h3>
-      <input
-        class="campoEscrito"
-        id="campoEscritaUsuario"
-        type="text"
-        placeholder="Fulano" />
 
-      <h3 class="campoFalado">Insira seu e-mail:</h3>
-      <input
-        class="campoEscrito"
-        id="campoEscritaEmail"
-        type="email"
-        placeholder="exemplo@aluno.unb.com" />
+    <h3 class="campoFalado">Insira um nome para o usuario:</h3>
 
-      <h3 class="campoFalado">Crie uma senha:</h3>
-      <input
-        class="campoEscrito"
-        id="campoEscritaSenha"
-        type="password"
-        placeholder="*******" />
+    <label>
+      <input class="campoEscrito , required" name="nome" type="text" placeholder="Fulano" />
+      <span class="spans_required"> Digite um nome com mais de 3 caracteres</span>
+    </label>
 
-      <h3 class="campoFalado" >Confirme sua senha:</h3>
-      <input
-        class="campoEscrito"
-        id="campoEscritaSenha"
-        type="password"
-        placeholder="*******" />
+    <h3 class="campoFalado">Insira seu e-mail:</h3>
 
-      <a class="botao_entrar">Entrar ></a>
-    </div>
-  </body>
+    <label>
+      <input class="campoEscrito , required" name="email" type="email" placeholder="exemplo@aluno.unb.com" />
+      <span class="spans_required"> Digite um e-mail válido</span>
+    </label>
+
+    <h3 class="campoFalado">Crie uma senha:</h3>
+
+    <label>
+      <input class="campoEscrito , required" name="senha" type="password" placeholder="*******" />
+      <span class="spans_required"> Sua senha está fraca</span>
+    </label>
+
+    <h3 class="campoFalado">Confirme sua senha:</h3>
+
+    <label>
+      <input class="campoEscrito , required" name="senhaconfirm" type="password" placeholder="*******" />
+      <span class="spans_required"> Sua senha está diferente da anterior</span>
+    </label>
+
+    <a class="botao_entrar" type="submit" id="submit" onclick="verifica()">Entrar ></a>
+  </form>
+
+  <script src="confirma.js"></script>
+  <script src="envio.js"></script>
+</body>
+
 </html>

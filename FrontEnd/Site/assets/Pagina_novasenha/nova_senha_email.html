@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles_nova_senha_email.css">
+
+</head>
+
+<body>
+
+    <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+
+    <div id="box" class="box">
+
+
+        
+        <h1 class="login"> Esqueceu a senha? </h1>
+
+        <h3 class="campoFalado1"> Para a recuperação da conta, enviaremos um <br> código para o seu e-mail</h3>
+
+        <h3 class="campoFalado2"> Insira seu e-mail abaixo:</h3>
+
+        <input class="campoEscrito , required" id="campoEscritaEmail" type="text" placeholder="exemplo@aluno.unb.br">
+        <span class="spanEmail"> Digite um e-mail válido</span>
+
+        <a class="botao_enviar" onclick="verifica()"> Enviar o código > </a>
+    </div>
+
+</body>
+
+<script src="pegaEmail.js"></script>
+
+</html>
