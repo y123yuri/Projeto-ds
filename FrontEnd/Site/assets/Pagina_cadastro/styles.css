@@ -28,19 +28,16 @@ ul {
   right: 0;
 }
 
-.UnBook_logo_mini a {
-  font-size: 50px;
-  display: block;
-  -webkit-text-stroke-width: 5px;
-  text-decoration: none;
+.UnBook_logo_mini{
+  display: inline;
+  
+  width:35em;
+  height: auto;
 
-  margin-right: auto;
-  margin-left: auto;
   position: relative;
-  color: whitesmoke;
 
-  margin-left: 30px;
-  top: 30px;
+  margin-left: 10px;
+  top: -30px;
 }
 
 .divprincipal {
@@ -54,7 +51,7 @@ ul {
     margin-left: auto;
     margin-right: auto;
 
-    margin-top: 5%;
+    margin-top: -6em;
 }
 .campoEscrito {
   font-size: 20px;
