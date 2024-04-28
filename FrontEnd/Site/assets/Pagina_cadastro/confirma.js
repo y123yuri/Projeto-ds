@@ -36,8 +36,6 @@ function nomeValidade() {
         console.log('VALIDADO O NOME');
         removeError(1);
         etapaNome = true;
-        console.log(etapaNome);
-        goBackUnBook();
     }
 }
 
@@ -47,7 +45,6 @@ function emailValidade() {
         console.log('VALIDADO O EMAIL');
         removeError(1);
         etapaEmail = true;
-        goBackUnBook();
     }
     else {
 
@@ -65,7 +62,6 @@ function senhaValidade() {
         console.log('VALIDADO A SENHA');
         removeError(2);
         etapaSenha = true;
-        goBackUnBook();
     }
 }
 
@@ -74,7 +70,6 @@ function confirmasenhaValidade() {
         console.log('A SENHA É A MESMA');
         removeError(3);
         etapaConfirmaSenha = true;
-        goBackUnBook();
     }
     else {
         console.log('SENHA TA DIFERENTE');
@@ -85,14 +80,8 @@ function confirmasenhaValidade() {
 function enviarDados() {
     if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
         handleSubmit();
+        window.location.href = "cadastro_sucesso.html";
     }
-    if (handleSubmit()) {
-        goBackUnBook();
-    }
-}
-
-function goBackUnBook() {
-    window.location.href = "cadastro_sucesso.html";
 }
 
 //verificar o sheets, deu certo nn...
