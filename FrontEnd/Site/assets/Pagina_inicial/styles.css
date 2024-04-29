@@ -252,7 +252,6 @@ ul {
     text-align: left;
     font-weight: 200;
     border: none;
-
 }
 
 .janela_pesquisa {
@@ -309,6 +308,50 @@ div .janela_pesquisa {
 }
 
 
+/* FIM DA JANELA */
+
+/* JANELA MATERIA2 */
+
+.janela_materia2 {
+    width: 570px;
+    height: 25em;
+
+    display: none;
+    margin: auto;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    border: none;
+}
+
+.CampoFalado2 {
+    display: block;
+    text-align: center;
+    padding-top: 0.5em;
+    margin-left: auto;
+    
+    margin-right: auto;
+
+    font-size: 2em;
+    color: black;
+}
+
+.CampoFalado3 {
+    display: block;
+    text-align: center;
+    padding-top: 0.5em;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 50%;
+    font-size: 2em;
+    color: black;
+}
+
+
+/* FIM DA JANELA MATERIA2 */
+
 @keyframes abrir_janelas {
     from {
         opacity: 0;
@@ -321,21 +364,10 @@ div .janela_pesquisa {
     }
 }
 
-@keyframes fechar_janelas {
-    from {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translate3d(0, -5px, -20px);
-    }
-}
-
 .abrir {
     animation: abrir_janelas 0.3s;
     display: flex;
+    flex-direction: column;
 }
 
 
