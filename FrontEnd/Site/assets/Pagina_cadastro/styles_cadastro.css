@@ -122,13 +122,15 @@ ul {
   text-align: center;
   padding: 1rem 2rem;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.botao_entrar:hover {
+#submit:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 25px #0B4C8C;
 }
 
-.botao_entrar:active {
+#submit:active {
   transform: scale(0.9);
 }
 

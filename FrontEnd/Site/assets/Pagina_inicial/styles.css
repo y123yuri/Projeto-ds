@@ -122,6 +122,11 @@ ul {
     transform: scale(1.05);
 }
 
+.botao_arrasta a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px #0B4C8C;
+}
+
 .botao_arrasta:active {
     transform: scale(1);
 }

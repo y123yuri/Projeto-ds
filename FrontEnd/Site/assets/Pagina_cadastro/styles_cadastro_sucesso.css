@@ -139,6 +139,7 @@ ul {
 
 .botao_voltar:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 25px #0B4C8C;
 }
 
 .botao_voltar:active {
