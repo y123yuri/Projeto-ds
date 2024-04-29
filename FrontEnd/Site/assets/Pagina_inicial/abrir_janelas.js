@@ -1,29 +1,31 @@
-function abrirModal(id) {
-    var modal = document.getElementById(id);
-    modal.style.display = "block";
+
+var perguntas = document.getElementById('perguntas');
+var Professor = document.getElementById('janela_professor');
+var Materia = document.getElementById('janela_materia');
+var pesquisa = document.getElementById('perguntas');
+
+function abrirModal_Professor() {
+    
+    perguntas.style.display = 'none';
+    Professor.classList.add('abrir');    
+
 }
 
-// Função para fechar o modal com o ID específico
-function fecharModal(id) {
-    var modal = document.getElementById(id);
-    modal.style.display = "none";
+function abrirModal_Materia() {
+    
+    perguntas.style.display = 'none';
+    Materia.classList.add('abrir');     
+
 }
 
-// Event listener para fechar o modal clicando fora dele
-window.onclick = function(event) {
-    var modais = document.getElementsByClassName('janela_pesquisa');
-    for (var i = 0; i < modais.length; i++) {
-        var modal = modais[i];
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+document.addEventListener('click', e => {
+    if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') ) {
+        fecharModal();
     }
-}
+});
 
-// Event listener para abrir os modais ao clicar nos botões
-document.getElementById('professor').onclick = function() {
-    abrirModal('janela_professor');
-};
-document.getElementById('materia').onclick = function() {
-    abrirModal('janela_materia');
-};
+function fecharModal() {
+    perguntas.style.display = 'block';
+    Materia.classList.remove('abrir');
+    Professor.classList.remove('abrir');
+}

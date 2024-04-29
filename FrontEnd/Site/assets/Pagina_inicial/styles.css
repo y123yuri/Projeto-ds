@@ -34,13 +34,13 @@ ul {
 /*PAGINA1*/
 
 .UnBookLogo {
-    width:1212px;
+    width: 1212px;
     height: 484px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 
-    margin-top:6%;
+    margin-top: 6%;
 }
 
 
@@ -50,10 +50,11 @@ ul {
     height: 650px;
     display: flex;
     clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-    
+
     background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
     z-index: -1;
 }
+
 .qmsomos a {
     text-decoration: none;
     font-size: 24px;
@@ -93,8 +94,8 @@ ul {
     margin-left: auto;
 
 
-    width: 520px;
-    height: 100px;
+    width: 20em;
+    height: auto;
 
     position: relative;
     text-align: center;
@@ -143,19 +144,19 @@ ul {
     height: 95vh;
 }
 
-.UnBook_logo_mini{
+.UnBook_logo_mini {
     display: inline;
-    
-    width:25em;
+
+    width: 25em;
     height: auto;
 
     position: relative;
 
     margin-left: 40px;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
- .Login_icon a {
+.Login_icon a {
     font-size: 1.5em;
     display: block;
     position: relative;
@@ -178,59 +179,50 @@ ul {
 }
 
 #perguntas {
+    position: relative;
+    top: 5em;
     text-align: center;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.pergunta{
+.pergunta {
     color: white;
-    position: relative;
-    top: 4em;
-
-    width: auto;
-    height: auto;
-
     font-size: 2rem;
 }
 
 .botoes {
-
-    margin-right: auto;
-    margin-left: auto;
-
-    width: 320px;
+    width: 10em;
     height: auto;
 
-    position: relative;
-    text-align: center;
-
-    top: 4.5em;
-    padding-top: 2em;
-    margin-top: 0.5em;
     display: block;
+    margin: auto;
 
+    width: 10em;
+
+    background-color: #133E79;
+    border-radius: 50px;
+
+
+    padding: 0.5rem 4.5rem;
+    margin-top: 0.5em;
+
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 1.5px black;
+
+
+    cursor: pointer;
     transition: all 0.3s ease;
 }
+
+
 
 .botoes:hover {
     justify-content: center;
     transform: scale(1.05);
     box-shadow: 0 0 50px #0B4C8C;
-}
-
-.botoes {
-    color: white;
-    font-size: 2rem;
-    text-shadow: 0 1.5px black;
-    text-decoration: none;
-
-    background-color: #133E79;
-    border: 5px solid #133E79;
-    border-radius: 50px;
-    padding: 0.5rem 4.5rem;
-
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .botoes:active {
@@ -240,76 +232,110 @@ ul {
 /*JANELA*/
 
 
-.janela_pesquisa {
-
-    width: 570px;
-    height: 450px;
-    min-height: 200px;
-    
-    margin-top: -15%;
+.CampoFalado {
+    margin-bottom: 0.5em;
     text-align: center;
-    display: none;
-
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 999;
-    
+    color: #E6F2FB;
 }
 
-.janela_pesquisa h1 {
-    font-size: 2rem;
-    padding: 10px 0;
-    color:white;
-    width: auto;
-    text-align: center;
+.barra_pesquisa {
+    width: 570px;
+    height: 2em;
     display: block;
-    margin-top: 150px;
-}
 
-.pesquisa {
-    width: 570px;
-    height: 70px;
+    margin: auto;
 
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50px;
-    font-size:32px;
+    font-size: 32px;
     padding: 0 0 0 40px;
     text-align: left;
     font-weight: 200;
     border: none;
-    display: flex;
 
 }
 
-.janela_pesquisa h2 {
+.janela_pesquisa {
+    margin-top: 10px;
+
+    display: none;
+    flex-direction: column;
+}
+
+div .janela_pesquisa {
+    width: auto;
+    height: auto;
+}
+
+.CampoProcura {
+    width: 570px;
+    height: 10em;
+
+    display: block;
+    margin: auto;
 
     background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter:blur(10px);
     border-radius: 50px;
-    margin-top: 10px;
-    color: rgb(33, 33, 33);
-    font-size: 2em;
+    border: none;
+    margin-top: 1em;
 
-    width: 570px;
-    height: 285px;
-
-    text-align: center ;
+    overflow-y: auto;
 }
 
+.CampoProcura ul {
+
+    display: block;
+    margin: auto;
+    position: relative;
+    padding: 1em 0 1em 2.5em;
+    text-align: left;
+    border: none;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: 500;
+    cursor: pointer;
+
+
+}
+
+.CampoProcura a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.CampoProcura a:hover {
+    transform: scale(1.05);
+}
+
+
 @keyframes abrir_janelas {
-    from{
+    from {
         opacity: 0;
-        transform: translate3d(0,-5px,-20px);
+        transform: translate3d(0, -5px, -20px);
     }
+
     to {
         opacity: 1;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fechar_janelas {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, -5px, -20px);
     }
 }
 
 .abrir {
     animation: abrir_janelas 0.3s;
-    display: block;
+    display: flex;
 }
 
 
