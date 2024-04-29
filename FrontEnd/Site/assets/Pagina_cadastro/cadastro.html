@@ -18,7 +18,7 @@
 <body>
   <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
 
-  <form class="form" id="form">
+  <form class="form" id="form" method="post" name="contact-form">
     
     <h1 style="font-size: 3em;
     padding: 40px 5px 5px 40px;">Cadastro</h1>
@@ -27,36 +27,35 @@
     <h3 class="campoFalado">Insira um nome para o usuario:</h3>
 
     <label>
-      <input class="campoEscrito , required" name="nome" type="text" placeholder="Fulano" />
+      <input class="campoEscrito , required" id="CampoNome" name="Nome" type="text" placeholder="Fulano" />
       <span class="spans_required"> Digite um nome com mais de 3 caracteres</span>
     </label>
 
     <h3 class="campoFalado">Insira seu e-mail:</h3>
 
     <label>
-      <input class="campoEscrito , required" name="email" type="email" placeholder="exemplo@aluno.unb.com" />
+      <input class="campoEscrito , required" name="Email" type="email" placeholder="exemplo@aluno.unb.com" />
       <span class="spans_required"> Digite um e-mail válido</span>
     </label>
 
     <h3 class="campoFalado">Crie uma senha:</h3>
 
     <label>
-      <input class="campoEscrito , required" name="senha" type="password" placeholder="*******" />
+      <input class="campoEscrito , required" name="Senha" type="password" placeholder="*******" />
       <span class="spans_required"> Sua senha está fraca</span>
     </label>
 
     <h3 class="campoFalado">Confirme sua senha:</h3>
 
     <label>
-      <input class="campoEscrito , required" name="senhaconfirm" type="password" placeholder="*******" />
+      <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" />
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
 
-    <a class="botao_entrar" type="submit" id="submit" onclick="verifica()">Entrar ></a>
+    <button type="button" value="submit" id="submit" onclick="verifica()"> Entrar ></button>
   </form>
 
   <script src="confirma.js"></script>
-  <script src="envio.js"></script>
 </body>
 
 </html>

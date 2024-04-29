@@ -9,6 +9,7 @@ html {
     height: 100%;
     background-image: linear-gradient(135deg, #0C36A1, #008940);
     width: 100%;
+    background-attachment: fixed;
 
     height: 100vh;
     scroll-behavior: smooth;
@@ -32,9 +33,7 @@ ul {
 /*PAGINA1*/
 
 .UnBook_logo_mini a {
-    font-size: 50px;
     display: block;
-    -webkit-text-stroke-width: 5px;
     text-decoration: none;
 
     margin-right: auto;

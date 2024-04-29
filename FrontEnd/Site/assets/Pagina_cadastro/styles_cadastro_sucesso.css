@@ -9,7 +9,7 @@ html {
   height: 100%;
   background-image: linear-gradient(135deg, #0C36A1, #008940);
   width: 100%;
-
+  background-attachment: fixed;
   height: 100vh;
   scroll-behavior: smooth;
 }
@@ -54,9 +54,9 @@ ul {
    
 }
 
-.campoFalado {
+.campoFalado1 {
   font-size: 2em;
-  padding: 1em 0 0 0;
+  padding: 2em 0 0 0;
 
   display: block;
   text-align: center;
@@ -70,23 +70,46 @@ ul {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5em;
+  margin-top: 2.5em;
   border-radius: 50%;
 
 }
 
 .user{
-  width: 15em;
-  height: 15em;
+  width: 100%;
+  height: 100%;
   color:white;
 
   display: block;
+  
   margin-left: auto;
   margin-right: auto;
-
-  margin-top: auto;
   border-radius: 50%;
+  padding-top: 1em;
 
+}
+
+.campoFalado2 {
+  font-size: 2em;
+  padding: 0.5em 0 0 0;
+
+  display: block;
+  text-align: center;
+
+}
+
+#NomeRecebido {
+  font-size: 2em;
+  padding: 0.5em 0 0 0;
+  color:#0C36A1;
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#NomeRecebido:hover {
+  transform: scale(1.05);
+  cursor:pointer;
 }
 
 .botao_voltar {

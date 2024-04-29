@@ -24,7 +24,8 @@ function verifica() {
     nomeValidade();
     emailValidade();
     senhaValidade();
-    confirmasenhaValidade()
+    confirmasenhaValidade();
+    Enviar();
 }
 
 function nomeValidade() {
@@ -77,11 +78,32 @@ function confirmasenhaValidade() {
     }
 }
 
-function enviarDados() {
+function Enviar() {
     if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
-        handleSubmit();
-        window.location.href = "cadastro_sucesso.html";
+
+        console.log('chegou');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXmMZ03YT3wQ4JZyLwjYIpg3sJPeARd1fepIhEOov3Kazg1QB-LIS1MJxXlv0slk7T/exec';
+        const form = document.forms['contact-form'];
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert("Seu perfil foi cadastrado com sucesso!");
+                    window.location.href = './cadastro_sucesso.html';
+                } else {
+                    throw new Error('Erro no envio dos dados!');
+                }
+            })
+            .catch(error => console.error('Error!', error.message));
+        reproduzirNome();
+        goPost(form);
     }
 }
 
-//verificar o sheets, deu certo nn...
+function reproduzirNome() {
+
+    var pegaNome = document.getElementById('CampoNome').value;
+    localStorage.setItem("StorageNome", pegaNome);
+
+}
