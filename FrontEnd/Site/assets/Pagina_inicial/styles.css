@@ -161,22 +161,20 @@ ul {
     font-size: 1.5em;
     display: block;
     position: relative;
-
+    font-weight: 900;
 
     color: #0B4C8C;
     text-decoration: none;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #0B4C8C;
-
 
     margin-left: 89.25%;
     top: -0.25rem;
     transition: all 0.3s ease;
 }
 
-.Login_icon:hover {
+.Login_icon a:hover {
     transform: translateY(2px);
     text-shadow: 0 0 50px #0B4C8C;
+    color:#E6F2FB;
 }
 
 #user {
