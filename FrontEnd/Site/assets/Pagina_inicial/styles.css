@@ -133,7 +133,7 @@ ul {
 
 /*PAGINA3*/
 
-.page3 {
+#search {
     background-color: transparent;
     height: 100vh;
 }
@@ -150,7 +150,7 @@ ul {
     margin-top:20px;
 }
 
-.Login_icon a {
+ .Login_icon a {
     font-size: 1.5em;
     display: block;
     position: relative;
@@ -160,106 +160,91 @@ ul {
     text-decoration: none;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #0B4C8C;
-    text-shadow: 0 0 50px #0B4C8C;
+
 
     margin-left: 90%;
-    top:-50%;
+    top: -4.5rem;
     transition: all 0.3s ease;
 }
 
 .Login_icon:hover {
     transform: translateY(2px);
+    text-shadow: 0 0 50px #0B4C8C;
 }
 
-
-.pergunta {
-    color: white;
-    display: block;
-    position: relative;
-
-    margin-left: auto;
-    margin-right: auto;
+#perguntas {
     text-align: center;
+    display: block;
+}
+
+.pergunta{
+    color: white;
+    position: relative;
+    top: 1em;
 
     width: auto;
     height: auto;
 
-    top: 100px;
     font-size: 2rem;
 }
 
-.botao_professor a {
+.botoes {
+
+    margin-right: auto;
+    margin-left: auto;
+
+    width: 320px;
+    height: auto;
+
+    position: relative;
+    text-align: center;
+
+    top: 1.5em;
+    padding-top: 2em;
+    margin-top: 0.5em;
+    display: block;
+
+    transition: all 0.3s ease;
+}
+
+.botoes:hover {
+    justify-content: center;
+    transform: scale(1.05);
+    box-shadow: 0 0 50px #0B4C8C;
+}
+
+.botoes {
     color: white;
     font-size: 2rem;
-    text-shadow: 1 1.5px black;
+    text-shadow: 0 1.5px black;
     text-decoration: none;
 
     background-color: #133E79;
+    border: 5px solid #133E79;
     border-radius: 50px;
-    align-items: center;
+    padding: 0.5rem 4.5rem;
 
-
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top:125px;
-    text-align: center;
-
-    width: 350px;
-    height: auto;
-    padding: 0.5em 0.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.botao_materia a {
-    color: white;
-    font-size: 2rem;
-    text-shadow: 1 1.5px black;
-    text-decoration: none;
-
-    background-color: #133E79;
-    border-radius: 50px;
-    align-items: center;
-
-
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 15px;
-    text-align: center;
-
-    width: 350px;
-    height: auto;
-    padding: 0.5em 0.5em ;
-}
-
-.botao_professor:hover {
-    justify-content: center;
-    transform: scale(1.05);
-}
-
-.botao_materia:hover {
-    justify-content: center;
-    transform: scale(1.05);
-}
-
-.botao_professor:active {
-    transform: scale(1);
-}
-.botao_materia:active {
+.botoes:active {
     transform: scale(1);
 }
 
 /*JANELA*/
 
+
 .janela_pesquisa {
 
     width: 570px;
-    height: 600px;
+    height: 450px;
     min-height: 200px;
     
-    margin-top: -500px;
+    margin-top: -15%;
     text-align: center;
     display: none;
+
     margin-left: auto;
     margin-right: auto;
     z-index: 999;
@@ -276,7 +261,7 @@ ul {
     margin-top: 150px;
 }
 
-.janela_pesquisa .pesquisa {
+.pesquisa {
     width: 570px;
     height: 70px;
 
@@ -288,9 +273,9 @@ ul {
     font-weight: 200;
     border: none;
     display: flex;
-    
 
 }
+
 .janela_pesquisa h2 {
 
     background-color: rgba(255, 255, 255, 0.8);

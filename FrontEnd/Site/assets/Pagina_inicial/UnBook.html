@@ -53,31 +53,33 @@
     </section>
 
 
-    <section class="page3">
+    <section>
         <div id="search">
 
 
-           <a href="#inicio"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+            <a href="#inicio"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
 
-            <div></div>
-            <div class="Login_icon"><a href="../Pagina_login/login.html"><h2>Login</h2></a></div>
+            <div class="Login_icon"><a href="../Pagina_login/login.html">
+                    <h2>Login</h2>
+                </a></div>
 
-            <h2 class="pergunta"> Como deseja iniciar sua pesquisa?</h2>
+            <div id="perguntas">
 
-            <h2 onclick="abrir_modal()" class="botao_professor"><a href="#janela_pesquisa">Professor</a> </h2>
+                <h2 class="pergunta"> Como deseja iniciar sua pesquisa?</h2>
 
-            <h2 class="botao_materia"><a href="#opa2">Matéria</a> </h2>
+                <h2 class="botoes" id="professor" >Professor</h2>
 
+                <h2 class="botoes">Matéria </h2>
+
+            </div>
 
             <div class="janela_pesquisa" id="janela_pesquisa">
-
                 <h1> Informe o nome do professor:</h1>
                 <input class="pesquisa" type="text" name="pesquisar" placeholder="pesquisar"></input>
                 <h2></h2>
             </div>
 
-
-            <script src="script.js"></script>
+            <script src="abrir_janelas.js"></script>
 
         </div>
     </section>
