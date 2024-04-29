@@ -5,7 +5,7 @@ var pesquisa = document.getElementById('perguntas');
 
 var Materia = document.getElementById('janela_materia');
 var Materia2 = document.getElementById('janela_materia2');
-
+var SearchBar = document.getElementById('searchbar');
 
 function abrirModal_Professor() {
     
@@ -40,6 +40,8 @@ function fecharModal() {
     Materia.classList.remove('abrir');
     Professor.classList.remove('abrir');
     Materia2.classList.remove('abrir');
+
+    SearchBar.value = '';
 }
 
 //abrir proxima janela

@@ -154,6 +154,7 @@ ul {
 
     margin-left: 40px;
     margin-top: 30px;
+    z-index: 1;
 }
 
 .Login_icon a {
@@ -168,8 +169,8 @@ ul {
     -webkit-text-stroke-color: #0B4C8C;
 
 
-    margin-left: 90%;
-    top: -4.5rem;
+    margin-left: 89.25%;
+    top: -0.25rem;
     transition: all 0.3s ease;
 }
 
@@ -178,9 +179,33 @@ ul {
     text-shadow: 0 0 50px #0B4C8C;
 }
 
+#user {
+    background-color: #0B4C9C;
+    width: 5em;
+    height: 5em;
+
+    display: block;
+    margin-left: 90%;
+    border-radius: 50%;
+    margin-top: -6.5em;
+
+}
+
+.user {
+    width: 100%;
+    height: 100%;
+    color: white;
+
+    display: block;
+    border-radius: 50%;
+    padding-top: 0.5em;
+
+}
+
+
 #perguntas {
     position: relative;
-    top: 5em;
+    top: 6em;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -234,6 +259,7 @@ ul {
 
 .CampoFalado {
     margin-bottom: 0.5em;
+    font-size: 2em;
     text-align: center;
     color: #E6F2FB;
 }
@@ -255,7 +281,7 @@ ul {
 }
 
 .janela_pesquisa {
-    margin-top: 10px;
+    margin-top: 5em;
 
     display: none;
     flex-direction: column;
@@ -286,7 +312,7 @@ div .janela_pesquisa {
     display: block;
     margin: auto;
     position: relative;
-    padding: 1em 0 1em 2.5em;
+    padding: 1em 0 1em 2em;
     text-align: left;
     border: none;
     text-decoration: none;
@@ -294,17 +320,19 @@ div .janela_pesquisa {
     font-weight: 500;
     cursor: pointer;
 
-
+    list-style-type: none;
 }
 
-.CampoProcura a {
+.CampoProcura ul li a {
     text-decoration: none;
     color: black;
     transition: all 0.3s ease;
 }
 
-.CampoProcura a:hover {
-    transform: scale(1.05);
+.CampoProcura ul li a:hover {
+    color:#008940;
+    text-shadow: 0 0 1px #008940;
+
 }
 
 
@@ -313,7 +341,7 @@ div .janela_pesquisa {
 /* JANELA MATERIA2 */
 
 .janela_materia2 {
-    width: 570px;
+    width: 35.625em;
     height: 25em;
 
     display: none;
@@ -322,6 +350,7 @@ div .janela_pesquisa {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50px;
     border: none;
+    margin-top: 4em;
 }
 
 .CampoFalado2 {
@@ -329,7 +358,7 @@ div .janela_pesquisa {
     text-align: center;
     padding-top: 0.5em;
     margin-left: auto;
-    
+
     margin-right: auto;
 
     font-size: 2em;
@@ -339,12 +368,76 @@ div .janela_pesquisa {
 .CampoFalado3 {
     display: block;
     text-align: center;
-    padding-top: 0.5em;
-    
+
     margin-left: auto;
     margin-right: auto;
+    object-position: bottom;
+    font-size: 1.5em;
+    color: black;
+    font-weight: 500;
+}
 
-    margin-top: 50%;
+
+div #professores {
+    display: flex;
+
+    position: relative;
+    width: auto;
+    height: auto;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border-radius: 25px;
+    box-shadow: 0 0 10px black;
+    margin: 1em;
+    padding: 1em 1em;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#professores #box {
+    display: flex;
+    cursor: pointer;
+    
+    justify-content: center;
+    align-items: center;
+
+    background-color: #008940;
+    width: 5em;
+    height: 5em;
+
+}
+
+#professores:hover {
+    transform: scale(1.01);
+}
+
+#professores #box img {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+
+    width: 4.5em;
+    height: 4.5em;
+
+}
+
+#professores #professorX {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+}
+
+
+.CampoFalado4 {
+    display: flex;
+    text-align: center;
+    padding-top: 0.5em;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3.5em;
     font-size: 2em;
     color: black;
 }
