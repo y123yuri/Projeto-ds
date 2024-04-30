@@ -82,6 +82,8 @@ function Enviar() {
     if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
 
         console.log('chegou');
+        loading();
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwXmMZ03YT3wQ4JZyLwjYIpg3sJPeARd1fepIhEOov3Kazg1QB-LIS1MJxXlv0slk7T/exec';
         const form = document.forms['contact-form'];
 
@@ -101,9 +103,34 @@ function Enviar() {
     }
 }
 
+function goPost() {}
+
 function reproduzirNome() {
 
     var pegaNome = document.getElementById('CampoNome').value;
     localStorage.setItem("StorageNome", pegaNome);
 
+}
+
+
+function loading() {
+    const progress = document.querySelector('.progress');
+    
+    let count = 1;
+    let x = 16;
+
+    const loading = setInterval(animate,60);
+
+    function animate() {
+        if (count === 100 && x === 400) { 
+            clearInterval(loading);
+        } else {
+            x += 4;
+            count++;
+
+            progress.style.display = 'block';
+            progress.style.width = `${x}px`;
+            progress.style.window = '${count}%';
+        }
+    }
 }

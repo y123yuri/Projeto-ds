@@ -134,6 +134,23 @@ ul {
   transform: scale(0.9);
 }
 
+.loading {
+  display: block;
+  margin: 0 auto;
+  width: 5em;
+  height: 0.5em;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color:white;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
 .spans_required {
   color: #ff0000;
   margin-left: 3em;

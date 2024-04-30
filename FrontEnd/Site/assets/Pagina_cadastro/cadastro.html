@@ -19,7 +19,7 @@
   <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
 
   <form class="form" id="form" method="post" name="contact-form">
-    
+
     <h1 style="font-size: 3em;
     padding: 40px 5px 5px 40px;">Cadastro</h1>
 
@@ -52,7 +52,16 @@
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
 
-    <button type="button" value="submit" id="submit" onclick="verifica()"> Entrar ></button>
+    <button type="button" value="submit" id="submit" onclick="verifica()"> Entrar >
+
+        <div class="loading">
+          <div class="progress"></div>
+        </div>
+
+    </button>
+
+
+
   </form>
 
   <script src="confirma.js"></script>

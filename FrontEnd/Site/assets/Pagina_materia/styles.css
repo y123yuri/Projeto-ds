@@ -57,13 +57,8 @@ ul {
     top: 20px;
 }
 
-.boxes div {
-    position: fixed;
-    float: right;
-}
-
 #box1 {
-    position: absolute;
+    position: relative;
 
     margin-right: 3em;
     margin-left: 3em;
@@ -71,62 +66,94 @@ ul {
 
     width: 20em;
     height: 30em;
-
-    padding: 1em 1em 1em 1em;
+    padding: 1em;
 
     display: block;
-    background-color: #CDE4DF;
 
+    background-color: #CDE4DF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
 }
 
-#box1 ul {
-    position: static;
+.avaliacao {
+    margin-top: 1em;
+    /* Adicione um espaçamento entre os elementos */
 }
 
 .CampoFalado1 {
     color: black;
     font-size: 2em;
     text-align: center;
-    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .CampoFalado2 {
     color: black;
     text-align: left;
     font-size: 1.5em;
+    font-weight: 700;
 }
 
-.avaliacao{
-    display: flex;
-    
-   }
+.avaliacao {
+    margin-top: -0.75em;
+}
 
+.avaliacao ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
 
-  .star-icon{
-    list-style-type: none;
+.avaliacao li {
+    display: inline-block;
+}
+
+.star::before {
     cursor: pointer;
+    content: '\2606';
     color: #ffd000;
-    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 2px;
-    text-shadow: 0 0 2.5px #ffd000;
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
+.destaque::before {
+    content: '\2605';
+    color: #ffd000;
+    font-size: 3em;
+    cursor: pointer;
+    z-index: 999;
+}
 
-  .star-icon::before{
+.star:hover::before {
     content: "\2605";
-  }
-  .star-icon.ativo ~ .star-icon::before{
-    content: "\2606";
-  }
-  .avaliacao:hover .star-icon::before{
-    content: "\2605";
-  }
-  .star-icon:hover ~ .star-icon::before{
-    content: "\2606";
-  }
+}
+
+.notas {
+    font-size: 1em;
+    position: relative;
+    top: -0.5em;
+
+}
+
+/* NAO CONSIGO POSICIONAR ESTA PORRA */
+#Postar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+
+    left: 60%;
+    transform: translate(-50%);
+
+    display: block;
+
+    padding: 0 0 0.5em 0;
+
+    color: #0C36A1;
+    cursor: pointer;
+
+    font-size: 2em;
+ 
+}
 
 
 #box3 {
@@ -146,10 +173,3 @@ ul {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
 }
-
-
-
-
-
-
-
