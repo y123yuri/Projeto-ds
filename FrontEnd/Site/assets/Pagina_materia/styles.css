@@ -70,11 +70,14 @@ ul {
     margin-top: 3em;
 
     width: 20em;
-    height: 20em;
+    height: 30em;
+
+    padding: 1em 1em 1em 1em;
 
     display: block;
     background-color: #CDE4DF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
 }
 
@@ -97,11 +100,40 @@ ul {
 }
 
 .CampoFalado1 {
-    color: #008940;
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    padding-bottom: 0.5em;
 }
 
-#box3 h1 {
-    text-align: center;
-    margin-top: 1em;
-    font-size: 3em;
+.CampoFalado2 {
+    color: black;
+    text-align: left;
+    font-size: 1.5em;
 }
+
+.avaliacao{
+    display: flex;
+    position: relative;
+   }
+  .star-icon{
+    list-style-type: none;
+    cursor: pointer;
+    color: #ffd000;
+    /* -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 2px; */
+    text-shadow: 0 0 2.5px #ffd000;
+    font-size: 3em;
+  }
+  .star-icon::before{
+    content: "\2605";
+  }
+  .star-icon.ativo ~ .star-icon::before{
+    content: "\2606";
+  }
+  .avaliacao:hover .star-icon::before{
+    content: "\2605";
+  }
+  .star-icon:hover ~ .star-icon::before{
+    content: "\2606";
+  }
