@@ -376,7 +376,7 @@ div .janela_pesquisa {
 }
 
 
-div #professores {
+#professores {
     display: flex;
 
     position: relative;
@@ -421,12 +421,12 @@ div #professores {
 
 }
 
-#professores #professorX {
+a div #professores h2 #professorX {
     display: flex;
     align-items: center;
     margin-left: 1em;
+    text-decoration: none;
 }
-
 
 .CampoFalado4 {
     display: flex;
