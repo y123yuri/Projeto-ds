@@ -151,3 +151,128 @@ ul {
   margin-left: 3em;
   display: none;
 }
+
+@media screen and (max-width:828px){
+  .UnBook_logo_mini{
+    display: inline;
+    
+    width:12.5em;
+    height: auto;
+
+    position: relative;
+
+    margin-left: 10px;
+    top: 20px;
+}
+  
+  .form {
+    background-color: whitesmoke;
+      width: auto;
+      height: 32em;
+      border-radius: 50px;
+      box-shadow: 0 0 5px rgb(255, 255, 255);
+  
+      display: block;
+      margin: 0.5em;
+      margin-top: 10%;
+     
+  }
+  
+  .campoFalado1 {
+    font-size: 1.5em;
+    padding: 1em 0 0 0;
+  
+    display: block;
+    text-align: center;
+  }
+  
+  #user {
+    background-color: #0B4C9C;
+    width: 10em;
+    height: 10em;
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5em;
+    border-radius: 50%;
+  
+  }
+  
+  .user{
+    width: 100%;
+    height: 100%;
+    color:white;
+  
+    display: block;
+    
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    padding-top: 1em;
+  
+  }
+  
+  .campoFalado2 {
+    font-size: 2em;
+    padding: 0.5em 0 0 0;
+  
+    display: block;
+    text-align: center;
+  
+  }
+  
+  #NomeRecebido {
+    font-size: 2em;
+    padding: 0.5em 0 0 0;
+    color:#0C36A1;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  #NomeRecebido:hover {
+    transform: scale(1.05);
+    cursor:pointer;
+  }
+  
+  .botao_voltar {
+    display: block;
+    width: 15rem;
+    height: auto;
+  
+    border: none;
+    border-radius: 20px;
+    background-color: #0B4C9C;
+  
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  
+    color: white;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem 2rem;
+    text-decoration: none;
+  
+  
+    transition: all 0.3s ease;
+  }
+  
+  .botao_voltar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #0B4C8C;
+  }
+  
+  .botao_voltar:active {
+    transform: scale(0.9);
+  }
+  
+  .spans_required {
+    color: #ff0000;
+    margin-left: 3em;
+    display: none;
+  }
+}

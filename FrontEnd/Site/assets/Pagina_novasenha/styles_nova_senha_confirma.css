@@ -120,3 +120,95 @@ ul {
     display: block;
     text-align: center;
 }
+
+@media screen and (max-width:828px){
+    .UnBook_logo_mini{
+      display: inline;
+      
+      width:12.5em;
+      height: auto;
+  
+      position: relative;
+  
+      margin-left: 10px;
+      top: 20px;
+  }
+
+  .box {
+    background-color: whitesmoke;
+    width: auto;
+    height: 33em;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+
+    display: block;
+    margin: 0.5em;
+    margin-top: 10%;
+}
+
+.login {
+    font-size: 2.5em;
+    padding: 40px 5px 5px 40px;
+}
+
+.campoFalado1 {
+    font-size: 1.25em;
+    padding-top: 20px;
+
+    display: block;
+    text-align: center;
+}
+
+.emailRecebido {
+    color:#0B4C9C;
+    margin-top: 1.25em;
+    font-size: 1.75em;
+    text-align: center;
+}
+
+.botao_enviar {
+    display: block;
+    width: 22.5rem;
+    height: auto;
+  
+    border: none;
+    border-radius: 20px;
+    background-color: #0B4C9C;
+  
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  
+    color: white;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem 2rem;
+    text-decoration: none;
+  
+  
+    transition: all 0.3s ease;
+  }
+
+.botao_enviar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #0B4C8C;
+}
+
+.botao_enviar:active {
+    transform: scale(0.9);
+}
+
+.campoFalado2 a {
+    font-size: 1em;
+
+
+    color:#0B4C9C;
+    cursor: pointer;
+    margin-top: 1em;
+    display: block;
+    text-align: center;
+}
+
+}
