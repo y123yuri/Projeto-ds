@@ -49,6 +49,9 @@ function fecharModal() {
 function reproduzirMateria(materias) {
 
     var reproduzir = materias.textContent
-
     document.getElementById('CampoFalado2').textContent = reproduzir;
+
+//mandar materia para página materia.html
+    var materia = reproduzir
+    localStorage.setItem("materia",materia)
 }

@@ -57,6 +57,10 @@ ul {
     top: 20px;
 }
 
+.boxes {
+    display: flex;
+}
+
 #box1 {
     position: relative;
 
@@ -64,8 +68,8 @@ ul {
     margin-left: 3em;
     margin-top: 3em;
 
-    width: 20em;
-    height: 30em;
+    width: 30%;
+    height: 32em;
     padding: 1em;
 
     display: block;
@@ -142,35 +146,256 @@ ul {
     width: 100%;
 
 
-    left: 60%;
+    left: 52.5%;
+    bottom: 0.5em;
     transform: translate(-50%);
 
     display: block;
 
     padding: 0 0 0.5em 0;
 
-    color: #0C36A1;
+    color: #0B4C8C;
     cursor: pointer;
 
     font-size: 2em;
- 
+
 }
 
 
 #box3 {
-
-    position: absolute;
-    left: 24em;
+    position: relative;
 
     margin-right: 3em;
-    margin-left: 3em;
     margin-top: 3em;
 
-    width: 70%;
-    height: 60em;
+    width: 100%;
+    height: 150%;
 
     display: block;
     background-color: #CDE4DF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+}
+
+#Materia {
+    display: block;
+    font-size: 3em;
+    margin-top: 0.5em;
+}
+
+#Prof {
+    display: block;
+    font-size: 2em;
+    color: #0B4C8C;
+    text-align: center;
+    margin-top: -0.9em;
+}
+
+.CampoFalado1_box3 {
+    display: block;
+    margin-top: 2em;
+    margin-left: 1em;
+    font-size: 2em;
+}
+
+.CampoFalado2_box3 ul {
+    position: relative;
+    display: block;
+    margin-left: 4em;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.CampoFalado3_box3 {
+   position: relative;
+    display: block;
+    margin-top: 5em;
+    text-align: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 400;
+    color: #0B4C8C;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 50%;
+    height: auto;
+    padding: 0.25em;
+    z-index: 1;
+
+    background: #E8E7E8;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.CampoFalado3_box3:hover {
+    transform: scale(1.05);
+}
+
+.CampoFalado3_box3:active {
+    transform: scale(0.95);
+}
+
+#modal_da_biblioteca {
+    display: none;
+    position: relative;
+    z-index: 0;
+
+    width: 75%;
+    height: 25em;
+
+    margin: auto;
+    margin-top: -4em;
+
+
+    background-color: #E8E7E8;
+    border-radius: 25px;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.box_modal {
+    display: block;
+    position: relative;
+    top: 3em;
+
+    margin: 0.5em;
+    margin-top: 2em;
+    height: 5.5em;
+    background-color: #E8E7E8;
+    border-radius: 25px;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    
+}
+
+.box_modal:hover {
+    transform: scale(1.01);
+}
+
+.box_modal:active {
+    transform: scale(0.99);
+}
+
+.boxinho {
+    position: absolute;
+    display: inline-block;
+    width: 4.375em;
+    height: 4.375em;
+    background-color: #CDE4DF;
+    border-radius: 10px;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+
+.texto {
+    position: absolute;
+    display: block;
+    text-align: center;
+    margin-left: 3em;
+    margin-top: 0.75em;
+
+    font-size: 2em;
+}
+
+#imagem_videos { background-color: #E95959;}
+#imagem_resumos { background-color: #81E28B;}
+#imagem_atividades { background-color: #68AEEF;}
+
+
+@keyframes abrir_janelas {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -5px, -20px);
+    }
+    
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.abrir {
+    animation: abrir_janelas 0.3s;
+}
+
+#comentarios {
+    display: block;
+    position: relative;
+    margin: auto;
+
+    width: 90%;
+    height: 20em;
+    margin-bottom: 3em;
+    background-color: #E8E7E8;
+    border-radius: 25px;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+}
+
+.usuarios {
+    font-size: 1.5em;
+    margin-left: 1em;
+
+    display: block;
+    position: relative;
+    top: 1em;
+
+    margin-top: 2em;
+    cursor: pointer;
+}
+
+.comentarios {
+    font-size: 1.25em;
+    margin-left: 2em;
+    margin-right: 5em;
+
+    color:#777D89 ;
+
+    display: block;
+    position: relative;
+    top: -0.5em;
+
+    margin-top: 2em;
+    overflow-y: scroll;
+}
+
+.responder a {
+    font-size: 1.25em;
+    margin-left: 1em;
+    margin-right: 5em;
+
+    color:#0B4C8C ;
+    text-decoration: underline;
+
+    display: block;
+    position: relative;
+    top: -2.5em;
+
+    margin-top: 2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#comentar_box input {
+    display: block;
+    position: relative;
+    top: 2em;
+
+    font-size: 1.5em;
+    padding: 0 0 0 1em;
+    color: #777D89;
+
+    margin: 0.5em;
+    border: none;
+    width: 90%;
+    height: 2em;
+
+    background-color: #E8E7E8;
+    border-radius: 25px;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
 }
