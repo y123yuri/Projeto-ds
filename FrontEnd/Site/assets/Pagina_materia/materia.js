@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     var reproduzirMateria = localStorage.getItem("materia");
+    var reproduzirProfessor = localStorage.getItem("professor")
 
+    console.log('Matéria: ' + reproduzirMateria + ' de' + reproduzirProfessor)
 
     document.getElementById("Materia").innerText = reproduzirMateria;
+    document.getElementById('Prof').innerText = ('(Prof. ' + reproduzirProfessor + ')');
+
 
 });
 

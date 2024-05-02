@@ -48,10 +48,18 @@ function fecharModal() {
 
 function reproduzirMateria(materias) {
 
-    var reproduzir = materias.textContent
-    document.getElementById('CampoFalado2').textContent = reproduzir;
+    var reproduzir_materia = materias.textContent;
+    document.getElementById('CampoFalado2').textContent = reproduzir_materia;
 
 //mandar materia para página materia.html
-    var materia = reproduzir
+    var materia = reproduzir_materia;
     localStorage.setItem("materia",materia)
+}
+
+function reproduzirProfessor(element, num) {
+
+    var professor_pega = document.getElementById('professor_' + num).textContent;
+
+//mandar materia para página materia.html
+    localStorage.setItem("professor", professor_pega)
 }

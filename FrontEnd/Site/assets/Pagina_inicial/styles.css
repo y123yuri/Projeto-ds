@@ -13,7 +13,6 @@ html {
     background-attachment: fixed;
     height: 100vh;
     scroll-behavior: smooth;
-
 }
 
 body {
@@ -33,6 +32,7 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
+
 .UnBookLogo {
     max-width: 1212px;
     max-height: 484px;
@@ -45,38 +45,38 @@ ul {
     margin-left: auto;
     margin-right: auto;
 
-    margin-top: 0%;
+    margin-top: 5%;
 
 }
-
 
 .fundo_branco {
 
     width: 100%;
     height: 650px;
-    display: flex;
+    display: block;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 
     background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
     z-index: -1;
+    margin-top: -1em;
 }
 
-.qmsomos a {
+.qmsomos {
     text-decoration: none;
     font-size: 24px;
     font-weight: bolder;
 
-    padding-top: 1rem;
-
+    display: block;
     color: black;
+    
     position: relative;
     text-align: center;
 
-    width: auto;
-    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-    top: 0;
-    display: block;
+    top: 1.5em;
+
     transition: all 0.3s ease;
 }
 
@@ -153,17 +153,17 @@ ul {
     height: 95vh;
 }
 
-.UnBook_logo_mini{
+.UnBook_logo_mini {
     display: block;
-    
-    width:25em;
+
+    width: 25em;
     height: auto;
-  
+
     position: relative;
-  
+
     margin-left: 10px;
     top: 20px;
-  }
+}
 
 .Login_icon a {
     font-size: 1.5em;
@@ -182,7 +182,7 @@ ul {
 .Login_icon a:hover {
     transform: translateY(2px);
     text-shadow: 0 0 50px #0B4C8C;
-    color:#E6F2FB;
+    color: #E6F2FB;
 }
 
 #user {
@@ -313,6 +313,10 @@ div .janela_pesquisa {
     overflow-y: auto;
 }
 
+.CampoProcura::-webkit-scrollbar {
+    display: none;
+}
+
 .CampoProcura ul {
 
     display: block;
@@ -336,7 +340,7 @@ div .janela_pesquisa {
 }
 
 .CampoProcura ul li a:hover {
-    color:#008940;
+    color: #008940;
     text-shadow: 0 0 1px #008940;
 
 }
@@ -394,21 +398,24 @@ div .janela_pesquisa {
 #scroll::-webkit-scrollbar {
     width: 15px;
     height: auto;
-    
+
 }
 
 #scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    box-shadow: 2px 2px 2px #0000002a;
-  }
+    background-color: #E6F2FB;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: solid 1px #0000002a;
+    /* roundness of the scroll thumb */
+}
 
-  #scroll::-webkit-scrollbar-track {
-    background-color: transparent;     
-  }
+#scroll::-webkit-scrollbar-track {
+    background-color: #0000002a;
+    border-radius: 25px;
+}
 
 
-.professor{
+.professor {
     display: block;
 
     position: relative;
@@ -449,20 +456,20 @@ div .janela_pesquisa {
 
 }
 
-#professorX {
+.professores {
     display: inline-block;
     position: relative;
     top: -1em;
     margin-left: 0.5em;
     font-size: 1.5em;
     font-weight: 400;
-    color:black;
+    color: black;
 }
 
 .CampoFalado4 {
     display: block;
     text-align: center;
-    top:2em;
+    top: 2em;
 
     font-size: 2em;
     color: black;
@@ -493,7 +500,7 @@ div .janela_pesquisa {
 
 /*DISPOSIVO MOBILE  */
 
-@media screen and (max-width:1228px){
+@media screen and (max-width:1228px) {
     .UnBookLogo {
         width: auto;
         height: auto;
@@ -501,98 +508,98 @@ div .janela_pesquisa {
 
         margin-left: auto;
         margin-right: auto;
-    
+
         margin-top: 0;
     }
-    
-    
+
+
     .fundo_branco {
-    
+
         width: 100%;
         height: 550px;
         display: flex;
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    
+
         background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
         z-index: -1;
     }
-    
+
     .qmsomos a {
         text-decoration: none;
         font-size: 24px;
         font-weight: bolder;
-    
+
         padding-top: 1rem;
-    
+
         color: black;
         position: relative;
         text-align: center;
-    
+
         width: auto;
         height: auto;
-    
+
         top: 0;
         display: block;
         transition: all 0.3s ease;
     }
-    
+
     .qmsomos:hover {
         transform: scale(1.05);
     }
-    
+
     .unbloguinho {
         position: absolute;
         max-width: 117px;
         max-height: 59px;
-    
+
         width: auto;
         height: auto;
-    
+
         top: 10px;
         right: 10px;
         display: block;
     }
-    
+
     .botao_arrasta {
-    
+
         margin-right: auto;
         margin-left: auto;
-    
-    
+
+
         width: 20em;
         height: auto;
-    
+
         position: relative;
         text-align: center;
-    
+
         top: -3em;
         display: block;
     }
-    
+
     .botao_arrasta a {
         color: white;
         font-size: 2rem;
         text-shadow: 0 1.5px black;
         text-decoration: none;
-    
+
         background-color: #133E79;
         border: 5px solid #133E79;
         border-radius: 50px;
         padding: 0.5rem 1rem;
-    
+
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+
     .botao_arrasta:hover {
         transform: scale(1.05);
     }
-    
+
     .botao_arrasta a:hover {
         transform: scale(1.05);
         box-shadow: 0 0 50px #0B4C8C;
     }
-    
+
     .botao_arrasta:active {
         transform: scale(1);
     }
@@ -601,71 +608,71 @@ div .janela_pesquisa {
         background-color: transparent;
         height: 27vh;
     }
-    
+
     /*PAGINA3*/
-    
+
     #search {
         background-color: transparent;
         height: 95vh;
     }
-    
+
     .UnBook_logo_mini {
         display: inline;
-    
+
         width: 25em;
         height: auto;
-    
+
         position: relative;
-    
+
         margin-left: 40px;
         margin-top: 30px;
         z-index: 1;
     }
-    
+
     .Login_icon a {
         font-size: 1.5em;
         display: block;
         position: relative;
         font-weight: 900;
-    
+
         color: #0B4C8C;
         text-decoration: none;
-    
+
         margin-left: 89.25%;
         top: -0.25rem;
         transition: all 0.3s ease;
     }
-    
+
     .Login_icon a:hover {
         transform: translateY(2px);
         text-shadow: 0 0 50px #0B4C8C;
-        color:#E6F2FB;
+        color: #E6F2FB;
     }
-    
+
     #user {
         background-color: #0B4C9C;
         width: 5em;
         height: 5em;
-    
+
         display: block;
         margin-left: 90%;
         border-radius: 50%;
         margin-top: -6.5em;
-    
+
     }
-    
+
     .user {
         width: 100%;
         height: 100%;
         color: white;
-    
+
         display: block;
         border-radius: 50%;
         padding-top: 0.5em;
-    
+
     }
-    
-    
+
+
     #perguntas {
         position: relative;
         top: 6em;
@@ -674,66 +681,66 @@ div .janela_pesquisa {
         justify-content: center;
         flex-direction: column;
     }
-    
+
     .pergunta {
         color: white;
         font-size: 2rem;
     }
-    
+
     .botoes {
         width: 10em;
         height: auto;
-    
+
         display: block;
         margin: auto;
-    
+
         width: 10em;
-    
+
         background-color: #133E79;
         border-radius: 50px;
-    
-    
+
+
         padding: 0.5rem 4.5rem;
         margin-top: 0.5em;
-    
+
         color: white;
         font-size: 2rem;
         text-shadow: 0 1.5px black;
-    
-    
+
+
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
-    
-    
+
+
+
     .botoes:hover {
         justify-content: center;
         transform: scale(1.05);
         box-shadow: 0 0 50px #0B4C8C;
     }
-    
+
     .botoes:active {
         transform: scale(1);
     }
-    
+
     /*JANELA*/
-    
-    
+
+
     .CampoFalado {
         margin-bottom: 0.5em;
         font-size: 2em;
         text-align: center;
         color: #E6F2FB;
     }
-    
+
     .barra_pesquisa {
         width: 570px;
         height: 2em;
         display: block;
-    
+
         margin: auto;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         font-size: 32px;
@@ -742,36 +749,36 @@ div .janela_pesquisa {
         font-weight: 200;
         border: none;
     }
-    
+
     .janela_pesquisa {
         margin-top: 5em;
-    
+
         display: none;
         flex-direction: column;
     }
-    
+
     div .janela_pesquisa {
         width: auto;
         height: auto;
     }
-    
+
     .CampoProcura {
         width: 570px;
         height: 10em;
-    
+
         display: block;
         margin: auto;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         border: none;
         margin-top: 1em;
-    
+
         overflow-y: auto;
     }
-    
+
     .CampoProcura ul {
-    
+
         display: block;
         margin: auto;
         position: relative;
@@ -782,56 +789,56 @@ div .janela_pesquisa {
         font-size: 1.25em;
         font-weight: 500;
         cursor: pointer;
-    
+
         list-style-type: none;
     }
-    
+
     .CampoProcura ul li a {
         text-decoration: none;
         color: black;
         transition: all 0.3s ease;
     }
-    
+
     .CampoProcura ul li a:hover {
-        color:#008940;
+        color: #008940;
         text-shadow: 0 0 1px #008940;
-    
+
     }
-    
-    
+
+
     /* FIM DA JANELA */
-    
+
     /* JANELA MATERIA2 */
-    
+
     .janela_materia2 {
         width: 35.625em;
         height: 25em;
-    
+
         display: none;
         margin: auto;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         border: none;
         margin-top: 4em;
     }
-    
+
     .CampoFalado2 {
         display: block;
         text-align: center;
         padding-top: 0.5em;
         margin-left: auto;
-    
+
         margin-right: auto;
-    
+
         font-size: 2em;
         color: black;
     }
-    
+
     .CampoFalado3 {
         display: block;
         text-align: center;
-    
+
         margin-left: auto;
         margin-right: auto;
         object-position: bottom;
@@ -839,53 +846,53 @@ div .janela_pesquisa {
         color: black;
         font-weight: 500;
     }
-    
-    
+
+
     #professores {
         display: flex;
-    
+
         position: relative;
         width: auto;
         height: auto;
-    
+
         background-color: rgba(255, 255, 255, 0.1);
-    
+
         border-radius: 25px;
         box-shadow: 0 0 10px black;
         margin: 1em;
         padding: 1em 1em;
-    
+
         transition: all 0.3s ease-in-out;
     }
-    
+
     #professores #box {
         display: flex;
         cursor: pointer;
-        
+
         justify-content: center;
         align-items: center;
-    
+
         background-color: #008940;
         width: 5em;
         height: 5em;
-    
+
     }
-    
+
     #professores:hover {
         transform: scale(1.01);
     }
-    
+
     #professores #box img {
         display: flex;
         justify-content: center;
         text-align: center;
-    
-    
+
+
         width: 4.5em;
         height: 4.5em;
-    
+
     }
-    
+
     a div #professores h2 #professorX {
         display: flex;
         align-items: center;
@@ -896,36 +903,36 @@ div .janela_pesquisa {
     .CampoFalado4 {
         display: block;
         text-align: center;
-        top:2em;
-        
+        top: 2em;
+
         font-size: 2em;
         color: black;
     }
-    
-    
+
+
     /* FIM DA JANELA MATERIA2 */
-    
+
     @keyframes abrir_janelas {
         from {
             opacity: 0;
             transform: translate3d(0, -5px, -20px);
         }
-    
+
         to {
             opacity: 1;
             transform: translate3d(0, 0, 0);
         }
     }
-    
+
     .abrir {
         animation: abrir_janelas 0.3s;
         display: flex;
         flex-direction: column;
     }
-    
+
 }
 
-@media screen and (max-width:828px){
+@media screen and (max-width:828px) {
     .UnBookLogo {
         width: 409.05px;
         height: 163.35px;
@@ -933,170 +940,170 @@ div .janela_pesquisa {
 
         margin-left: auto;
         margin-right: auto;
-    
+
         margin-top: 50%;
     }
-    
-    
+
+
     .fundo_branco {
-    
+
         width: 100%;
         height: 550px;
         display: flex;
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    
+
         background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
         z-index: -1;
     }
-    
+
     .qmsomos a {
         text-decoration: none;
         font-size: 24px;
         font-weight: bolder;
-    
+
         padding-top: 1rem;
-    
+
         color: black;
         position: relative;
         text-align: center;
-    
+
         width: auto;
         height: auto;
-    
+
         top: 0;
         display: block;
         transition: all 0.3s ease;
     }
-    
+
     .qmsomos:hover {
         transform: scale(1.05);
     }
-    
+
     .unbloguinho {
         position: absolute;
         max-width: 87.75px;
         max-height: 44.25px;
-    
+
         width: auto;
         height: auto;
-    
+
         top: 10px;
         right: 10px;
         display: block;
     }
-    
+
     .botao_arrasta {
-    
+
         margin-right: auto;
         margin-left: auto;
-    
-    
+
+
         width: 20em;
         height: auto;
-    
+
         position: relative;
         text-align: center;
-    
+
         top: -3em;
         display: block;
     }
-    
+
     .botao_arrasta a {
         color: white;
         font-size: 2rem;
         text-shadow: 0 1.5px black;
         text-decoration: none;
-    
+
         background-color: #133E79;
         border: 5px solid #133E79;
         border-radius: 50px;
         padding: 0.5rem 1rem;
-    
+
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+
     .botao_arrasta:hover {
         transform: scale(1.05);
     }
-    
+
     .botao_arrasta a:hover {
         transform: scale(1.05);
         box-shadow: 0 0 50px #0B4C8C;
     }
-    
+
     .botao_arrasta:active {
         transform: scale(1);
     }
-    
+
     .page2 {
         background-color: transparent;
         height: 27vh;
     }
-    
+
     /*PAGINA3*/
-    
+
     #search {
         background-color: transparent;
         height: 95vh;
     }
-    
-    .UnBook_logo_mini{
+
+    .UnBook_logo_mini {
         display: inline;
-        
-        width:12.5em;
+
+        width: 12.5em;
         height: auto;
-    
+
         position: relative;
-    
+
         margin-left: 10px;
         top: 20px;
     }
-    
+
     .Login_icon a {
         font-size: 0.75em;
         display: block;
         position: relative;
         font-weight: 900;
-    
+
         color: #0B4C8C;
         text-decoration: none;
-    
+
         margin-left: 81%;
         top: -0.25rem;
         transition: all 0.3s ease;
     }
-    
+
     .Login_icon a:hover {
         transform: translateY(2px);
         text-shadow: 0 0 50px #0B4C8C;
-        color:#E6F2FB;
+        color: #E6F2FB;
     }
-    
+
     #user {
         background-color: #0B4C9C;
         width: 4em;
         height: 4em;
-    
+
         display: block;
         margin-left: 80%;
         border-radius: 50%;
         margin-top: -3.75em;
-    
+
     }
-    
+
     .user {
         width: 100%;
         height: 100%;
         color: white;
-    
+
         display: block;
         border-radius: 50%;
         padding-top: 0.5em;
-    
+
     }
-    
-    
+
+
     #perguntas {
         position: relative;
         top: 10em;
@@ -1105,66 +1112,66 @@ div .janela_pesquisa {
         justify-content: center;
         flex-direction: column;
     }
-    
+
     .pergunta {
         color: white;
         font-size: 2rem;
     }
-    
+
     .botoes {
         width: 10em;
         height: auto;
-    
+
         display: block;
         margin: auto;
-    
+
         width: 10em;
-    
+
         background-color: #133E79;
         border-radius: 50px;
-    
-    
+
+
         padding: 0.5rem 4.5rem;
         margin-top: 0.5em;
-    
+
         color: white;
         font-size: 2rem;
         text-shadow: 0 1.5px black;
-    
-    
+
+
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
-    
-    
+
+
+
     .botoes:hover {
         justify-content: center;
         transform: scale(1.05);
         box-shadow: 0 0 50px #0B4C8C;
     }
-    
+
     .botoes:active {
         transform: scale(1);
     }
-    
+
     /*JANELA*/
-    
-    
+
+
     .CampoFalado {
         margin-bottom: 0.5em;
         font-size: 1.5em;
         text-align: center;
         color: #E6F2FB;
     }
-    
+
     .barra_pesquisa {
         width: auto;
         height: 2em;
         display: block;
-    
+
         margin: 0.5em;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         font-size: 32px;
@@ -1173,36 +1180,36 @@ div .janela_pesquisa {
         font-weight: 200;
         border: none;
     }
-    
+
     .janela_pesquisa {
         margin-top: 10em;
-    
+
         display: none;
         flex-direction: column;
     }
-    
+
     div .janela_pesquisa {
         width: auto;
         height: auto;
     }
-    
+
     .CampoProcura {
         width: auto;
         height: 10em;
-    
+
         display: block;
         margin: 0.5em;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         border: none;
         margin-top: 0;
-    
+
         overflow-y: auto;
     }
-    
+
     .CampoProcura ul {
-    
+
         display: block;
         margin: auto;
         position: relative;
@@ -1213,56 +1220,56 @@ div .janela_pesquisa {
         font-size: 1.25em;
         font-weight: 500;
         cursor: pointer;
-    
+
         list-style-type: none;
     }
-    
+
     .CampoProcura ul li a {
         text-decoration: none;
         color: black;
         transition: all 0.3s ease;
     }
-    
+
     .CampoProcura ul li a:hover {
-        color:#008940;
+        color: #008940;
         text-shadow: 0 0 1px #008940;
-    
+
     }
-    
-    
+
+
     /* FIM DA JANELA */
-    
+
     /* JANELA MATERIA2 */
-    
+
     .janela_materia2 {
         width: auto;
         height: 25em;
-    
+
         display: none;
         margin: 0.5em;
-    
+
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 50px;
         border: none;
         margin-top: 4em;
     }
-    
+
     .CampoFalado2 {
         display: block;
         text-align: center;
         padding-top: 0.5em;
         margin-left: auto;
-    
+
         margin-right: auto;
-    
+
         font-size: 1.5em;
         color: black;
     }
-    
+
     .CampoFalado3 {
         display: block;
         text-align: center;
-    
+
         margin-left: auto;
         margin-right: auto;
         object-position: bottom;
@@ -1270,83 +1277,83 @@ div .janela_pesquisa {
         color: black;
         font-weight: 500;
     }
-    
-    
+
+
     #professores {
         display: flex;
-    
+
         position: relative;
         width: auto;
         height: auto;
-    
+
         background-color: rgba(255, 255, 255, 0.1);
-    
+
         border-radius: 25px;
         box-shadow: 0 0 10px black;
         margin: 1em;
         padding: 1em 1em;
-    
+
         transition: all 0.3s ease-in-out;
     }
-    
+
     #professores #box {
         display: flex;
         cursor: pointer;
-        
+
         justify-content: center;
         align-items: center;
-    
+
         background-color: #008940;
         width: 5em;
         height: 5em;
-    
+
     }
-    
+
     #professores:hover {
         transform: scale(1.01);
     }
-    
+
     #professores #box img {
         display: flex;
         justify-content: center;
         text-align: center;
-    
-    
+
+
         width: 4.5em;
         height: 4.5em;
-    
+
     }
-    
+
     a div #professores h2 #professorX {
         display: flex;
         align-items: center;
         margin-left: 1em;
         text-decoration: none;
     }
-    
+
     .CampoFalado4 {
         display: block;
         text-align: center;
-        top:2em;
-        
+        top: 2em;
+
         font-size: 2em;
         color: black;
     }
-    
+
     /* FIM DA JANELA MATERIA2 */
-    
+
     @keyframes abrir_janelas {
         from {
             opacity: 0;
             transform: translate3d(0, -5px, -20px);
         }
-    
+
         to {
             opacity: 1;
             transform: translate3d(0, 0, 0);
         }
     }
-    
+
     .abrir {
         animation: abrir_janelas 0.3s;
         display: flex;
