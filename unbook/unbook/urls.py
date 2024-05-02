@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from app_cadastro import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('materias.urls')),
+    path('cadastro/', v.cadastro)
 ]
