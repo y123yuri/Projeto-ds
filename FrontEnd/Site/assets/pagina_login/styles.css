@@ -33,7 +33,7 @@ ul {
 /*PAGINA1*/
 
 .UnBook_logo_mini{
-    display: inline;
+    display: block;
     
     width:25em;
     height: auto;

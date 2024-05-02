@@ -81,7 +81,7 @@ ul {
 
 .avaliacao {
     margin-top: 1em;
-    /* Adicione um espaçamento entre os elementos */
+    height: 20em;
 }
 
 .CampoFalado1 {
@@ -139,26 +139,25 @@ ul {
 
 }
 
-/* NAO CONSIGO POSICIONAR ESTA PORRA */
 #Postar {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
 
-
-    left: 52.5%;
     bottom: 0.5em;
-    transform: translate(-50%);
-
     display: block;
-
-    padding: 0 0 0.5em 0;
+    text-align: center;
 
     color: #0B4C8C;
     cursor: pointer;
+    top: 3em;
 
-    font-size: 2em;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
 
+#Postar:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 1px #0C36A1;
 }
 
 
@@ -207,7 +206,7 @@ ul {
 }
 
 .CampoFalado3_box3 {
-   position: relative;
+    position: relative;
     display: block;
     margin-top: 5em;
     text-align: center;
@@ -270,7 +269,7 @@ ul {
     border-radius: 25px;
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
     cursor: pointer;
-    
+
 }
 
 .box_modal:hover {
@@ -302,9 +301,17 @@ ul {
     font-size: 2em;
 }
 
-#imagem_videos { background-color: #E95959;}
-#imagem_resumos { background-color: #81E28B;}
-#imagem_atividades { background-color: #68AEEF;}
+#imagem_videos {
+    background-color: #E95959;
+}
+
+#imagem_resumos {
+    background-color: #81E28B;
+}
+
+#imagem_atividades {
+    background-color: #68AEEF;
+}
 
 
 @keyframes abrir_janelas {
@@ -312,7 +319,7 @@ ul {
         opacity: 0;
         transform: translate3d(0, -5px, -20px);
     }
-    
+
     to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
@@ -336,6 +343,30 @@ ul {
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
 }
 
+#scroll {
+    height: 15em;
+    overflow-y: auto;
+    margin-right: 10px;
+}
+
+#scroll::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    
+}
+
+#scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #0000002a;
+  }
+
+  #scroll::-webkit-scrollbar-track {
+    background-color: transparent;     
+  }
+
+
+
 .usuarios {
     font-size: 1.5em;
     margin-left: 1em;
@@ -344,46 +375,46 @@ ul {
     position: relative;
     top: 1em;
 
-    margin-top: 2em;
+    margin-top: 0.5em;
     cursor: pointer;
 }
 
 .comentarios {
     font-size: 1.25em;
     margin-left: 2em;
-    margin-right: 5em;
+    margin-right: 2em;
 
-    color:#777D89 ;
+    width: auto;
+    height: auto;
+    color: #777D89;
 
     display: block;
     position: relative;
     top: -0.5em;
 
     margin-top: 2em;
-    overflow-y: scroll;
 }
 
 .responder a {
     font-size: 1.25em;
     margin-left: 1em;
-    margin-right: 5em;
-
-    color:#0B4C8C ;
-    text-decoration: underline;
+    color: #0B4C8C;
 
     display: block;
     position: relative;
-    top: -2.5em;
 
-    margin-top: 2em;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
+.responder a:hover {
+    color: #0C36A1;
+}
+
 #comentar_box input {
     display: block;
-    position: relative;
-    top: 2em;
+    position: absolute;
+    top: 10em;
 
     font-size: 1.5em;
     padding: 0 0 0 1em;

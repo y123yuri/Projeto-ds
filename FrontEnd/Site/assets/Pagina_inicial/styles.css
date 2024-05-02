@@ -153,18 +153,17 @@ ul {
     height: 95vh;
 }
 
-.UnBook_logo_mini {
-    display: inline;
-
-    width: 25em;
+.UnBook_logo_mini{
+    display: block;
+    
+    width:25em;
     height: auto;
-
+  
     position: relative;
-
-    margin-left: 40px;
-    margin-top: 30px;
-    z-index: 1;
-}
+  
+    margin-left: 10px;
+    top: 20px;
+  }
 
 .Login_icon a {
     font-size: 1.5em;
@@ -350,11 +349,12 @@ div .janela_pesquisa {
 .janela_materia2 {
     width: 35.625em;
     height: 25em;
+    display: block;
 
     display: none;
     margin: auto;
 
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #E6F2FB;
     border-radius: 50px;
     border: none;
     margin-top: 4em;
@@ -384,9 +384,32 @@ div .janela_pesquisa {
     font-weight: 500;
 }
 
+#scroll {
+    overflow-y: auto;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+}
 
-#professores {
-    display: flex;
+#scroll::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    
+}
+
+#scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    box-shadow: 2px 2px 2px #0000002a;
+  }
+
+  #scroll::-webkit-scrollbar-track {
+    background-color: transparent;     
+  }
+
+
+.professor{
+    display: block;
 
     position: relative;
     width: auto;
@@ -398,57 +421,52 @@ div .janela_pesquisa {
     box-shadow: 0 0 10px black;
     margin: 1em;
     padding: 1em 1em;
+    text-decoration: none;
 
     transition: all 0.3s ease-in-out;
 }
 
-#professores #box {
-    display: flex;
+#box {
+    display: inline-block;
     cursor: pointer;
-    
     justify-content: center;
     align-items: center;
-
     background-color: #008940;
     width: 5em;
     height: 5em;
 
 }
 
-#professores:hover {
+.professor:hover {
     transform: scale(1.01);
 }
 
-#professores #box img {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+#box img {
+    display: block;
 
-
-    width: 4.5em;
-    height: 4.5em;
+    width: 5em;
+    height: 5em;
 
 }
 
-a div #professores h2 #professorX {
-    display: flex;
-    align-items: center;
-    margin-left: 1em;
-    text-decoration: none;
+#professorX {
+    display: inline-block;
+    position: relative;
+    top: -1em;
+    margin-left: 0.5em;
+    font-size: 1.5em;
+    font-weight: 400;
+    color:black;
 }
 
 .CampoFalado4 {
-    display: flex;
+    display: block;
     text-align: center;
-    padding-top: 0.5em;
+    top:2em;
 
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3.5em;
     font-size: 2em;
     color: black;
 }
-
 
 /* FIM DA JANELA MATERIA2 */
 
@@ -874,15 +892,12 @@ a div #professores h2 #professorX {
         margin-left: 1em;
         text-decoration: none;
     }
-    
+
     .CampoFalado4 {
-        display: flex;
+        display: block;
         text-align: center;
-        padding-top: 0.5em;
-    
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 3.5em;
+        top:2em;
+        
         font-size: 2em;
         color: black;
     }
@@ -1310,17 +1325,13 @@ a div #professores h2 #professorX {
     }
     
     .CampoFalado4 {
-        display: flex;
+        display: block;
         text-align: center;
-        padding-top: 0.5em;
-    
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 3.5em;
+        top:2em;
+        
         font-size: 2em;
         color: black;
     }
-    
     
     /* FIM DA JANELA MATERIA2 */
     

@@ -16,9 +16,8 @@ function abrir_modal_biblioteca() {
     if (display === 'none') {
         biblioteca.style.display = 'block';
         biblioteca.classList.add('abrir');
-    } 
-    else if (display === 'block') {
-        biblioteca.style.display = 'none'
     }
-
+    else if (display === 'block') {
+        biblioteca.style.display = 'none';
+    }
 }
