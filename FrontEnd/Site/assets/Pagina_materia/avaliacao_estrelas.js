@@ -80,3 +80,81 @@ for (var i = 0; i < starsClickedDuvidas.length; i++) {
     })(starsClickedDuvidas[i].getAttribute("name"), i);
 }
 
+// <div id="box1">
+
+// <h1 class="CampoFalado1"> Avaliação </h1>
+
+// <div class="avaliacao">
+
+//     <h2 class="CampoFalado2"> Dificuldade </h2>
+//     <ul id="Dificuldade">
+        
+//         <li name="star_Dificuldade" class="destaque"></li>
+//         <li name="star_Dificuldade" class="star"></li>
+//         <li name="star_Dificuldade" class="star"></li>
+//         <li name="star_Dificuldade" class="star"></li>
+//         <li name="star_Dificuldade" class="star"></li>
+
+//     </ul>
+//     <h2 class="notas" id="nota_Dificuldade"></h2>
+
+
+
+//     <h2 class="CampoFalado2"> Monitoria </h2>
+//     <ul id="Monitoria">
+//         <li name="star_Monitoria" class="destaque"></li>
+//         <li name="star_Monitoria" class="star"></li>
+//         <li name="star_Monitoria" class="star"></li>
+//         <li name="star_Monitoria" class="star"></li>
+//         <li name="star_Monitoria" class="star"></li>
+//     </ul>
+//     <h2 class="notas" id="nota_Monitoria"></h2>
+
+
+
+//     <h2 class="CampoFalado2"> Dúvidas </h2>
+//     <ul id="Duvidas">
+//         <li name="star_Duvidas" class="destaque"></li>
+//         <li name="star_Duvidas" class="star"></li>
+//         <li name="star_Duvidas" class="star"></li>
+//         <li name="star_Duvidas" class="star"></li>
+//         <li name="star_Duvidas" class="star"></li>
+//     </ul>
+//     <h2 class="notas" id="nota_Duvidas"></h2>
+// </div>
+
+
+// <h2 id="Postar"> Fazer Avaliação</h2>
+
+
+// </div>
+
+// .avaliacao ul {
+//     list-style: none;
+//     padding: 0;
+//     position: relative;
+// }
+
+// .avaliacao li {
+//     display: inline-block;
+//     text-shadow: 0 0 1px #ffd000;
+// }
+
+// .star::before {
+//     cursor: pointer;
+//     content: '\2606';
+//     color: #ffd000;
+//     font-size: 2.5em;
+// }
+
+// .destaque::before {
+//     content: '\2605';
+//     color: #ffd000;
+//     font-size: 3em;
+//     cursor: pointer;
+//     z-index: 999;
+// }
+
+// .star:hover::before {
+//     content: "\2605";
+// }
