@@ -1,55 +1,70 @@
-
+//CONSTANTES
 const box = document.getElementById('box');
 const campos = document.querySelectorAll('.required');
-const spans = document.querySelectorAll('.spanEmail');
+const spans = document.querySelectorAll('.spans_required');
 const emailRegex = /^\d{9}@aluno\.unb\.br$/;
+
+//CONTADOR
 let contador = 1;
 
+//GERAR SPAMS
 function setError(index) {
     campos[index].style.border = '2px solid #e63636';
     spans[index].style.display = 'block';
 }
 
+//REMOVER SPAMS
 function removeError(index) {
     campos[index].style.border = '';
     spans[index].style.display = 'none';
 }
 
+//VERIFICAR TODOS OS CAMPOS E DEPOIS ENVIAR OS DADOS - FUNÇÃO PRINCIPAL
 function verifica() {
-emailValidade();
+    emailValidade();
+    senhaValidade();
 }
 
+//VERIFICAR SENHA
+function senhaValidade() {
+    if (campos[1].value.length < 8) {
+        console.log('DEU ERRADO A SENHA');
+        setError(1);
+    }
+    else {
+        console.log('VALIDADO A SENHA');
+        removeError(1);
+        goBackUnBook(1);
+        contador++;
+    }
+}
+
+//VERIFICAR EMAIL
 function emailValidade() {
     if (emailRegex.test(campos[0].value)) {
 
         console.log('VALIDADO O EMAIL');
         removeError(0);
-        reproduzirEmail(0);
-        gotonextpage(0);
+        goBackUnBook(0);
         contador++;
     }
     else {
-       
+
         console.log('DEUERRADO O EMAIL');
         setError(0);
     }
 }
 
-function gotonextpage (index) {
+
+//FUNÇÃO IR PARA A PRÓXIMA PÁGINA , NO CASO A UNBOOK (PRINCIPAL)
+function goBackUnBook(index) {
 
     console.log(contador);
 
     if (contador == 2) {
-        window.location.href = "nova_senha_confirma.html";
+        window.location.href = "../pagina_inicial/UnBook.html";
         contador = 0;
-    } 
-    
-}
-function reproduzirEmail() {
+    }
 
-    var pegaEmail = document.getElementById('campoEscritaEmail').value;
-    localStorage.setItem("e-mail",pegaEmail);
-
-    window.location.href = "nova_senha_confirma.html";
 
 }

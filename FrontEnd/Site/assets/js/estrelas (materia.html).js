@@ -1,3 +1,5 @@
+//FUNÇÃO DA AVALIAÇÃO DAS ESTRELAS (EM PROGRESSO - NÃO MEXER AH NÃO SER QUE VC SAIBA OQ ESTÁ FZND)
+
 let star = document.querySelectorAll('input');
 let showValue = document.querySelector('#notas');
 

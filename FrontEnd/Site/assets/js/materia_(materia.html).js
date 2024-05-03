@@ -1,3 +1,5 @@
+//FUNÇÃO QUE RECEBE O EMAIL E O PROFESSOR ASSIM QUE A PÁGINA DA MATÉRIA É CARREGADA
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var reproduzirMateria = localStorage.getItem("materia");
@@ -11,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+//FUNÇÃO PARA ABRIR MODAL DA BIBLIOTECA
 var biblioteca = document.getElementById('modal_da_biblioteca')
 
 function abrir_modal_biblioteca() {

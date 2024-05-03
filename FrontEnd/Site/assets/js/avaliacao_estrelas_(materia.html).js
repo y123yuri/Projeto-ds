@@ -1,4 +1,6 @@
-//PINTAR
+//CÓDIGO TALVEZ VAI SER DESCARTADO , MAS NÃO ELIMINAR POIS É POSSÍVEL APROVEITAR CÓDIGO 
+
+//PINTAR AS ESTRELAS
 
 function seleciona(name, indice) {
     var stars = document.querySelectorAll('li[name=' + name + ']');
@@ -11,7 +13,7 @@ function seleciona(name, indice) {
     }
 }
 
-//DIFICULDADE
+//ESTRELAS DA CATEGORIA DIFICULDADE
 
 var starsClickedDificuldade = document.querySelectorAll('li[name=star_Dificuldade]');
 
@@ -34,7 +36,7 @@ for (var i = 0; i < starsClickedDificuldade.length; i++) {
     })(starsClickedDificuldade[i].getAttribute("name"), i);
 }
 
-// MONITORIA
+//ESTRELAS DA CATEGORIA MONITORIA
 
 var starsClickedMonitoria = document.querySelectorAll('li[name=star_Monitoria]');
 
@@ -57,7 +59,7 @@ for (var i = 0; i < starsClickedMonitoria.length; i++) {
     })(starsClickedMonitoria[i].getAttribute("name"), i);
 }
 
-//DUVIDAS
+//ESTRELAS DA CATEGORIA DUVIDAS
 
 var starsClickedDuvidas = document.querySelectorAll('li[name=star_Duvidas]');
 
@@ -79,6 +81,8 @@ for (var i = 0; i < starsClickedDuvidas.length; i++) {
         });
     })(starsClickedDuvidas[i].getAttribute("name"), i);
 }
+
+//CONTEUDO PARA QUE O CÓDIGO FUNCIONE
 
 // <div id="box1">
 

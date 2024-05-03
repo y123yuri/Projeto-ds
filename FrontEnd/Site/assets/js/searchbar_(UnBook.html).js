@@ -1,3 +1,4 @@
+//FUNÇÃO DA BARRA DE PESQUISA
 function  pesquisar() {
 
     let input = document.getElementById('searchbar').value

@@ -1,4 +1,4 @@
-
+//RECEBE O EMAIL DA PÁGINA ANTERIOR (NOVA SENHA EMAIL)
 document.addEventListener("DOMContentLoaded",function() {
 
     var reproduzirEmail = localStorage.getItem("e-mail");
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded",function() {
 
 });
 
+//RESETA EMAIL (ANÁLISE)
 function apagaEmail () {
     document.getElementById("emailRecebido").value = ' ';
 }
