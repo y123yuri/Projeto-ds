@@ -92,7 +92,7 @@ function Enviar() {
             .then(data => {
                 if (data.result === 'success') {
                     alert("Seu perfil foi cadastrado com sucesso!");
-                    window.location.href = './cadastro_sucesso.html';
+                    window.location.href = './cadastro_sucesso.html'; 
                 } else {
                     throw new Error('Erro no envio dos dados!');
                 }
