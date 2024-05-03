@@ -1,0 +1,40 @@
+{% load static %} 
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagina de cadastro</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static "css/styles_cadastro_sucesso.css" %}">
+
+</head>
+
+<body>
+  <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+
+  <div class="form">
+    
+    <h1 class="campoFalado1">Cadastro realizado com sucesso</h1>
+    <div id="user">
+        <img class="user" src="{% static "image/usuario.png"%}" alt="user">
+    </div>
+
+    <h2 class="campoFalado2"> Seja bem vindo </h2>
+    <h2 id="NomeRecebido"></h2>
+
+    <a class="botao_voltar" href="../pagina_inicial/UnBook.html">voltar </a>
+</div>
+
+  <script src="{% static "js/confirma.js" %}"></script>
+  <script src="{% static "js/cadastro_sucesso.js"%}"></script>
+</body>
+
+</html>

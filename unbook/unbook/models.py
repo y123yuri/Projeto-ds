@@ -29,3 +29,9 @@ class Turma(models.Model):
     avaliação_1 = models.FloatField()
     avaliação_2 = models.FloatField()
     avaliação_3 = models.FloatField()
+
+class Cadastro(models.Model):
+
+    nome_usuario = models.CharField(max_length=150, null=False, blank=False)
+    email = models.EmailField(max_length=22, null=False, blank=False)
+    senha = models.CharField(max_length=30, null=False, blank=False)
