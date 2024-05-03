@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("Materia").innerText = reproduzirMateria;
     document.getElementById('Prof').innerText = ('(Prof. ' + reproduzirProfessor + ')');
 
-
+    
 });
 
 //FUNÇÃO PARA ABRIR MODAL DA BIBLIOTECA
