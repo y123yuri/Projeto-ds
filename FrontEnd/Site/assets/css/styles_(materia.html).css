@@ -92,9 +92,9 @@ ul {
     border-radius: 50px;
 }
 
-.avaliacao {
+#avaliacao {
     margin-top: 1em;
-    height: 20em;
+    height: 25em;
 }
 
 .CampoFalado1 {
@@ -128,7 +128,7 @@ ul {
 	content: '\f005';
 	font-family: FontAwesome;
 	margin: 5px;
-	font-size: 1.5rem;
+	font-size: 2.5em;
 	display: inline-block;
 	cursor: pointer;
 }
@@ -141,25 +141,26 @@ ul {
 
 
 .rating > label{
-	color: #ddd;
+	color: #777D89;
 	float: right;
 	cursor: pointer;
-}
+} /* ESTRELA CINZA */
 
 .rating > input:checked ~ label,
 .rating:not(:checked) > label:hover, 
 .rating:not(:checked) > label:hover ~ label{
 	color: #ffd000;
-}
+} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
 
 .rating > input:checked + label:hover,
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label{
 	color: #ffd000;
-}
+} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
 
-#notas {
+
+#notas_Dificuldade , #notas_Monitoria , #notas_Dúvidas {
     font-size: 1em;
     position: relative;
     display: block;
@@ -177,7 +178,7 @@ ul {
 
     color: #0B4C8C;
     cursor: pointer;
-    top: 3em;
+    top: 1em;
 
     font-size: 1.5em;
     transition: all 0.3s ease;
@@ -186,6 +187,10 @@ ul {
 #Postar:hover {
     transform: scale(1.05);
     text-shadow: 0 0 1px #0C36A1;
+}
+
+#Postar:active {
+    transform: scale(0.95);
 }
 
 /* BOX 2 */
