@@ -1,3 +1,4 @@
+{% load static %} 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
 
-    <link rel="stylesheet" href="../css/styles_(UnBook.html).css"> <!--LINK PARA O CSS DA PAGINA -->
+    <link rel="stylesheet" href="{% static "css/styles_(UnBook.html).css"%}"> <!--LINK PARA O CSS DA PAGINA -->
 </head>
 
 <body>
@@ -21,12 +22,12 @@
         <div class="fundo_branco" id="inicio">
             
             <nav>
-                <a class="qmsomos" style="text-decoration:none" href="./Quem_somos.html">Quem somos?</a> <!--LINK PARA A PAGINA DO QUEM SOMOS -->
+                <a class="qmsomos" style="text-decoration:none" href="./Quem_somos">Quem somos?</a> <!--LINK PARA A PAGINA DO QUEM SOMOS -->
 
-                <img class="unbloguinho" src="../img/UnB_logo.png"> <!-- UNB LOGO-->
+                <img class="unbloguinho" src="{% static "image\UnB_logo.png"%}"> <!-- UNB LOGO-->
             </nav>
 
-            <img class="UnBookLogo" src="../img/UnBook_logao.png"> <!-- UNBOOK LOGO-->
+            <img class="UnBookLogo" src="{% static 'image\UnBook_logao.png'%}"> <!-- UNBOOK LOGO-->
 
 
         </div>
@@ -48,12 +49,12 @@
         <div id="search">
 
 
-            <a href="#inicio"><img class="UnBook_logo_mini" src="../img/UnBook_loguinho.png" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
+            <a href="#inicio"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
 
             <div class="Login_icon">
 
-                <div id="user"><img class="user" src="../img/usuario.png" alt="user"></div>
-                <a href="../html/Login.html"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                <div id="user"><img class="user" src="{% static "image/usuario.png" %}" alt="user"></div>
+                <a href="../cadastro"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
 
             </div>
 
@@ -96,8 +97,8 @@
                         </li>
                         <li class="materias"><a onclick="abrirModal_Materia2() , reproduzirMateria(this)"> Desenvolvimento de Software</a> </li>
                         <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Orientação a Objetos</a> </li>
-                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Pratica de sexo 2</a> </li>
-                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Desenvolvimento de pica</a>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Pratica de </a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Desenvolvimento </a>
                         </li>
                         <!--ABRE SEGUNDO MODAL (DOS PROFESSORES QUE OFERTAM A MATÉRIA)-->
                         <!--REPRODUZ O NOME DA MATÉRIA PARA A PÁGINA DE MATÉRIAS-->
@@ -137,9 +138,9 @@
     </section>
 
     <!-- LINK PARA ARQUIVOS JS-->
-    <script src="../js/abrir_janelas_(UnBook.html).js"></script>
-    <script src="../js/searchbar_(UnBook.html).js"></script>
-    <scrip src="../js/materia_(materia.html).js"></script>
+    <script src="{% static "js/abrir_janelas_(UnBook.html).js"%}"></script>
+    <script src="{% static "js/searchbar_(UnBook.html).js"%}"></script>
+    <scrip src="{% static "js/materia_(materia.html).js"%}"></script>
 </body>
 
 </html>

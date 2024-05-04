@@ -19,7 +19,7 @@
 <body>
   <a href="../Pagina_inicial/UnBook.html"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
 
-  <form class="form" id="form" method="post" name="contact-form">
+  <form action="{% url 'cadastro'}" class="form" id="form" method="post" name="contact-form">
 
     <h1 style="font-size: 3em;
     padding: 40px 5px 5px 40px;">Cadastro</h1>
@@ -28,13 +28,14 @@
     <h3 class="campoFalado">Insira um nome para o usuario:</h3>
 
     <label>
-      <input class="campoEscrito , required" id="CampoNome" name="Nome" type="text" placeholder="Usuario" />
+      {{form.nome_usuario}}
       <span class="spans_required"> Digite um nome com mais de 3 caracteres</span>
     </label>
 
     <h3 class="campoFalado">Insira seu e-mail:</h3>
 
     <label>
+      {{form.email}}
       <input class="campoEscrito , required" name="Email" type="email" placeholder="Matrícula@aluno.unb.com" />
       <span class="spans_required"> Digite um e-mail válido</span>
     </label>
@@ -42,6 +43,7 @@
     <h3 class="campoFalado">Crie uma senha:</h3>
 
     <label>
+      {{form.senha}}
       <input class="campoEscrito , required" name="Senha" type="password" placeholder="*******" />
       <span class="spans_required"> Sua senha está fraca</span>
     </label>
@@ -53,7 +55,7 @@
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
 
-    <button type="button" value="submit" id="submit" onclick="verifica()"> Entrar </button>
+    <button type="submit" value="submit" id="submit" onclick="verifica()"> Entrar </button>
 
         <div class="loading">
           <div class="progress"></div>
