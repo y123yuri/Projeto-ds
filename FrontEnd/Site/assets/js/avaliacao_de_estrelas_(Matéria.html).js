@@ -39,8 +39,11 @@ botaoPostar.addEventListener("click", function() {
     for (let categoria in avaliacoes) {
         console.log(categoria + ': ' + avaliacoes[categoria] + ' estrelas de 5;');
     }
+    
+    alert('Avalições enviadas com sucesso (mentira)')
     reiniciarAvaliacoes();
 });
+
 }
 
 // Seleciona todas as etiquetas de estrelas
