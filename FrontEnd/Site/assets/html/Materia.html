@@ -149,12 +149,12 @@
 
             <div id="modal_da_biblioteca">
 
-                <div id="videos" class="box_modal">
+                <a href="./Videos.html"><div id="videos" class="box_modal">
                     <div class="boxinho" id="imagem_videos">
                         <img class="imagens" src="../img/Video Conference.png">
                     </div>
                     <h3 class="texto"> Vídeos </h3>
-                </div>
+                </div></a>
 
                 <div id="resumos" class="box_modal">
                     <div class="boxinho" id="imagem_resumos">
@@ -181,19 +181,20 @@
 
                     <div id="scroll">
 
-                        <div id="comentario">
-                            <h2 class="usuarios" id="usuario_">@Yuri_Gameplays</h2>
-                            <h3 class="comentarios" id="comentario_de_"> eu adoro essa materia ela é muito legal, to
+                        <div id="comentario1">
+                            <h2 class="usuarios" id=" ">@Yuri_Gameplays</h2>
+                            <h3 class="comentarios"> eu adoro essa materia ela é muito legal, to
                                 pensando ate em reprovar pra nao sair dela nunk.</h3>
-                            <h3 class="responder" id="responder_de_"><a href="#comentar">responder</a> </h3>
+                            <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">responder</a> </h3>
                         </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT-->
 
                         <div id="comentario2">
-                            <h2 class="usuarios" id="usuario_">@Junior_Bezerros</h2>
-                            <h3 class="comentarios" id="comentario_de_">Mano essa matéria é muito doida cara sério, se
+                            <h2 class="usuarios" id=" ">@Junior_Bezerros</h2>
+                            <h3 class="comentarios">Mano essa matéria é muito doida cara sério, se
                                 tiverem a oportunidade de fazer façam!</h3>
-                            <h3 class="responder" id="responder_de_"><a href="#comentar">responder</a> </h3>
+                            <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">responder</a> </h3>
                         </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT-->
+
 
                     </div>
 
@@ -201,6 +202,7 @@
 
                 <div id="comentar_box">
                     <input id=comentar contenteditable="true" type="text" placeholder="Fazer comentário">
+                    <img onclick="postar_comentario()"id="send_button" src="../img/Email Send (1).png">
                 </div> <!-- COMENTAR -->
 
             </div>
