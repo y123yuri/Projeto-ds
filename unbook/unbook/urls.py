@@ -21,7 +21,6 @@ from app_cadastro import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('materias.urls')),
-    path('cadastro/', v.cadastro, name='cadastro_usuarios'),
-    path('cadastro/cadastro_sucesso/', v.cadastro_sucesso),
+    path('cadastro/', include('app_cadastro.urls')),
 
 ]

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="UnBook_page.ico" type="image/x-icon">
+    <title>UnBook</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+
+    <link rel="stylesheet" href="../css/styles_(UnBook.html).css"> <!--LINK PARA O CSS DA PAGINA -->
+</head>
+
+<body>
+    <section class="page1">
+
+        <div class="fundo_branco" id="inicio">
+            
+            <nav>
+                <a class="qmsomos" style="text-decoration:none" href="./Quem_somos.html">Quem somos?</a> <!--LINK PARA A PAGINA DO QUEM SOMOS -->
+
+                <img class="unbloguinho" src="../img/UnB_logo.png"> <!-- UNB LOGO-->
+            </nav>
+
+            <img class="UnBookLogo" src="../img/UnBook_logao.png"> <!-- UNBOOK LOGO-->
+
+
+        </div>
+
+        <div class="botao_arrasta">
+            <h2><a href="#search">Iniciar pesquisa</a></h2> <!--LINK PARA ACESSAR A BARRA DE PESQUISA-->
+
+
+        </div>
+
+    </section>
+
+    <br>
+
+    <section class="page2"></section>
+
+
+    <section>
+        <div id="search">
+
+
+            <a href="#inicio"><img class="UnBook_logo_mini" src="../img/UnBook_loguinho.png" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
+
+            <div class="Login_icon">
+
+                <div id="user"><img class="user" src="../img/usuario.png" alt="user"></div>
+                <a href="../html/Login.html"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+
+            </div>
+
+            <div id="perguntas">
+
+                <h2 class="pergunta"> Como deseja iniciar sua pesquisa?</h2>
+                <h2 class="botoes" onclick="abrirModal_Professor()">Professor</h2> <!--ABRIR MODAL PROFESSOR-->
+                <h2 class="botoes" onclick="abrirModal_Materia()">Matéria </h2> <!--ABRIR MODAL MATÉRIA-->
+
+            </div>
+
+
+            <div class="janela_pesquisa" id="janela_professor">
+
+                <h1 class="CampoFalado"> Informe o nome do professor:</h1>
+                <input class="barra_pesquisa" type="text" placeholder="pesquisar"></input>
+                <div class="CampoProcura"></div>
+
+            </div>
+
+
+            <div class="janela_pesquisa" id="janela_materia">
+
+                <h1 class="CampoFalado">Informe a matéria:</h1>
+                <input class="barra_pesquisa" type="text" id="searchbar" placeholder="pesquisar" autocomplete="off" onkeyup="pesquisar()"></input>
+
+                <div class="CampoProcura">
+                    <ul> <!--LISTA COM MATÉRIAS -->
+
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Cálculo 1</a>
+                        </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Cálculo 2</a>
+                        </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Cálculo 3</a>
+                        </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Álgebra Linear</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Metodos Numéricos</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Fisica 1 Experimental</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Fisica 1</a>
+                        </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2() , reproduzirMateria(this)"> Desenvolvimento de Software</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Orientação a Objetos</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Pratica de sexo 2</a> </li>
+                        <li class="materias"><a onclick="abrirModal_Materia2()  , reproduzirMateria(this)">Desenvolvimento de pica</a>
+                        </li>
+                        <!--ABRE SEGUNDO MODAL (DOS PROFESSORES QUE OFERTAM A MATÉRIA)-->
+                        <!--REPRODUZ O NOME DA MATÉRIA PARA A PÁGINA DE MATÉRIAS-->
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="janela_materia2" id="janela_materia2">
+
+                <h1 class="CampoFalado2" id="CampoFalado2">teste</h1>
+                <h2 class="CampoFalado3"> Aula ministrada no Campos Gama</h2>
+
+                <div id="scroll">
+
+                    <a class="professor" href="../html/Materia.html" onclick="reproduzirProfessor(this , 1)"> <!--LINK PARA ACESSAR A PÁGINA MATÉRIA USANDO O O PROFESSOR_1-->
+                    <!-- ARQUIVO JS REPRODUZIR NOME DO PROFESSOR PARA A PÁGINA DE MATERIAS-->
+                        <div id="box"><img src="../img/usuario.png"></div>
+                        <h2 class="professores" id="professor_1"> Jason Bourne</h2>
+                    </a>
+
+                    <a class="professor" onclick="reproduzirProfessor(this , 2)" href="../html/Materia.html"> <!--LINK PARA ACESSAR A PÁGINA MATÉRIA  USANDO O O PROFESSOR_2-->
+                        <div id="box"><img src="../img/usuario.png"></div>
+                        <h2 class="professores" id="professor_2"> Jorgin dos teclados</h2>
+                    </a>
+
+                    <a class="professor" onclick="reproduzirProfessor(this , 'nada')"> 
+                        <div id="box"><img src="../img/usuario.png"></div>
+                        <h2 class="professores" id="professor_nada"> A designar...</h2>
+                    </a>
+
+                </div>
+
+                <h2 class="CampoFalado4"> 2024.1 </h2>
+
+    </section>
+
+    <!-- LINK PARA ARQUIVOS JS-->
+    <script src="../js/abrir_janelas_(UnBook.html).js"></script>
+    <script src="../js/searchbar_(UnBook.html).js"></script>
+    <scrip src="../js/materia_(materia.html).js"></script>
+</body>
+
+</html>

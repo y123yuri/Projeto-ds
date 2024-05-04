@@ -2,9 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
-
-
 class Professor(models.Model):
     nome_professor = models.CharField(max_length=100, primary_key=True)
     foto = models.URLField()
