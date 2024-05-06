@@ -1,21 +1,13 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from .forms import CadastroForm
 from django.http import HttpResponse
 from .models import Cadastro
-=======
-from forms import CadastroForms
->>>>>>> 098859d47ef34f5d02a0d1fbb6c0a66ccd05f8c4
 
 # Create your views here.
 
 def cadastro(request):
     context = {}
-<<<<<<< HEAD
     form = CadastroForm()
-=======
-    form = CadastroForms()
->>>>>>> 098859d47ef34f5d02a0d1fbb6c0a66ccd05f8c4
     context["form"] = form
     return render(request, "html/cadastro.html", context)
 
