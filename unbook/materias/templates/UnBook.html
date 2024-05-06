@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <section class="page1">
 
         <div class="fundo_branco" id="inicio">
@@ -70,7 +71,7 @@
             <div class="janela_pesquisa" id="janela_professor">
 
                 <h1 class="CampoFalado"> Informe o nome do professor:</h1>
-                <input class="barra_pesquisa" type="text" placeholder="pesquisar"></input>
+                <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeydown=pesquisa_prof("{{csrf_token}}")></input>
                 <div class="CampoProcura"></div>
 
             </div>
@@ -79,7 +80,7 @@
             <div class="janela_pesquisa" id="janela_materia">
 
                 <h1 class="CampoFalado">Informe a matéria:</h1>
-                <input class="barra_pesquisa" type="text" id="searchbar" placeholder="pesquisar" autocomplete="off" onkeyup="pesquisar()"></input>
+                <input class="barra_pesquisa" type="text" id="searchbar" placeholder="pesquisar" autocomplete="off" onkeydown="pesquisar()"></input>
 
                 <div class="CampoProcura">
                     <ul> <!--LISTA COM MATÉRIAS -->

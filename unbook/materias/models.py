@@ -2,12 +2,28 @@ from django.db import models
 
 # Create your models here.
 
+class ProfessorManager(models.Manager):
+    def pesquisa(self, termo_busca):
+        encontrado = []
+        for obj in super().get_queryset():
+            lista_nome = obj.nome.split()
+            for nome in lista_nome:
+                index =obj.nome.index(nome)
+                if obj.nome[index:index+len(termo_busca)] == termo_busca:
+                    encontrado.append(obj)
+                    break
+            
+        return encontrado
+
 class Professor(models.Model):
     nome = models.CharField(max_length=100, primary_key=True)
     foto = models.URLField()
-
+    objects = ProfessorManager()
+                    
     def __str__(self):
         return self.nome
+
+
 
 
 class Materia(models.Model):
@@ -16,6 +32,17 @@ class Materia(models.Model):
     carga_horaria = models.CharField(max_length=10)
     def __str__(self):
         return self.codigo + " " + self.nome
+    
+    def pesquisa(self, termo_busca, tipo_busca):
+        encontrado = []
+        if tipo_busca == 'nome':
+            for obj in self.objects.all():
+                lista_nome = obj.nome.split()
+                for nome in lista_nome:
+                    if nome[:len(termo_busca)] == termo_busca:
+                        encontrado.append(obj)
+                        break
+        return encontrado
 
 
 class Comentario(models.Model):
