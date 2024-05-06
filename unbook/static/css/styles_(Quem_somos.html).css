@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #ffffff, #faaafd);
+    width: 100%;
+
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+}
+
+ul {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* inicio das paginas */
+/*PAGINA1*/
+
+.UnBook_logo_mini {
+    font-size: 100px;
+    letter-spacing: -9px;
+    display: block;
+    -webkit-text-stroke-width: 10px;
+
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    color:transparent;
+    background-color: whitesmoke;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+
+    margin-left: 50px;
+    top: 50px;
+    text-shadow:  0px 2px 3px rgba(255, 255, 255, 0.8);
+
+}
+
+.UnBook_logao {
+    background-image: url(.//UnBook_logao.png);
+    width: auto;
+    height: auto;
+}
