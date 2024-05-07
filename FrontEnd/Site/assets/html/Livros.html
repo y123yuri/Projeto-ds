@@ -35,14 +35,15 @@
             </div>
 
             <div id="upload_arquivos">
-                
-                <label id="documents_label" for="upload_file"> 
-                    <img id="documents_image" src="../img/Document.png">
-                    <h2>Deposite aqui seu arquivo!</h2>
+
+                <label id="label_file" for="input_file"> 
+                    <input type="file" id="input_file" hidden>
+
+                    <div id="imgView">
+                        <img id="documents_image" src="../img/Document.png">
+                        <h2>Arraste aqui seu arquivo!</h2>
+                    </div>
                 </label>
-
-                <input type="file" id="upload_file">
-
             </div>
 
             <div id="enviar" onclick="enviar()"> Fazer upload </div>
@@ -83,8 +84,10 @@
 
 </body>
 
+
 <!-- LINK PARA ARQUIVOS JS-->
 <!-- <script src="../js/materia_(materia.html).js"></script> -->
 <script src="../js/abrir_modais_(Livros.html).js"></script>
+<script src="../js/drop_files_(Livros.html).js"></script>
 
 </html>
