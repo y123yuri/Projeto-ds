@@ -38,3 +38,23 @@ function pesquisa_prof(csrf_token) {
         }
     })
 }
+function pesquisa_materia(csrf_token) {
+    let input = document.getElementById('searchbar_materia').value
+    input = input.toUpperCase()
+
+    $.ajax({
+        type: "POST",
+        url: "pesquisa/",
+        data: {csrfmiddlewaretoken: csrf_token,
+            termo_pesquisa_materia: input},
+        sucess: function(response){
+            console.log(response)
+            lista_obj_materia =  response.split(";")
+            lista_resultado_materia = []
+            for (i=0;i<lista_obj.length;i++){
+                lista_resultado_materia.push(lista_obj_materia[i].split(','))
+            };
+            console.log(lista_resultado_materia)
+        }
+    })          
+}

@@ -30,19 +30,10 @@ class Materia(models.Model):
     codigo = models.CharField(max_length=9, primary_key=True)
     nome = models.CharField(max_length=100)
     carga_horaria = models.CharField(max_length=10)
+    objects = MateriaManager()
     def __str__(self):
         return self.codigo + " " + self.nome
     
-    def pesquisa(self, termo_busca, tipo_busca):
-        encontrado = []
-        if tipo_busca == 'nome':
-            for obj in self.objects.all():
-                lista_nome = obj.nome.split()
-                for nome in lista_nome:
-                    if nome[:len(termo_busca)] == termo_busca:
-                        encontrado.append(obj)
-                        break
-        return encontrado
 
 
 class Comentario(models.Model):

@@ -80,7 +80,7 @@
             <div class="janela_pesquisa" id="janela_materia">
 
                 <h1 class="CampoFalado">Informe a matéria:</h1>
-                <input class="barra_pesquisa" type="text" id="searchbar" placeholder="pesquisar" autocomplete="off" onkeydown="pesquisar()"></input>
+                <input class="barra_pesquisa" type="text" id="searchbar_materia" placeholder="pesquisar" autocomplete="off" onkeydown=pesquisa_materia("{{csrf_token}}")></input>
 
                 <div class="CampoProcura">
                     <ul> <!--LISTA COM MATÉRIAS -->

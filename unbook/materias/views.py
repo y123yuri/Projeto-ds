@@ -20,3 +20,15 @@ def pesquisa(request):
             for obj in obj_lista[1:]:
                 resposta += ";"+obj.nome+','+obj.foto
     return HttpResponse(resposta)
+
+def pesquisa_turma(request):
+    termo_pesquisa_materia = request.POST['termo_pesquisa_materia']
+    print(Materia.objects.pesquisa(termo_pesquisa_materia))
+    obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materia)
+    resposta2 = ''
+    if len(obj_lista_materia)>0:
+        resposta = obj_lista_materia[0].codigo+','+obj_lista_materia.nome[0]+','+obj_lista_materia.carga_horaria[0]
+        if (len(obj_lista_materia)>2):
+            for obj in obj_lista_materia[1:]:
+                resposta_materia += ";"+obj.codigo+','+obj.nome+';'+obj.carga_horaria
+        return HttpResponse(resposta_materia)
