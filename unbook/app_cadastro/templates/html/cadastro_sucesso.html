@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <a href=""><img class="UnBook_logo_mini" src="./UnBook_loguinho.png" alt=""></a>
+  <a href=""><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
   {% csrf_token %}
   <div class="form">
     <h1 class="campoFalado1">Cadastro realizado com sucesso</h1>
@@ -29,7 +29,7 @@
     <h2 class="campoFalado2"> Seja bem vindo </h2>
     <h2 id="NomeRecebido">{{resposta.nome_usuario}}</h2>
 
-    <a class="botao_voltar" href="../pagina_inicial/UnBook.html">voltar </a>
+    <a class="botao_voltar" href="/UnBook">voltar </a>
 </div>
 
   <script src="{% static "js/confirma.js" %}"></script>

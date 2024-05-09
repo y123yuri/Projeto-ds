@@ -6,4 +6,5 @@ from app_cadastro import views as v
 urlpatterns = [
     path('', views.cadastro, name="cadastro"),
     path('sucesso/', views.sucesso, name="sucesso"),
+    path('login/', views.login, name="login")
 ]

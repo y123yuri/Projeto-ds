@@ -27,3 +27,6 @@ def sucesso(request):
         request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
         return redirect("../")
     return render(request, "html/cadastro_sucesso.html", context)
+
+def login(request):
+    return render(request, "html/Login.html")
