@@ -6,5 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.home, name="home"),
     path('Quem_somos/', views.somos, name='somos'),
-    path('pesquisa/', views.pesquisa)
+    path('pesquisa_prof/', views.pesquisa),
+    path('pesquisa_materia/', views.pesquisa_materias),
+    path("materia/", views.materia)
 ]

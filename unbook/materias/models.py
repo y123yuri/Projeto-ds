@@ -8,22 +8,25 @@ class ProfessorManager(models.Manager):
         for obj in super().get_queryset():
             lista_nome = obj.nome.split()
             for nome in lista_nome:
-                index =obj.nome.index(nome)
+                index = obj.nome.index(nome)
                 if obj.nome[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
                     break
             
         return encontrado
+
+
 class MateriaManager(models.Manager):
-     def pesquisa_materias(self, termo_busca):
-         encontrado = []
-         for obj in super().get_queryset():
+     def pesquisa(self, termo_busca):
+        encontrado = []
+        for obj in super().get_queryset():
             lista_materia = obj.nome.split()
             for nome in lista_materia:
                 index = obj.nome.index(nome)
                 if obj.nome[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
-                    break
+                break
+        return encontrado
                 
 
 class Professor(models.Model):

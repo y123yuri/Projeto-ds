@@ -40,12 +40,12 @@ document.addEventListener('click', e => {
 
 //FUNÇÃO PARA FECHAR MODAIS
 function fecharModal() {
-    perguntas.style.display = 'block';
-    Materia.classList.remove('abrir');
-    Professor.classList.remove('abrir');
-    Materia2.classList.remove('abrir');
-
-    SearchBar.value = '';
+    //perguntas.style.display = 'block';
+    //Materia.classList.remove('abrir');
+    //Professor.classList.remove('abrir');
+    //Materia2.classList.remove('abrir');
+//
+    //SearchBar.value = '';
 }
 
 //ABRIR NO PROXIMO MODAL OS DADOS DO ANTIGO 

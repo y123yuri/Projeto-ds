@@ -26,9 +26,17 @@ def pesquisa_materias(request):
     print(Materia.objects.pesquisa(termo_pesquisa_materias))
     obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materias)
     resposta = ''
+
     if len(obj_lista_materia)>0:
-        resposta = obj_lista_materia[0].codigo+','+obj_lista_materia.nome[0]+','+obj_lista_materia.carga_horaria[0]
-        if (len(obj_lista_materia)>2):
+        resposta = obj_lista_materia[0].codigo+','+obj_lista_materia[0].nome+','+obj_lista_materia[0].carga_horaria
+        if (len(obj_lista_materia)>1):
             for obj in obj_lista_materia[1:]:
                 resposta += ";"+obj.codigo+','+obj.nome+';'+obj.carga_horaria
-        return HttpResponse(resposta)
+            
+    return HttpResponse(resposta)
+
+def materia(request):
+    pass
+    #obj = request.POST['nome_materia'] #pegar obj
+#
+    #context["nome"] = obj.nome
