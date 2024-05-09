@@ -25,7 +25,10 @@ class MateriaManager(models.Manager):
                 index = obj.nome.index(nome)
                 if obj.nome[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
-                break
+                    break
+                elif obj.codigo[:len(termo_busca)] == termo_busca:
+                    encontrado.append(obj)
+                    break
         return encontrado
                 
 
