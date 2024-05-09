@@ -24,7 +24,7 @@ function pesquisa_prof(csrf_token) {
 
     $.ajax({
         type: "POST",
-        url: "pesquisa/",
+        url: "pesquisa_prof/",
         data: {csrfmiddlewaretoken: csrf_token,
             termo_pesquisa: input},
         success: function(response){
@@ -41,13 +41,14 @@ function pesquisa_prof(csrf_token) {
 function pesquisa_materia(csrf_token) {
     let input = document.getElementById('searchbar_materia').value
     input = input.toUpperCase()
-
+    console.log(input)
     $.ajax({
         type: "POST",
-        url: "pesquisa/",
+        url: "pesquisa_materia/",
         data: {csrfmiddlewaretoken: csrf_token,
             termo_pesquisa_materias: input},
-        sucess: function(response){
+        success: function(response){
+            console.log(input)
             console.log(response)
             lista_obj_materia =  response.split(";")
             lista_resultado_materia = []
@@ -56,5 +57,5 @@ function pesquisa_materia(csrf_token) {
             };
             console.log(lista_resultado_materia)
         }
-    })          
+    })  
 }
