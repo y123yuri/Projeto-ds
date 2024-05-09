@@ -5,13 +5,10 @@
 }
 
 html {
-    width: 100%;
-    height: 100%;
     background-color: #333748;
     width: 100%;
 
-    height: 60vh;
-    scroll-behavior: smooth;
+    height: auto;
 }
 
 body {
@@ -20,16 +17,195 @@ body {
 
 }
 
+a {
+    font-size: 2em;
+    font-weight: 600;
+    text-decoration: none;
+    color: whitesmoke;
+
+    position: fixed;
+    left: 2%;
+    top: 2%; 
+
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 5px whitesmoke;
+}
+
+#sol {
+    position: fixed; 
+    width:10%; 
+    height: 20%; 
+    background-color: #F1C321; 
+    border-radius: 100%; 
+    
+    top:5%; 
+    left:88%;
+    
+    z-index: 13;
+    transition: 0.3s all ease;
+}
+
+#sol:hover {
+    transform: scale(1.05);
+    box-shadow: -10px 10px 50px #F1C321;
+}
+
+#fundo_blur {
+    position: fixed;
+    width: 55%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.195);
+    backdrop-filter: blur(2px);
+    border-radius: 25px;
+
+    top: 15%;
+    left: 25%;
+
+    /* animation: aparecer_fundo_blur 1s; */
+    z-index: 11;
+    overflow-y: auto;
+}
+
+.h2s {
+    width: 100%;
+    height: 60%;
+    
+    align-items: center;
+    text-align: center;
+    color:whitesmoke;
+    text-shadow: 0 0 10px black;
+    z-index: 11;
+
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 1.75em;
+
+    position: relative;
+    top: 35%;
+    display: block;
+}
+
+.h2_escondido {
+    display: none;
+    width: 100%;
+    height: 60%;
+    
+    align-items: center;
+    text-align: center;
+    color:whitesmoke;
+    text-shadow: 0 0 10px black;
+    z-index: 11;
+
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 1.75em;
+
+    position: relative;
+    top: 30%;
+}
+
+.h2s::after {
+    content: '|';
+    margin-left: 5px;
+    opacity: 1;
+    animation: pisca .7s infinite ;
+}
+
+@keyframes pisca {
+    0%, 100% {  opacity: 1;}
+    50% {opacity: 0;}
+}
+
+#button_prox {
+    display: fixed;
+    position: fixed;
+    left: 75%;
+    bottom: 5%;
+
+    width: 6em;
+    height: auto;
+    background-color: #F1C321;
+    box-shadow: -2px 4px 1px #b7951b;
+    border-radius: 25px;
+
+    font-size: 2em;
+    text-align: center;
+    font-weight: 700;
+    color: whitesmoke;
+    text-shadow: 0 0 4px black;
+    z-index: 13;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#button_pro:hover {
+    transform: scale(1.05);
+}
+
+#button_prox:active {
+    transform: scale(0.9);
+    box-shadow: -2px 4px 1px #F1C321;
+}
+
+
+
+@keyframes aparecer_fundo_blur {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.0);
+    }
+}
+
+#cerejas_1 {
+    width: 1000px;
+    height: 1000px;
+
+    transform: scaleX(-1) rotate(10deg);
+    filter: blur(3px);
+    
+    position: relative;
+    top: 15em;
+    left: -10em;
+} 
+
+#cerejas_2 {
+    width: 750px;
+    height: 750px;
+
+    transform: scaleX(1) rotate(10deg);
+    filter: blur(4px);
+    
+    position: relative;
+    left: 50%;
+    top: 0em;
+} 
+
+#montain {
+    position: fixed;
+    top: 5em;
+    width: 100%;
+}
+
 #monte1 {
     position: fixed;
-    bottom: -10px;
-    z-index: 3;
+    bottom: -20px;
+    left: 0%;
+
+    z-index: 10;
 }
 
 #monte2 {
     position: fixed;
     bottom: -10px;
-    right: 0;
-    z-index: 2;
-}
+    right: -20%;
 
+    z-index: 9;
+    transition: all 0.3s ease;
+    filter: blur(2px);
+}
