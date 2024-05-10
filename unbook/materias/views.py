@@ -35,8 +35,12 @@ def pesquisa_materias(request):
             
     return HttpResponse(resposta)
 
-def materia(request):
-    pass
-    #obj = request.POST['nome_materia'] #pegar obj
-#
-    #context["nome"] = obj.nome
+def materia(request, codigo, nome):
+    print(codigo, nome)
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    context = {}
+    context["turma"] = obj_turma
+    return render(request, "materia.html", context)
