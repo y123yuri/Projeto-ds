@@ -27,25 +27,24 @@ function abrirModal_Materia2(){
     
     Materia2.classList.add('abrir'); 
     Materia.classList.remove('abrir');
-    console.log('opa') 
     
 }
 
 //FUNÇÃO PARA FECHAR CASO CLIQUE FORA DO MODAL
 document.addEventListener('click', e => {
-    if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') && !e.target.closest('.janela_materia2') ) {
+    if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') && !e.target.closest('.janela_materia2') && 
+    !e.target.closest('.CampoProcura #list_professores li') && !e.target.classList.contains('list')) {
+
         fecharModal();
     }
 });
 
 //FUNÇÃO PARA FECHAR MODAIS
 function fecharModal() {
-    //perguntas.style.display = 'block';
-    //Materia.classList.remove('abrir');
-    //Professor.classList.remove('abrir');
-    //Materia2.classList.remove('abrir');
-//
-    //SearchBar.value = '';
+    perguntas.style.display = 'block';
+    Materia.classList.remove('abrir');
+    Professor.classList.remove('abrir');
+    Materia2.classList.remove('abrir');
 }
 
 //ABRIR NO PROXIMO MODAL OS DADOS DO ANTIGO 

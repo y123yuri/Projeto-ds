@@ -55,7 +55,7 @@
             <div class="Login_icon">
 
                 <div id="user"><img class="user" src="{% static "image/usuario.png" %}" alt="user"></div>
-                <a href="../cadastro"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                <a href="../cadastro/login"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
 
             </div>
 
@@ -72,7 +72,11 @@
 
                 <h1 class="CampoFalado"> Informe o nome do professor:</h1>
                 <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeydown=pesquisa_prof("{{csrf_token}}")></input>
-                <div class="CampoProcura"></div>
+                <div class="CampoProcura">
+                    <ul id="list_professores">
+                        
+                    </ul>
+                </div>
 
             </div>
 
@@ -118,17 +122,17 @@
                     
                     <a class="professor" href="{% url 'materia' 'FGA0120' 'RHANDER VIANA' %}" onclick="reproduzirProfessor(this , 1)"> <!--LINK PARA ACESSAR A PÁGINA MATÉRIA USANDO O O PROFESSOR_1-->
                     <!-- ARQUIVO JS REPRODUZIR NOME DO PROFESSOR PARA A PÁGINA DE MATERIAS-->
-                        <div id="box"><img src="../img/usuario.png"></div>
+                        <div id="box"><img src="{% static "image/usuario.png" %}"></div>
                         <h2 class="professores" id="professor_1"> Jason Bourne</h2>
                     </a>
 
                     <a class="professor" onclick="reproduzirProfessor(this , 2)" href="../html/Materia.html"> <!--LINK PARA ACESSAR A PÁGINA MATÉRIA  USANDO O O PROFESSOR_2-->
-                        <div id="box"><img src="../img/usuario.png"></div>
+                        <div id="box"><img src="{% static "image/usuario.png" %}"></div>
                         <h2 class="professores" id="professor_2"> Jorgin dos teclados</h2>
                     </a>
 
                     <a class="professor" onclick="reproduzirProfessor(this , 'nada')"> 
-                        <div id="box"><img src="../img/usuario.png"></div>
+                        <div id="box"><img src="{% static "image/usuario.png" %}"></div>
                         <h2 class="professores" id="professor_nada"> A designar...</h2>
                     </a>
 
