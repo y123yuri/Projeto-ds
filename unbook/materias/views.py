@@ -44,3 +44,25 @@ def materia(request, codigo, nome):
     context = {}
     context["turma"] = obj_turma
     return render(request, "materia.html", context)
+
+def professor(request, nome):
+    ob_prof = Professor.objects.get(nome=nome)
+    lista_turma = Turma.objects.filter(professor=ob_prof)
+    context = {}
+    context["lista_turmas"] = list(lista_turma)
+    context["nome"] = nome
+    aval_1 = 0
+    aval_2 = 0
+    aval_3 = 0
+    for turma in lista_turma:
+        aval_1 += turma.avaliação_1
+        aval_2 += turma.avaliação_2
+        aval_3 += turma.avaliação_3
+    
+    context["aval_1"] = aval_1 /len(lista_turma)
+    context["aval_2"] = aval_2 /len(lista_turma)
+    context["aval_3"] = aval_3 /len(lista_turma)
+
+    return render(request, "prof.html", context)
+
+

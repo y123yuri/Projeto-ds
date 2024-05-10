@@ -61,7 +61,7 @@ function pesquisa_prof(csrf_token) {
                 professor_li.appendChild(imagem_professor);
 
 
-                professor_li.textContent = lista_resultado[i][0];
+                professor_li.innerHTML = `<a href='professor/${lista_resultado[i][0]}'>${lista_resultado[i][0]}</a>`;
                 professor_li.style.position = "relative"
                 professor_li.style.left = "3em"
 

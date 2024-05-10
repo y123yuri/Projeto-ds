@@ -1,0 +1,15 @@
+<h1>
+{{nome}}
+</h1>
+
+<h2>materias</h2>
+{% for turma in lista_turmas %}
+    {{turma.materia.nome}}<br>
+{% endfor%}
+
+<h2>avaliações</h2>
+<ul>
+    <li>avaliação 1: {{aval_1}}</li>
+    <li>avaliação 2: {{aval_2}}</li>
+    <li>avaliação 3: {{aval_3}}</li>
+</ul>
