@@ -62,7 +62,7 @@ function goBackUnBook(index) {
     console.log(contador);
 
     if (contador == 2) {
-        window.location.href = "../pagina_inicial/UnBook.html";
+        window.location.href = "/UnBook.html";
         contador = 0;
     }
 
