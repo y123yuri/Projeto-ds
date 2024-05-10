@@ -117,7 +117,7 @@ ul {
 
   color: white;
   font-size: 2em;
-  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-width: 1px;
   cursor: pointer;
   text-align: center;
   padding: 1rem 2rem;

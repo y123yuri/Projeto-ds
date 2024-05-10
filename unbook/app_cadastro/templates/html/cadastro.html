@@ -53,20 +53,20 @@
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
 
-    <button type="submit" value="submit" id="submit" > Entrar </button>
+    <div id="submit" onclick= verifica() > Entrar 
 
         <div class="loading">
           <div class="progress"></div>
         </div>
 
-    </button>
+      </div>
     
     <div>{{request.session.erro}}</div>
 
 
   </form>
 
-  <script src="{% static "js/confirma.js" %}"></script>
+  <script src="{% static "js/confirma_(Cadastro.html).js" %}"></script>
 </body>
 
 </html>
