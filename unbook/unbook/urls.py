@@ -20,7 +20,7 @@ from app_cadastro import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('UnBook', include('materias.urls')),
+    path('', include('materias.urls')),
     path('cadastro/', include('app_cadastro.urls')),
 
 ]
