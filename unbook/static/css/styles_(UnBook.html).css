@@ -334,6 +334,9 @@ div .janela_pesquisa {
     list-style-type: none;
 }
 
+.lista_professores:hover {
+    color:#008940;
+}
 
 /* FIM DA JANELA */
 
