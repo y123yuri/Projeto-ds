@@ -30,3 +30,9 @@ def sucesso(request):
 
 def login(request):
     return render(request, "html/Login.html")
+
+def esqueceu(request):
+    return render (request, "html/Nova_senha_email.html")
+    
+def novaSenha(request):
+    return render(request, "html/Nova_senha.html")
