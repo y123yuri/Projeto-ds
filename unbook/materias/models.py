@@ -49,7 +49,7 @@ class Materia(models.Model):
     carga_horaria = models.CharField(max_length=10)
     objects = MateriaManager()
     def __str__(self):
-        return self.codigo + " " + self.nome
+        return self.codigo + " " + self.nome + " " + self.carga_horaria
     
 
 
