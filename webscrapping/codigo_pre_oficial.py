@@ -98,7 +98,7 @@ while True: # Cria listas de todos os codigos, materias, carga horario (separada
     if len(dados_sigaa[contador_3]) == 0:
         break
     else:
-        if len(dados_sigaa[contador_3])== 7:     
+        if len(dados_sigaa[contador_3])== 7:
             pass
             #print(f'Semestre:{dados_sigaa[contador2]}')
             codigo_lista.append('')
