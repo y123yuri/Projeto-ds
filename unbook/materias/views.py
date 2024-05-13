@@ -4,7 +4,7 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'UnBook.html', {})
+    return render(request, 'UnBook.html')
 
 def somos(request):
     return render(request, 'Quem_somos.html')
