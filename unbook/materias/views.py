@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import *
+import time
 
 # Create your views here.
 
@@ -11,8 +12,14 @@ def somos(request):
 
 def pesquisa(request):
     termo_pesquisa = request.POST['termo_pesquisa']
-    print(Professor.objects.pesquisa(termo_pesquisa))
+    start_time = time.time()
     obj_lista = Professor.objects.pesquisa(termo_pesquisa)
+    for obj in obj_lista:
+        turma = Turma.objects.filter(professor=obj)
+        if not turma:
+            obj_lista.remove(obj)
+    print("--- %s seconds ---" % (time.time() - start_time))
+    
     resposta = ""
     if len(obj_lista)>0:
         resposta = obj_lista[0].nome+','+obj_lista[0].foto
@@ -23,16 +30,16 @@ def pesquisa(request):
 
 def pesquisa_materias(request):
     termo_pesquisa_materias = request.POST['termo_pesquisa_materias']
-    print(Materia.objects.pesquisa(termo_pesquisa_materias))
     obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materias)
+    print(obj_lista_materia)
     resposta = ''
 
     if len(obj_lista_materia)>0:
-        resposta = obj_lista_materia[0].codigo+','+obj_lista_materia[0].nome+','+obj_lista_materia[0].carga_horaria
+        resposta = obj_lista_materia[0].codigo+','+obj_lista_materia[0].nome
         if (len(obj_lista_materia)>1):
             for obj in obj_lista_materia[1:]:
-                resposta += ";"+obj.codigo+','+obj.nome+';'+obj.carga_horaria
-            
+                resposta += ";"+obj.codigo+','+obj.nome
+    
     return HttpResponse(resposta)
 
 def materia(request, codigo, nome):

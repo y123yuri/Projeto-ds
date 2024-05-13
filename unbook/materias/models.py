@@ -44,12 +44,11 @@ class Professor(models.Model):
 
 
 class Materia(models.Model):
-    codigo = models.CharField(max_length=9, primary_key=True)
+    codigo = models.CharField(max_length=15, primary_key=True)
     nome = models.CharField(max_length=100)
-    carga_horaria = models.CharField(max_length=10)
     objects = MateriaManager()
     def __str__(self):
-        return self.codigo + " " + self.nome + " " + self.carga_horaria
+        return self.codigo + " " + self.nome + " "
     
 
 
@@ -63,6 +62,8 @@ class Comentario(models.Model):
 class Turma(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)
     materia = models.ForeignKey("Materia", on_delete=models.CASCADE)
+    turno = models.CharField(max_length=30, default="NA")
+    local = models.CharField(max_length=30, default="NA")
     # comentario = models.ForeignKey(Comentario)
     avaliação_1 = models.FloatField()
     avaliação_2 = models.FloatField()
