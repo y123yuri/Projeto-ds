@@ -152,9 +152,9 @@ ul {
 }
 
 .spans_required {
+  display:none;
   color: #ff0000;
   margin-left: 3em;
-  display:none;
 }
 
 @media screen and (max-width:828px){
