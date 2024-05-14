@@ -43,7 +43,8 @@ def materia(request, codigo, nome):
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
     context = {}
     context["turma"] = obj_turma
-    return render(request, "materia.html", context)
+
+    return render(request, "Materia.html", context)
 
 def professor(request, nome):
     ob_prof = Professor.objects.get(nome=nome)
@@ -63,6 +64,6 @@ def professor(request, nome):
     context["aval_2"] = aval_2 /len(lista_turma)
     context["aval_3"] = aval_3 /len(lista_turma)
 
-    return render(request, "prof.html", context)
+    return render(request, "Professor.html", context)
 
 

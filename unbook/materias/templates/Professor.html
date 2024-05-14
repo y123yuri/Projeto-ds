@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
     <title>Matéria</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +18,12 @@
     <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS)-->
 
 
-    <link rel="stylesheet" href="../css/styles_(Professor.html).css"> <!-- LINK PARA PARA CSS DA PÁGINA-->
+    <link rel="stylesheet" href="{% static "css/styles_(Professor.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
 </head>
 
 <body>
 
-    <a href="../html/UnBook.html"><img class="UnBook_logo_mini" src="../img/UnBook_loguinho.png"></a>
+    <a href="../"><img class="UnBook_logo_mini" src=" {% static "image/UnBook_loguinho.png"%} "></a>
     <!-- LINK PARA VOLTAR A UNBOOK--> <!-- UNBOOK LOGUINHO BRANCO-->
 
     <div class="boxes">
@@ -140,7 +143,7 @@
             
           <div style="position: relative; top: 10%;">
             <img id="foto_professor" src="" alt="">
-            <h1 id="Professor"> Prof fulanim de tal</h1>
+            <h1 id="Professor"> Prof. {{nome}}</h1>
             <h3 id="Faculdade"> Faculdade do Gama</h3>
 
             <h1 id="Avaliacao_professor"> Avaliação Geral
@@ -192,6 +195,6 @@
 
 <!-- LINK PARA ARQUIVOS JS-->
 <!-- <script src="../js/materia_(materia.html).js"></script> -->
-<script src="../js/avaliacao_de_estrelas_(Matéria.html).js"></script>
+<script src="{% static "js/avaliacao_de_estrelas_(Matéria.html).js" %}"></script>
 
 </html>

@@ -1,0 +1,378 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, #0C36A1, #008940);
+    width: 100%;
+    background-attachment: fixed;
+
+    height: 150vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+}
+
+ul {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* inicio das paginas */
+/*PAGINA1*/
+
+.UnBook_logo_mini a {
+    display: block;
+    text-decoration: none;
+
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    color: whitesmoke;
+
+    margin-left: 30px;
+    top: 30px;
+}
+
+.UnBook_logo_mini {
+    display: inline;
+
+    width: 25em;
+    height: auto;
+
+    position: relative;
+
+    margin-left: 10px;
+    top: 20px;
+}
+
+.boxes {
+    display: flex;
+}
+
+.box1_2 {
+    position: relative;
+
+    margin-right: 3em;
+    margin-left: 3em;
+    margin-top: 3em;
+
+    width: 30%;
+    height: auto;
+
+    display: block;
+}
+
+#box1 {
+    position: relative;
+
+    margin-right: 3em;
+
+    width: 100%;
+    height: 32em;
+    padding: 1em;
+
+    display: block;
+
+    background-color: #CDE4DF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+#avaliacao {
+    margin-top: 1em;
+    height: 25em;
+}
+
+.CampoFalado1 {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.CampoFalado2 {
+    color: black;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.avaliacao {
+    margin-top: -0.75em;
+}
+
+.rating{
+	border: none;
+	float: left;
+}
+
+.rating > input{
+	display: none;
+}
+
+.rating > label:before{
+	content: '\f005';
+	font-family: FontAwesome;
+	margin: 5px;
+	font-size: 2.5em;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.rating > .half:before{
+	content: '\f089';
+	position: absolute;
+	cursor: pointer;
+}
+
+
+.rating > label{
+	color: #777D89;
+	float: right;
+	cursor: pointer;
+} /* ESTRELA CINZA */
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover ~ label{
+	color: #ffd000;
+} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label{
+	color: #ffd000;
+} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
+
+
+#notas_Dificuldade , #notas_Monitoria , #notas_Dúvidas {
+    font-size: 1em;
+    position: relative;
+    display: block;
+
+    height: 1em;
+}
+
+#Postar {
+    position: relative;
+    width: 100%;
+
+    bottom: 0.5em;
+    display: block;
+    text-align: center;
+
+    color: #0B4C8C;
+    cursor: pointer;
+    top: 1em;
+
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
+#Postar:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 1px #0C36A1;
+}
+
+#Postar:active {
+    transform: scale(0.95);
+}
+
+/* BOX 2 */
+
+#box2 {
+    position: relative;
+    top: 4em;
+    margin-right: 3em;
+
+    width: 100%;
+    height: 20em;
+    padding: 1em;
+
+    display: block;
+
+    background-color: #CDE4DF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+.CampoFalado1_box2 {
+    color: black;
+    font-size: 1.5em;
+    text-align: center;
+
+}
+
+#pontos_fortes {
+    color: black;
+    font-size: 1.5em;
+
+
+    position: relative;
+    top: 1em;
+    left: 2em;
+    text-align: left;
+}
+
+#box3 {
+    position: relative;
+
+    margin-right: 3em;
+    margin-top: 3em;
+
+    width: 100%;
+    height: 130vh;
+
+    display: block;
+    background-color: #CDE4DF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+#foto_professor {
+    width: 16em;
+    height: 20em;
+
+    position: relative;
+    display: inline-block;
+
+    left: 5%;
+}
+
+#Professor {
+    display: inline-block;
+    font-size: 2em;
+    position: relative;
+    margin-top: 0.5em;
+    top: -5em;
+    left: 6%;
+}
+
+#Faculdade {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 400;
+    
+
+    position: relative;
+    top: -7em;
+    left: 30%;
+    
+}
+
+#Avaliacao_professor {
+    display: block;
+    font-size: 1.5em;
+    position: relative;
+
+    margin-top: 0.5em;
+    text-align: left;
+
+    top: -6.5em;
+    left: 10%;
+}
+
+.rating_professor{
+	border: none;
+	float: left;
+
+    display: block;
+    position: relative;
+    top:1.5em;
+    border: none;
+    left: 19%;
+    z-index: 2;
+}
+
+.rating_professor > input{
+	display: none;
+}
+
+.rating_professor > label:before{
+	content: '\f005';
+	font-family: FontAwesome;
+	margin: 5px;
+	font-size: 1.5em;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.rating_professor > .half:before{
+	content: '\f089';
+	position: absolute;
+	cursor: pointer;
+}
+
+
+.rating_professor > label{
+	color: #777D89;
+	float: right;
+	cursor: pointer;
+} /* ESTRELA CINZA */
+
+.rating_professor > input:checked ~ label,
+.rating_professor:not(:checked) > label:hover, 
+.rating_professor:not(:checked) > label:hover ~ label{
+	color: #ffd000;
+} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
+
+.rating_professor > input:checked + label:hover,
+.rating_professor > input:checked ~ label:hover,
+.rating_professor > label:hover ~ input:checked ~ label,
+.rating_professor > input:checked ~ label:hover ~ label{
+	color: #ffd000;
+} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
+
+#notas_Professor{
+    font-size: 1em;
+    position: relative;
+    width: auto;
+    height: 1em;
+    left: 0.5em;
+}
+
+.materias {
+    display: block;
+    position: relative;
+    text-align: center;
+
+    color: whitesmoke;
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: #0B4C8C;
+    border-radius: 25px;
+    box-shadow: 0 5px 1px #093a6c;
+    padding: 1em 0.5em;
+    margin: auto;
+    margin-bottom: 1em;
+
+    cursor: pointer;
+    width: 50%;
+    height: auto;
+
+    transition: all 0.3s ease;
+}
+
+.materias:hover {
+    transform: scale(1.05);
+}
+
+.materias:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 1px #0B4C8C;
+}
