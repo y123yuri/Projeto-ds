@@ -32,7 +32,7 @@ function proximo() {
     if (currentIndex === h2Elements.length-1){
         button.textContent = 'Voltar';
         button.addEventListener('click', () => {
-            window.location.href = "/UnBook"
+            window.location.href = "../"
         })
         
     }

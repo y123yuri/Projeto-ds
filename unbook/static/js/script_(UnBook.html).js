@@ -124,8 +124,12 @@ function pesquisa_materia(csrf_token) {
                     e.preventDefault();
                     abrirModal_Materia2(lista_resultado_materia[i][1]);
                     
-                    var sla = "sla"
-                    console.log(sla)
+                    console.log(lista_resultado_materia[i][0])
+                    console.log(lista_resultado_materia[i][1])
+
+                        var professor1 = document.getElementById('professor_1_materia')
+                        professor1.href = 'materia/' + lista_resultado_materia[i][0] + '/' + lista_resultado_materia[i][1];
+                
                 })
 
 
@@ -186,7 +190,10 @@ function abrirModal_Materia2(textoMateria){
 document.addEventListener('click', e => {
     if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') && !e.target.closest('.janela_materia2') && 
     !e.target.closest('.CampoProcura #list_professores li') && !e.target.classList.contains('list')) {
-
+        var input1 = document.getElementById('searchbar_prof')
+        var input2 = document.getElementById('searchbar_materia')
+        input1.value = '';
+        input2.value = '';
         fecharModal();
     }
 });

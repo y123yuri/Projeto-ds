@@ -26,14 +26,15 @@ var button = document.getElementById('submit')
 button.addEventListener('click', verifica())
 
 //VERIFICAR TODOS OS CAMPOS E DEPOIS ENVIAR OS DADOS - FUNÇÃO PRINCIPAL
-function verifica() {
-    console.log('opa eu estou aqui')
-    nomeValidade();
-    emailValidade();
-    senhaValidade();
-    confirmasenhaValidade();
-    Enviar();
-}
+var button = document.getElementById('submit')
+document.addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log('cheguei')
+  nomeValidade();
+  emailValidade();
+  senhaValidade();
+  confirmasenhaValidade();
+})
 
 //VERIFICAR NOME (TALVEZ COM ERRO - ANALISAR)
 function nomeValidade() {

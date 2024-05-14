@@ -29,6 +29,9 @@ def sucesso(request):
         return redirect("../")
     return render(request, "html/cadastro_sucesso.html", context)
 
+def voltar_cadastro(request):
+    return render(request, "html/UnBook.html")
+
 def login(request):
     return render(request, "html/Login.html")
 
