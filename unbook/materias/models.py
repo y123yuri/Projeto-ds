@@ -1,25 +1,26 @@
 from django.db import models
 
 # Create your models here.
+"karina"
+"ar"
 
 class ProfessorManager(models.Manager):
     def pesquisa(self, termo_busca):
         encontrado = []
-        for obj in super().get_queryset():
-            lista_nome = obj.nome.split()
+        for obj in super().get_queryset().values_list('nome', flat=True):
+            lista_nome = obj.split()
             for nome in lista_nome:
-                index = obj.nome.index(nome)
-                if obj.nome[index:index+len(termo_busca)] == termo_busca:
+                index = obj.index(nome)
+                if obj[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
                     break
-            
         return encontrado
 
 
 class MateriaManager(models.Manager):
      def pesquisa(self, termo_busca):
         encontrado = []
-        for obj in super().get_queryset():
+        for obj in super().get_queryset().iterator():
             lista_materia = obj.nome.split()
             for nome in lista_materia:
                 index = obj.nome.index(nome)
@@ -47,6 +48,7 @@ class Materia(models.Model):
     codigo = models.CharField(max_length=15, primary_key=True)
     nome = models.CharField(max_length=100)
     objects = MateriaManager()
+
     def __str__(self):
         return self.codigo + " " + self.nome + " "
     

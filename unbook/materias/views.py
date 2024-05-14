@@ -13,11 +13,16 @@ def somos(request):
 def pesquisa(request):
     termo_pesquisa = request.POST['termo_pesquisa']
     start_time = time.time()
-    obj_lista = Professor.objects.pesquisa(termo_pesquisa)
+    str_lista = Professor.objects.pesquisa(termo_pesquisa)
+    obj_lista = []
+    for nome in str_lista:
+        obj_lista.append(Professor.objects.get(nome=nome))
+    
     for obj in obj_lista:
         turma = Turma.objects.filter(professor=obj)
         if not turma:
             obj_lista.remove(obj)
+    print(f'termo de busca:{termo_pesquisa}')
     print("--- %s seconds ---" % (time.time() - start_time))
     
     resposta = ""

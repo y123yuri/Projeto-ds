@@ -35,8 +35,6 @@
 
         <div class="botao_arrasta">
             <h2><a href="#search">Iniciar pesquisa</a></h2> <!--LINK PARA ACESSAR A BARRA DE PESQUISA-->
-
-
         </div>
 
     </section>
@@ -71,7 +69,7 @@
             <div class="janela_pesquisa" id="janela_professor">
 
                 <h1 class="CampoFalado"> Informe o nome do professor:</h1>
-                <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeydown=pesquisa_prof("{{csrf_token}}")></input>
+                <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeyup=pesquisa_prof("{{csrf_token}}")></input>
                 <div class="CampoProcura">
                     <ul id="list_professores">
                         

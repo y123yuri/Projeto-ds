@@ -19,6 +19,7 @@ def sucesso(request):
     context = {}
     if 'erro' in request.session:
         del request.session['erro']
+    
     if f.is_valid():
         print(type(f), f.cleaned_data, type(obj))
         context["resposta"] = f.cleaned_data

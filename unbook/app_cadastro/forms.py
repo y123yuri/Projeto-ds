@@ -3,6 +3,7 @@ from django import forms
 from .models import *
 from django.utils.translation import gettext_lazy as _
 
+
 class CadastroForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CadastroForm, self).__init__(*args, **kwargs)
@@ -14,4 +15,4 @@ class CadastroForm(ModelForm):
     class Meta:
         model = Cadastro
         fields = ['nome_usuario', 'email', 'senha']
-        
+
