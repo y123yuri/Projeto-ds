@@ -119,7 +119,7 @@ function pesquisa_materia(csrf_token) {
                 materias.style.marginBottom = "1.5em"
 
                 var link_materias = document.createElement("a")
-                link_materias.textContent = lista_resultado_materia[i][1];
+                link_materias.textContent = lista_resultado_materia[i][1] +" ("+lista_resultado_materia[i][0]+")";
                 link_materias.addEventListener('click', function(e) {
                     e.preventDefault();
                     abrirModal_Materia2(lista_resultado_materia[i][1]);
