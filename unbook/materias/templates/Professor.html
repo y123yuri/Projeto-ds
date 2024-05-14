@@ -142,7 +142,7 @@
         <div id="box3">
             
           <div style="position: relative; top: 10%;">
-            <img id="foto_professor" src="" alt="">
+            <img id="foto_professor" src="{{foto}}" alt="">
             <h1 id="Professor"> Prof. {{nome}}</h1>
             <h3 id="Faculdade"> Faculdade do Gama</h3>
 
@@ -179,10 +179,10 @@
           <hr style="position:relative; top:15%">
   
           <div style="position: relative; top: 20%; text-align: center;">
-            <a class="materias"> Matéria 1</a>
-            <a class="materias"> Matéria 2</a>
-            <a class="materias"> Matéria 3</a>
-          </div>
+            {% for turma in lista_turmas %}
+            <a class="materias" href="../../materia/{{turma.materia.codigo}}/{{turma.professor.nome}}"> {{turma.materia.codigo}} {{turma.materia.nome}}</a>
+            {% endfor %}
+        </div>
 
         </div>
 

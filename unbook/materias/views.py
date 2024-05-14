@@ -56,7 +56,7 @@ def materia(request, codigo, nome):
     context = {}
     context["turma"] = obj_turma
 
-    return render(request, "Materia.html", context)
+    return render(request, "materia.html", context)
 
 def professor(request, nome):
     ob_prof = Professor.objects.get(nome=nome)
@@ -64,6 +64,7 @@ def professor(request, nome):
     context = {}
     context["lista_turmas"] = list(lista_turma)
     context["nome"] = nome
+    context["foto"] = ob_prof.foto
     aval_1 = 0
     aval_2 = 0
     aval_3 = 0
