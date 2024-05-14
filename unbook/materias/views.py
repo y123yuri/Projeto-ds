@@ -37,6 +37,7 @@ def pesquisa_materias(request):
     termo_pesquisa_materias = request.POST['termo_pesquisa_materias']
     obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materias)
     print(obj_lista_materia)
+    print(termo_pesquisa_materias)
     resposta = ''
 
     if len(obj_lista_materia)>0:

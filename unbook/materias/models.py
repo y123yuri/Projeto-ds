@@ -1,17 +1,17 @@
 from django.db import models
+from unidecode import unidecode
 
 # Create your models here.
-"karina"
-"ar"
 
 class ProfessorManager(models.Manager):
     def pesquisa(self, termo_busca):
         encontrado = []
         for obj in super().get_queryset().values_list('nome', flat=True):
+            nome_sem_acento = unidecode(obj)
             lista_nome = obj.split()
             for nome in lista_nome:
                 index = obj.index(nome)
-                if obj[index:index+len(termo_busca)] == termo_busca:
+                if obj[index:index+len(termo_busca)] == termo_busca or nome_sem_acento[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
                     break
         return encontrado
@@ -19,12 +19,14 @@ class ProfessorManager(models.Manager):
 
 class MateriaManager(models.Manager):
      def pesquisa(self, termo_busca):
+        
         encontrado = []
         for obj in super().get_queryset().iterator():
+            nome_sem_acento = unidecode(obj.nome)
             lista_materia = obj.nome.split()
             for nome in lista_materia:
                 index = obj.nome.index(nome)
-                if obj.nome[index:index+len(termo_busca)] == termo_busca:
+                if obj.nome[index:index+len(termo_busca)] == termo_busca or nome_sem_acento[index:index+len(termo_busca)] == termo_busca:
                     encontrado.append(obj)
                     break
                 elif obj.codigo[:len(termo_busca)] == termo_busca:
