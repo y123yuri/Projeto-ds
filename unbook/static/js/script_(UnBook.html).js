@@ -123,6 +123,7 @@ function pesquisa_materia(csrf_token) {
                 link_materias.addEventListener('click', function(e) {
                     e.preventDefault();
                     abrirModal_Materia2(lista_resultado_materia[i][1]);
+                    abrir_turmas(lista_resultado_materia[i][0], csrf_token);
                     
                     console.log(lista_resultado_materia[i][0])
                     console.log(lista_resultado_materia[i][1])
@@ -157,6 +158,96 @@ function pesquisa_materia(csrf_token) {
         }
 
     })
+}
+
+function abrir_turmas(materia_codigo, csrf_token){
+    $.ajax({
+        type: "POST",
+        url: "pesquisa_turma/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            codigo: materia_codigo 
+        },
+        success: function (response) {
+            console.log(response)
+            lista_obj_turma = response.split(";")
+            lista_resultado_turma = []
+            for (i = 0; i < lista_obj_turma.length; i++) {
+                lista_resultado_turma.push(lista_obj_turma[i].split(','))
+            }; //percorrer todos e separar em arrays
+            console.log(lista_resultado_turma)
+            scroll_div = document.getElementById('scroll')
+            scroll_div.innerHTML = ""
+            for (let i=0; i<lista_resultado_turma.length;i++){
+                let professor =`display: block;
+
+    position: relative;
+    width: auto;
+    height: auto;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    box-shadow: 0 0 10px black;
+    margin: 1em;
+    padding: 1em 1em;
+    text-decoration: none;
+
+    transition: all 0.3s ease-in-out;`
+                let classe_professores = `display: inline-block;
+                
+                position: relative;
+                top: -1.8em;
+                margin-left: 4em;
+                font-size:4em;
+                font-weight: 600;
+                font-size: 1.2em;
+                color: black;
+                text-align:center;
+                width:90%;`
+                let box_style = `"display: inline-block;
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                background-color: #008940;
+                width: 5em;
+                height: 5em;"`
+                let box_img = `"display: block;
+                    
+                    width: 5em;
+                    height: 5em;
+                    position: relative;
+  top: 0.8em;
+  left: 0.8em;"
+                    `
+                ancora = document.createElement("a")
+                texto = document.createElement("p")
+                texto.textContent = `${lista_resultado_turma[i][1]}`
+                texto.style = classe_professores
+
+
+                ancora.innerHTML = `<img style=${box_img} src="${lista_resultado_turma[i][0]}">`
+                ancora.appendChild(texto)
+
+
+                ancora.href = `../materia/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
+                ancora.style = professor
+                
+                ancora.addEventListener("mouseenter", function () {
+                    // Adicionar a classe 'hover' quando o mouse entrar no link
+                    this.style.transform = "scale(1.01)"
+                });
+
+                ancora.addEventListener("mouseleave", function () {
+                    // Remover a classe 'hover' quando o mouse sair do link
+                    this.style.transform = "scale(1)"
+                });
+
+                scroll_div.appendChild(ancora)
+
+            } 
+        }
+    })
+
 }
 
 //FUNÇÕES PARA ABRIR MODAIS

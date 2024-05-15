@@ -80,4 +80,15 @@ def professor(request, nome):
 
     return render(request, "Professor.html", context)
 
+def pesquisa_turma(request):
+    codigo = request.POST['codigo']
+    materia = Materia.objects.get(codigo=codigo)
+    lista_turmas = list(Turma.objects.filter(materia=materia))
+    resposta = ''
+    if len(lista_turmas)>0:
+        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo
+        if (len(lista_turmas)>1):
+            for obj in lista_turmas[1:]:
+                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
 
+    return HttpResponse(resposta)

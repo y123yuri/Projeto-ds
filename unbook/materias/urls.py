@@ -10,6 +10,6 @@ urlpatterns = [
     path('pesquisa_materia/', views.pesquisa_materias),
 
     path("professor/<str:nome>", views.professor, name="professor"),
-
+    path('pesquisa_turma/', views.pesquisa_turma),
     path("materia/<str:codigo>/<str:nome>", views.materia, name='materia'),
 ]
