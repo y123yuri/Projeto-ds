@@ -79,8 +79,6 @@ def professor(request, nome):
     context["aval_3"] = aval_3 /len(lista_turma)
 
     return render(request, "Professor.html", context)
-
-<<<<<<< HEAD
 def pesquisa_turma(request):
     codigo = request.POST['codigo']
     materia = Materia.objects.get(codigo=codigo)
