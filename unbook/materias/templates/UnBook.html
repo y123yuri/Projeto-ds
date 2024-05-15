@@ -69,7 +69,7 @@
             <div class="janela_pesquisa" id="janela_professor">
 
                 <h1 class="CampoFalado"> Informe o nome do professor:</h1>
-                <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeyup=pesquisa_prof("{{csrf_token}}")></input>
+                <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeyup=pesquisa_prof("{{csrf_token}}") autocomplete="off"></input>
                 <div class="CampoProcura">
                     <ul id="list_professores">
                         
@@ -81,7 +81,7 @@
             <div class="janela_pesquisa" id="janela_materia">
 
                 <h1 class="CampoFalado">Informe a matéria:</h1>
-                <input class="barra_pesquisa" type="text" id="searchbar_materia" placeholder="pesquisar" onkeydown=pesquisa_materia("{{csrf_token}}")></input>
+                <input class="barra_pesquisa" type="text" id="searchbar_materia" placeholder="pesquisar" onkeydown=pesquisa_materia("{{csrf_token}}") autocomplete="off"></input>
 
                 <div class="CampoProcura">
                     <ul id="list_materias"> 

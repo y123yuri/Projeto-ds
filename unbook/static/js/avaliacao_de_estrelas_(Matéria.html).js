@@ -3,7 +3,7 @@
 let avaliacoes = {
     'Dificuldade': '',
     'Monitoria': '',
-    'Dúvidas': ''
+    'Didatica': ''
 };
 
 // Função para verificar se todas as avaliações foram feitas
@@ -21,7 +21,7 @@ function reiniciarAvaliacoes() {
     avaliacoes = {
         'Dificuldade': '',
         'Monitoria': '',
-        'Dúvidas': ''
+        'Didatica': ''
     };
 }
 

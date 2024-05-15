@@ -2,12 +2,14 @@
 var fzr_avaliacao = document.getElementById('Fazer_avaliacao');
 var fundoblur = document.getElementById('fundo_blur');
 var modal = document.getElementById('modal_avaliacao');
+var scroll_x = document.getElementById('scroll_modal');
 
 fzr_avaliacao.addEventListener('click', () => {
     fundoblur.style.display = "block";
     fundoblur.classList.add('abrir');
     modal.style.display = "block";
     modal.classList.add('abrir');
+    scroll_x.scrollLeft = 0;
 });
 
 fundoblur.addEventListener('click', (e) => {
@@ -25,7 +27,7 @@ modal.addEventListener('click', (e) => {
 
 // FUNÇÃO PARA RODAR SCROLL
 
-var scroll_x = document.getElementById('scroll_modal');
+
 
 var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
     e.preventDefault()
@@ -45,6 +47,23 @@ var proximo2 = document.getElementById('prox_button_2').addEventListener('click'
 var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
     e.preventDefault()
     scroll_x.scrollBy({left: -540, behavior: "smooth"})
+});
+
+var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+});
+
+var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+});
+
+var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
+    e.preventDefault()
+    alert('avaliacao enviada com sucesso!')
+    fundoblur.style.display = "none";
+    modal.style.display = "none";
 });
 
 
