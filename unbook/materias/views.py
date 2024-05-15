@@ -57,7 +57,7 @@ def materia(request, codigo, nome):
     context = {}
     context["turma"] = obj_turma
 
-    return render(request, "Materia.html", context)
+    return render(request, "materia.html", context)
 
 def professor(request, nome):
     ob_prof = Professor.objects.get(nome=nome)
@@ -79,6 +79,18 @@ def professor(request, nome):
     context["aval_3"] = aval_3 /len(lista_turma)
 
     return render(request, "Professor.html", context)
+def pesquisa_turma(request):
+    codigo = request.POST['codigo']
+    materia = Materia.objects.get(codigo=codigo)
+    lista_turmas = list(Turma.objects.filter(materia=materia))
+    resposta = ''
+    if len(lista_turmas)>0:
+        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo
+        if (len(lista_turmas)>1):
+            for obj in lista_turmas[1:]:
+                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
+    return HttpResponse(resposta)
+
 
 def videos(request, nome,codigo) :
     obj_materia = Materia.objects.get(codigo=codigo)
@@ -110,3 +122,4 @@ def atividades(request, nome,codigo) :
 
     return render(request, "Videos.html", context)
 
+    
