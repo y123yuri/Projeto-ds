@@ -57,7 +57,7 @@ def materia(request, codigo, nome):
     context = {}
     context["turma"] = obj_turma
 
-    return render(request, "materia.html", context)
+    return render(request, "Materia.html", context)
 
 def professor(request, nome):
     ob_prof = Professor.objects.get(nome=nome)
@@ -80,6 +80,7 @@ def professor(request, nome):
 
     return render(request, "Professor.html", context)
 
+<<<<<<< HEAD
 def pesquisa_turma(request):
     codigo = request.POST['codigo']
     materia = Materia.objects.get(codigo=codigo)
@@ -90,5 +91,37 @@ def pesquisa_turma(request):
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
                 resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
-
     return HttpResponse(resposta)
+
+
+def videos(request, nome,codigo) :
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    context = {}
+    context["turma"] = obj_turma
+
+    return render(request, "Videos.html", context)
+
+def resumos(request, nome,codigo) :
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    context = {}
+    context["turma"] = obj_turma
+
+    return render(request, "Livros.html", context)
+
+def atividades(request, nome,codigo) :
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    context = {}
+    context["turma"] = obj_turma
+
+    return render(request, "Videos.html", context)
+
+    

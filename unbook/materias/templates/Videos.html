@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vídeos</title>
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> <!-- LINK PARA FONTE MONSTSERRAT-->
+
+    <link rel="stylesheet" href="{% static "css/styles_(Videos.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
+</head>
+
+<body>
+
+    <div id="fundo_blur"></div> 
+
+    <div id="modal_upload">
+        <h1 id="CampoFaladoModal1"> Upload de links</h1>
+
+        <h2 id="CampoFaladoModal2"> O que é o seu link:</h2>
+        <input class="inputs" id="queLinkéEsse" type="text" placeholder="Tente descrever em um única palavra :)">
+
+        <h2 id="CampoFaladoModal2"> Deposite seu link no campo abaixo:</h2>
+        <input class="inputs" id="poe_links" type="text">
+        <div id="enviar" onclick="enviar()"> Fazer upload </div>
+    </div>
+
+        <a href="../../../"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png"%}"></a>
+        <!-- LINK PARA VOLTAR A UNBOOK--> <!-- UNBOOK LOGUINHO BRANCO-->
+
+        <div class="boxes">
+
+            <div class="box1_2">
+
+                <div id="box1">
+                    <h1 class="CampoFalado1_box1"> Link destinado ao upload de arquivos relacionados a matéria em
+                        questão.
+                        Deixe sua contribuição. </h1>
+                </div>
+
+                <div id="box2">
+                    <label for="Upload" onclick="abrir_modal()"> Upload de arquivos</label>
+                </div>
+
+            </div>
+
+            <div id="box3">
+                <h1 id="Videos"> Vídeos de apoio</h1>
+                <h1 id="Materia" class="CampoFalado1"> Materia: {{turma.materia.nome}}</h1>
+                <h2 id="Prof"> (Prof. {{turma.professor.nome}})</h2>
+
+                <div id="scroll"></div>
+
+
+            </div>
+
+        </div>
+
+</body>
+
+<!-- LINK PARA ARQUIVOS JS-->
+<!-- <script src="../js/materia_(materia.html).js"></script> -->
+<script src="{% static "js/abrir_modais_(Videos.html).js"%}"></script>
+
+</html>

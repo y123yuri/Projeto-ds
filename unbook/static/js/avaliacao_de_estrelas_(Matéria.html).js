@@ -25,26 +25,23 @@ function reiniciarAvaliacoes() {
     };
 }
 
-// Função para postar as avaliações no console
-// Função para postar as avaliações no console
-function PostarAvaliacoes(avaliacoes) {
-    
+
+// Seleciona o botão de postar
+let botaoPostar = document.getElementById("Postar");
+botaoPostar.addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log(' ')
+
     var professor = localStorage.getItem('professor');
     var matéria = localStorage.getItem('materia');
 
-    // Adiciona um ouvinte de evento de clique ao botão de postar
-botaoPostar.addEventListener("click", function() {
-    console.log(' ')
     console.log('Avaliações da matéria:' + matéria + ' regida por' + professor + ':');
     for (let categoria in avaliacoes) {
         console.log(categoria + ': ' + avaliacoes[categoria] + ' estrelas de 5;');
     }
     
-    alert('Avalições enviadas com sucesso (mentira)')
-    reiniciarAvaliacoes();
 });
 
-}
 
 // Seleciona todas as etiquetas de estrelas
 let starLabels = document.querySelectorAll('.rating label');
@@ -70,11 +67,3 @@ starLabels.forEach(function (label) {
     });
 });
 
-// Seleciona o botão de postar
-let botaoPostar = document.getElementById("Postar");
-
-// Adiciona um ouvinte de evento de clique ao botão de postar
-botaoPostar.addEventListener("click", function() {
-    // Chama PostarAvaliacoes quando o botão é clicado
-    PostarAvaliacoes(avaliacoes);
-});
