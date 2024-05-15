@@ -8,12 +8,10 @@
 
 html {
     width: 100%;
-    height: 100%;
+    height: 130vh;
     background-image: linear-gradient(135deg, #0C36A1, #008940);
-    width: 100%;
     background-attachment: fixed;
 
-    height: 150vh;
     scroll-behavior: smooth;
 }
 
@@ -33,6 +31,272 @@ ul {
 
 /* inicio das paginas */
 /*PAGINA1*/
+
+/* INICIO MODAL AVALIACAO */
+
+#fundo_blur {
+    width: 100%;
+    height: 150vh;
+    position: fixed;
+
+    display: none;
+    background-color: hsla(0, 0%, 0%, 0.8);
+    backdrop-filter: blur(50px);
+    z-index: 1;
+}
+
+.CampoFalado1_modal {
+    color: black;
+    display: block;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.CampoFalado2_modal {
+    color: black;
+    text-align: center;
+    display: block;
+
+
+    position: relative;
+    top: 1.5em;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.CampoFalado3_modal {
+
+    display: block;
+    color: #50545c;
+    text-align: center;
+
+    position: relative;
+
+    top: 3.5em;
+
+    margin: 0 5em;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+#boxes_modal {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    margin: 0 2.5em;
+
+    width: 100em;
+    height: 24em;
+    overflow-y: hidden;
+}
+
+#modal_avaliacao {
+    position: fixed;
+    display: none;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    padding: 0em 1em 2em 1em;
+    width: 40em;
+    height: 30em;
+    background-color: #CDE4DF;
+    border-radius: 25px;
+    box-shadow: 0 0 10px black;
+    z-index: 2;
+    left: 30%;
+    top: 20%;
+}
+
+#scroll_modal {
+    display: block;
+    position: relative;
+    width: 38em;
+    height: auto;
+    background-color: #b1c5c0;
+    border-radius: 15px;
+    overflow-x: hidden;
+}
+
+.boxes_modal {
+    display: block;
+    position: relative;
+    margin: 0.5em 3em;
+    width: 100%;
+    height: 22em;
+    background-color: #CDE4DF;
+    border-radius: 25px;
+    box-shadow: 0 0 10px black;
+    z-index: 3;
+}
+
+#box_modal_1 .espaco_buttons {
+    display: flex;
+    justify-content: flex-end;
+    /* Ajustado para alinhar os itens no final (lado direito) */
+    position: relative;
+    width: 100%;
+    height: 4em;
+    top: 12em;
+    text-align: center;
+}
+
+#box_modal_2 .espaco_buttons {
+    display: flex;
+    justify-content: space-between;
+    /* Distribui os elementos igualmente entre si */
+    position: relative;
+    width: 100%;
+    height: 4em;
+    top: 12em;
+    text-align: center;
+}
+
+#box_modal_3 .espaco_buttons {
+    display: flex;
+    justify-content: flex-start;
+    /* Ajustado para alinhar os itens no início (lado esquerdo) */
+    position: relative;
+    width: 100%;
+    height: 4em;
+    top: 12em;
+    text-align: center;
+}
+
+
+.prox_button,
+.back_button {
+    display: inline-block;
+    font-size: 1.5em;
+    background-color: #0B4C8C;
+    border-radius: 15px;
+    color: whitesmoke;
+    width: 7em;
+    height: 2em;
+    text-align: center;
+    z-index: 10;
+    padding: 0.5em 1em;
+    position: relative;
+    top: -2.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+    /* Espaçamento entre os botões */
+}
+
+.prox_button:hover,
+.back_button:hover {
+    transform: scale(1.05);
+}
+
+.prox_button:active,
+.back_button:active {
+    transform: scale(0.95);
+}
+
+.rating_modal {
+    position: relative;
+    display: block;
+
+    left: 6em;
+    top: 5em;
+
+    padding: 0.5em 0.5em;
+    background-color: #0000002a;
+
+    border: solid 1.5px #0000002a;
+    float: left;
+}
+
+.rating_modal>input {
+    display: none;
+}
+
+.rating_modal>label:before {
+    content: '\f005';
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 2.5em;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rating_modal>.half:before {
+    content: '\f089';
+    position: absolute;
+    cursor: pointer;
+}
+
+
+.rating_modal>label {
+    color: #777D89;
+    float: right;
+    cursor: pointer;
+}
+
+/* ESTRELA CINZA */
+
+.rating_modal>input:checked~label,
+.rating_modal:not(:checked)>label:hover,
+.rating_modal:not(:checked)>label:hover~label {
+    color: #ffd000;
+}
+
+/* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
+
+.rating_modal>input:checked+label:hover,
+.rating_modal>input:checked~label:hover,
+.rating_modal>label:hover~input:checked~label,
+.rating_modal>input:checked~label:hover~label {
+    color: #ffd000;
+}
+
+/* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
+
+
+#notas_Dificuldade,
+#notas_Monitoria,
+#notas_Dúvidas {
+    font-size: 1em;
+    position: relative;
+    display: block;
+    height: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FIM MODAL AVALIACAO */
+
 
 .UnBook_logo_mini a {
     display: block;
@@ -115,52 +379,40 @@ ul {
     margin-top: -0.75em;
 }
 
-.rating{
-	border: none;
-	float: left;
+.rating {
+    border: none;
+    float: left;
 }
 
-.rating > input{
-	display: none;
+.rating>input {
+    display: none;
 }
 
-.rating > label:before{
-	content: '\f005';
-	font-family: FontAwesome;
-	margin: 5px;
-	font-size: 2.5em;
-	display: inline-block;
-	cursor: pointer;
+.rating>label:before {
+    content: '\f005';
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 2.5em;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.rating > .half:before{
-	content: '\f089';
-	position: absolute;
-	cursor: pointer;
+.rating>.half:before {
+    content: '\f089';
+    position: absolute;
+    cursor: pointer;
 }
 
 
-.rating > label{
-	color: #777D89;
-	float: right;
-	cursor: pointer;
-} /* ESTRELA CINZA */
+.rating>label {
+    color: #777D89;
+    float: right;
+    cursor: pointer;
+}
 
-.rating > input:checked ~ label,
-.rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label{
-	color: #ffd000;
-} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label{
-	color: #ffd000;
-} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
-
-
-#notas_Dificuldade , #notas_Monitoria , #notas_Dúvidas {
+#notas_Dificuldade,
+#notas_Monitoria,
+#notas_Dúvidas {
     font-size: 1em;
     position: relative;
     display: block;
@@ -168,7 +420,7 @@ ul {
     height: 1em;
 }
 
-#Postar {
+#Fazer_avaliacao {
     position: relative;
     width: 100%;
 
@@ -184,12 +436,12 @@ ul {
     transition: all 0.3s ease;
 }
 
-#Postar:hover {
+#Fazer_avaliacao:hover {
     transform: scale(1.05);
     text-shadow: 0 0 1px #0C36A1;
 }
 
-#Postar:active {
+#Fazer_avaliacao:active {
     transform: scale(0.95);
 }
 
@@ -218,14 +470,6 @@ ul {
 
 }
 
-#percent {
-    color: black;
-    font-size: 4em;
-    position: relative;
-    top: 1em;
-    text-align: center;
-}
-
 #box3 {
     position: relative;
 
@@ -233,12 +477,23 @@ ul {
     margin-top: 3em;
 
     width: 100%;
-    height: 150%;
+    height: max-content;
 
     display: block;
     background-color: #CDE4DF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+}
+
+#acesso {
+    width: 100%;
+    height: auto;
+}
+
+#dados_materia {
+    width: 100%;
+    height: auto;
+    margin-bottom: 3em;
 }
 
 #Materia {
@@ -251,23 +506,15 @@ ul {
     display: block;
     font-size: 2em;
     color: #0B4C8C;
+    font-weight: 700;
+    text-decoration: none;
     text-align: center;
     margin-top: -0.9em;
+    transition: all 0.3s ease;
 }
 
-.CampoFalado1_box3 {
-    display: block;
-    margin-top: 2em;
-    margin-left: 1em;
-    font-size: 2em;
-}
-
-.CampoFalado2_box3 ul {
-    position: relative;
-    display: block;
-    margin-left: 4em;
-    font-size: 1.5em;
-    font-weight: 300;
+#Prof:hover {
+    transform: scale(1.02);
 }
 
 .CampoFalado3_box3 {
@@ -303,81 +550,92 @@ ul {
     transform: scale(0.95);
 }
 
-#modal_da_biblioteca {
-    display: none;
-    position: relative;
-    z-index: 0;
-
-    width: 75%;
+#biblioteca {
+    width: 100%;
     height: 25em;
-
-    margin: auto;
-    margin-top: -4em;
-
-
-    background-color: #E8E7E8;
-    border-radius: 25px;
-    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
-
-    transition: all 0.3s ease-in-out;
-}
-
-.box_modal {
     display: block;
     position: relative;
-    top: 3em;
-
-    margin: 0.5em;
-    margin-top: 2em;
-    height: 5.5em;
-    background-color: #E8E7E8;
-    border-radius: 25px;
-    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
-    cursor: pointer;
-
 }
 
-.box_modal:hover {
-    transform: scale(1.01);
+#biblioteca_ul {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+    top: 10%;
+
+    margin-right: 2em;
+    margin-left: 2em;
 }
 
-.box_modal:active {
-    transform: scale(0.99);
-}
-
-.boxinho {
-    position: absolute;
-    display: inline-block;
-    width: 4.375em;
-    height: 4.375em;
-    background-color: #CDE4DF;
-    border-radius: 10px;
-    margin-left: 1em;
-    margin-top: 0.5em;
-}
-
-.texto {
-    position: absolute;
+.boxes_biblioteca {
     display: block;
-    text-align: center;
-    margin-left: 3em;
-    margin-top: 0.75em;
-
-    color:black;
-    font-size: 2em;
+    position: relative;
+    margin: 0 0.5em;
+    border-radius: 25px;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-#imagem_videos {
+#biblioteca_ul:hover> :not(:hover) {
+    opacity: .4;
+    filter: blur(2px);
+    transform: scale(0.9);
+}
+
+.imagens {
+    display: block;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#videos {
+    display: block;
+    position: relative;
+    border-radius: 25px;
+    width: 16em;
+    height: 20em;
+
+    box-shadow: 0px 0px 10px #E95959;
     background-color: #E95959;
 }
 
-#imagem_resumos {
+#resumos {
+    display: block;
+    position: relative;
+
+    border-radius: 25px;
+    width: 16em;
+    height: 20em;
+
+    box-shadow: 0px 0px 10px #81E28B;
     background-color: #81E28B;
 }
 
-#imagem_atividades {
+#atividades {
+    display: block;
+    position: relative;
+    border-radius: 25px;
+    width: 16em;
+    height: 20em;
+
+
+
+    box-shadow: 0px 0px 10px #68AEEF;
     background-color: #68AEEF;
 }
+
+.texto {
+    position: relative;
+    display: block;
+    top: 30%;
+
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 0.5em;
+    font-size: 2em;
+}
+
 
 
 @keyframes abrir_janelas {
@@ -404,7 +662,7 @@ ul {
     width: 90%;
     height: 20em;
     margin-bottom: 3em;
-    margin-top:2.5em;
+    margin-top: 2.5em;
     background-color: #E8E7E8;
     border-radius: 25px;
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
@@ -421,25 +679,24 @@ ul {
     overflow-y: auto;
     margin-right: 20px;
     top: 2em
-
 }
 
 #scroll::-webkit-scrollbar {
     width: 15px;
     height: auto;
-    
+
 }
 
 #scroll::-webkit-scrollbar-thumb {
     background-color: #E8E7E8;
     border-radius: 20px;
     border: solid 1px #0000002a;
-  }
+}
 
-  #scroll::-webkit-scrollbar-track {
+#scroll::-webkit-scrollbar-track {
     background-color: #0000002a;
-    border-radius: 25px;  
-  }
+    border-radius: 25px;
+}
 
 .usuarios {
     font-size: 1.5em;
@@ -518,9 +775,26 @@ ul {
 }
 
 #send_button:hover {
-   transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 #send_button:active {
-   transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+@keyframes abrir_janelas {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -5px, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.abrir {
+    animation: abrir_janelas 0.3s;
+    display: block;
 }

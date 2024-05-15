@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"> <!-- LINK PARA FONTE MONSTSERRAT-->
 
-    <link rel="stylesheet" href="../css/styles_(Livros.html).css"> <!-- LINK PARA PARA CSS DA PÁGINA-->
+    <link rel="stylesheet" href="{% static "css/styles_(Livros.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                     <input type="file" id="input_file" hidden>
 
                     <div id="imgView">
-                        <img id="documents_image" src="../img/Document.png">
+                        <img id="documents_image" src="{% static "image/Document.png"%}">
                         <h2>Arraste aqui seu arquivo!</h2>
                     </div>
                 </label>
@@ -52,7 +53,7 @@
 
     </div>
 
-    <a href="../html/UnBook.html"><img class="UnBook_logo_mini" src="../img/UnBook_loguinho.png"></a>
+    <a href="../../../"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png"%}"></a>
     <!-- LINK PARA VOLTAR A UNBOOK--> <!-- UNBOOK LOGUINHO BRANCO-->
 
     <div class="boxes">
@@ -87,7 +88,9 @@
 
 <!-- LINK PARA ARQUIVOS JS-->
 <!-- <script src="../js/materia_(materia.html).js"></script> -->
-<script src="../js/abrir_modais_(Livros.html).js"></script>
-<script src="../js/drop_files_(Livros.html).js"></script>
+
+<script src="{% static "js/abrir_modais_(Livros.html).js"%}"></script>
+<script src="{% static "js/drop_files_(Livros.html).js"%}"></script>
+
 
 </html>

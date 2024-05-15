@@ -1,19 +1,47 @@
 
-//FUNÇÃO PARA ABRIR MODAL DA BIBLIOTECA
-var biblioteca = document.getElementById('modal_da_biblioteca')
+var fzr_avaliacao = document.getElementById('Fazer_avaliacao')
 
-function abrir_modal_biblioteca() {
-    var sla = window.getComputedStyle(biblioteca);
-    const display = sla.getPropertyValue('display');
+fzr_avaliacao.addEventListener('click', (e) => {
 
-    if (display === 'none') {
-        biblioteca.style.display = 'block';
-        biblioteca.classList.add('abrir');
+    var fundoblur = document.getElementById('fundo_blur')
+    fundoblur.style.display = "block"
+
+    var modal = document.getElementById('modal_avaliacao')
+    modal.style.display = "block"
+
+    if(modal.style.display === "block" && fundoblur.style.display === "block" ) {
+       
     }
-    else if (display === 'block') {
-        biblioteca.style.display = 'none';
-    }
-}
+
+});
+
+
+// FUNÇÃO PARA RODAR SCROLL
+
+var scroll_x = document.getElementById('scroll_modal');
+
+var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+});
+
+var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+});
+
+var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+});
+
+var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+});
+
+
+
 
 //FUNÇÃO PARA TER O ID IGUAL AO NOME DO USUÁRIO
 window.onload = function () {
@@ -78,6 +106,3 @@ function postar_comentario() {
 
 }
 
-function responder_comentario() {
-    console.log('em desenvolvimento')
-}

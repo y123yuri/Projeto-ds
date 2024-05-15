@@ -13,7 +13,6 @@ html {
     width: 100%;
     background-attachment: fixed;
 
-    height: 150vh;
     scroll-behavior: smooth;
 }
 
@@ -82,7 +81,7 @@ ul {
     margin-right: 3em;
 
     width: 100%;
-    height: 32em;
+    height: 30em;
     padding: 1em;
 
     display: block;
@@ -115,52 +114,56 @@ ul {
     margin-top: -0.75em;
 }
 
-.rating{
-	border: none;
-	float: left;
+.rating {
+    border: none;
+    float: left;
 }
 
-.rating > input{
-	display: none;
+.rating>input {
+    display: none;
 }
 
-.rating > label:before{
-	content: '\f005';
-	font-family: FontAwesome;
-	margin: 5px;
-	font-size: 2.5em;
-	display: inline-block;
-	cursor: pointer;
+.rating>label:before {
+    content: '\f005';
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 2.5em;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.rating > .half:before{
-	content: '\f089';
-	position: absolute;
-	cursor: pointer;
+.rating>.half:before {
+    content: '\f089';
+    position: absolute;
+    cursor: pointer;
 }
 
 
-.rating > label{
-	color: #777D89;
-	float: right;
-	cursor: pointer;
-} /* ESTRELA CINZA */
+.rating>label {
+    color: #777D89;
+    float: right;
+    cursor: pointer;
+}
 
-.rating > input:checked ~ label,
+/* ESTRELA CINZA */
+
+/* .rating > input:checked ~ label,
 .rating:not(:checked) > label:hover, 
 .rating:not(:checked) > label:hover ~ label{
 	color: #ffd000;
 } /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
-
+/* 
 .rating > input:checked + label:hover,
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label{
 	color: #ffd000;
-} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
+} CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
 
 
-#notas_Dificuldade , #notas_Monitoria , #notas_Dúvidas {
+#notas_Dificuldade,
+#notas_Monitoria,
+#notas_Dúvidas {
     font-size: 1em;
     position: relative;
     display: block;
@@ -236,7 +239,7 @@ ul {
     margin-top: 3em;
 
     width: 100%;
-    height: 150vh;
+    height: 120vh;
 
     display: block;
     background-color: #CDE4DF;
@@ -251,99 +254,71 @@ ul {
     position: relative;
     display: inline-block;
 
-    left: 5%;
+    left: 10%;
 }
 
 #Professor {
     display: inline-block;
     font-size: 2em;
     position: relative;
-    margin-top: 0.5em;
-    top: -5em;
-    left: 6%;
 }
 
 #Faculdade {
     display: block;
     font-size: 1.5em;
     font-weight: 400;
-    
-
-    position: relative;
-    top: -7em;
-    left: 30%;
-    
-}
-
-#Avaliacao_professor {
-    display: block;
-    font-size: 1.5em;
     position: relative;
 
-    margin-top: 0.5em;
-    text-align: left;
 
-    top: -6.5em;
-    left: 10%;
 }
+#box_materias a {text-decoration: none;}
 
-.rating_professor{
-	border: none;
-	float: left;
-
+#box_materias {
     display: block;
     position: relative;
-    top:1.5em;
-    border: none;
-    left: 19%;
-    z-index: 2;
-}
+    
 
-.rating_professor > input{
-	display: none;
-}
-
-.rating_professor > label:before{
-	content: '\f005';
-	font-family: FontAwesome;
-	margin: 5px;
-	font-size: 1.5em;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.rating_professor > .half:before{
-	content: '\f089';
-	position: absolute;
-	cursor: pointer;
-}
-
-
-.rating_professor > label{
-	color: #777D89;
-	float: right;
-	cursor: pointer;
-} /* ESTRELA CINZA */
-
-.rating_professor > input:checked ~ label,
-.rating_professor:not(:checked) > label:hover, 
-.rating_professor:not(:checked) > label:hover ~ label{
-	color: #ffd000;
-} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
-
-.rating_professor > input:checked + label:hover,
-.rating_professor > input:checked ~ label:hover,
-.rating_professor > label:hover ~ input:checked ~ label,
-.rating_professor > input:checked ~ label:hover ~ label{
-	color: #ffd000;
-} /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
-
-#notas_Professor{
-    font-size: 1em;
-    position: relative;
     width: auto;
-    height: 1em;
-    left: 0.5em;
+    height: 50%;
+
+    top: 15%;
+    bottom: 10%;
+}
+
+#scroll_materias {
+    display: block;
+    position: relative;
+    top: 10%;
+
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 65%;
+    height: 18em;
+    
+    text-align: center;
+    overflow-y: auto;
+
+}
+
+#scroll_materias::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    margin-left: 10px;
+}
+
+#scroll_materias::-webkit-scrollbar-thumb {
+    background-color: #E6F2FB;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: solid 1px #0000002a;
+    /* roundness of the scroll thumb */
+}
+
+#scroll_materias::-webkit-scrollbar-track {
+    background-color: #0000002a;
+    border-radius: 25px;
 }
 
 .materias {
@@ -358,11 +333,11 @@ ul {
     border-radius: 25px;
     box-shadow: 0 5px 1px #093a6c;
     padding: 1em 0.5em;
-    margin: auto;
-    margin-bottom: 1em;
+
+    margin: 1em 1em 1em 1em;
 
     cursor: pointer;
-    width: 50%;
+    width: 90%;
     height: auto;
 
     transition: all 0.3s ease;
