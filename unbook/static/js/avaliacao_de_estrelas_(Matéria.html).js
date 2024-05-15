@@ -25,26 +25,8 @@ function reiniciarAvaliacoes() {
     };
 }
 
-
-// Seleciona o botão de postar
-let botaoPostar = document.getElementById("Postar");
-botaoPostar.addEventListener("click", function(e) {
-    e.preventDefault();
-    console.log(' ')
-
-    var professor = localStorage.getItem('professor');
-    var matéria = localStorage.getItem('materia');
-
-    console.log('Avaliações da matéria:' + matéria + ' regida por' + professor + ':');
-    for (let categoria in avaliacoes) {
-        console.log(categoria + ': ' + avaliacoes[categoria] + ' estrelas de 5;');
-    }
-    
-});
-
-
 // Seleciona todas as etiquetas de estrelas
-let starLabels = document.querySelectorAll('.rating label');
+let starLabels = document.querySelectorAll('.rating_modal label');
 
 // Adiciona um ouvinte de evento de clique a cada etiqueta de estrela
 starLabels.forEach(function (label) {
@@ -62,8 +44,21 @@ starLabels.forEach(function (label) {
 
         // Verifica se todas as categorias foram avaliadas
         if (VerificaAvaliacoes(avaliacoes)) {
-            PostarAvaliacoes(avaliacoes);
+            console_print(avaliacoes);
         }
     });
 });
+
+function console_print(avaliacoes) {
+    
+    var materia = document.getElementById('Materia').textContent;
+
+    var professor = document.getElementById('Prof_js').textContent
+
+    console.log( '\n' + 'Gerando avaliacao para materia: \n\n' + materia + '\nregida por ' + professor  + ' : \n\n' )
+
+    for (let categoria in avaliacoes) {
+        console.log(categoria + ': ' + avaliacoes[categoria] + ' estrelas de 5;');
+    }
+}
 

@@ -502,14 +502,19 @@ ul {
     margin-top: 0.5em;
 }
 
-#Prof {
+#Prof{
     display: block;
+    width: auto;
+    height: auto;
+
+    margin: -0.9em 7.5em 0em 7.5em;
+
     font-size: 2em;
     color: #0B4C8C;
     font-weight: 700;
     text-decoration: none;
     text-align: center;
-    margin-top: -0.9em;
+    
     transition: all 0.3s ease;
 }
 

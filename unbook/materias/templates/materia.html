@@ -178,7 +178,7 @@
       <div id="box3">
         <div id="acesso">
           <div id="dados_materia">
-            <h1 id="Materia" class="CampoFalado1">{{ turma.materia.nome }} ({{ turma.materia.codigo }})</h1>
+            <h1 id="Materia" class="CampoFalado1">{{ turma.materia.nome }} - ({{ turma.materia.codigo }})</h1>
             <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
           </div>
 
@@ -236,9 +236,12 @@
         </div>
       </div>
     </div>
+
+    <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
+
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->
   <script src="{% static 'js/materia_(Materia.html).js' %}"></script>
-  {% comment %} <script src="{% static 'js/avaliacao_de_estrelas_(Matéria.html).js' %}"></script> {% endcomment %}
+  <script src="{% static 'js/avaliacao_de_estrelas_(Matéria.html).js' %}"></script>
 </html>

@@ -1,19 +1,26 @@
 
-var fzr_avaliacao = document.getElementById('Fazer_avaliacao')
+var fzr_avaliacao = document.getElementById('Fazer_avaliacao');
+var fundoblur = document.getElementById('fundo_blur');
+var modal = document.getElementById('modal_avaliacao');
 
-fzr_avaliacao.addEventListener('click', (e) => {
-
-    var fundoblur = document.getElementById('fundo_blur')
-    fundoblur.style.display = "block"
-
-    var modal = document.getElementById('modal_avaliacao')
-    modal.style.display = "block"
-
-    if(modal.style.display === "block" && fundoblur.style.display === "block" ) {
-       
-    }
-
+fzr_avaliacao.addEventListener('click', () => {
+    fundoblur.style.display = "block";
+    fundoblur.classList.add('abrir');
+    modal.style.display = "block";
+    modal.classList.add('abrir');
 });
+
+fundoblur.addEventListener('click', (e) => {
+    if (e.target === fundoblur) {
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    }
+});
+
+modal.addEventListener('click', (e) => {
+    e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
+});
+
 
 
 // FUNÇÃO PARA RODAR SCROLL
