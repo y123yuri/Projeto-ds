@@ -19,3 +19,11 @@ class CadastroForm(ModelForm):
         model = Cadastro
         fields = ['username', 'email', 'password']
 
+
+class LoginForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs = {"class":"campoEscrito , required", "name":"Email", "type":"email", "placeholder":"Matrícula@aluno.unb.com"}
+    
+        self.fields['password'].widget = forms.PasswordInput()
+        
