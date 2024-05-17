@@ -82,6 +82,9 @@ def materia(request, codigo, nome):
                     dias.append(dia)
                     dia = turno[n]+turno[index] +turno[index+3:]
                     dias.append(dia)
+                else:
+                    dia = turno[n]+turno[index:]
+                    dias.append(dia)
         
     print(f'dias: {dias}')
     context["dias"] =  dias
