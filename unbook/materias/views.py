@@ -34,6 +34,7 @@ def pesquisa(request):
     return HttpResponse(resposta)
 
 def pesquisa_materias(request):
+    
     termo_pesquisa_materias = request.POST['termo_pesquisa_materias']
     obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materias)
     print(obj_lista_materia)
@@ -47,6 +48,7 @@ def pesquisa_materias(request):
                 resposta += ";"+obj.codigo+','+obj.nome
     
     return HttpResponse(resposta)
+
 
 def materia(request, codigo, nome):
     print(codigo, nome)

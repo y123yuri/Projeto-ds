@@ -21,23 +21,31 @@
     <!--LINK PARA VOLTAR PARA O UNBOOK-->
 
     <div id="box" class="box">
+        <form class="form" id="form" action="./logado/" method="post" name="contact-form">
+            {% csrf_token %}
+            <h1 class="login"> Login </h1>
+            <h3 class="campoFalado"> Digite o seu e-mail:</h3>
+            
+            <label>
+                {{form.email}}
+                <span class="spans_required"> Digite um e-mail valido</span>
+            </label>
 
-        <h1 class="login"> Login </h1>
+            <h3 class="campoFalado"> Senha: </h3>
+            
+            <label>
+                {{form.password}}
+                <span class="spans_required"> Digite uma senha valida</span>
+            </label>
 
-        <h3 class="campoFalado"> Digite o seu e-mail:</h3>
-        <input class="campoEscrito , required" id="campoEscritaEmail" type="text" placeholder="Digite seu login">
-        <span class="spans_required"> Digite um e-mail valido</span>
+           
+            <input type="submit" id="submit" class="botao_entrar" > </a> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
 
+            <div>{{request.session.erro}}</div>
 
-        <h3 class="campoFalado"> Senha: </h3>
-        <input class="campoEscrito , required" id="campoEscritaSenha" type="password" placeholder="Digite sua senha">
-        <span class="spans_required"> Digite uma senha valida</span>
-
-        <a class="botao_entrar" onclick="verifica()"> Entrar </a> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
-        
-        <a class="cadastro" href="/cadastro"> Cadastre-se aqui </a>
-        <a class="senha" href="./esqueceu"> Esqueceu a senha? </a>
-
+            <a class="cadastro" href="/cadastro"> Cadastre-se aqui </a>
+            <a class="senha" href="./esqueceu"> Esqueceu a senha? </a>
+        </form>
     </div>
 
 </body>
