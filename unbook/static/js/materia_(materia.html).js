@@ -111,14 +111,20 @@ function postar_comentario() {
         comentarioH3.innerText = conteudo;
 
         var comentarioH3responder = document.createElement('h3');
-        comentarioH3responder.className = "responder";
+        comentarioH3responder.className = "curtidas";
 
         var comentarioLinkResponder = document.createElement('a');
-        comentarioLinkResponder.href = "#comentar";
-        comentarioLinkResponder.innerText = "responder";
+        comentarioLinkResponder.onclick = "like(comentarioLinkResponder)"
+        comentarioLinkResponder.innerText = "Gostei";
+
+
+        var like = document.createElement('i');
+        like.className = "fa-solid fa-heart"
         // comentarioLinkResponder.onclick = responderComentario();
 
         comentarioH3responder.appendChild(comentarioLinkResponder);
+        comentarioH3responder.appendChild(like);
+
         comentarioBox.appendChild(comentarioH2);
         comentarioBox.appendChild(comentarioH3);
         comentarioBox.appendChild(comentarioH3responder);
@@ -134,9 +140,9 @@ function postar_comentario() {
 
 // script.js
 document.querySelectorAll('tbody th').forEach(item => {
-    item.addEventListener('mouseover', function(e) {
+    item.addEventListener('mouseover', function (e) {
         const modal = document.getElementById('modal_calendario');
-        
+
         // Verifica se o mouse está sobre o elemento <th> do <tbody>
         if (e.target === item) {
             // Obtém o estilo computado do elemento
@@ -166,22 +172,36 @@ document.querySelectorAll('tbody th').forEach(item => {
         }
     });
 
-    item.addEventListener('mouseout', function() {
+    item.addEventListener('mouseout', function () {
         const modal = document.getElementById('modal_calendario');
         modal.style.display = 'none';
     });
 });
 
 
-function like () {
+function like(element) {
+    console.log('oa')
 
-    var button1 = document.getElementById('button')
-    if (button1.style.color === "red") {
-        button1.style.color = "grey"
-    }
-    else {
-        button1.style.color = "red"
-    }
+    document.querySelectorAll('.like').forEach(item => {
+        item.addEventListener('click', function (e) {
+
+            if (e.target === item) {
+
+                var like = document.querySelectorAll('.like')
+                if (like.style.color === "red") {
+                    like.style.color = "grey";
+                }
+                else {
+                    like.style.color = "red";
+                    like.classList.add('heart');
+                    element.style.color = "red";
+                }
+            }
+
+
+        });
+    });
+
 
 
 
