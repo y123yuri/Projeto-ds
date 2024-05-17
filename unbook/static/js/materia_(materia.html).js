@@ -100,6 +100,19 @@ document.querySelector('#comentar').addEventListener('keydown', function (event)
     }
 }); // quando apertar ENTER no teclado ele envia o comentário
 
+function like(element) {
+
+    
+    if (element.style.color === "red") {
+        element.style.color = "grey";
+        element.classList.remove('heart');
+    } else {
+        element.style.color = "red";
+        element.classList.add('heart');
+    }
+}
+
+
 //FUNÇÃO PARA POSTAR O COMENTARIO ESCRITO
 function postar_comentario() {
 
@@ -111,26 +124,84 @@ function postar_comentario() {
         var comentarioBox = document.createElement('div');
         comentarioBox.id = "@anônimo (coloquei no js direto)"
 
-        var comentarioH2 = document.createElement('h2');
-        comentarioH2.className = "usuarios";
-        comentarioH2.innerText = '@Anônimo';
+        var usuario = document.createElement('h2');
+        usuario.className = "usuarios";
+        usuario.innerText = '@Anônimo';
 
-        var comentarioH3 = document.createElement('h3');
-        comentarioH3.className = "comentarios";
-        comentarioH3.innerText = conteudo;
+        var comentario = document.createElement('h3');
+        comentario.className = "comentarios";
+        comentario.innerText = conteudo;
 
-        var comentarioH3responder = document.createElement('h3');
-        comentarioH3responder.className = "responder";
+        var espaco_curtidas = document.createElement('div');
+        const curtidas_style = document.querySelector('.curtidas');
+        if (curtidas_style) {
+            const computedStyle = getComputedStyle(curtidas_style);
 
-        var comentarioLinkResponder = document.createElement('a');
-        comentarioLinkResponder.href = "#comentar";
-        comentarioLinkResponder.innerText = "responder";
-        // comentarioLinkResponder.onclick = responderComentario();
+            espaco_curtidas.style.display = computedStyle.display;
+            espaco_curtidas.style.flexDirection = computedStyle.flexDirection;
+            espaco_curtidas.style.fontSize = computedStyle.fontSize;
+            espaco_curtidas.style.color = computedStyle.color;
+            espaco_curtidas.style.fontWeight = computedStyle.fontWeight;
+            espaco_curtidas.style.marginLeft = computedStyle.marginLeft;
+            // Adicione outros estilos que você quer copiar aqui
+        }
 
-        comentarioH3responder.appendChild(comentarioLinkResponder);
-        comentarioBox.appendChild(comentarioH2);
-        comentarioBox.appendChild(comentarioH3);
-        comentarioBox.appendChild(comentarioH3responder);
+        var Gostei = document.createElement('h3');
+        Gostei.innerText = "Gostei";
+        
+        const gosteiEstilo = document.querySelector('.Gostei');
+    if (gosteiEstilo) {
+        const computedStyle = getComputedStyle(gosteiEstilo);
+        Gostei.style.fontSize = computedStyle.fontSize;
+        Gostei.style.color = computedStyle.color;
+        Gostei.style.fontWeight = computedStyle.fontWeight;
+        Gostei.style.marginLeft = computedStyle.marginLeft;
+        Gostei.style.cursor = computedStyle.cursor;
+        // Adicione outros estilos que você quer copiar aqui
+    }
+
+        var button_like = document.createElement('button')
+        const like_style = document.querySelector('.like');
+        button_like.type = "button" 
+    if (like_style) {
+        const computedStyle = getComputedStyle(like_style);
+        button_like.style.fontFamily = computedStyle.fontFamily;
+        button_like.style.color = computedStyle.color;
+        button_like.style.fontSize = computedStyle.fontSize;
+        button_like.style.marginLeft = computedStyle.marginLeft;
+        button_like.style.cursor = computedStyle.cursor;
+        button_like.style.border = computedStyle.border;
+        button_like.style.background = computedStyle.background;
+        button_like.style.outline = computedStyle.outline;
+
+
+    }
+        var like = document.createElement('i');
+        like.style.marginLeft = "15px";
+        like.style.color = "grey";
+        like.className = "fa-solid fa-heart"
+        like.style.fontFamily = "fontAwesome"
+        like.style.cursor  = "pointer"
+        like.onclick = function() {
+        
+                if (this.style.color === "red") {
+                    this.style.color = "grey";
+                    this.classList.remove('heart');
+                } else {
+                    this.style.color = "red";
+                    this.classList.add('heart');
+                }
+            
+        }
+    
+        button_like.appendChild(like)
+
+        espaco_curtidas.appendChild(Gostei);
+        espaco_curtidas.appendChild(like);
+
+        comentarioBox.appendChild(usuario);
+        comentarioBox.appendChild(comentario);
+        comentarioBox.appendChild(espaco_curtidas);
 
         var scroll = document.getElementById('scroll');
         scroll.appendChild(comentarioBox);
@@ -143,9 +214,9 @@ function postar_comentario() {
 
 // script.js
 document.querySelectorAll('tbody th').forEach(item => {
-    item.addEventListener('mouseover', function(e) {
+    item.addEventListener('mouseover', function (e) {
         const modal = document.getElementById('modal_calendario');
-        
+
         // Verifica se o mouse está sobre o elemento <th> do <tbody>
         if (e.target === item) {
             // Obtém o estilo computado do elemento
@@ -175,24 +246,10 @@ document.querySelectorAll('tbody th').forEach(item => {
         }
     });
 
-    item.addEventListener('mouseout', function() {
+    item.addEventListener('mouseout', function () {
         const modal = document.getElementById('modal_calendario');
         modal.style.display = 'none';
     });
 });
 
-
-function like () {
-
-    var button1 = document.getElementById('button')
-    if (button1.style.color === "red") {
-        button1.style.color = "grey"
-    }
-    else {
-        button1.style.color = "red"
-    }
-
-
-
-}
 

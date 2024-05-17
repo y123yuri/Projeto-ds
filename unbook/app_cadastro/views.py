@@ -6,6 +6,7 @@ from .models import Cadastro
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 
 
 
@@ -51,7 +52,7 @@ def login_func(request):
         print(context)
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
-        return redirect("../../") # trocar depois pra página de perfil
+        return render(request,"html/Perfil.html") # trocar depois pra página de perfil
 
 def logado(request):
     f = LoginForm(request.POST)
@@ -63,20 +64,32 @@ def logado(request):
         email_variavel = f.cleaned_data["email"]
         senha_variavel = f.cleaned_data["password"]
         dados = [email_variavel, senha_variavel] #tratamento de dados
-        v1 = User.objects.get(email=f'{email_variavel}').username
-        print(v1, type(v1))
-        user = authenticate(username=f'{v1}', password=f'{senha_variavel}')
+        # print(User.objects.get(email=f'{email_variavel}'))
+        
+        try:
+            v1 = User.objects.get(email=f'{email_variavel}').username
+            user = authenticate(username=f'{v1}', password=f'{senha_variavel}')
+            if user:
+                login(request, user)
+                resposta = user
+                # if request.user.is_authenticated:
+                return render(request, 'html/Perfil.html')
+            else:
+                request.session['erro'] = "Login invalido"
+        
+    
+            return redirect("../")
+        except User.DoesNotExist:
+             request.session['erro'] = "Login invalido"
+             return redirect("../")
+
+        
+
 
     
-    
-    
-    if user:
-        login(request, user)
-        # if request.user.is_authenticated:
-    else:
-        request.session['erro'] = "Login invalido"
-    
-    return redirect("../")
+def logout(request):
+    auth.logout(request)
+    return redirect('login_func')
             
     
     
