@@ -23,14 +23,19 @@
     <div id="box" class="box">
         <form class="form" id="form" action="./logado/" method="post" name="contact-form">
             {% csrf_token %}
-            <h1 class="login"> Perfil Fulaninho </h1>
+            <h1 class="login"> {{user}} </h1>
             <h3 class="campoFalado">Seja bem vindo!</h3>
             
            
             
         </form>
         
- <input class="botoes" type="button" value="logout"></input>
+        {% comment %} <input class="botoes" type="button" value="logout" href="{% url 'logout' %}"> </input> {% endcomment %}
+        {% if user.is_authenticated %}
+
+            <a class="botoes" type="button" href="{% url 'logout' %}"> logout</a> 
+            
+        {% endif %}
     </div>
 
 </body>

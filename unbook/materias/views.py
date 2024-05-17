@@ -61,6 +61,24 @@ def materia(request, codigo, nome):
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
     context = {}
     context["turma"] = obj_turma
+    index =0
+    lista_turno = obj_turma.turno.split(" ")
+    dias = []
+    print(obj_turma.turno)
+    for turno in lista_turno:
+        for i in range(len(turno)):
+            if not turno[i].isdigit():
+                print(f'TURNO: {turno[i]}')
+                index = i
+        
+        
+        for n in range(index):
+            print(f'dia: {turno[n]}')
+            print(f'horario: {turno[index:]}')
+            dia = turno[n]+turno[index:]
+            dias.append(dia)
+    print(f'dias: {dias}')
+    context["dias"] =  dias
 
     return render(request, "materia.html", context)
 
@@ -84,6 +102,7 @@ def professor(request, nome):
     context["aval_3"] = aval_3 /len(lista_turma)
 
     return render(request, "Professor.html", context)
+
 def pesquisa_turma(request):
     codigo = request.POST['codigo']
     materia = Materia.objects.get(codigo=codigo)

@@ -298,7 +298,12 @@
               </tr>
 
             </tbody>
-
+            <script type="text/javascript">
+              lista_turno_django = []
+              {% for d in dias %}
+              lista_turno_django.push("{{d}}")
+              {% endfor %}
+            </script>
             <caption> Semestre: 2024.1 </caption>
           </table>
 
@@ -388,6 +393,6 @@
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->
-  <script src="{% static 'js/materia_(Materia.html).js' %}"></script>
+  <script src="{% static 'js/materia_(materia.html).js' %}"></script>
   <script src="{% static 'js/avaliacao_de_estrelas_(Matéria.html).js' %}"></script>
 </html>
