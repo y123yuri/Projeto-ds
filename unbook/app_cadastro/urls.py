@@ -10,4 +10,6 @@ urlpatterns = [
     path('login/esqueceu/', views.esqueceu, name="esqueceu"),
     path('login/esqueceu/nova-senha/', views.novaSenha, name="novaSenha"),
     path('login/logado/', views.logado, name='logado'),
+    path('login/logout/', views.logout, name='logout')
+    
 ]
