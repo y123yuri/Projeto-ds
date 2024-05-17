@@ -86,7 +86,6 @@ window.onload = function () {
 
     // criar calendário
     
-    console.log(globalThis.lista_turno_django)
     for (var i=0;i<globalThis.lista_turno_django.length;i++){
         dia = document.getElementById(globalThis.lista_turno_django[i])
         dia.style.backgroundColor = "#81E28B"
