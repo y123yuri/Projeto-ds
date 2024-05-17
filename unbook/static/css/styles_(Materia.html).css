@@ -799,6 +799,10 @@ table caption {
     margin-left: 2em;
 }
 
+.Gostei {
+    cursor: pointer;
+    margin-left: 1em;
+}
 
 .like {
     font-family: FontAwesome;
@@ -808,6 +812,7 @@ table caption {
     border: none;
     font-size: 15px;
     cursor: pointer;
+    color: gray;
 }
 
 @keyframes expand {

@@ -102,32 +102,68 @@ function postar_comentario() {
         var comentarioBox = document.createElement('div');
         comentarioBox.id = "@anônimo (coloquei no js direto)"
 
-        var comentarioH2 = document.createElement('h2');
-        comentarioH2.className = "usuarios";
-        comentarioH2.innerText = '@Anônimo';
+        var usuario = document.createElement('h2');
+        usuario.className = "usuarios";
+        usuario.innerText = '@Anônimo';
 
-        var comentarioH3 = document.createElement('h3');
-        comentarioH3.className = "comentarios";
-        comentarioH3.innerText = conteudo;
+        var comentario = document.createElement('h3');
+        comentario.className = "comentarios";
+        comentario.innerText = conteudo;
 
-        var comentarioH3responder = document.createElement('h3');
-        comentarioH3responder.className = "curtidas";
+        var espaco_curtidas = document.createElement('div');
+        const curtidas_style = document.querySelector('.curtidas');
+        if (curtidas_style) {
+            const computedStyle = getComputedStyle(curtidas_style);
 
-        var comentarioLinkResponder = document.createElement('a');
-        comentarioLinkResponder.onclick = "like(comentarioLinkResponder)"
-        comentarioLinkResponder.innerText = "Gostei";
+            espaco_curtidas.style.display = computedStyle.display;
+            espaco_curtidas.style.flexDirection = computedStyle.flexDirection;
+            espaco_curtidas.style.fontSize = computedStyle.fontSize;
+            espaco_curtidas.style.color = computedStyle.color;
+            espaco_curtidas.style.fontWeight = computedStyle.fontWeight;
+            espaco_curtidas.style.marginLeft = computedStyle.marginLeft;
+            // Adicione outros estilos que você quer copiar aqui
+        }
 
+        var Gostei = document.createElement('h3');
+        Gostei.innerText = "Gostei";
+        
+        const gosteiEstilo = document.querySelector('.Gostei');
+    if (gosteiEstilo) {
+        const computedStyle = getComputedStyle(gosteiEstilo);
+        Gostei.style.fontSize = computedStyle.fontSize;
+        Gostei.style.color = computedStyle.color;
+        Gostei.style.fontWeight = computedStyle.fontWeight;
+        Gostei.style.marginLeft = computedStyle.marginLeft;
+        // Adicione outros estilos que você quer copiar aqui
+    }
 
+        var button_like = document.createElement('button')
+        const like_style = document.querySelector('.like');
+    if (like_style) {
+        const computedStyle = getComputedStyle(like_style);
+        button_like.style.fontFamily = computedStyle.fontFamily;
+        button_like.style.color = computedStyle.color;
+        button_like.style.fontSize = computedStyle.fontSize;
+        button_like.style.marginLeft = computedStyle.marginLeft;
+        button_like.style.cursor = computedStyle.cursor;
+        button_like.style.border = computedStyle.border;
+        button_like.style.background = computedStyle.background;
+        button_like.style.outline = computedStyle.outline;
+
+    }
         var like = document.createElement('i');
         like.className = "fa-solid fa-heart"
+        like.style.fontFamily = "fontAwesome"
         // comentarioLinkResponder.onclick = responderComentario();
 
-        comentarioH3responder.appendChild(comentarioLinkResponder);
-        comentarioH3responder.appendChild(like);
+        button_like.appendChild(like)
 
-        comentarioBox.appendChild(comentarioH2);
-        comentarioBox.appendChild(comentarioH3);
-        comentarioBox.appendChild(comentarioH3responder);
+        espaco_curtidas.appendChild(Gostei);
+        espaco_curtidas.appendChild(like);
+
+        comentarioBox.appendChild(usuario);
+        comentarioBox.appendChild(comentario);
+        comentarioBox.appendChild(espaco_curtidas);
 
         var scroll = document.getElementById('scroll');
         scroll.appendChild(comentarioBox);
@@ -180,30 +216,14 @@ document.querySelectorAll('tbody th').forEach(item => {
 
 
 function like(element) {
-    console.log('oa')
 
-    document.querySelectorAll('.like').forEach(item => {
-        item.addEventListener('click', function (e) {
-
-            if (e.target === item) {
-
-                var like = document.querySelectorAll('.like')
-                if (like.style.color === "red") {
-                    like.style.color = "grey";
-                }
-                else {
-                    like.style.color = "red";
-                    like.classList.add('heart');
-                    element.style.color = "red";
-                }
-            }
-
-
-        });
-    });
-
-
-
-
+    
+    if (element.style.color === "red") {
+        element.style.color = "grey";
+        element.classList.remove('heart');
+    } else {
+        element.style.color = "red";
+        element.classList.add('heart');
+    }
 }
 
