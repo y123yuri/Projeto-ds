@@ -66,17 +66,23 @@ def materia(request, codigo, nome):
     dias = []
     print(obj_turma.turno)
     for turno in lista_turno:
+        
         for i in range(len(turno)):
             if not turno[i].isdigit():
                 print(f'TURNO: {turno[i]}')
                 index = i
         
+        if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
+            print(f'turno: {turno}')
+            for n in range(index):
+                print(f'dia: {turno[n]}')
+                print(f'horario: {turno[index:]}')
+                if len(turno[index:])==5:
+                    dia = turno[n]+turno[index:index+3]
+                    dias.append(dia)
+                    dia = turno[n]+turno[index] +turno[index+3:]
+                    dias.append(dia)
         
-        for n in range(index):
-            print(f'dia: {turno[n]}')
-            print(f'horario: {turno[index:]}')
-            dia = turno[n]+turno[index:]
-            dias.append(dia)
     print(f'dias: {dias}')
     context["dias"] =  dias
 
