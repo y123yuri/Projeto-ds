@@ -515,10 +515,6 @@ table caption {
     font-size: 1em;
 }
 
-/* table tbody th:hover {
-    background-color: #81E28B;
-} */
-
 #modal_calendario {
     display: none;
     position: relative;
@@ -803,13 +799,35 @@ table caption {
     margin-left: 2em;
 }
 
+.Gostei {
+    cursor: pointer;
+    margin-left: 1em;
+}
 
 .like {
+    font-family: FontAwesome;
     margin-left: 15px;
     outline: none;
     background: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 15px;
+    cursor: pointer;
+    color: gray;
+}
+
+@keyframes expand {
+    from {
+        transform: scale(1.00);
+    }
+
+    to {
+        transform: scale(1.10);
+    }
+}
+
+
+.heart {
+    animation: expand 0.3s ease;
 }
 
 

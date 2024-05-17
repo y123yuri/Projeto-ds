@@ -10,6 +10,9 @@ def home(request):
 def somos(request):
     return render(request, 'Quem_somos.html')
 
+def perfil(request):
+    return render(request, "html/Perfil.html")    
+
 def pesquisa(request):
     termo_pesquisa = request.POST['termo_pesquisa']
     start_time = time.time()
@@ -124,4 +127,4 @@ def atividades(request, nome,codigo) :
 
     return render(request, "Videos.html", context)
 
-    
+

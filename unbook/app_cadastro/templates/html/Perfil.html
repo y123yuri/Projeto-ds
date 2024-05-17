@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+
+<link rel="stylesheet" href="{% static "css/styles_(Perfil.html).css" %}"> <!--LINK PARA O CSS DA PAGINA -->
+</head>
+
+<body>
+
+    <a href="/"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
+    <!--LINK PARA VOLTAR PARA O UNBOOK-->
+
+    <div id="box" class="box">
+        <form class="form" id="form" action="./logado/" method="post" name="contact-form">
+            {% csrf_token %}
+            <h1 class="login"> Perfil Fulaninho </h1>
+            <h3 class="campoFalado">Seja bem vindo!</h3>
+            
+           
+            
+        </form>
+        
+ <input class="botoes" type="button" value="logout"></input>
+    </div>
+
+</body>
+
+<!--LINK PARA ARQUIVOS JS-->
+<script src="{% static ""%}"></script>
+
+</html>
