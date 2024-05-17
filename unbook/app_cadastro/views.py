@@ -51,7 +51,7 @@ def login_func(request):
         print(context)
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
-        return redirect("../../") # trocar depois pra página de perfil
+        return render(request,"html/Perfil.html") # trocar depois pra página de perfil
 
 def logado(request):
     f = LoginForm(request.POST)
@@ -73,6 +73,7 @@ def logado(request):
     if user:
         login(request, user)
         # if request.user.is_authenticated:
+        return render(request, 'html/Perfil.html')
     else:
         request.session['erro'] = "Login invalido"
     
