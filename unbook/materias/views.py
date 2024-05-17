@@ -69,14 +69,11 @@ def materia(request, codigo, nome):
         
         for i in range(len(turno)):
             if not turno[i].isdigit():
-                print(f'TURNO: {turno[i]}')
                 index = i
         
         if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
-            print(f'turno: {turno}')
+
             for n in range(index):
-                print(f'dia: {turno[n]}')
-                print(f'horario: {turno[index:]}')
                 if len(turno[index:])==5:
                     dia = turno[n]+turno[index:index+3]
                     dias.append(dia)
@@ -85,8 +82,7 @@ def materia(request, codigo, nome):
                 else:
                     dia = turno[n]+turno[index:]
                     dias.append(dia)
-        
-    print(f'dias: {dias}')
+                    
     context["dias"] =  dias
 
     return render(request, "materia.html", context)
