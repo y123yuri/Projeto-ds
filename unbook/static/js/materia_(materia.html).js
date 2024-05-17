@@ -31,32 +31,32 @@ modal.addEventListener('click', (e) => {
 
 var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
 });
 
 var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
 });
 
 var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
 });
 
 var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
 });
 
 var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: 540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
 });
 
 var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({left: -540, behavior: "smooth"})
+    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
 });
 
 var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
@@ -98,7 +98,7 @@ function postar_comentario() {
     console.log(conteudo)
 
     if (conteudo !== "") {
-        
+
         var comentarioBox = document.createElement('div');
         comentarioBox.id = "@anônimo (coloquei no js direto)"
 
@@ -122,13 +122,68 @@ function postar_comentario() {
         comentarioBox.appendChild(comentarioH2);
         comentarioBox.appendChild(comentarioH3);
         comentarioBox.appendChild(comentarioH3responder);
-        
+
         var scroll = document.getElementById('scroll');
         scroll.appendChild(comentarioBox);
 
         comentarioBox.scrollIntoView({ behavior: "smooth" });
         document.getElementById('comentar').value = ' ';
     }
+
+}
+
+// script.js
+document.querySelectorAll('tbody th').forEach(item => {
+    item.addEventListener('mouseover', function(e) {
+        const modal = document.getElementById('modal_calendario');
+        
+        // Verifica se o mouse está sobre o elemento <th> do <tbody>
+        if (e.target === item) {
+            // Obtém o estilo computado do elemento
+            const computedStyle = window.getComputedStyle(item);
+            const backgroundColor = computedStyle.backgroundColor;
+
+            // Verifica se o background color corresponde ao desejado
+            if (backgroundColor === 'rgb(129, 226, 139)') {
+                // Obtém a posição do elemento
+                const itemRect = item.getBoundingClientRect();
+                const itemID = item.id;
+
+                var h2 = document.getElementById('horario');
+                h2.textContent = itemID;
+
+                // Calcula a posição do modal com base nas coordenadas do elemento
+                const modalTop = itemRect.top + window.scrollY - 1080;
+                const modalLeft = itemRect.left + window.scrollX - 10;
+
+                // Define a posição do modal
+                modal.style.top = `${modalTop}px`;
+                modal.style.left = `${modalLeft}px`;
+
+                // Exibe o modal
+                modal.style.display = 'block';
+            }
+        }
+    });
+
+    item.addEventListener('mouseout', function() {
+        const modal = document.getElementById('modal_calendario');
+        modal.style.display = 'none';
+    });
+});
+
+
+function like () {
+
+    var button1 = document.getElementById('button')
+    if (button1.style.color === "red") {
+        button1.style.color = "grey"
+    }
+    else {
+        button1.style.color = "red"
+    }
+
+
 
 }
 

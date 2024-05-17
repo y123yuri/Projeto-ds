@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dXNqKx4j/gHTj3+mqbrjvff3FqPXAxcl3r4G/C4fFzR7P1+Sl0o2Z6oIs8zHlw0cJywKnYz7H7BGzJgDi4mZYw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS) -->
 
     <link rel="stylesheet" href="{% static 'css/styles_(Materia.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
@@ -53,7 +53,7 @@
 
             <div class="boxes_modal" id="box_modal_2">
               <h2 class="CampoFalado2_modal">Monitoria</h2>
-              <h4 class="CampoFalado3_modal">Informe sobre a questão da Monitoria dessa matéria</h4>
+              <h4 class="CampoFalado3_modal">Informe sobre a disponibilidade de materiais e serviços ao aluno como exercícios, resolução de dúvidas, entre outros complementos</h4>
 
               <fieldset class="rating_modal" id="Monitoria">
                 <input type="radio" id="star5_Monitoria" name="rating_Monitoria" value="5" /><label for="star5_Monitoria" class="full" title="Awesome"></label>
@@ -78,7 +78,7 @@
 
             <div class="boxes_modal" id="box_modal_3">
               <h2 class="CampoFalado2_modal">Didática</h2>
-              <h4 class="CampoFalado3_modal">Avalie a didática utilizada pelo professor sobre a matéria</h4>
+              <h4 class="CampoFalado3_modal">Avalie a didática utilizada pelo professor ao aplicar a matéria</h4>
 
               <fieldset class="rating_modal" id="Didatica">
                 <input type="radio" id="star5_Didatica" name="rating_Didatica" value="5" /><label for="star5_Didatica" class="full" title="Awesome"></label>
@@ -103,37 +103,22 @@
 
             <div class="boxes_modal" id="box_modal_4">
               <h2 class="CampoFalado2_modal">Professor</h2>
-              <h4 class="CampoFalado3_modal">Selecione alguns pontos fortes que você acha que definem "{{turma.professor.nome}}"</h4>
-
+              <h4 class="CampoFalado3_modal">Selecione alguns pontos fortes que você acha que definem "{{ turma.professor.nome }}"</h4>
 
               <div id="scroll_pontos_fortes">
-                <label class="radio" for="Didática">
-                    <input type="radio" name="radio_1" id="Didática"> Didática
-                </label>
-                <label class="radio" for="Compreensão">
-                    <input type="radio" name="radio_2" id="Compreensão"> Compreensão
-                </label>
-                <label class="radio" for="Generoso">
-                    <input type="radio" name="radio_3" id="Generoso"> Generoso
-                </label>
-                <label class="radio" for="Atencioso">
-                  <input type="radio" name="radio_3" id="Atencioso"> Atensioso
-              </label>
-              <label class="radio" for="Chato">
-                <input type="radio" name="radio_3" id="Chato"> Chato
-            </label>
-            <label class="radio" for="Maluco">
-              <input type="radio" name="radio_3" id="Maluco"> Maluco
-          </label>
-            </div>
-              
+                <label class="radio" for="Didática"><input type="radio" name="radio_1" id="Didática" />Didática</label>
+                <label class="radio" for="Compreensão"><input type="radio" name="radio_2" id="Compreensão" />Compreensão</label>
+                <label class="radio" for="Generoso"><input type="radio" name="radio_3" id="Generoso" />Generoso</label>
+                <label class="radio" for="Atencioso"><input type="radio" name="radio_3" id="Atencioso" />Atensioso</label>
+                <label class="radio" for="Chato"><input type="radio" name="radio_3" id="Chato" />Chato</label>
+                <label class="radio" for="Maluco"><input type="radio" name="radio_3" id="Maluco" />Maluco</label>
+              </div>
+
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_3">Voltar</h2>
                 <h2 class="prox_button" id="prox_button_4">Finalizar</h2>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -207,6 +192,110 @@
 
         <div id="box2">
           <h2 class="CampoFalado1_box2">Calendário</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th> seg</th>
+                <th> ter</th>
+                <th> qua</th>
+                <th> qui</th>
+                <th> sex</th>
+                <th> sab</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+
+                <th id="2M12"> </th>
+                <th id="3M12"> </th>
+                <th id="4M12"> </th>
+                <th id="5M12"> </th>
+                <th id="6M12"> </th>
+                <th id="7M12"> </th>
+                
+              </tr>
+
+              <tr>
+
+                <th id="2M34"> </th>
+                <th id="3M34"> </th>
+                <th id="4M34"> </th>
+                <th id="5M34"> </th>
+                <th id="6M34"> </th>
+                <th id="7M34"> </th>
+                
+              </tr>
+
+              <tr>
+                <th id="2M5"> </th>
+                <th id="3M5"> </th>
+                <th id="4M5"> </th>
+                <th id="5M5"> </th>
+                <th id="6M5"> </th>
+                <th id="7M5"> </th>
+                
+              </tr>
+
+              <tr>
+                <th id="2T1"> </th>
+                <th id="3T1"> </th>
+                <th id="4T1"> </th>
+                <th id="5T1"> </th>
+                <th id="6T1"> </th>
+                <th id="7T1"> </th>
+                
+              </tr>
+
+              <tr>
+                <th id="2T24"> </th>
+                <th id="3T24"> </th>
+                <th id="4T24" style="background-color: #81E28B;"> </th>
+                <th id="5T24"> </th>
+                <th id="6T24"> </th>
+                <th id="7T24"> </th>
+                
+              </tr>
+
+              <tr>
+                <th id="2T45"> </th>
+                <th id="3T45"> </th>
+                <th id="4T45"> </th>
+                <th id="5T45"> </th>
+                <th id="6T45"> </th>
+                <th id="7T45"> </th>
+               
+              </tr>
+
+              <tr>
+                <th id="2N12"> </th>
+                <th id="3N12"> </th>
+                <th id="4N12"> </th>
+                <th id="5N12"> </th>
+                <th id="6N12"> </th>
+                <th id="7N12"> </th>
+               
+              </tr>
+
+              <tr>
+                <th id="2N34"> </th>
+                <th id="3N34"> </th>
+                <th id="4N34"> </th>
+                <th id="5N34"> </th>
+                <th id="6N34"> </th>
+                <th id="7N34"> </th>
+                
+              </tr>
+
+            </tbody>
+
+            <caption> Semestre: 2024.1 </caption>
+          </table>
+
+            <div id="modal_calendario">
+              <h2 id="horario"> </h2>
+            </div>
         </div>
       </div>
 
@@ -253,13 +342,18 @@
               <div id="comentario1">
                 <h2 class="usuarios" id="">@Yuri_Gameplays</h2>
                 <h3 class="comentarios">eu adoro essa materia ela é muito legal, to pensando ate em reprovar pra nao sair dela nunk.</h3>
-                <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">responder</a></h3>
+                
+                  <div class="curtidas">
+                    <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">gostei</a></h3>
+                    <button id="button" class="like" type="button" onclick="like()"><i class="fas fa-heart"></i>
+                    </i></button>
+                  </div>
               </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
 
               <div id="comentario2">
                 <h2 class="usuarios" id="">@Junior_Bezerros</h2>
                 <h3 class="comentarios">Mano essa matéria é muito doida cara sério, se tiverem a oportunidade de fazer façam!</h3>
-                <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">like</a></h3>
+                <h3 class="responder" id="responder_de_"><a href="#comentar" onclick="responder_comentario()">gostei</a></h3>
               </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
@@ -273,7 +367,6 @@
     </div>
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
-
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->
