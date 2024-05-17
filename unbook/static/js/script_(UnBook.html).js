@@ -96,7 +96,7 @@ function pesquisa_materia(csrf_token) {
             termo_pesquisa_materias: input
         },
         success: function (response) {
-            console.log(response)
+            console.log("respota:" + response)
             lista_obj_materia = response.split(";")
             lista_resultado_materia = []
 
