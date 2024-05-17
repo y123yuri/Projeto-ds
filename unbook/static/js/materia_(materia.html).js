@@ -91,6 +91,19 @@ document.querySelector('#comentar').addEventListener('keydown', function (event)
     }
 }); // quando apertar ENTER no teclado ele envia o comentário
 
+function like(element) {
+
+    
+    if (element.style.color === "red") {
+        element.style.color = "grey";
+        element.classList.remove('heart');
+    } else {
+        element.style.color = "red";
+        element.classList.add('heart');
+    }
+}
+
+
 //FUNÇÃO PARA POSTAR O COMENTARIO ESCRITO
 function postar_comentario() {
 
@@ -134,11 +147,13 @@ function postar_comentario() {
         Gostei.style.color = computedStyle.color;
         Gostei.style.fontWeight = computedStyle.fontWeight;
         Gostei.style.marginLeft = computedStyle.marginLeft;
+        Gostei.style.cursor = computedStyle.cursor;
         // Adicione outros estilos que você quer copiar aqui
     }
 
         var button_like = document.createElement('button')
         const like_style = document.querySelector('.like');
+        button_like.type = "button" 
     if (like_style) {
         const computedStyle = getComputedStyle(like_style);
         button_like.style.fontFamily = computedStyle.fontFamily;
@@ -150,12 +165,26 @@ function postar_comentario() {
         button_like.style.background = computedStyle.background;
         button_like.style.outline = computedStyle.outline;
 
+
     }
         var like = document.createElement('i');
+        like.style.marginLeft = "15px";
+        like.style.color = "grey";
         like.className = "fa-solid fa-heart"
         like.style.fontFamily = "fontAwesome"
-        // comentarioLinkResponder.onclick = responderComentario();
-
+        like.style.cursor  = "pointer"
+        like.onclick = function() {
+        
+                if (this.style.color === "red") {
+                    this.style.color = "grey";
+                    this.classList.remove('heart');
+                } else {
+                    this.style.color = "red";
+                    this.classList.add('heart');
+                }
+            
+        }
+    
         button_like.appendChild(like)
 
         espaco_curtidas.appendChild(Gostei);
@@ -214,16 +243,4 @@ document.querySelectorAll('tbody th').forEach(item => {
     });
 });
 
-
-function like(element) {
-
-    
-    if (element.style.color === "red") {
-        element.style.color = "grey";
-        element.classList.remove('heart');
-    } else {
-        element.style.color = "red";
-        element.classList.add('heart');
-    }
-}
 
