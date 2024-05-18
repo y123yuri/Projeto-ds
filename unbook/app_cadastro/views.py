@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import CadastroForm
 from .forms import LoginForm
+from .forms import Esqueceu_senhaForm
 from django.http import HttpResponse
 from .models import Cadastro
 from django.contrib.auth.models import User
@@ -94,7 +95,23 @@ def logout(request):
     
     
 def esqueceu(request):
-    return render (request, "html/Nova_senha_email.html")
+    context = {}
+    form = Esqueceu_senhaForm()
+    context["form"] = form
+    return render (request, "html/Nova_senha_email.html", context)
+
+def email_recupera(request):
+    
+    f = Esqueceu_senhaForm(request.POST)
+    context = {}
+    if 'erro' in request.session:
+        del request.session['erro']
+    if f.is_valid():
+        context["resposta"] = f.cleaned_data
+        email_variavel = f.cleaned_data["email"]
+        print(email_variavel)
+    return render(request, 'html/jogadados.html', context)
+
     
 def novaSenha(request):
     return render(request, "html/Nova_senha.html")

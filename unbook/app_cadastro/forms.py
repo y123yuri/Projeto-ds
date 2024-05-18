@@ -32,4 +32,13 @@ class LoginForm(ModelForm):
     class Meta:
         model = Cadastro 
         fields = ['email', 'password']
+
+class Esqueceu_senhaForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Esqueceu_senhaForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs = {"class":"campoEscrito , required", "name":"Email", "type":"email", "placeholder":"Matrícula@aluno.unb.com"}
+    class Meta:
+        model = Cadastro
+        fields = ['email']
+
         
