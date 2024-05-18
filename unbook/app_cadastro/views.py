@@ -151,35 +151,32 @@ def email_recupera(request):
 def novaSenha(request, token):
     context = {}
     token_obj = get_object_or_404(PasswordResetToken, token=token)
-    print('merda')
+    
     f = Nova_senhaForm(request.POST)
     context = {}
 
     # Verifica se o token é válido
     if not token_obj.is_valid():
         context["erro"] = "Token inválido ou expirado"
-        print('lixo')
+       
         return render(request, "html/Nova_senha_email.html", context)
         
     # Se o método da requisição for POST, processa o formulário
     if token_obj.is_valid():
         form = Nova_senhaForm(request.POST)
-        print(form)
-        print('cacete')
         if form.is_valid():
             new_password = form.cleaned_data.get("password")
             token_obj.user.set_password(new_password)
             token_obj.user.save()
-            print('entrouy caralho')
             return redirect("login_func")
         else:
-            print('dou a bunda')
+            
             context["erro"] = "Erro ao processar o formulário. Por favor, tente novamente."
     
     # Se o método da requisição for GET, exibe o formulário
     else:
         form = Nova_senhaForm()
-        print('SERGIO ANTONIO')
+        
     
     context["form"] = form
     return render(request, "html/Nova_senha.html", context)
