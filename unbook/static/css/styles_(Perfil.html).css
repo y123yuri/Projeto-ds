@@ -61,7 +61,7 @@ ul {
 
 #box1 {
     background-color: #f5f5f5;
-    width: 30%;
+    width: 30em;
     height: auto;
     border-radius: 50px;
     display: flex;
@@ -158,6 +158,19 @@ ul {
     animation: aparece 1s;
 }
 
+.forms {
+    width: 15em;
+    height: 2em;
+
+    font-size: 1em;
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+    padding: 0.5em 20px;
+
+    background-color: #D9D9D9;
+    border: none;
+}
+
 #Profile {
     background-color: #f5f5f5;
     width: 75%;
@@ -229,12 +242,27 @@ ul {
     transform: scale(0.9);
 }
 
-#espace_2 {
+#space_2_Profile {
+    padding: 0em 3em 0em 3em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    height: 30em;
+    height: 80%;
+
+
 }
+
+.CampoFalado_Profile {
+    position: relative;
+    margin-top: 1.5em;
+    font-size: 1.5em;
+    color: black;
+}
+
+#space_2_Profile .forms {
+    width: 30em;
+}
+
 
 #Senha {
     background-color: #f5f5f5;
@@ -266,7 +294,7 @@ ul {
 
 .CampoFalado_Senha {
     position: relative;
-    margin-top: 1.5em;
+    margin-top: 0.5em;
     font-size: 1.5em;
     color: black;
 }
@@ -274,23 +302,29 @@ ul {
 #space_2_Senha {
     padding: 0em 3em 0em 3em;
     display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+}
+
+#box_senha_instrucoes {
+    font-size: 1.5em;
+    width: 30em;
+    height: 60%;
+    border: solid 1px black;
+    padding: 1em;
+    
+    margin: 2em 2em;
+
+}
+
+#box_senha_form {
     flex-direction: column;
     width: 100%;
     height: 80%;
-    background-color: #00894034;
+    padding: 2em;
 }
 
-.forms {
-    width: 15em;
-    height: 2em;
-
-    font-size: 1em;
-    margin-top: 0.25em;
-    padding: 0.5em 20px;
-
-    background-color: #D9D9D9;
-    border: none;
-}
 
 #submit {
     position: relative;

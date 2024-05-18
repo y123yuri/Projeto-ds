@@ -30,14 +30,14 @@
           </div>
   
           <div id="CampoEscrito_box1">
-            <h1 id="user_box1">@{{ user }}</h1>
-            <h2 class="CampoEscrito2_box1">Estudante da UnB</h2>
+            <h1 id="user_box1">@{{ user.username }}</h1>
+            <h2 class="CampoEscrito2_box1">{{user.email}}</h2>
           </div>
   
           <hr style="margin: 0 2em" />
   
           <div id="scroll">
-            <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_profile">Editar perfil</h2>
+            <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_profile">Perfil</h2>
             <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_senha">Senha</h2>
             <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_foto">Alterar foto</h2>
           </div>
@@ -57,7 +57,7 @@
           {% csrf_token %}
   
           <div id="espace_1">
-            <h1 class="CampoEscrito_profile">Seja bem vindo <br /><span id="user">{{ user }}</span></h1>
+            <h1 class="CampoEscrito_profile">Seja bem vindo <br /><span id="user">{{ user.username }}</span></h1>
   
             {% if user.is_authenticated %}
               <a class="botoes" type="button" href="{% url 'logout' %}">logout</a>
@@ -66,8 +66,16 @@
   
           <hr style="margin: 0 2em" />
   
-          <div id="espace_2">
-            <label>{{ form.username }}</label>
+          <div id="space_2_Profile">
+
+            <h2 class="CampoFalado_Profile"> Deseja alterar seu nome de usuário? </h2>
+              <input class="forms" type="text" id="username">
+        
+
+
+
+
+
           </div>
         </div>
   
@@ -93,7 +101,12 @@
   
           <div id='space_2_Senha'>
   
-  
+            <div id='box_senha_instrucoes'> 
+                Esse campo está reservado a mudança de senha, caso queira alterá-la, basta inserir sua senha no campo "Senha antiga", e nos outros campos atualizar e confirmar sua senha.
+            </div>
+
+
+  <div id='box_senha_form'>
               <h2 class="CampoFalado_Senha"> Senha antiga </h2>
               <input class="forms" type="text" id="senha_antiga">
   
@@ -104,7 +117,7 @@
               <input class="forms" type="text" id="senha_nova_confirma">
               
               <button id="submit"> Mudar senha </button>
-  
+  </div>
   
           </div>
   
