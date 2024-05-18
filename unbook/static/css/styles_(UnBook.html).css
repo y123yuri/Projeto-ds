@@ -166,16 +166,23 @@ ul {
     top: 20px;
 }
 
-.Login_icon a {
+.Login_icon {
+    display: block;
+    position: absolute;
+    width: 10em;
+    right: 3em;
+
+}
+
+.authentic {
     font-size: 1.5em;
     display: block;
     position: relative;
     font-weight: 900;
-
+    margin: auto;
+    text-align: center;
     color: #0B4C8C;
     text-decoration: none;
-
-    margin-left: 89.25%;
     top: -0.25rem;
     transition: all 0.3s ease;
 }
@@ -190,9 +197,8 @@ ul {
     background-color: #0B4C9C;
     width: 5em;
     height: 5em;
-
+    margin: auto;
     display: block;
-    margin-left: 90%;
     border-radius: 50%;
     margin-top: -6.5em;
 

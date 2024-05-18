@@ -125,7 +125,7 @@ function postar_comentario() {
 
         var usuario = document.createElement('h2');
         usuario.className = "usuarios";
-        usuario.innerText = '@Anônimo';
+        usuario.innerText = '{{user.username}}';
 
         var comentario = document.createElement('h3');
         comentario.className = "comentarios";
