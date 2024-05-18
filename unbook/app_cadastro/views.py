@@ -37,6 +37,7 @@ def sucesso(request):
         dados = [nome_variavel, email_variavel, senha_variavel]
         user = User.objects.create_user(username=dados[0],email=dados[1],password=dados[2])
         user.save()
+        login(request, user)
         #escrever autenticação
         
         
