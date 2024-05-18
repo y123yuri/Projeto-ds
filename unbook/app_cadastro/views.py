@@ -154,11 +154,6 @@ def novaSenha(request, token):
     print('merda')
     f = Nova_senhaForm(request.POST)
     context = {}
-    if f.is_valid():
-        context["resposta"] = f.cleaned_data
-        email_variavel = f.cleaned_data["email"]
-        print(context['password'])
-        print(entrei)
 
     # Verifica se o token é válido
     if not token_obj.is_valid():
