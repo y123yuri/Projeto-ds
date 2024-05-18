@@ -136,7 +136,7 @@ def email_recupera(request):
         )
 
         subject = "Redefinição de senha"
-        message = render_to_string('html/Nova_senha.html', {
+        message = render_to_string('html/redefinição.html', {
             'user': user,
             'reset_url': reset_url
         })
@@ -183,8 +183,5 @@ def novaSenha(request, token):
 
 
 
-def nova_senha_confirma(request):
 
-
-    return HttpResponse('Qualquer coisa dentro do negocio')
 

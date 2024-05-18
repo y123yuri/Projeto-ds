@@ -19,6 +19,13 @@
   </head>
 
   <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      csrf_token = "{{ csrf_token }}"
+      nome = "{{ turma.professor.nome }}"
+      codigo = "{{ turma.materia.codigo }}"
+    </script>
+    
     <div id="fundo_blur"></div>
     <div id="modal_avaliacao">
       <div id="avaliacao">
@@ -103,15 +110,13 @@
 
             <div class="boxes_modal" id="box_modal_4">
               <h2 class="CampoFalado2_modal">Professor</h2>
-              <h4 class="CampoFalado3_modal">Selecione alguns pontos fortes que você acha que definem "{{ turma.professor.nome }}"</h4>
+              <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
+            
+              <div id="button_box">
+               
+                <input class="button" type="button" id="sim"> Sim </input>
+                <input class="button" type="button" id="nao"> Não </input>
 
-              <div id="scroll_pontos_fortes">
-                <label class="radio" for="Didática"><input type="radio" name="radio_1" id="Didática" />Didática</label>
-                <label class="radio" for="Compreensão"><input type="radio" name="radio_2" id="Compreensão" />Compreensão</label>
-                <label class="radio" for="Generoso"><input type="radio" name="radio_3" id="Generoso" />Generoso</label>
-                <label class="radio" for="Atencioso"><input type="radio" name="radio_3" id="Atencioso" />Atensioso</label>
-                <label class="radio" for="Chato"><input type="radio" name="radio_3" id="Chato" />Chato</label>
-                <label class="radio" for="Maluco"><input type="radio" name="radio_3" id="Maluco" />Maluco</label>
               </div>
 
               <div class="espaco_buttons">
@@ -390,6 +395,7 @@
     </div>
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
+    <a style="display: none" id="User_js">{{ user.username }}</a>
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->

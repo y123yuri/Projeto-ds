@@ -1,5 +1,8 @@
 from django.db import models
 from unidecode import unidecode
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -39,7 +42,10 @@ class Professor(models.Model):
     nome = models.CharField(max_length=100, primary_key=True)
     foto = models.URLField()
     objects = ProfessorManager()
-                    
+    aprovacoes = models.IntegerField(default=0)
+    reprovado = models.IntegerField(default=0)
+    
+
     def __str__(self):
         return self.nome
 
@@ -55,23 +61,31 @@ class Materia(models.Model):
         return self.codigo + " " + self.nome + " "
     
 
-
 class Comentario(models.Model):
-    autor_nick = models.CharField(max_length=100)
-    autor_email = models.EmailField()
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     hora_publicacao = models.TimeField()
     texto = models.CharField(max_length=250)
-    curtidas = models.IntegerField()
+    #curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
+
 
 class Turma(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)
     materia = models.ForeignKey("Materia", on_delete=models.CASCADE)
     turno = models.CharField(max_length=30, default="NA")
     local = models.CharField(max_length=30, default="NA")
-    # comentario = models.ForeignKey(Comentario)
-    avaliação_1 = models.FloatField()
-    avaliação_2 = models.FloatField()
-    avaliação_3 = models.FloatField()
+    
+    videos = models.CharField( max_length=2000, default="")
+    resumos = models.CharField( max_length=2000, default="")
+    atividades = models.CharField( max_length=2000, default="")
+
+
+    avaliacao_apoio_aluno = models.FloatField(default=0)
+    avaliacao_dificuldade = models.FloatField(default=0)
+    avaliacao_didatica = models.FloatField(default=0)
+
+    avaliadores = models.ManyToManyField(settings.AUTH_USER_MODEL, default=None)
+
     def __str__(self):
         return self.materia.codigo + "/" + self.professor.nome
 

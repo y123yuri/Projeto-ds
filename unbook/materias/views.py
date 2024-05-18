@@ -1,7 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 import time
-
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def home(request):
@@ -19,8 +19,10 @@ def pesquisa(request):
     str_lista = Professor.objects.pesquisa(termo_pesquisa)
     obj_lista = []
     for nome in str_lista:
-        obj_lista.append(Professor.objects.get(nome=nome))
-    
+        prof_obj = Professor.objects.get(nome=nome)
+        if Turma.objects.filter(professor=prof_obj):
+            obj_lista.append(prof_obj)
+        
     for obj in obj_lista:
         turma = Turma.objects.filter(professor=obj)
         if not turma:
@@ -54,40 +56,46 @@ def pesquisa_materias(request):
 
 
 def materia(request, codigo, nome):
-    print(codigo, nome)
-    obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
+    if request.user.is_authenticated:
+        print(codigo, nome)
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
 
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-    context = {}
-    context["turma"] = obj_turma
-    index =0
-    lista_turno = obj_turma.turno.split(" ")
-    dias = []
-    print(obj_turma.turno)
-    for turno in lista_turno:
-        
-        for i in range(len(turno)):
-            if not turno[i].isdigit():
-                index = i
-        
-        if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        context = {}
+        context["turma"] = obj_turma
+        index =0
+        lista_turno = obj_turma.turno.split(" ")
+        dias = []
+        print(obj_turma.turno)
+        for turno in lista_turno:
+            
+            for i in range(len(turno)):
+                if not turno[i].isdigit():
+                    index = i
+            
+            if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
 
-            for n in range(index):
-                if len(turno[index:])==5:
-                    dia = turno[n]+turno[index:index+3]
-                    dias.append(dia)
-                    dia = turno[n]+turno[index] +turno[index+3:]
-                    dias.append(dia)
-                else:
-                    dia = turno[n]+turno[index:]
-                    dias.append(dia)
-                    
-    context["dias"] =  dias
+                for n in range(index):
+                    if len(turno[index:])==5:
+                        dia = turno[n]+turno[index:index+3]
+                        dias.append(dia)
+                        dia = turno[n]+turno[index] +turno[index+3:]
+                        dias.append(dia)
+                    else:
+                        dia = turno[n]+turno[index:]
+                        dias.append(dia)
+                        
+        context["dias"] =  dias
 
-    return render(request, "materia.html", context)
+        return render(request, "materia.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
 
 def professor(request, nome):
+    
     ob_prof = Professor.objects.get(nome=nome)
     lista_turma = Turma.objects.filter(professor=ob_prof)
     context = {}
@@ -98,15 +106,16 @@ def professor(request, nome):
     aval_2 = 0
     aval_3 = 0
     for turma in lista_turma:
-        aval_1 += turma.avaliação_1
-        aval_2 += turma.avaliação_2
-        aval_3 += turma.avaliação_3
+        aval_1 += turma.avaliacao_apoio_aluno
+        aval_2 += turma.avaliacao_dificuldade
+        aval_3 += turma.avaliacao_didatica
     
     context["aval_1"] = aval_1 /len(lista_turma)
     context["aval_2"] = aval_2 /len(lista_turma)
     context["aval_3"] = aval_3 /len(lista_turma)
 
     return render(request, "Professor.html", context)
+    
 
 def pesquisa_turma(request):
     codigo = request.POST['codigo']
@@ -122,33 +131,54 @@ def pesquisa_turma(request):
 
 
 def videos(request, nome,codigo) :
-    obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
 
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-    context = {}
-    context["turma"] = obj_turma
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        context = {}
+        context["turma"] = obj_turma
 
-    return render(request, "Videos.html", context)
+        return render(request, "Videos.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
 
 def resumos(request, nome,codigo) :
-    obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
 
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-    context = {}
-    context["turma"] = obj_turma
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        context = {}
+        context["turma"] = obj_turma
 
-    return render(request, "Livros.html", context)
+        return render(request, "Livros.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
 
 def atividades(request, nome,codigo) :
-    obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
 
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-    context = {}
-    context["turma"] = obj_turma
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        context = {}
+        context["turma"] = obj_turma
 
-    return render(request, "Videos.html", context)
+        return render(request, "Videos.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
 
 
+def avaliacao(request):
+    lista = request.POST['avaliacao']
+    codigo_materia = request.POST['materia']
+    nome_prof = request.POST['professor']
+    print(lista)
+    return HttpResponse(str(lista))

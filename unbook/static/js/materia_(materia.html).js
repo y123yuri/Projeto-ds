@@ -61,7 +61,6 @@ var voltar3 = document.getElementById('back_button_3').addEventListener('click',
 
 var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
     e.preventDefault()
-    alert('avaliacao enviada com sucesso!')
     fundoblur.style.display = "none";
     modal.style.display = "none";
 });
@@ -125,7 +124,9 @@ function postar_comentario() {
 
         var usuario = document.createElement('h2');
         usuario.className = "usuarios";
-        usuario.innerText = '@Anônimo';
+        var user = document.getElementById('User_js')
+        usuario.innerText = '@' + user.textContent;
+
 
         var comentario = document.createElement('h3');
         comentario.className = "comentarios";

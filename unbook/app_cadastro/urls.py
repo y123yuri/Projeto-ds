@@ -13,6 +13,6 @@ urlpatterns = [
     path('login/logado/', views.logado, name='logado'),
     path('login/logout/', views.logout, name='logout'),
     path('login/esqueceu/email_recupera', views.email_recupera, name='email_recupera'),#nova senha confirma
-    # path('login/esqueceu/nova_senha_trocada',views.nova_senha_trocada, name='nova_senha_trocada'),
+    
     
 ]
