@@ -7,40 +7,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
 
-<link rel="stylesheet" href="{% static "css/styles_(Perfil.html).css" %}"> <!--LINK PARA O CSS DA PAGINA -->
-</head>
+
+    <link rel="stylesheet" href="{% static 'css/styles_(Perfil.html).css' %}" /> <!-- LINK PARA O CSS DA PAGINA -->
+  </head>
 
 <body>
 
-    <a href="/"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
-    <!--LINK PARA VOLTAR PARA O UNBOOK-->
+    <a href="/"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" alt=""></a>
 
-    <div id="box" class="box">
-        <form class="form" id="form" action="./logado/" method="post" name="contact-form">
-            {% csrf_token %}
-            <h1 class="login"> {{user}} </h1>
-            <h3 class="campoFalado">Seja bem vindo!</h3>
-            
-           
-            
-        </form>
-        
-        {% comment %} <input class="botoes" type="button" value="logout" href="{% url 'logout' %}"> </input> {% endcomment %}
-        {% if user.is_authenticated %}
+    <div id="boxes">
 
-            <a class="botoes" type="button" href="{% url 'logout' %}"> logout</a> 
-            
-        {% endif %}
-    </div>
 
-</body>
 
-<!--LINK PARA ARQUIVOS JS-->
-<script src="{% static ""%}"></script>
 
-</html>
+        <div id="box1">
+          <div id="espace_img_user">
+            <div id="img_user"></div>
+          </div>
+  
+          <div id="CampoEscrito_box1">
+            <h1 id="user_box1">@{{ user }}</h1>
+            <h2 class="CampoEscrito2_box1">Estudante da UnB</h2>
+          </div>
+  
+          <hr style="margin: 0 2em" />
+  
+          <div id="scroll">
+            <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_profile">Editar perfil</h2>
+            <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_senha">Senha</h2>
+            <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_foto">Alterar foto</h2>
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        <div class="boxs" id="Profile">
+          {% csrf_token %}
+  
+          <div id="espace_1">
+            <h1 class="CampoEscrito_profile">Seja bem vindo <br /><span id="user">{{ user }}</span></h1>
+  
+            {% if user.is_authenticated %}
+              <a class="botoes" type="button" href="{% url 'logout' %}">logout</a>
+            {% endif %}
+          </div>
+  
+          <hr style="margin: 0 2em" />
+  
+          <div id="espace_2">
+            <label>{{ form.username }}</label>
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  
+  
+        <div class="boxs" id="Senha">
+          {% csrf_token %}
+  
+          <div id="space_1_Senha">
+            <h1 class="CampoEscrito_Senha"> Senha </h1>
+  
+            {% if user.is_authenticated %}
+              <a class="botoes" type="button" href="{% url 'logout' %}">logout</a>
+            {% endif %}
+          </div>
+  
+          <hr style="margin: 0 2em" />
+  
+          <div id='space_2_Senha'>
+  
+  
+              <h2 class="CampoFalado_Senha"> Senha antiga </h2>
+              <input class="forms" type="text" id="senha_antiga">
+  
+              <h2 class="CampoFalado_Senha"> Senha Nova </h2>
+              <input class="forms" type="text" id="senha_nova">
+  
+              <h2 class="CampoFalado_Senha"> Confirmar senha nova </h2>
+              <input class="forms" type="text" id="senha_nova_confirma">
+              
+              <button id="submit"> Mudar senha </button>
+  
+  
+          </div>
+  
+          
+        </div>
+  
+  
+  
+  
+      </div>
+    </body>
+  
+    <!-- LINK PARA ARQUIVOS JS -->
+    <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
+  
+  </html>

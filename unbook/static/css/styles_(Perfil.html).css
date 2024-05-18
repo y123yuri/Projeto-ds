@@ -32,217 +32,297 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
-.UnBook_logo_mini{
+.UnBook_logo_mini {
     display: block;
-    
-    width:25em;
+
+    width: 25em;
     height: auto;
-  
+
     position: relative;
-  
+
     margin-left: 10px;
     top: 20px;
-  }
+}
 
-.box {
-    background-color: whitesmoke;
-    width: 40em;
-    height: 33em;
+#boxes {
+    background-color: #f5f5f5c8;
+    box-shadow: -10px 10px 1px #5b5b5bc8;
     border-radius: 50px;
-    box-shadow: 0 0 5px rgb(255, 255, 255);
+    width: 95%;
+    height: 35em;
 
-    display: block;
+
+    display: flex;
+    flex-direction: row;
     margin-left: auto;
     margin-right: auto;
-
     margin-top: 2.5%;
 }
 
-.login {
+#box1 {
+    background-color: #f5f5f5;
+    width: 30%;
+    height: auto;
+    border-radius: 50px;
+    display: flex;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#espace_img_user {
+    width: 100%;
+    height: 15em;
+}
+
+#img_user {
+
+    margin: auto;
+    position: relative;
+    width: 13em;
+    height: 13em;
+    top: 1.5em;
+    background-color: #00894034;
+    box-shadow: -10px 5px 1px #f5f5f5c8;
+    border-radius: 100%;
+}
+
+#CampoEscrito_box1 {
+    width: 100%;
+    height: 15%;
+}
+
+#user_box1 {
+    color: #0B4C8C;
+    margin: auto;
+    text-align: center;
+}
+
+#scroll {
+    margin-top: 1em;
+    width: auto;
+    height: 23%;
+
+    text-align: center;
+    padding: 0.75em 2em;
+
+    overflow-y: auto;
+}
+
+#scroll::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#scroll::-webkit-scrollbar-thumb {
+    background-color: #E6F2FB;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: solid 1px #0000002a;
+    /* roundness of the scroll thumb */
+}
+
+#scroll::-webkit-scrollbar-track {
+    background-color: #0000002a;
+    border-radius: 25px;
+}
+
+.pages {
+    margin-top: 0.5em;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    ;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pages:hover {
+    transform: scale(1.025);
+}
+
+@keyframes aparece {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+}
+
+.boxs {
+    animation: aparece 1s;
+}
+
+#Profile {
+    background-color: #f5f5f5;
+    width: 75%;
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    margin-left: 0em;
+}
+
+#espace_1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 10em;
+}
+
+.CampoEscrito_profile {
+    font-size: 2em;
+    padding: 40px 5px 5px 40px;
+}
+
+.CampoEscrito2_box1 {
+    font-size: 1.5em;
+    margin: auto;
+    text-align: center;
+}
+
+#user {
+    position: relative;
+    font-size: 2em;
+    color: #0B4C9C;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#user:hover {
+    text-shadow: 0 0 2px #0B4C8C;
+}
+
+
+.botoes {
+    position: relative;
+    width: auto;
+    height: 2em;
+
+    border: none;
+    border-radius: 50px;
+    background-color: #0B4C9C;
+
+    margin-top: 30px;
+    margin-right: 1em;
+
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.botoes:hover {
+    transform: scale(0.9);
+}
+
+#espace_2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30em;
+}
+
+#Senha {
+    background-color: #f5f5f5;
+    width: 75%;
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+
+    display: none;
+    flex-direction: column;
+    margin: 1em;
+    margin-left: 0em;
+
+}
+
+#space_1_Senha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 7em;
+}
+
+.CampoEscrito_Senha {
+    position: relative;
     font-size: 3em;
     padding: 40px 5px 5px 40px;
 }
 
-.campoFalado {
-    font-size: 20px;
-    padding-top: 15px;
-    padding: 20px 5px 5px 40px;
+.CampoFalado_Senha {
+    position: relative;
+    margin-top: 1.5em;
+    font-size: 1.5em;
+    color: black;
 }
 
-.campoEscrito {
-    font-size: 20px;
-    border: none;
-    padding-left: 20px;
+#space_2_Senha {
+    padding: 0em 3em 0em 3em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    background-color: #00894034;
+}
 
-    width: 550px;
+.forms {
+    width: 15em;
     height: 2em;
+
+    font-size: 1em;
+    margin-top: 0.25em;
+    padding: 0.5em 20px;
+
     background-color: #D9D9D9;
-
-    text-align: left;
-    justify-content: center;
-    display: block;
-
-    margin-left: auto;
-    margin-right: auto;
+    border: none;
 }
 
-.botoes {
-    display: block;
-    width: 15rem;
-    height: auto;
-  
+#submit {
+    position: relative;
+
+
+    width: 10em;
+    height: 2em;
+
     border: none;
     border-radius: 20px;
     background-color: #0B4C9C;
-  
+
     margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-  
+    margin-right: 1em;
+
+
     color: white;
-    font-size: 2em;
-    -webkit-text-stroke-width: 1px;
+    font-size: 1.5em;
+    font-weight: 600;
     cursor: pointer;
     text-align: center;
-    padding: 1rem 2rem;
+    padding: 0.5em 1em;
     text-decoration: none;
-  
-    transition: all 0.3s ease;
-  }
 
-.botoes:hover {
+    transition: all 0.3s ease;
+}
+
+#submit:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px #0B4C8C;
 }
 
-.botoes:active {
+#submit:active {
     transform: scale(0.9);
-}
-
-.cadastro {
-    display: grid;
-    text-align: center;
-    margin-top: 1rem;
-    color:#0C36A1;
-
-    width: auto;
-    height: auto;
-}
-
-@media screen and (max-width:828px){
-    
-    .box {
-        background-color: whitesmoke;
-        width: auto;
-        height: 32em;
-        border-radius: 50px;
-        box-shadow: 0 0 5px rgb(255, 255, 255);
-    
-        display: block;
-        margin: 0.5em;
-    
-        margin-top: 10%;
-    }
-    
-    .login {
-        font-size: 3em;
-        padding: 40px 5px 5px 40px;
-    }
-    
-    .campoFalado {
-        font-size: 20px;
-        padding-top: 15px;
-        padding: 20px 5px 5px 40px;
-    }
-    
-    .campoEscrito {
-        font-size: 20px;
-        border: none;
-        padding-left: 20px;
-    
-        width: 95%;
-        height: 2em;
-        background-color: #D9D9D9;
-    
-        text-align: left;
-        justify-content: center;
-        display: block;
-    
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-    }
-    
-    .UnBook_logo_mini{
-        display: inline;
-        
-        width:12.5em;
-        height: auto;
-    
-        position: relative;
-    
-        margin-left: 10px;
-        top: 20px;
-    }
-    
-    .botao_entrar {
-        display: block;
-        width: 15rem;
-        height: auto;
-      
-        border: none;
-        border-radius: 20px;
-        background-color: #0B4C9C;
-      
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
-      
-        color: white;
-        font-size: 2em;
-        -webkit-text-stroke-width: 1px;
-        cursor: pointer;
-        text-align: center;
-        padding: 1rem 2rem;
-        text-decoration: none;
-      
-      
-        transition: all 0.3s ease;
-      }
-    
-    .botao_entrar:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 25px #0B4C8C;
-    }
-    
-    .botao_entrar:active {
-        transform: scale(0.9);
-    }
-    
-    .cadastro {
-        display: grid;
-        text-align: center;
-        margin-top: 1rem;
-        color:#0C36A1;
-    
-        width: auto;
-        height: auto;
-    }
-    
-    .senha {
-        display: grid;
-        text-align: center;
-        margin-top: 0.5rem;
-        color:#0C36A1;
-    
-        width: auto;
-        height: auto;
-    }
-    
-    .spans_required {
-        color: #ff0000;
-        margin-left: 3em;
-        display:none;
-    }
-
-
 }
