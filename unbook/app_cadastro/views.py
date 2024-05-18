@@ -8,6 +8,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.utils import timezone
+from .models import PasswordResetToken
+from django.urls import reverse
+from django.shortcuts import get_object_or_404
+from .forms import Nova_senhaForm
+
+
 
 
 
@@ -51,7 +63,7 @@ def login_func(request):
         context = {}
         form = LoginForm()
         context["form"] = form
-        print(context)
+        
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
         return render(request,"html/Perfil.html") # trocar depois pra página de perfil
@@ -105,15 +117,82 @@ def email_recupera(request):
     
     f = Esqueceu_senhaForm(request.POST)
     context = {}
+    
     if 'erro' in request.session:
         del request.session['erro']
     if f.is_valid():
         context["resposta"] = f.cleaned_data
         email_variavel = f.cleaned_data["email"]
-        print(email_variavel)
-    return render(request, 'html/jogadados.html', context)
+        
+        try:
+            user = User.objects.get(email=email_variavel)
+        except User.DoesNotExist:
+            request.session['erro'] = "Email não encontrado"
+            return render(request, 'html/Nova_senha_email.html') #nova senha de botar o email para recuperar
+        token = PasswordResetToken.objects.create(user=user)
 
+        reset_url = request.build_absolute_uri(
+            reverse('novaSenha', kwargs={'token': str(token.token)})
+        )
+
+        subject = "Redefinição de senha"
+        message = render_to_string('html/Nova_senha.html', {
+            'user': user,
+            'reset_url': reset_url
+        })
+        send_mail(subject, message, 'django.core.mail.backends.console.EmailBackend', [reset_url] ,[user.email])
+
+        return render(request, 'html/Nova_senha_confirma.html', context)
+
+    else:
+        request.session['erro'] = "Email invalido"
+        return redirect("./")
     
-def novaSenha(request):
-    return render(request, "html/Nova_senha.html")
+def novaSenha(request, token):
+    context = {}
+    token_obj = get_object_or_404(PasswordResetToken, token=token)
+    print('merda')
+    f = Nova_senhaForm(request.POST)
+    context = {}
+    if f.is_valid():
+        context["resposta"] = f.cleaned_data
+        email_variavel = f.cleaned_data["email"]
+        print(context['password'])
+        print(entrei)
+
+    # Verifica se o token é válido
+    if not token_obj.is_valid():
+        context["erro"] = "Token inválido ou expirado"
+        print('lixo')
+        return render(request, "html/Nova_senha_email.html", context)
+        
+    # Se o método da requisição for POST, processa o formulário
+    if token_obj.is_valid():
+        form = Nova_senhaForm(request.POST)
+        print(form)
+        print('cacete')
+        if form.is_valid():
+            new_password = form.cleaned_data.get("password")
+            token_obj.user.set_password(new_password)
+            token_obj.user.save()
+            print('entrouy caralho')
+            return redirect("login_func")
+        else:
+            print('dou a bunda')
+            context["erro"] = "Erro ao processar o formulário. Por favor, tente novamente."
+    
+    # Se o método da requisição for GET, exibe o formulário
+    else:
+        form = Nova_senhaForm()
+        print('SERGIO ANTONIO')
+    
+    context["form"] = form
+    return render(request, "html/Nova_senha.html", context)
+
+
+
+def nova_senha_confirma(request):
+
+
+    return HttpResponse('Qualquer coisa dentro do negocio')
 

@@ -41,4 +41,17 @@ class Esqueceu_senhaForm(ModelForm):
         model = Cadastro
         fields = ['email']
 
+class Nova_senhaForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Nova_senhaForm, self).__init__(*args, **kwargs)
+        self.fields['password'].widget = forms.PasswordInput()
+        
+        self.fields['password'].widget.attrs = {"class":"campoEscrito , required",  "name":"Senha", "type":"password", "placeholder":"*******"}
+
+    class Meta:
+        model = Cadastro
+        fields = ['password']
+
+
+
         

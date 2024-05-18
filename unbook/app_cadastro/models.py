@@ -1,4 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
+import uuid
+import datetime
+from datetime import timedelta
+from datetime import timezone
+from django.utils import timezone
+
+
+
 
 # Create your models here.
 
@@ -9,3 +18,16 @@ class Cadastro(models.Model):
 
     def __str__(self):
         return f'{self.email}: {self.username}'
+
+# models.py
+
+
+class PasswordResetToken(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    token = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_valid(self):
+        # Opcional: defina uma validade para o token, por exemplo, 24 horas
+        expiration_time = timedelta(hours=1)
+        return self.created_at >= timezone.now() - expiration_time
