@@ -23,6 +23,7 @@
     <div id="box" class="box">
         <form class="form" id="form" action="./logado/" method="post" name="contact-form">
             {% csrf_token %}
+            <div id="erro_nn_log"> {{ erro }} </div>
             <h1 class="login"> Login </h1>
             <h3 class="campoFalado"> Digite o seu e-mail:</h3>
             

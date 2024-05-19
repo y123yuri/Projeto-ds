@@ -16,17 +16,11 @@ function VerificaAvaliacoes(avaliacoes) {
     return true; // Retorna verdadeiro se todas as categorias foram avaliadas
 }
 
-// Função para reiniciar as avaliações
-function reiniciarAvaliacoes() {
-    avaliacoes = {
-        'Dificuldade': '',
-        'Monitoria': '',
-        'Didatica': ''
-    };
-}
 
 // Seleciona todas as etiquetas de estrelas
 let starLabels = document.querySelectorAll('.rating_modal label');
+
+
 
 // Adiciona um ouvinte de evento de clique a cada etiqueta de estrela
 starLabels.forEach(function (label) {
@@ -44,21 +38,43 @@ starLabels.forEach(function (label) {
 
         // Verifica se todas as categorias foram avaliadas
         if (VerificaAvaliacoes(avaliacoes)) {
-            console_print(avaliacoes);
+            console_print(avaliacoes, categoriaId);
         }
     });
 });
 
-function console_print(avaliacoes) {
+function console_print(avaliacoes, categoriaId) {
     
-    var materia = document.getElementById('Materia').textContent;
+    var button_finalizar = document.getElementById('prox_button_4');  
+    button_finalizar.addEventListener('click', () => {
+        lista =[]
 
-    var professor = document.getElementById('Prof_js').textContent
 
-    console.log( '\n' + 'Gerando avaliacao para materia: \n\n' + materia + '\nregida por ' + professor  + ' : \n\n' )
+        for (let categoria in avaliacoes) {
 
-    for (let categoria in avaliacoes) {
-        console.log(categoria + ': ' + avaliacoes[categoria] + ' estrelas de 5;');
-    }
+            lista.push(avaliacoes[categoria]) 
+        }
+
+        lista.push(true)
+
+        enviar_para_back(lista);
+    });
+}
+
+function enviar_para_back(lista){
+    lista = lista.join(',')
+     $.ajax({
+            type: "POST",
+            url: "../../../avaliacao/",
+            data: {
+                csrfmiddlewaretoken: csrf_token,
+                avaliacao: lista,
+                professor: nome,
+                materia: codigo,
+            }, 
+            success: function (response)  {
+                console.log(response)
+            }
+     })
 }
 

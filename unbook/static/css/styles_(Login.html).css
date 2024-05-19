@@ -44,6 +44,13 @@ ul {
     top: 20px;
   }
 
+#erro_nn_log {
+    display: block;
+    text-align: center;
+    color: red;
+    font-size: 1.5em;
+}
+
 .box {
     background-color: whitesmoke;
     width: 40em;

@@ -50,3 +50,32 @@ var others_boxes = document.querySelectorAll('.boxs')
     }
 
 }
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#boxes')) {
+        console.log('eita')
+        window.location.href = '/'
+    }
+
+
+
+})
+
+
+var img = document.getElementById('img_user')
+img.addEventListener('mouseover', (e) => {
+    img.style.opacity = "0.5"
+})
+
+img.addEventListener('mouseout', (e) => {
+    img.style.opacity = "1"
+})
+
+
+
+
+
+
+
+
+

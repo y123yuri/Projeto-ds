@@ -19,6 +19,18 @@
   </head>
 
   <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      csrf_token = "{{ csrf_token }}"
+      nome = "{{ turma.professor.nome }}"
+      codigo = "{{ turma.materia.codigo }}"
+      nota_dificuldade = '{{ turma.avaliacao_dificuldade }}'
+      nota_apoio = '{{ turma.avaliacao_apoio_aluno}}'
+      nota_didatica = '{{ turma.avaliacao_didatica}}'
+      
+      
+    </script>
+    
     <div id="fundo_blur"></div>
     <div id="modal_avaliacao">
       <div id="avaliacao">
@@ -27,10 +39,10 @@
         <div id="scroll_modal">
           <div id="boxes_modal">
             <div class="boxes_modal" id="box_modal_1">
-              <h2 class="CampoFalado2_modal">Dificuldade</h2>
+              <h2 class="CampoFalado2_modal">Dificuldade </h2>
               <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
 
-              <fieldset class="rating_modal" id="Dificuldade">
+              <fieldset class="rating_modal" id="Dificuldade" >
                 <input type="radio" id="star5_Dificuldade" name="rating_Dificuldade" value="5" />
                 <label for="star5_Dificuldade" class="full" title="Awesome"></label>
                 <input type="radio" id="star4.5_Dificuldade" name="rating_Dificuldade" value="4.5" /><label for="star4.5_Dificuldade" class="half" title="Awesome"></label>
@@ -92,7 +104,7 @@
                 <input type="radio" id="star1_Didatica" name="rating_Didatica" value="1" /><label for="star1_Didatica" class="full" title="Awesome"></label>
                 <input type="radio" id="star0.5_Didatica" name="rating_Didatica" value="0.5" /><label for="star0.5_Didatica" class="half" title="Awesome"></label>
 
-                <h3 id="notas_Didatica">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+                <h3 id="notas_Didatica"> 0 de 5 </h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
 
               <div class="espaco_buttons">
@@ -103,15 +115,13 @@
 
             <div class="boxes_modal" id="box_modal_4">
               <h2 class="CampoFalado2_modal">Professor</h2>
-              <h4 class="CampoFalado3_modal">Selecione alguns pontos fortes que você acha que definem "{{ turma.professor.nome }}"</h4>
+              <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
+            
+              <div id="button_box">
+               
+                <input class="button" type="button" id="sim"> Sim </input>
+                <input class="button" type="button" id="nao"> Não </input>
 
-              <div id="scroll_pontos_fortes">
-                <label class="radio" for="Didática"><input type="radio" name="radio_1" id="Didática" />Didática</label>
-                <label class="radio" for="Compreensão"><input type="radio" name="radio_2" id="Compreensão" />Compreensão</label>
-                <label class="radio" for="Generoso"><input type="radio" name="radio_3" id="Generoso" />Generoso</label>
-                <label class="radio" for="Atencioso"><input type="radio" name="radio_3" id="Atencioso" />Atensioso</label>
-                <label class="radio" for="Chato"><input type="radio" name="radio_3" id="Chato" />Chato</label>
-                <label class="radio" for="Maluco"><input type="radio" name="radio_3" id="Maluco" />Maluco</label>
               </div>
 
               <div class="espaco_buttons">
@@ -133,7 +143,7 @@
           <div id="avaliacao">
             <h1 class="CampoFalado1">Avaliação</h1>
 
-            <h2 class="CampoFalado2">Dificuldade</h2>
+            <h2 class="CampoFalado2">Dificuldade {{ turma.avaliacao_dificuldade }}</h2>
             <fieldset class="rating" id="Dificuldade-media">
               <input type="radio" id="star5_Dificuldade-media" name="rating_Dificuldade-media" value="5" />
               <label for="star5_Dificuldade-media" class="full" title="Awesome"></label>
@@ -147,13 +157,13 @@
               <input type="radio" id="star1_Dificuldade-media" name="rating_Dificuldade-media" value="1" /><label for="star1_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Dificuldade-media" name="rating_Dificuldade-media" value="0.5" /><label for="star0.5_Dificuldade-media" class="half" title="Awesome"></label>
 
-              <h3 id="notas_Dificuldade-media">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_Dificuldade-media"> 0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2">Monitoria</h2>
-            <fieldset class="rating" id="Monitoria_media">
+            <h2 class="CampoFalado2">Monitoria {{turma.avaliacao_apoio_aluno}} </h2>
+            <fieldset class="rating" id="Monitoria">
               <input type="radio" id="star5_Monitoria_media" name="rating_Monitoria_media" value="5" /><label for="star5_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Monitoria_media" name="rating_Monitoria_media" value="4.5" /><label for="star4.5_Monitoria_media" class="half" title="Awesome"></label>
               <input type="radio" id="star4_Monitoria_media" name="rating_Monitoria_media" value="4" /><label for="star4_Monitoria_media" class="full" title="Awesome"></label>
@@ -170,20 +180,20 @@
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2">Dúvidas</h2>
-            <fieldset class="rating" id="Dúvidas_media">
-              <input type="radio" id="star5_Dúvidas_media" name="rating_Dúvidas_media" value="5" /><label for="star5_Dúvidas_media" class="full" title="Awesome"></label>
-              <input type="radio" id="star4.5_Dúvidas_media" name="rating_Dúvidas_media" value="4.5" /><label for="star4.5_Dúvidas_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_Dúvidas_media" name="rating_Dúvidas_media" value="4" /><label for="star4_Dúvidas_media" class="full" title="Awesome"></label>
-              <input type="radio" id="star3.5_Dúvidas_media" name="rating_Dúvidas_media" value="3.5" /><label for="star3.5_Dúvidas_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_Dúvidas_media" name="rating_Dúvidas_media" value="3" /><label for="star3_Dúvidas_media" class="full" title="Awesome"></label>
-              <input type="radio" id="star2.5_Dúvidas_media" name="rating_Dúvidas_media" value="2.5" /><label for="star2.5_Dúvidas_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_Dúvidas_media" name="rating_Dúvidas_media" value="2" /><label for="star2_Dúvidas_media" class="full" title="Awesome"></label>
-              <input type="radio" id="star1.5_Dúvidas_media" name="rating_Dúvidas_media" value="1.5" /><label for="star1.5_Dúvidas_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_Dúvidas_media" name="rating_Dúvidas_media" value="1" /><label for="star1_Dúvidas_media" class="full" title="Awesome"></label>
-              <input type="radio" id="star0.5_Dúvidas_media" name="rating_Dúvidas_media" value="0.5" /><label for="star0.5_Dúvidas_media" class="half" title="Awesome"></label>
+            <h2 class="CampoFalado2"> Didática {{ turma.avaliacao_didatica}} </h2>
+            <fieldset class="rating" id="Didatica_media">
+              <input type="radio" id="star5_Didatica_media" name="rating_Didatica_media" value="5" /><label for="star5_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star4.5_Didatica_media" name="rating_Didatica_media" value="4.5" /><label for="star4.5_Didatica_media" class="half" title="Awesome"></label>
+              <input type="radio" id="star4_Didatica_media" name="rating_Didatica_media" value="4" /><label for="star4_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star3.5_Didatica_media" name="rating_Didatica_media" value="3.5" /><label for="star3.5_Didatica_media" class="half" title="Awesome"></label>
+              <input type="radio" id="star3_Didatica_media" name="rating_Didatica_media" value="3" /><label for="star3_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star2.5_Didatica_media" name="rating_Didatica_media" value="2.5" /><label for="star2.5_Didatica_media" class="half" title="Awesome"></label>
+              <input type="radio" id="star2_Didatica_media" name="rating_Didatica_media" value="2" /><label for="star2_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star1.5_Didatica_media" name="rating_Didatica_media" value="1.5" /><label for="star1.5_Didatica_media" class="half" title="Awesome"></label>
+              <input type="radio" id="star1_Didatica_media" name="rating_Didatica_media" value="1" /><label for="star1_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star0.5_Didatica_media" name="rating_Didatica_media" value="0.5" /><label for="star0.5_Didatica_media" class="half" title="Awesome"></label>
 
-              <h3 id="notas_Dúvidas_media">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_Didatica_media">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
           </div>
 
@@ -390,6 +400,7 @@
     </div>
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
+    <a style="display: none" id="User_js">{{ user.username }}</a>
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->
