@@ -48,7 +48,7 @@ ul {
     background-color: #f5f5f5c8;
     box-shadow: -10px 10px 1px #5b5b5bc8;
     border-radius: 50px;
-    width: 95%;
+    width: 90em;
     height: 35em;
 
 
@@ -173,7 +173,7 @@ ul {
 
 #Profile {
     background-color: #f5f5f5;
-    width: 70em;
+    width: 65em;
     height: 33em;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
@@ -289,7 +289,7 @@ ul {
 
 #Senha {
     background-color: #f5f5f5;
-    width: 70em;
+    width: 65em;
     height: 33em;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
@@ -333,7 +333,7 @@ ul {
 #box_senha_instrucoes {
     font-size: 1.5em;
     width: 30em;
-    height: 60%;
+    height: 12em;
     border: solid 1px grey;
     padding: 1em;
     text-align: center;

@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 import time
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
@@ -177,8 +178,63 @@ def atividades(request, nome,codigo) :
 
 
 def avaliacao(request):
-    lista = request.POST['avaliacao']
-    codigo_materia = request.POST['materia']
-    nome_prof = request.POST['professor']
-    print(lista)
-    return HttpResponse(str(lista))
+    if request.method == "POST":
+        # Obtenha os dados do POST
+        lista = request.POST['avaliacao']
+        codigo_materia = request.POST['materia']
+        nome_prof = request.POST['professor']
+
+        # Obtenha os objetos necessários
+        obj_materia = Materia.objects.get(codigo=codigo_materia)
+        obj_prof = Professor.objects.get(nome=nome_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+
+        # Separe os dados da lista
+        separacao = lista.split(',')
+
+        dificuldade_dados = int(separacao[0])  # Converta para float
+        apoio_dados = int(separacao[1])
+        didatica_dados = int(separacao[2])
+
+        # Verifique se o usuário já avaliou esta turma
+        user = request.user
+        numero_avaliacoes = obj_turma.numero_avaliacoes
+        if user in obj_turma.avaliadores.all():
+            # O usuário já avaliou, então precisamos subtrair sua avaliação anterior
+            # Vamos buscar a avaliação anterior para subtrair
+            avaliacao_anterior = obj_turma.avaliacao_dificuldade
+            apoio_anterior = obj_turma.avaliacao_apoio_aluno
+            didatica_anterior = obj_turma.avaliacao_didatica
+
+            # Calcule as novas médias removendo a contribuição anterior e adicionando a nova
+            nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) / numero_avaliacoes
+            nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) / numero_avaliacoes
+            nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) / numero_avaliacoes
+        else:
+            # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
+            numero_avaliacoes += 1
+
+            # Calcule as novas médias incluindo a nova avaliação
+            nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) / numero_avaliacoes
+            nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) / numero_avaliacoes
+            nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) / numero_avaliacoes
+
+            # Adicione o usuário aos avaliadores
+            obj_turma.avaliadores.add(user)
+
+        # Atualize os campos com os novos valores
+        obj_turma.avaliacao_dificuldade = nova_dificuldade
+        obj_turma.avaliacao_apoio_aluno = nova_apoio
+        obj_turma.avaliacao_didatica = nova_didatica
+        obj_turma.numero_avaliacoes = numero_avaliacoes
+        obj_turma.save()
+
+    # Dados que queremos passar para o template , ainda não funcionando...
+    contexto = {
+        'turma': obj_turma,
+        'avaliacao_dificuldade': obj_turma.avaliacao_dificuldade,
+        'avaliacao_apoio_aluno': obj_turma.avaliacao_apoio_aluno,
+        'avaliacao_didatica': obj_turma.avaliacao_didatica,
+    }
+
+    return render(request, 'materia.html', contexto)
