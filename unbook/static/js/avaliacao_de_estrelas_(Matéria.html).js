@@ -55,7 +55,7 @@ function console_print(avaliacoes, categoriaId) {
             lista.push(avaliacoes[categoria]) 
         }
 
-        lista.push(true)
+        lista.push(true) // GAMBIARRA DE DEBUG TIRAR DEPOIS
 
         enviar_para_back(lista);
     });
@@ -73,7 +73,21 @@ function enviar_para_back(lista){
                 materia: codigo,
             }, 
             success: function (response)  {
-                console.log(response)
+                lista = response.split(",")
+                console.log(lista)
+                // dificuldade
+                dificuldade_elemento = document.getElementById("dificuldade_texto")
+                dificuldade_elemento.innerText = `Dificuldade : ${(Number(lista[0])/2).toPrecision(1)}`
+                
+                // apoio ao aluno
+                apoio_elemento = document.getElementById("apoio_texto")
+                apoio_elemento.innerText = `Apoio ao aluno : ${(Number(lista[1])/2).toPrecision(1)}`
+
+                //didatica
+                didatica_elemento = document.getElementById("didatica_texto")
+                didatica_elemento.innerText = `Didatica : ${(Number(lista[2])/2).toPrecision(1)}`
+
+
             }
      })
 }

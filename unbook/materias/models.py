@@ -63,11 +63,14 @@ class Materia(models.Model):
 
 class Comentario(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
-    hora_publicacao = models.TimeField()
+    hora_publicacao = models.DateTimeField()
     texto = models.CharField(max_length=250)
     #curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL)
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
 
+    def __str__(self):
+        return f'f{self.hora_publicacao}: {self.autor}'
+    
 
 class Turma(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)

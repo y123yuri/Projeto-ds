@@ -3,6 +3,9 @@ from .models import *
 import time
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from datetime import timezone
+from django.utils import timezone
+
 # Create your views here.
 
 def home(request):
@@ -65,6 +68,10 @@ def materia(request, codigo, nome):
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         context = {}
         context["turma"] = obj_turma
+        context["comentarios"] = []
+        for comentario in Comentario.objects.filter(turma=obj_turma):
+            print(comentario)
+            context["comentarios"].append(comentario)
         index =0
         lista_turno = obj_turma.turno.split(" ")
         dias = []
@@ -108,14 +115,22 @@ def professor(request, nome):
     aval_1 = 0
     aval_2 = 0
     aval_3 = 0
+    total = 0
     for turma in lista_turma:
-        aval_1 += turma.avaliacao_apoio_aluno
-        aval_2 += turma.avaliacao_dificuldade
-        aval_3 += turma.avaliacao_didatica
-    
-    context["aval_1"] = aval_1 /len(lista_turma)
-    context["aval_2"] = aval_2 /len(lista_turma)
-    context["aval_3"] = aval_3 /len(lista_turma)
+        quant_avaliadores = turma.avaliadores.count()
+        aval_1 += turma.avaliacao_apoio_aluno * quant_avaliadores
+        aval_2 += turma.avaliacao_dificuldade * quant_avaliadores
+        aval_3 += turma.avaliacao_didatica * quant_avaliadores
+        total += quant_avaliadores
+
+    if total>0:
+        context["aval_1"] = aval_1 //quant_avaliadores
+        context["aval_2"] = aval_2 //quant_avaliadores
+        context["aval_3"] = aval_3 //quant_avaliadores
+    else:
+        context["aval_1"] = 0
+        context["aval_2"] = 0
+        context["aval_3"] = 0
 
     return render(request, "Professor.html", context)
     
@@ -248,5 +263,22 @@ def avaliacao(request):
         'avaliacao_didatica': resposta_didatica,
     }
 
-    return (f"{resposta_dificuldade},{resposta_apoio},{resposta_didatica}", context)
+    return HttpResponse(f'{resposta_dificuldade}, {resposta_apoio}, {resposta_didatica}')
     
+
+
+def comentarios(request):
+    comentario_usuario = request.POST['comentario']
+    codigo_materia = request.POST['materia']
+    nome_prof = request.POST['professor']
+
+    # Obtenha os objetos necessários
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    obj_prof = Professor.objects.get(nome=nome_prof)
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+
+    user = request.user
+    print(comentario_usuario)
+    novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_usuario)
+    novo_comentario.save()
+    return HttpResponse("ok")

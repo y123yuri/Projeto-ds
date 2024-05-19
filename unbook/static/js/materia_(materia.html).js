@@ -208,8 +208,26 @@ function postar_comentario() {
 
         comentarioBox.scrollIntoView({ behavior: "smooth" });
         document.getElementById('comentar').value = ' ';
-    }
 
+        
+    }
+    comentario_back(conteudo)
+}
+
+function comentario_back(conteudo){
+    $.ajax({
+        type: "POST",
+        url: "../../../comentario/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            comentario: conteudo,
+            professor: nome,
+            materia: codigo,
+        }, 
+        success: function (response)  {
+            console.log("salvei, comentário")
+        }
+    })
 }
 
 // script.js

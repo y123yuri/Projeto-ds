@@ -143,7 +143,7 @@
           <div id="avaliacao">
             <h1 class="CampoFalado1">Avaliação</h1>
 
-            <h2 class="CampoFalado2">Dificuldade {{ turma.avaliacao_dificuldade }}</h2>
+            <h2 class="CampoFalado2" id="dificuldade_texto">Dificuldade {{ turma.avaliacao_dificuldade }}</h2>
             <fieldset class="rating" id="Dificuldade-media">
               <input type="radio" id="star5_Dificuldade-media" name="rating_Dificuldade-media" value="5" />
               <label for="star5_Dificuldade-media" class="full" title="Awesome"></label>
@@ -162,7 +162,7 @@
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2">Monitoria {{turma.avaliacao_apoio_aluno}} </h2>
+            <h2 class="CampoFalado2" id="apoio_texto">Apoio ao aluno {{turma.avaliacao_apoio_aluno}} </h2>
             <fieldset class="rating" id="Monitoria">
               <input type="radio" id="star5_Monitoria_media" name="rating_Monitoria_media" value="5" /><label for="star5_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Monitoria_media" name="rating_Monitoria_media" value="4.5" /><label for="star4.5_Monitoria_media" class="half" title="Awesome"></label>
@@ -180,7 +180,7 @@
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2"> Didática {{ turma.avaliacao_didatica}} </h2>
+            <h2 class="CampoFalado2" id="didatica_texto"> Didática {{ turma.avaliacao_didatica}} </h2>
             <fieldset class="rating" id="Didatica_media">
               <input type="radio" id="star5_Didatica_media" name="rating_Didatica_media" value="5" /><label for="star5_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Didatica_media" name="rating_Didatica_media" value="4.5" /><label for="star4.5_Didatica_media" class="half" title="Awesome"></label>
@@ -375,19 +375,18 @@
 
                   </div>
               </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
-
-              <div id="comentario2">
-                <h2 class="usuarios" id="">@Junior_Bezerros</h2>
-                <h3 class="comentarios">Mano essa matéria é muito doida cara sério, se tiverem a oportunidade de fazer façam!</h3>
+              {% for comentario in comentarios %}
+              <div >
+                <h2 class="usuarios" >@{{ comentario.autor.username }}</h2>
+                <h3 class="comentarios"> {{comentario.hora_publicacao}} - {{ comentario.texto }}</h3>
 
                 <div class="curtidas">
-                  <h3 class="Gostei" >Gostei</h3>
-                  
                   <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i>
                   </i></button>
 
                 </div>
-              </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
+              </div>
+              {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
 
