@@ -71,24 +71,49 @@ function enviar_para_back(lista){
                 avaliacao: lista,
                 professor: nome,
                 materia: codigo,
+                
             }, 
             success: function (response)  {
                 lista = response.split(",")
                 console.log(lista)
                 // dificuldade
                 dificuldade_elemento = document.getElementById("dificuldade_texto")
-                dificuldade_elemento.innerText = `Dificuldade : ${(Number(lista[0])/2).toPrecision(1)}`
+                dificuldade_elemento.innerText = `Dificuldade : ${(Number(lista[0])/3).toPrecision(1)}`
                 
                 // apoio ao aluno
                 apoio_elemento = document.getElementById("apoio_texto")
-                apoio_elemento.innerText = `Apoio ao aluno : ${(Number(lista[1])/2).toPrecision(1)}`
+                apoio_elemento.innerText = `Apoio ao aluno : ${(Number(lista[1])/3).toPrecision(1)}`
 
                 //didatica
                 didatica_elemento = document.getElementById("didatica_texto")
-                didatica_elemento.innerText = `Didatica : ${(Number(lista[2])/2).toPrecision(1)}`
+                didatica_elemento.innerText = `Didatica : ${(Number(lista[2])/3).toPrecision(1)}`
 
 
             }
      })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+
+let starLabels_media = document.querySelectorAll('rating_media label')
+
+    var dificuldade = document.getElementById('dificuldade_valor').textContent
+    var apoio = document.getElementById('apoio_valor').textContent
+    var didatica = document.getElementById('didatica_valor').textContent
+
+function pintar_estrelas (rating_media, sla) {
+    var stars = document.querySelectorAll('#' + sla )
+
+
+}
+
+
+
+
+
+})    
+
+
+    
+
 
