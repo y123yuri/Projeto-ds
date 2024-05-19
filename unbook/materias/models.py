@@ -81,9 +81,9 @@ class Turma(models.Model):
 
     numero_avaliacoes = models.PositiveIntegerField(default=0)
 
-    avaliacao_dificuldade = models.FloatField(default=0)
-    avaliacao_apoio_aluno = models.FloatField(default=0)
-    avaliacao_didatica = models.FloatField(default=0)
+    avaliacao_dificuldade = models.IntegerField(default=0)
+    avaliacao_apoio_aluno = models.IntegerField(default=0)
+    avaliacao_didatica = models.IntegerField(default=0)
 
     avaliadores = models.ManyToManyField(settings.AUTH_USER_MODEL, default=None)
 

@@ -193,9 +193,9 @@ def avaliacao(request):
     # Separe os dados da lista
     separacao = lista.split(',')
 
-    dificuldade_dados = float(separacao[0])  # Converta para float
-    apoio_dados = float(separacao[1])
-    didatica_dados = float(separacao[2])
+    dificuldade_dados = int(float(separacao[0])*2)  # Converta para float
+    apoio_dados = int(float(separacao[1])*2)
+    didatica_dados = int(float(separacao[2])*2)
 
     # Verifique se o usuário já avaliou esta turma
     user = request.user
@@ -208,17 +208,17 @@ def avaliacao(request):
         didatica_anterior = obj_turma.avaliacao_didatica
 
         # Calcule as novas médias removendo a contribuição anterior e adicionando a nova
-        nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) / numero_avaliacoes
-        nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) / numero_avaliacoes
-        nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) / numero_avaliacoes
+        nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) // numero_avaliacoes
+        nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) // numero_avaliacoes
+        nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) // numero_avaliacoes
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
 
         # Calcule as novas médias incluindo a nova avaliação
-        nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) / numero_avaliacoes
-        nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) / numero_avaliacoes
-        nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) / numero_avaliacoes
+        nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) // numero_avaliacoes
+        nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
+        nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
 
         # Adicione o usuário aos avaliadores
         obj_turma.avaliadores.add(user)
@@ -229,6 +229,8 @@ def avaliacao(request):
     obj_turma.avaliacao_didatica = nova_didatica
     obj_turma.numero_avaliacoes = numero_avaliacoes
     obj_turma.save()
+    
+
 
     print(obj_turma.avaliacao_dificuldade)
     print(obj_turma.avaliacao_apoio_aluno)
