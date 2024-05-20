@@ -78,20 +78,21 @@ function enviar_para_back(lista){
             success: function (response)  {
                 lista = response.split(",")
                 console.log(lista)
-                // dificuldade
-                dificuldade_elemento = document.getElementById("dificuldade_texto")
-                dificuldade_elemento.innerText = `Dificuldade : ${(Number(lista[0])/3).toPrecision(1)}`
+                nota_apoio = (Number(lista[1])/2).toPrecision(2)
+                nota_dificuldade = (Number(lista[0])/2).toPrecision(2)
+                nota_didatica = (Number(lista[2])/2).toPrecision(2)
                 
-                // apoio ao aluno
-                apoio_elemento = document.getElementById("apoio_texto")
-                apoio_elemento.innerText = `Apoio ao aluno : ${(Number(lista[1])/3).toPrecision(1)}`
 
-                //didatica
-                didatica_elemento = document.getElementById("didatica_texto")
-                didatica_elemento.innerText = `Didatica : ${(Number(lista[2])/3).toPrecision(1)}`
-
-                estrela = document.getElementById("label1")
-                estrela.style.color = '#ffd000'
+                pintar_estrela_tela((Number(lista[1])/2).toPrecision(2), "apoio")
+                pintar_estrela_tela((Number(lista[0])/2).toPrecision(2), "dificuldade")
+                pintar_estrela_tela((Number(lista[2])/2).toPrecision(2), "didatica")
+                console.log(nota_apoio +", "+nota_didatica+ ", " +nota_dificuldade)
+                txt_didatica = document.getElementById("notas_didatica_media")
+                txt_didatica.innerText = `${nota_didatica} de 5`
+                txt_apoio = document.getElementById("notas_apoio_media")
+                txt_apoio.innerText = `${nota_apoio} de 5`
+                txt_dificuldade = document.getElementById("notas_dificuldade-media")
+                txt_dificuldade.innerText = `${nota_dificuldade} de 5`
             }
      })
 }
