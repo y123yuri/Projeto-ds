@@ -105,18 +105,57 @@ ul {
 }
 
 #button_box {
+    
+    margin: auto;
+    align-items: center;
+
+    width: 20em;
+    height: 6em;
+
     display: flex;
-    flex-direction: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     position: relative;
+    top: 5em;
+    
     background-color: #0000002a;
+    border: 1px solid gray;
+}
+
+.not_selected {
+    opacity: 0.25;
+}
+
+#nao {
+    background-color: #E95959;
 }
 
 .button {
-    
-    background-color: #008940;
-    width: 5em;
+    width: 7em;
     height: 2em;
+    padding: 0.5em 0.5em;
+    color: whitesmoke;
+    font-size: 1.5em;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 1em;
 }
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+#sim {
+    background-color: #81E28B;
+}
+
 
 
 #boxes_modal {
@@ -214,17 +253,11 @@ ul {
     text-align: center;
 }
 
-#scroll_pontos_fortes {
-    width: 25em;
-    height: 4.5em;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    position: relative;
-    top: 5em;
-    background-color: #b1c5c0;
-    overflow-y: auto;
-}
+
+
+
+
+
 
 .radio {
     display: flex;

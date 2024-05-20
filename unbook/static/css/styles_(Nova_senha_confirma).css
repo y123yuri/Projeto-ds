@@ -65,11 +65,13 @@ ul {
     font-size: 1.25em;
     padding-top: 20px;
 
+    position: relative;
+    top: 1em;
     display: block;
     text-align: center;
 }
 
-.emailRecebido {
+#emailRecebido {
     color:#0B4C9C;
     margin-top: 1.25em;
     font-size: 2em;
@@ -88,13 +90,13 @@ ul {
     margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
-  
+    padding: 0.5em 2em;
+
     color: white;
     font-size: 2em;
     -webkit-text-stroke-width: 1px;
     cursor: pointer;
     text-align: center;
-    padding: 1rem 2rem;
     text-decoration: none;
   
   

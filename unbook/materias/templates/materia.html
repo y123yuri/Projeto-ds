@@ -21,16 +21,14 @@
   <body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
-      csrf_token = "{{ csrf_token }}"
-      nome = "{{ turma.professor.nome }}"
-      codigo = "{{ turma.materia.codigo }}"
+      csrf_token = '{{ csrf_token }}'
+      nome = '{{ turma.professor.nome }}'
+      codigo = '{{ turma.materia.codigo }}'
       nota_dificuldade = '{{ turma.avaliacao_dificuldade }}'
       nota_apoio = '{{ turma.avaliacao_apoio_aluno}}'
       nota_didatica = '{{ turma.avaliacao_didatica}}'
-      
-      
     </script>
-    
+
     <div id="fundo_blur"></div>
     <div id="modal_avaliacao">
       <div id="avaliacao">
@@ -39,10 +37,10 @@
         <div id="scroll_modal">
           <div id="boxes_modal">
             <div class="boxes_modal" id="box_modal_1">
-              <h2 class="CampoFalado2_modal">Dificuldade </h2>
+              <h2 class="CampoFalado2_modal">Dificuldade</h2>
               <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
 
-              <fieldset class="rating_modal" id="Dificuldade" >
+              <fieldset class="rating_modal" id="Dificuldade">
                 <input type="radio" id="star5_Dificuldade" name="rating_Dificuldade" value="5" />
                 <label for="star5_Dificuldade" class="full" title="Awesome"></label>
                 <input type="radio" id="star4.5_Dificuldade" name="rating_Dificuldade" value="4.5" /><label for="star4.5_Dificuldade" class="half" title="Awesome"></label>
@@ -104,7 +102,7 @@
                 <input type="radio" id="star1_Didatica" name="rating_Didatica" value="1" /><label for="star1_Didatica" class="full" title="Awesome"></label>
                 <input type="radio" id="star0.5_Didatica" name="rating_Didatica" value="0.5" /><label for="star0.5_Didatica" class="half" title="Awesome"></label>
 
-                <h3 id="notas_Didatica"> 0 de 5 </h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+                <h3 id="notas_Didatica">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
 
               <div class="espaco_buttons">
@@ -116,12 +114,10 @@
             <div class="boxes_modal" id="box_modal_4">
               <h2 class="CampoFalado2_modal">Professor</h2>
               <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
-            
-              <div id="button_box">
-               
-                <button class="button" type="submit" id="sim"> Sim </button>
-                <button class="button" type="submit" id="nao"> Não </button>
 
+              <div id="button_box">
+                <h2 class="button" id="sim">Sim</h2>
+                <h2 class="button" id="nao">nao</h2>
               </div>
 
               <div class="espaco_buttons">
@@ -157,12 +153,12 @@
               <input type="radio" id="star1_Dificuldade-media" name="rating_Dificuldade-media" value="1" /><label for="star1_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Dificuldade-media" name="rating_Dificuldade-media" value="0.5" /><label for="star0.5_Dificuldade-media" class="half" title="Awesome"></label>
 
-              <h3 id="notas_Dificuldade-media"> {{ turma.avaliacao_dificuldade }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_Dificuldade-media">{{ turma.avaliacao_dificuldade }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2" id="apoio_texto">Apoio ao aluno : {{turma.avaliacao_apoio_aluno}} </h2>
+            <h2 class="CampoFalado2" id="apoio_texto">Apoio ao aluno : {{ turma.avaliacao_apoio_aluno }}</h2>
             <fieldset class="rating_media" id="Monitoria">
               <input type="radio" id="star5_Monitoria_media" name="rating_Monitoria_media" value="5" /><label for="star5_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Monitoria_media" name="rating_Monitoria_media" value="4.5" /><label for="star4.5_Monitoria_media" class="half" title="Awesome"></label>
@@ -175,14 +171,13 @@
               <input type="radio" id="star1_Monitoria_media" name="rating_Monitoria_media" value="1" /><label for="star1_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Monitoria_media" name="rating_Monitoria_media" value="0.5" /><label for="star0.5_Monitoria_media" class="half" title="Awesome"></label>
 
-              <h3 id="notas_Monitoria_media"> {{turma.avaliacao_apoio_aluno}} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_Monitoria_media">{{ turma.avaliacao_apoio_aluno }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
             <div style="height: 5em;"></div>
 
-            <h2 class="CampoFalado2" id="didatica_texto"> Didática : {{ turma.avaliacao_didatica}} </h2>
+            <h2 class="CampoFalado2" id="didatica_texto">Didática : {{ turma.avaliacao_didatica }}</h2>
             <fieldset class="rating_media" id="Didatica_media">
-          
               <input type="radio" id="star5_Didatica_media" name="rating_Didatica_media" value="5" /><label for="star5_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Didatica_media" name="rating_Didatica_media" value="4.5" /><label for="star4.5_Didatica_media" class="half" title="Awesome"></label>
               <input type="radio" id="star4_Didatica_media" name="rating_Didatica_media" value="4" /><label for="star4_Didatica_media" class="full" title="Awesome"></label>
@@ -193,8 +188,8 @@
               <input type="radio" id="star1.5_Didatica_media" name="rating_Didatica_media" value="1.5" /><label for="star1.5_Didatica_media" class="half" title="Awesome"></label>
               <input type="radio" id="star1_Didatica_media" name="rating_Didatica_media" value="1" /><label for="star1_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Didatica_media" name="rating_Didatica_media" value="0.5" /><label for="star0.5_Didatica_media" class="half" title="Awesome"></label>
-              
-              <h3 id="notas_Didatica_media"> {{ turma.avaliacao_didatica}} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+
+              <h3 id="notas_Didatica_media">{{ turma.avaliacao_didatica }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
           </div>
 
@@ -207,120 +202,111 @@
           <table>
             <thead>
               <tr>
-
-                <th> hor</th>
-                <th> seg</th>
-                <th> ter</th>
-                <th> qua</th>
-                <th> qui</th>
-                <th> sex</th>
-                <th> sab</th>
+                <th>hor</th>
+                <th>seg</th>
+                <th>ter</th>
+                <th>qua</th>
+                <th>qui</th>
+                <th>sex</th>
+                <th>sab</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th class="horario"> 8h-10h</th>
-                <th id="2M12"> </th>
-                <th id="3M12"> </th>
-                <th id="4M12"> </th>
-                <th id="5M12"> </th>
-                <th id="6M12"> </th>
-                <th id="7M12"> </th>
-                
+                <th class="horario">8h-10h</th>
+                <th id="2M12"></th>
+                <th id="3M12"></th>
+                <th id="4M12"></th>
+                <th id="5M12"></th>
+                <th id="6M12"></th>
+                <th id="7M12"></th>
               </tr>
 
               <tr>
-
-                <th class="horario"> 10h-12h</th>
-                <th id="2M34"> </th>
-                <th id="3M34"> </th>
-                <th id="4M34"> </th>
-                <th id="5M34"> </th>
-                <th id="6M34"> </th>
-                <th id="7M34"> </th>
-                
+                <th class="horario">10h-12h</th>
+                <th id="2M34"></th>
+                <th id="3M34"></th>
+                <th id="4M34"></th>
+                <th id="5M34"></th>
+                <th id="6M34"></th>
+                <th id="7M34"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 12h-13h</th>
-                <th id="2M5"> </th>
-                <th id="3M5"> </th>
-                <th id="4M5"> </th>
-                <th id="5M5"> </th>
-                <th id="6M5"> </th>
-                <th id="7M5"> </th>
-                
+                <th class="horario">12h-13h</th>
+                <th id="2M5"></th>
+                <th id="3M5"></th>
+                <th id="4M5"></th>
+                <th id="5M5"></th>
+                <th id="6M5"></th>
+                <th id="7M5"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 13h-14h</th>
-                <th id="2T1"> </th>
-                <th id="3T1"> </th>
-                <th id="4T1"> </th>
-                <th id="5T1"> </th>
-                <th id="6T1"> </th>
-                <th id="7T1"> </th>
-                
+                <th class="horario">13h-14h</th>
+                <th id="2T1"></th>
+                <th id="3T1"></th>
+                <th id="4T1"></th>
+                <th id="5T1"></th>
+                <th id="6T1"></th>
+                <th id="7T1"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 14h-16h</th>
-                <th id="2T23"> </th>
-                <th id="3T23"> </th>
-                <th id="4T23"> </th>
-                <th id="5T23"> </th>
-                <th id="6T23"> </th>
-                <th id="7T23"> </th>
-                
+                <th class="horario">14h-16h</th>
+                <th id="2T23"></th>
+                <th id="3T23"></th>
+                <th id="4T23"></th>
+                <th id="5T23"></th>
+                <th id="6T23"></th>
+                <th id="7T23"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 16h-18h</th>
-                <th id="2T45"> </th>
-                <th id="3T45"> </th>
-                <th id="4T45"> </th>
-                <th id="5T45"> </th>
-                <th id="6T45"> </th>
-                <th id="7T45"> </th>
-               
+                <th class="horario">16h-18h</th>
+                <th id="2T45"></th>
+                <th id="3T45"></th>
+                <th id="4T45"></th>
+                <th id="5T45"></th>
+                <th id="6T45"></th>
+                <th id="7T45"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 19h-21h</th>
-                <th id="2N12"> </th>
-                <th id="3N12"> </th>
-                <th id="4N12"> </th>
-                <th id="5N12"> </th>
-                <th id="6N12"> </th>
-                <th id="7N12"> </th>
-               
+                <th class="horario">19h-21h</th>
+                <th id="2N12"></th>
+                <th id="3N12"></th>
+                <th id="4N12"></th>
+                <th id="5N12"></th>
+                <th id="6N12"></th>
+                <th id="7N12"></th>
               </tr>
 
               <tr>
-                <th class="horario"> 21h-23h</th>
-                <th id="2N34"> </th>
-                <th id="3N34"> </th>
-                <th id="4N34"> </th>
-                <th id="5N34"> </th>
-                <th id="6N34"> </th>
-                <th id="7N34"> </th>
-                
+                <th class="horario">21h-23h</th>
+                <th id="2N34"></th>
+                <th id="3N34"></th>
+                <th id="4N34"></th>
+                <th id="5N34"></th>
+                <th id="6N34"></th>
+                <th id="7N34"></th>
               </tr>
-
             </tbody>
+
             <script type="text/javascript">
               lista_turno_django = []
               {% for d in dias %}
               lista_turno_django.push("{{d}}")
               {% endfor %}
             </script>
-            <caption> Semestre: 2024.1 </caption>
+
+            <caption>Semestre: 2024.1</caption>
           </table>
 
-            <div id="modal_calendario">
-              <h2 id="horario"> </h2>
-            </div>
+          <div id="modal_calendario">
+            <h2 id="horario"></h2>
+          </div>
         </div>
       </div>
 
@@ -367,26 +353,26 @@
               <div id="comentario1">
                 <h2 class="usuarios" id="">@Yuri_Gameplays</h2>
                 <h3 class="comentarios">eu adoro essa materia ela é muito legal, to pensando ate em reprovar pra nao sair dela nunk.</h3>
-                
-                  <div class="curtidas">
-                    <h3 class="Gostei">Gostei</h3>
-                    
-                    <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i>
-                    </i></button>
-
-                  </div>
-              </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
-              {% for comentario in comentarios %}
-              <div >
-                <h2 class="usuarios" >@{{ comentario.autor.username }}</h2>
-                <h3 class="comentarios"> {{comentario.hora_publicacao}} - {{ comentario.texto }}</h3>
 
                 <div class="curtidas">
-                  <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i>
-                  </i></button>
+                  <h3 class="Gostei">Gostei</h3>
 
+                  <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i></button>
                 </div>
-              </div>
+              </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
+              {% for comentario in comentarios %}
+                <div>
+                  <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
+                  <h3 class="comentarios">
+                    {{ comentario.texto }} <br />
+                    <span style="font-size: 0.75em;">- {{ comentario.hora_publicacao }}</span>
+                  </h3>
+
+                  <div class="curtidas">
+                    <h3 class="Gostei">Gostei</h3>
+                    <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i></button>
+                  </div>
+                </div>
               {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
@@ -401,11 +387,10 @@
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
     <a style="display: none" id="User_js">{{ user.username }}</a>
-    
+
     <a style="display: none" id="dificuldade_valor">{{ turma.avaliacao_dificuldade }}</a>
     <a style="display: none" id="apoio_valor">{{ turma.avaliacao_apoio_aluno }}</a>
     <a style="display: none" id="didatica_valor">{{ turma.avaliacao_didatica }}</a>
-
   </body>
 
   <!-- LINK PARA ARQUIVOS JS -->

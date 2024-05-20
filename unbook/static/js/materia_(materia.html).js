@@ -270,4 +270,24 @@ document.querySelectorAll('tbody th').forEach(item => {
     });
 });
 
+document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', function() {
+
+        // Primeiro, remover a classe 'not_selected' de todos os botões
+        document.querySelectorAll('.button').forEach(btn => {
+            btn.classList.remove('not_selected');
+        });
+
+        // Adicionar a classe 'not_selected' a todos os botões que não foram clicados
+        document.querySelectorAll('.button').forEach(btn => {
+            if (btn !== this) {
+                btn.classList.add('not_selected');
+            }
+        });
+    });
+});
+
+
+
+
 

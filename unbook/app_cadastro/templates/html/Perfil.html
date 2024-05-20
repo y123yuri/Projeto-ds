@@ -17,6 +17,14 @@
     <a href="/"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" alt="UnBook Logo" /></a>
 
     <div id="boxes">
+      <div id="modal_imgs">
+        <div class="balls" id="model_1" onclick="escolha_img(this.id)">#1</div>
+        <div class="balls" id="model_2" onclick="escolha_img(this.id)">#2</div>
+        <div class="balls" id="model_3" onclick="escolha_img(this.id)">#3</div>
+        <div class="balls" id="model_4" onclick="escolha_img(this.id)">#4</div>
+        <div class="balls" id="model_5" onclick="escolha_img(this.id)">#5</div>
+      </div>
+
       <div id="box1">
         <div id="espace_img_user">
           <div id="img_user"></div>
@@ -32,7 +40,7 @@
         <div id="scroll">
           <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_profile">Perfil</h2>
           <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_senha">Senha</h2>
-          <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_foto">Alterar foto</h2>
+          <h2 class="pages" onclick="abrir_modal(this.id)" id="estatistica">Estatística</h2>
         </div>
       </div>
 
@@ -51,21 +59,16 @@
           <hr style="margin: 0 2em" />
 
           <div id="space_2_Profile">
-            
             <div id="space_2_1_Profile">
+              <h2 class="CampoFalado_Profile">Curso</h2>
+              <input class="forms" type="text" id="curso" />
 
-            <h2 class="CampoFalado_Profile"> Curso </h2>
-            <input class="forms" type="text" id="curso" >
-            
-            <h2 class="CampoFalado_Profile"> Semestre </h2>
-            <input class="forms" type="text" id="semestre" >
-
+              <h2 class="CampoFalado_Profile">Semestre</h2>
+              <input class="forms" type="text" id="semestre" />
             </div>
-            
+
             <label class="CampoFalado_Profile" for="descricao">Sobre você</label>
-            <textarea id="descricao" rows="5" cols="40" ></textarea>
-
-
+            <textarea id="descricao" rows="5" cols="40"></textarea>
           </div>
         </div>
 
@@ -99,14 +102,15 @@
             </div>
           </div>
         </div>
+
+        <div class="boxs" id="Estatistica">
+          {% csrf_token %}
+
+          <div id="box_desenv">
+            <h1 id="Desenv" >Em desenvolvimento!</h1>
+          </div>
+        </div>
       </div>
-    
-    
-    
-    
-    
-    
-    
     </div>
 
     <!-- LINK PARA ARQUIVOS JS -->
