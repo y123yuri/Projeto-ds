@@ -89,8 +89,24 @@ window.onload = function () {
         dia = document.getElementById(globalThis.lista_turno_django[i])
         dia.style.backgroundColor = "#81E28B"
     }
+
+    // pintar estrela
+
+    pintar_estrela_tela(nota_didatica/2, "didatica")
+    pintar_estrela_tela(nota_apoio/2, "apoio")
+    pintar_estrela_tela(nota_dificuldade/2, "dificuldade")
 }
 
+function pintar_estrela_tela(nota, categoria){
+    cont_nota =0.5
+    while (cont_nota<=nota){
+        id = `estrela_${cont_nota}_${categoria}`
+        console.log(id)
+        estrela = document.getElementById(id)
+        estrela.style.color = '#ffd000'
+        cont_nota +=0.5
+    }
+}
 
 document.querySelector('#comentar').addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {

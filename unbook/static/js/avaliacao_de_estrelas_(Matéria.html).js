@@ -21,7 +21,6 @@ function VerificaAvaliacoes(avaliacoes) {
 let starLabels = document.querySelectorAll('.rating_modal label');
 
 
-
 // Adiciona um ouvinte de evento de clique a cada etiqueta de estrela
 starLabels.forEach(function (label) {
     label.addEventListener('click', function () {
@@ -61,6 +60,9 @@ function console_print(avaliacoes, categoriaId) {
     });
 }
 
+
+
+
 function enviar_para_back(lista){
     lista = lista.join(',')
      $.ajax({
@@ -88,7 +90,8 @@ function enviar_para_back(lista){
                 didatica_elemento = document.getElementById("didatica_texto")
                 didatica_elemento.innerText = `Didatica : ${(Number(lista[2])/3).toPrecision(1)}`
 
-
+                estrela = document.getElementById("label1")
+                estrela.style.color = '#ffd000'
             }
      })
 }
@@ -124,4 +127,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Pintando as estrelas para cada categoria
     pintarEstrelas(nota_dificuldade, 'Didatica_media');
 });
+
 
