@@ -92,15 +92,15 @@ ul {
 #box_modal_4 .CampoFalado3_modal {
 
     display: block;
-    color: #50545c;
+    color: black;
     text-align: center;
 
     position: relative;
 
-    top: 3.5em;
+    top: 3em;
 
-    margin: 0 1em;
-    font-size: 1em;
+    margin: 0 0.5em;
+    font-size: 1.25em;
     font-weight: 700;
 }
 
@@ -249,7 +249,7 @@ ul {
     position: relative;
     width: 100%;
     height: 4em;
-    top: 11em;
+    top: 12em;
     text-align: center;
 }
 

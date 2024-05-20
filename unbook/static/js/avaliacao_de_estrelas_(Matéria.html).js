@@ -94,26 +94,34 @@ function enviar_para_back(lista){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    function pintarEstrelas(nota, categoria) {
+        var estrelas = document.querySelectorAll('#' + categoria + ' input');
+        for (var i = 0; i < estrelas.length; i++) {
+            if (parseInt(estrelas[i].value) <= nota) {
+                estrelas[i].checked = true;
+            }
+        }
+    }
+})
 
-let starLabels_media = document.querySelectorAll('rating_media label')
-
-    var dificuldade = document.getElementById('dificuldade_valor').textContent
-    var apoio = document.getElementById('apoio_valor').textContent
-    var didatica = document.getElementById('didatica_valor').textContent
-
-function pintar_estrelas (rating_media, sla) {
-    var stars = document.querySelectorAll('#' + sla )
-
-
+// Função para pintar as estrelas com base na avaliação
+function pintarEstrelas(avaliacao, categoria) {
+    var estrelas = document.querySelectorAll('#' + categoria + ' input');
+    for (var i = 0; i < estrelas.length; i++) {
+        if (parseFloat(estrelas[i].value) <= parseFloat(avaliacao)) {
+            estrelas[i].checked = true;
+        }
+    }
 }
 
+// Pintando as estrelas para cada categoria
+document.addEventListener('DOMContentLoaded', function() {
+    // Recebendo os valores das notas do JavaScript
+    var nota_dificuldade = parseFloat('{{ nota_dificuldade }}');
+    var nota_apoio = parseFloat('{{ nota_apoio }}');
+    var nota_didatica = parseFloat('{{ nota_didatica }}');
 
-
-
-
-})    
-
-
-    
-
+    // Pintando as estrelas para cada categoria
+    pintarEstrelas(nota_dificuldade, 'Didatica_media');
+});
 

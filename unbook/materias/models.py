@@ -42,8 +42,7 @@ class Professor(models.Model):
     nome = models.CharField(max_length=100, primary_key=True)
     foto = models.URLField()
     objects = ProfessorManager()
-    aprovacoes = models.IntegerField(default=0)
-    reprovado = models.IntegerField(default=0)
+    aprovacoes = models.ManyToManyField(settings.AUTH_USER_MODEL ,default=None)
     
 
     def __str__(self):
@@ -92,6 +91,5 @@ class Turma(models.Model):
 
     def __str__(self):
         return self.materia.codigo + "/" + self.professor.nome
-
 
 

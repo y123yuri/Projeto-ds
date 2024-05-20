@@ -31,3 +31,4 @@ class PasswordResetToken(models.Model):
         # Opcional: defina uma validade para o token, por exemplo, 24 horas
         expiration_time = timedelta(hours=1)
         return self.created_at >= timezone.now() - expiration_time
+

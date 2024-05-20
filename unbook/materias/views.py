@@ -68,10 +68,16 @@ def materia(request, codigo, nome):
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         context = {}
         context["turma"] = obj_turma
+        context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
+        context["avaliacao_dificuldade"] = obj_turma.avaliacao_dificuldade/2
+        context["avaliacao_apoio"] = obj_turma.avaliacao_apoio_aluno/2
+
+        context["total_avaliadores"] = obj_turma.avaliadores.count()
         context["comentarios"] = []
         for comentario in Comentario.objects.filter(turma=obj_turma):
             print(comentario)
             context["comentarios"].append(comentario)
+        
         index =0
         lista_turno = obj_turma.turno.split(" ")
         dias = []
@@ -124,13 +130,16 @@ def professor(request, nome):
         total += quant_avaliadores
 
     if total>0:
-        context["aval_1"] = aval_1 //quant_avaliadores
-        context["aval_2"] = aval_2 //quant_avaliadores
-        context["aval_3"] = aval_3 //quant_avaliadores
+        context["aval_1"] = (aval_1 //total)/2
+        context["aval_2"] = (aval_2 //total)/2
+        context["aval_3"] = (aval_3 //total)/2
+        context["aprovacao"] = ((int(ob_prof.aprovacoes.count())*100)//total)
     else:
         context["aval_1"] = 0
         context["aval_2"] = 0
         context["aval_3"] = 0
+        context["aprovacao"] = 0
+
 
     return render(request, "Professor.html", context)
     
@@ -214,7 +223,8 @@ def avaliacao(request):
 
     # Verifique se o usuário já avaliou esta turma
     user = request.user
-    numero_avaliacoes = obj_turma.numero_avaliacoes
+    numero_avaliacoes = int(obj_turma.avaliadores.count())
+
     if user in obj_turma.avaliadores.all():
         # O usuário já avaliou, então precisamos subtrair sua avaliação anterior
         # Vamos buscar a avaliação anterior para subtrair
@@ -226,6 +236,8 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) // numero_avaliacoes
+        if user in obj_prof.aprovacoes.all() and not lista[3]:
+            obj_prof.aprovacoes.remove(user)
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
@@ -234,6 +246,8 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
+        if user not in obj_prof.aprovacoes.all() and lista[3]:
+            obj_prof.aprovacoes.add(user)
 
         # Adicione o usuário aos avaliadores
         obj_turma.avaliadores.add(user)
