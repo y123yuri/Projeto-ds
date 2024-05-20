@@ -118,28 +118,28 @@ def professor(request, nome):
     context["lista_turmas"] = list(lista_turma)
     context["nome"] = nome
     context["foto"] = ob_prof.foto
-    aval_1 = 0
-    aval_2 = 0
-    aval_3 = 0
+    aval_didatica = 0
+    aval_apoio = 0
+    aval_dificuldade = 0
     total = 0
     for turma in lista_turma:
         quant_avaliadores = turma.avaliadores.count()
-        aval_1 += turma.avaliacao_apoio_aluno * quant_avaliadores
-        aval_2 += turma.avaliacao_dificuldade * quant_avaliadores
-        aval_3 += turma.avaliacao_didatica * quant_avaliadores
+        aval_apoio += turma.avaliacao_apoio_aluno * quant_avaliadores
+        aval_dificuldade += turma.avaliacao_dificuldade * quant_avaliadores
+        aval_didatica += turma.avaliacao_didatica * quant_avaliadores
         total += quant_avaliadores
 
     if total>0:
-        context["aval_1"] = (aval_1 //total)/2
-        context["aval_2"] = (aval_2 //total)/2
-        context["aval_3"] = (aval_3 //total)/2
+        context["aval_apoio"] = (aval_apoio //total)/2
+        context["aval_dificuldade"] = (aval_dificuldade //total)/2
+        context["aval_didatica"] = (aval_didatica //total)/2
         context["aprovacao"] = ((int(ob_prof.aprovacoes.count())*100)//total)
     else:
-        context["aval_1"] = 0
-        context["aval_2"] = 0
-        context["aval_3"] = 0
+        context["aval_apoio"] = 0
+        context["aval_dificuldade"] = 0
+        context["aval_didatica"] = 0
         context["aprovacao"] = 0
-
+    context["quant_aval"] = total
 
     return render(request, "Professor.html", context)
     
