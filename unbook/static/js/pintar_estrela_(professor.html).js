@@ -18,3 +18,36 @@ function pintar_estrela_tela(nota, categoria){
         console.log(cont_nota +",  "+ nota)
     }
 }
+
+let circular = document.getElementById('percents');
+let num = document.getElementById('indice');
+let indice = document.getElementById('indice_js').textContent;
+indice = parseFloat(indice);
+console.log(indice)
+
+if(indice !== 0) {
+
+let start = 0, end = indice, speed = 15;
+    let progress = setInterval(() => {
+        start++;
+    
+        num.textContent = `${start}%`;
+        circular.style.transition = "all 0.3s ease";
+
+        if (start < 25) {
+            circular.style.background = `conic-gradient(#d43b5a ${start * 3.6}deg, #777D89 0deg)`;
+        }
+        else if (start > 25 && start < 75) {
+            circular.style.background = `conic-gradient(#ffd000 ${start * 3.6}deg, #777D89 0deg)`;
+        }
+        else if (start > 75) {
+            circular.style.background = `conic-gradient(#008940 ${start * 3.6}deg, #777D89 0deg)`;
+        }
+    
+        if (start == indice){
+            clearInterval(progress);
+        }
+        
+    }, speed);
+
+}
