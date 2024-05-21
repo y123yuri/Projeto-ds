@@ -87,7 +87,15 @@
         </div>
 
         <div id="box2">
-          <h2 id="aprovacao"> Aprovacao {{aprovacao}}% </h2>
+          <h2 id="aprovacao"> Aprovação</h2>
+
+          <div id="percents"> <h1 id="indice"> {{aprovacao}}% </h1> </div>
+          <div style="display: none" id="indice_js"> {{aprovacao}} </div> 
+
+
+
+
+
           
         </div>
       </div>
@@ -125,15 +133,11 @@
     </div>
   </body>
 
-
-
   <script type="text/javascript">
-    nota_dificuldade = Number("{{aval_dificuldade}}".replace(',', '.'))
-    nota_apoio = Number("{{aval_apoio}}".replace(',', '.'))
     nota_didatica = Number("{{aval_dificuldade}}".replace(',', '.'))
+    nota_apoio = Number("{{aval_apoio}}".replace(',', '.'))
+    nota_dificuldade = Number("{{aval_dificuldade}}".replace(',', '.'))
   </script>
   <!-- LINK PARA ARQUIVOS JS -->
   <script src="{% static 'js/pintar_estrela_(professor.html).js' %}"></script>
-  <!-- <script src="../js/materia_(materia.html).js"></script> -->
-  <!-- <script src="{% static "js/avaliacao_de_estrelas_(Matéria.html).js" %}"></script> -->
 </html>

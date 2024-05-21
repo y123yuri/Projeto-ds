@@ -29,6 +29,27 @@ ul {
     right: 0;
 }
 
+html::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #E6F2FB;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: solid 1px #0000002a;
+    /* roundness of the scroll thumb */
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #0000002a;
+    border-radius: 25px;
+}
+
+
+
 /* inicio das paginas */
 /*PAGINA1*/
 
