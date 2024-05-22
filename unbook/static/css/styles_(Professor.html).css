@@ -16,6 +16,13 @@ html {
     scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    display: none;
+}
+
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -81,7 +88,7 @@ ul {
     margin-right: 3em;
 
     width: 100%;
-    height: 32em;
+    height: 30em;
     padding: 1em;
 
     display: block;
@@ -261,6 +268,52 @@ ul {
     border-radius: 50px;
 }
 
+#div1 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 4em 0em;
+    align-items: center;
+    width: 100%;
+    height: 25em;
+
+}
+
+#div1_1 {
+    justify-content: center;
+    position: static;
+    width: auto;
+    height: auto;
+    margin:1em;
+}
+
+#div1_2 {
+    justify-content: left;
+    flex-direction: column;
+    top: 2em;
+    position: static;
+    width: auto;
+    height: 10em;
+
+}
+
+#retry {
+    display: block;
+    text-align: right;
+    position: relative;
+    top: 2.5em;
+    left: 90%;
+    width: 3em;
+    height: 3em;
+    transition: all 0.3s ease-in-out;
+    z-index:2;
+  }
+  
+  #retry:hover {
+    transform: scale(1.05);
+  }
+
+
 #foto_professor {
     width: 16em;
     height: 20em;
@@ -268,13 +321,14 @@ ul {
     position: relative;
     display: inline-block;
 
-    left: 10%;
 }
 
 #Professor {
     display: inline-block;
     font-size: 2em;
     position: relative;
+    width: 20em;
+    height: auto;
 }
 
 #Faculdade {
@@ -293,16 +347,15 @@ ul {
     
 
     width: auto;
-    height: 50%;
+    height: auto;
 
-    top: 15%;
-    bottom: 10%;
+    top: 5%;
 }
 
 #scroll_materias {
     display: block;
     position: relative;
-    top: 10%;
+    top: 5%;
 
 
     margin-left: auto;

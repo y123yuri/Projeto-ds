@@ -327,6 +327,7 @@
       <div id="box3">
         <div id="acesso">
           <div id="dados_materia">
+            <a href=" ../../"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
             <h1 id="Materia" class="CampoFalado1">{{ turma.materia.nome }} - ({{ turma.materia.codigo }})</h1>
             <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
           </div>
@@ -349,7 +350,7 @@
                 </li>
               </a>
 
-              <a class="boxes_biblioteca" style="text-decoration: none;" href="">
+              <a class="boxes_biblioteca" style="text-decoration: none;" href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/atividades">
                 <li id="atividades">
                   <img class="imagens" src="{% static 'image/Student Center.png' %}" />
                   <h3 class="texto">Atividades</h3>

@@ -68,7 +68,16 @@ a:hover {
 
     /* animation: aparecer_fundo_blur 1s; */
     z-index: 11;
-    overflow-y: auto;
+
+}
+
+#contador {
+    position: relative;
+    display: block;
+    top: 16em;
+    margin-left: 2em;
+    color: whitesmoke;
+    font-size: 1.5em;
 }
 
 .h2s {

@@ -72,13 +72,16 @@
         </div>
 
         <div id="box3">
-            <h1 id="Videos"> Livros / resumos de apoio</h1>
-            <h1 id="Materia" class="CampoFalado1"> {{turma.materia.nome}}</h1>
-            <h2 id="Prof"> (Prof. {{turma.professor.nome}})</h2>
+            <a href=" ../{{ turma.professor.nome }}"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
+            <h1 id="Livros"> Livros / Resumos de apoio</h1>
+            <h1 id="Materia" class="CampoFalado1"> Materia: {{turma.materia.nome}}</h1>
+            <a id="Prof" href=" ../../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
 
-            <div id="scroll"></div>
+            <hr style="margin: 1em 4em;">
 
-
+            <div id="posta_link">
+                    
+            </div>
         </div>
 
     </div>

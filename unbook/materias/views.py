@@ -14,6 +14,9 @@ def home(request):
 def somos(request):
     return render(request, 'Quem_somos.html')
 
+def tutorial(request):
+    return render(request, 'Tutorial.html')
+
 def perfil(request):
     return render(request, "html/Perfil.html")    
 
@@ -196,7 +199,7 @@ def atividades(request, nome,codigo) :
         context = {}
         context["turma"] = obj_turma
 
-        return render(request, "Videos.html", context)
+        return render(request, "Atividades.html", context)
     else:
         context = {}
         context["erro"] = "Você precisa estar logado" 

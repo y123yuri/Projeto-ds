@@ -6,14 +6,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vídeos</title>
+    <title>Atividades</title>
     <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"> <!-- LINK PARA FONTE MONSTSERRAT-->
 
-    <link rel="stylesheet" href="{% static "css/styles_(Videos.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
+    <link rel="stylesheet" href="{% static "css/styles_(Atividades.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <div id="fundo_blur"></div> 
 
     <div id="modal_upload">
-        <h1 id="CampoFaladoModal1"> Upload de links</h1>
+        <h1 id="CampoFaladoModal1"> Upload de arquivos</h1>
 
         <h2 id="CampoFaladoModal2"> O que é o seu link:</h2>
         <input class="inputs" id="queLinkéEsse" type="text" placeholder="Tente descrever em um única palavra :)">
@@ -52,7 +52,7 @@
 
             <div id="box3">
                 <a href=" ../{{ turma.professor.nome }}"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
-                <h1 id="Videos"> Vídeos de apoio</h1>
+                <h1 id="Atividades"> Atividades de apoio</h1>
                 <h1 id="Materia" class="CampoFalado1"> Materia: {{turma.materia.nome}}</h1>
                 <a id="Prof" href=" ../../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
 
@@ -62,7 +62,6 @@
                         
                 </div>
             </div>
-
 
         </div>
 

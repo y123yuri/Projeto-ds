@@ -17,5 +17,5 @@ urlpatterns = [
     path("materia/<str:codigo>/<str:nome>/atividades", views.atividades, name='atividades'),
     path("avaliacao/", views.avaliacao, name="avaliacao"),
     path("comentario/", views.comentarios, name='comentarios'),
-
+    path("Tutorial", views.tutorial, name='tutorial'),
 ]

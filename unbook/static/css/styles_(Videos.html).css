@@ -15,6 +15,12 @@ html {
     scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    display: none;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -71,12 +77,12 @@ ul {
     width: 30%;
     height: auto;
 
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 #box1 {
-    position: relative;
-    top: 60%;
+    top: 30%;
 
     width: 100%;
     height: 25%;
@@ -110,9 +116,8 @@ ul {
 /* BOX 2 */
 
 #box2 {
-    position: relative;
     display: block;
-    top: 63%;
+    margin-top: 1.5em;
 
     width: 100%;
     height: 5em;
@@ -180,32 +185,43 @@ ul {
 
 #Materia {
     display: block;
-    font-size: 1.5em;
-    margin-top: 1em;
+    font-size: 2em;
+
 }
 
-#Prof {
+a#Prof {
     display: block;
-    font-size: 1em;
+    font-size: 1.25em;
+    font-weight: bolder;
+    text-decoration: none;
     color: #0B4C8C;
     text-align: center;
     margin-top: 0em;
+    margin: auto;
+    width: 30em;
+    height: auto;
+}
+
+#retry {
+    display: block;
+    text-align: right;
+    position: relative;
+    top: 2.5em;
+    left: 90.65%;
+    width: 3em;
+    height: 3em;
+    transition: all 0.3s ease-in-out;
+    z-index:2;
+}
+
+#retry:hover {
+    transform: scale(1.05);
 }
 
 #Videos {
     position: relative;
     display: block;
-
-    top: 0.5em;
-    font-size: 3em;
-}
-
-#scroll {
-    overflow-y: auto;
-    height: auto;
-    width: 96.5%;
-    top: 2em;
-    position: relative;
+    font-size: 4em;
 }
 
 .links {
@@ -227,8 +243,20 @@ ul {
     display: none;
     background-color: hsla(0, 0%, 0%, 0.8);
     backdrop-filter: blur(50px);
-    z-index: 1;
+    z-index: 3;
 }
+
+#posta_link {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    overflow-y: auto;
+    margin: auto;
+    text-align: center;
+
+}
+
 
 #modal_upload {
     position: fixed;
@@ -238,7 +266,7 @@ ul {
     background-color: #CDE4DF;
     border-radius: 25px;
     box-shadow: 0 0 10px black;
-    z-index: 2;
+    z-index: 4;
 
     justify-content: center;
 

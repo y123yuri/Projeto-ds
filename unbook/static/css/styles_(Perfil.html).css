@@ -118,11 +118,11 @@ a .UnBook_logo_mini {
 }
 
 @keyframes aparecer_modal_imgs {
-    0% {
+    0% , 40% {
         opacity: 0;
     }
 
-    100% {
+    60% {
         opacity: 1;
     }
 }

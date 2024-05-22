@@ -22,17 +22,14 @@ function proximo() {
     
     // Incrementa o índice para o próximo <h2>
     currentIndex++;
-    
-    // Se chegou ao último <h2>, volta ao primeiro
-    if (currentIndex === h2Elements.length) {
-        currentIndex = 0;
-        button.textContent = 'Avançar'
-    }
+    var indice = document.getElementById('contador')
+    indice.textContent = currentIndex + ' de 7'
 
     if (currentIndex === h2Elements.length-1){
         button.textContent = 'Voltar';
         button.addEventListener('click', () => {
             window.location.href = "../"
+            currentIndex = 0;
         })
         
     }

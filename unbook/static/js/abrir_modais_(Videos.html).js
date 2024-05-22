@@ -15,7 +15,7 @@ function enviar() {
     var nome_link = document.getElementById('queLinkéEsse').value;
 
 if (link_enviado !== '' && nome_link !== '') {
-    var scroll = document.getElementById('scroll')
+    var scroll = document.getElementById('posta_link')
     
     var nome = document.createElement('h2')
     nome.className = 'nomeURL'
@@ -29,7 +29,8 @@ if (link_enviado !== '' && nome_link !== '') {
     link.target = '_blank';
 
     var pula_linha = document.createElement('hr')
-    
+    pula_linha.margin = "2em 4em"
+
     scroll.appendChild(nome);
     scroll.appendChild(link);
     scroll.appendChild(pula_linha);
