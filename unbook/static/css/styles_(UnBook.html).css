@@ -43,11 +43,11 @@ html::-webkit-scrollbar {
     flex-direction: row;
     text-align: center;
     justify-content: space-evenly;
-    margin: 0 20em;
+    margin: 0 25em;
 
 }
 
-a#FAC {
+a#FAC , a#qmsomos {
     text-decoration: none;
     font-size: 1.75em;
     font-weight: bolder;
@@ -69,56 +69,14 @@ a#FAC {
     overflow: hidden;
 }
 
-
-#semestre {
-    font-size: 1.75em;
-    color: black;
-    position: relative;
-    text-align: center;
-    top: 1.5em;
-    transition: all 0.3s ease;
-    cursor: pointer; 
-
-    background-color: #E6F2FB;
-    padding: 0.25em 1em;
-    border-radius: 25px;
-    border: solid 2px black;
-    box-shadow: #0B4C8C -2px 2px 1px ;
-    overflow: hidden;
-}
-
-a#qmsomos {
-    text-decoration: none;
-    font-size: 1.75em;
-    font-weight: bolder;
-
-    color: black;
-
-    position: relative;
-    text-align: center;
-
-
-    top: 1.5em;
-
-    transition: all 0.3s ease;
-
-    background-color: #E6F2FB;
-    padding: 0.25em 1em;
-    border-radius: 25px;
-    border: solid 2px black;
-    box-shadow: #0B4C8C -2px 2px 1px ;
-
-    overflow: hidden;
-}
-
-#semestre:hover, #qmsomos:hover , #FAC:hover {
+#qmsomos:hover , #FAC:hover {
     transform: scale(1.05);
 }
-#semestre:active, #qmsomos:active , #FAC:active {
+#qmsomos:active , #FAC:active {
     transform: scale(0.95);
 }
 
-#semestre:after, #qmsomos:after , #FAC:after {
+#qmsomos:after , #FAC:after {
     background: #0B4C8C;
     content: "";
     height: 155px;
@@ -132,7 +90,7 @@ a#qmsomos {
     z-index: -10;
   }
   
-  #semestre:hover:after, #qmsomos:hover:after , #FAC:hover:after {
+#qmsomos:hover:after , #FAC:hover:after {
     left: 120%;
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
@@ -623,3 +581,600 @@ div .janela_pesquisa {
 /* CABOUJANELA */
 
 /*DISPOSIVO MOBILE  */
+
+@media screen and (max-width: 767px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html {
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(135deg, #0C36A1, #008940);
+        width: 100%;
+    
+        background-attachment: fixed;
+        height: 100vh;
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+    
+    }
+    
+    ul {
+        background-color: transparent;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    html::-webkit-scrollbar {
+        width: 15px;
+        height: auto;
+        display: none;
+    }
+    
+    /* inicio das paginas */
+    /*PAGINA1*/
+    
+    #nav {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-around;
+        margin: 0 3em;
+    
+    }
+    
+    a#qmsomos , a#FAC {
+        text-decoration: none;
+        font-size: 0.75em;
+        font-weight: bolder;
+    
+        color: black;
+    
+        position: relative;
+        text-align: center;
+    
+    
+        top: 2em;
+    
+        transition: all 0.3s ease;
+    
+        background-color: #E6F2FB;
+        padding: 0.25em 1em;
+        border-radius: 25px;
+        border: solid 2px black;
+        box-shadow: #0B4C8C -2px 2px 1px ;
+    
+        overflow: hidden;
+    }
+    
+   #qmsomos:hover , #FAC:hover {
+        transform: scale(1.05);
+    }
+    #qmsomos:active , #FAC:active {
+        transform: scale(0.95);
+    }
+    
+   #qmsomos:after , #FAC:after {
+        background: #0B4C8C;
+        content: "";
+        height: 155px;
+        left: -75px;
+        opacity: 0.2;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: -10;
+      }
+      
+      #semestre:hover:after, #qmsomos:hover:after , #FAC:hover:after {
+        left: 120%;
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    
+    
+    .UnBookLogo {
+        width: 388px;
+        height: 155px;
+    
+    
+        display: block;
+        margin: auto;
+        position: relative;
+        top: 30%;
+    
+    }
+    
+    .fundo_branco {
+    
+        width: 100%;
+        height: 500px;
+        display: block;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    
+        background-image: linear-gradient(to right, #E6F2FB, whitesmoke);
+        z-index: -1;
+        margin-top: -1em;
+    }
+    
+    
+    .unbloguinho {
+        position: absolute;
+        max-width: 12%;
+        max-height: 12%;
+    
+        width: auto;
+        height: auto;
+    
+        top: 10px;
+        right: 10px;
+        display: block;
+    }
+    
+    a#botao_arrasta {
+        
+        display: block;
+        position: relative;
+        text-align: center;
+        
+        width: 10em;
+        
+        top: -50px;
+        margin: auto;
+    
+        color: whitesmoke;
+        font-size: 1.5em;
+        font-weight: bolder;
+        text-shadow: 0 1.5px black;
+        text-decoration: none;
+    
+        background-color: #133E79;
+        border-radius: 25px;
+        padding: 0.25em 0em;
+    
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        /* border: solid 2px rgb(255, 255, 255); */
+        box-shadow: #01203f -2px 2px 1px ;
+        overflow: hidden;
+    }
+    
+    a#botao_arrasta:after {
+        background: #fff;
+        content: "";
+        height: 155px;
+        left: -75px;
+        opacity: 0.2;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: -10;
+      }
+      
+    a#botao_arrasta:hover:after {
+        left: 120%;
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    
+    a#botao_arrasta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px #0B4C8C;
+    }
+    
+    a#botao_arrasta:active {
+        transform: scale(1);
+    }
+    
+    .page2 {
+        background-color: transparent;
+        height: 27vh;
+    }
+    
+    /*PAGINA3*/
+    
+    #search {
+        background-color: transparent;
+        height: 95vh;
+    }
+    
+    .UnBook_logo_mini{
+        display: inline;
+        
+        width:12.5em;
+        height: auto;
+    
+        position: relative;
+    
+        margin-left: 10px;
+        top: 20px;
+    }
+    
+    .Login_icon {
+        display: block;
+        position: absolute;
+        width: 5em;
+        right: 1em;
+
+    
+    }
+    
+    a.authentic {
+        font-size: 1.25em;
+        display: block;
+        position: relative;
+        font-weight: 900;
+        margin: auto;
+        text-align: center;
+        color: #0B4C8C;
+        text-decoration: none;
+
+        transition: all 0.3s ease;
+        right: 1.5em;
+        top:-2em;
+    }
+    
+    .Login_icon a:hover {
+        transform: translateY(2px);
+        text-shadow: 0 0 50px #0B4C8C;
+        color: #E6F2FB;
+    }
+    
+    #user {
+        background-color: #0B4C9C;
+        width: 3em;
+        height: 3em;
+        margin: auto;
+        display: block;
+        position: relative;
+        top: -2.5em;
+        right: 1.5em;
+        border-radius: 50%;
+        
+    
+    }
+    
+    .user {
+        width: 100%;
+        height: 100%;
+        color: white;
+    
+        display: block;
+        border-radius: 50%;
+        padding-top: 0.5em;
+    
+    }
+    
+    
+    #perguntas {
+        position: relative;
+        top: 8em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .pergunta {
+        color: white;
+        font-size: 1.25em;
+    }
+    
+    .botoes {
+        display: block;
+        position: relative;
+        text-align: center;
+        
+        width: 10em;
+        
+        top: 0.5em;
+        margin: auto;
+        margin-top: 0.5em;
+
+    
+        color: whitesmoke;
+        font-size: 1.5em;
+        font-weight: bolder;
+        text-shadow: 0 1.5px black;
+        text-decoration: none;
+    
+        background-color: #133E79;
+        border-radius: 25px;
+        padding: 0.25em 0em;
+    
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        /* border: solid 2px rgb(255, 255, 255); */
+        box-shadow: #01203f -2px 2px 1px ;
+        overflow: hidden;
+
+    }
+    
+    .botoes:hover {
+        justify-content: center;
+        transform: scale(1.05);
+        box-shadow: 0 0 50px #0B4C8C;
+    }
+    
+    .botoes:active {
+        transform: scale(1);
+    }
+    
+    .botoes:after {
+        background: #fff;
+        content: "";
+        height: 155px;
+        left: -30em;
+        opacity: 0.2;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: ease-in 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: -10;
+      }
+      
+    .botoes:hover:after {
+        left: 120%;
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    
+    .botoes:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px #0B4C8C;
+    }
+    
+    
+    
+    
+    
+    
+    /*JANELA*/
+    
+    
+    .CampoFalado {
+        margin-bottom: 0.5em;
+        font-size: 1.25em;
+        text-align: center;
+        color: #E6F2FB;
+    }
+    
+    .barra_pesquisa {
+        width: 90%;
+        height: auto;
+        display: block;
+        
+        margin: auto;
+    
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50px;
+        font-size: 1.25em;
+        padding: 0.5em 0 0.5em 1em;
+        text-align: left;
+        font-weight: 200;
+        border: none;
+    }
+    
+    .janela_pesquisa {
+        margin-top: 5em;
+    
+        display: none;
+        flex-direction: column;
+    }
+    
+    div.janela_pesquisa {
+        width: auto;
+        height: auto;
+    }
+    
+    .CampoProcura {
+        width: 90%;
+        height: 10em;
+    
+        display: block;
+        margin: auto;
+    
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 25px;
+        border: none;
+        margin-top: 1em;
+    
+        overflow-y: auto;
+    }
+    
+    .CampoProcura::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .CampoProcura ul {
+    
+        display: block;
+        margin: auto;
+        position: relative;
+        padding: 1em 0 1em 2em;
+        text-align: left;
+        border: none;
+        text-decoration: none;
+        font-size: 1.25em;
+        font-weight: 500;
+        cursor: pointer;
+    
+        list-style-type: none;
+    }
+    
+    .lista_professores:hover {
+        color: #008940;
+    }
+    
+    /* FIM DA JANELA */
+    
+    /* JANELA MATERIA2 */
+    
+    .janela_materia2 {
+        width: 90%;
+        height: 22em;
+        display: block;
+    
+        display: none;
+        margin: auto;
+    
+        background-color: #E6F2FB;
+        border-radius: 50px;
+        border: none;
+        margin-top: 4em;
+    }
+    
+    .CampoFalado2 {
+        display: block;
+        text-align: center;
+        padding: 0.25em 1em 0 1em;
+        margin: auto;
+    
+        font-size: 1.5em;
+        color: black;
+    }
+    
+    .CampoFalado3 {
+        display: block;
+        text-align: center;
+    
+        margin-left: auto;
+        margin-right: auto;
+        object-position: bottom;
+        font-size: 1em;
+        color: black;
+        font-weight: 500;
+    }
+    
+    #scroll {
+        overflow-y: auto;
+        width: auto;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    #scroll::-webkit-scrollbar {
+        width: 15px;
+        height: auto;
+    
+    }
+    
+    #scroll::-webkit-scrollbar-thumb {
+        background-color: #E6F2FB;
+        /* color of the scroll thumb */
+        border-radius: 20px;
+        border: solid 1px #0000002a;
+        /* roundness of the scroll thumb */
+    }
+    
+    #scroll::-webkit-scrollbar-track {
+        background-color: #0000002a;
+        border-radius: 25px;
+    }
+    
+    
+    .professor {
+        display: block;
+    
+        position: relative;
+        width: auto;
+        height: auto;
+    
+        background-color: rgba(255, 255, 255, 0.1);
+    
+        border-radius: 25px;
+        box-shadow: 0 0 10px black;
+        margin: 1em;
+        padding: 1em 1em;
+        text-decoration: none;
+    
+        transition: all 0.3s ease-in-out;
+    }
+    
+    #box {
+        display: inline-block;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        background-color: #008940;
+        width: 3em;
+        height: 3em;
+    
+    }
+    
+    .professor:hover {
+        transform: scale(1.01);
+    }
+    
+    #box img {
+        display: block;
+    
+        width: 2em;
+        height: 2em;
+    
+    }
+    
+    .professores {
+        display: inline-block;
+        position: relative;
+        top: -2em;
+        margin-left: 0.5em;
+        font-size: 0.25em;
+        font-weight: 400;
+        color: black;
+    }
+    
+    .CampoFalado4 {
+        display: block;
+        text-align: center;
+        top: 90%;
+    
+        font-size: 1.5em;
+        color: black;
+    }
+    
+    /* FIM DA JANELA MATERIA2 */
+    
+    @keyframes abrir_janelas {
+        from {
+            opacity: 0;
+            transform: translate3d(0, -5px, -20px);
+        }
+    
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    
+    .abrir {
+        animation: abrir_janelas 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    /* CABOUJANELA */
+    
+    /*DISPOSIVO MOBILE  */
+
+
+
+
+
+
+}

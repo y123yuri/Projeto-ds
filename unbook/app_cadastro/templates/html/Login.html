@@ -40,9 +40,9 @@
             </label>
 
            
-            <input type="submit" id="submit" class="botao_entrar" > </a> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
+            <input type="submit" id="submit" value=" Enviar" class="botao_entrar" onclick="verifica()"> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
 
-            <div>{{request.session.erro}}</div>
+            <div style="margin-left: 1em; color: red;">{{request.session.erro}}</div>
 
             <a class="cadastro" href="/cadastro"> Cadastre-se aqui </a>
             <a class="senha" href="./esqueceu"> Esqueceu a senha? </a>

@@ -22,19 +22,15 @@ function removeError(index) {
     spans[index].style.display = 'none';
 }
 
-var button = document.getElementById('submit')
-button.addEventListener('click', verifica())
-
 //VERIFICAR TODOS OS CAMPOS E DEPOIS ENVIAR OS DADOS - FUNÇÃO PRINCIPAL
-var button = document.getElementById('submit')
-document.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log('cheguei')
-  nomeValidade();
-  emailValidade();
-  senhaValidade();
-  confirmasenhaValidade();
-})
+
+function verifica() {
+    console.log('cheguei')
+    nomeValidade();
+    emailValidade();
+    senhaValidade();
+    confirmasenhaValidade();
+}
 
 //VERIFICAR NOME (TALVEZ COM ERRO - ANALISAR)
 function nomeValidade() {
@@ -107,14 +103,14 @@ if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
 //FUNÇÃO DE CARREGAMENTO PARA ENVIO DOS DADOS
 function loading() {
     const progress = document.querySelector('.progress');
-    
+
     let count = 1;
     let x = 16;
 
-    const loading = setInterval(animate,60);
+    const loading = setInterval(animate, 60);
 
     function animate() {
-        if (count === 100 && x === 400) { 
+        if (count === 100 && x === 400) {
             clearInterval(loading);
             window.location.href = "/login"
         } else {

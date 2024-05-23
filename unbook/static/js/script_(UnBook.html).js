@@ -11,8 +11,8 @@ var SearchBar = document.getElementById('searchbar');
 function pesquisa_prof(csrf_token) {
     let input = document.getElementById("searchbar_prof").value
     input = input.toUpperCase()
-    if (input.length >2){
-        console.log(input.length+"; "+input)
+    if (input.length > 2) {
+        console.log(input.length + "; " + input)
         $.ajax({
             type: "POST",
             url: "pesquisa_prof/",
@@ -27,52 +27,71 @@ function pesquisa_prof(csrf_token) {
                 for (i = 0; i < lista_obj.length; i++) {
                     lista_resultado.push(lista_obj[i].split(','))
                 };//percorrer todos e separar em arrays
-    
+
                 var ul_professores = document.getElementById('list_professores');
+                ul_professores.style.display = "flex"
+                ul_professores.style.flexDirection = "column"
+                ul_professores.style.position = "relative"
+                ul_professores.style.padding = "0.5em 2em"
                 ul_professores.innerHTML = '';
-    
+
+                if(window.matchMedia("(max-width:764px)").matches) {
+                    ul_professores.style.padding = "0.5em 1em"
+
+                }
+                
+                
                 for (i = 0; i < lista_resultado.length; i++) {
                     //percorrer todos e conferir se é igual ao da barra de pesquisa
-    
+                
+                    
+                    var professor_li = document.createElement("li");
+                    
+                    professor_li.style.position = "relative"
+                    professor_li.style.marginBottom = "1em"
+                    professor_li.style.display = "flex"
+                    professor_li.style.flexDirection = "row"
+                    professor_li.style.alignItems = "center";
+                    
                     var imagem_professor = document.createElement('img');
                     imagem_professor.src = lista_resultado[i][1];
-    
+
                     imagem_professor.width = "50"
                     imagem_professor.height = "50"
                     imagem_professor.style.borderRadius = "10px";
-                    imagem_professor.style.position = "absolute";
-                    imagem_professor.style.left = "-3em"
-                    imagem_professor.style.top = "-0.5em"
-                    imagem_professor.style.marginBottom = "2em"
-    
-                    var professor_li = document.createElement("li");
-    
-                    professor_li.style.position = "relative"
-                    professor_li.style.left = "2em"
-                    professor_li.style.marginBottom = "2em"
-    
+                    imagem_professor.style.display = "block";
+                    
+
                     var link_professor = document.createElement("a")
                     link_professor.href = 'professor/' + lista_resultado[i][0];
                     link_professor.textContent = lista_resultado[i][0];
                     link_professor.classList.add("lista_professores");
-    
+
                     link_professor.addEventListener("mouseenter", function () {
                         // Adicionar a classe 'hover' quando o mouse entrar no link
                         this.style.color = "#008940";
                         this.style.textShadow = "0 0 2px #008940"
                         this.style.transition = "all 0.3s ease"
                     });
-    
+
                     link_professor.addEventListener("mouseleave", function () {
                         // Remover a classe 'hover' quando o mouse sair do link
                         this.style.color = "black";
                         this.style.textShadow = "none"
                     });
-    
+
                     link_professor.style.color = "black";
                     link_professor.style.textDecoration = "none";
-    
-    
+                    link_professor.style.display = "block";
+                    link_professor.style.margin = "0em 1em";
+
+                    
+                    if(window.matchMedia("(max-width:764px)").matches) {
+                        link_professor.style.fontSize = "0.80em";
+
+                    }
+
+                    
                     ul_professores.appendChild(professor_li);
                     professor_li.appendChild(imagem_professor);
                     professor_li.appendChild(link_professor);
@@ -80,7 +99,7 @@ function pesquisa_prof(csrf_token) {
             }
         })
     }
-    
+
 }
 
 
@@ -106,6 +125,8 @@ function pesquisa_materia(csrf_token) {
             }; //percorrer todos e separar em arrays
 
             var ul_materias = document.getElementById('list_materias');
+            ul_materias.style.padding = '1em 1em';
+            ul_materias.style.textAlign = "left"
             ul_materias.innerHTML = '';
 
 
@@ -114,23 +135,31 @@ function pesquisa_materia(csrf_token) {
 
                 var materias = document.createElement("li")
 
-                materias.style.position = "relative"
-                materias.style.left = "-0.5em"
-                materias.style.marginBottom = "1.5em"
+        
+                    materias.style.position = "relative"
+                    materias.style.marginBottom = "1.5em"
+        
+                    if(window.matchMedia("(max-width:764px)").matches) {
+                        materias.style.position = "relative"
+                        materias.style.margin = "auto"
+                        materias.style.marginBottom = "0.5em"
+                        materias.style.textAlign = "left"
+                    }
+
 
                 var link_materias = document.createElement("a")
-                link_materias.textContent = lista_resultado_materia[i][1] +" ("+lista_resultado_materia[i][0]+")";
-                link_materias.addEventListener('click', function(e) {
+                link_materias.textContent = lista_resultado_materia[i][1] + " (" + lista_resultado_materia[i][0] + ")";
+                link_materias.addEventListener('click', function (e) {
                     e.preventDefault();
                     abrirModal_Materia2(lista_resultado_materia[i][1]);
                     abrir_turmas(lista_resultado_materia[i][0], csrf_token);
-                    
+
                     console.log(lista_resultado_materia[i][0])
                     console.log(lista_resultado_materia[i][1])
 
-                        var professor1 = document.getElementById('professor_1_materia')
-                        professor1.href = 'materia/' + lista_resultado_materia[i][0] + '/' + lista_resultado_materia[i][1];
-                
+                    var professor1 = document.getElementById('professor_1_materia')
+                    professor1.href = 'materia/' + lista_resultado_materia[i][0] + '/' + lista_resultado_materia[i][1];
+
                 })
 
 
@@ -151,6 +180,11 @@ function pesquisa_materia(csrf_token) {
                 link_materias.style.color = "black";
                 link_materias.style.textDecoration = "none";
 
+                if(window.matchMedia("(max-width:764px)").matches) {
+                    link_materias.style.fontSize = "0.75em";
+                }
+
+
                 ul_materias.appendChild(materias);
                 materias.appendChild(link_materias);
             }
@@ -160,13 +194,13 @@ function pesquisa_materia(csrf_token) {
     })
 }
 
-function abrir_turmas(materia_codigo, csrf_token){
+function abrir_turmas(materia_codigo, csrf_token) {
     $.ajax({
         type: "POST",
         url: "pesquisa_turma/",
         data: {
             csrfmiddlewaretoken: csrf_token,
-            codigo: materia_codigo 
+            codigo: materia_codigo
         },
         success: function (response) {
             console.log(response)
@@ -178,8 +212,94 @@ function abrir_turmas(materia_codigo, csrf_token){
             console.log(lista_resultado_turma)
             scroll_div = document.getElementById('scroll')
             scroll_div.innerHTML = ""
-            for (let i=0; i<lista_resultado_turma.length;i++){
-                let professor =`display: block;
+
+            if(window.matchMedia("(max-width:764px)").matches) {
+
+                for (let i = 0; i < lista_resultado_turma.length; i++) {
+
+                    let professor = `display: block;
+    
+                    position: relative;
+                    width: auto;
+                    height: auto;
+                    align-items: center;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 25px;
+                    box-shadow: 0 0 10px black;
+                    margin: 1em;
+                    padding: 1em 1em;
+                    text-decoration: none;
+                
+                    transition: all 0.3s ease-in-out;`
+    
+                    let classe_professores = `display: inline-block;
+                    
+                    position: relative;
+                    top: -1.5em;
+                    margin-left: 4em;
+                    
+                    font-weight: 600;
+                    font-size: 0.80em;
+                    color: black;
+                    text-align:center;
+                    padding: 0 0.5em;
+                    width:90%;`
+
+                    let box_style = `"display: inline-block;
+                    cursor: pointer;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #008940;
+                    width: 5em;
+                    height: 2.5em;"`
+                    
+                    let box_img = `"display: block;
+                        
+                        width: 3em;
+                        height: 3em;
+                        position: relative;
+                        top: 0.8em;"`
+    
+                    ancora = document.createElement("a")
+                    texto = document.createElement("p")
+                    texto.textContent = `${lista_resultado_turma[i][1]}`
+                    texto.style = classe_professores
+    
+    
+                    ancora.innerHTML = `<img style=${box_img} src="${lista_resultado_turma[i][0]}">`
+                    ancora.appendChild(texto)
+    
+    
+                    ancora.href = `../materia/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
+                    ancora.style = professor
+    
+                    ancora.addEventListener("mouseenter", function () {
+                        // Adicionar a classe 'hover' quando o mouse entrar no link
+                        this.style.transform = "scale(1.01)"
+                    });
+    
+                    ancora.addEventListener("mouseleave", function () {
+                        // Remover a classe 'hover' quando o mouse sair do link
+                        this.style.transform = "scale(1)"
+                    });
+    
+                    scroll_div.appendChild(ancora)
+    
+                }
+
+
+
+
+
+
+            }
+
+            if(window.matchMedia("(min-width:765px)").matches) {
+
+            for (let i = 0; i < lista_resultado_turma.length; i++) {
+
+
+                let professor = `display: block;
 
     position: relative;
     width: auto;
@@ -193,6 +313,7 @@ function abrir_turmas(materia_codigo, csrf_token){
     text-decoration: none;
 
     transition: all 0.3s ease-in-out;`
+
                 let classe_professores = `display: inline-block;
                 
                 position: relative;
@@ -216,9 +337,12 @@ function abrir_turmas(materia_codigo, csrf_token){
                     width: 5em;
                     height: 5em;
                     position: relative;
-  top: 0.8em;
-  left: 0.8em;"
-                    `
+                    top: 0.8em;
+                    left: 0.8em;"`
+
+
+
+
                 ancora = document.createElement("a")
                 texto = document.createElement("p")
                 texto.textContent = `${lista_resultado_turma[i][1]}`
@@ -231,7 +355,7 @@ function abrir_turmas(materia_codigo, csrf_token){
 
                 ancora.href = `../materia/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
                 ancora.style = professor
-                
+
                 ancora.addEventListener("mouseenter", function () {
                     // Adicionar a classe 'hover' quando o mouse entrar no link
                     this.style.transform = "scale(1.01)"
@@ -244,33 +368,34 @@ function abrir_turmas(materia_codigo, csrf_token){
 
                 scroll_div.appendChild(ancora)
 
-            } 
+            }
         }
+    }
     })
 
 }
 
 //FUNÇÕES PARA ABRIR MODAIS
 function abrirModal_Professor() {
-    
+
     perguntas.style.display = 'none';
-    Professor.classList.add('abrir');    
+    Professor.classList.add('abrir');
 
 }
 
 function abrirModal_Materia() {
-    
+
     perguntas.style.display = 'none';
-    Materia.classList.add('abrir');     
+    Materia.classList.add('abrir');
 
 }
 
 //FUNÇÕES PARA ABRIR SEGUNDOS MODAIS 
-function abrirModal_Materia2(textoMateria){
-    
-    Materia2.classList.add('abrir'); 
+function abrirModal_Materia2(textoMateria) {
+
+    Materia2.classList.add('abrir');
     Materia.classList.remove('abrir');
-    
+
     var CampoFalado2 = document.getElementById('nome_materia');
     console.log(CampoFalado2)
     CampoFalado2.innerText = textoMateria;
@@ -279,8 +404,8 @@ function abrirModal_Materia2(textoMateria){
 
 //FUNÇÃO PARA FECHAR CASO CLIQUE FORA DO MODAL
 document.addEventListener('click', e => {
-    if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') && !e.target.closest('.janela_materia2') && 
-    !e.target.closest('.CampoProcura #list_professores li') && !e.target.classList.contains('list')) {
+    if (!e.target.classList.contains('barra_pesquisa') && !e.target.classList.contains('botoes') && !e.target.classList.contains('CampoProcura') && !e.target.closest('.CampoProcura ul') && !e.target.closest('.janela_materia2') &&
+        !e.target.closest('.CampoProcura #list_professores li') && !e.target.classList.contains('list')) {
         var input1 = document.getElementById('searchbar_prof')
         var input2 = document.getElementById('searchbar_materia')
         input1.value = '';
@@ -305,9 +430,9 @@ function reproduzirMateria(materias) {
     var reproduzir_materia = materias.textContent;
     document.getElementById('CampoFalado2').textContent = reproduzir_materia;
 
-//PASSAR MATERIA PARA PÁGINA Materia.html
+    //PASSAR MATERIA PARA PÁGINA Materia.html
     var materia = reproduzir_materia;
-    localStorage.setItem("materia",materia)
+    localStorage.setItem("materia", materia)
 }
 
 //PASSAR PROFESSOR PARA PÁGINA Materia.html
