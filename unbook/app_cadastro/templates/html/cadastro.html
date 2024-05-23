@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
   <title>Pagina de cadastro</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +50,8 @@
     <h3 class="campoFalado">Confirme sua senha:</h3>
 
     <label>
-      <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" />
+      {{form.confirm}}
+      <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
 

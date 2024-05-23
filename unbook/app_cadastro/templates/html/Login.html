@@ -5,10 +5,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
     <title>Pagina de login</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
 
@@ -35,6 +37,7 @@
             <h3 class="campoFalado"> Senha: </h3>
             
             <label>
+                <i class="bi bi-eye-fill"></i>
                 {{form.password}}
                 <span class="spans_required"> Digite uma senha valida</span>
             </label>
