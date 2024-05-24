@@ -96,7 +96,7 @@
       </div>
 
       <div id="box3">
-        <a href="../ "><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
+        <a onclick="back()"><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
         <div id="div1">
           <div id="div1_1">
             <img id="foto_professor" src="{{ foto }}" />
@@ -128,6 +128,13 @@
     nota_apoio = Number('{{aval_apoio}}'.replace(',', '.'))
     nota_dificuldade = Number('{{aval_dificuldade}}'.replace(',', '.'))
   </script>
+
+<script>
+  function back(){
+    history.back();
+  }
+</script>
+
   <!-- LINK PARA ARQUIVOS JS -->
   <script src="{% static 'js/pintar_estrela_(professor.html).js' %}"></script>
 </html>

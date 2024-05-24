@@ -73,7 +73,7 @@
         </div>
 
         <div id="box3">
-            <a href=" ../{{ turma.professor.nome }}"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
+            <a onclick="back()"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
             <h1 id="Livros"> Livros / Resumos de apoio</h1>
             <h1 id="Materia" class="CampoFalado1"> Materia: {{turma.materia.nome}}</h1>
             <a id="Prof" href=" ../../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
@@ -89,6 +89,11 @@
 
 </body>
 
+<script>
+    function back(){
+      history.back();
+    }
+  </script>
 
 <!-- LINK PARA ARQUIVOS JS-->
 <!-- <script src="../js/materia_(materia.html).js"></script> -->
