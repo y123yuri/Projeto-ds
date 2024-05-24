@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from datetime import timezone
 from django.utils import timezone
+from django.utils.timezone import make_aware
+from datetime import datetime
 
 # Create your views here.
 
@@ -77,9 +79,11 @@ def materia(request, codigo, nome):
 
         context["total_avaliadores"] = obj_turma.avaliadores.count()
         context["comentarios"] = []
+        context["quant_like"] = []
         for comentario in Comentario.objects.filter(turma=obj_turma):
             print(comentario)
             context["comentarios"].append(comentario)
+            context["quant_like"].append(comentario.curtidas.count())
         
         index =0
         lista_turno = obj_turma.turno.split(" ")
@@ -299,3 +303,22 @@ def comentarios(request):
     novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_usuario)
     novo_comentario.save()
     return HttpResponse("ok")
+
+def like(request):
+    user = request.user
+    pk_comentario = request.POST["comentario"]
+    nome = request.POST["professor"]
+    codigo = request.POST["materia"]
+
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    comentario = Comentario.objects.get(pk=pk_comentario)
+    print(obj_turma, obj_prof, comentario)
+    if comentario.curtidas.filter(id=user.id).exists():
+        print("vou remover o user")
+        comentario.curtidas.remove(user)
+    else:
+        print("vou adicionar o user")
+        comentario.curtidas.add(user)
+    return HttpResponse(f'{comentario.curtidas.count()}')

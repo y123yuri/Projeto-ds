@@ -95,9 +95,24 @@ window.onload = function () {
     pintar_estrela_tela(nota_didatica/2, "didatica")
     pintar_estrela_tela(nota_apoio/2, "apoio")
     pintar_estrela_tela(nota_dificuldade/2, "dificuldade")
+
+    // colocando quant de likes
+
+    for (i=0;i<quant_likes.length;i++){
+        element = document.getElementById(`like${i}`)
+        element.innerText = `${quant_likes[i]}`
+    }
 }
 
 function pintar_estrela_tela(nota, categoria){
+    cont_nota =0.5
+    while(cont_nota<=5){
+        id = `estrela_${cont_nota}_${categoria}`
+        estrela = document.getElementById(id)
+        estrela.style.color = '#777D89'
+        cont_nota +=0.5
+    }
+
     cont_nota =0.5
     while (cont_nota<=nota){
         id = `estrela_${cont_nota}_${categoria}`
@@ -113,7 +128,7 @@ document.querySelector('#comentar').addEventListener('keydown', function (event)
     }
 }); // quando apertar ENTER no teclado ele envia o comentário
 
-function like(element) {
+function like(element, pk) {
 
     
     if (element.style.color === "red") {
@@ -123,6 +138,21 @@ function like(element) {
         element.style.color = "red";
         element.classList.add('heart');
     }
+    console.log(pk)
+    
+    $.ajax({
+        type: "POST",
+        url: "../../../like/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            comentario: pk,
+            materia: codigo,
+            professor: nome,
+        }, 
+        success: function (response)  {
+            console.log("")
+        }
+    })
 }
 
 
