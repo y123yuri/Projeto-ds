@@ -80,10 +80,15 @@ def materia(request, codigo, nome):
         context["total_avaliadores"] = obj_turma.avaliadores.count()
         context["comentarios"] = []
         context["quant_like"] = []
+        context["curtidas"] = []
         for comentario in Comentario.objects.filter(turma=obj_turma):
             print(comentario)
             context["comentarios"].append(comentario)
             context["quant_like"].append(comentario.curtidas.count())
+            if comentario.curtidas.filter(id=request.user.id).exists():
+                context["curtidas"].append(True)
+            else:
+                context["curtidas"].append(False)
         
         index =0
         lista_turno = obj_turma.turno.split(" ")

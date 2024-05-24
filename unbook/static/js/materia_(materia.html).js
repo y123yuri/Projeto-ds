@@ -101,6 +101,14 @@ window.onload = function () {
     for (i=0;i<quant_likes.length;i++){
         element = document.getElementById(`like${i}`)
         element.innerText = `${quant_likes[i]}`
+        element = document.getElementById(`coracao${i}`)
+        if (curtidas[i] === "True"){
+            element.style.color = "red";
+            element.classList.add('heart');
+        } else{
+            element.style.color = "grey";
+            element.classList.remove('heart');
+        }
     }
 }
 
@@ -129,16 +137,20 @@ document.querySelector('#comentar').addEventListener('keydown', function (event)
 }); // quando apertar ENTER no teclado ele envia o comentário
 
 function like(element, pk) {
-
+    id = element.id
+    id = id.replace("coracao", "")
+    contador = document.getElementById(`like${id}`)
+    num = Number(contador.innerText)
     
     if (element.style.color === "red") {
         element.style.color = "grey";
         element.classList.remove('heart');
+        contador.innerText = `${num-1}`
     } else {
         element.style.color = "red";
         element.classList.add('heart');
+        contador.innerText = `${num+1}`
     }
-    console.log(pk)
     
     $.ajax({
         type: "POST",
