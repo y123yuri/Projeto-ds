@@ -374,16 +374,7 @@
         <div id="comentarios">
           <div id="box_comentarios">
             <div id="scroll">
-              <div id="comentario1">
-                <h2 class="usuarios" id="">@Yuri_Gameplays</h2>
-                <h3 class="comentarios">eu adoro essa materia ela é muito legal, to pensando ate em reprovar pra nao sair dela nunk.</h3>
-
-                <div class="curtidas">
-                  <h3 class="Gostei">Gostei</h3>
-
-                  <button class="like" type="button" onclick="like(this)"><i class="fa-solid fa-heart"></i></button>
-                </div>
-              </div> <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
+              
               {% for comentario in comentarios %}
                 <div id="comentario{{ forloop.counter0 }}" >
                   <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
