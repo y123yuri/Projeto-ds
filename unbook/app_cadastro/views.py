@@ -97,7 +97,8 @@ def logado(request):
              request.session['erro'] = "Login invalido"
              return redirect("../")
 
-        
+def verificaEmail(request):
+    return render(request, "html/VerificaEmail.html")   
 
 
     

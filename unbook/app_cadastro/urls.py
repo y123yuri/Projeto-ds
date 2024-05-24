@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.cadastro, name="cadastro"),
     path('sucesso/', views.sucesso, name="sucesso"),
     path('login/', views.login_func, name="login_func"),
+    path('login/verificarEmail', views.verificaEmail, name="verifica"),
     path('login/esqueceu/', views.esqueceu, name="esqueceu"),
     path('login/esqueceu/nova-senha/<str:token>/', views.novaSenha, name="novaSenha"),#nopva senha
     path('login/logado/', views.logado, name='logado'),
