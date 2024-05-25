@@ -33,7 +33,7 @@ def cadastro(request):
     return render(request, "html/cadastro.html", context)
 
 def verificacao(request):
-    return
+    return render(request, 'html/VericaEmail.html')
 
 def sucesso(request):
     if request.method == 'POST':
@@ -106,10 +106,6 @@ def logado(request):
         except User.DoesNotExist:
              request.session['erro'] = "Login invalido"
              return redirect("../")
-
-def verificaEmail(request):
-    return render(request, "html/VerificaEmail.html")   
-
 
     
 def logout(request):
