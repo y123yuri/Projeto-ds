@@ -67,7 +67,13 @@
 
                 <h2 class="pergunta"> Como deseja iniciar sua pesquisa?</h2>
                 <h2 class="botoes" onclick="abrirModal_Professor()">Professor</h2> <!--ABRIR MODAL PROFESSOR-->
-                <h2 class="botoes" onclick="abrirModal_Materia()">Matéria </h2> <!--ABRIR MODAL MATÉRIA-->
+                
+                {% if user.is_authenticated %}
+                    <h2 class="botoes" onclick="abrirModal_Materia()">Matéria </h2> <!--ABRIR MODAL MATÉRIA NORMAL-->
+                {% else %}
+                    <a style="text-decoration: none" href="cadastro/login"><h2 class="botoes" onclick="alert('Você precisa estar logado!')">Matéria </h2></a> <!--ABRIR MODAL MATÉRIA DIFERENCIADO-->
+                {% endif %}    
+
 
             </div>
 
@@ -85,7 +91,7 @@
 
 
             <div class="janela_pesquisa" id="janela_materia">
-
+                
                 <h1 class="CampoFalado">Informe a matéria:</h1>
                 <input class="barra_pesquisa" type="text" id="searchbar_materia" placeholder="pesquisar" onkeydown=pesquisa_materia("{{csrf_token}}") autocomplete="off"></input>
 
