@@ -24,13 +24,51 @@ function removeError(index) {
 
 //VERIFICAR TODOS OS CAMPOS E DEPOIS ENVIAR OS DADOS - FUNÇÃO PRINCIPAL
 
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form'); // Selecionar o formulário
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevenir o envio padrão do formulário
+        verifica();
+    });
+});
+
 function verifica() {
-    console.log('cheguei')
+    console.log('cheguei');
     nomeValidade();
     emailValidade();
     senhaValidade();
     confirmasenhaValidade();
+
+    if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
+        console.log('Todos os campos verificados');
+        enviarFormulario();
+    }
 }
+
+function enviarFormulario() {
+    const formData = new FormData(document.querySelector('form'));
+
+    fetch('sucesso/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Inclua o CSRF token
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = "sucesso/";
+        } else {
+            console.log('Erro:', data.error);
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+}
+
+// As funções de validação e as funções auxiliares (nomeValidade, emailValidade, etc.) permanecem as mesmas
+
 
 //VERIFICAR NOME (TALVEZ COM ERRO - ANALISAR)
 function nomeValidade() {
