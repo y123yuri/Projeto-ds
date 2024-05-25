@@ -114,8 +114,15 @@
           <h1 style="position: relative; display:block; top: 5%; text-align: center; width: 100%">Matérias ofertadas</h1>
 
           <div id="scroll_materias">
+
             {% for turma in lista_turmas %}
+
+              {% if user.is_authenticated %}
               <a class="materias" href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}">{{ turma.materia.codigo }} {{ turma.materia.nome }}</a>
+              {% else %}
+              <a class="materias" onclick="alert('Você precisa estar logado!')" href="../cadastro/login">{{ turma.materia.codigo }} {{ turma.materia.nome }}</a>
+              {% endif %}
+              
             {% endfor %}
           </div>
         </div>
