@@ -5,11 +5,13 @@ import datetime
 from datetime import timedelta
 from datetime import timezone
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
 
 
 
 
-# Create your models here.
+
+
 
 class Cadastro(models.Model):
     username = models.CharField(max_length=150, null=False, blank=False, unique=True)
@@ -31,4 +33,6 @@ class PasswordResetToken(models.Model):
         # Opcional: defina uma validade para o token, por exemplo, 24 horas
         expiration_time = timedelta(hours=1)
         return self.created_at >= timezone.now() - expiration_time
+
+
 

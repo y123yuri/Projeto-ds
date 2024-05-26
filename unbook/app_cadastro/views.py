@@ -19,7 +19,8 @@ from .models import PasswordResetToken
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from .forms import Nova_senhaForm
-
+from django.contrib import messages
+from .utils import send_activation_email
 
 
 
@@ -32,8 +33,21 @@ def cadastro(request):
     context["form"] = form
     return render(request, "html/cadastro.html", context)
 
-def verificacao(request):
-    return render(request, 'html/VericaEmail.html')
+def verificar(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Sua conta foi ativada com sucesso!')
+        return redirect('/cadastro/login')
+    else:
+        messages.error(request, 'Link de ativação inválido!')
+        return redirect('/')
 
 def sucesso(request):
     if request.method == 'POST':
@@ -55,9 +69,10 @@ def sucesso(request):
             dados = [nome_variavel, email_variavel, senha_variavel]
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br":
                 user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2])
+                user.is_active = False 
                 user.save()
-                login(request, user)
-                return JsonResponse({'success': True})
+                send_activation_email(user, request)
+                return JsonResponse({'success': True, 'username': user.username}) 
             else:
                 request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
                 return JsonResponse({'success': False, 'error': 'Formulário inválido'})
