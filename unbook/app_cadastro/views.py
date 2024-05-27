@@ -83,6 +83,10 @@ def sucesso(request):
     
     return render(request, "html/cadastro_sucesso.html")
 
+def ativado(request):
+    render(request, "html/Ativado.html")
+
+
 def login_func(request):
     if not request.user.is_authenticated:
         context = {}

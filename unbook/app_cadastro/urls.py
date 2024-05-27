@@ -9,6 +9,7 @@ urlpatterns = [
     path('sucesso/', views.sucesso, name="sucesso"),
     path('login/', views.login_func, name="login_func"),
     path('verificar/<uidb64>/<token>/', views.verificar, name="verificar"),
+    path('verificar/ativado/', views.ativado, name="ativado"),
     path('login/esqueceu/', views.esqueceu, name="esqueceu"),
     path('login/esqueceu/nova-senha/<str:token>/', views.novaSenha, name="novaSenha"),#nopva senha
     path('login/logado/', views.logado, name='logado'),
