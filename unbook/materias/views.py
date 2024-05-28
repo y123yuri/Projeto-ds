@@ -228,11 +228,12 @@ def avaliacao(request):
 
     # Separe os dados da lista
     separacao = lista.split(',')
-
+    print(separacao)
     dificuldade_dados = int(float(separacao[0])*2)  # Converta para float
     apoio_dados = int(float(separacao[1])*2)
     didatica_dados = int(float(separacao[2])*2)
-
+    joinha = int(separacao[3])
+    
     # Verifique se o usuário já avaliou esta turma
     user = request.user
     numero_avaliacoes = int(obj_turma.avaliadores.count())
@@ -248,8 +249,12 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) // numero_avaliacoes
-        if user in obj_prof.aprovacoes.all() and not lista[3]:
-            obj_prof.aprovacoes.remove(user)
+        if user in obj_prof.aprovacoes.all():
+            if joinha == 0 :
+                obj_prof.aprovacoes.remove(user)
+            else:
+                if user not in obj_prof.aprovacoes:
+                    obj_prof.aprovacoes.add(user)
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
@@ -259,7 +264,9 @@ def avaliacao(request):
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
         if user not in obj_prof.aprovacoes.all() and lista[3]:
-            obj_prof.aprovacoes.add(user)
+            if joinha == 1 :
+                obj_prof.aprovacoes.add(user)
+
 
         # Adicione o usuário aos avaliadores
         obj_turma.avaliadores.add(user)
@@ -273,9 +280,9 @@ def avaliacao(request):
     
 
 
-    print(obj_turma.avaliacao_dificuldade)
-    print(obj_turma.avaliacao_apoio_aluno)
-    print(obj_turma.avaliacao_didatica)
+    # print(obj_turma.avaliacao_dificuldade)
+    # print(obj_turma.avaliacao_apoio_aluno)
+    # print(obj_turma.avaliacao_didatica)
     context = {}
     
     resposta_dificuldade = obj_turma.avaliacao_dificuldade

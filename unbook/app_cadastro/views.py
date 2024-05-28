@@ -44,10 +44,13 @@ def verificar(request, uidb64, token):
         user.is_active = True
         user.save()
         messages.success(request, 'Sua conta foi ativada com sucesso!')
-        return redirect('/cadastro/login')
+        return redirect('/cadastro/verificar/ativado')
     else:
         messages.error(request, 'Link de ativação inválido!')
         return redirect('/')
+
+def ativado(request):
+    return render(request, 'html/Ativado.html')
 
 def sucesso(request):
     if request.method == 'POST':
@@ -83,9 +86,6 @@ def sucesso(request):
     
     return render(request, "html/cadastro_sucesso.html")
 
-def ativado(request):
-    render(request, "html/Ativado.html")
-
 
 def login_func(request):
     if not request.user.is_authenticated:
@@ -95,6 +95,8 @@ def login_func(request):
         
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
+        f = Nova_senha_perfilForm(request.POST)
+        context = {}
         return render(request,"html/Perfil.html") # trocar depois pra página de perfil
 
 def logado(request):

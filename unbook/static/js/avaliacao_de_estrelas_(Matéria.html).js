@@ -1,10 +1,12 @@
-
 // Objeto para armazenar as avaliações de cada categoria
 let avaliacoes = {
     'Dificuldade': '',
     'Monitoria': '',
     'Didatica': ''
 };
+
+// Variável para armazenar o valor de 'sim' ou 'não'
+let element = null;
 
 // Função para verificar se todas as avaliações foram feitas
 function VerificaAvaliacoes(avaliacoes) {
@@ -16,10 +18,8 @@ function VerificaAvaliacoes(avaliacoes) {
     return true; // Retorna verdadeiro se todas as categorias foram avaliadas
 }
 
-
 // Seleciona todas as etiquetas de estrelas
 let starLabels = document.querySelectorAll('.rating_modal label');
-
 
 // Adiciona um ouvinte de evento de clique a cada etiqueta de estrela
 starLabels.forEach(function (label) {
@@ -29,72 +29,90 @@ starLabels.forEach(function (label) {
 
         console.log(categoriaId + ': ' + value + ' estrelas de 5');
 
-        ShowValue = document.getElementById('notas_' + categoriaId)
-        ShowValue.innerText = (value + ' de 5')
+        let ShowValue = document.getElementById('notas_' + categoriaId);
+        ShowValue.innerText = (value + ' de 5');
 
         // Atualiza o valor da avaliação para a categoria correspondente
         avaliacoes[categoriaId] = value;
 
         // Verifica se todas as categorias foram avaliadas
-        if (VerificaAvaliacoes(avaliacoes)) {
-            console_print(avaliacoes, categoriaId);
+        if (VerificaAvaliacoes(avaliacoes) && element !== null) {
+            console_print(avaliacoes, element);
         }
     });
 });
 
-function console_print(avaliacoes, categoriaId) {
-    
-    var button_finalizar = document.getElementById('prox_button_4');  
-    button_finalizar.addEventListener('click', () => {
-        lista =[]
+// Adiciona ouvintes de evento para os botões "sim" e "não"
+let sim = document.getElementById('sim');
+sim.addEventListener('click', () => {
+    element = 1;
+    if (VerificaAvaliacoes(avaliacoes)) {
+        console_print(avaliacoes, element);
+    }
+});
 
+let nao = document.getElementById('nao');
+nao.addEventListener('click', () => {
+    element = 0;
+    if (VerificaAvaliacoes(avaliacoes)) {
+        console_print(avaliacoes, element);
+    }
+});
 
-        for (let categoria in avaliacoes) {
-
-            lista.push(avaliacoes[categoria]) 
-        }
-
-        lista.push(true) // GAMBIARRA DE DEBUG TIRAR DEPOIS
-
-        enviar_para_back(lista);
-    });
+function console_print(avaliacoes, element) {
+    console.log(avaliacoes);
+    console.log(element);
 }
 
+// Configura o evento de clique do botão "prox_button_4" para enviar os dados para o backend
+let button_finalizar = document.getElementById('prox_button_4');
+button_finalizar.addEventListener('click', () => {
+    let lista = [];
 
+    for (let categoria in avaliacoes) {
+        lista.push(avaliacoes[categoria]);
+    }
 
+    lista.push(element);
 
-function enviar_para_back(lista){
-    lista = lista.join(',')
-     $.ajax({
-            type: "POST",
-            url: "../../../avaliacao/",
-            data: {
-                csrfmiddlewaretoken: csrf_token,
-                avaliacao: lista,
-                professor: nome,
-                materia: codigo,
-                
-            }, 
-            success: function (response)  {
-                lista = response.split(",")
-                console.log(lista)
-                nota_apoio = (Number(lista[1])/2).toPrecision(2)
-                nota_dificuldade = (Number(lista[0])/2).toPrecision(2)
-                nota_didatica = (Number(lista[2])/2).toPrecision(2)
-                
+    enviar_para_back(lista);
+});
 
-                pintar_estrela_tela((Number(lista[1])/2).toPrecision(2), "apoio")
-                pintar_estrela_tela((Number(lista[0])/2).toPrecision(2), "dificuldade")
-                pintar_estrela_tela((Number(lista[2])/2).toPrecision(2), "didatica")
-                console.log(nota_apoio +", "+nota_didatica+ ", " +nota_dificuldade)
-                txt_didatica = document.getElementById("notas_didatica_media")
-                txt_didatica.innerText = `${nota_didatica} de 5`
-                txt_apoio = document.getElementById("notas_apoio_media")
-                txt_apoio.innerText = `${nota_apoio} de 5`
-                txt_dificuldade = document.getElementById("notas_dificuldade-media")
-                txt_dificuldade.innerText = `${nota_dificuldade} de 5`
-            }
-     })
+function enviar_para_back(lista) {
+    lista = lista.join(',');
+    $.ajax({
+        type: "POST",
+        url: "../../../avaliacao/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            avaliacao: lista,
+            professor: nome,
+            materia: codigo,
+        },
+        success: function (response) {
+            lista = response.split(",");
+            console.log(lista);
+
+            let nota_apoio = (Number(lista[1]) / 2).toPrecision(2);
+            let nota_dificuldade = (Number(lista[0]) / 2).toPrecision(2);
+            let nota_didatica = (Number(lista[2]) / 2).toPrecision(2);
+            let avaliacao = Number(lista[3]);
+
+            pintar_estrela_tela((Number(lista[0]) / 2).toPrecision(2), "dificuldade");
+            pintar_estrela_tela((Number(lista[1]) / 2).toPrecision(2), "apoio");
+            pintar_estrela_tela((Number(lista[2]) / 2).toPrecision(2), "didatica");
+            pintar_estrela_tela(Number(lista[3]), "avaliacao");
+
+            console.log(nota_apoio + ", " + nota_didatica + ", " + nota_dificuldade + ", " + avaliacao);
+
+            let txt_didatica = document.getElementById("notas_didatica_media");
+            txt_didatica.innerText = `${nota_didatica} de 5`;
+            let txt_apoio = document.getElementById("notas_apoio_media");
+            txt_apoio.innerText = `${nota_apoio} de 5`;
+            let txt_dificuldade = document.getElementById("notas_dificuldade-media");
+            txt_dificuldade.innerText = `${nota_dificuldade} de 5`;
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

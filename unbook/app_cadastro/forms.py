@@ -52,6 +52,17 @@ class Nova_senhaForm(ModelForm):
         model = Cadastro
         fields = ['password']
 
+class Nova_senha_perfilForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Nova_senha_perfilForm, self).__init__(*args, **kwargs)
+        self.fields['password'].widget = forms.PasswordInput()
+        
+        self.fields['password'].widget.attrs = {"class":"campoEscrito , required",  "name":"Senha", "type":"password", "placeholder":"*******"}
+
+    class Meta:
+        model = Cadastro
+        fields = ['password']
+
 
 
         

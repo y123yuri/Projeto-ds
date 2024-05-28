@@ -88,19 +88,20 @@
 
           <div id="space_2_Senha">
             <div id="box_senha_instrucoes">Esse campo está reservado à mudança de senha. Caso queira alterá-la, basta inserir sua senha no campo "Senha antiga", e nos outros campos atualizar e confirmar sua senha.</div>
+            <form class="form" id="form" action="./login" method="post" name="contact-form">
+              {% csrf_token %}
+              <div id="box_senha_form">
+                <h2 class="CampoFalado_Senha">Senha antiga</h2>
+                <input class="forms" type="password" id="senha_antiga" />
 
-            <div id="box_senha_form">
-              <h2 class="CampoFalado_Senha">Senha antiga</h2>
-              <input class="forms" type="password" id="senha_antiga" />
+                <h2 class="CampoFalado_Senha">Senha Nova</h2>
+                <input class="forms" type="password" id="senha_nova" />
 
-              <h2 class="CampoFalado_Senha">Senha Nova</h2>
-              <input class="forms" type="password" id="senha_nova" />
+                <h2 class="CampoFalado_Senha">Confirmar senha nova</h2>
+                <input class="forms" type="password" id="senha_nova_confirma" />
 
-              <h2 class="CampoFalado_Senha">Confirmar senha nova</h2>
-              <input class="forms" type="password" id="senha_nova_confirma" />
-
-              <button id="submit">Mudar senha</button>
-            </div>
+                <button id="submit">Mudar senha</button>
+              </div>
           </div>
         </div>
 
