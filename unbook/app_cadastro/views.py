@@ -43,6 +43,7 @@ def verificar(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
+        login(request, user)
         messages.success(request, 'Sua conta foi ativada com sucesso!')
         return redirect('/cadastro/verificar/ativado')
     else:
@@ -84,7 +85,7 @@ def sucesso(request):
             request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
             return JsonResponse({'success': False, 'error': 'Formulário inválido'})
     
-    return render(request, "html/cadastro_sucesso.html")
+    return render(request, "html/VerificaEmail.html")
 
 
 def login_func(request):
