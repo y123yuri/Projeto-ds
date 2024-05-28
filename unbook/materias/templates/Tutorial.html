@@ -13,12 +13,44 @@
   <link rel="stylesheet" href="{% static 'css/styles_(Tutorial.html).css' %}" />
 </head>
 <body>
-  <div id="azulzao">
-  </div>
-  
-  <div id="blusao">
+
+  <div id="tutorial">
+
+    <div id="content"></div>
+
+
+
+
+
+
+
+
+
   </div>
 
+  <div id="azulzao">
+
+<h1 id="text_azul"> A UnBook é um site interativo e inteligente, que utiliza diversas ferramentas para ajudar você a alcançar seus objetivos. 
+  
+  
+  
+  
+  
+
+
+  Nesse sentido,
+  
+  
+  vamos dar uma olhada em cada uma dessas ferramentas!
+</h1>
+
+<h2 id="button_prosseguir" onclick="fechar()"> Prosseguir</h2>
+
+  </div>
+  
+  <div id="blusao"></div>
+  {% comment %} ta no js {% endcomment %}
+  
   <div id="blur">
     <article>
       {% if user.is_authenticated %}
@@ -30,6 +62,7 @@
         <h2 class="text2">Seja bem vindo ao</h2>
         <h1 id="textbutton">Tutorial</h1>
       </div>
+      <h2 id="help"> clica no "Tutorial"!</h2>
     </article>
   </div>
   <script src="{% static 'js/Tutorial_(Tutorial.html).js' %}"></script>
