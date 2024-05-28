@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dXNqKx4j/gHTj3+mqbrjvff3FqPXAxcl3r4G/C4fFzR7P1+Sl0o2Z6oIs8zHlw0cJywKnYz7H7BGzJgDi4mZYw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
     <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS) -->
 
     <link rel="stylesheet" href="{% static 'css/styles_(Materia.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
@@ -29,6 +31,7 @@
       nota_didatica = '{{ turma.avaliacao_didatica}}'
       quant_likes = []
       curtidas = []
+
       {% for likes in quant_like %}
       quant_likes.push(Number("{{ likes }}"))
       {% endfor %}
@@ -39,6 +42,34 @@
     </script>
 
     <div id="fundo_blur"></div>
+
+    <div id="modal_denuncia">
+      <div id="titulo_modal_denuncia">
+        <h1>Denúncia</h1>
+      </div>
+
+      <div id="espaco_modal_denuncia">
+        <h2 class="CampoFalado2_modal_denuncia">Por que você reportou esse comentário?</h2>
+
+        <div id="div_radios">
+          <h2 onclick="pintar(this)">Conteúdo impróprio, ofensivo ou desrespeitoso</h2>
+          <h2 onclick="pintar(this,id)">Informação falsa ou spam</h2>
+          <h2 onclick="pintar(this)">Bullying ou assédio</h2>
+          <h2 onclick="pintar(this)">Material com conteúdo ou atividade sexual</h2>
+          <h2 onclick="pintar(this)">Discurso de ódio ou violência explícita</h2>
+        </div>
+      </div>
+
+      <div id="div_input">
+        <h1 class="CampoFalado3_modal_denuncia">Gostaria de acrescentar algo mais?</h1>
+
+        <h2 class="CampoFalado4_modal_denuncia">Se sim, por favor nos informe no campo abaixo. Nossa equipe analisará o comentário e tomará as medidas necessárias.</h2>
+        <input id="why" type="text" />
+      </div>
+
+      <h2 id="enviar_button" id="prox_button_1">Enviar</h2>
+    </div>
+
     <div id="modal_avaliacao">
       <div id="avaliacao">
         <h1 class="CampoFalado1">Avaliações</h1>
@@ -46,10 +77,8 @@
         <div id="scroll_modal">
           <div id="boxes_modal">
             <div class="boxes_modal" id="box_modal_1">
-
               <h2 class="CampoFalado2_modal">Didática</h2>
               <h4 class="CampoFalado3_modal">Avalie a didática utilizada pelo professor ao aplicar a matéria</h4>
-
 
               <fieldset class="rating_modal" id="Didatica">
                 <input type="radio" id="star5_Didatica" name="rating_Didatica" value="5" /><label for="star5_Didatica" class="full" title="Awesome"></label>
@@ -66,7 +95,6 @@
                 <h3 id="notas_Didatica">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
 
-
               <div class="espaco_buttons">
                 <h2 class="prox_button" id="prox_button_1">Próximo</h2>
               </div>
@@ -75,7 +103,6 @@
             <div class="boxes_modal" id="box_modal_2">
               <h2 class="CampoFalado2_modal">Apoio ao aluno</h2>
               <h4 class="CampoFalado3_modal">Informe sobre a disponibilidade de materiais e serviços ao aluno como exercícios, resolução de dúvidas, entre outros complementos</h4>
-
 
               <fieldset class="rating_modal" id="Monitoria">
                 <input type="radio" id="star5_Monitoria" name="rating_Monitoria" value="5" /><label for="star5_Monitoria" class="full" title="Awesome"></label>
@@ -92,7 +119,6 @@
                 <h3 id="notas_Monitoria">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
 
-
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_1">Voltar</h2>
                 <h2 class="prox_button" id="prox_button_2">Próximo</h2>
@@ -100,12 +126,9 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_3">
-              
-              
               <h2 class="CampoFalado2_modal">Dificuldade</h2>
               <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
 
-              
               <fieldset class="rating_modal" id="Dificuldade">
                 <input type="radio" id="star5_Dificuldade" name="rating_Dificuldade" value="5" />
                 <label for="star5_Dificuldade" class="full" title="Awesome"></label>
@@ -122,7 +145,6 @@
                 <h3 id="notas_Dificuldade">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
 
-
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
                 <h2 class="prox_button" id="prox_button_3">Próximo</h2>
@@ -133,7 +155,7 @@
               <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
 
               <div id="button_box">
-                <h2 class="button" id="sim" o>Sim</h2>
+                <h2 class="button" id="sim">Sim</h2>
                 <h2 class="button" id="nao">Não</h2>
               </div>
 
@@ -155,66 +177,64 @@
         <div id="box1">
           <div id="avaliacao">
             <h1 class="CampoFalado1">Avaliação</h1>
-            <h2 class="CampoFalado2" id="didatica_texto">Didática </h2>
+            <h2 class="CampoFalado2" id="didatica_texto">Didática</h2>
             <fieldset class="rating_media" id="Didatica_media">
-              <input type="radio" id="star5_Didatica_media" name="rating_Didatica_media" value="5" /><label     id="estrela_5_didatica" for="star5_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star5_Didatica_media" name="rating_Didatica_media" value="5" /><label id="estrela_5_didatica" for="star5_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Didatica_media" name="rating_Didatica_media" value="4.5" /><label id="estrela_4.5_didatica" for="star4.5_Didatica_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_Didatica_media" name="rating_Didatica_media" value="4" /><label     id="estrela_4_didatica" for="star4_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star4_Didatica_media" name="rating_Didatica_media" value="4" /><label id="estrela_4_didatica" for="star4_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star3.5_Didatica_media" name="rating_Didatica_media" value="3.5" /><label id="estrela_3.5_didatica" for="star3.5_Didatica_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_Didatica_media" name="rating_Didatica_media" value="3" /><label     id="estrela_3_didatica" for="star3_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star3_Didatica_media" name="rating_Didatica_media" value="3" /><label id="estrela_3_didatica" for="star3_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star2.5_Didatica_media" name="rating_Didatica_media" value="2.5" /><label id="estrela_2.5_didatica" for="star2.5_Didatica_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_Didatica_media" name="rating_Didatica_media" value="2" /><label     id="estrela_2_didatica" for="star2_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star2_Didatica_media" name="rating_Didatica_media" value="2" /><label id="estrela_2_didatica" for="star2_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star1.5_Didatica_media" name="rating_Didatica_media" value="1.5" /><label id="estrela_1.5_didatica" for="star1.5_Didatica_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_Didatica_media" name="rating_Didatica_media" value="1" /><label     id="estrela_1_didatica" for="star1_Didatica_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star1_Didatica_media" name="rating_Didatica_media" value="1" /><label id="estrela_1_didatica" for="star1_Didatica_media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Didatica_media" name="rating_Didatica_media" value="0.5" /><label id="estrela_0.5_didatica" for="star0.5_Didatica_media" class="half" title="Awesome"></label>
 
               <h3 id="notas_didatica_media">{{ avaliacao_didatica }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
-            
+
             <div style="height: 5em;"></div>
-            
-            <h2 class="CampoFalado2" id="apoio_texto">Apoio ao aluno </h2>
+
+            <h2 class="CampoFalado2" id="apoio_texto">Apoio ao aluno</h2>
             <fieldset class="rating_media" id="Monitoria">
-              <input type="radio" id="star5_Monitoria_media" name="rating_Monitoria_media" value="5" /><label     id="estrela_5_apoio" for="star5_Monitoria_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star5_Monitoria_media" name="rating_Monitoria_media" value="5" /><label id="estrela_5_apoio" for="star5_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Monitoria_media" name="rating_Monitoria_media" value="4.5" /><label id="estrela_4.5_apoio" for="star4.5_Monitoria_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_Monitoria_media" name="rating_Monitoria_media" value="4" /><label     id="estrela_4_apoio" for="star4_Monitoria_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star4_Monitoria_media" name="rating_Monitoria_media" value="4" /><label id="estrela_4_apoio" for="star4_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star3.5_Monitoria_media" name="rating_Monitoria_media" value="3.5" /><label id="estrela_3.5_apoio" for="star3.5_Monitoria_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_Monitoria_media" name="rating_Monitoria_media" value="3" /><label     id="estrela_3_apoio" for="star3_Monitoria_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star3_Monitoria_media" name="rating_Monitoria_media" value="3" /><label id="estrela_3_apoio" for="star3_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star2.5_Monitoria_media" name="rating_Monitoria_media" value="2.5" /><label id="estrela_2.5_apoio" for="star2.5_Monitoria_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_Monitoria_media" name="rating_Monitoria_media" value="2" /><label     id="estrela_2_apoio" for="star2_Monitoria_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star2_Monitoria_media" name="rating_Monitoria_media" value="2" /><label id="estrela_2_apoio" for="star2_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star1.5_Monitoria_media" name="rating_Monitoria_media" value="1.5" /><label id="estrela_1.5_apoio" for="star1.5_Monitoria_media" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_Monitoria_media" name="rating_Monitoria_media" value="1" /><label     id="estrela_1_apoio" for="star1_Monitoria_media" class="full" title="Awesome"></label>
+              <input type="radio" id="star1_Monitoria_media" name="rating_Monitoria_media" value="1" /><label id="estrela_1_apoio" for="star1_Monitoria_media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Monitoria_media" name="rating_Monitoria_media" value="0.5" /><label id="estrela_0.5_apoio" for="star0.5_Monitoria_media" class="half" title="Awesome"></label>
 
               <h3 id="notas_apoio_media">{{ avaliacao_apoio }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
-          <div style="height: 5em;"></div>
-          
-          <h2 class="CampoFalado2" id="dificuldade_texto">Dificuldade </h2>
+            <div style="height: 5em;"></div>
+
+            <h2 class="CampoFalado2" id="dificuldade_texto">Dificuldade</h2>
             <fieldset class="rating_media" id="Dificuldade-media">
-              <input type="radio" id="star5_Dificuldade-media" name="rating_Dificuldade-media" value="5" /><label id="estrela_5_dificuldade"  for="star5_Dificuldade-media" class="full" title="Awesome"></label>
+              <input type="radio" id="star5_Dificuldade-media" name="rating_Dificuldade-media" value="5" /><label id="estrela_5_dificuldade" for="star5_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_Dificuldade-media" name="rating_Dificuldade-media" value="4.5" /><label id="estrela_4.5_dificuldade" for="star4.5_Dificuldade-media" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_Dificuldade-media" name="rating_Dificuldade-media" value="4" /><label     id="estrela_4_dificuldade" for="star4_Dificuldade-media" class="full" title="Awesome"></label>
+              <input type="radio" id="star4_Dificuldade-media" name="rating_Dificuldade-media" value="4" /><label id="estrela_4_dificuldade" for="star4_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star3.5_Dificuldade-media" name="rating_Dificuldade-media" value="3.5" /><label id="estrela_3.5_dificuldade" for="star3.5_Dificuldade-media" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_Dificuldade-media" name="rating_Dificuldade-media" value="3" /><label     id="estrela_3_dificuldade" for="star3_Dificuldade-media" class="full" title="Awesome"></label>
+              <input type="radio" id="star3_Dificuldade-media" name="rating_Dificuldade-media" value="3" /><label id="estrela_3_dificuldade" for="star3_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star2.5_Dificuldade-media" name="rating_Dificuldade-media" value="2.5" /><label id="estrela_2.5_dificuldade" for="star2.5_Dificuldade-media" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_Dificuldade-media" name="rating_Dificuldade-media" value="2" /><label     id="estrela_2_dificuldade" for="star2_Dificuldade-media" class="full" title="Awesome"></label>
+              <input type="radio" id="star2_Dificuldade-media" name="rating_Dificuldade-media" value="2" /><label id="estrela_2_dificuldade" for="star2_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star1.5_Dificuldade-media" name="rating_Dificuldade-media" value="1.5" /><label id="estrela_1.5_dificuldade" for="star1.5_Dificuldade-media" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_Dificuldade-media" name="rating_Dificuldade-media" value="1" /><label     id="estrela_1_dificuldade" for="star1_Dificuldade-media" class="full" title="Awesome"></label>
+              <input type="radio" id="star1_Dificuldade-media" name="rating_Dificuldade-media" value="1" /><label id="estrela_1_dificuldade" for="star1_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Dificuldade-media" name="rating_Dificuldade-media" value="0.5" /><label id="estrela_0.5_dificuldade" for="star0.5_Dificuldade-media" class="half" title="Awesome"></label>
 
               <h3 id="notas_dificuldade-media">{{ avaliacao_dificuldade }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
-            
+
             <div style="height: 5em;"></div>
 
             <h2 style="text-align:center;">avaliações: {{ total_avaliadores }}</h2>
-            
           </div>
 
-          <hr style="margin: 1em; position: relative; top: 1em">
-
+          <hr style="margin: 1em; position: relative; top: 1em" />
 
           <h2 id="Fazer_avaliacao">Fazer a avaliação</h2>
         </div>
@@ -336,7 +356,7 @@
       <div id="box3">
         <div id="acesso">
           <div id="dados_materia">
-            <a onclick="back()"><img src="{% static "image/Arrow_back.png"%}" id="retry"><a>
+            <a onclick="back()"><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
             <h1 id="Materia" class="CampoFalado1">{{ turma.materia.nome }} - ({{ turma.materia.codigo }})</h1>
             <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
           </div>
@@ -374,19 +394,23 @@
         <div id="comentarios">
           <div id="box_comentarios">
             <div id="scroll">
-              
               {% for comentario in comentarios %}
-                <div id="comentario{{ forloop.counter0 }}" >
+                <div id="comentario{{ forloop.counter0 }}">
                   <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
                   <h3 class="comentarios">
                     {{ comentario.texto }} <br />
                     <span style="font-size: 0.75em;">- {{ comentario.hora_publicacao }}</span>
                   </h3>
 
-                  <div class="curtidas">
-                    <h3 class="Gostei">Gostei</h3>
-                  <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')"><i class="fa-solid fa-heart"></i></button>
-                    <h3 class="Gostei" id="like{{ forloop.counter0 }}"> oi </h3>
+                  <div id="comentario_buttons">
+                    <div class="curtidas">
+                      <h3 class="text">Gostei</h3>
+                      <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')"><i class="fa-solid fa-heart"></i></button>
+                      <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
+                    </div>|<div class="report">
+                      <h3 class="text">Reportar</h3>
+                      <button id="report" type="button" onclick="modal_report(this)"><i class="bi bi-flag-fill"></i></button>
+                    </div>
                   </div>
                 </div>
               {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
@@ -403,12 +427,11 @@
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
     <a style="display: none" id="User_js">{{ user.username }}</a>
-
   </body>
 
   <script>
-    function back(){
-      history.back();
+    function back() {
+      history.back()
     }
   </script>
 

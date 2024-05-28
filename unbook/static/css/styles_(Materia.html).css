@@ -48,7 +48,7 @@ ul {
     display: none;
     background-color: hsla(0, 0%, 0%, 0.8);
     backdrop-filter: blur(50px);
-    z-index: 1;
+    z-index: 3;
 }
 
 .CampoFalado1_modal {
@@ -188,9 +188,12 @@ ul {
     background-color: #CDE4DF;
     border-radius: 25px;
     box-shadow: 0 0 10px black;
-    z-index: 2;
-    left: 30%;
-    top: 20%;
+    z-index: 4;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 #scroll_modal {
@@ -874,16 +877,35 @@ table caption {
     margin-top: 2em;
 }
 
+#comentario_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: #00894062; */
+
+    margin-left: 2em;
+    width: 25em;
+    height: auto;
+}
+
+
 .curtidas {
     display: flex;
     flex-direction: row;
     position: relative;
-    margin-left: 2em;
 }
 
-.Gostei {
+.report {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.text {
     cursor: pointer;
     margin-left: 1em;
+    margin-right: 1em;
+
 }
 
 .like {
@@ -892,10 +914,196 @@ table caption {
     outline: none;
     background: transparent;
     border: none;
-    font-size: 15px;
+    font-size: 1em;
+    position: relative;
     cursor: pointer;
     color: gray;
 }
+
+#report {
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    position: relative;
+    cursor: pointer;
+    color: gray;
+
+}
+
+.animation {
+    animation: expand 0.3s ease;
+}
+
+#modal_denuncia {
+    position: fixed;
+    display: none;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    justify-content: center;
+    padding: 1em 1em 2em 1em;
+    width: 40em;
+    height: 40em;
+    background-color: #CDE4DF;
+    border-radius: 25px;
+    box-shadow: -5px 5px 1px rgb(115, 115, 115);
+    z-index: 3;
+}
+
+#titulo_modal_denuncia {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1em;
+}
+
+#espaco_modal_denuncia {
+    display: flex;
+    flex-direction: column;
+
+    width: 95%;
+    height: 20em;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 15px;
+    background-color: #b1c5c0;
+
+}
+
+.CampoFalado2_modal_denuncia {
+    font-size: 1.5em;
+    background-color: #CDE4DF;
+
+    width: auto;
+    height: fit-content;
+    padding: 0.5em;
+    border-radius: 15px;
+    box-shadow: -2.5px 2.5px 2px rgb(115, 115, 115);
+
+}
+
+#div_radios {
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    overflow-y: auto;
+}
+
+#div_radios::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    margin-left: 10px;
+}
+
+#div_radios::-webkit-scrollbar-thumb {
+    background-color: #CDE4DF;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: solid 1px #0000002a;
+    /* roundness of the scroll thumb */
+}
+
+#div_radios::-webkit-scrollbar-track {
+    background-color: #0000002a;
+    border-radius: 25px;
+}
+
+#div_radios h2{
+    margin: 0.5em;
+    background-color: #CDE4DF;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: -2.5px 2.5px 2px rgb(115, 115, 115);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+
+#div_radios h2:hover{
+    transform: scale(1.02);
+}
+#div_radios h2:active{
+    transform: scale(1.0);
+}
+
+#div_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    overflow-y: auto;
+
+}
+
+.CampoFalado3_modal_denuncia {
+    font-size: 1.5em;
+    width: auto;
+    height: fit-content;
+
+}
+
+.CampoFalado4_modal_denuncia {
+    font-size: 1em;
+    margin: 0 2em;
+
+    width: auto;
+    height: fit-content;
+    padding: 0.5em;
+    color: #50545c;
+}
+
+
+#why {
+    width: 80%;
+    height: 2em;
+    margin: auto;
+    position: relative;
+    font-size: 1.25em;
+    padding: 0.5em 0.5em 0.5em 1em;
+    border: none;
+    background-color: #b1c5c0;
+
+}
+
+#enviar_button {
+    display: block;
+    font-size: 1.5em;
+    background-color: #0B4C8C;
+    border-radius: 15px;
+    color: whitesmoke;
+    width: 7em;
+    height: 2em;
+    text-align: center;
+    z-index: 10;
+    padding: 0.5em 1em;
+
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+#enviar_button:hover {
+    transform: scale(1.05);
+}
+
+#enviar_button:active {
+    transform: scale(1);
+}
+
 
 @keyframes expand {
     from {
@@ -906,13 +1114,6 @@ table caption {
         transform: scale(1.10);
     }
 }
-
-
-.heart {
-    animation: expand 0.3s ease;
-}
-
-
 
 #comentar_box input {
     display: block;

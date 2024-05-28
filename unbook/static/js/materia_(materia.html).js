@@ -8,7 +8,6 @@ fzr_avaliacao.addEventListener('click', () => {
     fundoblur.style.display = "block";
     fundoblur.classList.add('abrir');
     modal.style.display = "block";
-    modal.classList.add('abrir');
     scroll_x.scrollLeft = 0;
 });
 
@@ -22,7 +21,6 @@ fundoblur.addEventListener('click', (e) => {
 modal.addEventListener('click', (e) => {
     e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
 });
-
 
 
 // FUNÇÃO PARA RODAR SCROLL
@@ -144,11 +142,11 @@ function like(element, pk) {
     
     if (element.style.color === "red") {
         element.style.color = "grey";
-        element.classList.remove('heart');
+        element.classList.remove('animation');
         contador.innerText = `${num-1}`
     } else {
         element.style.color = "red";
-        element.classList.add('heart');
+        element.classList.add('animation');
         contador.innerText = `${num+1}`
     }
     
@@ -165,6 +163,64 @@ function like(element, pk) {
             console.log("")
         }
     })
+}
+
+function modal_report(element) {
+    id = element.id
+
+
+
+if (element.style.color === "red") {
+        element.style.color = "grey";
+        element.classList.remove('animation');
+        
+    } else {
+        element.style.color = "red";
+        element.classList.add('animation');
+
+        var modal_denuncia = document.getElementById('modal_denuncia')
+        fundoblur.style.display = "block";
+        fundoblur.classList.add('abrir');
+        modal_denuncia.style.display = "block";
+            
+        
+        
+        fundoblur.addEventListener('click', (e) => {
+            if (e.target === fundoblur) {
+                fundoblur.style.display = "none";
+                modal_denuncia.style.display = "none";
+                element.style.color = "grey";
+        element.classList.remove('animation');
+            }
+        });
+        
+        modal_denuncia.addEventListener('click', (e) => {
+            e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
+        });
+    }
+
+
+}
+
+var lista = [];
+
+function pintar(element) {
+    // Verifica a cor atual do elemento
+    if (element.style.backgroundColor === 'rgb(233, 89, 89)') {
+        element.style.backgroundColor = ''; // Retorna ao valor padrão
+        // Remove o conteúdo do elemento da lista
+        var index = lista.indexOf(element.textContent);
+        if (index !== -1) {
+            lista.splice(index, 1);
+        }
+    } else {
+        element.style.backgroundColor = 'rgb(233, 89, 89)'; // Cor vermelha
+        // Adiciona o conteúdo do elemento à lista
+        lista.push(element.textContent);
+    }
+
+    // Imprime a lista atualizada no console
+    console.log('[' + lista.join(', ') + ']'); //enviar para algum lugar do backs
 }
 
 
