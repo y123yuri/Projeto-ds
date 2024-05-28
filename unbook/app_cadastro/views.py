@@ -95,8 +95,6 @@ def login_func(request):
         
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
-        f = Nova_senha_perfilForm(request.POST)
-        context = {}
         return render(request,"html/Perfil.html") # trocar depois pra página de perfil
 
 def logado(request):
