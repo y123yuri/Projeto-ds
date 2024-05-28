@@ -1,35 +1,30 @@
-var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('textbutton').addEventListener('click', function (e) {
+        const azulzao = this.parentElement;
+        const circulo = document.createElement('div');
+        const diametro = Math.max(azulzao.clientWidth, azulzao.clientHeight);
+        const raio = diametro / 2;
 
-var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
+        circulo.style.backgroundColor = "#0C36A1";
+        circulo.style.width = circulo.style.height = `${diametro}px`;
+        circulo.style.left = `${e.clientX - azulzao.offsetLeft - raio}px`;
+        circulo.style.top = `${e.clientY - azulzao.offsetTop - raio}px`;
+        circulo.style.position = "absolute";
+        circulo.style.borderRadius = "50%";
+        circulo.style.transition = "transform 1s ease-out";
+        circulo.style.transform = "scale(0)";
+        circulo.style.zIndex = 2;
+        circulo.classList.add('blusao');
 
-var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
+        azulzao.appendChild(circulo);
 
-var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
+        // Exibir o azulzao
+        document.getElementById('azulzao').style.display = "flex";
+        
+        // Ocultar o blur após 2 segundos
+        setTimeout(() => {
+            document.getElementById('blur').style.display = "none";
 
-var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
-
-var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
-
-var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
-    e.preventDefault()
-    fundoblur.style.display = "none";
-    modal.style.display = "none";
+        }, 2000);
+    });
 });

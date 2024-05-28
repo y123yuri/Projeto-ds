@@ -1,68 +1,37 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
-    <title>Tutorial</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS) -->
-
-    <link rel="stylesheet" href="{% static 'css/styles_(Tutorial.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
-  </head>
-
-  <body>
-
-    <a href="../../.."><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" /></a>
-    <!-- LINK PARA VOLTAR A UNBOOK --> <!-- UNBOOK LOGUINHO BRANCO -->
-
-#joga aqui embaixo
-
-<div class="content">
-
-  <div class=" slides">
-      <input type="radio" name="slide" id="slide1" checked> 
-      <input type="radio" name="slide" id="slide2">
-      <input type="radio" name="slide" id="slide3">
-      <input type="radio" name="slide" id="slide4">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+  <title>Tutorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles_(Tutorial.html).css' %}" />
+</head>
+<body>
+  <div id="azulzao">
+  </div>
   
+  <div id="blusao">
+  </div>
 
-      <div class="slide s1">
-        <div class="image">1</div>
+  <div id="blur">
+    <article>
+      {% if user.is_authenticated %}
+        <h1 id="text1">Olá {{ user }}!</h1>
+      {% else %}
+        <h1 id="text1">Olá usuário!</h1>
+      {% endif %}
+      <div style="display: flex; flex-direction: row;">
+        <h2 class="text2">Seja bem vindo ao</h2>
+        <h1 id="textbutton">Tutorial</h1>
       </div>
-
-      <div class="slide">
-        <div class="image">2</div>
-      </div>
-
-      <div class="slide">
-        <div class="image">3</div>
-      </div>
-
-      <div class="slide">
-        <div class="image">4</div>
-      </div>
-  
-    </div>
-
-      <div class="navigation" >
-        <label class="bar" for="slide1"></label>
-        <label class="bar" for="slide2"></label>
-        <label class="bar" for="slide3"></label>
-        <label class="bar" for="slide4"></label>
-      </div> 
-
-</div>
-
-
-  </body>
-
+    </article>
+  </div>
   <script src="{% static 'js/Tutorial_(Tutorial.html).js' %}"></script>
+</body>
 </html>
