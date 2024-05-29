@@ -66,6 +66,7 @@ class Comentario(models.Model):
     texto = models.CharField(max_length=250)
     curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida")
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
+    denuncia = models.IntegerField(default=0)
 
     def __str__(self):
         return f'f{self.hora_publicacao}: {self.autor}'

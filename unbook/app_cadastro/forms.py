@@ -63,6 +63,19 @@ class Nova_senha_perfilForm(ModelForm):
         model = Cadastro
         fields = ['password']
 
+    
+class PerfilForm(forms.ModelForm):
+    def init(self, args, **kwargs):
+        super(PerfilForm, self).init(args, **kwargs)
+        self.fields['curso'].widget.attrs = {"class":"forms", "type":"text", "id":"curso" }
+        self.fields['semestre'].widget.attrs = {"class":"forms", "type":"text", "id":"semestre" }
+        self.fields['descricao'].widget.attrs = {"class":"forms", "type":"text", "id":"descricao" }
+
+
+    class Meta:
+        model = PerfilUsuario
+        fields = ['curso', 'semestre', 'descricao']
+
 
 
         
