@@ -21,8 +21,8 @@ from django.shortcuts import get_object_or_404
 from .forms import Nova_senhaForm
 from django.contrib import messages
 from .utils import send_activation_email
-from .forms import PerfilForm
-from .models import PerfilUsuario
+# from .forms import PerfilForm
+# from .models import PerfilUsuario
 
 
 
@@ -98,36 +98,32 @@ def login_func(request):
         
         return render(request, "html/Login.html", context)
     elif request.user.is_authenticated:
-        context = {}
-        form = PerfilForm()
-        context["form"] = form
-        return render(request, "html/Perfil.html", context) 
+        # context = {}
+        # form = PerfilForm()
+        # context["form"] = form
+        return render(request, "html/Perfil.html") 
 
 
-def usuario(request):
-    f = PerfilForm(request.POST)
-    context = {}
-    perfil = get_object_or_404(PerfilUsuario, user=request.user)
-    if 'erro' in request.session:
-        del request.session['erro']
-    if f.is_valid():
-        perfil = f.save(commit=False)
-        perfil.user = request.user  # Associar o perfil ao usuário autenticado
-        perfil.curso = f.cleaned_data['curso']
-        perfil.descricao = f.cleaned_data['descricao']
-        perfil.semestre = f.cleaned_data['semestre']
-        perfil.save()
-        # context["resposta"] = f.cleaned_data
-        # semestre_variavel = f.cleaned_data['semestre']
-        # curso_variavel = f.cleaned_data['curso']
-        # descricao_variavel = f.cleaned_data['descricao']
-        # print(curso_variavel, descricao_variavel, semestre_variavel)
-        
-        
-        
-        
+# def usuario(request):
+    # if request.user.is_authenticated:
+    #     f = PerfilForm(request.POST)
+    #     context = {}
+    #     perfil = get_object_or_404(PerfilUsuario, user=request.user)
+    #     if 'erro' in request.session:
+    #         del request.session['erro']
+    #     if f.is_valid():
+    #         perfil = f.save(commit=False)
+    #         perfil.user = request.user  # Associar o perfil ao usuário autenticado
+    #         perfil.curso = f.cleaned_data['curso']
+    #         perfil.descricao = f.cleaned_data['descricao']
+    #         perfil.semestre = f.cleaned_data['semestre']
+            # perfil.save(semestre=perfil.semestre, curso=perfil.curso,descricao=perfil.descricao)
+    # else:
+    #     context = {}
+    #     context["erro"] = "Você precisa estar logado" 
+    #     return redirect('../../cadastro/login', context)   
 
-    return redirect('../')
+    # return redirect('../')
 
 def logado(request):
     f = LoginForm(request.POST)
@@ -144,15 +140,17 @@ def logado(request):
         try:
             v1 = User.objects.get(email=f'{email_variavel}').username
             user = authenticate(username=f'{v1}', password=f'{senha_variavel}')
+            print(v1)
             if user:
-                return render(request, 'html/Perfil.html', context)
+                login(request, user)
+                return render(request, 'html/Perfil.html')
             else:
                 request.session['erro'] = "Login invalido"
         
     
             return redirect("../")
         except User.DoesNotExist:
-             request.session['erro'] = "Login invalido"
+             request.session['erro'] = "Login invalido2"
              return redirect("../")
 
     

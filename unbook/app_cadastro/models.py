@@ -10,14 +10,14 @@ from django.contrib.auth.models import AbstractUser
 
 
 
-class PerfilUsuario(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='perfil')
-    total_denuncias = models.IntegerField(default=0)
-    curso = models.CharField(max_length=100, blank=True, null=True)
-    descricao = models.CharField(max_length=200, blank=True, null=True)
-    semestre = models.CharField(max_length=15, blank=True, null=True)
-    def __str__(self):
-        return self.user.username
+# class PerfilUsuario(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='perfil')
+#     total_denuncias = models.IntegerField(default=0)
+#     curso = models.CharField(max_length=100, blank=True, null=True)
+#     descricao = models.CharField(max_length=200, blank=True, null=True)
+#     semestre = models.CharField(max_length=15, blank=True, null=True)
+#     def __str__(self):
+#         return self.user.username
 
 
 class Cadastro(models.Model):
