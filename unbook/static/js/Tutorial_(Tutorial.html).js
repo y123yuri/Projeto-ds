@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.style.animation = "surgir 0.3s ease"
                 button.style.display = "block";
     
-            }, 10000)
+            }, 10000) //mudar dps para 10000
             
         }, 2000);
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const textoArray = elemento.innerHTML.split('');
             elemento.innerHTML = '';
             textoArray.forEach((letra, i) => {
-                setTimeout(() => { elemento.innerHTML += letra; }, 60 * i)
+                setTimeout(() => { elemento.innerHTML += letra; }, 80 * i)
             });
         }
 
@@ -55,8 +55,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fechar() {
     document.getElementById('azulzao').style.display = "none"
-    document.getElementById('tutorial').style.display = "block"
+    document.getElementById('tutorial').style.display = "flex"
+}
+function proximo_video() {
+    var videos = document.querySelectorAll('.video-container video');
+    var titulo = document.getElementById('titulo');
 
+    // Encontra o vídeo atualmente exibido
+    var currentVideoIndex;
+    for (var i = 0; i < videos.length; i++) {
+        if (videos[i].style.display !== 'none') {
+            currentVideoIndex = i;
+            break;
+        }
+    }
 
+    // Oculta o vídeo atual
+    videos[currentVideoIndex].style.display = 'none';
 
+    // Exibe o próximo vídeo ou o primeiro se já estiver no último
+    var nextVideoIndex = (currentVideoIndex + 1) % videos.length;
+    videos[nextVideoIndex].style.display = 'block';
+
+    // Atualiza o título conforme o vídeo exibido
+    if (nextVideoIndex === 0) {
+        titulo.textContent = "Página inicial";
+    } else if (nextVideoIndex === 1) {
+        titulo.textContent = "Login e cadastro";
+    } else if (nextVideoIndex === 2) {
+        titulo.textContent = "Pesquisar";
+    } else if (nextVideoIndex === 3) {
+        titulo.textContent = "Matéria e professor";
+    } 
 }

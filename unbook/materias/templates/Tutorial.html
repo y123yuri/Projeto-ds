@@ -1,70 +1,70 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
-  <title>Tutorial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="{% static 'css/styles_(Tutorial.html).css' %}" />
-</head>
-<body>
-
-  <div id="tutorial">
-
-    <div id="content"></div>
-
-
-
-
-
-
-
-
-
-  </div>
-
-  <div id="azulzao">
-
-<h1 id="text_azul"> A UnBook é um site interativo e inteligente, que utiliza diversas ferramentas para ajudar você a alcançar seus objetivos. 
-  
-  
-  
-  
-  
-
-
-  Nesse sentido,
-  
-  
-  vamos dar uma olhada em cada uma dessas ferramentas!
-</h1>
-
-<h2 id="button_prosseguir" onclick="fechar()"> Prosseguir</h2>
-
-  </div>
-  
-  <div id="blusao"></div>
-  {% comment %} ta no js {% endcomment %}
-  
-  <div id="blur">
-    <article>
-      {% if user.is_authenticated %}
-        <h1 id="text1">Olá {{ user }}!</h1>
-      {% else %}
-        <h1 id="text1">Olá usuário!</h1>
-      {% endif %}
-      <div style="display: flex; flex-direction: row;">
-        <h2 class="text2">Seja bem vindo ao</h2>
-        <h1 id="textbutton">Tutorial</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <title>Tutorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/styles_(Tutorial.html).css' %}" />
+  </head>
+  <body>
+    <div id="tutorial">
+      <div id="content">
+        <h1 id="titulo">Página inicial</h1>
+        <div class="video-container">
+          <video controls autoplay loop muted playsinline>
+            <source src="{% static 'videos/video1.mp4' %}" type="video/mp4" />Seu navegador não suporta o formato de vídeo.
+          </video>
+          <video controls autoplay loop muted playsinline>
+            <source src="{% static 'videos/video2.mp4' %}" type="video/mp4" />Seu navegador não suporta o formato de vídeo.
+          </video>
+          <video controls autoplay loop muted playsinline>
+            <source src="{% static 'videos/video3.mp4' %}" type="video/mp4" />Seu navegador não suporta o formato de vídeo.
+          </video>
+          <video controls autoplay loop muted playsinline>
+            <source src="{% static 'videos/video4.mp4' %}" type="video/mp4" />Seu navegador não suporta o formato de vídeo.
+          </video>
+        </div>
+        <div id="prox">
+          <h2 id="button_prox" onclick="proximo_video()">Avançar</h2>
+        </div>
       </div>
-      <h2 id="help"> clica no "Tutorial"!</h2>
-    </article>
-  </div>
-  <script src="{% static 'js/Tutorial_(Tutorial.html).js' %}"></script>
-</body>
+    </div>
+
+    <div id="azulzao">
+      <h1 id="text_azul">
+        A UnBook é um site interativo e inteligente, que utiliza diversas ferramentas para ajudar você a alcançar seus objetivos.
+
+        Nesse sentido,
+
+        vamos dar uma olhada em cada uma dessas ferramentas!
+      </h1>
+
+      <h2 id="button_prosseguir" onclick="fechar()">Prosseguir</h2>
+    </div>
+
+    <div id="blusao"></div>
+    {% comment %}ta no js{% endcomment %}
+
+    <div id="blur">
+      <article>
+        {% if user.is_authenticated %}
+          <h1 id="text1">Olá {{ user }}!</h1>
+        {% else %}
+          <h1 id="text1">Olá usuário!</h1>
+        {% endif %}
+        <div style="display: flex; flex-direction: row;">
+          <h2 class="text2">Seja bem vindo ao</h2>
+          <h1 id="textbutton">Tutorial</h1>
+        </div>
+        <h2 id="help">clica no "Tutorial"!</h2>
+      </article>
+    </div>
+    <script src="{% static 'js/Tutorial_(Tutorial.html).js' %}"></script>
+  </body>
 </html>
