@@ -152,11 +152,17 @@ def usuario(request):
         del request.session['erro']
     if f.is_valid():
     # perfil = f.save(commit=False)
-        perfil.user = request.user  # Associar o perfil ao usuário autenticado
+        user = request.user  # Associar o perfil ao usuário autenticado
+        perfil_usuario = PerfilUsuario.objects.get(user=user)
         perfil.curso = f.cleaned_data['curso']
         perfil.descricao = f.cleaned_data['descricao']
         perfil.semestre = f.cleaned_data['semestre']
+
+        # novo_perfil = PerfilUsuario(Curso=perfil.curso, Descricao=perfil.descricao, Semestre=perfil.semestre)
+        # novo_perfil.save()
         print(perfil.curso)
+        print(user)
+        print( perfil_usuario)
      # perfil.save(semestre=perfil.semestre, curso=perfil.curso,descricao=perfil.descricao) 
     return redirect('../')  
         
