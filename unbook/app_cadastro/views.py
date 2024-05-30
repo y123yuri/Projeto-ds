@@ -67,14 +67,15 @@ def sucesso(request):
         if f.is_valid():
             print(type(f), f.cleaned_data, type(obj))
             context["resposta"] = f.cleaned_data
-            #print(context)
+            print(context)
             dados = context['resposta']
+            name_variavel = dados['name']
             nome_variavel = dados['username']
             email_variavel = dados['email']
             senha_variavel = dados['password']
-            dados = [nome_variavel, email_variavel, senha_variavel]
+            dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br":
-                user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2])
+                user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
                 user.is_active = False 
                 user.save()
                 send_activation_email(user, request)
@@ -85,7 +86,7 @@ def sucesso(request):
             
         else:
             request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
-            return JsonResponse({'success': False, 'error': 'Formulário inválido'})
+            return JsonResponse({'success': False, 'error': 'Formulário inválidoaa'})
     
     return render(request, "html/VerificaEmail.html")
 

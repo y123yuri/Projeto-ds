@@ -21,7 +21,8 @@ class PerfilUsuario(models.Model):
 
 
 class Cadastro(models.Model):
-    username = models.CharField(max_length=150, null=False, blank=False, unique=True)
+    name = models.CharField(max_length=100, null=False, blank=False, unique=True, default=0)
+    username = models.CharField(max_length=30, null=False, blank=False, unique=True)
     email = models.EmailField(max_length=22, null=False, blank=False, unique=True, primary_key=True)
     password = models.CharField(max_length=30, null=False, blank=False)
 

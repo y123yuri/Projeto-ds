@@ -5,6 +5,8 @@ const spans = document.querySelectorAll('.spans_required');
 const emailRegex = /^\d{9}@aluno\.unb\.br$/;
 
 //VARIAVEIS
+
+var etapaNomeCompleto = false;
 var etapaNome = false;
 var etapaEmail = false;
 var etapaSenha = false;
@@ -35,12 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function verifica() {
     console.log('cheguei');
+    nomeConfirmaValidade();
     nomeValidade();
     emailValidade();
     senhaValidade();
     confirmasenhaValidade();
 
-    if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
+    if (etapaNomeCompleto && etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
         console.log('Todos os campos verificados');
         enviarFormulario();
     }
@@ -71,7 +74,7 @@ function enviarFormulario() {
 
 
 //VERIFICAR NOME (TALVEZ COM ERRO - ANALISAR)
-function nomeValidade() {
+function nomeConfirmaValidade() {
     if (campos[0].value.length < 3) {
         console.log('O NOME TA PEQUENO');
         setError(0);
@@ -79,48 +82,60 @@ function nomeValidade() {
     else if (campos[0].value.length > 3) {
         console.log('VALIDADO O NOME');
         removeError(0);
+        etapaNomeCompleto = true;
+    }
+}
+
+function nomeValidade() {
+    if (campos[1].value.length < 4) {
+        console.log('O NOME TA PEQUENO');
+        setError(1);
+    }
+    else if (campos[1].value.length > 3) {
+        console.log('VALIDADO O NOME');
+        removeError(1);
         etapaNome = true;
     }
 }
 
 //VERIFICAR EMAIL
 function emailValidade() {
-    if (emailRegex.test(campos[1].value)) {
+    if (emailRegex.test(campos[2].value)) {
 
         console.log('VALIDADO O EMAIL');
-        removeError(1);
+        removeError(2);
         etapaEmail = true;
     }
     else {
 
         console.log('EMAIL NÃO VALIDO');
-        setError(1);
+        setError(2);
     }
 }
 
 //VERIFICAR SENHA
 function senhaValidade() {
-    if (campos[2].value.length < 2) {
+    if (campos[3].value.length < 2) {
         console.log('SENHA FRACA');
-        setError(2);
+        setError(3);
     }
     else {
         console.log('VALIDADO A SENHA');
-        removeError(2);
+        removeError(3);
         etapaSenha = true;
     }
 }
 
 //VERIFICAR SE A SENHA É A MESMA DA DE CIMA
 function confirmasenhaValidade() {
-    if (campos[2].value == campos[3].value && campos[3].value.length >= 2) {
+    if (campos[3].value == campos[4].value && campos[4].value.length >= 2) {
         console.log('A SENHA É A MESMA');
-        removeError(3);
+        removeError(4);
         etapaConfirmaSenha = true;
     }
     else {
         console.log('SENHA TA DIFERENTE');
-        setError(3);
+        setError(4);
     }
 }
 
@@ -132,7 +147,7 @@ function reproduzirNome() {
 
 }
 
-if (etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
+if (etapaNomeCompleto && etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
 
     console.log('Todos os campos verificados');
     loading();

@@ -7,7 +7,10 @@ from django.utils.translation import gettext_lazy as _
 class CadastroForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CadastroForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs = {'class':"campoEscrito , required", "id":"CampoNome", "name":"Nome", "type":"text", "placeholder":"Usuario" , "oninput":"nomeValidade()"}
+
+        self.fields['name'].widget.attrs = {'class':"campoEscrito , required", "name":"Nome", "type":"text", "placeholder":"Seu nome completo" , "oninput":"nomeCompletoValidade()"}
+
+        self.fields['username'].widget.attrs = {'class':"campoEscrito , required","id":"CampoNome", "name":"Usuario", "type":"text", "placeholder":"Usuario" , "oninput":"nomeValidade()"}
 
         self.fields['email'].widget.attrs = {"class":"campoEscrito , required", "name":"Email", "type":"email", "placeholder":"Matrícula@aluno.unb.com" , "oninput":"emailValidade()"}
     
@@ -17,7 +20,7 @@ class CadastroForm(ModelForm):
 
     class Meta:
         model = Cadastro
-        fields = ['username', 'email', 'password']
+        fields = ['name' ,'username', 'email', 'password']
 
 
 class LoginForm(ModelForm):
