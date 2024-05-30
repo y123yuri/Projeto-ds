@@ -328,26 +328,29 @@ a .UnBook_logo_mini {
 }
 
 .botoes:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
+}
+.botoes:active {
+    transform: scale(1);
 }
 
 #space_2_Profile {
-    padding: 0em 3em 0em 3em;
+    padding: 1em 3em 1em 3em;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 80%;
 
-
 }
 
 .CampoFalado_Profile {
     position: relative;
-    margin: 0em 0.5em 0.5em 0.5em;
     font-size: 1.5em;
     font-weight: 500;
     color: black;
 }
+
+
 
 #descricao {
     width: 30em;
@@ -360,19 +363,44 @@ a .UnBook_logo_mini {
 }
 
 
-#space_2_Profile .forms {
-    width: 20em;
-    margin-right: 2em;
-    margin-top: 0em;
-    font-size: 1em;
-    font-weight: 200;
+.respostas {
+    position: relative;
+    font-size: 1.5em;
+    font-weight: 700;
+    color:#0B4C8C;
+}
+
+.respostas2 {
+    position: relative;
+    font-size: 1.5em;
+    font-weight: 700;
+    color:#0B4C8C;
 }
 
 #space_2_1_Profile {
     display: flex;
     position: relative;
     flex-direction: row;
-    padding: 1.5em 0em;
+    justify-content: space-evenly;
+    padding: 1em 2em;
+    background-color: #eed64b;
+}
+
+#space_2_2_Profile {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 10em;
+    padding: 1.5em 2em;
+    background-color: #d43b5a;
+}
+
+#space_2_3_Profile {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    padding: 1.5em 2em;
+    background-color: #a670da;
 }
 
 
@@ -516,4 +544,226 @@ a .UnBook_logo_mini {
     100% {
         transform: translateX(-100px);
     }
+}
+
+/* modal de perfil */
+
+
+#fundo_blur {
+    width: 100%;
+    height: 150vh;
+    position: fixed;
+
+    display: none;
+    background-color: hsla(0, 0%, 0%, 0.8);
+    backdrop-filter: blur(50px);
+    z-index: 3;
+}
+
+
+.CampoFalado1_modal {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    background-color: #008940;
+}
+
+.CampoFalado2_modal {
+    color: black;
+    text-align: center;
+background-color: #b16bdc;
+
+    position: relative;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.CampoFalado3_modal {
+
+    color: #50545c;
+    text-align: center;
+    background-color: #ffe940;
+    position: relative;
+
+    margin: 0 5em;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+#button_box {
+
+    margin: auto;
+    align-items: center;
+
+    width: 20em;
+    height: 6em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 5em;
+
+    background-color: #0000002a;
+    border: 1px solid gray;
+}
+
+.button {
+    width: 7em;
+    height: 2em;
+    padding: 0.5em 0.5em;
+    color: whitesmoke;
+    font-size: 1.5em;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 1em;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+#sim {
+    background-color: #81E28B;
+}
+
+
+
+#boxes_modal {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: flex-start;
+    left:0.70em;
+    width: 134em;
+    height: 24em;
+    overflow-y: hidden;
+}
+
+#modal_avaliacao {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    padding: 2em;
+    width: 50em;
+    height: 30em;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    z-index: 4;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#scroll_modal {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #D9D9D9;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    border-radius: 15px;
+    overflow-x: hidden;
+}
+
+.boxes_modal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    position: relative;
+    padding: 0.5em;
+    margin: 0.5em 0em;
+
+    width: 42em;
+    height: 22em;
+    background-color: rgb(240, 113, 113);
+    border-radius: 25px;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    z-index: 3;
+}
+
+.boxes_modal#box_modal_1 {
+    margin: 0em 2em;
+}
+
+#box_modal_1 .espaco_buttons {
+    display: flex;
+    justify-content: flex-end;
+    left: -2em;
+    top: 10em;
+    position: relative;
+    width: 100%;
+    height: 4em;
+    text-align: center;
+}
+
+#box_modal_2 .espaco_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em;
+    top: 10em;
+    position: relative;
+    width: 100%;
+    height: 4em;
+    text-align: center;
+}
+
+#box_modal_3 .espaco_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em;
+    top: 10em;
+    position: relative;
+    width: 100%;
+    height: 4em;
+    text-align: center;
+}
+
+.prox_button,
+.back_button {
+    display: inline-block;
+    font-size: 1.5em;
+    background-color: #0B4C8C;
+    border-radius: 15px;
+    color: whitesmoke;
+    width: 7em;
+    height: 2em;
+    text-align: center;
+    z-index: 10;
+    padding: 0.5em 1em;
+    position: relative;
+    top: -2.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+    /* Espaçamento entre os botões */
+}
+
+.prox_button:hover,
+.back_button:hover {
+    transform: scale(1.05);
+}
+
+.prox_button:active,
+.back_button:active {
+    transform: scale(0.95);
 }

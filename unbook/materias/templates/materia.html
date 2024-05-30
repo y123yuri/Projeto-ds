@@ -67,7 +67,12 @@
         <input id="why" type="text" />
       </div>
 
-      <h2 id="enviar_button" id="prox_button_1">Enviar</h2>
+    <form class="form" id="form" action="./denuncia/" method="post" name="contact-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input id="submit" type="submit"  class="botao_entrar" onclick="alert(Sua denúncia foi enviada com sucesso!!)">Enviar</input>
+    </form>
+      
     </div>
 
     <div id="modal_avaliacao">

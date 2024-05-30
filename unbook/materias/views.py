@@ -334,3 +334,6 @@ def like(request):
         print("vou adicionar o user")
         comentario.curtidas.add(user)
     return HttpResponse(f'{comentario.curtidas.count()}')
+
+
+ 

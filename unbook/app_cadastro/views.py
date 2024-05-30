@@ -102,6 +102,15 @@ def login_func(request):
         context = {}
         form = PerfilForm()
         context["form"] = form
+        user= request.user
+        try:
+            perfil_existente = PerfilUsuario.objects.filter(user=user).first()
+        except PerfilUsuario.DoesNotExist:
+            pass  # Ou alguma lógica alternativa caso o perfil não exista
+    
+        context = {
+          'perfil': perfil_existente
+        }
         return render(request, "html/Perfil.html", context) 
 
 
@@ -151,20 +160,23 @@ def usuario(request):
     if 'erro' in request.session:
         del request.session['erro']
     if f.is_valid():
-    # perfil = f.save(commit=False)
-        user = request.user  # Associar o perfil ao usuário autenticado
-        perfil_usuario = PerfilUsuario.objects.get(user=user)
-        perfil.curso = f.cleaned_data['curso']
-        perfil.descricao = f.cleaned_data['descricao']
-        perfil.semestre = f.cleaned_data['semestre']
+        user = request.user
+        perfil_existente = PerfilUsuario.objects.filter(user=user).first()
+        if perfil_existente:
+         
+            perfil_existente.curso = f.cleaned_data['curso']
+            perfil_existente.descricao = f.cleaned_data['descricao']
+            perfil_existente.semestre = f.cleaned_data['semestre']
+            
+            perfil_existente.save()
 
-        # novo_perfil = PerfilUsuario(Curso=perfil.curso, Descricao=perfil.descricao, Semestre=perfil.semestre)
-        # novo_perfil.save()
-        print(perfil.curso)
-        print(user)
-        print( perfil_usuario)
-     # perfil.save(semestre=perfil.semestre, curso=perfil.curso,descricao=perfil.descricao) 
-    return redirect('../')  
+            context["resposta"] = f.cleaned_data
+            
+    print(context["resposta"])
+
+
+     
+    return redirect('../', context)  
         
     
 def esqueceu(request):

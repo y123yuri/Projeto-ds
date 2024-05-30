@@ -56,15 +56,15 @@ function abrir_modal(id) {
 
 }
 
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('#boxes') && !e.target.closest('#modal_imgs')) {
-        console.log('eita')
-        window.location.href = '/'
-    }
+// document.addEventListener('click', (e) => {
+//     if (!e.target.closest('#boxes') && !e.target.closest('#modal_imgs')) {
+//         console.log('eita')
+//         window.location.href = '/'
+//     }
 
 
-
-})
+//se clicar na tela ele vai pra tela inicial
+// })
 
 var img = document.getElementById('img_user');
 var modal_img = document.getElementById('modal_imgs');
@@ -98,6 +98,68 @@ function escolha_img(id) {
 
     modal_img.style.display = "none";
 }
+
+
+
+
+
+
+
+
+var fzr_avaliacao = document.getElementById('atualizar');
+var fundoblur = document.getElementById('fundo_blur');
+var modal = document.getElementById('modal_avaliacao');
+var scroll_x = document.getElementById('scroll_modal');
+
+fzr_avaliacao.addEventListener('click', () => {
+    fundoblur.style.display = "block";
+    fundoblur.classList.add('abrir');
+    modal.style.display = "flex";
+    scroll_x.scrollLeft = 0;
+});
+
+fundoblur.addEventListener('click', (e) => {
+    if (e.target === fundoblur) {
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    }
+});
+
+modal.addEventListener('click', (e) => {
+    e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
+});
+
+
+// FUNÇÃO PARA RODAR SCROLL
+
+
+
+var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: 720, behavior: "smooth" })
+});
+
+var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -720, behavior: "smooth" })
+});
+
+var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: 720, behavior: "smooth" })
+});
+
+var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -720, behavior: "smooth" })
+});
+
+var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    fundoblur.style.display = "none";
+    modal.style.display = "none";
+});
+
 
 
 

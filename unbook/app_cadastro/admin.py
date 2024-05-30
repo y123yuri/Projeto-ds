@@ -4,3 +4,4 @@ from .models import PerfilUsuario
 
 admin.site.register(PerfilUsuario)
 admin.site.register(Cadastro)
+admin.site.register(Cursos_unb)

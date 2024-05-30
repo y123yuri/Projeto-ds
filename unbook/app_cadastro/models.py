@@ -17,7 +17,7 @@ class PerfilUsuario(models.Model):
     descricao = models.CharField(max_length=200, blank=True, null=True)
     semestre = models.CharField(max_length=15, blank=True, null=True)
     def __str__(self):
-        return f'perfil {self.user.username}'
+        return  self.user.username
 
 
 class Cadastro(models.Model):
@@ -44,3 +44,10 @@ class PasswordResetToken(models.Model):
 
 
 
+class Cursos_unb(models.Model):
+    curso = models.CharField(max_length=100, primary_key=True)
+    pessoas = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.curso
+    

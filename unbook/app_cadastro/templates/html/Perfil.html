@@ -15,6 +15,62 @@
   </head>
 
   <body>
+
+    <div id="fundo_blur"></div>
+
+    <div id="modal_avaliacao">
+      <div id="avaliacao">
+        <h1 class="CampoFalado1_modal">Atualizar perfil</h1>
+
+        <hr style="margin: 0 1em" />
+
+        <div id="scroll_modal">
+          <div id="boxes_modal">
+            <div class="boxes_modal" id="box_modal_1">
+              <h2 class="CampoFalado2_modal">Curso</h2>
+              <h4 class="CampoFalado3_modal">Qual é o seu curso?</h4>
+              
+              <div class="espaco_buttons">
+                <h2 class="prox_button" id="prox_button_1">Próximo</h2>
+              </div>
+              
+            </div>
+
+            <div class="boxes_modal" id="box_modal_2">
+              <h2 class="CampoFalado2_modal">Semestre</h2>
+              <h4 class="CampoFalado3_modal">Em qual semestre você entrou na UnB?</h4>
+
+              <div class="espaco_buttons">
+                <h2 class="back_button" id="back_button_1">Voltar</h2>
+                <h2 class="prox_button" id="prox_button_2">Próximo</h2>
+              </div>
+            </div>
+
+            <div class="boxes_modal" id="box_modal_3">
+              <h2 class="CampoFalado2_modal">Dificuldade</h2>
+              <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
+
+              <div class="espaco_buttons">
+                <h2 class="back_button" id="back_button_2">Voltar</h2>
+                <h2 class="prox_button" id="prox_button_3">Próximo</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <a href="/"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" alt="UnBook Logo" /></a>
 
     <div id="boxes">
@@ -58,9 +114,30 @@
           </div>
 
           <hr style="margin: 0 2em" />
+
           <form class="form" id="form" action="./usuario/" method="post" name="contact-form">
             {% csrf_token %}
-            <div id="space_2_Profile">
+
+              <div id="space_2_1_Profile">
+                <h2 class="CampoFalado_Profile">Curso: <span class="respostas">{{ perfil.curso}}</span></h2>
+
+                <h2 class="CampoFalado_Profile">Semestre: <span class="respostas">{{ perfil.semestre}}</span></h2>
+              </div>
+
+            <div id="space_2_2_Profile">
+
+              <h2 class="CampoFalado_Profile">Sobre você:</h2>
+              <h2 class="respostas2"> {{perfil.descricao}}</h2>
+
+            </div>
+
+            <div id="space_2_3_Profile">
+              <h2 class="botoes" id="atualizar"> Atualizar informações</h2>
+            </div>
+
+        </div >
+
+            {% comment %} <div id="space_2_Profile">
               <div id="space_2_1_Profile">
 
                 <h2 class="CampoFalado_Profile">Curso</h2>
@@ -81,7 +158,7 @@
                 {{form.descricao}}
               </label>
               <input type="submit" id="submit" value=" Enviar" class="botao_entrar">
-            </div>
+            </div> {% endcomment %}
         </div>
 
         <div class="boxs" id="Senha">
@@ -119,15 +196,9 @@
         <div class="boxs" id="Estatistica">
           {% csrf_token %}
 
-
-
-
-
-
-
-
-          
           <div id="box_desenv">
+
+
             <h1 id="Desenv" >Em desenvolvimento!</h1>
           </div>
         </div>

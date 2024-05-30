@@ -78,10 +78,6 @@ class Turma(models.Model):
     turno = models.CharField(max_length=30, default="NA")
     local = models.CharField(max_length=30, default="NA")
     
-    videos = models.CharField( max_length=2000, default="")
-    resumos = models.CharField( max_length=2000, default="")
-    atividades = models.CharField( max_length=2000, default="")
-
     numero_avaliacoes = models.PositiveIntegerField(default=0)
 
     avaliacao_dificuldade = models.IntegerField(default=0)
