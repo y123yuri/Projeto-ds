@@ -64,7 +64,7 @@ class Nova_senha_perfilForm(ModelForm):
         fields = ['password']
 
     
-class PerfilForm(forms.ModelForm):
+class PerfilForm(ModelForm):
     def init(self, args, **kwargs):
         super(PerfilForm, self).init(args, **kwargs)
         self.fields['curso'].widget.attrs = {"class":"forms", "type":"text", "id":"curso" }

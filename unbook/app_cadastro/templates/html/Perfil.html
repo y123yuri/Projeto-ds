@@ -58,19 +58,30 @@
           </div>
 
           <hr style="margin: 0 2em" />
+          <form class="form" id="form" action="./usuario/" method="post" name="contact-form">
+            {% csrf_token %}
+            <div id="space_2_Profile">
+              <div id="space_2_1_Profile">
 
-          <div id="space_2_Profile">
-            <div id="space_2_1_Profile">
-              <h2 class="CampoFalado_Profile">Curso</h2>
-              <input class="forms" type="text" id="curso" />
+                <h2 class="CampoFalado_Profile">Curso</h2>
+                <label>
+                  {{form.curso}}
+                </label>
 
-              <h2 class="CampoFalado_Profile">Semestre</h2>
-              <input class="forms" type="text" id="semestre" />
+                <h2 class="CampoFalado_Profile">Semestre</h2>
+                <label>
+                  {{form.semestre}}
+                </label>
+              
+              </div>
+              
+              <label class="CampoFalado_Profile" for="descricao">Sobre você</label>
+
+              <label>
+                {{form.descricao}}
+              </label>
+              <input type="submit" id="submit" value=" Enviar" class="botao_entrar">
             </div>
-
-            <label class="CampoFalado_Profile" for="descricao">Sobre você</label>
-            <textarea id="descricao" rows="5" cols="40"></textarea>
-          </div>
         </div>
 
         <div class="boxs" id="Senha">
@@ -114,6 +125,9 @@
         </div>
       </div>
     </div>
+
+
+    
 
     <!-- LINK PARA ARQUIVOS JS -->
     <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
