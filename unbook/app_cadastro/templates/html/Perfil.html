@@ -4,41 +4,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
     <title>Perfil</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA O FONT MONTSERRAT USADO NA PAGINA -->
-
-    <link rel="stylesheet" href="{% static 'css/styles_(Perfil.html).css' %}" /> <!-- LINK PARA O CSS DA PAGINA -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="{% static 'css/styles_(Perfil.html).css' %}" />
   </head>
 
   <body>
-
     <div id="fundo_blur"></div>
 
     <div id="modal_atualizacao">
       <div id="avaliacao">
         <h1 class="CampoFalado1_modal">Atualizar perfil</h1>
-
         <hr style="margin: 0 1em" />
-
         <div id="scroll_modal">
           <div id="boxes_modal">
             <div class="boxes_modal" id="box_modal_1">
               <h2 class="CampoFalado2_modal">Curso</h2>
               <h4 class="CampoFalado3_modal">Qual é o seu curso?</h4>
-              
               <div class="espaco_buttons">
                 <h2 class="prox_button" id="prox_button_1">Próximo</h2>
               </div>
-              
             </div>
 
             <div class="boxes_modal" id="box_modal_2">
               <h2 class="CampoFalado2_modal">Semestre</h2>
               <h4 class="CampoFalado3_modal">Em qual semestre você entrou na UnB?</h4>
+              
+              <div id="drop">
+                <button class="drop_button">
+                  <span id="CampoFalado_menu">Semestre</span>
+                  <i id="icon_menu" class="bi bi-caret-down-fill"></i>
+                </button>
+
+                <ul class="menu">
+                  <li class="menu_item" onclick="selecionado(this)">2024.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2023.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2023.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2022.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2022.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2021.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2021.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2020.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2020.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2019.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2019.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2018.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2018.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2017.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2017.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2016.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2016.1</li>
+                  <li class="menu_item" onclick="selecionado(this)">2015.2</li>
+                  <li class="menu_item" onclick="selecionado(this)">2015.1</li>
+                </ul>
+              </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_1">Voltar</h2>
@@ -47,8 +71,12 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_3">
-              <h2 class="CampoFalado2_modal">Dificuldade</h2>
-              <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
+              <h2 class="CampoFalado2_modal">Sobre você</h2>
+              <h4 class="CampoFalado3_modal">Conte um pouco sobre você! Queremos te conhecer!</h4>
+
+              <div>
+                <textarea id="bio" rows="5" cols="33" oninput="bio(this)"></textarea>
+              </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
@@ -93,120 +121,65 @@
       <div id="espace_pages">
         <div class="boxs" id="Profile">
           {% csrf_token %}
-
           <div id="espace_1">
-            <h1 class="CampoEscrito_profile">Seja bem-vindo <br /><span id="user">{{ user.username }}</span></h1>
-
+            <h1 class="CampoEscrito_profile">
+              Seja bem-vindo <br />
+              <span id="user">{{ user.username }}</span>
+            </h1>
             {% if user.is_authenticated %}
-              <a class="botoes" type="button" href="{% url 'logout' %}">logout</a>
+              <a class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
-
           <hr style="margin: 0 2em" />
-
-          <form class="form" id="form" action="./usuario/" method="post" name="contact-form">
-            {% csrf_token %}
-
-              <div id="space_2_1_Profile">
-                <h2 class="CampoFalado_Profile">Curso: <span class="respostas">{{ perfil.curso}}</span></h2>
-
-                <h2 class="CampoFalado_Profile">Semestre: <span class="respostas">{{ perfil.semestre}}</span></h2>
-              </div>
-              <hr style="margin: 0 5em" />
-            <div id="space_2_2_Profile">
-
-              <h2 class="CampoFalado_Profile">Sobre você:</h2>
-              <h2 class="respostas2"> {{perfil.descricao}}</h2>
-
-            </div>
-
-            <div id="space_2_3_Profile">
-              <h2 class="botoes" id="atualizar"> Atualizar informações</h2>
-            </div>
-
-        </div >
-
-            {% comment %} <div id="space_2_Profile">
-              <div id="space_2_1_Profile">
-
-                <h2 class="CampoFalado_Profile">Curso</h2>
-                <label>
-                  {{form.curso}}
-                </label>
-
-                <h2 class="CampoFalado_Profile">Semestre</h2>
-                <label>
-                  {{form.semestre}}
-                </label>
-              
-              </div>
-              
-              <label class="CampoFalado_Profile" for="descricao">Sobre você</label>
-
-              <label>
-                {{form.descricao}}
-              </label>
-              <input type="submit" id="submit" value=" Enviar" class="botao_entrar">
-            </div> {% endcomment %}
+          <div id="space_2_1_Profile">
+            <h2 class="CampoFalado_Profile">Curso: <span class="respostas">{{ perfil.curso }}</span></h2>
+            <h2 class="CampoFalado_Profile">Semestre: <span class="respostas">{{ perfil.semestre }}</span></h2>
+          </div>
+          <hr style="margin: 0 5em" />
+          <div id="space_2_2_Profile">
+            <h2 class="CampoFalado_Profile">Sobre você:</h2>
+            <h2 class="respostas2">{{ perfil.descricao }}</h2>
+          </div>
+          <div id="space_2_3_Profile">
+            <h2 class="botoes" id="atualizar">Atualizar informações</h2>
+          </div>
         </div>
 
         <div class="boxs" id="Senha">
           {% csrf_token %}
-
           <div id="space_1_Senha">
             <h1 class="CampoEscrito_Senha">Senha</h1>
-
             {% if user.is_authenticated %}
-              <a class="botoes" type="button" href="{% url 'logout' %}">logout</a>
+              <a class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
-
           <hr style="margin: 0 2em" />
-
           <div id="space_2_Senha">
             <div id="box_senha_instrucoes">Esse campo está reservado à mudança de senha. Caso queira alterá-la, basta inserir sua senha no campo "Senha antiga", e nos outros campos atualizar e confirmar sua senha.</div>
-            <form class="form" id="form" action="./login" method="post" name="contact-form">
+            <form class="form" id="form" action="" method="post" name="contact-form">
               {% csrf_token %}
               <div id="box_senha_form">
                 <h2 class="CampoFalado_Senha">Senha antiga</h2>
-                <input class="forms" type="password" id="senha_antiga" />
-
+                <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
                 <h2 class="CampoFalado_Senha">Senha Nova</h2>
-                <input class="forms" type="password" id="senha_nova" />
-
+                <input class="forms" type="password" id="senha_nova" name="senha_nova" required />
                 <h2 class="CampoFalado_Senha">Confirmar senha nova</h2>
-                <input class="forms" type="password" id="senha_nova_confirma" />
-
-                <button id="submit">Mudar senha</button>
+                <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
+                <button id="submit" type="submit">Mudar senha</button>
               </div>
+            </form>
           </div>
         </div>
 
         <div class="boxs" id="Estatistica">
           {% csrf_token %}
-
           <div id="box_desenv">
-
-
-            <h1 id="Desenv" >Em desenvolvimento!</h1>
+            <h1 id="Desenv">Em desenvolvimento!</h1>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
       </div>
     </div>
 
-
-    
-
-    <!-- LINK PARA ARQUIVOS JS -->
     <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
   </body>
 </html>

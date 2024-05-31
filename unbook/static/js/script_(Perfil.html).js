@@ -160,10 +160,32 @@ var proximo3 = document.getElementById('prox_button_3').addEventListener('click'
     modal.style.display = "none";
 });
 
+const button_drop = document.querySelector('.drop_button')
+const menu = document.querySelector('#drop > .menu');
+button_drop.addEventListener("click", (e)=> {
+    
+    menu.classList.toggle('open')
+    button_drop.classList.toggle('open');
+
+    if (!button_drop.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open')
+    }
+})
+
+function selecionado(element){
+    menu.classList.remove('open')
+    
+    const text_menu = document.getElementById("CampoFalado_menu")
+    text_menu.style.marginLeft = "3em"
+    text_menu.textContent = element.textContent
+}
+
+function bio(element){
+    // console.log(element.value)
+}
+
+function enviarBackPerfil () {
 
 
 
-
-
-
-
+}
