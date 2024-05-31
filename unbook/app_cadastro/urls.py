@@ -16,6 +16,6 @@ urlpatterns = [
     path('login/logout/', views.logout, name='logout'),
     path('login/esqueceu/email_recupera', views.email_recupera, name='email_recupera'),#nova senha confirma
     path('login/usuario/', views.usuario, name='usuario'),
-    
+    path('usuario/', views.usuario, name='usuario'),
     
 ]

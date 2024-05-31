@@ -171,21 +171,96 @@ button_drop.addEventListener("click", (e)=> {
         menu.classList.remove('open')
     }
 })
+function cursos_find(csrf_token) {
+    let input = document.getElementById("input_cursos").value;
+    input = input.toUpperCase();
+    if (input.length > 2) {
+        console.log(input.length + "; " + input);
 
-function selecionado(element){
-    menu.classList.remove('open')
-    
-    const text_menu = document.getElementById("CampoFalado_menu")
-    text_menu.style.marginLeft = "3em"
-    text_menu.textContent = element.textContent
+        $.ajax({
+            type: "POST",
+            url: "usuario/",
+            data: {
+                csrfmiddlewaretoken: csrf_token,
+                input_cursos: input
+            },
+            success: function(response) {
+                let lista_obj = response.split(";");
+                let lista_resultado = [];
+                for (let i = 0; i < lista_obj.length; i++) {
+                    lista_resultado.push(lista_obj[i].split(','));
+                }
+
+                var ul_cursos = document.getElementById('cursos');
+                ul_cursos.style.display = "flex";
+                ul_cursos.style.flexDirection = "column";
+                ul_cursos.style.position = "relative";
+                ul_cursos.style.padding = "0.5em 2em";
+                ul_cursos.innerHTML = '';
+
+                for (let i = 0; i < lista_resultado.length; i++) {
+                    var curso = lista_resultado[i][0];
+                    var pessoas = lista_resultado[i][1];
+
+                    var li = document.createElement("li");
+                    li.style.position = "relative";
+                    li.style.marginBottom = "1em";
+                    li.style.color = "black";
+                    li.style.display = "flex";
+                    li.style.flexDirection = "row";
+                    li.style.cursor = "pointer";
+                    li.style.alignItems = "center";
+
+                    li.innerText = `${curso} (${pessoas} pessoas)`;
+
+                    (function(curso, pessoas) {
+                        li.addEventListener("mouseenter", function () {
+                            this.style.color = "#008940";
+                            this.style.textShadow = "0 0 2px #008940";
+                            this.style.transition = "all 0.3s ease";
+                        });
+
+                        li.addEventListener("mouseleave", function () {
+                            this.style.color = "black";
+                            this.style.textShadow = "none";
+                        });
+
+                        li.addEventListener("click", function () {
+                            ul_cursos.style.display = "none";
+                            document.getElementById("input_cursos").value = curso;
+                            // Chama a função enviarDados com o curso e o número de pessoas
+                            enviarDados(curso);
+                        });
+                    })(curso, pessoas);
+
+                    ul_cursos.appendChild(li);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Erro na requisição AJAX: " + status + ", " + error);
+            }
+        });
+    }
 }
 
-function bio(element){
-    // console.log(element.value)
+function selecionado(semestre) {
+    menu.classList.remove('open');
+    const text_menu = document.getElementById("CampoFalado_menu");
+    text_menu.style.marginLeft = "3em";
+    text_menu.textContent = semestre.textContent;
+    // Chama a função enviarDados com o semestre
+    enviarDados(null, semestre.textContent, null);
 }
 
-function enviarBackPerfil () {
+function bio(bio) {
+    // Chama a função enviarDados com a bio
+    enviarDados(null, null, bio.value);
+}
 
-
+function enviarDados(curso, semestre, bio) {
+   console.log('recebeu enviarDados')
+   if (curso) {console.log(curso)}
+   if (semestre) {console.log(semestre)}
+   if (bio) {console.log(bio)}
 
 }

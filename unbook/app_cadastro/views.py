@@ -23,7 +23,7 @@ from django.contrib import messages
 from .utils import send_activation_email
 from .forms import PerfilForm
 from .models import PerfilUsuario
-
+from .models import Cursos_unb
 
 
 
@@ -153,32 +153,49 @@ def logout(request):
     return redirect('login_func')
 
 def usuario(request):
-
-    f = PerfilForm(request.POST)
     context = {}
-    perfil = get_object_or_404(PerfilUsuario, user=request.user)
-    if 'erro' in request.session:
-        del request.session['erro']
-    if f.is_valid():
-        user = request.user
-        perfil_existente = PerfilUsuario.objects.filter(user=user).first()
-        if perfil_existente:
-         
-            perfil_existente.curso = f.cleaned_data['curso']
-            perfil_existente.descricao = f.cleaned_data['descricao']
-            perfil_existente.semestre = f.cleaned_data['semestre']
+
+    if request.method == 'POST':
+        # Pesquisa de cursos
+        if 'input_cursos' in request.POST:
+            termo_pesquisa = request.POST['input_cursos']
+            obj_lista = Cursos_unb.objects.filter(curso__icontains=termo_pesquisa)
             
-            perfil_existente.save()
-
-            context["resposta"] = f.cleaned_data
+            resposta = ''
+            if len(obj_lista) > 0:
+                resposta = obj_lista[0].curso + ',' + str(obj_lista[0].pessoas)
+                if len(obj_lista) > 1:
+                    for obj in obj_lista[1:]:
+                        resposta += ";" + obj.curso + ',' + str(obj.pessoas)
             
-    print(context["resposta"])
+            return HttpResponse(resposta)
 
-
-     
-    return redirect('../', context)  
+        # Atualização de perfil
+        f = PerfilForm(request.POST)
+        perfil = get_object_or_404(PerfilUsuario, user=request.user)
         
-    
+        if 'erro' in request.session:
+            del request.session['erro']
+        
+        if f.is_valid():
+            user = request.user
+            perfil_existente = PerfilUsuario.objects.filter(user=user).first()
+            
+            if perfil_existente:
+                perfil_existente.curso = f.cleaned_data['curso']
+                perfil_existente.descricao = f.cleaned_data['descricao']
+                perfil_existente.semestre = f.cleaned_data['semestre']
+                perfil_existente.save()
+                
+                context["resposta"] = f.cleaned_data
+        
+        print(context.get("resposta"))
+
+        return redirect('../', context)
+
+    return HttpResponse("Método não permitido")
+
+
 def esqueceu(request):
     context = {}
     form = Esqueceu_senhaForm()

@@ -50,4 +50,3 @@ class Cursos_unb(models.Model):
     
     def __str__(self):
         return self.curso
-    

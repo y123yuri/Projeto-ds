@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
     <title>Perfil</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="{% static 'css/styles_(Perfil.html).css' %}" />
+
   </head>
 
   <body>
@@ -26,6 +28,15 @@
             <div class="boxes_modal" id="box_modal_1">
               <h2 class="CampoFalado2_modal">Curso</h2>
               <h4 class="CampoFalado3_modal">Qual é o seu curso?</h4>
+              <hr style="margin: 1em 5em" />
+              
+              <form method="POST" onsubmit="return false;">
+                {% csrf_token %}
+                <input type="text" autocomplete="off" id="input_cursos" onkeyup="cursos_find('{{ csrf_token }}')" />
+        
+                <ul id="cursos" style="display: none;"></ul>
+            </form>
+            
               <div class="espaco_buttons">
                 <h2 class="prox_button" id="prox_button_1">Próximo</h2>
               </div>
@@ -34,7 +45,7 @@
             <div class="boxes_modal" id="box_modal_2">
               <h2 class="CampoFalado2_modal">Semestre</h2>
               <h4 class="CampoFalado3_modal">Em qual semestre você entrou na UnB?</h4>
-              
+              <hr style="margin: 1em 5em" />
               <div id="drop">
                 <button class="drop_button">
                   <span id="CampoFalado_menu">Semestre</span>
@@ -73,14 +84,14 @@
             <div class="boxes_modal" id="box_modal_3">
               <h2 class="CampoFalado2_modal">Sobre você</h2>
               <h4 class="CampoFalado3_modal">Conte um pouco sobre você! Queremos te conhecer!</h4>
-
+              <hr style="margin: 1em 5em" />
               <div>
                 <textarea id="bio" rows="5" cols="33" oninput="bio(this)"></textarea>
               </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
-                <h2 class="prox_button" id="prox_button_3">Atualizar</h2>
+                <h2 class="prox_button" id="prox_button_3" onclick="enviarDados()">Atualizar</h2>
               </div>
             </div>
           </div>

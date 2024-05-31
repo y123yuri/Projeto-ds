@@ -611,7 +611,7 @@ a .UnBook_logo_mini {
     text-align: center;
     position: relative;
 
-    margin: 0 5em;
+    margin: 0 6em;
     font-size: 1.5em;
     font-weight: 700;
 }
@@ -732,6 +732,27 @@ a .UnBook_logo_mini {
     text-align: center;
 }
 
+#input_cursos {
+    width: 80%;
+    height: auto;
+    padding: 0.5em 1em;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    font-size: 1.25em;
+}
+
+#cursos {
+    width: 80%;
+    height: 4em;
+    margin: auto;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    font-size: 1.25em;
+    overflow-y: auto;
+}
+
 #box_modal_2 .espaco_buttons {
     display: flex;
     align-items: center;
@@ -787,7 +808,7 @@ a .UnBook_logo_mini {
     max-width: 15em;
     width: 100%;
     display: block;
-    margin: 1em auto;
+    margin: 2em auto;
     position: relative;
 }
 
@@ -847,7 +868,7 @@ a .UnBook_logo_mini {
 }
 
 #bio {
-    margin: 1em auto;
+    margin: auto;
     width: 80%;
     height: auto;
     background-color: #D9D9D9;
