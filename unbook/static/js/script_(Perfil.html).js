@@ -108,7 +108,7 @@ function escolha_img(id) {
 
 var fzr_avaliacao = document.getElementById('atualizar');
 var fundoblur = document.getElementById('fundo_blur');
-var modal = document.getElementById('modal_avaliacao');
+var modal = document.getElementById('modal_atualizacao');
 var scroll_x = document.getElementById('scroll_modal');
 
 fzr_avaliacao.addEventListener('click', () => {
@@ -136,22 +136,22 @@ modal.addEventListener('click', (e) => {
 
 var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({ left: 720, behavior: "smooth" })
+    scroll_x.scrollBy({ left: 738.5, behavior: "smooth" })
 });
 
 var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({ left: -720, behavior: "smooth" })
+    scroll_x.scrollBy({ left: -738.5, behavior: "smooth" })
 });
 
 var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({ left: 720, behavior: "smooth" })
+    scroll_x.scrollBy({ left: 738.5, behavior: "smooth" })
 });
 
 var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
     e.preventDefault()
-    scroll_x.scrollBy({ left: -720, behavior: "smooth" })
+    scroll_x.scrollBy({ left: -738.5, behavior: "smooth" })
 });
 
 var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
