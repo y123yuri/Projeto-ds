@@ -6,7 +6,7 @@ from datetime import timedelta
 from datetime import timezone
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-
+from django.conf import settings
 
 
 
@@ -46,7 +46,7 @@ class PasswordResetToken(models.Model):
 
 class Cursos_unb(models.Model):
     curso = models.CharField(max_length=100, primary_key=True)
-    pessoas = models.IntegerField(default=0)
+    cursantes = models.ManyToManyField(settings.AUTH_USER_MODEL, default=None)
     
     def __str__(self):
         return self.curso

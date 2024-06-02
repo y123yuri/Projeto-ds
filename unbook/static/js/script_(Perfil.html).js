@@ -211,7 +211,7 @@ function cursos_find(csrf_token) {
                     li.style.cursor = "pointer";
                     li.style.alignItems = "center";
 
-                    li.innerText = `${curso} (${pessoas} pessoas)`;
+                    li.innerText = `${curso}`;
 
                     (function(curso, pessoas) {
                         li.addEventListener("mouseenter", function () {
