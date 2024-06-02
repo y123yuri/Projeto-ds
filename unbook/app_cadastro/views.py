@@ -163,10 +163,10 @@ def usuario(request):
             
             resposta = ''
             if len(obj_lista) > 0:
-                resposta = obj_lista[0].curso + ',' + str(obj_lista[0].pessoas)
+                resposta = obj_lista[0].curso + ','
                 if len(obj_lista) > 1:
                     for obj in obj_lista[1:]:
-                        resposta += ";" + obj.curso + ',' + str(obj.pessoas)
+                        resposta += ";" + obj.curso
             
             return HttpResponse(resposta)
 
