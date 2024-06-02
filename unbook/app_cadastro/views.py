@@ -24,6 +24,9 @@ from .utils import send_activation_email
 from .forms import PerfilForm
 from .models import PerfilUsuario
 from .models import Cursos_unb
+from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+
 
 
 
@@ -169,31 +172,56 @@ def usuario(request):
                         resposta += ";" + obj.curso
             
             return HttpResponse(resposta)
+        if request.method == 'POST':
+            curso = request.POST.get('curso')
+            semestre = request.POST.get('semestre')
+            bio = request.POST.get('bio')
+
+            print('caraio',curso, 'pinto', 'lixo')
+            
+            perfil = PerfilUsuario.objects.get(user=request.user)
+            if curso:
+                perfil.curso = curso
+                print(perfil.curso)
+            if semestre:
+                perfil.semestre = semestre
+                print(perfil.semestre)
+            if bio:
+                perfil.descricao = bio
+                print(perfil.descricao)
+            perfil.save()
+            return JsonResponse({'status':'sucess'})
+        return JsonResponse({'status': 'fail'}, status=400)
+
 
         # Atualização de perfil
-        f = PerfilForm(request.POST)
-        perfil = get_object_or_404(PerfilUsuario, user=request.user)
+        # f = PerfilForm(request.POST)
+        # perfil = get_object_or_404(PerfilUsuario, user=request.user)
         
-        if 'erro' in request.session:
-            del request.session['erro']
+        # if 'erro' in request.session:
+        #     del request.session['erro']
         
-        if f.is_valid():
-            user = request.user
-            perfil_existente = PerfilUsuario.objects.filter(user=user).first()
+        # if f.is_valid():
+        #     user = request.user
+        #     perfil_existente = PerfilUsuario.objects.filter(user=user).first()
             
-            if perfil_existente:
-                perfil_existente.curso = f.cleaned_data['curso']
-                perfil_existente.descricao = f.cleaned_data['descricao']
-                perfil_existente.semestre = f.cleaned_data['semestre']
-                perfil_existente.save()
+        #     if perfil_existente:
+        #         perfil_existente.curso = f.cleaned_data['curso']
+        #         perfil_existente.descricao = f.cleaned_data['descricao']
+        #         perfil_existente.semestre = f.cleaned_data['semestre']
+        #         perfil_existente.save()
                 
-                context["resposta"] = f.cleaned_data
+        #         context["resposta"] = f.cleaned_data
         
-        print(context.get("resposta"))
+
 
         return redirect('../', context)
 
     return HttpResponse("Método não permitido")
+
+
+
+    
 
 
 def esqueceu(request):

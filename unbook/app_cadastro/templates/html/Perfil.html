@@ -30,12 +30,12 @@
               <h4 class="CampoFalado3_modal">Qual é o seu curso?</h4>
               <hr style="margin: 1em 5em" />
               
-              <form method="POST" onsubmit="return false;">
+      <form id="form" action="./usuario/" method="post" name="contact-form">
                 {% csrf_token %}
                 <input type="text" autocomplete="off" id="input_cursos" onkeyup="cursos_find('{{ csrf_token }}')" />
         
                 <ul id="cursos" style="display: none;"></ul>
-            </form>
+           
             
               <div class="espaco_buttons">
                 <h2 class="prox_button" id="prox_button_1">Próximo</h2>
@@ -86,16 +86,18 @@
               <h4 class="CampoFalado3_modal">Conte um pouco sobre você! Queremos te conhecer!</h4>
               <hr style="margin: 1em 5em" />
               <div>
-                <textarea id="bio" rows="5" cols="33" oninput="bio(this)"></textarea>
+                {% comment %} <textarea id="bio" rows="5" cols="33" oninput="bio(this)"></textarea> {% endcomment %}
+                <textarea id="bio" name="bio" rows="5" cols="33" oninput="bio()"></textarea>
               </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
-                <h2 class="prox_button" id="prox_button_3" onclick="enviarDados()">Atualizar</h2>
+                <input type="submit" class="prox_button" id="prox_button_3" onclick="enviarDados()">Atualizar</h2>
               </div>
             </div>
           </div>
         </div>
+      </form>
       </div>
     </div>
 
@@ -167,8 +169,7 @@
           <hr style="margin: 0 2em" />
           <div id="space_2_Senha">
             <div id="box_senha_instrucoes">Esse campo está reservado à mudança de senha. Caso queira alterá-la, basta inserir sua senha no campo "Senha antiga", e nos outros campos atualizar e confirmar sua senha.</div>
-            <form class="form" id="form" action="" method="post" name="contact-form">
-              {% csrf_token %}
+            
               <div id="box_senha_form">
                 <h2 class="CampoFalado_Senha">Senha antiga</h2>
                 <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
@@ -178,7 +179,7 @@
                 <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
                 <button id="submit" type="submit">Mudar senha</button>
               </div>
-            </form>
+            
           </div>
         </div>
 
@@ -192,5 +193,14 @@
     </div>
 
     <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
+    <script>
+      document.getElementById('submit').addEventListener('click', function(event) {
+          event.preventDefault();
+          const curso = document.getElementById('input_cursos').value;
+          const semestre = document.getElementById('CampoFalado_menu').innerText;
+          const bio = document.getElementById('bio').value;
+          enviarDados(curso, semestre, bio);
+      });
+    </script>
   </body>
 </html>
