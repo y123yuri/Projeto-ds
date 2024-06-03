@@ -217,15 +217,21 @@ a#botao_arrasta:active {
     position: relative;
 
     margin-left: 10px;
-    top: 20px;
+    margin-bottom: 1em;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 2em 0 1em; 
 }
 
 .Login_icon {
-    display: block;
-    position: absolute;
-    width: 10em;
-    right: 3em;
-
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: auto;
 }
 
 .authentic {
@@ -257,14 +263,12 @@ a#botao_arrasta:active {
     display: block;
 
     border-radius: 50%;
-    margin-top: -6.5em;
 
 }
 
 .user {
     width: 100%;
     height: 100%;
-    color: white;
 
     display: block;
     border-radius: 50%;
@@ -801,64 +805,66 @@ div .janela_pesquisa {
         position: relative;
     
         margin-left: 10px;
-        top: 20px;
+        margin-bottom: 1em;
     }
     
-    .Login_icon {
-        display: block;
-        position: absolute;
-        width: 5em;
-        right: 1em;
 
-    
-    }
-    
-    a.authentic {
-        font-size: 1.25em;
-        display: block;
-        position: relative;
-        font-weight: 900;
-        margin: auto;
-        text-align: center;
-        color: #0B4C8C;
-        text-decoration: none;
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1em 0 0; 
+}
 
-        transition: all 0.3s ease;
-        right: 1.5em;
-        top:-2em;
-    }
-    
-    .Login_icon a:hover {
-        transform: translateY(2px);
-        text-shadow: 0 0 50px #0B4C8C;
-        color: #E6F2FB;
-    }
-    
-    #user {
-        background-color: #0B4C9C;
-        width: 3em;
-        height: 3em;
-        margin: auto;
-        display: block;
-        position: relative;
-        top: -2.5em;
-        right: 1.5em;
-        border-radius: 50%;
-        
-    
-    }
-    
-    .user {
-        width: 100%;
-        height: 100%;
-        color: white;
-    
-        display: block;
-        border-radius: 50%;
-        padding-top: 0.5em;
-    
-    }
-    
+.Login_icon {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: auto;
+}
+
+.authentic {
+    font-size: 1em;
+    display: block;
+    position: relative;
+    font-weight: 900;
+    margin: auto;
+    text-align: center;
+    color: #0B4C8C;
+    text-decoration: none;
+
+
+    top: -0.25rem;
+    transition: all 0.3s ease;
+}
+
+.Login_icon a:hover {
+    transform: translateY(2px);
+    text-shadow: 0 0 50px #0B4C8C;
+    color: #E6F2FB;
+}
+
+#user {
+    background-color: #0B4C9C;
+    width: 3em;
+    height: 3em;
+    margin: auto;
+    display: block;
+
+    border-radius: 50%;
+
+}
+
+.user {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    border-radius: 50%;
+    padding-top: 0.5em;
+
+}
     
     #perguntas {
         position: relative;
