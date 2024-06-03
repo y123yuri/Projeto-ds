@@ -165,7 +165,7 @@ function like(element, pk) {
     })
 }
 
-function modal_report(element) {
+function modal_report(element, pk) {
     id = element.id
 
 
@@ -197,9 +197,20 @@ if (element.style.color === "red") {
         modal_denuncia.addEventListener('click', (e) => {
             e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
         });
+
+        modal_denuncia.querySelector("#submit_denuncia").addEventListener('click', function() {
+        envia_denuncia(modal_denuncia, pk)
+        modal_denuncia.style.display = 'none'
+        fundoblur.style.display = 'none'
+    })
     }
 
 
+}
+
+function envia_denuncia() {
+    console.log("oi")
+    
 }
 
 var lista = [];

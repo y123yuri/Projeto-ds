@@ -67,11 +67,9 @@
         <input id="why" type="text" />
       </div>
 
-    <form class="form" id="form" action="./denuncia/" method="post" name="contact-form">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input id="submit" type="submit"  class="botao_entrar" onclick="alert(Sua denúncia foi enviada com sucesso!!)">Enviar</input>
-    </form>
+    
+    <input id="submit_denuncia" type="button" class="botao_entrar" value="Enviar">
+    
       
     </div>
 
@@ -414,7 +412,7 @@
                       <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
                     </div>|<div class="report">
                       <h3 class="text">Reportar</h3>
-                      <button id="report" type="button" onclick="modal_report(this)"><i class="bi bi-flag-fill"></i></button>
+                      <button id="report" type="button" onclick="modal_report(this, '{{ comentario.pk }}')"><i class="bi bi-flag-fill"></i></button>
                     </div>
                   </div>
                 </div>

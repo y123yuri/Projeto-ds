@@ -66,7 +66,7 @@ class Comentario(models.Model):
     texto = models.CharField(max_length=250)
     curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida")
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
-    denuncia = models.IntegerField(default=0)
+    ativo = models.BooleanField(default=True)
 
     def __str__(self):
         return f'f{self.hora_publicacao}: {self.autor}'
@@ -89,4 +89,13 @@ class Turma(models.Model):
     def __str__(self):
         return self.materia.codigo + "/" + self.professor.nome
 
-
+class Report(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    comentario = models.ForeignKey(Comentario, on_delete=models.CASCADE)
+    cont_ofensivo = models.BooleanField()
+    info_falsa = models.BooleanField()
+    bullyng = models.BooleanField()
+    cont_sexual = models.BooleanField()
+    discurso_odio = models.BooleanField()
+    observacao = models.CharField(max_length=250)
+    hora_publicacao = models.DateTimeField()
