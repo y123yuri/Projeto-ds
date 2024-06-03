@@ -47,10 +47,10 @@
               <h4 class="CampoFalado3_modal">Em qual semestre você entrou na UnB?</h4>
               <hr style="margin: 1em 5em" />
               <div id="drop">
-                <button class="drop_button">
+                <div class="drop_button">
                   <span id="CampoFalado_menu">Semestre</span>
                   <i id="icon_menu" class="bi bi-caret-down-fill"></i>
-                </button>
+                </div>
 
                 <ul class="menu">
                   <li class="menu_item" onclick="selecionado(this)">2024.1</li>
@@ -87,12 +87,13 @@
               <hr style="margin: 1em 5em" />
               <div>
                 {% comment %} <textarea id="bio" rows="5" cols="33" oninput="bio(this)"></textarea> {% endcomment %}
-                <textarea id="bio" name="bio" rows="5" cols="33" oninput="bio()"></textarea>
+                <input id="bio" type="text"></input>
               </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
-                <input type="submit" class="prox_button" id="prox_button_3" onclick="enviarDados()">Atualizar</h2>
+                <h2 class="prox_button" id="prox_button_3">Enviar</h2>
+                {% comment %} nao precisa ser um input {% endcomment %}
               </div>
             </div>
           </div>
@@ -193,12 +194,14 @@
     </div>
 
     <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
+    
     <script>
-      document.getElementById('submit').addEventListener('click', function(event) {
-          event.preventDefault();
+      document.getElementById('prox_button_3').addEventListener('click', (e)=> {
+          e.preventDefault();
           const curso = document.getElementById('input_cursos').value;
           const semestre = document.getElementById('CampoFalado_menu').innerText;
           const bio = document.getElementById('bio').value;
+          
           enviarDados(curso, semestre, bio);
       });
     </script>

@@ -189,8 +189,9 @@ def usuario(request):
             if bio:
                 perfil.descricao = bio
                 print(perfil.descricao)
+            
             perfil.save()
-            return JsonResponse({'status':'sucess'})
+            return redirect('../', context) , JsonResponse({'status':'sucess'})
         return JsonResponse({'status': 'fail'}, status=400)
 
 
@@ -212,17 +213,7 @@ def usuario(request):
         #         perfil_existente.save()
                 
         #         context["resposta"] = f.cleaned_data
-        
-
-
-        return redirect('../', context)
-
-    return HttpResponse("Método não permitido")
-
-
-
     
-
 
 def esqueceu(request):
     context = {}
