@@ -208,8 +208,36 @@ if (element.style.color === "red") {
 
 }
 
-function envia_denuncia() {
-    console.log("oi")
+function envia_denuncia(modal, pk) {
+    lista = modal.querySelector("#div_radios").querySelectorAll("h2")
+    outra_lista = ''
+    lista.forEach(function(item) {
+        console.log(item.style.backgroundColor)
+        if (item.style.backgroundColor === 'rgb(233, 89, 89)'){
+            console.log(true)
+            outra_lista += '1 '
+        } else{
+            outra_lista += '0 '
+        }
+    })
+
+    obs = modal.querySelector("#why").textContent
+
+    $.ajax({
+        type: "POST",
+        url: "../../../denuncia/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            comentario: pk,
+            materia: codigo,
+            professor: nome,
+            pq: outra_lista,
+            obs: obs,
+        }, 
+        success: function (response)  {
+            console.log(response)
+        }
+    })
     
 }
 

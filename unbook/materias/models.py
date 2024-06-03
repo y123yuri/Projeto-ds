@@ -94,7 +94,7 @@ class Report(models.Model):
     comentario = models.ForeignKey(Comentario, on_delete=models.CASCADE)
     cont_ofensivo = models.BooleanField()
     info_falsa = models.BooleanField()
-    bullyng = models.BooleanField()
+    bullying = models.BooleanField()
     cont_sexual = models.BooleanField()
     discurso_odio = models.BooleanField()
     observacao = models.CharField(max_length=250)

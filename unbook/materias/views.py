@@ -335,5 +335,38 @@ def like(request):
         comentario.curtidas.add(user)
     return HttpResponse(f'{comentario.curtidas.count()}')
 
+def denuncia(request):
+    user = request.user
+    pk_comentario = request.POST["comentario"]
+    nome = request.POST["professor"]
+    codigo = request.POST["materia"]
+    tipos = request.POST["pq"].split(" ")[:-1]
+    traducao = {'1':True, '0':False}
+    obs = request.POST["obs"]
 
+    obj_materia = Materia.objects.get(codigo=codigo)
+    obj_prof = Professor.objects.get(nome=nome)
+    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    comentario = Comentario.objects.get(pk=pk_comentario)
+
+    # desativar comentário se tiver mais do q 20
+    print(Report.objects.filter(comentario=comentario).count())
+
+    if Report.objects.filter(comentario=comentario).count() >= 19:
+        comentario.ativo = False
+        comentario.save()
+        print("comentário desativado")
+    
+
+
+    obj_denuncia = Report(autor=user, comentario=comentario,cont_ofensivo=traducao[tipos[0]],
+    info_falsa =traducao[tipos[1]],
+    bullying =traducao[tipos[2]],
+    cont_sexual =traducao[tipos[3]],
+    discurso_odio = traducao[tipos[4]],
+    observacao = obs,
+    hora_publicacao = timezone.now())
+    obj_denuncia.save()
+
+    return HttpResponse(f'ok')
  
