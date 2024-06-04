@@ -329,7 +329,11 @@ ul {
 }
 
 #Materias_ofertadas {
-  position: relative; display:block; top: 5%; text-align: center; width: 100%
+  position: relative;
+  display: block;
+  top: 5%;
+  text-align: center;
+  width: 100%;
 }
 
 #box_materias a {
@@ -412,7 +416,6 @@ ul {
 }
 
 @media screen and (max-width: 767px) {
-
   .UnBook_logo_mini {
     display: inline;
 
@@ -423,102 +426,102 @@ ul {
 
     margin-left: 10px;
     top: 20px;
-}
+  }
 
-.boxes {
-  position: relative;
-  top: 2em;
-  display: flex;
-  flex-direction: column;
-}
+  .boxes {
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: column;
+  }
 
-.box1_2 {
-  position: relative;
+  .box1_2 {
+    position: relative;
 
-  margin: 1em auto;
-  width: 100%;
-  height: auto;
-  order: 2;
-  display: block;
-}
+    margin: 1em auto;
+    width: 100%;
+    height: auto;
+    order: 2;
+    display: block;
+  }
 
-#box1 {
-  position: relative;
-  margin:auto;
+  #box1 {
+    position: relative;
+    margin: auto;
 
-  width: 95%;
-  height: 30em;
-  padding: 1em;
+    width: 95%;
+    height: 30em;
+    padding: 1em;
 
-  display: block;
+    display: block;
 
-  background-color: #cde4df;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
-    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-}
+    background-color: #cde4df;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+  }
 
-#avaliacao {
-  margin-top: 1em;
-  height: 25em;
-}
+  #avaliacao {
+    margin-top: 1em;
+    height: 25em;
+  }
 
-.CampoFalado1 {
-  color: black;
-  font-size: 1.5em;
-  text-align: center;
-  margin-bottom: 0.5em;
-}
+  .CampoFalado1 {
+    color: black;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
 
-.CampoFalado2 {
-  color: black;
-  text-align: left;
-  font-size: 1.2em;
-  font-weight: 700;
-}
+  .CampoFalado2 {
+    color: black;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
 
-.avaliacao {
-  margin-top: -0.75em;
-}
+  .avaliacao {
+    margin-top: -0.75em;
+  }
 
-.rating {
-  border: none;
-  float: left;
-}
+  .rating {
+    border: none;
+    float: left;
+  }
 
-.rating > input {
-  display: none;
-}
+  .rating > input {
+    display: none;
+  }
 
-.rating > label:before {
-  content: "\f005";
-  font-family: FontAwesome;
-  margin: 5px;
-  font-size: 2em;
-  display: inline-block;
-  cursor: pointer;
-}
+  .rating > label:before {
+    content: "\f005";
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 2em;
+    display: inline-block;
+    cursor: pointer;
+  }
 
-.rating > .half:before {
-  content: "\f089";
-  position: absolute;
-  cursor: pointer;
-}
+  .rating > .half:before {
+    content: "\f089";
+    position: absolute;
+    cursor: pointer;
+  }
 
-.rating > label {
-  color: #777d89;
-  float: right;
-  cursor: pointer;
-}
+  .rating > label {
+    color: #777d89;
+    float: right;
+    cursor: pointer;
+  }
 
-/* ESTRELA CINZA */
+  /* ESTRELA CINZA */
 
-/* .rating > input:checked ~ label,
+  /* .rating > input:checked ~ label,
 .rating:not(:checked) > label:hover, 
 .rating:not(:checked) > label:hover ~ label{
 	color: #ffd000;
 } /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
-/* 
+  /* 
 .rating > input:checked + label:hover,
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label,
@@ -526,250 +529,247 @@ ul {
 	color: #ffd000;
 } CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
 
-#notas_Dificuldade,
-#notas_apoio,
-#notas_didatica {
-  font-size: 1em;
-  position: relative;
-  display: block;
+  #notas_Dificuldade,
+  #notas_apoio,
+  #notas_didatica {
+    font-size: 1em;
+    position: relative;
+    display: block;
 
-  height: 1em;
-}
+    height: 1em;
+  }
 
-/* BOX 2 */
+  /* BOX 2 */
 
-#box2 {
-  position: relative;
-  top: 1em;
-  margin:auto;
-  margin-bottom: 1em;
-  width: 95%;
-  height: 20em;
-  padding: 1em;
+  #box2 {
+    position: relative;
+    top: 1em;
+    margin: auto;
+    margin-bottom: 1em;
+    width: 95%;
+    height: 20em;
+    padding: 1em;
 
-  display: block;
+    display: block;
 
-  background-color: #cde4df;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
-    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-}
+    background-color: #cde4df;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+  }
 
-#aprovacao {
-  margin: auto;
-  margin-bottom: 1em;
+  #aprovacao {
+    margin: auto;
+    margin-bottom: 1em;
 
-  position: relative; 
-  display:block; 
-  top: 2.5%; 
-  text-align: center; 
-  width: 100%;
-  font-size: 1.5em;
-}
+    position: relative;
+    display: block;
+    top: 2.5%;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+  }
 
-#percents {
-  position: relative;
-  margin: auto;
-  display: block;
+  #percents {
+    position: relative;
+    margin: auto;
+    display: block;
 
-  border-radius: 50%;
-  width: 13em;
-  height: 13em;
-  background: conic-gradient(#008940 3.6deg, #777d89 0deg);
+    border-radius: 50%;
+    width: 13em;
+    height: 13em;
+    background: conic-gradient(#008940 3.6deg, #777d89 0deg);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-#percents::before {
-  content: "";
-  position: absolute;
-  width: 10em;
-  height: 10em;
+  #percents::before {
+    content: "";
+    position: absolute;
+    width: 10em;
+    height: 10em;
 
-  background-color: #cde4df;
-  border-radius: 50%;
-}
+    background-color: #cde4df;
+    border-radius: 50%;
+  }
 
-#indice {
-  z-index: 4;
-  color: black;
-  font-size: 2.5em;
-}
+  #indice {
+    z-index: 4;
+    color: black;
+    font-size: 2.5em;
+  }
 
-#pontos_fortes {
-  color: black;
-  font-size: 1.5em;
+  #pontos_fortes {
+    color: black;
+    font-size: 1.5em;
 
-  position: relative;
-  top: 1em;
-  left: 2em;
-  text-align: left;
-}
+    position: relative;
+    top: 1em;
+    left: 2em;
+    text-align: left;
+  }
 
-#box3 {
-  position: relative;
+  #box3 {
+    position: relative;
 
-  margin: auto;
-  margin-top: 3em;
+    margin: auto;
+    margin-top: 3em;
 
-  width: 95%;
-  height: 90vh;
-  order: 1;
-  display: block;
-  background-color: #cde4df;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
-    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-}
+    width: 95%;
+    height: 90vh;
+    order: 1;
+    display: block;
+    background-color: #cde4df;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+  }
 
-#div1 {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  padding: 4em 0em;
-  align-items: center;
-  width: 100%;
-  height: 15em;
-}
+  #div1 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 4em 0em;
+    align-items: center;
+    width: 100%;
+    height: 15em;
+  }
 
-#div1_1 {
-  justify-content: center;
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 1em;
-}
+  #div1_1 {
+    justify-content: center;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 1em;
+  }
 
-#div1_2 {
-  justify-content: left;
-  flex-direction: column;
-  top: 2em;
-  padding: 3em 1em 0 0;
-  position: static;
-  width: auto;
-  height: 10em;
-}
+  #div1_2 {
+    justify-content: left;
+    flex-direction: column;
+    top: 2em;
+    padding: 3em 1em 0 0;
+    position: static;
+    width: auto;
+    height: 10em;
+  }
 
-#retry {
-  display: block;
-  position: relative;
+  #retry {
+    display: block;
+    position: relative;
 
-  top: 2.5em;
-  left: 85%;
+    top: 2.5em;
+    left: 85%;
 
-  width: 2em;
-  height: 2em;
+    width: 2em;
+    height: 2em;
 
-  transition: all 0.3s ease-in-out;
-  z-index: 5;
-}
+    transition: all 0.3s ease-in-out;
+    z-index: 5;
+  }
 
-#retry:hover {
-  transform: scale(1.05);
-}
+  #retry:hover {
+    transform: scale(1.05);
+  }
 
-#foto_professor {
-  width:8em;
-  height: 12em;
+  #foto_professor {
+    width: 8em;
+    height: 8em;
 
+    position: relative;
+    display: inline-block;
+  }
 
-  position: relative;
-  display: inline-block;
-}
+  #Professor {
+    display: inline-block;
+    font-size: 1em;
+    position: relative;
+    width: fit-content;
+    height: auto;
+  }
 
-#Professor {
-  display: inline-block;
-  font-size: 1em;
-  position: relative;
-  width: fit-content;
-  height: auto;
-}
+  #Faculdade {
+    display: block;
+    font-size: 1em;
+    font-weight: 400;
+    position: relative;
+  }
 
-#Faculdade {
-  display: block;
-  font-size: 1em;
-  font-weight: 400;
-  position: relative;
-}
+  #Materias_ofertadas {
+    position: relative;
+    display: block;
+    top: 2.5%;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+  }
 
-#Materias_ofertadas {
-  position: relative; 
-  display:block; 
-  top: 2.5%; 
-  text-align: center; 
-  width: 100%;
-  font-size: 1.5em;
-}
+  #box_materias a {
+    text-decoration: none;
+    width: 100%;
+    left: -0.5em;
+  }
 
-#box_materias a {
-  text-decoration: none;
-  width: 100%;
-  left: -0.5em;
-}
+  #box_materias {
+    display: block;
+    position: relative;
 
-#box_materias {
-  display: block;
-  position: relative;
+    width: auto;
+    height: auto;
 
-  width: auto;
-  height: auto;
+    top: 5%;
+  }
 
-  top: 5%;
-}
+  #scroll_materias {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 5%;
 
-#scroll_materias {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  top: 5%;
+    margin: auto;
+    padding: 0.5em;
+    width: 70%;
+    height: 18em;
 
-  margin: auto;
-  padding: 0.5em;
-  width: 70%;
-  height: 18em;
+    text-align: center;
+    justify-items: center;
+    overflow-y: auto;
+  }
 
-  text-align: center;
-  justify-items: center;
-  overflow-y: auto;
-}
+  #scroll_materias::-webkit-scrollbar {
+    width: 15px;
+    height: auto;
+    margin-left: 10px;
+  }
 
-#scroll_materias::-webkit-scrollbar {
-  width: 15px;
-  height: auto;
-  margin-left: 10px;
-}
+  .materias {
+    display: block;
+    position: relative;
+    text-align: center;
 
-.materias {
-  display: block;
-  position: relative;
-  text-align: center;
+    color: whitesmoke;
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #0b4c8c;
+    border-radius: 25px;
+    box-shadow: 0 5px 1px #093a6c;
+    padding: 1em 0.5em;
 
-  color: whitesmoke;
-  font-size: 1em;
-  font-weight: 700;
-  background-color: #0b4c8c;
-  border-radius: 25px;
-  box-shadow: 0 5px 1px #093a6c;
-  padding: 1em 0.5em;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0.5em;
+    height: auto;
 
-  cursor: pointer;
-  width: fit-content;
-  margin:0.5em;
-  height: auto;
+    transition: all 0.3s ease;
+  }
 
-  transition: all 0.3s ease;
-}
+  .materias:hover {
+    transform: scale(1.05);
+  }
 
-.materias:hover {
-  transform: scale(1.05);
-}
-
-.materias:active {
-  transform: scale(0.95);
-  box-shadow: 0 5px 1px #0b4c8c;
-}
-
-
+  .materias:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 1px #0b4c8c;
+  }
 }
