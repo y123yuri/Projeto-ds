@@ -422,14 +422,14 @@ ul {
 
 #box1 {
     position: relative;
-
     margin-right: 3em;
 
     width: 100%;
     height: 36em;
     padding: 1em;
 
-    display: block;
+    display: flex;
+    flex-direction: column;
 
     background-color: #CDE4DF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
@@ -438,7 +438,7 @@ ul {
 
 #avaliacao {
     margin-top: 1em;
-    height: 25em;
+    height: 26em;
 }
 
 .CampoFalado1 {
@@ -495,7 +495,6 @@ ul {
     position: relative;
     width: auto;
 
-    bottom: 0.5em;
     display: block;
     text-align: center;
 
@@ -507,7 +506,7 @@ ul {
     color: whitesmoke;
     padding: 0.5em;
     margin: 0.5em;
-    top: 1em;
+    top: -0.5em;
 
     font-size: 1.75em;
     transition: all 0.3s ease;
@@ -806,7 +805,8 @@ table caption {
 }
 
 #comentarios {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     margin: auto;
 
@@ -821,7 +821,7 @@ table caption {
 
 #box_comentarios {
     width: auto;
-    height: auto;
+    height: 15em;
 }
 
 #scroll {
@@ -1075,10 +1075,11 @@ table caption {
 
 }
 
-#submit {
+#submit_denuncia {
     display: block;
-    font-size: 1.5em;
+    font-size: 1.75em;
     background-color: #0B4C8C;
+    border: none;
     border-radius: 15px;
     color: whitesmoke;
     width: 7em;
@@ -1096,11 +1097,11 @@ table caption {
     margin: 0 15px;
 }
 
-#enviar_button:hover {
+#submit_denuncia:hover {
     transform: scale(1.05);
 }
 
-#enviar_button:active {
+#submit_denuncia:active {
     transform: scale(1);
 }
 
@@ -1115,32 +1116,45 @@ table caption {
     }
 }
 
-#comentar_box input {
-    display: block;
+#comentar_box {
+    display: flex;
+    flex-direction: row;
     position: absolute;
-    top: 10em;
+    bottom: 1.5em;
+    width: 100%;
+    height: 4.5em;
 
-    font-size: 1.5em;
-    padding: 0 4em 0 1em;
-    color: #777D89;
+   
 
     margin: 0.5em;
     border: none;
     width: 95%;
-    height: 2em;
+    height: 2.5em;
 
     background-color: #E8E7E8;
     border-radius: 25px;
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
     cursor: pointer;
+
+}
+
+#comentar_input {
+    width: 90%;
+    font-size: 1.5em;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding-left: 1em;
+    color: #777D89;
+    border: none;
+    background-color: transparent;
 }
 
 #send_button {
+    width: fit-content;
+    font-size: 1.5em;
+    margin:auto;
     position: relative;
     display: block;
-
-    top: 4.5em;
-    left: 90%;
     z-index: 2;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1173,18 +1187,49 @@ table caption {
 }
 
 @media screen and (max-width: 767px) {
+    
+    #fundo_blur {
+        width: 100%;
+        height: 150vh;
+        position: fixed;
+        
+        display: none;
+        background-color: hsla(0, 0%, 0%, 0.8);
+        backdrop-filter: blur(50px);
+        z-index: 3;
+    }
 
-#fundo_blur {
-    width: 100%;
-    height: 150vh;
-    position: fixed;
-
-    display: none;
-    background-color: hsla(0, 0%, 0%, 0.8);
-    backdrop-filter: blur(50px);
-    z-index: 3;
+#space_text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top:1em;
 }
 
+#stars {
+    display: flex;
+    flex-direction: column;
+    top:2em;
+    width: 100%;
+    height: 6em;
+    
+    position: relative;
+}
+
+.rating_modal {
+    position: static;
+    margin: auto;
+    margin-top:1em;
+    display: block;
+    width: fit-content;
+    height: 5em;
+
+    padding: 0.5em 0.5em;
+    background-color: #0000002a;
+
+    border: solid 1.5px #0000002a;
+    float: left;
+}
 .CampoFalado1_modal {
     color: black;
     display: block;
@@ -1197,26 +1242,20 @@ table caption {
     color: black;
     text-align: center;
     display: block;
-
-
-    position: relative;
-    top: 1.5em;
-    font-size: 2.5em;
+    margin: 0 auto;
+    position: static;
+    font-size: 1.75em;
     font-weight: 700;
 }
 
 .CampoFalado3_modal {
-
+    
     display: block;
     color: #50545c;
     text-align: center;
-
-    position: relative;
-
-    top: 3.5em;
-
-    margin: 0 5em;
-    font-size: 1em;
+    margin: 0 1em;
+    position: static;
+    font-size: 0.85em;
     font-weight: 700;
 }
 
@@ -1230,14 +1269,13 @@ table caption {
 }
 
 #box_modal_4 .CampoFalado3_modal {
-
+    
     display: block;
     color: black;
     text-align: center;
-
-    position: relative;
-
-    top: 3em;
+    
+    position: static;
+    
 
     margin: 0 0.5em;
     font-size: 1.25em;
@@ -1245,19 +1283,19 @@ table caption {
 }
 
 #button_box {
-
-    margin: auto;
+    
+    margin: 1em auto;
     align-items: center;
-
-    width: 20em;
-    height: 6em;
-
+    
+    width: 80%;
+    height: 4em;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     position: relative;
-    top: 5em;
-
+    top: 2.5em;
+    
     background-color: #0000002a;
     border: 1px solid gray;
 }
@@ -1271,11 +1309,11 @@ table caption {
 }
 
 .button {
-    width: 7em;
+    width: 5em;
     height: 2em;
     padding: 0.5em 0.5em;
     color: whitesmoke;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 600;
     border: none;
     border-radius: 15px;
@@ -1301,13 +1339,9 @@ table caption {
 #boxes_modal {
     display: flex;
     flex-direction: row;
-    position: relative;
-
-    margin: 0 2.5em;
-
-    width: 135em;
-    height: 24em;
-    overflow-y: hidden;
+    position: static;
+    width: 100em;
+    margin:0;
 }
 
 #modal_avaliacao {
@@ -1317,35 +1351,35 @@ table caption {
     text-align: center;
     justify-content: center;
     padding: 0em 1em 2em 1em;
-    width: 40em;
+    width: 95%;
     height: 30em;
     background-color: #CDE4DF;
     border-radius: 25px;
     box-shadow: 0 0 10px black;
     z-index: 4;
-
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    
 }
 
 #scroll_modal {
-    display: block;
     position: relative;
-    width: 38em;
+    width: auto;
     height: auto;
     background-color: #b1c5c0;
     border-radius: 15px;
-    overflow-x: hidden;
+    overflow-x: scroll;
 }
 
 .boxes_modal {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    margin: 0.5em 3em;
-    width: 100%;
+    width: 20em;
     height: 22em;
+    
     background-color: #CDE4DF;
     border-radius: 25px;
     box-shadow: 0 0 10px black;
@@ -1359,8 +1393,12 @@ table caption {
     position: relative;
     width: 100%;
     height: 4em;
-    top: 10em;
+    top: 6em;
     text-align: center;
+}
+
+#box_modal_1.boxes_modal {
+    margin-left: 0.85em;
 }
 
 #box_modal_2 .espaco_buttons {
@@ -1370,7 +1408,7 @@ table caption {
     position: relative;
     width: 100%;
     height: 4em;
-    top: 9em;
+    top: 4em;
     text-align: center;
 }
 
@@ -1381,7 +1419,7 @@ table caption {
     position: relative;
     width: 100%;
     height: 4em;
-    top: 10em;
+    top: 6em;
     text-align: center;
 }
 
@@ -1392,7 +1430,7 @@ table caption {
     position: relative;
     width: 100%;
     height: 4em;
-    top: 12em;
+    top: 5.65em;
     text-align: center;
 }
 
@@ -1414,20 +1452,19 @@ table caption {
 .prox_button,
 .back_button {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1em;
     background-color: #0B4C8C;
     border-radius: 15px;
     color: whitesmoke;
-    width: 7em;
+    width: 6em;
     height: 2em;
     text-align: center;
     z-index: 10;
     padding: 0.5em 1em;
-    position: relative;
-    top: -2.5em;
+    position: static;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 0 15px;
+    margin: auto 15px;
     /* Espaçamento entre os botões */
 }
 
@@ -1441,19 +1478,6 @@ table caption {
     transform: scale(0.95);
 }
 
-.rating_modal {
-    position: relative;
-    display: block;
-
-    left: 6em;
-    top: 5em;
-
-    padding: 0.5em 0.5em;
-    background-color: #0000002a;
-
-    border: solid 1.5px #0000002a;
-    float: left;
-}
 
 #box_modal_2 .rating_modal {
     top: 4em;
@@ -1467,7 +1491,7 @@ table caption {
     content: '\f005';
     font-family: FontAwesome;
     margin: 5px;
-    font-size: 2.5em;
+    font-size: 1.75em;
     display: inline-block;
     cursor: pointer;
 }
@@ -1553,10 +1577,11 @@ table caption {
 #box1 {
     position: relative;
     width: 95%;
-    height: 36em;
+    height: 33em;
     padding: 1em;
     margin: auto;
-    display: block;
+    display: flex;
+    flex-direction: column;
     background-color: #CDE4DF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
@@ -1569,7 +1594,7 @@ table caption {
 
 .CampoFalado1 {
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     margin-bottom: 0.5em;
 }
@@ -1577,7 +1602,7 @@ table caption {
 .CampoFalado2 {
     color: black;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: 700;
 }
 
@@ -1598,7 +1623,7 @@ table caption {
     content: '\f005';
     font-family: FontAwesome;
     margin: 5px;
-    font-size: 2.5em;
+    font-size: 1.5em;
     display: inline-block;
     cursor: pointer;
 }
@@ -1621,7 +1646,7 @@ table caption {
     position: relative;
     width: auto;
 
-    bottom: 0.5em;
+    top:-0.5em;
     display: block;
     text-align: center;
 
@@ -1633,9 +1658,8 @@ table caption {
     color: whitesmoke;
     padding: 0.5em;
     margin: 0.5em;
-    top: 1em;
 
-    font-size: 1.75em;
+    font-size: 1.5em;
     transition: all 0.3s ease;
 }
 
@@ -1656,8 +1680,8 @@ table caption {
     width: 95%;
     height: 20em;
     padding: 1em;
-
     display: block;
+    top:2em;
 
     background-color: #CDE4DF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
@@ -1666,7 +1690,7 @@ table caption {
 
 .CampoFalado1_box2 {
     color: black;
-    font-size: 2em;
+    font-size: 1.75em;
     text-align: center;
 }
 
@@ -1765,9 +1789,10 @@ table caption {
 
 #Materia {
     display: block;
-    font-size: 2em;
-    margin: 2em 1em 0.25em 1em;
+    font-size: 1.75em;
 
+    margin: auto;
+    margin-top: 2em;
 }
 
 #Prof {
@@ -1931,7 +1956,7 @@ table caption {
     position: relative;
     margin: auto;
 
-    width: 90%;
+    width: 95%;
     height: 20em;
     margin-bottom: 3em;
     margin-top: 2.5em;
@@ -1942,7 +1967,7 @@ table caption {
 
 #box_comentarios {
     width: auto;
-    height: auto;
+    height: 8.5em;
 }
 
 #scroll {
@@ -1971,7 +1996,7 @@ table caption {
 }
 
 .usuarios {
-    font-size: 1.5em;
+    font-size: 1.25em;
     margin-left: 1em;
 
     display: block;
@@ -1983,7 +2008,7 @@ table caption {
 }
 
 .comentarios {
-    font-size: 1.25em;
+    font-size: 1em;
     margin-left: 2em;
     margin-right: 2em;
 
@@ -2005,7 +2030,7 @@ table caption {
     /* background-color: #00894062; */
 
     margin-left: 2em;
-    width: 25em;
+    width: fit-content;
     height: auto;
 }
 
@@ -2026,6 +2051,7 @@ table caption {
     cursor: pointer;
     margin-left: 1em;
     margin-right: 1em;
+    font-size: 1em;
 
 }
 
@@ -2035,7 +2061,7 @@ table caption {
     outline: none;
     background: transparent;
     border: none;
-    font-size: 1em;
+    font-size: 0.75em;
     position: relative;
     cursor: pointer;
     color: gray;
@@ -2044,7 +2070,7 @@ table caption {
 #report {
     background: transparent;
     border: none;
-    font-size: 1em;
+    font-size: 0.85em;
     position: relative;
     cursor: pointer;
     color: gray;
@@ -2236,32 +2262,43 @@ table caption {
     }
 }
 
-#comentar_box input {
-    display: block;
+#comentar_box {
+    display: flex;
+    flex-direction: row;
     position: absolute;
-    top: 10em;
-
-    font-size: 1.5em;
-    padding: 0 4em 0 1em;
-    color: #777D89;
+    bottom: 1.25em;
+    width: 100%;
+    height: 4.5em;
 
     margin: 0.5em;
     border: none;
     width: 95%;
-    height: 2em;
+    height: 2.5em;
 
     background-color: #E8E7E8;
     border-radius: 25px;
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
     cursor: pointer;
+
+}
+
+#comentar_input {
+    width: 85%;
+    font-size: 1em;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding-left: 1em;
+    color: #777D89;
+    border: none;
+    background-color: transparent;
 }
 
 #send_button {
+    width: fit-content;
+    font-size: 1em;
+    margin:auto;
     position: relative;
     display: block;
-
-    top: 4.5em;
-    left: 90%;
     z-index: 2;
     cursor: pointer;
     transition: all 0.3s ease;

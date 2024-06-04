@@ -80,10 +80,14 @@
         <div id="scroll_modal">
           <div id="boxes_modal">
             <div class="boxes_modal" id="box_modal_1">
-              <h2 class="CampoFalado2_modal">Didática</h2>
-              <h4 class="CampoFalado3_modal">Avalie a didática utilizada pelo professor ao aplicar a matéria</h4>
 
-              <fieldset class="rating_modal" id="Didatica">
+              <div id="space_text">
+                <h2 class="CampoFalado2_modal">Didática</h2>
+                <h4 class="CampoFalado3_modal">Avalie a didática utilizada pelo professor ao aplicar a matéria</h4>
+              </div>
+              
+              <div id="stars">
+                <fieldset class="rating_modal" id="Didatica">
                 <input type="radio" id="star5_Didatica" name="rating_Didatica" value="5" /><label for="star5_Didatica" class="full" title="Awesome"></label>
                 <input type="radio" id="star4.5_Didatica" name="rating_Didatica" value="4.5" /><label for="star4.5_Didatica" class="half" title="Awesome"></label>
                 <input type="radio" id="star4_Didatica" name="rating_Didatica" value="4" /><label for="star4_Didatica" class="full" title="Awesome"></label>
@@ -97,6 +101,8 @@
 
                 <h3 id="notas_Didatica">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
+              </div>
+              
 
               <div class="espaco_buttons">
                 <h2 class="prox_button" id="prox_button_1">Próximo</h2>
@@ -104,9 +110,13 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_2">
-              <h2 class="CampoFalado2_modal">Apoio ao aluno</h2>
-              <h4 class="CampoFalado3_modal">Informe sobre a disponibilidade de materiais e serviços ao aluno como exercícios, resolução de dúvidas, entre outros complementos</h4>
 
+              <div id="space_text">
+                <h2 class="CampoFalado2_modal">Apoio ao aluno</h2>
+                <h4 class="CampoFalado3_modal">Informe sobre a disponibilidade de materiais e serviços ao aluno como exercícios, resolução de dúvidas, entre outros complementos</h4>
+              </div>
+
+              <div id="stars">
               <fieldset class="rating_modal" id="Monitoria">
                 <input type="radio" id="star5_Monitoria" name="rating_Monitoria" value="5" /><label for="star5_Monitoria" class="full" title="Awesome"></label>
                 <input type="radio" id="star4.5_Monitoria" name="rating_Monitoria" value="4.5" /><label for="star4.5_Monitoria" class="half" title="Awesome"></label>
@@ -121,6 +131,7 @@
 
                 <h3 id="notas_Monitoria">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
+              </div>
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_1">Voltar</h2>
@@ -129,10 +140,14 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_3">
-              <h2 class="CampoFalado2_modal">Dificuldade</h2>
-              <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
+              
+              <div id="space_text">
+                <h2 class="CampoFalado2_modal">Dificuldade</h2>
+                <h4 class="CampoFalado3_modal">Informe sua dificuldade ao realizar essa matéria</h4>
+              </div>
 
-              <fieldset class="rating_modal" id="Dificuldade">
+              <div id="stars">
+                <fieldset class="rating_modal" id="Dificuldade">
                 <input type="radio" id="star5_Dificuldade" name="rating_Dificuldade" value="5" />
                 <label for="star5_Dificuldade" class="full" title="Awesome"></label>
                 <input type="radio" id="star4.5_Dificuldade" name="rating_Dificuldade" value="4.5" /><label for="star4.5_Dificuldade" class="half" title="Awesome"></label>
@@ -147,15 +162,20 @@
 
                 <h3 id="notas_Dificuldade">0 de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
               </fieldset>
-
+              </div>
+              
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_2">Voltar</h2>
                 <h2 class="prox_button" id="prox_button_3">Próximo</h2>
               </div>
+
             </div>
 
             <div class="boxes_modal" id="box_modal_4">
-              <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
+
+              <div id="space_text">
+                <h4 class="CampoFalado3_modal">Você indicaria "{{ turma.professor.nome }}" como um(a) professor(a):</h4>
+              </div>
 
               <div id="button_box">
                 <h2 class="button" id="sim">Sim</h2>
@@ -237,7 +257,7 @@
             <h2 style="text-align:center;">avaliações: {{ total_avaliadores }}</h2>
           </div>
 
-          <hr style="margin: 1em; position: relative; top: 1em" />
+          <hr style="margin: 1em; position: relative;"/>
 
           <h2 id="Fazer_avaliacao">Fazer a avaliação</h2>
         </div>
@@ -398,7 +418,9 @@
           <div id="box_comentarios">
             <div id="scroll">
               {% for comentario in comentarios %}
-                <div id="comentario{{ forloop.counter0 }}">
+
+              
+              <div id="comentario{{ forloop.counter0 }}">
                   <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
                   <h3 class="comentarios">
                     {{ comentario.texto }} <br />
@@ -416,12 +438,13 @@
                     </div>
                   </div>
                 </div>
-              {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
+                <hr style="margin: 2em 2em 0 2em ">
+                {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
 
           <div id="comentar_box">
-            <input id="comentar" contenteditable="true" type="text" placeholder="Fazer comentário" />
+            <input id="comentar_input" type="text" placeholder="Fazer comentário" />
             <img onclick="postar_comentario()" id="send_button" src="{% static 'image/Email Send.png' %}" />
           </div>
         </div>

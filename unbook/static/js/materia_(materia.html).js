@@ -25,43 +25,82 @@ modal.addEventListener('click', (e) => {
 
 // FUNÇÃO PARA RODAR SCROLL
 
+if(window.matchMedia("(max-width:764px)").matches) {
+    var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 410, behavior: "smooth" })
+    });
+    
+    var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -410, behavior: "smooth" })
+    });
+    
+    var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 409.75, behavior: "smooth" })
+    });
+    
+    var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -409.75, behavior: "smooth" })
+    });
+    
+    var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 408.75, behavior: "smooth" })
+    });
+    
+    var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -408.75, behavior: "smooth" })
+    });
+    
+    var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    });
+}
+else {
+    var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 540, behavior: "smooth" })
+    });
+    
+    var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -540, behavior: "smooth" })
+    });
+    
+    var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 540, behavior: "smooth" })
+    });
+    
+    var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -540, behavior: "smooth" })
+    });
+    
+    var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: 540, behavior: "smooth" })
+    });
+    
+    var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
+        e.preventDefault()
+        scroll_x.scrollBy({ left: -540, behavior: "smooth" })
+    });
+    
+    var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    });
 
+}
 
-var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
-
-var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
-
-var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
-
-var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
-
-var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: 540, behavior: "smooth" })
-});
-
-var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
-    e.preventDefault()
-    scroll_x.scrollBy({ left: -540, behavior: "smooth" })
-});
-
-var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
-    e.preventDefault()
-    fundoblur.style.display = "none";
-    modal.style.display = "none";
-});
 
 
 
@@ -128,7 +167,7 @@ function pintar_estrela_tela(nota, categoria){
     }
 }
 
-document.querySelector('#comentar').addEventListener('keydown', function (event) {
+document.querySelector('#comentar_input').addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
         postar_comentario();
     }
@@ -266,7 +305,7 @@ function pintar(element) {
 //FUNÇÃO PARA POSTAR O COMENTARIO ESCRITO
 function postar_comentario() {
 
-    var conteudo = document.getElementById("comentar").value.trim();
+    var conteudo = document.getElementById("comentar_input").value.trim();
     console.log(conteudo)
 
     if (conteudo !== "") {
@@ -285,7 +324,8 @@ function postar_comentario() {
         comentario.innerText = conteudo;
 
         var espaco_curtidas = document.createElement('div');
-        const curtidas_style = document.querySelector('.curtidas');
+        espaco_curtidas.style.marginLeft = "4em"
+        const curtidas_style = document.getElementById('comentario_buttons');
         if (curtidas_style) {
             const computedStyle = getComputedStyle(curtidas_style);
 
@@ -301,7 +341,7 @@ function postar_comentario() {
         var Gostei = document.createElement('h3');
         Gostei.innerText = "Gostei";
         
-        const gosteiEstilo = document.querySelector('.Gostei');
+        const gosteiEstilo = document.querySelector('.text ');
     if (gosteiEstilo) {
         const computedStyle = getComputedStyle(gosteiEstilo);
         Gostei.style.fontSize = computedStyle.fontSize;
@@ -359,11 +399,12 @@ function postar_comentario() {
         scroll.appendChild(comentarioBox);
 
         comentarioBox.scrollIntoView({ behavior: "smooth" });
-        document.getElementById('comentar').value = ' ';
+        document.getElementById('comentar_input').value = ' ';
 
         
     }
     comentario_back(conteudo)
+
 }
 
 function comentario_back(conteudo){
