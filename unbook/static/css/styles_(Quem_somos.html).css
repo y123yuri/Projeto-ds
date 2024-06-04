@@ -8,7 +8,7 @@ html {
     background-color: #333748;
     width: 100%;
 
-    height: 100vh;
+    height: 200vh;
     overflow-y: auto;
 }
 
@@ -218,4 +218,105 @@ a:hover {
     z-index: 9;
     transition: all 0.3s ease;
     filter: blur(2px);
+}
+
+#fundo_verde {
+background-color: #34c57a;
+width: 100%;
+height: fit-content;
+position: relative;
+display: block;
+top: 100vh;
+z-index: 20;
+text-align: center;
+align-items: end;
+}
+
+#titlao{
+    font-size: 3em;
+    padding: 0.5em;
+    color: whitesmoke;
+    position: relative;
+}
+
+#div_1 {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: space-around;
+    width: 40%;   
+    height: 28em;
+}
+
+#div_2 {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-evenly;
+    width: 100%;  
+    height: 25em; 
+}
+#equipes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#ajuste {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 6em 1em 0.5em;
+}
+
+#space_front {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#space_back {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    font-size: 2em;
+    color: whitesmoke;
+    margin: 0.5em;
+}
+
+
+.povo {
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    margin: auto;
+}
+
+.image {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 15em;
+    height: 20em;
+    background-color: #333748;
+    z-index: 20;
+}
+
+#div_2 .image {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 15em;
+    height: 20em;
+    background-color: #4f68d7;
+    z-index: 20;
+}
+
+#div_2 section{
+    margin: 0 1em;
 }

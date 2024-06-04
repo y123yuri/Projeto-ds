@@ -2,174 +2,193 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <title>Quem somos?</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
-  <title>Quem somos?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+    <link rel="stylesheet" href="{% static 'css/styles_(Quem_somos.html).css' %}" /> <!-- LINK PARA O CSS DA PAGINA -->
+  </head>
 
-  <link rel="stylesheet" href="{% static "css/styles_(Quem_somos.html).css"%}"> <!--LINK PARA O CSS DA PAGINA -->
+  <body>
+    <a id="voltar" href="../">Voltar</a>
 
-</head>
+    <div id="montain">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1198 448" fill="none" style=" position: fixed; top: -10%; z-index: 1">
+        <path d="M720 0L794.5 233.5L853.5 244.5L907.927 233.5L949 223.875L974.5 194.5L994 223.875L1042.5 255.5L1120 262L1197.5 268.5V445.5L907.927 447.75H532.073H-3L1 229L25 276.5L75 302L184.5 262.5L228 245L264.5 183.5L306 169L349.5 122.5L387 202.5L429.5 255.5L488.5 213.5L532.073 194.5L565 145L626.036 223.875L685.5 117.5L720 0Z" fill="#D9D9D9" />
+      </svg>
 
-<body>
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1199 447" fill="none" style="position: fixed; top: -7.5%; z-index: 2;">
+        <path d="M719.062 0L830.605 223.25L858.5 246L899 238.5L922 231L939 226L957 218.5L963 211.5L974.5 207L982 218.5L994.5 223.25L1010 231L1031 248L1062 258L1129.5 270.5L1199 278V447H-3V258L33.5 293L57 308.5L86.5 312.5L132.5 288L183 278.5L237.5 245L259 214L291.5 156H317.5H347L369 167.5L398.5 214L432.5 249.5L448 258L502 217.5L546.5 206.5L581.5 184L607 214L624 229.5L632.5 217.5L690 118.5L719.062 0Z" fill="#696969" />
+      </svg>
 
-  <a id="voltar" href="../"> Voltar </a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1203 191" fill="none" style="position: fixed; top:0%; z-index: 3;">
+        <path d="M732.5 14.5L768.5 0H806L827.5 43.5L846.5 69.5L879.5 79.5H927.5L960.5 73L983 55.5L1000 73L1030.5 84.5L1082.5 102L1150 111L1201.5 125.5V274.924H935.5H548.5H-3.5V147.5L28 127.5L93 154L135.5 127.5H169.5L222.25 97.5L265 68.5L284 29L320.5 34.5L343 14.5L372.25 54L401.5 79L447 98.5L478 79L520.5 56.5L551 47.5L580 29L607.5 47.5L618.5 73L640.5 43.5L660.5 34.5L701.5 29L732.5 14.5Z" fill="#3A3A3A" />
+      </svg>
 
-  <div id="montain">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1203 191" fill="none" style="position: fixed; top:20%; z-index: 4;">
+        <path d="M732.73 20.4935L768.778 11H806.328H865L900.5 33.5881L947.5 20.4935L1016.5 33.5881L1099 70L1203 76.5V191H-2.5V98L30 70L88 90.5L127.5 76.5L172 55.5H240.5L260 20.4935L295 0L327 11L368.5 0L413.5 43H482L553 11H599L660.635 33.5881L701.689 29.9871L732.73 20.4935Z" fill="#343434" />
+      </svg>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1198 448" fill="none"
-      style=" position: fixed; top: -10%; z-index: 1">
-      <path
-        d="M720 0L794.5 233.5L853.5 244.5L907.927 233.5L949 223.875L974.5 194.5L994 223.875L1042.5 255.5L1120 262L1197.5 268.5V445.5L907.927 447.75H532.073H-3L1 229L25 276.5L75 302L184.5 262.5L228 245L264.5 183.5L306 169L349.5 122.5L387 202.5L429.5 255.5L488.5 213.5L532.073 194.5L565 145L626.036 223.875L685.5 117.5L720 0Z"
-        fill="#D9D9D9" />
-    </svg>
+      <div style="display:block; position: fixed; top: 80%; background-color: #343434; width: 100%; height: 50%; z-index:5"></div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1199 447" fill="none"
-      style="position: fixed; top: -7.5%; z-index: 2;">
-      <path
-        d="M719.062 0L830.605 223.25L858.5 246L899 238.5L922 231L939 226L957 218.5L963 211.5L974.5 207L982 218.5L994.5 223.25L1010 231L1031 248L1062 258L1129.5 270.5L1199 278V447H-3V258L33.5 293L57 308.5L86.5 312.5L132.5 288L183 278.5L237.5 245L259 214L291.5 156H317.5H347L369 167.5L398.5 214L432.5 249.5L448 258L502 217.5L546.5 206.5L581.5 184L607 214L624 229.5L632.5 217.5L690 118.5L719.062 0Z"
-        fill="#696969" />
-    </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="9.5%" height="100%" viewBox="0 0 119 152" fill="none" style="position: fixed; top:-36.5%; left:55.85%; z-index: 5;">
+        <path d="M53.2172 0L69.5407 33.5L85.8643 67L118.5 132.5H102.125L95 143L78.5 138.5L64 128.5L45.5 135.5L32 152L14 147L0 152L53.2172 0Z" fill="white" />
+      </svg>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1203 191" fill="none"
-      style="position: fixed; top:0%; z-index: 3;">
-      <path
-        d="M732.5 14.5L768.5 0H806L827.5 43.5L846.5 69.5L879.5 79.5H927.5L960.5 73L983 55.5L1000 73L1030.5 84.5L1082.5 102L1150 111L1201.5 125.5V274.924H935.5H548.5H-3.5V147.5L28 127.5L93 154L135.5 127.5H169.5L222.25 97.5L265 68.5L284 29L320.5 34.5L343 14.5L372.25 54L401.5 79L447 98.5L478 79L520.5 56.5L551 47.5L580 29L607.5 47.5L618.5 73L640.5 43.5L660.5 34.5L701.5 29L732.5 14.5Z"
-        fill="#3A3A3A" />
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1203 191" fill="none"
-      style="position: fixed; top:20%; z-index: 4;">
-      <path
-        d="M732.73 20.4935L768.778 11H806.328H865L900.5 33.5881L947.5 20.4935L1016.5 33.5881L1099 70L1203 76.5V191H-2.5V98L30 70L88 90.5L127.5 76.5L172 55.5H240.5L260 20.4935L295 0L327 11L368.5 0L413.5 43H482L553 11H599L660.635 33.5881L701.689 29.9871L732.73 20.4935Z"
-        fill="#343434" />
-    </svg>
-
-    <div
-      style="display:block; position: fixed; top: 80%; background-color: #343434; width: 100%; height: 50%; z-index:5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="9.5%" height="100%" viewBox="0 0 113 94" fill="none" style="position: fixed; top:-25%; left:22%; z-index: 5;">
+        <path d="M57.5 0.5L68.5 17L91.5 30.5L113 82.602L102.556 80.5296L95.4008 87.7829L78.8312 84.6743L64.27 77.7664L45.692 82.602L32.135 94L14.0591 90.5461L0 94L23 43.5L42 8L57.5 0.5Z" fill="white" />
+      </svg>
     </div>
 
+    <div id="fundo_luz">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1199 359" fill="none" style="position: fixed; top: -5%; z-index:-1">
+        <path d="M0 136L1199 0V359H0V136Z" fill="#575D77" />
+      </svg>
+    </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="9.5%" height="100%" viewBox="0 0 119 152" fill="none"
-      style="position: fixed; top:-36.5%; left:55.85%; z-index: 5;">
-      <path
-        d="M53.2172 0L69.5407 33.5L85.8643 67L118.5 132.5H102.125L95 143L78.5 138.5L64 128.5L45.5 135.5L32 152L14 147L0 152L53.2172 0Z"
-        fill="white" />
-    </svg>
+    <div id="sol"></div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="9.5%" height="100%" viewBox="0 0 113 94" fill="none"
-      style="position: fixed; top:-25%; left:22%; z-index: 5;">
-      <path
-        d="M57.5 0.5L68.5 17L91.5 30.5L113 82.602L102.556 80.5296L95.4008 87.7829L78.8312 84.6743L64.27 77.7664L45.692 82.602L32.135 94L14.0591 90.5461L0 94L23 43.5L42 8L57.5 0.5Z"
-        fill="white" />
-    </svg>
+    <div id="fundo_blur">
+      <h1 id="contador">0 de 7</h1>
 
-  </div>
+      <h2 id="primeiro" class="h2s">
+        Olá, muito prazer!
 
-  <div id="fundo_luz">
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1199 359" fill="none"
-      style="position: fixed; top: -5%; z-index:-1">
-      <path d="M0 136L1199 0V359H0V136Z" fill="#575D77" />
-    </svg>
-  </div>
+        Nós somos a UnBook
 
-  <div id="sol"></div>
+        e ficamos muito felizes por você querer saber mais sobre nós e sobre nosso projeto!
+      </h2>
 
+      <h2 class="h2_escondido">
+        Nós pertencemos ao feudo Flor de Cerejeira,
 
-  <div id="fundo_blur">
+        um dos feudos participantes da matéria "Desenvolvimento de software",
 
-    <h1 id="contador"> 0 de 7</h1> 
+        regida pelo professor Sérgio Antônio.
 
-    <h2 id="primeiro" class="h2s"> Olá, muito prazer!
-      
-      Nós somos a UnBook 
-      
-      e ficamos muito felizes por você querer saber mais sobre nós e sobre nosso projeto!</h2>
+        Se você estiver mais interessado em conhecer os participantes desse feudo estamos mais a baixo da página!
+      </h2>
 
-    <h2 class="h2_escondido">
-      Nós pertencemos ao feudo <span style="color:darkorchid"> Flor de Cerejeira </span>,
-      
-      um dos feudos participantes da matéria "Desenvolvimento de software",
+      <h2 class="h2_escondido">
+        Continuando,
 
-      regida pelo professor Sérgio Antônio.
-    </h2>
+        Nessa matéria os alunos são desafiados ao decorrer do semestre a criar um produto de software,
 
-    <h2 class="h2_escondido">
-      Nessa matéria os alunos são desafiados ao decorrer do semestre a criar um produto de software, 
-      
-           
-      talvez seja por isso o nome da matéria ser... enfim,
-    </h2>
+        talvez seja por isso o nome da matéria ser... enfim,
+      </h2>
 
-    <h2 class="h2_escondido"> E nesse caso... </h2>
+      <h2 class="h2_escondido">E nesse caso...</h2>
 
-    <h2 class="h2_escondido">Criamos a UnBook,
-      
-      um site interativo e inteligente,
-      
-      que foi criado com a finalidade de falicitar a comunicação e o acesso a informações entre professores e alunos da Universidade de Brasília. </h2>
+      <h2 class="h2_escondido">
+        Criamos a UnBook,
 
-    <h2 class="h2_escondido"> Uma vez que, o site concede as informações relevantes sobre a matéria e, além disso permite que os alunos possam disponibilizar em domínio público materiais que possam ajudar outros alunos, como links de vídeos, livros, PDFs e atividades... 
-     </h2>
+        um site interativo e inteligente,
 
-     <h2 class="h2_escondido"> Por fim... </h2>
+        que foi criado com a finalidade de falicitar a comunicação e o acesso a informações entre professores e alunos da Universidade de Brasília.
+      </h2>
 
-     <h2 class="h2_escondido"> Expressamos profunda gratidão pela sua atenção e confiança em nosso projeto.
-      
-      Desejamos que sua pesquisa seja excepcional e que você se sinta verdadeiramente acolhido ao explorar o site UnBook! 
-     </h2>
+      <h2 class="h2_escondido">Uma vez que, o site concede as informações relevantes sobre a matéria e, além disso permite que os alunos possam disponibilizar em domínio público materiais que possam ajudar outros alunos, como links de vídeos, livros, PDFs e atividades...</h2>
 
-    <div id="button_prox" onclick="proximo()"> Avançar </div>
+      <h2 class="h2_escondido">Por fim...</h2>
 
-  </div>
+      <h2 class="h2_escondido">
+        Expressamos profunda gratidão pela sua atenção e confiança em nosso projeto.
 
+        Desejamos que sua pesquisa seja excepcional e que você se sinta verdadeiramente acolhido ao explorar o site UnBook!
+      </h2>
 
+      <div id="button_prox" onclick="proximo()">Avançar</div>
+    </div>
 
+    <div id="monte1">
+      <img id="cerejas_1" src="{% static 'image\cerejas.png' %}" />
 
-  <div id="monte1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1339" height="173" viewBox="0 0 1339 173" fill="none">
+        <path d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z" fill="#5A5A5A" />
+        <path d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z" fill="#5A5A5A" />
+        <path d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z" fill="#34c57a" />
+      </svg>
+    </div>
 
-    <img id="cerejas_1" src="{% static "image\cerejas.png" %}">
+    <div id="monte2">
+      <img id="cerejas_2" src="{% static 'image\cerejas.png' %}" />
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="1339" height="173" viewBox="0 0 1339 173" fill="none">
-      <path
-        d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z"
-        fill="#5A5A5A" />
-      <path
-        d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z"
-        fill="#5A5A5A" />
-      <path
-        d="M735 30.5004C775 78.0001 1338.54 168.25 1338.54 168.25L-7 172.5V39.0001C-7 39.0001 125.5 15.5004 194.5 3.00038C263.5 -9.49962 419.5 39.0001 419.5 39.0001L559.5 15.5004C559.5 15.5004 695 -16.9992 735 30.5004Z"
-        fill="#34c57a" />
-    </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1157" height="194" viewBox="0 0 1157 194" fill="none">
+        <path d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z" fill="#5A5A5A" />
+        <path d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z" fill="#5A5A5A" />
+        <path d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z" fill="#15884d" />
+      </svg>
+    </div>
 
-  </div>
+    <main id="fundo_verde">
+      <h1 id="titlao">Colaboradores</h1>
 
-  <div id="monte2">
+      <div id="div_1">
+        <section class="povo" id="Duque">
+          <h2 class="title">Duque</h2>
+          {% comment %} <img src="" alt="" /> {% endcomment %}
+          <div class="image"></div>
+          <h2>Yuri</h2>
+        </section>
 
-    <img id="cerejas_2" src="{% static "image\cerejas.png" %}">
+        <section class="povo" id="Conselheiro">
+          <h2 class="title">Conselheiro</h2>
+          <div class="image"></div>
+          <h2>Pedrao</h2>
+        </section>
+      </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="1157" height="194" viewBox="0 0 1157 194" fill="none">
-      <path
-        d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z"
-        fill="#5A5A5A" />
-      <path
-        d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z"
-        fill="#5A5A5A" />
-      <path
-        d="M594.326 33.4256C554.936 87.1385 -0.00012207 189.194 -0.00012207 189.194L1157 193.391V42.4277C1157 42.4277 1194.52 16.4634 1126.58 2.32831C1058.63 -11.8068 905.01 43.0371 905.01 43.0371L767.147 16.4634C767.147 16.4634 633.715 -20.2874 594.326 33.4256Z"
-        fill="#15884d" />
-    </svg>
-  </div>
+      <div id="div_2">
+        <header id="equipes">
+          <h1 class="title">Front-End</h1>
+          <h1 class="title">Back-End</h1>
+        </header>
 
-</body>
+        <div id="ajuste">
+          <div id="space_front">
+            <section>
+              <div class="image">
+                <img src="{% static 'image/Matheus.jpg' %}" alt="" />
+              </div>
+              <h2>Matheus</h2>
+            </section>
 
-<script src="{% static "js/digitar_(Quem_somos.html).js" %}"></script>
+            <section>
+              <div class="image"></div>
+              <h2>Joao</h2>
+            </section>
 
+            <section>
+              <div class="image">
+                <img src="{% static 'image/Breno.jpg' %}" alt="" />
+              </div>
+              <h2>Breno</h2>
+            </section>
+          </div>
+
+          <div id="space_back">
+            <section>
+              <div class="image">
+                <img src="{% static 'image/GG.jpg' %}" alt="" />
+              </div>
+              <h2>GG</h2>
+            </section>
+
+            <section>
+              <div class="image"></div>
+              <h2>Shneider</h2>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="{% static 'js/digitar_(Quem_somos.html).js' %}"></script>
 </html>
