@@ -99,3 +99,5 @@ class Report(models.Model):
     discurso_odio = models.BooleanField()
     observacao = models.CharField(max_length=250)
     hora_publicacao = models.DateTimeField()
+    def __str__(self):
+        return  self.autor.username + '/' + self.comentario.texto
