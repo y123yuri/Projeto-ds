@@ -183,7 +183,7 @@ def usuario(request):
             if curso:
                 perfil.curso = curso
                 print(perfil.curso)
-            if semestre:
+            if semestre and semestre != "Semestre":
                 perfil.semestre = semestre
                 print(perfil.semestre)
             if bio:
@@ -194,26 +194,6 @@ def usuario(request):
             return redirect('../', context) , JsonResponse({'status':'sucess'})
         return JsonResponse({'status': 'fail'}, status=400)
 
-
-        # Atualização de perfil
-        # f = PerfilForm(request.POST)
-        # perfil = get_object_or_404(PerfilUsuario, user=request.user)
-        
-        # if 'erro' in request.session:
-        #     del request.session['erro']
-        
-        # if f.is_valid():
-        #     user = request.user
-        #     perfil_existente = PerfilUsuario.objects.filter(user=user).first()
-            
-        #     if perfil_existente:
-        #         perfil_existente.curso = f.cleaned_data['curso']
-        #         perfil_existente.descricao = f.cleaned_data['descricao']
-        #         perfil_existente.semestre = f.cleaned_data['semestre']
-        #         perfil_existente.save()
-                
-        #         context["resposta"] = f.cleaned_data
-    
 
 def esqueceu(request):
     context = {}

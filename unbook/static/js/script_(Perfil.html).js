@@ -251,31 +251,64 @@ function selecionado(semestre) {
     enviarDados(null, semestre.textContent, null);
 }
 
+// function enviarDados(curso, semestre, bio) {
+//     console.log('recebeu enviarDados');
+//     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+//     // so vai funcionar se vc apertar no botao de enviar
+//     document.getElementById('prox_button_3').addEventListener('click', (e)=> {
+//         e.preventDefault();
+//     window.location.reload(true)
+//         $.ajax({
+//             type: "POST",
+//             url: "usuario/",
+//             data: {
+//                 csrfmiddlewaretoken: csrf_token,
+//                 curso: curso,
+//                 semestre: semestre,
+//                 bio : bio
+//             },
+//             success: function(response) {
+//                 console.log("Dados enviados com sucesso:", response);
+                
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error("Erro na requisição AJAX:", status, error);
+//             }
+//         });
+//     });
+// }
 function enviarDados(curso, semestre, bio) {
     console.log('recebeu enviarDados');
     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    // so vai funcionar se vc apertar no botao de enviar
-    document.getElementById('prox_button_3').addEventListener('click', (e)=> {
-        e.preventDefault();
-    window.location.reload(true)
-        $.ajax({
-            type: "POST",
-            url: "usuario/",
-            data: {
-                csrfmiddlewaretoken: csrf_token,
-                curso: curso,
-                semestre: semestre,
-                bio : bio
-            },
-            success: function(response) {
-                console.log("Dados enviados com sucesso:", response);
-                
-            },
-            error: function(xhr, status, error) {
-                console.error("Erro na requisição AJAX:", status, error);
+    $.ajax({
+        type: "POST",
+        url: "usuario/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            curso: curso,
+            semestre: semestre,
+            bio: bio
+        },
+        success: function(response) {
+            console.log("Dados enviados com sucesso:", response);
+            if (response.status === 'success') {
+                window.location.reload(true);
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro na requisição AJAX:", status, error);
+        }
     });
 }
+
+document.getElementById('prox_button_3').addEventListener('click', (e)=> {
+    e.preventDefault();
+    const curso = document.getElementById('input_cursos').value;
+    const semestre = document.getElementById('CampoFalado_menu').innerText;
+    const bio = document.getElementById('bio').value;
+    
+    enviarDados(curso, semestre, bio);
+});
 

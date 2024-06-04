@@ -312,7 +312,45 @@ def comentarios(request):
 
     user = request.user
     print(comentario_usuario)
-    novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_usuario)
+    ##################################
+
+    
+    lista_proibida = ['merda', 'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'filho da puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão' , 'viadinho' , 'viadao'
+    'piranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra' , 'disgrama', 'puta', 'putinha', ''
+    'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona',
+    'puta que te pariu', 'caralho de asa', 'filha da puta', 'cornudo', 'caralhudo', 'escrotão', 'filho da mãe', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra' , ''
+    'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha',
+    'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça'
+    'saco', 'filho do capeta', 'inferno', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 
+    'babaca', 'merda', 'escroto', 'chato', 'filho da puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 
+    'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga' , 'mocreia' , 'ra'
+    'babaca', 'pentelho', 'merdinha','pau mole', 'chifrudo', 'desgraça', 'miséria', 'safado', 
+    'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'preguiçoso', 'rabugento', 'palhaço', 'medíocre', 'irresponsável', 'inútil', 'covarde', 'vtnc', ''
+    'canalha', 'safado', 'estúpido', 'tapado','macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 
+    'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato',
+    'daputa', 'filhadaputa', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 
+    'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela' , 'desgraçado', 'desgraçada']
+
+    comentario_split = comentario_usuario.split(' ')
+    print(comentario_split)
+    novo_if_comentario = []
+    for palavra in comentario_split: #pega todas as palavras
+        palavra_minuscula = palavra.lower()
+        if palavra_minuscula in lista_proibida:
+            contador = 0
+            for letra in palavra_minuscula:
+                contador += 1
+            palavra = contador * '*'
+        novo_if_comentario.append(palavra)
+         
+    ########################################## 
+    comentario_corrigido = ''
+    for palavra2 in novo_if_comentario:
+        comentario_corrigido += f'{palavra2} ' 
+
+    print(comentario_corrigido)
+    
+    novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
     novo_comentario.save()
     return HttpResponse("ok")
 
