@@ -141,7 +141,7 @@
               <span id="user">{{ user.username }}</span>
             </h1>
             {% if user.is_authenticated %}
-              <a class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
+              <a id="Logout" class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
           <hr style="margin: 0 2em" />
