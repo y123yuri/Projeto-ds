@@ -414,13 +414,27 @@
 
         <hr />
 
+        <div id="modal_apagar_comentario">
+          <h2 id="title_c"> Tem certeza que deseja apagar o comentário?</h2>
+          <div id="espace_buttons"> 
+            <h1 class="button_c" id='sim_c'> Sim </h1>
+            <h1 class="button_c" id='nao_c'> Não </h1>
+          </div>
+        </div>
+
         <div id="comentarios">
           <div id="box_comentarios">
             <div id="scroll">
+
               {% for comentario in comentarios %}
 
-              
               <div id="comentario{{ forloop.counter0 }}">
+                {% if comentario.autor.username == user.username %}
+                  <div class="deletar_div" id="deletar" onclick="certeza()">
+                    <h2 class="deletar"> Deletar </h2>
+                    <i class="bi bi-trash-fill , lixin"></i>
+                  </div> 
+                {% endif %}
                   <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
                   <h3 class="comentarios">
                     {{ comentario.texto }} <br />
@@ -432,9 +446,10 @@
                       <h3 class="text">Gostei</h3>
                       <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')"><i class="fa-solid fa-heart"></i></button>
                       <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
-                    </div>|<div class="report">
+                    </div>|
+                    <div class="report" onclick="modal_report(this, '{{ comentario.pk }}')">
                       <h3 class="text">Reportar</h3>
-                      <button id="report" type="button" onclick="modal_report(this, '{{ comentario.pk }}')"><i class="bi bi-flag-fill"></i></button>
+                      <button id="report" type="button" ><i class="bi bi-flag-fill"></i></button>
                     </div>
                   </div>
                 </div>

@@ -23,6 +23,39 @@ modal.addEventListener('click', (e) => {
 });
 
 
+function certeza() {
+    fundoblur.style.display = "block";
+    fundoblur.classList.add('abrir');
+    var modal = document.getElementById('modal_apagar_comentario')
+    modal.style.display = "block";
+
+    fundoblur.addEventListener('click', (e) => {
+        if (e.target === fundoblur) {
+            fundoblur.style.display = "none";
+            modal.style.display = "none";
+        }
+    });
+
+    document.getElementById('nao_c').addEventListener('click',(e)=>{
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    })
+
+    document.getElementById('sim_c').addEventListener('click',(e)=>{
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+        apagarComentario()
+    })
+
+}
+
+function apagarComentario(){
+    console.log('apagarei seu comentario')
+    alert('preciso duma função!!')
+}
+
 // FUNÇÃO PARA RODAR SCROLL
 
 if(window.matchMedia("(max-width:764px)").matches) {

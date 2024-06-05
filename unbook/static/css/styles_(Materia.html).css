@@ -849,6 +849,76 @@ table caption {
     border-radius: 25px;
 }
 
+#modal_apagar_comentario {
+    position: fixed;
+    display: none;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    justify-content: center;
+    padding: 1em 1em 2em 1em;
+    width: 30em;
+    height: 20em;
+    background-color: #CDE4DF;
+    border-radius: 25px;
+    box-shadow: -5px 5px 1px rgb(115, 115, 115);
+    z-index: 3;
+}
+
+#title_c {
+    top: 1em;
+    margin: 0 2em;
+}
+
+#espace_buttons {
+    margin: 1em auto;
+    align-items: center;
+    
+    width: 80%;
+    height: 5em;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 2.5em;
+    
+    background-color: #0000002a;
+    border: 1px solid gray;
+}
+
+#nao_c {
+    background-color: #E95959;
+}
+#sim_c {
+    background-color: #81E28B;
+}
+
+.button_c {
+    width: 5em;
+    height: 2em;
+    padding: 0.5em 0.5em;
+    color: whitesmoke;
+    font-size: 1.5em;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 1em;
+}
+
+.button_c:hover {
+    transform: scale(1.05);
+}
+
+.button_c:active {
+    transform: scale(0.95);
+}
+
 .usuarios {
     font-size: 1.5em;
     margin-left: 1em;
@@ -857,8 +927,45 @@ table caption {
     position: relative;
     top: 1em;
 
-    margin-top: 0.5em;
     cursor: pointer;
+}
+
+.deletar_div {
+    display: flex;
+    width: 6.5em;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    right: 3em;
+    border-radius: 15px;
+    margin-top: 2em;
+    z-index: 2;
+}
+
+.deletar {
+    position: relative;
+    font-size: 1.25em;
+    display: block;
+    color: rgb(187, 25, 25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.deletar:hover , .lixin:hover {
+    transform: scale(1.05);
+}
+
+.deletar:active .lixin:active {
+    transform: scale(0.95);
+}
+
+.lixin {
+    position: relative;
+    font-size: 1.25em;
+    display: block;
+    color: rgb(187, 25, 25);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .comentarios {
