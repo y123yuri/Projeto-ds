@@ -1,68 +1,902 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(135deg, #0C36A1, #008940);
-    width: 100%;
-    background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #0c36a1, #008940);
+  width: 100%;
+  background-attachment: fixed;
 
-    height: 100vh;
-    scroll-behavior: smooth;
+  height: 100vh;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
 
 ul {
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 /* inicio das paginas */
 /*PAGINA1*/
 
 a .UnBook_logo_mini {
+  display: block;
+
+  width: 25em;
+  height: auto;
+
+  position: relative;
+
+  margin-left: 10px;
+  top: 20px;
+}
+
+#boxes {
+  background-color: #f5f5f5c8;
+  box-shadow: -10px 10px 1px #5b5b5bc8;
+  border-radius: 50px;
+  width: 90em;
+  height: 35em;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5%;
+  position: relative;
+}
+
+#box1 {
+  background-color: #f5f5f5;
+  width: 30em;
+  height: auto;
+  border-radius: 50px;
+  display: flex;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+
+  z-index: 2;
+}
+
+#espace_img_user {
+  width: 100%;
+  height: 15em;
+}
+
+#img_user {
+  margin: auto;
+  position: relative;
+  width: 13em;
+  height: 13em;
+  top: 1.5em;
+  background-color: #04b858;
+  border-radius: 100%;
+}
+
+#modal_imgs {
+  position: absolute;
+  display: none;
+  flex-direction: row;
+  top: 0.5em;
+  left: 2em;
+  width: 80em;
+  height: 15em;
+  z-index: 20;
+  background-color: whitesmoke;
+  box-shadow: -10px 10px 1px #5b5b5bc8;
+  border-radius: 150px;
+  transition: all 0.3s ease;
+  animation: aparecer_modal_img 0.3s ease-in;
+  padding: 0.5em;
+  margin: 1em;
+}
+
+@keyframes aparecer_modal_img {
+  0% {
+    width: 0em;
+  }
+
+  100% {
+    width: 80em;
+  }
+}
+
+@keyframes aparecer_modal_imgs {
+  0%,
+  40% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+}
+
+.balls {
+  position: relative;
+  display: block;
+  width: 13em;
+  height: 13em;
+  margin: 0.5em 1em;
+
+  text-align: center;
+  align-items: center;
+  background-color: #eed64b;
+  border-radius: 100%;
+  animation: aparecer_modal_imgs 0.9s ease-in;
+}
+
+.balls:hover {
+  filter: brightness(70%);
+}
+
+.balls#model_1 {
+  margin-left: 3em;
+}
+
+#model_1 {
+  background-color: #0b4c8c;
+}
+
+#model_2 {
+  background-color: #a670da;
+}
+
+#model_3 {
+  background-color: #04b858;
+}
+
+#model_4 {
+  background-color: #eed64b;
+}
+
+#model_5 {
+  background-color: #d43b5a;
+}
+
+#CampoEscrito_box1 {
+  position: relative;
+  width: 100%;
+  height: 15%;
+  top: 0.5em;
+}
+
+#user_box1 {
+  color: #0b4c9c;
+  margin: auto;
+  text-align: center;
+}
+
+#scroll {
+  margin-top: 1em;
+  width: auto;
+  height: 23%;
+
+  text-align: center;
+  padding: 0.75em 2em;
+
+  overflow-y: auto;
+}
+
+#scroll::-webkit-scrollbar {
+  width: 15px;
+  height: auto;
+  margin-right: 10px;
+}
+
+#scroll::-webkit-scrollbar-thumb {
+  background-color: #e6f2fb;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  border: solid 1px #0000002a;
+  /* roundness of the scroll thumb */
+}
+
+#scroll::-webkit-scrollbar-track {
+  background-color: #0000002a;
+  border-radius: 25px;
+}
+
+.pages {
+  margin-top: 0.5em;
+  padding: 5px;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pages:hover {
+  transform: scale(1.025);
+}
+
+@keyframes aparece {
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 1;
+  }
+}
+
+.boxs {
+  animation: aparece 1s;
+}
+
+.forms {
+  width: 15em;
+  height: 2em;
+
+  font-size: 1em;
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+  padding: 0.5em 20px;
+
+  background-color: #d9d9d9;
+  border: none;
+}
+
+#Profile {
+  background-color: #f5f5f5;
+  width: 65em;
+  height: 33em;
+  border-radius: 50px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  margin-left: 0em;
+
+  z-index: 2;
+}
+
+#espace_1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 10em;
+}
+
+.CampoEscrito_profile {
+  font-size: 2em;
+  padding: 40px 5px 5px 40px;
+}
+
+.CampoEscrito2_box1 {
+  font-size: 1.5em;
+  margin: auto;
+  text-align: center;
+}
+
+#user {
+  position: relative;
+  font-size: 2em;
+  color: #0b4c9c;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#user:hover {
+  text-shadow: 0 0 2px #0b4c8c;
+}
+
+.botoes {
+  position: relative;
+  width: auto;
+  height: 2em;
+
+  border: none;
+  border-radius: 50px;
+  background-color: #0b4c9c;
+
+  margin-top: 30px;
+  margin-right: 1em;
+
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em 1em;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.botoes:hover {
+  transform: scale(1.05);
+}
+.botoes:active {
+  transform: scale(1);
+}
+
+#space_2_Profile {
+  padding: 1em 3em 1em 3em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+}
+
+.CampoFalado_Profile {
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: black;
+}
+
+#descricao {
+  width: 30em;
+  height: 10em;
+  padding: 0.5em 20px;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #d9d9d9;
+  border: none;
+}
+
+.respostas {
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #0b4c8c;
+}
+
+.respostas2 {
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #0b4c8c;
+}
+
+#space_2_1_Profile {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1em 2em;
+}
+
+#space_2_2_Profile {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 10em;
+  padding: 1.5em 2em;
+}
+
+#space_2_3_Profile {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  padding: 1.5em 2em;
+}
+
+.abrir {
+  animation: abrir_janelas 0.3s;
+}
+
+@keyframes abrir_janelas {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -5px, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#Senha {
+  background-color: #f5f5f5;
+  width: 65em;
+  height: 33em;
+  border-radius: 50px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+  display: none;
+  flex-direction: column;
+  margin: 1em;
+  margin-left: 0em;
+
+  z-index: 2;
+}
+
+#space_1_Senha {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 7em;
+}
+
+.CampoEscrito_Senha {
+  position: relative;
+  font-size: 3em;
+  padding: 40px 5px 5px 40px;
+}
+
+.CampoFalado_Senha {
+  position: relative;
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  color: black;
+}
+
+#space_2_Senha {
+  padding: 0em 3em 0em 3em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80%;
+}
+
+#box_senha_instrucoes {
+  font-size: 1.5em;
+  width: 30em;
+  height: 12em;
+  border: solid 1px grey;
+  padding: 1em;
+  text-align: center;
+  margin: 2em 2em;
+}
+
+#box_senha_form {
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  padding: 2em;
+}
+
+#submit {
+  position: relative;
+
+  width: 10em;
+  height: 2em;
+
+  border: none;
+  border-radius: 20px;
+  background-color: #0b4c9c;
+
+  margin-top: 30px;
+  margin-right: 1em;
+
+  color: white;
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em 1em;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+#submit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0b4c8c;
+}
+
+#submit:active {
+  transform: scale(0.9);
+}
+
+#Estatistica {
+  background-color: #f5f5f5;
+  width: 65em;
+  height: 33em;
+  border-radius: 50px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+  display: none;
+  flex-direction: column;
+  margin: 1em;
+  margin-left: 0em;
+
+  z-index: 2;
+}
+
+#box_desenv {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#Desenv {
+  position: relative;
+  top: 5em;
+  animation: desenv 2s infinite ease;
+  width: 12em;
+  height: 2em;
+}
+
+@keyframes desenv {
+  0% {
+    transform: translateX(100px);
+  }
+
+  100% {
+    transform: translateX(-100px);
+  }
+}
+
+/* modal de perfil */
+
+#fundo_blur {
+  width: 100%;
+  height: 150vh;
+  position: fixed;
+
+  display: none;
+  background-color: hsla(0, 0%, 0%, 0.8);
+  backdrop-filter: blur(50px);
+  z-index: 3;
+}
+
+.CampoFalado1_modal {
+  color: black;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.CampoFalado2_modal {
+  color: black;
+  text-align: center;
+
+  position: relative;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.CampoFalado3_modal {
+  color: #50545c;
+  text-align: center;
+  position: relative;
+
+  margin: 0 6em;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#button_box {
+  margin: auto;
+  align-items: center;
+
+  width: 20em;
+  height: 6em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  top: 5em;
+
+  background-color: #0000002a;
+  border: 1px solid gray;
+}
+
+.button {
+  width: 7em;
+  height: 2em;
+  padding: 0.5em 0.5em;
+  color: whitesmoke;
+  font-size: 1.5em;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 1em;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+#modal_atualizacao {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  padding: 2em;
+  width: 50em;
+  height: 30em;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+  z-index: 4;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#scroll_modal {
+  display: block;
+  position: relative;
+  padding: 0.5em 0em;
+  width: 100%;
+  height: 81%;
+  background-color: #d9d9d9;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#boxes_modal {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-around;
+  width: 138em;
+  height: 24em;
+}
+
+.boxes_modal {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  padding: 0.5em;
+
+  width: 42em;
+  height: 22em;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+  z-index: 3;
+
+  margin: 0em 2em;
+}
+
+#box_modal_1 .espaco_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 1em;
+  left: -0.05em;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+}
+
+#input_cursos {
+  width: 80%;
+  height: auto;
+  padding: 0.5em 1em;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  font-size: 1.25em;
+}
+
+#cursos {
+  width: 80%;
+  height: 4em;
+  margin: auto;
+  margin-top: 0.5em;
+  padding: 0.5em 1em;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  font-size: 1.25em;
+  overflow-y: auto;
+}
+
+#box_modal_2 .espaco_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 1em;
+  left: -0.05em;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+}
+
+#CampoFalado_menu {
+  font-size: 1.75em;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+  color: #50545c;
+}
+
+#icon_menu {
+  font-size: 20px;
+  color: #0b4c8c;
+  transition: 0.3s ease;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  border-radius: 6px;
+  position: absolute;
+  text-align: center;
+
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  width: 100%;
+  height: 8em;
+  translate: 0 -12px;
+  overflow-y: auto;
+}
+
+.menu.open {
+  visibility: visible;
+  opacity: 1;
+  translate: 0 12px;
+  z-index: 4;
+}
+
+#drop {
+  max-width: 15em;
+  width: 100%;
+  display: block;
+  margin: 2em auto;
+  position: relative;
+  border: 1px solid #50545c;
+  border-radius: 15px;
+}
+
+.drop_button {
+  width: 100%;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+.menu_item {
+  width: 100%;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+
+  background-color: #d9d9d9;
+}
+
+.drop_button.open > i {
+  rotate: 180deg;
+}
+
+:is(.menu_item):first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+:is(.menu_item):last-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+:is(.menu_item):hover {
+  background-color: #0b4c8c;
+  color: whitesmoke;
+}
+
+#box_modal_3 .espaco_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 1em;
+  left: -0.05em;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+}
+
+#bio {
+  margin: auto;
+  width: 80%;
+  height: auto;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  align-items: normal;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+.prox_button,
+.back_button {
+  display: inline-block;
+  font-size: 1.5em;
+  background-color: #0b4c8c;
+  border-radius: 15px;
+  color: whitesmoke;
+  width: 7em;
+  height: 2em;
+  text-align: center;
+  z-index: 10;
+  padding: 0.5em 1em;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 1em;
+  /* Espaçamento entre os botões */
+}
+
+.prox_button:hover,
+.back_button:hover {
+  transform: scale(1.05);
+}
+
+.prox_button:active,
+.back_button:active {
+  transform: scale(0.95);
+}
+@media screen and (max-width: 767px) {
+  a .UnBook_logo_mini {
     display: block;
 
-    width: 25em;
+    width: 12.5em;
     height: auto;
 
     position: relative;
 
     margin-left: 10px;
     top: 20px;
-}
+  }
 
-
-
-#boxes {
+  #boxes {
     background-color: #f5f5f5c8;
     box-shadow: -10px 10px 1px #5b5b5bc8;
     border-radius: 50px;
-    width: 90em;
-    height: 35em;
+    width: 35em;
+    height: 90em;
     display: flex;
     flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 1%;
+    margin-right: 1%;
     margin-top: 2.5%;
     position: relative;
-}
+  }
 
-#box1 {
+  #box1 {
     background-color: #f5f5f5;
     width: 30em;
-    height: auto;
+    height: 30em;
     border-radius: 50px;
     display: flex;
     margin: 1em;
@@ -70,15 +904,14 @@ a .UnBook_logo_mini {
     flex-direction: column;
 
     z-index: 2;
-}
+  }
 
-#espace_img_user {
+  #espace_img_user {
     width: 100%;
     height: 15em;
-}
+  }
 
-#img_user {
-
+  #img_user {
     margin: auto;
     position: relative;
     width: 13em;
@@ -86,10 +919,9 @@ a .UnBook_logo_mini {
     top: 1.5em;
     background-color: #04b858;
     border-radius: 100%;
+  }
 
-}
-
-#modal_imgs {
+  #modal_imgs {
     position: absolute;
     display: none;
     flex-direction: row;
@@ -105,29 +937,30 @@ a .UnBook_logo_mini {
     animation: aparecer_modal_img 0.3s ease-in;
     padding: 0.5em;
     margin: 1em;
-}
+  }
 
-@keyframes aparecer_modal_img {
+  @keyframes aparecer_modal_img {
     0% {
-        width: 0em;
+      width: 0em;
     }
 
     100% {
-        width: 80em;
+      width: 80em;
     }
-}
+  }
 
-@keyframes aparecer_modal_imgs {
-    0% , 40% {
-        opacity: 0;
+  @keyframes aparecer_modal_imgs {
+    0%,
+    40% {
+      opacity: 0;
     }
 
     60% {
-        opacity: 1;
+      opacity: 1;
     }
-}
+  }
 
-.balls {
+  .balls {
     position: relative;
     display: block;
     width: 13em;
@@ -139,53 +972,50 @@ a .UnBook_logo_mini {
     background-color: #eed64b;
     border-radius: 100%;
     animation: aparecer_modal_imgs 0.9s ease-in;
-}
+  }
 
-.balls:hover {
-    filter: brightness(70%)
-}
+  .balls:hover {
+    filter: brightness(70%);
+  }
 
-.balls#model_1 {
+  .balls#model_1 {
     margin-left: 3em;
-    ;
-}
+  }
 
-#model_1 {
-    background-color: #0B4C8C;
-}
+  #model_1 {
+    background-color: #0b4c8c;
+  }
 
-#model_2 {
+  #model_2 {
     background-color: #a670da;
-}
+  }
 
-#model_3 {
+  #model_3 {
     background-color: #04b858;
-}
+  }
 
-#model_4 {
+  #model_4 {
     background-color: #eed64b;
-}
+  }
 
-#model_5 {
+  #model_5 {
     background-color: #d43b5a;
-}
+  }
 
-
-
-#CampoEscrito_box1 {
+  #CampoEscrito_box1 {
     position: relative;
     width: 100%;
     height: 15%;
     top: 0.5em;
-}
+  }
 
-#user_box1 {
-    color: #0B4C9C;
+  #user_box1 {
+    color: #0b4c9c;
     margin: auto;
     text-align: center;
-}
+  }
 
-#scroll {
+  #scroll {
     margin-top: 1em;
     width: auto;
     height: 23%;
@@ -194,58 +1024,57 @@ a .UnBook_logo_mini {
     padding: 0.75em 2em;
 
     overflow-y: auto;
-}
+  }
 
-#scroll::-webkit-scrollbar {
+  #scroll::-webkit-scrollbar {
     width: 15px;
     height: auto;
     margin-right: 10px;
-}
+  }
 
-#scroll::-webkit-scrollbar-thumb {
-    background-color: #E6F2FB;
+  #scroll::-webkit-scrollbar-thumb {
+    background-color: #e6f2fb;
     /* color of the scroll thumb */
     border-radius: 20px;
     border: solid 1px #0000002a;
     /* roundness of the scroll thumb */
-}
+  }
 
-#scroll::-webkit-scrollbar-track {
+  #scroll::-webkit-scrollbar-track {
     background-color: #0000002a;
     border-radius: 25px;
-}
+  }
 
-.pages {
+  .pages {
     margin-top: 0.5em;
     padding: 5px;
     background-color: #f5f5f5;
     border-radius: 25px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
-    ;
     color: black;
     cursor: pointer;
     transition: all 0.3s ease;
-}
+  }
 
-.pages:hover {
+  .pages:hover {
     transform: scale(1.025);
-}
+  }
 
-@keyframes aparece {
+  @keyframes aparece {
     0% {
-        opacity: 0;
+      opacity: 0;
     }
 
     80% {
-        opacity: 1;
+      opacity: 1;
     }
-}
+  }
 
-.boxs {
+  .boxs {
     animation: aparece 1s;
-}
+  }
 
-.forms {
+  .forms {
     width: 15em;
     height: 2em;
 
@@ -254,11 +1083,11 @@ a .UnBook_logo_mini {
     margin-bottom: 1em;
     padding: 0.5em 20px;
 
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border: none;
-}
+  }
 
-#Profile {
+  #Profile {
     background-color: #f5f5f5;
     width: 65em;
     height: 33em;
@@ -271,48 +1100,47 @@ a .UnBook_logo_mini {
     margin-left: 0em;
 
     z-index: 2;
-}
+  }
 
-#espace_1 {
+  #espace_1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     height: 10em;
-}
+  }
 
-.CampoEscrito_profile {
+  .CampoEscrito_profile {
     font-size: 2em;
     padding: 40px 5px 5px 40px;
-}
+  }
 
-.CampoEscrito2_box1 {
+  .CampoEscrito2_box1 {
     font-size: 1.5em;
     margin: auto;
     text-align: center;
-}
+  }
 
-#user {
+  #user {
     position: relative;
     font-size: 2em;
-    color: #0B4C9C;
+    color: #0b4c9c;
     transition: all 0.3s ease;
     cursor: pointer;
-}
+  }
 
-#user:hover {
-    text-shadow: 0 0 2px #0B4C8C;
-}
+  #user:hover {
+    text-shadow: 0 0 2px #0b4c8c;
+  }
 
-
-.botoes {
+  .botoes {
     position: relative;
     width: auto;
     height: 2em;
 
     border: none;
     border-radius: 50px;
-    background-color: #0B4C9C;
+    background-color: #0b4c9c;
 
     margin-top: 30px;
     margin-right: 1em;
@@ -325,115 +1153,94 @@ a .UnBook_logo_mini {
     text-decoration: none;
 
     transition: all 0.3s ease;
-}
+  }
 
-.botoes:hover {
+  .botoes:hover {
     transform: scale(1.05);
-}
-.botoes:active {
+  }
+  .botoes:active {
     transform: scale(1);
-}
+  }
 
-#space_2_Profile {
+  #space_2_Profile {
     padding: 1em 3em 1em 3em;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 80%;
+  }
 
-}
-
-.CampoFalado_Profile {
+  .CampoFalado_Profile {
     position: relative;
     font-size: 1.5em;
     font-weight: 500;
     color: black;
-}
+  }
 
-
-
-#descricao {
+  #descricao {
     width: 30em;
     height: 10em;
     padding: 0.5em 20px;
     font-size: 1em;
     font-weight: 500;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border: none;
-}
+  }
 
-
-.respostas {
+  .respostas {
     position: relative;
     font-size: 1.5em;
     font-weight: 700;
-    color:#0B4C8C;
-}
+    color: #0b4c8c;
+  }
 
-.respostas2 {
+  .respostas2 {
     position: relative;
     font-size: 1.5em;
     font-weight: 700;
-    color:#0B4C8C;
-}
+    color: #0b4c8c;
+  }
 
-#space_2_1_Profile {
+  #space_2_1_Profile {
     display: flex;
     position: relative;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 1em 2em;
-}
+  }
 
-#space_2_2_Profile {
+  #space_2_2_Profile {
     display: flex;
     position: relative;
     flex-direction: column;
     height: 10em;
     padding: 1.5em 2em;
-}
+  }
 
-#space_2_3_Profile {
+  #space_2_3_Profile {
     display: flex;
     position: relative;
     justify-content: flex-end;
     padding: 1.5em 2em;
-}
+  }
 
-.abrir {
+  .abrir {
     animation: abrir_janelas 0.3s;
-}
+  }
 
-@keyframes abrir_janelas {
+  @keyframes abrir_janelas {
     from {
-        opacity: 0;
-        transform: translate3d(0, -5px, -20px);
+      opacity: 0;
+      transform: translate3d(0, -5px, -20px);
     }
 
     to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
-}
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Senha {
+  #Senha {
     background-color: #f5f5f5;
     width: 65em;
     height: 33em;
@@ -446,39 +1253,38 @@ a .UnBook_logo_mini {
     margin-left: 0em;
 
     z-index: 2;
+  }
 
-}
-
-#space_1_Senha {
+  #space_1_Senha {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     height: 7em;
-}
+  }
 
-.CampoEscrito_Senha {
+  .CampoEscrito_Senha {
     position: relative;
     font-size: 3em;
     padding: 40px 5px 5px 40px;
-}
+  }
 
-.CampoFalado_Senha {
+  .CampoFalado_Senha {
     position: relative;
     margin-top: 0.5em;
     font-size: 1.5em;
     color: black;
-}
+  }
 
-#space_2_Senha {
+  #space_2_Senha {
     padding: 0em 3em 0em 3em;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 80%;
-}
+  }
 
-#box_senha_instrucoes {
+  #box_senha_instrucoes {
     font-size: 1.5em;
     width: 30em;
     height: 12em;
@@ -486,31 +1292,27 @@ a .UnBook_logo_mini {
     padding: 1em;
     text-align: center;
     margin: 2em 2em;
+  }
 
-}
-
-#box_senha_form {
+  #box_senha_form {
     flex-direction: column;
     width: 100%;
     height: 80%;
     padding: 2em;
-}
+  }
 
-
-#submit {
+  #submit {
     position: relative;
-
 
     width: 10em;
     height: 2em;
 
     border: none;
     border-radius: 20px;
-    background-color: #0B4C9C;
+    background-color: #0b4c9c;
 
     margin-top: 30px;
     margin-right: 1em;
-
 
     color: white;
     font-size: 1.5em;
@@ -521,18 +1323,18 @@ a .UnBook_logo_mini {
     text-decoration: none;
 
     transition: all 0.3s ease;
-}
+  }
 
-#submit:hover {
+  #submit:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px #0B4C8C;
-}
+    box-shadow: 0 0 25px #0b4c8c;
+  }
 
-#submit:active {
+  #submit:active {
     transform: scale(0.9);
-}
+  }
 
-#Estatistica {
+  #Estatistica {
     background-color: #f5f5f5;
     width: 65em;
     height: 33em;
@@ -545,40 +1347,37 @@ a .UnBook_logo_mini {
     margin-left: 0em;
 
     z-index: 2;
+  }
 
-}
-
-#box_desenv {
+  #box_desenv {
     width: 100%;
     height: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
-}
+  }
 
-#Desenv {
-
+  #Desenv {
     position: relative;
     top: 5em;
     animation: desenv 2s infinite ease;
     width: 12em;
     height: 2em;
-}
+  }
 
-@keyframes desenv {
+  @keyframes desenv {
     0% {
-        transform: translateX(100px);
+      transform: translateX(100px);
     }
 
     100% {
-        transform: translateX(-100px);
+      transform: translateX(-100px);
     }
-}
+  }
 
-/* modal de perfil */
+  /* modal de perfil */
 
-
-#fundo_blur {
+  #fundo_blur {
     width: 100%;
     height: 150vh;
     position: fixed;
@@ -587,26 +1386,25 @@ a .UnBook_logo_mini {
     background-color: hsla(0, 0%, 0%, 0.8);
     backdrop-filter: blur(50px);
     z-index: 3;
-}
+  }
 
-.CampoFalado1_modal {
+  .CampoFalado1_modal {
     color: black;
     font-size: 2em;
     text-align: center;
     margin-bottom: 0.5em;
-}
+  }
 
-.CampoFalado2_modal {
+  .CampoFalado2_modal {
     color: black;
     text-align: center;
 
     position: relative;
     font-size: 2.5em;
     font-weight: 700;
-}
+  }
 
-.CampoFalado3_modal {
-
+  .CampoFalado3_modal {
     color: #50545c;
     text-align: center;
     position: relative;
@@ -614,10 +1412,9 @@ a .UnBook_logo_mini {
     margin: 0 6em;
     font-size: 1.5em;
     font-weight: 700;
-}
+  }
 
-#button_box {
-
+  #button_box {
     margin: auto;
     align-items: center;
 
@@ -632,9 +1429,9 @@ a .UnBook_logo_mini {
 
     background-color: #0000002a;
     border: 1px solid gray;
-}
+  }
 
-.button {
+  .button {
     width: 7em;
     height: 2em;
     padding: 0.5em 0.5em;
@@ -646,24 +1443,22 @@ a .UnBook_logo_mini {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 1em;
-}
+  }
 
-.button:hover {
+  .button:hover {
     transform: scale(1.05);
-}
+  }
 
-.button:active {
+  .button:active {
     transform: scale(0.95);
-}
+  }
 
-#modal_atualizacao {
+  #modal_atualizacao {
     position: fixed;
     display: none;
     flex-direction: column;
     justify-content: center;
-    
-    
-    
+
     margin: auto;
     text-align: center;
     justify-content: center;
@@ -678,32 +1473,30 @@ a .UnBook_logo_mini {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-}
+  }
 
-#scroll_modal {
+  #scroll_modal {
     display: block;
     position: relative;
     padding: 0.5em 0em;
     width: 100%;
     height: 81%;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     box-shadow: 0 0 5px rgb(255, 255, 255);
     border-radius: 15px;
     overflow: hidden;
+  }
 
-}
-
-#boxes_modal {
+  #boxes_modal {
     display: flex;
     flex-direction: row;
     position: relative;
     justify-content: space-around;
     width: 138em;
     height: 24em;
-}
+  }
 
-.boxes_modal {
+  .boxes_modal {
     display: flex;
     flex-direction: column;
 
@@ -718,71 +1511,71 @@ a .UnBook_logo_mini {
     z-index: 3;
 
     margin: 0em 2em;
-}
+  }
 
-#box_modal_1 .espaco_buttons {
+  #box_modal_1 .espaco_buttons {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     position: absolute;
     bottom: 1em;
-    left:-0.05em;
+    left: -0.05em;
     width: 100%;
     height: 4em;
     text-align: center;
-}
+  }
 
-#input_cursos {
+  #input_cursos {
     width: 80%;
     height: auto;
     padding: 0.5em 1em;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 15px;
     font-size: 1.25em;
-}
+  }
 
-#cursos {
+  #cursos {
     width: 80%;
     height: 4em;
     margin: auto;
     margin-top: 0.5em;
     padding: 0.5em 1em;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 15px;
     font-size: 1.25em;
     overflow-y: auto;
-}
+  }
 
-#box_modal_2 .espaco_buttons {
+  #box_modal_2 .espaco_buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: absolute;
     bottom: 1em;
-    left:-0.05em;
+    left: -0.05em;
     width: 100%;
     height: 4em;
     text-align: center;
-}
+  }
 
-#CampoFalado_menu {
+  #CampoFalado_menu {
     font-size: 1.75em;
     text-align: center;
     width: 100%;
     font-weight: 500;
     color: #50545c;
-}
+  }
 
-#icon_menu {
+  #icon_menu {
     font-size: 20px;
-    color: #0B4C8C;
+    color: #0b4c8c;
     transition: 0.3s ease;
-}
+  }
 
-.menu {
+  .menu {
     display: flex;
     flex-direction: column;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 6px;
     position: absolute;
     text-align: center;
@@ -796,16 +1589,16 @@ a .UnBook_logo_mini {
     height: 8em;
     translate: 0 -12px;
     overflow-y: auto;
-}
+  }
 
-.menu.open {
+  .menu.open {
     visibility: visible;
     opacity: 1;
     translate: 0 12px;
     z-index: 4;
-}
+  }
 
-#drop {
+  #drop {
     max-width: 15em;
     width: 100%;
     display: block;
@@ -813,9 +1606,9 @@ a .UnBook_logo_mini {
     position: relative;
     border: 1px solid #50545c;
     border-radius: 15px;
-}
+  }
 
-.drop_button {
+  .drop_button {
     width: 100%;
     padding: 0.5em 1em;
     cursor: pointer;
@@ -827,65 +1620,65 @@ a .UnBook_logo_mini {
     background-color: #f5f5f5;
     border-radius: 15px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
-}
+  }
 
-.menu_item{
+  .menu_item {
     width: 100%;
     padding: 0.5em 1em;
     cursor: pointer;
     position: relative;
     align-items: center;
 
-    background-color: #D9D9D9;
-}
+    background-color: #d9d9d9;
+  }
 
-.drop_button.open > i {
+  .drop_button.open > i {
     rotate: 180deg;
-}
+  }
 
-:is(.menu_item):first-child {
+  :is(.menu_item):first-child {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-}
+  }
 
-:is(.menu_item):last-child {
+  :is(.menu_item):last-child {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-}
+  }
 
-:is(.menu_item):hover {
-   background-color: #0B4C8C;
-   color: whitesmoke;
-}
+  :is(.menu_item):hover {
+    background-color: #0b4c8c;
+    color: whitesmoke;
+  }
 
-#box_modal_3 .espaco_buttons {
+  #box_modal_3 .espaco_buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: absolute;
     bottom: 1em;
-    left:-0.05em;
+    left: -0.05em;
     width: 100%;
     height: 4em;
     text-align: center;
-}
+  }
 
-#bio {
+  #bio {
     margin: auto;
     width: 80%;
     height: auto;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 15px;
     align-items: normal;
     padding: 0.5em;
     font-size: 1em;
-}
+  }
 
-.prox_button,
-.back_button {
+  .prox_button,
+  .back_button {
     display: inline-block;
     font-size: 1.5em;
-    background-color: #0B4C8C;
+    background-color: #0b4c8c;
     border-radius: 15px;
     color: whitesmoke;
     width: 7em;
@@ -898,14 +1691,15 @@ a .UnBook_logo_mini {
     transition: all 0.3s ease;
     margin: 0 1em;
     /* Espaçamento entre os botões */
-}
+  }
 
-.prox_button:hover,
-.back_button:hover {
+  .prox_button:hover,
+  .back_button:hover {
     transform: scale(1.05);
-}
+  }
 
-.prox_button:active,
-.back_button:active {
+  .prox_button:active,
+  .back_button:active {
     transform: scale(0.95);
+  }
 }
