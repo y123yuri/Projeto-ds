@@ -17,5 +17,6 @@ urlpatterns = [
     path('login/esqueceu/email_recupera', views.email_recupera, name='email_recupera'),#nova senha confirma
     path('login/usuario/', views.usuario, name='usuario'),
     path('usuario/', views.usuario, name='usuario'),
+    path('trocar_senha/', views.trocar_senha, name='trocar_senha'),
     
 ]

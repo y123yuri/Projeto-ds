@@ -26,6 +26,7 @@ from .models import PerfilUsuario
 from .models import Cursos_unb
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
+from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -193,6 +194,23 @@ def usuario(request):
             perfil.save()
             return redirect('../', context) , JsonResponse({'status':'sucess'})
         return JsonResponse({'status': 'fail'}, status=400)
+
+def trocar_senha(request):
+    if request.method == 'POST':
+        senha_antiga = request.POST.get('senha_antiga')
+        senha_nova = request.POST.get('senha_nova')
+        senha_nova_confirma = request.POST.get('senha_nova_confirma')
+        if not request.user.check_password(senha_antiga):
+            messages.error(request, 'Senha antiga incorreta.')
+            return redirect('login_func')
+        if senha_nova != senha_nova_confirma:
+            messages.error(request, 'As novas senhas não coincidem.')
+            return redirect('login_func')
+        request.user.set_password(senha_nova)
+        request.user.save()
+        update_session_auth_hash(request, request.user)  
+        messages.success(request, 'Senha alterada com sucesso!')
+        return redirect('login_func')  
 
 
 def esqueceu(request):
