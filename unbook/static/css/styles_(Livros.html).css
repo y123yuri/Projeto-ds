@@ -424,9 +424,6 @@ a#Prof {
 }
 
 @media screen and (max-width: 767px) {
-  /* inicio das paginas */
-  /*PAGINA1*/
-
   .UnBook_logo_mini a {
     display: block;
     text-decoration: none;
@@ -448,34 +445,34 @@ a#Prof {
 
     position: relative;
 
-    margin-left: 20px;
+    margin-left: 10px;
     top: 20px;
   }
 
   .boxes {
-    display: flex;
-  }
-
-  .box1_2 {
-    position: relative;
-
-    margin-right: 1em;
-    margin-left: 1em;
-    margin-top: 3em;
-
-    width: 30%;
-    height: auto;
-
+    display: relative;
+    top: 2em;
     display: flex;
     flex-direction: column;
   }
 
+  .box1_2 {
+    position: relative;
+    margin-left: 3%;
+    margin-top: 0em;
+    width: 23em;
+    height: auto;
+    order: 2;
+    display: block;
+  }
+
   #box1 {
-    top: 30%;
+    position: relative;
+    margin: auto;
 
     width: 100%;
-    height: 25%;
-    padding: 1em;
+    height: 8em;
+    padding: 0.5em;
 
     display: block;
 
@@ -506,17 +503,20 @@ a#Prof {
   /* BOX 2 */
 
   #box2 {
-    display: block;
-    margin-top: 1.5em;
-
+    position: relative;
+    top: 1em;
+    margin: auto;
+    margin-bottom: 1em;
     width: 100%;
-    height: 5em;
+    height: 4em;
+    padding: -1em;
+
+    display: block;
 
     background-color: #cde4df;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
       0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
-    transition: all 0.3s ease-in-out;
   }
 
   #box2:hover {
@@ -525,6 +525,12 @@ a#Prof {
 
   #box2:active {
     transform: scale(0.95);
+  }
+
+  #Upload_Videos {
+    display: none;
+    position: relative;
+    top: 30%;
   }
 
   #box2 label:hover {
@@ -553,28 +559,45 @@ a#Prof {
   #box3 {
     position: relative;
 
-    margin-right: 3em;
-    margin-top: 3em;
+    margin: 3%;
+    margin-top: 2em;
 
-    width: 100%;
-    height: 50em;
-    text-align: center;
-
+    width: 23em;
+    height: 60em;
+    order: 1;
     display: block;
     background-color: #cde4df;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
       0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
+    border-radius: 25px;
+  }
+
+  #Materia {
+    display: block;
+    font-size: 1em;
+  }
+
+  a#Prof {
+    display: block;
+    font-size: 1em;
+    font-weight: bolder;
+    text-decoration: none;
+    color: #0b4c8c;
+    text-align: center;
+    margin-top: 0em;
+    margin: auto;
+    width: 20em;
+    height: auto;
   }
 
   #retry {
     display: block;
     text-align: right;
     position: relative;
-    top: 2.5em;
-    left: 90.65%;
-    width: 3em;
-    height: 3em;
+    top: 0.2em;
+    left: 88%;
+    width: 2em;
+    height: 2em;
     transition: all 0.3s ease-in-out;
     z-index: 2;
   }
@@ -583,32 +606,14 @@ a#Prof {
     transform: scale(1.05);
   }
 
-  #Materia {
-    display: block;
-    font-size: 1.5em;
-  }
-
-  a#Prof {
-    display: block;
-    font-size: 1.25em;
-    font-weight: bolder;
-    text-decoration: none;
-    color: #0b4c8c;
-    text-align: center;
-    margin-top: 0em;
-    margin: auto;
-    width: 30em;
-    height: auto;
-  }
-
   #Livros {
     position: relative;
     display: block;
-    font-size: 4em;
+    font-size: 2em;
   }
 
   .links {
-    font-size: 1.25em;
+    font-size: 1em;
     font-weight: 500;
     text-decoration: underline;
     color: #0b4c8c;
@@ -642,7 +647,7 @@ a#Prof {
   #modal_upload {
     position: fixed;
     display: none;
-    width: 60em;
+    width: 23em;
     height: 28em;
     background-color: #cde4df;
     border-radius: 25px;
@@ -652,93 +657,38 @@ a#Prof {
     justify-content: center;
 
     top: 10em;
-    left: 20%;
-  }
-
-  #nameDiv {
-    display: block;
-    height: 22.5em;
+    left: 30%;
   }
 
   #CampoFaladoModal1 {
-    text-align: left;
-    left: 1em;
+    font-size: 1.5em;
+    text-align: center;
     position: relative;
     top: 0.5em;
   }
 
   #CampoFaladoModal2 {
-    text-align: left;
+    text-align: 1.5em;
+    text-align: center;
     position: relative;
-    margin: 0.5em 0 0.25em 2em;
+    margin: 1.5em 2em 0.25em 2em;
   }
 
   .inputs {
-    width: 52.5%;
-    height: 3em;
-    font-size: 1.5em;
+    width: 90%;
+    height: 2em;
+
+    font-size: 1em;
 
     position: relative;
     background-color: whitesmoke;
     box-shadow: 0 0 10px black;
-    border-radius: 25px;
+    border-radius: 15px;
     color: #0b4c8c;
 
     padding-left: 1em;
     display: block;
-    margin-left: 1em;
-  }
-
-  #upload_arquivos {
-    display: inline-block;
-    position: relative;
-    left: 36.5em;
-    top: -15em;
-
-    width: 20em;
-    height: 20em;
-
-    border: solid #cde4df;
-    box-shadow: inset 0 0 5px black;
-  }
-
-  #label_file {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    transition: all 0.3s ease-in-out;
-  }
-
-  #label_file:hover {
-    background-color: #0b4c8c70;
-  }
-
-  #label_file img {
-    display: block;
-    position: relative;
-    top: 5em;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #label_file h2 {
-    display: block;
-    position: relative;
-    top: 6em;
-    text-align: center;
-    font-size: 1em;
-    color: rgb(81, 81, 81);
-  }
-
-  #imgView {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-position: center center;
-    background-size: cover;
+    margin: 0 1em;
   }
 
   #enviar {
@@ -748,7 +698,7 @@ a#Prof {
     font-size: 1.5em;
     font-weight: 600;
     text-align: center;
-    padding-top: 0.8em;
+    padding-top: 0.5em;
 
     position: relative;
     background-color: #0b4c8c;
@@ -757,9 +707,9 @@ a#Prof {
     text-decoration: none;
     color: whitesmoke;
 
-    top: -12em;
+    top: 1em;
     display: block;
-    margin-left: 3em;
+    margin: auto;
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;
@@ -780,21 +730,6 @@ a#Prof {
     text-align: left;
   }
 
-  @keyframes abrir_janelas {
-    from {
-      opacity: 0;
-      transform: translate3d(0, -5px, -20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  .abrir {
-    animation: abrir_janelas 0.3s;
-    display: block;
-  }
   @keyframes abrir_janelas {
     from {
       opacity: 0;
