@@ -101,3 +101,42 @@ class Report(models.Model):
     hora_publicacao = models.DateTimeField()
     def __str__(self):
         return  self.autor.username + ' ' + '/' + ' ' + self.comentario.texto  + '/' + self.observacao
+
+
+class Resumo(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    hora_publicacao = models.DateTimeField()
+    titulo = models.CharField(max_length=60)
+    link = models.CharField(max_length=250)
+    curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida_resumo")
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
+    ativo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.ativo} : {self.titulo} : {self.autor}'
+
+
+
+class Video(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    hora_publicacao = models.DateTimeField()
+    titulo = models.CharField(max_length=60)
+    link = models.CharField(max_length=250)
+    curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida_videos")
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
+    ativo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.ativo} : {self.titulo} : {self.autor}'
+
+class Atividade(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    hora_publicacao = models.DateTimeField()
+    titulo = models.CharField(max_length=60)
+    link = models.CharField(max_length=250)
+    curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida_atividades")
+    turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
+    ativo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.ativo} : {self.titulo} : {self.autor}'

@@ -14,6 +14,7 @@ urlpatterns = [
     path("materia/<str:codigo>/<str:nome>", views.materia, name='materia'),
     path("materia/<str:codigo>/<str:nome>/videos", views.videos, name='videos'),
     path("materia/<str:codigo>/<str:nome>/resumos", views.resumos, name='resumos'),
+    path("materia/<str:codigo>/<str:nome>/resumos/upload", views.upload_resumo, name='upload_resumo'),
     path("materia/<str:codigo>/<str:nome>/atividades", views.atividades, name='atividades'),
     path("avaliacao/", views.avaliacao, name="avaliacao"),
     path("denuncia/", views.denuncia, name="denuncia"),
