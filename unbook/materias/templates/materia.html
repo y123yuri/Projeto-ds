@@ -413,7 +413,7 @@
         </div>
 
         <hr />
-        
+
         <div id="modal_apagar_comentario">
           <h2 id="title_c"> Tem certeza que deseja apagar o comentário?</h2>
           <div id="espace_buttons"> 
@@ -426,9 +426,7 @@
           <div id="box_comentarios">
             <div id="scroll">
 
-              {% for comentario in comentarios %}
-              {% if comentario.ativo == False %}
-              {% comment %} {%else %}  {% endcomment %}
+              {% for comentario in comentarios %} 
               <div id="comentario{{ forloop.counter0 }}">
                 {% if comentario.autor.username == user.username %}
                   <div class="deletar_div" id="deletar" onclick="certeza()">
@@ -441,12 +439,13 @@
                     {{ comentario.texto }} <br />
                     <span style="font-size: 0.75em;">- {{ comentario.hora_publicacao }}</span>
                   </h3>
+                  
                   <div id="comentario_buttons">
                     <div class="curtidas">
                       <h3 class="text">Gostei</h3>
                       <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')"><i class="fa-solid fa-heart"></i></button>
                       <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
-                    </div>
+                    </div>|
                     <div class="report" onclick="modal_report(this, '{{ comentario.pk }}')">
                       <h3 class="text">Reportar</h3>
                       <button id="report" type="button" ><i class="bi bi-flag-fill"></i></button>
@@ -454,9 +453,7 @@
                   </div>
                 </div>
                 <hr style="margin: 2em 2em 0 2em ">
-                {% endif %}
-                {% comment %} {% endif %} {% endcomment %}
-                {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
+              {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
 
