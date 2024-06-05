@@ -574,7 +574,7 @@ a#Prof {
   #modal_upload {
     position: fixed;
     display: none;
-    width: 40em;
+    width: 20em;
     height: 28em;
     background-color: #cde4df;
     border-radius: 25px;
@@ -584,47 +584,48 @@ a#Prof {
     justify-content: center;
 
     top: 10em;
-    left: 30%;
+    left: 2.25em;
   }
 
   #CampoFaladoModal1 {
+    font-size: 1.6em;
     text-align: center;
     position: relative;
-    top: 0.5em;
+    margin: 0.5em 1em 0.25em 1em;
   }
 
   #CampoFaladoModal2 {
-    text-align: left;
+    text-align: 1.25em;
+    text-align: center;
     position: relative;
-    margin: 1.5em 0 0.25em 2em;
+    margin: 1em 1.75em 0.25em 1.75em;
   }
 
   .inputs {
     width: 90%;
-    height: 3em;
+    height: 2em;
 
-    font-size: 1.5em;
+    font-size: 1em;
 
     position: relative;
     background-color: whitesmoke;
     box-shadow: 0 0 10px black;
-    border-radius: 25px;
+    border-radius: 15px;
     color: #0b4c8c;
 
     padding-left: 1em;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 1em;
   }
 
   #enviar {
-    width: 40%;
-    height: 3em;
+    width: 50%;
+    height: auto;
 
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: 600;
     text-align: center;
-    padding-top: 0.8em;
+    padding-top: 0em;
 
     position: relative;
     background-color: #0b4c8c;
@@ -633,10 +634,9 @@ a#Prof {
     text-decoration: none;
     color: whitesmoke;
 
-    top: 1em;
+    top: 3em;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;
