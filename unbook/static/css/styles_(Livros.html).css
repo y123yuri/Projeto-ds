@@ -1,101 +1,491 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(135deg, #0C36A1, #008940);
-    width: 100%;
-    background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #0c36a1, #008940);
+  width: 100%;
+  background-attachment: fixed;
 
-    height: 150vh;
-    scroll-behavior: smooth;
+  height: 150vh;
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
-    width: 15px;
-    height: auto;
-    display: none;
+  width: 15px;
+  height: auto;
+  display: none;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
 
 ul {
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 /* inicio das paginas */
 /*PAGINA1*/
 
 .UnBook_logo_mini a {
+  display: block;
+  text-decoration: none;
+
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  color: whitesmoke;
+
+  margin-left: 30px;
+  top: 30px;
+}
+
+.UnBook_logo_mini {
+  display: inline;
+
+  width: 25em;
+  height: auto;
+
+  position: relative;
+
+  margin-left: 10px;
+  top: 20px;
+}
+
+.boxes {
+  display: flex;
+}
+
+.box1_2 {
+  position: relative;
+
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 3em;
+
+  width: 30%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#box1 {
+  top: 30%;
+
+  width: 100%;
+  height: 25%;
+  padding: 1em;
+
+  display: block;
+
+  background-color: #cde4df;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.CampoFalado1_box1 {
+  color: black;
+  position: relative;
+  font-size: 1.2em;
+  text-align: center;
+
+  display: block;
+  position: relative;
+  top: 15%;
+}
+
+.CampoFalado2 {
+  color: black;
+  text-align: left;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+/* BOX 2 */
+
+#box2 {
+  display: block;
+  margin-top: 1.5em;
+
+  width: 100%;
+  height: 5em;
+
+  background-color: #cde4df;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+#box2:hover {
+  transform: scale(1.05);
+}
+
+#box2:active {
+  transform: scale(0.95);
+}
+
+#box2 label:hover {
+  color: #0b4c8c;
+}
+
+#box2 label {
+  width: auto;
+  height: 3.25em;
+
+  padding-top: 1em;
+
+  color: black;
+  font-weight: 700;
+  font-size: 1.5em;
+  display: block;
+  position: relative;
+
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* BOX3 */
+
+#box3 {
+  position: relative;
+
+  margin-right: 3em;
+  margin-top: 3em;
+
+  width: 100%;
+  height: 50em;
+  text-align: center;
+
+  display: block;
+  background-color: #cde4df;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+#retry {
+  display: block;
+  text-align: right;
+  position: relative;
+  top: 2.5em;
+  left: 90.65%;
+  width: 3em;
+  height: 3em;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+#retry:hover {
+  transform: scale(1.05);
+}
+
+#Materia {
+  display: block;
+  font-size: 1.5em;
+}
+
+a#Prof {
+  display: block;
+  font-size: 1.25em;
+  font-weight: bolder;
+  text-decoration: none;
+  color: #0b4c8c;
+  text-align: center;
+  margin-top: 0em;
+  margin: auto;
+  width: 30em;
+  height: auto;
+}
+
+#Livros {
+  position: relative;
+  display: block;
+  font-size: 4em;
+}
+
+.links {
+  font-size: 1.25em;
+  font-weight: 500;
+  text-decoration: underline;
+  color: #0b4c8c;
+  cursor: pointer;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  display: inline-block;
+}
+
+#fundo_blur {
+  width: 100%;
+  height: 150vh;
+  position: fixed;
+
+  display: none;
+  background-color: hsla(0, 0%, 0%, 0.8);
+  backdrop-filter: blur(50px);
+  z-index: 3;
+}
+
+#posta_link {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  overflow-y: auto;
+  margin: auto;
+  text-align: center;
+}
+
+#modal_upload {
+  position: fixed;
+  display: none;
+  width: 60em;
+  height: 28em;
+  background-color: #cde4df;
+  border-radius: 25px;
+  box-shadow: 0 0 10px black;
+  z-index: 4;
+
+  justify-content: center;
+
+  top: 10em;
+  left: 20%;
+}
+
+#nameDiv {
+  display: block;
+  height: 22.5em;
+}
+
+#CampoFaladoModal1 {
+  text-align: left;
+  left: 1em;
+  position: relative;
+  top: 0.5em;
+}
+
+#CampoFaladoModal2 {
+  text-align: left;
+  position: relative;
+  margin: 0.5em 0 0.25em 2em;
+}
+
+.inputs {
+  width: 52.5%;
+  height: 3em;
+  font-size: 1.5em;
+
+  position: relative;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px black;
+  border-radius: 25px;
+  color: #0b4c8c;
+
+  padding-left: 1em;
+  display: block;
+  margin-left: 1em;
+}
+
+#upload_arquivos {
+  display: inline-block;
+  position: relative;
+  left: 36.5em;
+  top: -15em;
+
+  width: 20em;
+  height: 20em;
+
+  border: solid #cde4df;
+  box-shadow: inset 0 0 5px black;
+}
+
+#label_file {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  transition: all 0.3s ease-in-out;
+}
+
+#label_file:hover {
+  background-color: #0b4c8c70;
+}
+
+#label_file img {
+  display: block;
+  position: relative;
+  top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#label_file h2 {
+  display: block;
+  position: relative;
+  top: 6em;
+  text-align: center;
+  font-size: 1em;
+  color: rgb(81, 81, 81);
+}
+
+#imgView {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+}
+
+#enviar {
+  width: 40%;
+  height: 3em;
+
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 0.8em;
+
+  position: relative;
+  background-color: #0b4c8c;
+  box-shadow: 0 0 10px black;
+  border-radius: 25px;
+  text-decoration: none;
+  color: whitesmoke;
+
+  top: -12em;
+  display: block;
+  margin-left: 3em;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+}
+
+#enviar:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 5px whitesmoke;
+}
+#enviar:active {
+  transform: scale(0.95);
+}
+
+.nomeURL {
+  display: inline-block;
+  position: relative;
+
+  text-align: left;
+}
+
+@keyframes abrir_janelas {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -5px, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.abrir {
+  animation: abrir_janelas 0.3s;
+  display: block;
+}
+@keyframes abrir_janelas {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -5px, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.abrir {
+  animation: abrir_janelas 0.3s;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  /* inicio das paginas */
+  /*PAGINA1*/
+
+  .UnBook_logo_mini a {
     display: block;
     text-decoration: none;
-  
+
     margin-right: auto;
     margin-left: auto;
     position: relative;
     color: whitesmoke;
-  
+
     margin-left: 30px;
     top: 30px;
   }
-  
+
   .UnBook_logo_mini {
     display: inline;
-  
-    width: 25em;
+
+    width: 12.5em;
     height: auto;
-  
+
     position: relative;
-  
-    margin-left: 10px;
+
+    margin-left: 20px;
     top: 20px;
   }
 
-.boxes {
+  .boxes {
     display: flex;
-}
+  }
 
-.box1_2 {
+  .box1_2 {
     position: relative;
-  
+
     margin-right: 1em;
     margin-left: 1em;
     margin-top: 3em;
-  
+
     width: 30%;
     height: auto;
-  
+
     display: flex;
     flex-direction: column;
   }
-  
+
   #box1 {
     top: 30%;
-  
+
     width: 100%;
     height: 25%;
     padding: 1em;
-  
+
     display: block;
-  
-    background-color: #CDE4DF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+
+    background-color: #cde4df;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
   }
 
-.CampoFalado1_box1 {
+  .CampoFalado1_box1 {
     color: black;
     position: relative;
     font-size: 1.2em;
@@ -104,64 +494,63 @@ ul {
     display: block;
     position: relative;
     top: 15%;
-}
+  }
 
-.CampoFalado2 {
+  .CampoFalado2 {
     color: black;
     text-align: left;
     font-size: 1.5em;
     font-weight: 700;
-}
+  }
 
-/* BOX 2 */
+  /* BOX 2 */
 
-#box2 {
+  #box2 {
     display: block;
     margin-top: 1.5em;
-  
+
     width: 100%;
     height: 5em;
-  
-    background-color: #CDE4DF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+
+    background-color: #cde4df;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
     transition: all 0.3s ease-in-out;
   }
 
-#box2:hover{
+  #box2:hover {
     transform: scale(1.05);
-}
+  }
 
-#box2:active {
+  #box2:active {
     transform: scale(0.95);
-}
+  }
 
-#box2 label:hover {
-    color:#0B4C8C;
-}
+  #box2 label:hover {
+    color: #0b4c8c;
+  }
 
-#box2 label  {
+  #box2 label {
     width: auto;
     height: 3.25em;
 
     padding-top: 1em;
-
 
     color: black;
     font-weight: 700;
     font-size: 1.5em;
     display: block;
     position: relative;
- 
+
     text-align: center;
     align-items: center;
     cursor: pointer;
-}
+  }
 
+  /* BOX3 */
 
-/* BOX3 */
-
-#box3 {
+  #box3 {
     position: relative;
 
     margin-right: 3em;
@@ -172,12 +561,13 @@ ul {
     text-align: center;
 
     display: block;
-    background-color: #CDE4DF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    background-color: #cde4df;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+      0px 4px 25px 0px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
-}
+  }
 
-#retry {
+  #retry {
     display: block;
     text-align: right;
     position: relative;
@@ -186,25 +576,24 @@ ul {
     width: 3em;
     height: 3em;
     transition: all 0.3s ease-in-out;
-    z-index:2;
+    z-index: 2;
   }
-  
+
   #retry:hover {
     transform: scale(1.05);
   }
 
-
-#Materia {
+  #Materia {
     display: block;
     font-size: 1.5em;
-}
+  }
 
-a#Prof {
+  a#Prof {
     display: block;
     font-size: 1.25em;
     font-weight: bolder;
     text-decoration: none;
-    color: #0B4C8C;
+    color: #0b4c8c;
     text-align: center;
     margin-top: 0em;
     margin: auto;
@@ -212,24 +601,24 @@ a#Prof {
     height: auto;
   }
 
-#Livros {
+  #Livros {
     position: relative;
-  display: block;
-  font-size: 4em;
-}
+    display: block;
+    font-size: 4em;
+  }
 
-.links {
+  .links {
     font-size: 1.25em;
     font-weight: 500;
     text-decoration: underline;
-    color:#0B4C8C;
-    cursor:pointer;
+    color: #0b4c8c;
+    cursor: pointer;
     margin-top: 0.5em;
     margin-left: 0.5em;
     display: inline-block;
-}
+  }
 
-#fundo_blur {
+  #fundo_blur {
     width: 100%;
     height: 150vh;
     position: fixed;
@@ -238,9 +627,9 @@ a#Prof {
     background-color: hsla(0, 0%, 0%, 0.8);
     backdrop-filter: blur(50px);
     z-index: 3;
-}
+  }
 
-#posta_link {
+  #posta_link {
     width: 100%;
     height: auto;
     display: block;
@@ -248,15 +637,14 @@ a#Prof {
     overflow-y: auto;
     margin: auto;
     text-align: center;
-  
   }
 
-#modal_upload {
+  #modal_upload {
     position: fixed;
     display: none;
     width: 60em;
     height: 28em;
-    background-color: #CDE4DF;
+    background-color: #cde4df;
     border-radius: 25px;
     box-shadow: 0 0 10px black;
     z-index: 4;
@@ -265,27 +653,27 @@ a#Prof {
 
     top: 10em;
     left: 20%;
-}
+  }
 
-#nameDiv {
-    display:block;
+  #nameDiv {
+    display: block;
     height: 22.5em;
-}
+  }
 
-#CampoFaladoModal1 {
+  #CampoFaladoModal1 {
     text-align: left;
     left: 1em;
     position: relative;
-    top:0.5em;
-}
+    top: 0.5em;
+  }
 
-#CampoFaladoModal2 {
+  #CampoFaladoModal2 {
     text-align: left;
     position: relative;
-    margin: 0.5em 0 0.25em 2em
-}
+    margin: 0.5em 0 0.25em 2em;
+  }
 
-.inputs {
+  .inputs {
     width: 52.5%;
     height: 3em;
     font-size: 1.5em;
@@ -294,68 +682,67 @@ a#Prof {
     background-color: whitesmoke;
     box-shadow: 0 0 10px black;
     border-radius: 25px;
-    color:#0B4C8C;
+    color: #0b4c8c;
 
     padding-left: 1em;
     display: block;
     margin-left: 1em;
-}
+  }
 
-#upload_arquivos {
+  #upload_arquivos {
     display: inline-block;
     position: relative;
     left: 36.5em;
     top: -15em;
-    
+
     width: 20em;
     height: 20em;
-    
-    border: solid #CDE4DF;
-    box-shadow: inset 0 0 5px black;
-}
 
-#label_file {
+    border: solid #cde4df;
+    box-shadow: inset 0 0 5px black;
+  }
+
+  #label_file {
     display: block;
     position: relative;
     width: 100%;
     height: 100%;
     z-index: 3;
     transition: all 0.3s ease-in-out;
-}
+  }
 
-#label_file:hover {
+  #label_file:hover {
     background-color: #0b4c8c70;
-}
+  }
 
-#label_file img{
+  #label_file img {
     display: block;
     position: relative;
     top: 5em;
     margin-left: auto;
     margin-right: auto;
-}
+  }
 
-#label_file h2{
+  #label_file h2 {
     display: block;
     position: relative;
     top: 6em;
     text-align: center;
     font-size: 1em;
     color: rgb(81, 81, 81);
-}
+  }
 
-#imgView {
+  #imgView {
     display: block;
     position: relative;
     width: 100%;
     height: 100%;
     background-position: center center;
     background-size: cover;
-}
+  }
 
-
-#enviar {
-    width:40%;
+  #enviar {
+    width: 40%;
     height: 3em;
 
     font-size: 1.5em;
@@ -364,49 +751,64 @@ a#Prof {
     padding-top: 0.8em;
 
     position: relative;
-    background-color: #0B4C8C;
+    background-color: #0b4c8c;
     box-shadow: 0 0 10px black;
     border-radius: 25px;
-    text-decoration:none;
-    color:whitesmoke;
-
+    text-decoration: none;
+    color: whitesmoke;
 
     top: -12em;
     display: block;
     margin-left: 3em;
-    cursor:pointer;
+    cursor: pointer;
 
     transition: all 0.3s ease-in-out;
-}
+  }
 
-#enviar:hover {
+  #enviar:hover {
     transform: scale(1.05);
     text-shadow: 0 0 5px whitesmoke;
-}
-#enviar:active {
+  }
+  #enviar:active {
     transform: scale(0.95);
-}
+  }
 
-.nomeURL {
+  .nomeURL {
     display: inline-block;
     position: relative;
 
     text-align: left;
-}
+  }
 
-@keyframes abrir_janelas {
+  @keyframes abrir_janelas {
     from {
-        opacity: 0;
-        transform: translate3d(0, -5px, -20px);
+      opacity: 0;
+      transform: translate3d(0, -5px, -20px);
     }
 
     to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
-}
-
-.abrir {
+  }
+  .abrir {
     animation: abrir_janelas 0.3s;
     display: block;
+  }
+  @keyframes abrir_janelas {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -5px, -20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .abrir {
+    animation: abrir_janelas 0.3s;
+    display: block;
+  }
 }
