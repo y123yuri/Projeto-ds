@@ -391,7 +391,7 @@ def denuncia(request):
     print(Report.objects.filter(comentario=comentario).count())
 
     if Report.objects.filter(comentario=comentario).count() >= 19:
-        comentario.ativo = False
+        comentario.ativo = True
         comentario.save()
         print("comentário desativado")
     
