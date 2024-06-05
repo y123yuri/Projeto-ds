@@ -38,3 +38,7 @@ function proximo() {
     Digitar(h2Elements[currentIndex])
     h2Elements[currentIndex].style.display = 'block';
 }
+
+document.getElementById('titlao').addEventListener('click', ()=> {
+    window.scrollBy({top: 750, behavior: 'smooth' })
+})
