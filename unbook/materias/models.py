@@ -69,7 +69,7 @@ class Comentario(models.Model):
     ativo = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'f{self.hora_publicacao}: {self.autor}'
+        return f'{self.ativo} : {self.hora_publicacao}: {self.autor}'
     
 
 class Turma(models.Model):
