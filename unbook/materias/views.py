@@ -7,7 +7,9 @@ from datetime import timezone
 from django.utils import timezone
 from django.utils.timezone import make_aware
 from datetime import datetime
-
+from django.views.decorators.http import require_http_methods
+from .models import Comentario
+from django.http import JsonResponse
 # Create your views here.
 
 def home(request):
@@ -353,6 +355,17 @@ def comentarios(request):
     novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
     novo_comentario.save()
     return HttpResponse("ok")
+
+
+@require_http_methods(["DELETE"])
+def deletar_comentario(request, comentario_id):
+    try:
+        comentario = Comentario.objects.get(id=comentario_id, autor=request.user)
+        comentario.delete()
+        return JsonResponse({'success': True})
+        
+    except Comentario.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Comentário não encontrado.'}, status=404)
 
 def like(request):
     user = request.user

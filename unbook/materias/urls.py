@@ -20,5 +20,6 @@ urlpatterns = [
     path("denuncia/", views.denuncia, name="denuncia"),
     path("comentario/", views.comentarios, name='comentarios'),
     path("Tutorial", views.tutorial, name='tutorial'),
-    path("like/", views.like, name="like")
+    path("like/", views.like, name="like"),
+    path('deletar/<int:comentario_id>/', views.deletar_comentario, name='deletar_comentario'),
 ]

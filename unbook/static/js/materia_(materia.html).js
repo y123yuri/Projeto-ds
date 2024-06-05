@@ -51,9 +51,44 @@ function certeza() {
 
 }
 
-function apagarComentario(){
-    console.log('apagarei seu comentario')
-    alert('preciso duma função!!')
+function apagarComentario() {
+    const comentarioId = document.querySelector('.deletar_div').dataset.comentarioId; // Adicione o id do comentário ao elemento
+
+    fetch(`/deletar/${comentarioId}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Comentário deletado com sucesso!');
+            location.reload();
+            // Opcional: Remover o comentário da lista de comentários no DOM
+            document.getElementById(`comentario-${comentarioId}`).remove();
+        
+        } else {
+            alert('Erro ao deletar o comentário.');
+        }
+    })
+}
+
+// Função auxiliar para obter o CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 // FUNÇÃO PARA RODAR SCROLL
