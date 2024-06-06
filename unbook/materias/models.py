@@ -70,6 +70,16 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f'{self.ativo} : {self.hora_publicacao}: {self.autor} : {self.texto}'
+
+class Comentario_deletado(models.Model):
+    autor = models.CharField(max_length=50)
+    dia = models.CharField(max_length=50)
+    hora = models.CharField(max_length=50)
+    texto = models.CharField(max_length=250)
+    
+
+    def __str__(self):
+        return f' {self.autor} : {self.texto}'
     
 
 class Turma(models.Model):

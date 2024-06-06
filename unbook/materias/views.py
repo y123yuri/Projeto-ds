@@ -9,7 +9,10 @@ from django.utils.timezone import make_aware
 from datetime import datetime
 from django.views.decorators.http import require_http_methods
 from .models import Comentario
+from .models import Comentario_deletado
 from django.http import JsonResponse
+
+
 # Create your views here.
 
 def home(request):
@@ -361,7 +364,11 @@ def comentarios(request):
 def deletar_comentario(request, comentario_id):
     try:
         comentario = Comentario.objects.get(id=comentario_id, autor=request.user)
+        comentario_text = str(comentario)
         comentario.delete()
+        comentario_salvar = comentario_text.split(' ')
+        models_delete = Comentario_deletado(autor=comentario_salvar[4], hora=comentario_salvar[3], texto=comentario_salvar[6], dia=comentario_salvar[2], dia_deletado= timezone.now())
+        models_delete.save()
         return JsonResponse({'success': True})
         
     except Comentario.DoesNotExist:
