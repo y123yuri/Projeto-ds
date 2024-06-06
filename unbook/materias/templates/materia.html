@@ -427,6 +427,7 @@
             <div id="scroll">
 
               {% for comentario in comentarios %} 
+            
               <div id="comentario{{ forloop.counter0 }}">
                 {% if comentario.autor.username == user.username %}
                   <div class="deletar_div" id="deletar" data-comentario-id="{{ comentario.id }}" onclick="certeza()">
