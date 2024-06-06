@@ -173,24 +173,28 @@ ul {
 
   .box {
     background-color: whitesmoke;
-    width: auto;
-    height: 33em;
+    width: 85%;
+    height: 24em;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
 
     display: block;
-    margin: 1em;
+    margin: 2em;
     margin-top: 8%;
+
+    position: relative;
+    top: 4em;
   }
 
   .login {
-    font-size: 2.5em;
+    font-size: 2em;
     padding: 40px 5px 5px 40px;
+    margin-left: -0.5em;
   }
 
   .campoFalado1 {
     font-size: 1em;
-    padding-top: 20px;
+    padding-top: 15px;
 
     margin: 0 2em;
     display: block;
@@ -200,15 +204,16 @@ ul {
   .campoFalado2 {
     font-size: 1em;
     padding: 20px 5px 5px 20px;
+    margin: 0 1em;
   }
 
   .campoEscrito {
-    font-size: 20px;
+    font-size: 0.75em;
     border: none;
-    padding-left: 20px;
+    padding: 0.5em 1em;
 
-    width: 18em;
-    height: 2em;
+    width: 80%;
+    height: auto;
     background-color: #d9d9d9;
 
     text-align: left;
@@ -228,11 +233,11 @@ ul {
 
   .botao_enviar {
     display: block;
-    width: 22.5rem;
+    width: 40%;
     height: auto;
 
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #0b4c9c;
 
     margin-top: 30px;
@@ -240,11 +245,11 @@ ul {
     margin-right: auto;
 
     color: white;
-    font-size: 2em;
+    font-size: 1em;
     -webkit-text-stroke-width: 1px;
     cursor: pointer;
     text-align: center;
-    padding: 1rem 2rem;
+    padding: 0.5em 1em;
     text-decoration: none;
 
     transition: all 0.3s ease;
