@@ -76,7 +76,7 @@ class Comentario_deletado(models.Model):
     dia = models.CharField(max_length=50)
     hora = models.CharField(max_length=50)
     texto = models.CharField(max_length=250)
-    
+    dia_deletado = models.CharField(max_length=100)
 
     def __str__(self):
         return f' {self.autor} : {self.texto}'
