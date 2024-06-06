@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const textoArray = elemento.innerHTML.split('');
             elemento.innerHTML = '';
             textoArray.forEach((letra, i) => {
-                setTimeout(() => { elemento.innerHTML += letra; }, 40 * i)
+                setTimeout(() => { elemento.innerHTML += letra; }, 50 * i)
             });
         }
 
@@ -83,8 +83,23 @@ function proximo_video() {
     } else if (nextVideoIndex === 1) {
         titulo.textContent = "Login e cadastro";
     } else if (nextVideoIndex === 2) {
-        titulo.textContent = "Pesquisar";
+        titulo.textContent = "Perfil";
     } else if (nextVideoIndex === 3) {
-        titulo.textContent = "Matéria e professor";
+        titulo.textContent = "Pesquisar por professor";
+    } else if (nextVideoIndex === 4) {
+        titulo.textContent = "Página professor";
+    } else if (nextVideoIndex === 5) {
+        titulo.textContent = "Pesquisar por matéria";
+    } else if (nextVideoIndex === 6) {
+        titulo.textContent = "Depositar ou acessor arquivos";
+    } else if (nextVideoIndex === 7) {
+        titulo.textContent = "Avaliações";
+    } else if (nextVideoIndex === 8) {
+        titulo.textContent = "Calendário";
+    } else if (nextVideoIndex === 9) {
+        titulo.textContent = "Comentar";
+    } else if (nextVideoIndex === 10) {
+        titulo.textContent = "Denunciar comentário";
     } 
+
 }

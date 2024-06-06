@@ -310,5 +310,6 @@ document.getElementById('prox_button_3').addEventListener('click', (e)=> {
     const bio = document.getElementById('bio').value;
     
     enviarDados(curso, semestre, bio);
+    window.location.reload(true);
 });
 
