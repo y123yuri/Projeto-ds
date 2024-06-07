@@ -169,13 +169,10 @@ else {
 
 }
 
-
-
-
-
 //FUNÇÃO PARA TER O ID IGUAL AO NOME DO USUÁRIO
 window.onload = function () {
     var h2Elements = document.querySelectorAll('.usuarios'); // Seleciona o elemento h2 dentro de scroll na página
+    console.log(h2Elements)
 
     if (h2Elements.length >= 0) {
         for (let i = 0; i < h2Elements.length; i++) {
@@ -206,13 +203,16 @@ window.onload = function () {
     for (i=0;i<quant_likes.length;i++){
         element = document.getElementById(`like${i}`)
         element.innerText = `${quant_likes[i]}`
-        element = document.getElementById(`coracao${i}`)
+         // numero de likes (oi)
+        
+        elements = document.getElementById(`coracao${i}`);console.log(elements) // coraçao botao
+        
         if (curtidas[i] === "True"){
-            element.style.color = "red";
-            element.classList.add('heart');
+            elements.style.color = "red";
+            elements.classList.add('heart');
         } else{
-            element.style.color = "grey";
-            element.classList.remove('heart');
+            elements.style.color = "grey";
+            elements.classList.remove('heart');  //AAAAAAAAAAAAAA RRRRRRRRRRRUUUUUUUUUUMMMMMMMMMMMAAAAAAAAAAARRRR
         }
     }
 }
@@ -250,7 +250,14 @@ function like(element, pk) {
     if (element.style.color === "red") {
         element.style.color = "grey";
         element.classList.remove('animation');
-        contador.innerText = `${num-1}`
+        
+        if (num === 0) {
+            contador.innerText = `${num}`
+        } 
+        else if (num !== 0){
+            contador.innerText = `${num-1}`
+        }
+        
     } else {
         element.style.color = "red";
         element.classList.add('animation');

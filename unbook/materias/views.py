@@ -98,8 +98,10 @@ def materia(request, codigo, nome):
         context_curtida_final= []
 
         lista_tudao = []
-
-
+        contador_true = 0
+        lista_curtidas = []
+        lista_fodase  = []
+        
         
         for comentario in Comentario.objects.filter(turma=obj_turma):
             if comentario.ativo: 
@@ -110,11 +112,29 @@ def materia(request, codigo, nome):
                 # context["quant_like"].append(comentario.curtidas.count())
                 
                 if comentario.curtidas.filter(id=request.user.id).exists():
-                    context["curtidas"].append(True)
+                    # context["curtidas"].append(True)
+                    contador_true+=1
+                    lista_curtidas.append(True)
                 else:
-                    context["curtidas"].append(False)
-                
-                
+                    # context["curtidas"].append(False)
+                    contador_true+=1
+                    lista_curtidas.append(False)
+                # nn ta trocando a oredm     
+        for c in lista_curtidas:
+            if c == True:
+                lista_fodase.append(1)
+            else:
+                lista_fodase.append(0)
+        lista_fodase.sort(reverse=True)
+        for c in lista_fodase:
+            if c == 1:
+                context["curtidas"].append(True)
+            if c == 0:
+                 context["curtidas"].append(False)
+
+        print(context['curtidas'])
+        
+        
         for c in range(0,len(pre_context_curtida)):
             nova = [pre_context[c]],[pre_context_curtida[c]]
             lista_tudao.append(nova)
@@ -136,6 +156,7 @@ def materia(request, codigo, nome):
         for e in context_curtida_final:
             x= e[0]
             context["quant_like"].append(x)
+            
         # print(context['comentarios'])
         # print(context["quant_like"])
 
@@ -166,7 +187,7 @@ def materia(request, codigo, nome):
                         dias.append(dia)
                         
         context["dias"] =  dias
-        
+        print(context['dias'])
         
 
         return render(request, "materia.html", context)
@@ -382,7 +403,7 @@ def comentarios(request):
     'canalha', 'safado', 'estúpido', 'tapado','macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 
     'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato',
     'daputa', 'filhadaputa', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 
-    'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela' , 'desgraçado', 'desgraçada']
+    'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela' , 'desgraçado', 'desgraçada', 'fodase']
 
     comentario_split = comentario_usuario.split(' ')
     print(comentario_split)
