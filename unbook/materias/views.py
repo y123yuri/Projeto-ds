@@ -86,15 +86,62 @@ def materia(request, codigo, nome):
         context["comentarios"] = []
         context["quant_like"] = []
         context["curtidas"] = []
+        pre_context = []
+        pre_context_curtida = []
+        contador_comentario = 0 
+
+        
+        lista_context_comentario = []
+        lista_context_curtida=[]
+
+        context_comentario_final = []
+        context_curtida_final= []
+
+        lista_tudao = []
+
+
+        
         for comentario in Comentario.objects.filter(turma=obj_turma):
-            if comentario.ativo:
-                print(comentario)
-                context["comentarios"].append(comentario)
-                context["quant_like"].append(comentario.curtidas.count())
+            if comentario.ativo: 
+                pre_context.append(comentario)
+                pre_context_curtida.append(comentario.curtidas.count())
+
+                # context["comentarios"].append(comentario)
+                # context["quant_like"].append(comentario.curtidas.count())
+                
                 if comentario.curtidas.filter(id=request.user.id).exists():
                     context["curtidas"].append(True)
                 else:
                     context["curtidas"].append(False)
+                
+                
+        for c in range(0,len(pre_context_curtida)):
+            nova = [pre_context[c]],[pre_context_curtida[c]]
+            lista_tudao.append(nova)
+        
+        nova_lista = sorted(lista_tudao, key=lambda lista_tudao:lista_tudao[1], reverse=True) 
+        
+
+        for c in nova_lista:
+            comentarios_nova_lista=c[0]
+            curtidas_nova_lista=c[1]
+            
+            context_comentario_final.append(comentarios_nova_lista)
+            context_curtida_final.append(curtidas_nova_lista)
+        
+        for d in context_comentario_final:
+            x= d[0]
+            context["comentarios"].append(x)
+
+        for e in context_curtida_final:
+            x= e[0]
+            context["quant_like"].append(x)
+        # print(context['comentarios'])
+        # print(context["quant_like"])
+
+
+        
+
         
         index =0
         lista_turno = obj_turma.turno.split(" ")

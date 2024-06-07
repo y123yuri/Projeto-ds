@@ -25,7 +25,7 @@ function proximo() {
     var indice = document.getElementById('contador')
     indice.textContent = currentIndex + ' de 7'
 
-    if (currentIndex === h2Elements.length-1){
+    if (currentIndex === 7){
         button.textContent = 'Voltar';
         button.addEventListener('click', () => {
             window.location.href = "../"
