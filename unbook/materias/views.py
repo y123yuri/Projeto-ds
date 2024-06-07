@@ -56,8 +56,8 @@ def pesquisa_materias(request):
     
     termo_pesquisa_materias = request.POST['termo_pesquisa_materias']
     obj_lista_materia = Materia.objects.pesquisa(termo_pesquisa_materias)
-    print(obj_lista_materia)
-    print(termo_pesquisa_materias)
+    # print(obj_lista_materia)
+    # print(termo_pesquisa_materias)
     resposta = ''
 
     if len(obj_lista_materia)>0:
@@ -71,7 +71,7 @@ def pesquisa_materias(request):
 
 def materia(request, codigo, nome):
     if request.user.is_authenticated:
-        print(codigo, nome)
+        # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
@@ -108,18 +108,15 @@ def materia(request, codigo, nome):
                 pre_context.append(comentario)
                 pre_context_curtida.append(comentario.curtidas.count())
 
-                # context["comentarios"].append(comentario)
-                # context["quant_like"].append(comentario.curtidas.count())
+                
                 
                 if comentario.curtidas.filter(id=request.user.id).exists():
-                    # context["curtidas"].append(True)
                     contador_true+=1
                     lista_curtidas.append(True)
                 else:
-                    # context["curtidas"].append(False)
                     contador_true+=1
                     lista_curtidas.append(False)
-                # nn ta trocando a oredm     
+    
         for c in lista_curtidas:
             if c == True:
                 lista_fodase.append(1)
@@ -132,7 +129,8 @@ def materia(request, codigo, nome):
             if c == 0:
                  context["curtidas"].append(False)
 
-        print(context['curtidas'])
+        # print(context['curtidas'])
+        
         
         
         for c in range(0,len(pre_context_curtida)):
@@ -140,6 +138,9 @@ def materia(request, codigo, nome):
             lista_tudao.append(nova)
         
         nova_lista = sorted(lista_tudao, key=lambda lista_tudao:lista_tudao[1], reverse=True) 
+        
+
+
         
 
         for c in nova_lista:
@@ -157,8 +158,7 @@ def materia(request, codigo, nome):
             x= e[0]
             context["quant_like"].append(x)
             
-        # print(context['comentarios'])
-        # print(context["quant_like"])
+        
 
 
         
@@ -167,7 +167,7 @@ def materia(request, codigo, nome):
         index =0
         lista_turno = obj_turma.turno.split(" ")
         dias = []
-        print(obj_turma.turno)
+        # print(obj_turma.turno)
         for turno in lista_turno:
             
             for i in range(len(turno)):
@@ -187,7 +187,7 @@ def materia(request, codigo, nome):
                         dias.append(dia)
                         
         context["dias"] =  dias
-        print(context['dias'])
+        # print(context['dias'])
         
 
         return render(request, "materia.html", context)
@@ -302,7 +302,7 @@ def avaliacao(request):
 
     # Separe os dados da lista
     separacao = lista.split(',')
-    print(separacao)
+    # print(separacao)
     dificuldade_dados = int(float(separacao[0])*2)  # Converta para float
     apoio_dados = int(float(separacao[1])*2)
     didatica_dados = int(float(separacao[2])*2)
@@ -385,7 +385,7 @@ def comentarios(request):
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
 
     user = request.user
-    print(comentario_usuario)
+    # print(comentario_usuario)
     ##################################
 
     
@@ -406,7 +406,7 @@ def comentarios(request):
     'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela' , 'desgraçado', 'desgraçada', 'fodase']
 
     comentario_split = comentario_usuario.split(' ')
-    print(comentario_split)
+    # print(comentario_split)
     novo_if_comentario = []
     for palavra in comentario_split: #pega todas as palavras
         palavra_minuscula = palavra.lower()
@@ -422,7 +422,7 @@ def comentarios(request):
     for palavra2 in novo_if_comentario:
         comentario_corrigido += f'{palavra2} ' 
 
-    print(comentario_corrigido)
+    # print(comentario_corrigido)
     
     novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
     novo_comentario.save()
@@ -453,7 +453,7 @@ def like(request):
     obj_prof = Professor.objects.get(nome=nome)
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
     comentario = Comentario.objects.get(pk=pk_comentario)
-    print(obj_turma, obj_prof, comentario)
+    # print(obj_turma, obj_prof, comentario)
     if comentario.curtidas.filter(id=user.id).exists():
         print("vou remover o user")
         comentario.curtidas.remove(user)
@@ -475,7 +475,7 @@ def denuncia(request):
     obj_prof = Professor.objects.get(nome=nome)
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
     comentario = Comentario.objects.get(pk=pk_comentario)
-
+    
     # desativar comentário se tiver mais do q 20
     print(Report.objects.filter(comentario=comentario).count())
 
@@ -484,18 +484,21 @@ def denuncia(request):
         comentario.save()
         print("comentário desativado")
     
+    if comentario.denuncia.filter(id=user.id).exists():
+        a = 0
+        return HttpResponse(f'ok')
+    else:
+        comentario.denuncia.add(user)
+        obj_denuncia = Report(autor=user, comentario=comentario,cont_ofensivo=traducao[tipos[0]],
+        info_falsa =traducao[tipos[1]],
+        bullying =traducao[tipos[2]],
+        cont_sexual =traducao[tipos[3]],
+        discurso_odio = traducao[tipos[4]],
+        observacao = obs,
+        hora_publicacao = timezone.now())
+        obj_denuncia.save()
 
-
-    obj_denuncia = Report(autor=user, comentario=comentario,cont_ofensivo=traducao[tipos[0]],
-    info_falsa =traducao[tipos[1]],
-    bullying =traducao[tipos[2]],
-    cont_sexual =traducao[tipos[3]],
-    discurso_odio = traducao[tipos[4]],
-    observacao = obs,
-    hora_publicacao = timezone.now())
-    obj_denuncia.save()
-
-    return HttpResponse(f'ok')
+        return HttpResponse(f'ok')
  
 
 

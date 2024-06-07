@@ -67,7 +67,8 @@ class Comentario(models.Model):
     curtidas = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="curtida")
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
     ativo = models.BooleanField(default=True)
-
+    denuncia = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="denuncia_comentario")
+    
     def __str__(self):
         return f'{self.ativo} : {self.hora_publicacao}: {self.autor} : {self.texto}'
 
