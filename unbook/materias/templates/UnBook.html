@@ -85,10 +85,15 @@
                 <h1 class="CampoFalado"> Informe o nome do professor:</h1>
                 <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeyup=pesquisa_prof("{{csrf_token}}") autocomplete="off"></input>
                 <div class="CampoProcura">
+                    
                     <ul id="list_professores">
-                        <li> Sérgio Antonio </li>
-                        <li> Felipe Antonio </li>
-                        <li> Michael Antonio </li>
+                        
+                        <li><img src="https://arquivos.unb.br/arquivos/202215922233cf25756177289cb19cd21/foto2.Sergio.sem_fundo.v2.jpg"><a href="professor/SERGIO ANTONIO ANDRADE DE FREITAS" class="lista_professores">SERGIO ANTONIO ANDRADE DE FREITAS</a></li>
+
+                        <li><img src="https://arquivos.unb.br/arquivos/202017816372c620536050f8cc68c0fea/Foto_Gabriela_Neves_Delgado_-_2020.JPG"><a href="professor/GABRIELA NEVES DELGADO">GABRIELA NEVES DELGADO</a></li>
+
+                        <li><img src="https://arquivos.unb.br/arquivos/202003024440042055259d3e41418077d/Screenshot_20200807-080033_Facebook.jpg"><a href="professor/RICARDO RAMOS FRAGELLI" class="lista_professores">RICARDO RAMOS FRAGELLI</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -99,10 +104,17 @@
                 <h1 class="CampoFalado">Informe a matéria:</h1>
                 <input class="barra_pesquisa" type="text" id="searchbar_materia" placeholder="pesquisar" onkeydown=pesquisa_materia("{{csrf_token}}") autocomplete="off"></input>
 
+                <script>
+                    csrf_token = "{{csrf_token}}"
+                </script>
+
                 <div class="CampoProcura">
                     <ul id="list_materias"> 
-                        
+                        <li><a onclick="abrirModal_Materia2('CÁLCULO 1') , abrir_turmas('MAT0025', csrf_token)"> CÁLCULO 1 (MAT0025)</a></li>
 
+                        <li><a onclick="abrirModal_Materia2('DESEVOLVIMENTO DE SOFTWARE') , abrir_turmas('FGA0084', csrf_token)"> DESEVOLVIMENTO DE SOFTWARE (FGA0084) </a></li>
+
+                        <li><a onclick="abrirModal_Materia2('ESTUDO DO TURISMO 1') , abrir_turmas('CET0038', csrf_token)"> ESTUDO DO TURISMO 1 (CET0038) </a></li>
                     </ul>
                 </div>
 

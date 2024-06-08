@@ -429,8 +429,57 @@ div .janela_pesquisa {
     list-style-type: none;
 }
 
-.lista_professores:hover {
+#list_professores{
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    padding: 0.5em 2em;
+}
+
+#list_professores li{
+    position: relative; 
+    margin-bottom: 1em;
+
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    color: black;
+    text-decoration: none; 
+    margin: 0.5em 1em;
+    text-shadow: none; 
+    transition: all 0.3s ease 0s;
+}
+
+#list_professores img {
+    width: 10%;
+    height: 10%;
+    border-radius: 5px;
+    display: block;
+    margin-right: 1em;
+}
+
+#list_professores a {
+    color: black;
+    text-decoration: black;
+}
+
+#list_professores li a:hover {
     color: #008940;
+    text-shadow: 0 0 2px #008940;
+    transition: all 0.3s ease;
+}
+
+#list_materias li{
+    width: 100%;
+    position: relative; 
+    left:-1em; 
+    margin-bottom: 1.5em
+}
+
+#list_materias li:hover {
+    color: #008940;
+    text-shadow: 0 0 2px #008940;
+    transition: all 0.3s ease;
 }
 
 /* FIM DA JANELA */
@@ -952,7 +1001,6 @@ nav {
     
     /*JANELA*/
     
-    
     .CampoFalado {
         margin-bottom: 0.5em;
         font-size: 1.25em;
@@ -1012,7 +1060,7 @@ nav {
         display: block;
         margin: auto;
         position: relative;
-        padding: 1em 0 1em 2em;
+        padding: 0.5em 1em;
         text-align: left;
         border: none;
         text-decoration: none;
@@ -1022,11 +1070,81 @@ nav {
     
         list-style-type: none;
     }
-    
-    .lista_professores:hover {
-        color: #008940;
+
+
+    #list_professores{
+        display: flex; 
+        flex-direction: column; 
+        position: relative; 
+        padding: 0.5em 1em;
     }
     
+    #list_professores li{
+        position: relative; 
+        margin-bottom: 1em;
+    
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;
+        color: black;
+        text-decoration: none; 
+        margin: 0.5em 1em;
+        text-shadow: none; 
+        transition: all 0.3s ease 0s;
+    }
+    
+    #list_professores img {
+        width: 15%;
+        height: 15%;
+        border-radius: 5px;
+        display: block;
+        margin-right: 1em;
+    }
+    
+    #list_professores a {
+        font-size: 0.8em;
+        color: black;
+        text-decoration: black;
+    }
+    
+    #list_professores li a:hover {
+        color: #008940;
+        text-shadow: 0 0 2px #008940;
+        transition: all 0.3s ease;
+    }
+    
+
+    #list_materias li{
+        font-weight: 500;
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+        left: -1em;
+        font-size: 0.8em;
+        position: relative;
+        margin: auto auto 0.5em;
+        text-align: left;
+    }
+
+    #list_materias li a {
+        font-weight: 500;
+        list-style-type: none;
+        text-align: left;
+        color: black;
+        text-decoration: none;
+        text-shadow: none;
+        transition: all 0.3s ease 0s;
+        font-size: 0.75em;
+        position: relative;
+        left: 1em;
+    }
+
+
+    #list_materias li:hover {
+        color: #008940;
+        text-shadow: 0 0 2px #008940;
+        transition: all 0.3s ease;
+    }
     /* FIM DA JANELA */
     
     /* JANELA MATERIA2 */

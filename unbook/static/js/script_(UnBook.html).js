@@ -56,10 +56,11 @@ function pesquisa_prof(csrf_token) {
                     var imagem_professor = document.createElement('img');
                     imagem_professor.src = lista_resultado[i][1];
 
-                    imagem_professor.width = "50"
-                    imagem_professor.height = "50"
-                    imagem_professor.style.borderRadius = "10px";
+                    imagem_professor.width = "10%"
+                    imagem_professor.height = "10%"
+                    imagem_professor.style.borderRadius = "5px";
                     imagem_professor.style.display = "block";
+                    imagem_professor.style.marginRight = "1em";
                     
 
                     var link_professor = document.createElement("a")
@@ -83,7 +84,6 @@ function pesquisa_prof(csrf_token) {
                     link_professor.style.color = "black";
                     link_professor.style.textDecoration = "none";
                     link_professor.style.display = "block";
-                    link_professor.style.margin = "0em 1em";
 
                     
                     if(window.matchMedia("(max-width:764px)").matches) {
@@ -107,6 +107,9 @@ function pesquisa_materia(csrf_token) {
     let input = document.getElementById('searchbar_materia').value
     input = input.toUpperCase()
 
+    let CampoProcura = document.querySelector('.CampoProcura')
+    CampoProcura.style.display = "block"
+
     $.ajax({
         type: "POST",
         url: "pesquisa_materia/",
@@ -125,7 +128,7 @@ function pesquisa_materia(csrf_token) {
             }; //percorrer todos e separar em arrays
 
             var ul_materias = document.getElementById('list_materias');
-            ul_materias.style.padding = '1em 1em';
+            ul_materias.style.padding = '0.5em 1em';
             ul_materias.style.textAlign = "left"
             ul_materias.innerHTML = '';
 
@@ -182,6 +185,7 @@ function pesquisa_materia(csrf_token) {
 
                 if(window.matchMedia("(max-width:764px)").matches) {
                     link_materias.style.fontSize = "0.75em";
+                    link_materias.style.left = "1em";
                 }
 
 

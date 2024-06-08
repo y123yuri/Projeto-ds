@@ -57,49 +57,61 @@ function fechar() {
     document.getElementById('azulzao').style.display = "none"
     document.getElementById('tutorial').style.display = "flex"
 }
-function proximo_video() {
-    var videos = document.querySelectorAll('.video-container video');
-    var titulo = document.getElementById('titulo');
 
-    // Encontra o vídeo atualmente exibido
-    var currentVideoIndex;
-    for (var i = 0; i < videos.length; i++) {
-        if (videos[i].style.display !== 'none') {
-            currentVideoIndex = i;
-            break;
+var videos = document.querySelectorAll('.video-container video');
+        var titulo = document.getElementById('titulo');
+        var titulos = [
+            "Página inicial",
+            "Login e cadastro",
+            "Perfil",
+            "Pesquisar por professor",
+            "Página professor",
+            "Pesquisar por matéria",
+            "Depositar ou acessor arquivos",
+            "Avaliações",
+            "Calendário",
+            "Comentar",
+            "Denunciar comentário"
+        ];
+
+        function proximo_video() {
+            // Encontra o vídeo atualmente exibido
+            var currentVideoIndex;
+            for (var i = 0; i < videos.length; i++) {
+                if (videos[i].style.display !== 'none') {
+                    currentVideoIndex = i;
+                    break;
+                }
+            }
+
+            // Oculta o vídeo atual
+            videos[currentVideoIndex].style.display = 'none';
+
+            // Exibe o próximo vídeo ou o primeiro se já estiver no último
+            var nextVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videos[nextVideoIndex].style.display = 'block';
+
+            // Atualiza o título conforme o vídeo exibido
+            titulo.textContent = titulos[nextVideoIndex];
         }
-    }
 
-    // Oculta o vídeo atual
-    videos[currentVideoIndex].style.display = 'none';
+        function video_anterior() {
+            // Encontra o vídeo atualmente exibido
+            var currentVideoIndex;
+            for (var i = 0; i < videos.length; i++) {
+                if (videos[i].style.display !== 'none') {
+                    currentVideoIndex = i;
+                    break;
+                }
+            }
 
-    // Exibe o próximo vídeo ou o primeiro se já estiver no último
-    var nextVideoIndex = (currentVideoIndex + 1) % videos.length;
-    videos[nextVideoIndex].style.display = 'block';
+            // Oculta o vídeo atual
+            videos[currentVideoIndex].style.display = 'none';
 
-    // Atualiza o título conforme o vídeo exibido
-    if (nextVideoIndex === 0) {
-        titulo.textContent = "Página inicial";
-    } else if (nextVideoIndex === 1) {
-        titulo.textContent = "Login e cadastro";
-    } else if (nextVideoIndex === 2) {
-        titulo.textContent = "Perfil";
-    } else if (nextVideoIndex === 3) {
-        titulo.textContent = "Pesquisar por professor";
-    } else if (nextVideoIndex === 4) {
-        titulo.textContent = "Página professor";
-    } else if (nextVideoIndex === 5) {
-        titulo.textContent = "Pesquisar por matéria";
-    } else if (nextVideoIndex === 6) {
-        titulo.textContent = "Depositar ou acessor arquivos";
-    } else if (nextVideoIndex === 7) {
-        titulo.textContent = "Avaliações";
-    } else if (nextVideoIndex === 8) {
-        titulo.textContent = "Calendário";
-    } else if (nextVideoIndex === 9) {
-        titulo.textContent = "Comentar";
-    } else if (nextVideoIndex === 10) {
-        titulo.textContent = "Denunciar comentário";
-    } 
+            // Exibe o vídeo anterior ou o último se já estiver no primeiro
+            var prevVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            videos[prevVideoIndex].style.display = 'block';
 
-}
+            // Atualiza o título conforme o vídeo exibido
+            titulo.textContent = titulos[prevVideoIndex];
+        }
