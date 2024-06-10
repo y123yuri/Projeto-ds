@@ -1,3 +1,27 @@
+window.onload = function () {
+    // colocando quant de likes
+    console.log("entrei!" +quant_likes.length)
+    for (i=0;i<quant_likes.length;i++){
+        console.log(`cont_link${i}`)
+        element = document.getElementById(`cont_link${i}`)
+        console.log(element)
+        element.innerText = `cont: ${quant_likes[i]}`
+         // numero de likes (oi)
+        
+        elements = document.getElementById(`coracao${i}`);
+        console.log(elements) // coraçao botao
+        
+        if (curtidas[i] === "True"){
+            elements.style.color = "red";
+            elements.classList.add('heart');
+        } else{
+            elements.style.color = "grey";
+            elements.classList.remove('heart');  //AAAAAAAAAAAAAA RRRRRRRRRRRUUUUUUUUUUMMMMMMMMMMMAAAAAAAAAAARRRR
+        }
+    }
+}
+
+
 var fundo_blur = document.getElementById('fundo_blur');
 var modal = document.getElementById('modal_upload');
 
@@ -15,6 +39,8 @@ function enviar() {
     var nome_link = document.getElementById('queLinkéEsse').value;
 
 if (link_enviado !== '' && nome_link !== '') {
+    
+    envia_link_back(nome_link, link_enviado)
     var scroll = document.getElementById('posta_link')
     
     var nome = document.createElement('h2')
@@ -39,10 +65,36 @@ if (link_enviado !== '' && nome_link !== '') {
     nome.value = '';
     
     fechar_modal();
+
 } else {
     alert('Tem que ter um link ai dentro man')
 }
     
+}
+
+function envia_link_back(nome_link, link){
+    console.log(nome_link, link)
+    $.ajax({
+        type: "POST",
+        url: "../../../../video/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            materia: codigo,
+            professor: nome,
+            link: link,
+            titulo: nome_link,
+        }, 
+        success: function (response)  {
+            if (response === "erro") {
+                console.log(response)
+                console.log("não aceitei")
+                deu_certo = false
+            } else{
+                console.log(response)
+                deu_certo = true
+            }
+        }
+    })
 }
 
 document.addEventListener('click', function(e) {

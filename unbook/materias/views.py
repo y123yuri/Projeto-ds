@@ -251,12 +251,51 @@ def videos(request, nome,codigo) :
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         context = {}
         context["turma"] = obj_turma
+        lista_videos = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+        for video in Video.objects.filter(turma=obj_turma):
+            lista_videos.append(video)
+            lista_quant_curtida.append(video.curtidas.count())
+            lista_bool_curtiu.append( 1 if video.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+
+        context["videos"] = lista_videos
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
+
 
         return render(request, "Videos.html", context)
+    
     else:
         context = {}
         context["erro"] = "Você precisa estar logado" 
         return redirect('../../cadastro/login', context)
+
+def add_video(request): #ajax function
+    materia = Materia.objects.get(codigo=request.POST["materia"])
+    professor = Professor.objects.get(nome=request.POST["professor"])
+    turma = Turma.objects.get(materia=materia, professor=professor)
+    nome_link = request.POST["titulo"]
+    link = request.POST["link"].replace("https://", "").replace("www.", "")
+    
+    print(f"link: {link}; nome:{nome_link}")
+    if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
+        if not Video.objects.filter(link=link).exists():
+            print("oi")
+            video = Video(
+                turma=turma,
+                hora_publicacao=timezone.now(),
+                titulo=nome_link,
+                link=link,
+                autor=request.user)
+            video.save()
+            return HttpResponse("ok")
+        return HttpResponse("erro")
+    else:
+        return HttpResponse("erro")
+
 
 def resumos(request, nome,codigo) :
     if request.user.is_authenticated:

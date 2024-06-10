@@ -17,6 +17,24 @@
 </head>
 
 <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        csrf_token = '{{ csrf_token }}'
+        nome = '{{ turma.professor.nome }}'
+        codigo = '{{ turma.materia.codigo }}'
+        quant_likes = []
+        curtidas = []
+
+        {% for likes in quant_curtidas %}
+        quant_likes.push(Number("{{ likes }}"))
+        {% endfor %}
+
+        {% for curtiu in bool_curtiu %}
+        curtidas.push("{{ curtiu }}")
+        {% endfor %}
+
+    </script>
+
 
     <div id="fundo_blur"></div> 
 
@@ -61,8 +79,16 @@
                 <div id="posta_link">
                         
                 </div>
-            </div>
+                {% for video in videos %}
+                <h3>{{video.titulo}}</h3>
+                <br>
+                <a href="https://{{video.link}}">link </a>
+                <p id="cont_link{{ forloop.counter0 }}"></p>
+                <p id="coracao{{ forloop.counter0 }}">coracaum</p>
 
+            {% endfor %}
+            </div>
+            
 
         </div>
 

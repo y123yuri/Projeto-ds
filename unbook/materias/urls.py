@@ -21,5 +21,6 @@ urlpatterns = [
     path("comentario/", views.comentarios, name='comentarios'),
     path("Tutorial", views.tutorial, name='tutorial'),
     path("like/", views.like, name="like"),
+    path("video/", views.add_video, name="video"),
     path('deletar/<int:comentario_id>/', views.deletar_comentario, name='deletar_comentario'),
 ]
