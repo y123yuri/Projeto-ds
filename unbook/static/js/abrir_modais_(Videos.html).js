@@ -11,7 +11,7 @@ window.onload = function () {
         elements = document.getElementById(`coracao${i}`);
         console.log(elements) // coraçao botao
         
-        if (curtidas[i] === "True"){
+        if (curtidas[i] === 1){
             elements.style.color = "red";
             elements.classList.add('heart');
         } else{
