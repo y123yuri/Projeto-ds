@@ -335,6 +335,13 @@ a#Prof {
   color: grey;
 }
 
+.usuarios {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .div_space {
   display: flex;
   flex-direction: column;

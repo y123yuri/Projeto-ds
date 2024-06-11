@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="{% static 'css/styles_(Videos.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
+    <link rel="stylesheet" href="{% static 'css/styles_(Arquivos.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
 
@@ -82,7 +82,8 @@
               <div class="div_space">
                 <div class="text_videos">
                   <h3 class="title">{{ resumo.titulo }}:</h3>
-                  <a href="https://{{ resumo.link }}">Clique aqui para acessar o link</a>
+                  <a href="https://{{ resumo.link }}">{{ resumo.link }}</a>
+                  <h4 style="margin-left: 1em">Clique para acessar o link </h4>
                 </div>
 
                 <div class="like">

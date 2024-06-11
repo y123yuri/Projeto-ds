@@ -87,11 +87,12 @@ function nomeConfirmaValidade() {
 }
 
 function nomeValidade() {
-    if (campos[1].value.length < 4) {
-        console.log('O NOME TA PEQUENO');
+    if (campos[1].value.length < 3 || campos[1].value.length > 12) {
+        
+        console.log('O NOME NÃO ESTÁ DENTRO DAS DIRETRIZES');
         setError(1);
     }
-    else if (campos[1].value.length > 3) {
+    else if (campos[1].value.length > 3 && campos[1].value.length <= 12) {
         console.log('VALIDADO O NOME');
         removeError(1);
         etapaNome = true;

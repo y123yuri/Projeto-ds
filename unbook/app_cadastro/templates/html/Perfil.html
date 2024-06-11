@@ -181,8 +181,15 @@
                   <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
                   <button id="submit" type="submit">Mudar senha</button>
               </form>
+
               </div>
-            
+                {% if messages %}
+                    <ul>
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                {% endif %}
           </div>
         </div>
 

@@ -545,11 +545,15 @@ def comentarios(request):
     for palavra2 in novo_if_comentario:
         comentario_corrigido += f'{palavra2} ' 
 
-    # print(comentario_corrigido)
+   
+    if len(comentario_corrigido)>2:
+        novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
+        novo_comentario.save()
+        return HttpResponse("ok")
+    else:
+        return HttpResponse("nao ok")
     
-    novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
-    novo_comentario.save()
-    return HttpResponse("ok")
+    
 
 
 @require_http_methods(["DELETE"])

@@ -476,13 +476,13 @@ function postar_comentario() {
         comentarioBox.scrollIntoView({ behavior: "smooth" });
         document.getElementById('comentar_input').value = ' ';
 
-        
+        comentario_back(conteudo)
     }
-    comentario_back(conteudo)
 
 }
 
 function comentario_back(conteudo){
+
     $.ajax({
         type: "POST",
         url: "../../../comentario/",
