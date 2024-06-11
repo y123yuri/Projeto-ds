@@ -141,6 +141,7 @@ function pesquisa_materia(csrf_token) {
         
                     materias.style.position = "relative"
                     materias.style.marginBottom = "1.5em"
+                    materias.style.marginLeft = "1em"
         
                     if(window.matchMedia("(max-width:764px)").matches) {
                         materias.style.position = "relative"

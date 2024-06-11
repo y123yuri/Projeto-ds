@@ -76,18 +76,26 @@
           {% for resumo in resumos %}
             <div class="arquivos" onclick="https://{{ resumo.link }}">
               <div class="image">
-                <i style="font-size: 3em;" class="bi bi-person-video2"></i>
+              <i style="font-size: 3em;" class="bi bi-person-video2"></i>
               </div>
 
               <div class="div_space">
+
+                <div class="usuarios">
+                  <h2> @{{resumo.autor}} </h2>
+                </div>
+                  
                 <div class="text_videos">
-                  <h3 class="title">{{ resumo.titulo }}:</h3>
-                  <a href="https://{{ resumo.link }}">{{ resumo.link }}</a>
-                  <h4 style="margin-left: 1em">Clique para acessar o link </h4>
+                  <h3 class="title">Título: " {{ resumo.titulo }} "</h3>
+
+                  <div class="link">
+                    <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
+                    <a href="https://{{ resumo.link }}">{{ resumo.link }}</a>
+                  </div>
                 </div>
 
                 <div class="like">
-                  <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Autor: {{ resumo.autor }} | Horário da publicação: {{resumo.hora_publicacao}}</h4>
+                  <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{resumo.hora_publicacao}}</h4>
 
                   {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
                   <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
@@ -97,14 +105,15 @@
           {% endfor %}
         </div>
       </div>
-      {% if messages %}
+    </div>
+
+    {% if messages %}
         <ul style="">
             {% for message in messages %}
                 <li class="alerta">{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
-    </div>
   </body>
 
   <script>
@@ -115,5 +124,5 @@
 
   <!-- LINK PARA ARQUIVOS JS -->
   <!-- <script src="../js/materia_(materia.html).js"></script> -->
-  <script src="{% static 'js/abrir_modais_(Livros.html).js' %}"></script>
+  <script src="{% static 'js/abrir_modais_(Arquivos.html).js' %}"></script>
 </html>
