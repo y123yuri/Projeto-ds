@@ -138,10 +138,7 @@ def logado(request):
             print(v1)
             if user:
                 login(request, user)
-                context = {}
-                form = PerfilForm()
-                context["form"] = form
-                return render(request, 'html/Perfil.html', context)
+                return redirect('login_func')
             else:
                 request.session['erro'] = "Login invalido"
         
