@@ -282,6 +282,7 @@ def add_video(request): #ajax function
     
     print(f"link: {link}; nome:{nome_link}")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
+        #filtro de videos
         if not Video.objects.filter(link=link).exists():
             print("oi")
             video = Video(

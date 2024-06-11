@@ -246,14 +246,102 @@ a#Prof {
 }
 
 #posta_link {
-  width: 100%;
+  width: 90%;
   height: auto;
+  max-height: 32em;
   display: block;
   position: relative;
+
   overflow-y: auto;
   margin: auto;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.300);
+
+  padding: 1em 1em;
 }
+
+#posta_link::-webkit-scrollbar {
+  width: 15px;
+  height: auto;
+}
+
+#posta_link::-webkit-scrollbar-thumb {
+  background-color: #cde4df;
+  border-radius: 20px;
+  border: solid 1px #0000002a;
+  /* roundness of the scroll thumb */
+}
+
+#posta_link::-webkit-scrollbar-track {
+  background-color: #0000002a;
+  border-radius: 25px;
+  margin-right: 2em;
+}
+
+
+.arquivos {
+  border-radius: 20px;
+  background-color: #cde4df;
+  box-shadow: -2px 2px 2px black;
+  
+  width: auto;
+  height: 6em;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1em 2em;
+
+  margin-bottom: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.arquivos:hover {
+  transform: scale(1.015);
+  background-color: #E95959;
+}
+
+.image {
+  width: 4em;
+  height: 4em;
+  background-color: #E95959;
+  color: #a94141;
+  padding: 0.25em 0.5em;
+  display: flex;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 1.25em;
+  margin-right: 1em;
+}
+
+.text_videos , .like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  padding: 0em 0.5em;
+}
+
+.heart {
+  outline: none;
+  background: transparent;
+  border: none;
+  font-size: 1em;
+  position: relative;
+  cursor: pointer;
+
+  color: grey;
+}
+
+.div_space {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 2em;
+}
+
 
 #modal_upload {
   position: fixed;
