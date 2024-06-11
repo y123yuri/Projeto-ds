@@ -28,11 +28,11 @@
 
       {% for likes in quant_curtidas %}
         quant_likes.push(Number("{{ likes }}"))
-      {% endfor %}
+        {% endfor %}
 
       {% for curtiu in bool_curtiu %}
         curtidas.push("{{ curtiu }}")
-      {% endfor %}
+        {% endfor %}
 
     </script>
     <div id="fundo_blur"></div> 

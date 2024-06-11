@@ -280,7 +280,7 @@ def add_video(request): #ajax function
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
-    print(f"link: {link}; nome:{nome_link} merda")
+    print(f"link: {link}; nome:{nome_link} video")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de videos
         if not Video.objects.filter(link=link).exists():
@@ -336,9 +336,9 @@ def add_resumo(request): #ajax function
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
-    print(f"link: {link}; nome:{nome_link} merda")
+    print(f"link: {link}; nome:{nome_link} resumo")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
-        #filtro de videos
+        #filtro de resumo
         if not Resumo.objects.filter(link=link).exists():
             print("oi")
             resumo = Resumo(
@@ -392,9 +392,8 @@ def add_atividade(request):
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
-    print(f"link: {link}; nome:{nome_link} rola dura")
+    print(f"link: {link}; nome:{nome_link} atividade")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
-        print('gg')
         #filtro de atividade
         if not Atividade.objects.filter(link=link).exists():
             print("oi")
