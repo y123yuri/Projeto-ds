@@ -78,7 +78,7 @@ def sucesso(request):
             email_variavel = dados['email']
             senha_variavel = dados['password']
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
-            if dados[1][dados[1].index('@'):] == "@aluno.unb.br":
+            if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) < 12:
                 user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
                 user.is_active = False 
                 user.save()
