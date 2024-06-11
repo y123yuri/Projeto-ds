@@ -247,10 +247,11 @@ a#Prof {
 
 #posta_link {
   width: 90%;
-  height: auto;
+  height: fit-content;
   max-height: 32em;
   display: block;
   position: relative;
+  align-items: center;
 
   overflow-y: auto;
   margin: auto;
@@ -285,7 +286,7 @@ a#Prof {
   box-shadow: -2px 2px 2px black;
   
   width: auto;
-  height: 6em;
+  height: 8em;
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -316,12 +317,18 @@ a#Prof {
   margin-right: 1em;
 }
 
-.text_videos , .like {
+.text_videos {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: fit-content;
+}
+
+.link , .like {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: fit-content;
-  padding: 0em 0.5em;
 }
 
 .heart {
@@ -347,8 +354,8 @@ a#Prof {
   flex-direction: column;
   position: relative;
   left: 2em;
+  text-align: left;
 }
-
 
 #modal_upload {
   position: fixed;
@@ -434,6 +441,21 @@ a#Prof {
   position: relative;
 
   text-align: left;
+}
+
+.alerta {
+  background: #cde4df;
+  box-shadow: -2px 2px 2px black;
+
+  width: fit-content;
+  height: auto;
+  padding: 1em;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+
+  border-radius: 15px;
+  transition: abrir_janelas 0.3s ease;
 }
 
 @keyframes abrir_janelas {

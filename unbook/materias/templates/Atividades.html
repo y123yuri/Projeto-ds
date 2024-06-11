@@ -79,18 +79,19 @@
               <i style="font-size: 3em;" class="bi bi-person-video2"></i>
               </div>
 
-              
-
               <div class="div_space">
+
                 <div class="usuarios">
                   <h2> @{{atividade.autor}} </h2>
-                  <h3 class="title" style="margin-left: 1em"> - Conteúdo: "{{ atividade.titulo }}"</h3>
                 </div>
-
-                <div class="text_videos">
                   
-                  <a href="https://{{ atividade.link }}">{{ atividade.link }}</a>
-                  <h4 style="margin-left: 1em">Clique para acessar o link </h4>
+                <div class="text_videos">
+                  <h3 class="title">Conteúdo: " {{ atividade.titulo }} "</h3>
+
+                  <div class="link">
+                    <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
+                    <a href="https://{{ atividade.link }}">{{ atividade.link }}</a>
+                  </div>
                 </div>
 
                 <div class="like">
@@ -105,6 +106,14 @@
         </div>
       </div>
     </div>
+
+    {% if messages %}
+        <ul style="">
+            {% for message in messages %}
+                <li class="alerta">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
   </body>
 
   <script>

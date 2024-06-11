@@ -251,33 +251,7 @@ function selecionado(semestre) {
     enviarDados(null, semestre.textContent, null);
 }
 
-// function enviarDados(curso, semestre, bio) {
-//     console.log('recebeu enviarDados');
-//     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-//     // so vai funcionar se vc apertar no botao de enviar
-//     document.getElementById('prox_button_3').addEventListener('click', (e)=> {
-//         e.preventDefault();
-//     window.location.reload(true)
-//         $.ajax({
-//             type: "POST",
-//             url: "usuario/",
-//             data: {
-//                 csrfmiddlewaretoken: csrf_token,
-//                 curso: curso,
-//                 semestre: semestre,
-//                 bio : bio
-//             },
-//             success: function(response) {
-//                 console.log("Dados enviados com sucesso:", response);
-                
-//             },
-//             error: function(xhr, status, error) {
-//                 console.error("Erro na requisição AJAX:", status, error);
-//             }
-//         });
-//     });
-// }
 function enviarDados(curso, semestre, bio) {
     console.log('recebeu enviarDados');
     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;

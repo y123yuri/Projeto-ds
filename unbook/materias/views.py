@@ -11,6 +11,7 @@ from django.views.decorators.http import require_http_methods
 from .models import Comentario
 from .models import Comentario_deletado
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 # Create your views here.
@@ -293,6 +294,9 @@ def add_video(request): #ajax function
                 autor=request.user)
             video.save()
             return HttpResponse("ok")
+        else:
+            messages.error(request, 'O link postado já existe ou é inválido.')
+            return HttpResponse("ok")
         return HttpResponse("erro")
     else:
         return HttpResponse("erro")
@@ -349,6 +353,9 @@ def add_resumo(request): #ajax function
                 autor=request.user)
             resumo.save()
             return HttpResponse("ok")
+        else:
+            messages.error(request, 'O link postado já existe ou é inválido.')
+            return HttpResponse("ok")
         return HttpResponse("erro")
     else:
         return HttpResponse("erro")
@@ -391,7 +398,7 @@ def add_atividade(request):
     turma = Turma.objects.get(materia=materia, professor=professor)
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
-    
+    context = {}
     print(f"link: {link}; nome:{nome_link} atividade")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de atividade
@@ -405,7 +412,10 @@ def add_atividade(request):
                 autor=request.user)
             atividade.save()
             return HttpResponse("ok")
-        return HttpResponse("erro")
+        else:
+            messages.error(request, 'O link postado já existe ou é inválido.')
+            return HttpResponse("ok")
+            # return redirect('atividades')
     else:
         return HttpResponse("erro")
 

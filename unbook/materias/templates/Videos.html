@@ -98,6 +98,13 @@
         </div>
       </div>
     </div>
+    {% if messages %}
+        <ul style="">
+            {% for message in messages %}
+                <li class="alerta">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
   </body>
 
   <script>

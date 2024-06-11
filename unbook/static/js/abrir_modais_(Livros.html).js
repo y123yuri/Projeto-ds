@@ -74,7 +74,8 @@ function envia_link_back(nome_link, link) {
         error: function(xhr, status, error) {
             console.error("Erro na requisição AJAX:", status, error);
         }
-    });
+    })
+    window.location.reload(true);
 }
 
 

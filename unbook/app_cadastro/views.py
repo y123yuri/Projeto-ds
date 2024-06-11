@@ -85,11 +85,11 @@ def sucesso(request):
                 send_activation_email(user, request)
                 return JsonResponse({'success': True, 'username': user.username}) 
             else:
-                request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
+                request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
                 return JsonResponse({'success': False, 'error': 'Formulário inválido'})
             
         else:
-            request.session['erro'] = "já existe um cadastro com o email ou nome de usuario"
+            request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
             return JsonResponse({'success': False, 'error': 'Formulário inválidoaa'})
     
     return render(request, "html/VerificaEmail.html")
