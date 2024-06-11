@@ -543,30 +543,3 @@ def denuncia(request):
 
 
 
-
-def upload_resumo(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            titulo = request.POST.get('titulo')
-            link = request.POST.get('link')
-            autor = request.user
-            hora_publicacao = timezone.now()
-            obj_materia = Materia.objects.get(codigo=codigo_materia)
-            obj_prof = Professor.objects.get(nome=nome_prof)
-            obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)  
-            print(obj_turma)
-
-            Resumo.objects.create(
-                autor=autor,
-                hora_publicacao=hora_publicacao,
-                titulo=titulo,
-                link=link,
-                turma=obj_turma
-            )
-            return redirect('resumos') 
-
-        return redirect('resumos')
-    else:
-        context = {}
-        context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
