@@ -156,6 +156,16 @@ var voltar2 = document.getElementById('back_button_2').addEventListener('click',
 
 var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
     e.preventDefault()
+    scroll_x.scrollBy({ left: 738.5, behavior: "smooth" })
+});
+
+var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -738.5, behavior: "smooth" })
+});
+
+var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
+    e.preventDefault()
     fundoblur.style.display = "none";
     modal.style.display = "none";
 });
@@ -277,7 +287,7 @@ function enviarDados(curso, semestre, bio) {
     });
 }
 
-document.getElementById('prox_button_3').addEventListener('click', (e)=> {
+document.getElementById('prox_button_4').addEventListener('click', (e)=> {
     e.preventDefault();
     const curso = document.getElementById('input_cursos').value;
     const semestre = document.getElementById('CampoFalado_menu').innerText;

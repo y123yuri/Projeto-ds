@@ -174,6 +174,7 @@ def usuario(request):
             curso = request.POST.get('curso')
             semestre = request.POST.get('semestre')
             bio = request.POST.get('bio')
+            # foto =  request.POST.get('foto')
 
             print('caraio',curso, 'pinto', 'lixo')
             
@@ -187,6 +188,9 @@ def usuario(request):
             if bio:
                 perfil.descricao = bio
                 print(perfil.descricao)
+            # if foto:
+            #     perfil.foto = foto
+            #     print(perfil.foto)
             
             perfil.save()
             return redirect('../', context) , JsonResponse({'status':'sucess'})

@@ -341,7 +341,7 @@ def add_resumo(request): #ajax function
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
     print(f"link: {link}; nome:{nome_link} resumo")
-    if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
+    if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com':
         #filtro de resumo
         if not Resumo.objects.filter(link=link).exists():
             print("oi")

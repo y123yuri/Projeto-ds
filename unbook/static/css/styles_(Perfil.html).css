@@ -687,7 +687,7 @@ a .UnBook_logo_mini {
   flex-direction: row;
   position: relative;
   justify-content: space-around;
-  width: 138em;
+  width: 184em;
   height: 24em;
 }
 
@@ -897,6 +897,39 @@ a .UnBook_logo_mini {
 .back_button:active {
   transform: scale(0.95);
 }
+
+#box_modal_4 .espaco_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 1em;
+  left: -0.05em;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+}
+
+#bolas {
+  width: 100%;
+  height: auto;
+  background-color: #0089401b;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img {
+  width: 4em;
+  height: 4em;
+  background: transparent;
+  border: solid 1px black;
+  margin: 0.5em;
+}
+
+
+
 @media screen and (max-width: 767px) {
   a .UnBook_logo_mini {
     display: block;
