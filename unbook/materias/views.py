@@ -280,7 +280,7 @@ def add_video(request): #ajax function
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
-    print(f"link: {link}; nome:{nome_link}")
+    print(f"link: {link}; nome:{nome_link} merda")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de videos
         if not Video.objects.filter(link=link).exists():
@@ -298,6 +298,9 @@ def add_video(request): #ajax function
         return HttpResponse("erro")
 
 
+
+
+
 def resumos(request, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
@@ -306,12 +309,52 @@ def resumos(request, nome,codigo) :
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         context = {}
         context["turma"] = obj_turma
+        lista_resumos = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+        for resumo in Resumo.objects.filter(turma=obj_turma):
+            lista_resumos.append(resumo)
+            lista_quant_curtida.append(resumo.curtidas.count())
+            lista_bool_curtiu.append( 1 if resumo.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+
+        context["resumos"] = lista_resumos
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
 
         return render(request, "Livros.html", context)
     else:
         context = {}
         context["erro"] = "Você precisa estar logado" 
         return redirect('../../cadastro/login', context)
+
+def add_resumo(request): #ajax function
+    materia = Materia.objects.get(codigo=request.POST["materia"])
+    professor = Professor.objects.get(nome=request.POST["professor"])
+    turma = Turma.objects.get(materia=materia, professor=professor)
+    nome_link = request.POST["titulo"]
+    link = request.POST["link"].replace("https://", "").replace("www.", "")
+    
+    print(f"link: {link}; nome:{nome_link} merda")
+    if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
+        #filtro de videos
+        if not Resumo.objects.filter(link=link).exists():
+            print("oi")
+            resumo = Resumo(
+                turma=turma,
+                hora_publicacao=timezone.now(),
+                titulo=nome_link,
+                link=link,
+                autor=request.user)
+            resumo.save()
+            return HttpResponse("ok")
+        return HttpResponse("erro")
+    else:
+        return HttpResponse("erro")
+
+
+
 
 def atividades(request, nome,codigo) :
     if request.user.is_authenticated:
@@ -321,6 +364,19 @@ def atividades(request, nome,codigo) :
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         context = {}
         context["turma"] = obj_turma
+        lista_atividades = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+        for atividade in Atividade.objects.filter(turma=obj_turma):
+            lista_atividades.append(atividade)
+            lista_quant_curtida.append(atividade.curtidas.count())
+            lista_bool_curtiu.append( 1 if atividade.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+
+        context["atividades"] = lista_atividades
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
 
         return render(request, "Atividades.html", context)
     else:
@@ -329,6 +385,34 @@ def atividades(request, nome,codigo) :
         return redirect('../../cadastro/login', context)
 
 
+def add_atividade(request):
+    materia = Materia.objects.get(codigo=request.POST["materia"])
+    professor = Professor.objects.get(nome=request.POST["professor"])
+    turma = Turma.objects.get(materia=materia, professor=professor)
+    nome_link = request.POST["titulo"]
+    link = request.POST["link"].replace("https://", "").replace("www.", "")
+    
+    print(f"link: {link}; nome:{nome_link} rola dura")
+    if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
+        print('gg')
+        #filtro de atividade
+        if not Atividade.objects.filter(link=link).exists():
+            print("oi")
+            atividade = Atividade(
+                turma=turma,
+                hora_publicacao=timezone.now(),
+                titulo=nome_link,
+                link=link,
+                autor=request.user)
+            atividade.save()
+            return HttpResponse("ok")
+        return HttpResponse("erro")
+    else:
+        return HttpResponse("erro")
+
+    
+    
+    
 def avaliacao(request):
     # Obtenha os dados do POST
     lista = request.POST['avaliacao']

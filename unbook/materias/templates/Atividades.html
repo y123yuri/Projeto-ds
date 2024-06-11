@@ -14,10 +14,27 @@
         rel="stylesheet"> <!-- LINK PARA FONTE MONSTSERRAT-->
 
     <link rel="stylesheet" href="{% static "css/styles_(Atividades.html).css"%}"> <!-- LINK PARA PARA CSS DA PÁGINA-->
+    
 </head>
 
 <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      csrf_token = '{{ csrf_token }}'
+      nome = '{{ turma.professor.nome }}'
+      codigo = '{{ turma.materia.codigo }}'
+      quant_likes = []
+      curtidas = []
 
+      {% for likes in quant_curtidas %}
+        quant_likes.push(Number("{{ likes }}"))
+      {% endfor %}
+
+      {% for curtiu in bool_curtiu %}
+        curtidas.push("{{ curtiu }}")
+      {% endfor %}
+
+    </script>
     <div id="fundo_blur"></div> 
 
     <div id="modal_upload">
@@ -59,6 +76,28 @@
                 <hr style="margin: 1em 4em;">
 
                 <div id="posta_link">
+                    {% for atividade in atividades %}
+                        <div class="arquivos" onclick="https://{{ atividade.link }}">
+                        <div class="image">
+                            <i style="font-size: 3em;" class="bi bi-person-video2"></i>
+                        </div>
+
+                        <div class="div_space">
+                            <div class="text_videos">
+                            <h3 class="title">{{ atividade.titulo }}:</h3>
+                            <a href="https://{{ atividade.link }}">{{atividade.link}}</a>  <a> clique para acessar </a> <!--ARRUMARRRRRR-->                            
+                        </div>
+
+                            <div class="like">
+                            <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Autor: {{ atividade.autor }} | Horário da publicação: {{atividade.hora_publicacao}}</h4>
+
+                            {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
+                            <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                    
                         
                 </div>
             </div>
@@ -74,6 +113,6 @@
   </script>
 <!-- LINK PARA ARQUIVOS JS-->
 <!-- <script src="../js/materia_(materia.html).js"></script> -->
-<script src="{% static "js/abrir_modais_(Videos.html).js"%}"></script>
+<script src="{% static "js/abrir_modais_(atividades.html).js"%}"></script>
 
 </html>
