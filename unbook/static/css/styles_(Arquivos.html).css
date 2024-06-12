@@ -446,6 +446,7 @@ a#Prof {
 .alerta {
   background: #cde4df;
   box-shadow: -2px 2px 2px black;
+  cursor: pointer;
 
   width: fit-content;
   height: auto;
@@ -454,8 +455,13 @@ a#Prof {
   top: 2em;
   right: 2em;
 
-  border-radius: 15px;
-  transition: abrir_janelas 0.3s ease;
+  border-radius: 25px;
+  animation: abrir_janelas 0.3s;
+  transition: all 0.3s ease-in-out;
+}
+
+.alerta:hover {
+  transform: scale(1.05);
 }
 
 @keyframes abrir_janelas {

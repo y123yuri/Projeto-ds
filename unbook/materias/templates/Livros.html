@@ -108,11 +108,9 @@
     </div>
 
     {% if messages %}
-        <ul style="">
             {% for message in messages %}
-                <li class="alerta">{{ message }}</li>
+                <h3 class="alerta" onclick="RetirarAlerta(this)">{{ message }}</h3>
             {% endfor %}
-        </ul>
     {% endif %}
   </body>
 

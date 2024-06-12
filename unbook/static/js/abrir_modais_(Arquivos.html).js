@@ -41,6 +41,9 @@ function enviar() {
     if (link_enviado !== '' && nome_link !== '') {
         envia_link_back(nome_link, link_enviado);
         fechar_modal();
+        
+        window.location.reload();
+        window.location.reload(true);
     } else {
         alert('Tem que ter um link ai dentro man');
     }
@@ -89,4 +92,8 @@ document.addEventListener('click', function(e) {
 function fechar_modal() {
     fundo_blur.style.display = 'none';
         modal.style.display = 'none';
+}
+
+function RetirarAlerta(element){
+    element.style.display = 'none'
 }
