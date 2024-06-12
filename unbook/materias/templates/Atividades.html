@@ -83,12 +83,12 @@
                   <h2>@{{ atividade.autor }}</h2>
                 </div>
 
-                <div class="text_videos">
+                <div class="text_arquivos">
                   <h3 class="title">Título: " {{ atividade.titulo }} "</h3>
 
                   <div class="link">
-                    <h4 style="margin-right: 1em">Clique para acessar o link:</h4>
-                    <a target="_blank" href="https://{{ atividade.link }}">{{ atividade.link }}</a>
+                    <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link:</h4>
+                    <a id="link" target="_blank" href="https://{{ atividade.link }}">{{ atividade.link }}</a>
                   </div>
 
                   <div class="like">

@@ -85,21 +85,21 @@
                   <h2> @{{video.autor}} </h2>
                 </div>
                   
-                <div class="text_videos">
+                <div class="text_arquivos">
                   <h3 class="title">Título: " {{ video.titulo }} "</h3>
 
                   <div class="link">
-                    <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
-                    <a target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
+                    <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link: </h4>
+                    <a id="link" target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
+                  </div>
+                  <div class="like">
+                    <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{video.hora_publicacao}}</h4>
+
+                    {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
+                    <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
                   </div>
                 </div>
 
-                <div class="like">
-                  <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{video.hora_publicacao}}</h4>
-
-                  {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
-                  <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
-                </div>
               </div>
             </div>
           {% endfor %}

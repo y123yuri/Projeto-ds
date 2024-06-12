@@ -336,12 +336,13 @@ a#Prof {
   margin-right: 1em;
 }
 
-.text_videos {
+.text_arquivos {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: fit-content;
-  margin-left: 2em;
+  margin-left: 1em;
+  margin-top: 0.5em;
 }
 
 .link , .like {
@@ -349,6 +350,21 @@ a#Prof {
   flex-direction: row;
   align-items: center;
   width: fit-content;
+}
+
+#link {
+  color:#0b4c8c;
+  text-decoration: none;
+  font-size: 1em;
+  background-color: #0000002a;
+  padding: 0 0.5em;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+#link:hover {
+  background-color:#0b4c8c;
+  color: whitesmoke;
 }
 
 .heart {
