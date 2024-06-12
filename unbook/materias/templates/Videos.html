@@ -74,7 +74,7 @@
 
         <div id="posta_link">
           {% for video in videos %}
-            <div class="arquivos" onclick="https://{{ video.link }}">
+            <div id="videos" class="arquivos" onclick="https://{{ video.link }}">
               <div class="image">
               <i style="font-size: 3em;" class="bi bi-person-video2"></i>
               </div>
@@ -90,7 +90,7 @@
 
                   <div class="link">
                     <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
-                    <a href="https://{{ video.link }}">{{ video.link }}</a>
+                    <a target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
                   </div>
                 </div>
 
@@ -108,11 +108,9 @@
     </div>
 
     {% if messages %}
-        <ul style="">
             {% for message in messages %}
-                <li class="alerta">{{ message }}</li>
+                <h3 class="alerta" onclick="RetirarAlerta(this)">{{ message }}</h3>
             {% endfor %}
-        </ul>
     {% endif %}
   </body>
 
@@ -124,5 +122,5 @@
 
   <!-- LINK PARA ARQUIVOS JS -->
   <!-- <script src="../js/materia_(materia.html).js"></script> -->
-  <script src="{% static 'js/abrir_modais_(Arquivos.html).js' %}"></script>
+  <script src="{% static 'js/abrir_modais_(Videos.html).js' %}"></script>
 </html>

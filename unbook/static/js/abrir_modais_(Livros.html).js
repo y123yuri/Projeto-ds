@@ -42,8 +42,8 @@ function enviar() {
         envia_link_back(nome_link, link_enviado);
         fechar_modal();
         
-        window.location.reload();
-        window.location.reload(true);
+        // window.location.reload();
+        // window.location.reload(true);
     } else {
         alert('Tem que ter um link ai dentro man');
     }
@@ -78,7 +78,7 @@ function envia_link_back(nome_link, link) {
             console.error("Erro na requisição AJAX:", status, error);
         }
     })
-    window.location.reload(true);
+    // window.location.reload(true);
 }
 
 

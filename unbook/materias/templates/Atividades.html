@@ -34,7 +34,6 @@
         {% for curtiu in bool_curtiu %}
         curtidas.push("{{ curtiu }}")
         {% endfor %}
-
     </script>
 
     <div id="fundo_blur"></div>
@@ -74,31 +73,30 @@
 
         <div id="posta_link">
           {% for atividade in atividades %}
-            <div class="arquivos" onclick="https://{{ atividade.link }}">
+            <div id="atividades" class="arquivos" onclick="https://{{ atividade.link }}">
               <div class="image">
-              <i style="font-size: 3em;" class="bi bi-person-video2"></i>
+                <i style="font-size: 3em;" class="bi bi-pencil-square"></i>
               </div>
 
               <div class="div_space">
-
                 <div class="usuarios">
-                  <h2> @{{atividade.autor}} </h2>
+                  <h2>@{{ atividade.autor }}</h2>
                 </div>
-                  
+
                 <div class="text_videos">
                   <h3 class="title">Título: " {{ atividade.titulo }} "</h3>
 
                   <div class="link">
-                    <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
-                    <a href="https://{{ atividade.link }}">{{ atividade.link }}</a>
+                    <h4 style="margin-right: 1em">Clique para acessar o link:</h4>
+                    <a target="_blank" href="https://{{ atividade.link }}">{{ atividade.link }}</a>
                   </div>
-                </div>
 
-                <div class="like">
-                  <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{atividade.hora_publicacao}}</h4>
+                  <div class="like">
+                    <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{ atividade.hora_publicacao }}</h4>
 
-                  {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
-                  <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
+                    {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
+                    <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,11 +106,9 @@
     </div>
 
     {% if messages %}
-        <ul style="">
-            {% for message in messages %}
-                <li class="alerta">{{ message }}</li>
-            {% endfor %}
-        </ul>
+      {% for message in messages %}
+        <h3 class="alerta" onclick="RetirarAlerta(this)">{{ message }}</h3>
+      {% endfor %}
     {% endif %}
   </body>
 
@@ -124,5 +120,5 @@
 
   <!-- LINK PARA ARQUIVOS JS -->
   <!-- <script src="../js/materia_(materia.html).js"></script> -->
-  <script src="{% static 'js/abrir_modais_(Arquivos.html).js' %}"></script>
+  <script src="{% static 'js/abrir_modais_(Atividades.html).js' %}"></script>
 </html>

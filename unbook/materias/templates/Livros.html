@@ -74,9 +74,9 @@
 
         <div id="posta_link">
           {% for resumo in resumos %}
-            <div class="arquivos" onclick="https://{{ resumo.link }}">
+            <div id="resumos" class="arquivos" onclick="https://{{ resumo.link }}">
               <div class="image">
-              <i style="font-size: 3em;" class="bi bi-person-video2"></i>
+              <i style="font-size: 3em;" class="bi bi-file-earmark-text"></i>
               </div>
 
               <div class="div_space">
@@ -90,7 +90,7 @@
 
                   <div class="link">
                     <h4 style="margin-right: 1em">Clique para acessar o link: </h4>
-                    <a href="https://{{ resumo.link }}">{{ resumo.link }}</a>
+                    <a target="_blank" href="https://{{ resumo.link }}">{{ resumo.link }}</a>
                   </div>
                 </div>
 
@@ -122,5 +122,5 @@
 
   <!-- LINK PARA ARQUIVOS JS -->
   <!-- <script src="../js/materia_(materia.html).js"></script> -->
-  <script src="{% static 'js/abrir_modais_(Arquivos.html).js' %}"></script>
+  <script src="{% static 'js/abrir_modais_(Livros.html).js' %}"></script>
 </html>

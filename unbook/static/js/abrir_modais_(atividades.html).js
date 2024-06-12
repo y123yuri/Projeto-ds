@@ -90,3 +90,7 @@ function fechar_modal() {
     fundo_blur.style.display = 'none';
         modal.style.display = 'none';
 }
+
+function RetirarAlerta(element){
+    element.style.display = 'none'
+}
