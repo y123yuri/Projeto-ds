@@ -188,26 +188,24 @@
           {% csrf_token %}
           <div id="space_1_Senha">
             <h1 class="CampoEscrito_Senha">Senha</h1>
-            {% if user.is_authenticated %}
+            {% comment %} {% if user.is_authenticated %}
               <a class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
-            {% endif %}
+            {% endif %} {% endcomment %}
           </div>
           <hr style="margin: 0 2em" />
           <div id="space_2_Senha">
-            <div id="box_senha_instrucoes">Esse campo está reservado à mudança de senha. Caso queira alterá-la, basta inserir sua senha no campo "Senha antiga", e nos outros campos atualizar e confirmar sua senha.</div>
               <form method="POST" action="{% url 'trocar_senha' %}">  
                 {% csrf_token %}
-                <div id="box_senha_form">
                   <h2 class="CampoFalado_Senha">Senha antiga</h2>
                   <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
                   <h2 class="CampoFalado_Senha">Senha Nova</h2>
                   <input class="forms" type="password" id="senha_nova" name="senha_nova" required />
                   <h2 class="CampoFalado_Senha">Confirmar senha nova</h2>
                   <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
+                  
                   <button id="submit" type="submit">Mudar senha</button>
               </form>
-
-              </div>
+              
                 {% if messages %}
                     <ul>
                       {% for message in messages %}

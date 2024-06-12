@@ -47,6 +47,7 @@ a .UnBook_logo_mini {
   background-color: #f5f5f5c8;
   box-shadow: -10px 10px 1px #5b5b5bc8;
   border-radius: 50px;
+  border-top-left-radius: 0;
   width: 90em;
   height: 35em;
   display: flex;
@@ -270,7 +271,7 @@ a .UnBook_logo_mini {
 }
 
 .forms {
-  width: 15em;
+  width: 20em;
   height: 2em;
 
   font-size: 1em;
@@ -472,32 +473,15 @@ a .UnBook_logo_mini {
 }
 
 #space_2_Senha {
-  padding: 0em 3em 0em 3em;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 80%;
-}
-
-#box_senha_instrucoes {
-  font-size: 1.5em;
-  width: 30em;
-  height: 12em;
-  border: solid 1px grey;
-  padding: 1em;
-  text-align: center;
-  margin: 2em 2em;
-}
-
-#box_senha_form {
   flex-direction: column;
+  padding: 0 2em;
   width: 100%;
   height: 80%;
-  padding: 2em;
 }
 
 #submit {
-  position: relative;
+  position: absolute;
 
   width: 10em;
   height: 2em;
@@ -506,8 +490,8 @@ a .UnBook_logo_mini {
   border-radius: 20px;
   background-color: #0b4c9c;
 
-  margin-top: 30px;
-  margin-right: 1em;
+  bottom: 2em;
+  right: 4em;
 
   color: white;
   font-size: 1.5em;
@@ -913,7 +897,7 @@ a .UnBook_logo_mini {
 #bolas {
   width: 100%;
   height: auto;
-  background-color: #0089401b;
+  background-color: #d9d9d9;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -923,12 +907,17 @@ a .UnBook_logo_mini {
 .img {
   width: 4em;
   height: 4em;
-  background: transparent;
+  background: whitesmoke;
   border: solid 1px black;
   margin: 0.5em;
+
+  transition: all 0.3s ease;
 }
 
-
+.img:hover {
+  filter: brightness(80%);
+  border: solid 2px whitesmoke;
+}
 
 @media screen and (max-width: 767px) {
   a .UnBook_logo_mini {
@@ -940,33 +929,34 @@ a .UnBook_logo_mini {
     position: relative;
 
     margin-left: 10px;
+    margin-bottom: 1em;
     top: 20px;
   }
 
   #boxes {
     background-color: #f5f5f5c8;
-    box-shadow: -10px 10px 1px #5b5b5bc8;
-    border-radius: 50px;
-    width: 23em;
-    height: 79em;
+    box-shadow: -2px 2px 1px #5b5b5bc8;
+    border-radius: 51px;
+    border-top-left-radius: 0;
+    width: 95%;
+    height: fit-content;
     display: flex;
-    flex-direction: row;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-top: 5%;
+    flex-direction: column;
     position: relative;
+    padding: 0.5em;
   }
 
   #box1 {
     background-color: #f5f5f5;
-    width: 30em;
+    width: 97.5%;
     height: 30em;
+    margin: auto;
     border-radius: 50px;
+    border-top-left-radius: 0;
     display: flex;
-    margin-left: 0.75em;
     display: flex;
     flex-direction: column;
-
+    margin-bottom: 1em;
     z-index: 2;
   }
 
@@ -1153,15 +1143,14 @@ a .UnBook_logo_mini {
 
   #Profile {
     background-color: #f5f5f5;
-    width: 21.5em;
+    width: 97.5%;
     height: 45em;
+    margin: auto;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
 
     display: flex;
     flex-direction: column;
-    margin-top: 33em;
-    margin-left: -22.5em;
 
     z-index: 2;
   }
@@ -1315,8 +1304,9 @@ a .UnBook_logo_mini {
 
   #Senha {
     background-color: #f5f5f5;
-    width: 65em;
+    width: 97.5%;
     height: 33em;
+    margin: auto;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
 
@@ -1345,38 +1335,20 @@ a .UnBook_logo_mini {
   .CampoFalado_Senha {
     position: relative;
     margin-top: 0.5em;
-    font-size: 1.5em;
+    font-size: 1.25em;
     color: black;
   }
 
   #space_2_Senha {
-    padding: 0em 3em 0em 3em;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 80%;
-  }
-
-  #box_senha_instrucoes {
-    font-size: 1.5em;
-    width: 30em;
-    height: 12em;
-    border: solid 1px grey;
-    padding: 1em;
-    text-align: center;
-    margin: 2em 2em;
-  }
-
-  #box_senha_form {
     flex-direction: column;
+    padding: 0 2em;
     width: 100%;
     height: 80%;
-    padding: 2em;
   }
 
   #submit {
-    position: relative;
-
+    position: absolute;
     width: 10em;
     height: 2em;
 
@@ -1384,8 +1356,8 @@ a .UnBook_logo_mini {
     border-radius: 20px;
     background-color: #0b4c9c;
 
-    margin-top: 30px;
-    margin-right: 1em;
+    bottom: 2em;
+    right: 3em;
 
     color: white;
     font-size: 1.5em;
@@ -1409,8 +1381,9 @@ a .UnBook_logo_mini {
 
   #Estatistica {
     background-color: #f5f5f5;
-    width: 65em;
+    width: 97.5%;
     height: 33em;
+    margin: auto;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
 
@@ -1473,7 +1446,7 @@ a .UnBook_logo_mini {
     text-align: center;
 
     position: relative;
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: 700;
   }
 
@@ -1482,7 +1455,7 @@ a .UnBook_logo_mini {
     text-align: center;
     position: relative;
 
-    margin: 0 6em;
+    margin: 0 2em;
     font-size: 1em;
     font-weight: 700;
   }
@@ -1535,7 +1508,7 @@ a .UnBook_logo_mini {
     margin: auto;
     text-align: center;
     justify-content: center;
-    padding: 2em;
+    padding: 0.75em;
     width: 23em;
     height: 30em;
     background-color: #f5f5f5;
@@ -1565,7 +1538,7 @@ a .UnBook_logo_mini {
     flex-direction: row;
     position: relative;
     justify-content: space-around;
-    width: 138em;
+    width: 190em;
     height: 24em;
     margin-left: -13em;
   }
@@ -1600,23 +1573,23 @@ a .UnBook_logo_mini {
   }
 
   #input_cursos {
-    width: 80%;
+    width: 90%;
     height: auto;
     padding: 0.5em 1em;
     background-color: #d9d9d9;
     border-radius: 15px;
-    font-size: 1.25em;
+    font-size: 1em;
   }
 
   #cursos {
-    width: 80%;
-    height: 4em;
+    width: 90%;
+    height: 4.5em;
     margin: auto;
     margin-top: 0.5em;
     padding: 0.5em 1em;
     background-color: #d9d9d9;
     border-radius: 15px;
-    font-size: 1.25em;
+    font-size: 1em;
     overflow-y: auto;
   }
 
@@ -1633,7 +1606,7 @@ a .UnBook_logo_mini {
   }
 
   #CampoFalado_menu {
-    font-size: 1.75em;
+    font-size: 1.25em;
     text-align: center;
     width: 100%;
     font-weight: 500;
@@ -1676,7 +1649,7 @@ a .UnBook_logo_mini {
     max-width: 15em;
     width: 100%;
     display: block;
-    margin: 2em auto;
+    margin: 1em auto;
     position: relative;
     border: 1px solid #50545c;
     border-radius: 15px;
@@ -1751,11 +1724,11 @@ a .UnBook_logo_mini {
   .prox_button,
   .back_button {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1em;
     background-color: #0b4c8c;
     border-radius: 15px;
     color: whitesmoke;
-    width: 7em;
+    width: 6em;
     height: 2em;
     text-align: center;
     z-index: 10;
@@ -1776,4 +1749,42 @@ a .UnBook_logo_mini {
   .back_button:active {
     transform: scale(0.95);
   }
+}
+
+#box_modal_4 .espaco_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 1em;
+  left: -0.05em;
+  width: 100%;
+  height: 4em;
+  text-align: center;
+}
+
+#bolas {
+  width: 70%;
+  height: auto;
+  margin: 1em auto;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img {
+  width: 2em;
+  height: 2em;
+  background: whitesmoke;
+  border: solid 1px black;
+  margin: 0.5em;
+
+  transition: all 0.3s ease;
+}
+
+.img:hover {
+  filter: brightness(80%);
+  border: solid 2px whitesmoke;
 }

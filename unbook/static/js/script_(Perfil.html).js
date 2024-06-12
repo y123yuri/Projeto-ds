@@ -129,10 +129,51 @@ modal.addEventListener('click', (e) => {
     e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
 });
 
+// FUNÇÃO PARA RODAR SCROLL NO CELULAR
 
-// FUNÇÃO PARA RODAR SCROLL
+if(window.matchMedia("(max-width:764px)").matches) {
+    
+    
+var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: 760.5, behavior: "smooth" })
+});
 
+var voltar1 = document.getElementById('back_button_1').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -760.5, behavior: "smooth" })
+});
 
+var proximo2 = document.getElementById('prox_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: 760.5, behavior: "smooth" })
+});
+
+var voltar2 = document.getElementById('back_button_2').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -760.5, behavior: "smooth" })
+});
+
+var proximo3 = document.getElementById('prox_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: 760.5, behavior: "smooth" })
+});
+
+var voltar3 = document.getElementById('back_button_3').addEventListener('click', (e) => {
+    e.preventDefault()
+    scroll_x.scrollBy({ left: -760.5, behavior: "smooth" })
+});
+
+var proximo4 = document.getElementById('prox_button_4').addEventListener('click', (e) => {
+    e.preventDefault()
+    fundoblur.style.display = "none";
+    modal.style.display = "none";
+});
+
+}
+else {
+
+// FUNÇÃO PARA RODAR SCROLL NO PC
 
 var proximo1 = document.getElementById('prox_button_1').addEventListener('click', (e) => {
     e.preventDefault()
@@ -169,6 +210,13 @@ var proximo4 = document.getElementById('prox_button_4').addEventListener('click'
     fundoblur.style.display = "none";
     modal.style.display = "none";
 });
+    
+}
+
+
+
+
+
 
 const button_drop = document.querySelector('.drop_button')
 const menu = document.querySelector('#drop > .menu');
