@@ -74,19 +74,20 @@
 
         <div id="posta_link">
           {% for video in videos %}
-            <div id="videos" class="arquivos" onclick="https://{{ video.link }}">
+
+            <div id="videos" class="arquivos" onclick="AbrirLink('{{ video.link }}')">
+              
               <div class="image">
               <i style="font-size: 3em;" class="bi bi-person-video2"></i>
               </div>
 
               <div class="div_space">
-
                 <div class="usuarios">
-                  <h2> @{{video.autor}} </h2>
-                </div>
-                  
-                <div class="text_arquivos">
                   <h3 class="title">Título: " {{ video.titulo }} "</h3>
+                </div>
+                
+                <div class="text_arquivos">
+                  {% comment %} <h2> @{{video.autor}} </h2> {% endcomment %}
 
                   <div class="link">
                     <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link: </h4>
@@ -101,11 +102,25 @@
                 </div>
 
               </div>
-            </div>
+
+              <div class="buttons">
+                <i id="joia" class="bi bi-hand-thumbs-up"></i>
+                <i id="denunciar" class="bi bi-exclamation-triangle"></i>
+                <i id="deletar" class="bi bi-trash"></i>
+                </div>
+                
+            </div> 
           {% endfor %}
         </div>
       </div>
     </div>
+
+  <script>
+    function AbrirLink(element){
+      console.log("abrindo link:" + element)
+      window.open("https://" + element, '_blank');
+    }
+  </script>  
 
     {% if messages %}
             {% for message in messages %}

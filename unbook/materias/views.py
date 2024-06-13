@@ -179,17 +179,23 @@ def materia(request, codigo, nome):
             if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
 
                 for n in range(index): ###  pegar dia da semana
+                    if len(turno[index:]) >= 4: #horaio diferente e dia diferente 
+                        print(turno[n]+turno[index:index+3]) # print codigo inicial
                     
-                    if len(turno[index:])== 4: #horaio diferente e dia diferente 
                         dia = turno[n]+turno[index:index+3]
                         dias.append(dia)
-                        dia = turno[n]+turno[index] +turno[index+3:]
+                        
+                        dia = turno[n]+turno[index] +turno[index+3:]   #7T12 3456                                               
                         dias.append(dia)
+                        print(dia, 'codigo final if')
+
+                        
 
                     else: #mesmo horario porem dias diferentes
                         dia = turno[n]+turno[index:]
                         dias.append(dia)
-                        
+                        print(dia, 'codigo final else')
+
         context["dias"] =  dias
         print(context['dias'])
         
