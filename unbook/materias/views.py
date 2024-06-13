@@ -169,26 +169,29 @@ def materia(request, codigo, nome):
         lista_turno = obj_turma.turno.split(" ")
         dias = []
         # print(obj_turma.turno)
-        for turno in lista_turno:
-            
-            for i in range(len(turno)):
+        for turno in lista_turno: #processa cada turno separado
+            print(turno, 'shit')
+            for i in range(len(turno)): # ler cada digito do turno
+                
                 if not turno[i].isdigit():
-                    index = i
-            
+                    index = i  ### manha tarde ou noite, posicao onde esta a letra
+                    
             if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
 
-                for n in range(index):
-                    if len(turno[index:])==5:
+                for n in range(index): ###  pegar dia da semana
+                    
+                    if len(turno[index:])== 4: #horaio diferente e dia diferente 
                         dia = turno[n]+turno[index:index+3]
                         dias.append(dia)
                         dia = turno[n]+turno[index] +turno[index+3:]
                         dias.append(dia)
-                    else:
+
+                    else: #mesmo horario porem dias diferentes
                         dia = turno[n]+turno[index:]
                         dias.append(dia)
                         
         context["dias"] =  dias
-        # print(context['dias'])
+        print(context['dias'])
         
 
         return render(request, "materia.html", context)
