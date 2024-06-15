@@ -113,26 +113,44 @@ a .UnBook_logo_mini {
   width: 13em;
   height: 13em;
   top: 1.5em;
-  background-color: #04b858;
   border-radius: 100%;
+  overflow: hidden; /* Ensure the image is clipped to the container's border radius */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04b858;
+}
+#img_user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+  border-radius: 100%; /* Make sure the image itself is rounded */
+}
+#edit {
+  display: none;
+  position: absolute;
+  font-size: 4em;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
 }
 
 #modal_imgs {
   position: absolute;
   display: none;
-  flex-direction: row;
+  flex-direction: column;
   top: 0.5em;
   left: 2em;
   width: 80em;
-  height: 15em;
+  height: 32em;
   z-index: 20;
   background-color: whitesmoke;
   box-shadow: -10px 10px 1px #5b5b5bc8;
-  border-radius: 150px;
+  border-radius: 50px;
   transition: all 0.3s ease;
   animation: aparecer_modal_img 0.3s ease-in;
   padding: 0.5em;
-  margin: 1em;
+  margin: auto;
 }
 
 @keyframes aparecer_modal_img {
@@ -172,30 +190,12 @@ a .UnBook_logo_mini {
 
 .balls:hover {
   filter: brightness(70%);
+  border: solid 5px #0B4C9C;
 }
+
 
 .balls#model_1 {
   margin-left: 3em;
-}
-
-#model_1 {
-  background-color: #0b4c8c;
-}
-
-#model_2 {
-  background-color: #a670da;
-}
-
-#model_3 {
-  background-color: #04b858;
-}
-
-#model_4 {
-  background-color: #eed64b;
-}
-
-#model_5 {
-  background-color: #d43b5a;
 }
 
 #CampoEscrito_box1 {
