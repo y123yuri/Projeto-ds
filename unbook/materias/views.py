@@ -165,37 +165,153 @@ def materia(request, codigo, nome):
         
 
         
+         
         index =0
         lista_turno = obj_turma.turno.split(" ")
         dias = []
+        arg1 = 0
         # print(obj_turma.turno)
         for turno in lista_turno: #processa cada turno separado
-            print(turno, 'shit')
+            print(turno, 'turno inteiro')
             for i in range(len(turno)): # ler cada digito do turno
-                
+                val1 = 1
+                val2 = 3
+                val3 = 2
                 if not turno[i].isdigit():
                     index = i  ### manha tarde ou noite, posicao onde esta a letra
-                    
+                    pos = i
             if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
-
+                
                 for n in range(index): ###  pegar dia da semana
-                    if len(turno[index:]) >= 4: #horaio diferente e dia diferente 
-                        print(turno[n]+turno[index:index+3]) # print codigo inicial
+                    tamanho = len(turno[index:]) #descobrir quantas duplas pegar
+                    num = len(turno[index:])//2
+                    resto = len(turno[index:])%2
+                    if resto != 0:
+                        num +=1
+                    if tamanho >= 4: #horaio diferente e dia diferente
+                        for a in range(num): #vai rodar a quantia de duplas que tiver
+                            try:
+                                if turno[pos] == 'M': #turno Manhã
+                                    dia = turno[n]+turno[pos]+turno[index+val1:index+val2]
+                                    print(dia, 'dias lista M')
+                                    dias.append(dia)
+                                    val1 += 2
+                                    val2 += 2
+                            except IndexError:
+                                print('error')
+                                dia = turno[n]+turno[pos]+turno[len(turno)]
+################################################################### divisao
+                            if turno[pos] == 'T': #Turno Tarde
+                                if turno[pos+1] != '1':
+                                    try: # diferente de 1, metodo padrao
+                                        dia = turno[n]+turno[pos]+turno[index+val1:index+val2]
+                                        print(dia, 'dias lista T')
+                                        dias.append(dia)
+                                        val1 += 2
+                                        val2 += 2
+                                    except IndexError:
+                                        print('error')
+                                        dia = turno[n]+turno[pos] +turno[len(turno)]
+                                else:
+                                    try: #igual a 1, metodo diferenciado
+                                        if arg1 == 0:
+                                            dia = turno[n]+turno[index+0:index+2]
+                                        if arg1 != 0:
+                                            dia = turno[n]+turno[pos]+turno[index+1+val1:index+1+val2]
+                                            arg1 += 1
+                                            val1 += 2
+                                            val2 += 2
+                                            if dia[2] == '6': #caso exista 7T6 
+                                                dia = turno[n]+'N'+'12'
+                                        arg1 +=1
+                                        dias.append(dia)
+                                    except IndexError:
+                                        print('error')
+###################################################################### divisao
+                            try:
+                                if turno[pos] == 'N': #Turno Noite
+                                    dia = turno[n]+turno[pos]+turno[index+val1:index+val2]
+                                    print(dia, 'dias lista N')
+                                    dias.append(dia)
+                                    val1 += 2
+                                    val2 += 2
+                            except IndexError:
+                                print('error')
+                                dia = turno[n]+turno[pos]+turno[len(turno)]
+                            
                     
-                        dia = turno[n]+turno[index:index+3]
-                        dias.append(dia)
-                        
-                        dia = turno[n]+turno[index] +turno[index+3:]   #7T12 3456                                               
-                        dias.append(dia)
-                        print(dia, 'codigo final if')
-
-                        
-
                     else: #mesmo horario porem dias diferentes
                         dia = turno[n]+turno[index:]
+                        print(dia, 'dia else')
                         dias.append(dia)
-                        print(dia, 'codigo final else')
+            
+            else: #para estagios com filtro fodido
+                print('')
+        
+        print(dias)
+        
+        #limpando a lista 
+        arg2 = 0
+        for f in dias: # se algo for menor que 3 na lista, remover
+            try:
+                if len(f) < 3:
+                    dias.remove(dias[arg2])
+                # limpando dois casos específicos
+                if f =='7T67': 
+                    dias.remove(dias[arg2]) 
+                arg2 += 1
+            except ValueError:
+                print('')
 
+        #conserta turnos com um numero só
+        
+        arg2 = 0
+        for f in dias: # se tamanho = 3 e diferente de 1,5,6; remover
+            try:
+                if len(f) == 3: 
+                    if  f[2] != '1' and f[2] != '5' and f[2] != '6': #adicionar numero subsequente
+                        numero_final = int(f[2])
+                        numero_final += 1
+                        dias.append(f+str(numero_final))
+                        dias.remove(dias[arg2])
+                arg2 += 1
+            except ValueError:
+                print('')
+                
+            
+        
+        #conserta o caso T6
+        for f in dias:
+            if f[2] == '6':
+                print('tem 6')
+                dias.append(f[0]+'N'+'12')
+        
+        
+        # limpando as lista DIAS denovo 
+        dias = list(dict.fromkeys(dias)) # tira duplicatas
+        
+        arg2 = 0
+        for f in dias: # se algo for menor que 3 na lista, remover
+            try:
+                if len(f) < 3:
+                    print(len(f), 'menor que 3')
+                    dias.remove(dias[arg2])
+                # limpando dois casos específicos novamente
+                if f =='7T67': 
+                    dias.remove(dias[arg2])
+                if f == '7T6':
+                    dias.remove(dias[arg2]) 
+                arg2 += 1
+            except ValueError:
+                print('')
+        
+        #filtro final de possibilidades de dias 
+        for f in dias:
+            possibilidades = ["2M12","3M12","4M12","5M12","6M12","7M12","2M34","3M34","4M34","5M34","6M34","7M34","2M5","3M5","4M5","5M5","6M5","7M5","2T1","3T1","4T1","5T1","6T1","7T1","2T23","3T23","4T23","5T23","6T23","7T23","2T45","3T45","4T45","5T45","6T45","7T45","2N12","3N12","4N12","5N12","6N12","7N12","2N34","2N34","3N34","4N34","5N34","6N34","7N34"]
+            if f not in possibilidades:
+                dias = possibilidades           
+
+        #enviar
         context["dias"] =  dias
         print(context['dias'])
         
