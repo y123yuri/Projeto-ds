@@ -106,7 +106,7 @@ function escolha_img(element) {
 
     //por dentro do user_img
     user_img.appendChild(img_escolhida);
-
+    user_img.style.border = "solid 5px #0B4C9C";
     //os trem pra editar dnv
     var edit_icon = document.createElement('i');
     edit_icon.id = 'edit';
