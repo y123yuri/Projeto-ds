@@ -49,6 +49,17 @@ function verifica() {
     }
 }
 
+// function email_ja_existe() {
+//     $.ajax({
+//         type: "GET"
+//         url: "/cadastro/sucesso"
+//         data: {
+//             csrfmiddlewaretoken: csrf_token,
+            
+//         }
+//     })
+// }
+
 function enviarFormulario() {
     const formData = new FormData(document.querySelector('form'));
 
@@ -138,6 +149,13 @@ function confirmasenhaValidade() {
         console.log('SENHA TA DIFERENTE');
         setError(4);
     }
+}
+
+// RECARREGAR PAGINA
+function refresh() {
+
+    history.go(-2);
+
 }
 
 //FUNÇÃO PARA PASSAR O NOME DO USUÁRIO PARA PROXIMA PÁGINA (CADASTRO_SUCESSO)

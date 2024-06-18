@@ -79,11 +79,11 @@ def sucesso(request):
             senha_variavel = dados['password']
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12:
-                if User.objects.filter(email=dados[1]).exists():
-                    messages.error(request, 'O email já existe!!') 
+                if User.objects.filter(email=dados[1]).exists() or User.objects.filter(username=dados[0]).exists():
+                    messages.error(request, 'O email ou usuário já existe!!') 
                     print('Ja existe email')
-
-                    return redirect('../')
+                    return JsonResponse({'success': False, 'error': 'O email ou usuário já existe!!'})
+                   
                 else:
                     user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
                     user.is_active = False 
@@ -95,11 +95,11 @@ def sucesso(request):
                 messages.error(request, 'Erro no cadastro!!') 
 
                 request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
-                return JsonResponse({'success': False, 'error': 'Formulário inválido'})
+                return JsonResponse({'success': False, 'error': 'Formulário inválido, Erro 707'})
             
         else:
             request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
-            return JsonResponse({'success': False, 'error': 'Formulário inválido'})
+            return JsonResponse({'success': False, 'error': 'O email ou usuário já existe!!'})
     
     return render(request, "html/VerificaEmail.html")
 
@@ -184,10 +184,10 @@ def usuario(request):
             semestre = request.POST.get('semestre')
             bio = request.POST.get('bio')
             visibilidade = request.POST.get('visibilidade')
-            # foto =  request.POST.get('foto')
+            foto =  request.POST.get('foto')
 
-            print('caraio',curso, 'pinto', 'lixo')
             
+            print('print localizacao')
             perfil = PerfilUsuario.objects.get(user=request.user)
             if curso:
                 perfil.curso = curso
@@ -199,9 +199,19 @@ def usuario(request):
                 perfil.descricao = bio
                 print(perfil.descricao)
             if visibilidade:
-                print('entrei nessa merda')
-                # perfil.visibilidade = visibilidade
-                print(visibilidade)
+                if visibilidade == '0':
+                    print('entrei nessa merda')
+                    print(visibilidade)
+                    perfil.privacidade = False
+                else:
+                    perfil.privacidade = True
+                    print('entrei nessa merda 2 ')
+                    print(visibilidade)
+            if foto:
+                print(foto)
+                perfil.foto = int(foto)
+                print(perfil.foto, 'perfil foto')
+                    
             
             perfil.save()
             return redirect('../', context) , JsonResponse({'status':'sucess'})

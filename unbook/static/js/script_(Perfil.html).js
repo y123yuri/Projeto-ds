@@ -92,32 +92,48 @@ document.addEventListener('click', (e) => {
     }
 });
 
-function escolha_img(element) {
-    var user_img = document.getElementById('img_user');
+function escolha_img(element, csrf_token) {
+    // window.location.reload(true)
+    var user_img = document.getElementById('img_img');
     
-    //remover o que estiver lá
+    // Remove existing children
     while (user_img.firstChild) {
         user_img.removeChild(user_img.firstChild);
     }
 
-    //criar elemento dinamico para a foto
-    var img_escolhida = document.createElement('img');
-    img_escolhida.src = element.src;
+    atualizar_foto(element.id, csrf_token);
 
-    //por dentro do user_img
-    user_img.appendChild(img_escolhida);
-    user_img.style.border = "solid 5px #0B4C9C";
-    //os trem pra editar dnv
+    // Add the edit icon
     var edit_icon = document.createElement('i');
     edit_icon.id = 'edit';
     edit_icon.className = 'bi bi-pencil-square';
     user_img.appendChild(edit_icon);
 
+    // Close the modal (assuming modal_img is globally defined)
     modal_img.style.display = "none";
+    window.location.reload(true)
+    window.location.reload(true)
 }
 
-
-
+function atualizar_foto(foto_id, csrf_token) {
+    $.ajax({
+        type: "POST",
+        url: "usuario/",
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            foto: foto_id
+        },
+        success: function(response) {
+            console.log("Dados enviados com sucesso:", response);
+            if (response.status === 'success') {
+                window.location.reload(true);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro na requisição AJAX:", status, error);
+        }
+    });
+}
 
 
 var fzr_avaliacao = document.getElementById('atualizar');
@@ -358,7 +374,7 @@ document.getElementById('prox_button_4').addEventListener('click', (e)=> {
     const curso = document.getElementById('input_cursos').value;
     const semestre = document.getElementById('CampoFalado_menu').innerText;
     const bio = document.getElementById('bio').value;
-    
+    const visibilidade = document.getElementById('priv').value
     console.log(visibilidade)
     enviarDados(curso, semestre, bio, visibilidade);
     window.location.reload(true);

@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="{% static "css/styles_cadastro.css" %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -69,6 +70,10 @@
         <div class="loading">
           <div class="progress"></div>
         </div>
+    
+    
+        <div id="error-message"></div>
+
 
       </div>
     
@@ -88,6 +93,31 @@
       history.back()
     }
   </script>
+  <script>
+    $(document).ready(function() {
+        $('#form').on('submit', function(event) {
+            event.preventDefault(); // Previne o envio do formulário padrão
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (!response.success) {
+                        $('#error-message').text(response.error);
+                    } else {
+                        // Em caso de sucesso, redireciona ou atualiza a página conforme necessário
+                        window.location.href = "/cadastro/sucesso/";
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Ocorreu um erro ao processar a solicitação.');
+                }
+            });
+        });
+    });
+  </script>
+  
 </body>
 
 </html>
