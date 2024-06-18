@@ -133,7 +133,7 @@ function senhaValidade() {
 //APOS VERIFICADO, SE ERRADO RELOAD PAGINA
 function refresh() {
 
-    history.go(-2);
+    history.go(0);
 
 }
 //VERIFICAR SE A SENHA É A MESMA DA DE CIMA

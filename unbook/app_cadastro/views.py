@@ -81,6 +81,7 @@ def sucesso(request):
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12:
                 if User.objects.filter(email=dados[1]).exists():
                     messages.error(request, 'O email já existe!!') 
+                    print('Ja existe email')
 
 
                 else:
@@ -90,6 +91,8 @@ def sucesso(request):
                     send_activation_email(user, request)
                     return JsonResponse({'success': True, 'username': user.username}) 
             else:
+                messages.error(request, 'Erro no cadastro!!') 
+
                 request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
                 return JsonResponse({'success': False, 'error': 'Formulário inválido'})
             
