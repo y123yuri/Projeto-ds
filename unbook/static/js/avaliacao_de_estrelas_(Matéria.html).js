@@ -93,15 +93,13 @@ function enviar_para_back(lista) {
             lista = response.split(",");
             console.log(lista);
 
-            let nota_apoio = (Number(lista[1]) / 2).toPrecision(2);
             let nota_dificuldade = (Number(lista[0]) / 2).toPrecision(2);
+            let nota_apoio = (Number(lista[1]) / 2).toPrecision(2);
             let nota_didatica = (Number(lista[2]) / 2).toPrecision(2);
-            let avaliacao = Number(lista[3]);
 
-            pintar_estrela_tela((Number(lista[0]) / 2).toPrecision(2), "dificuldade");
-            pintar_estrela_tela((Number(lista[1]) / 2).toPrecision(2), "apoio");
-            pintar_estrela_tela((Number(lista[2]) / 2).toPrecision(2), "didatica");
-            pintar_estrela_tela(Number(lista[3]), "avaliacao");
+            pintar_estrela_tela(nota_dificuldade, "dificuldade");
+            pintar_estrela_tela(nota_apoio, "apoio");
+            pintar_estrela_tela(nota_didatica, "didatica");
 
             console.log(nota_apoio + ", " + nota_didatica + ", " + nota_dificuldade + ", " + avaliacao);
 
@@ -143,8 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var nota_apoio = parseFloat('{{ nota_apoio }}');
     var nota_didatica = parseFloat('{{ nota_didatica }}');
 
-    // Pintando as estrelas para cada categoria
-    pintarEstrelas(nota_dificuldade, 'Didatica_media');
 });
 
 

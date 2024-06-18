@@ -97,20 +97,15 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_4">
-              <h2 class="CampoFalado2_modal">Selecione uma foto</h2>
-              <h4 class="CampoFalado3_modal">Clique em uma das fotos para selecioná-la</h4>
+              <h2 class="CampoFalado2_modal">Visibilidade do perfil</h2>
+              <h4 class="CampoFalado3_modal">Deseja que seu perfil seja:</h4>
               <hr style="margin: 1em 5em" />
               
-              <div id="bolas">
-                <div class="img" id="id_1"></div>
-                <div class="img" id="id_2"></div>
-                <div class="img" id="id_3"></div>
-                <div class="img" id="id_4"></div>
-                <div class="img" id="id_5"></div>
-                <div class="img" id="id_6"></div>
-                <div class="img" id="id_7"></div>
-                <div class="img" id="id_8"></div>
+              <div id="privs_button">
+                <div class="perfil_visivel" id="priv"  onclick="setVisibility(this , 0)" > Privado</div>
+                <div class="perfil_visivel" id="public" onclick="setVisibility(this, 1)" > Público</div>
               </div>
+              <input type="hidden" id="perfil_visibilidade" name="perfil_visibilidade">
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_3">Voltar</h2>
@@ -130,17 +125,30 @@
 
     <div id="boxes">
       <div id="modal_imgs">
-        <div class="balls" id="model_1" onclick="escolha_img(this.id)">#1</div>
-        <div class="balls" id="model_2" onclick="escolha_img(this.id)">#2</div>
-        <div class="balls" id="model_3" onclick="escolha_img(this.id)">#3</div>
-        <div class="balls" id="model_4" onclick="escolha_img(this.id)">#4</div>
-        <div class="balls" id="model_5" onclick="escolha_img(this.id)">#5</div>
+        <div style="margin: auto; display: flex; flex-direction: row;">
+          <img  onclick="escolha_img(this)" class="balls" id="model_1" src="{% static "image/profiles/1.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_2" src="{% static "image/profiles/2.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_3" src="{% static "image/profiles/3.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_4" src="{% static "image/profiles/4.jpg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_5" src="{% static "image/profiles/5.jpeg" %}"/>
+        </div>
+        
+        <div style="margin: auto; display: flex; flex-direction: row;">
+          <img onclick="escolha_img(this)" class="balls" id="model_6" src="{% static "image/profiles/6.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_7" src="{% static "image/profiles/7.jpg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_8" src="{% static "image/profiles/8.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_9" src="{% static "image/profiles/9.jpeg" %}"/>
+          <img onclick="escolha_img(this)" class="balls" id="model_10" src="{% static "image/profiles/10.jpeg" %}"/>
+        </div>
       </div>
 
       <div id="box1">
         <div id="espace_img_user">
           <a href="../../" id="voltar">x</a>
-          <div id="img_user"></div>
+          <div id="img_user">
+            <i id="edit" class="bi bi-pencil-square"></i>
+
+          </div>
         </div>
 
         <div id="CampoEscrito_box1">
@@ -163,10 +171,10 @@
           <div id="espace_1">
             <h1 class="CampoEscrito_profile">
               Seja bem-vindo <br />
-              <span id="user">{{ user.username }}</span>
+              <span id="user">{{ user.first_name }}</span>
             </h1>
             {% if user.is_authenticated %}
-              <a id="Logout" class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
+              <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
           <hr style="margin: 0 2em" />
@@ -228,13 +236,14 @@
     <script src="{% static 'js/script_(Perfil.html).js' %}"></script>
     
     <script>
-      document.getElementById('prox_button_3').addEventListener('click', (e)=> {
+      document.getElementById('prox_button_4').addEventListener('click', (e)=> {
           e.preventDefault();
           const curso = document.getElementById('input_cursos').value;
           const semestre = document.getElementById('CampoFalado_menu').innerText;
           const bio = document.getElementById('bio').value;
+          const visibilidade = document.getElementById('priv').value
           
-          enviarDados(curso, semestre, bio);
+          enviarDados(curso, semestre, bio, visibilidade);
       });
     </script>
     {% if messages %}

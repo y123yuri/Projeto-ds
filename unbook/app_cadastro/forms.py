@@ -8,7 +8,7 @@ class CadastroForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CadastroForm, self).__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs = {'class':"campoEscrito , required", "name":"Nome", "type":"text", "placeholder":"Seu nome completo" , "oninput":"nomeCompletoValidade()"}
+        self.fields['name'].widget.attrs = {'class':"campoEscrito , required", "name":"Nome", "type":"text", "placeholder":"Seu nome completo" , "oninput":"nomeConfirmaValidade()"}
 
         self.fields['username'].widget.attrs = {'class':"campoEscrito , required","id":"CampoNome", "name":"Usuario", "type":"text", "placeholder":"Usuario" , "oninput":"nomeValidade()"}
 

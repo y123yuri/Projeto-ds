@@ -24,11 +24,11 @@
 
     <div class="boxes">
       <div class="box1_2">
-        <div id="box1">
+        <div id="box1" onclick="alert('Escolha uma matéria para avaliar!')">
           <div id="avaliacao">
             <h1 class="CampoFalado1">Média das Turmas</h1>
 
-            <h2 class="CampoFalado2">didatica</h2>
+            <h2 class="CampoFalado2">Didática</h2>
             <fieldset class="rating" id="didatica">
               <input type="radio" id="star5_didatica" name="rating_didatica" value="5" /><label id="estrela_5_didatica" for="star5_didatica" class="full" title="Awesome"></label>
               <input type="radio" id="star4.5_didatica" name="rating_didatica" value="4.5" /><label id="estrela_4.5_didatica" for="star4.5_didatica" class="half" title="Awesome"></label>
@@ -131,7 +131,7 @@
   </body>
 
   <script type="text/javascript">
-    nota_didatica = Number('{{aval_dificuldade}}'.replace(',', '.'))
+    nota_didatica = Number('{{aval_didatica}}'.replace(',', '.'))
     nota_apoio = Number('{{aval_apoio}}'.replace(',', '.'))
     nota_dificuldade = Number('{{aval_dificuldade}}'.replace(',', '.'))
   </script>

@@ -26,7 +26,12 @@
         <form class="form" id="form" action="./logado/" method="post" name="contact-form">
             {% csrf_token %}
             <div id="erro_nn_log"> {{ erro }} </div>
-            <h1 class="login"> Login </h1>
+
+            <div style="display: flex; flex-direction: row; padding: 40px 40px 5px 40px; justify-content: space-between;">
+                <h1 style="font-size: 3em"> Login </h1>
+                <a href="../"><img style="width:3em; height:3em" src="{% static "image/Arrow_back.png"%}"/></a>
+              </div>
+
             <h3 class="campoFalado"> Digite o seu e-mail:</h3>
             
             <label>
@@ -43,7 +48,7 @@
             </label>
 
            
-            <input type="submit" id="submit" value=" Enviar" class="botao_entrar" onclick="verifica()"> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
+            <input type="submit" id="submit" value="Enviar" class="botao_entrar" onclick="verifica();"> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÕES-->
 
             <div style="margin-left: 1em; color: red;">{{request.session.erro}}</div>
 

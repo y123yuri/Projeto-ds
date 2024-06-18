@@ -93,3 +93,43 @@ function fechar_modal() {
 function RetirarAlerta(element){
     element.style.display = 'none'
 }
+
+document.querySelectorAll('.buttons').forEach(buttons => {
+    buttons.addEventListener('mouseover', (event) => {
+        const targetIcon = event.target.closest('i');
+        if (!targetIcon) return; // Retorna se o elemento alvo não for um ícone
+
+        if (targetIcon.classList.contains('bi-hand-thumbs-up')) {
+            targetIcon.classList.remove('bi-hand-thumbs-up');
+            targetIcon.classList.add('bi-hand-thumbs-up-fill');
+            targetIcon.style.color = '#81E28B'
+        } else if (targetIcon.classList.contains('bi-exclamation-triangle')) {
+            targetIcon.classList.remove('bi-exclamation-triangle');
+            targetIcon.classList.add('bi-exclamation-triangle-fill');
+            targetIcon.style.color = '#E95959'
+        } else if (targetIcon.classList.contains('bi-trash')) {
+            targetIcon.classList.remove('bi-trash');
+            targetIcon.classList.add('bi-trash-fill');
+            targetIcon.style.color = '#E95959'
+        }
+    });
+
+    buttons.addEventListener('mouseout', (event) => {
+        const targetIcon = event.target.closest('i');
+        if (!targetIcon) return; // Retorna se o elemento alvo não for um ícone
+
+        if (targetIcon.classList.contains('bi-hand-thumbs-up-fill')) {
+            targetIcon.classList.remove('bi-hand-thumbs-up-fill');
+            targetIcon.classList.add('bi-hand-thumbs-up');
+            targetIcon.style.color = 'black'
+        } else if (targetIcon.classList.contains('bi-exclamation-triangle-fill')) {
+            targetIcon.classList.remove('bi-exclamation-triangle-fill');
+            targetIcon.classList.add('bi-exclamation-triangle');
+            targetIcon.style.color = 'black'
+        } else if (targetIcon.classList.contains('bi-trash-fill')) {
+            targetIcon.classList.remove('bi-trash-fill');
+            targetIcon.classList.add('bi-trash');
+            targetIcon.style.color = 'black'
+        }
+    });
+});

@@ -5,7 +5,6 @@ window.onload = () => {
     editar_perfil.style.color = 'whitesmoke';
 }
 
-
 function abrir_modal(id) {
 
     var others = document.querySelectorAll('.pages')
@@ -71,12 +70,15 @@ var modal_img = document.getElementById('modal_imgs');
 
 img.addEventListener('mouseover', (e) => {
     img.style.border = "solid 5px #0B4C9C";
-    img.style.filter = "brightness(70%)";
+    document.getElementById('edit').style.display = 'block'
+    img.style.filter = "brightness(80%)";
+
 });
 
 img.addEventListener('mouseout', (e) => {
     img.style.border = "none";
     img.style.filter = "none";
+    document.getElementById('edit').style.display = 'none'
 });
 
 img.addEventListener('click', (e) => {
@@ -90,17 +92,29 @@ document.addEventListener('click', (e) => {
     }
 });
 
-function escolha_img(id) {
-    var escolhida = document.getElementById(id);
+function escolha_img(element) {
     var user_img = document.getElementById('img_user');
-    var computedStyle = getComputedStyle(escolhida);
-    user_img.style.backgroundColor = computedStyle.backgroundColor;
+    
+    //remover o que estiver lá
+    while (user_img.firstChild) {
+        user_img.removeChild(user_img.firstChild);
+    }
+
+    //criar elemento dinamico para a foto
+    var img_escolhida = document.createElement('img');
+    img_escolhida.src = element.src;
+
+    //por dentro do user_img
+    user_img.appendChild(img_escolhida);
+    user_img.style.border = "solid 5px #0B4C9C";
+    //os trem pra editar dnv
+    var edit_icon = document.createElement('i');
+    edit_icon.id = 'edit';
+    edit_icon.className = 'bi bi-pencil-square';
+    user_img.appendChild(edit_icon);
 
     modal_img.style.display = "none";
 }
-
-
-
 
 
 
@@ -306,11 +320,14 @@ function selecionado(semestre) {
     const text_menu = document.getElementById("CampoFalado_menu");
     text_menu.textContent = semestre.textContent;
     // Chama a função enviarDados com o semestre
-    enviarDados(null, semestre.textContent, null);
+    enviarDados(null, semestre.textContent, null, null);
 }
 
+// function setVisibilit(element) {
+//     enviarDados(null, null, null, element);
+// }
 
-function enviarDados(curso, semestre, bio) {
+function enviarDados(curso, semestre, bio, visibilidade) {
     console.log('recebeu enviarDados');
     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
@@ -321,7 +338,8 @@ function enviarDados(curso, semestre, bio) {
             csrfmiddlewaretoken: csrf_token,
             curso: curso,
             semestre: semestre,
-            bio: bio
+            bio: bio,
+            visibilidade: visibilidade
         },
         success: function(response) {
             console.log("Dados enviados com sucesso:", response);
@@ -341,7 +359,29 @@ document.getElementById('prox_button_4').addEventListener('click', (e)=> {
     const semestre = document.getElementById('CampoFalado_menu').innerText;
     const bio = document.getElementById('bio').value;
     
-    enviarDados(curso, semestre, bio);
+    console.log(visibilidade)
+    enviarDados(curso, semestre, bio, visibilidade);
     window.location.reload(true);
 });
 
+
+// aaaaaquiiiiiiiiii
+function setVisibility(element, valor){
+
+        // Primeiro, remover a classe 'not_selected' de todos os botões
+        document.querySelectorAll('.perfil_visivel').forEach(btn => {
+            btn.classList.remove('not_selected');
+            btn.style.backgroundColor = "#81E28B"
+
+            enviarDados(null, null, null, valor);
+        });
+
+        // Adicionar a classe 'not_selected' a todos os botões que não foram clicados
+        document.querySelectorAll('.perfil_visivel').forEach(btn => {
+            if (btn !== element) {
+                btn.classList.add('not_selected');
+                btn.style.backgroundColor = "whitesmoke"
+            }
+        });
+    
+}

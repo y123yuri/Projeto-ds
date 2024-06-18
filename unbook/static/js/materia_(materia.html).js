@@ -1,5 +1,5 @@
 
-var fzr_avaliacao = document.getElementById('Fazer_avaliacao');
+var fzr_avaliacao = document.getElementById('box1');
 var fundoblur = document.getElementById('fundo_blur');
 var modal = document.getElementById('modal_avaliacao');
 var scroll_x = document.getElementById('scroll_modal');

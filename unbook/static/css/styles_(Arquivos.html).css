@@ -1,3 +1,7 @@
+:root {
+  --cinzinha: #9BABA6;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -281,31 +285,38 @@ a#Prof {
 
 
 .arquivos {
+  position: relative;  /* Necessário para que .buttons seja posicionado relativamente a este contêiner */
   border-radius: 20px;
   background-color: #cde4df;
   box-shadow: -2px 2px 2px black;
-  
-  width: auto;
-  height: 8em;
+  width: 100%;
+  height: auto;
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-
   margin-bottom: 1.5em;
   transition: all 0.3s ease;
 }
 
-#resumos:hover {
+.caixa_link {
+  width: fit-content;
+  height: fit-content;
+  background-color: #589b5f74;
+  text-decoration: none;
+}
+
+.res:hover {
   transform: scale(1.015);
   background-color: #81E28B;
 }
-#videos:hover {
+.vid:hover {
   transform: scale(1.015);
   background-color: #E95959;
 }
-#atividades:hover {
+.ativ:hover {
   transform: scale(1.015);
   background-color: #68AEEF;
 }
@@ -318,22 +329,24 @@ a#Prof {
   border-radius: 10px;
 }
 
-#videos .image {
+.vid .image {
   background-color: #E95959;
   color: #a94141;
 }
-#resumos .image {
+.res .image {
   background-color: #81E28B;
   color: #589b5f;
 }
-#atividades .image {
+.ativ .image {
   background-color: #68AEEF;
   color: #43739f;
 }
 
 .title {
-  font-size: 1.25em;
-  margin-right: 1em;
+  font-size: 1.2em;
+  width:100%;
+  max-width: 33em;
+  word-wrap: break-word;
 }
 
 .text_arquivos {
@@ -352,7 +365,7 @@ a#Prof {
   width: fit-content;
 }
 
-#link {
+.abre_link {
   color:#0b4c8c;
   text-decoration: none;
   font-size: 1em;
@@ -362,7 +375,7 @@ a#Prof {
   transition: all 0.3s ease;
 }
 
-#link:hover {
+.abre_link:hover {
   background-color:#0b4c8c;
   color: whitesmoke;
 }
@@ -383,6 +396,40 @@ a#Prof {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width:100%;
+  max-width: 40em;
+}
+
+.buttons {
+  font-size: 1.5em;
+  width: 7em;
+  display: flex;  /* Inicialmente oculto */
+  justify-content: space-evenly;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: -0.5em;  /* Ajuste conforme necessário */
+  right: 0.5em;
+  background-color: #cde4df;
+  padding: 0.25em 0.5em;
+  border-radius: 15px;
+  z-index: 5;
+}
+
+.buttons i {
+  transition: all 0.3s ease;
+}
+
+  .buttons i.bi-hand-thumbs-up:hover {
+  color:#81E28B;
+  stroke: 2px whitesmoke;
+}
+  .buttons i.bi-exclamation-triangle:hover {
+  color:#E95959;
+  stroke: 2px whitesmoke;
+}
+  .buttons i.bi-trash:hover {
+  color:#E95959;
+  stroke: 2px whitesmoke;
 }
 
 .div_space {
@@ -391,6 +438,7 @@ a#Prof {
   position: relative;
   left: 2em;
   text-align: left;
+  width: 100%;
 }
 
 #modal_upload {

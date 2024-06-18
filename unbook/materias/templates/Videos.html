@@ -74,38 +74,55 @@
 
         <div id="posta_link">
           {% for video in videos %}
-            <div id="videos" class="arquivos" onclick="https://{{ video.link }}">
-              <div class="image">
-              <i style="font-size: 3em;" class="bi bi-person-video2"></i>
-              </div>
-
-              <div class="div_space">
-
-                <div class="usuarios">
-                  <h2> @{{video.autor}} </h2>
-                </div>
-                  
-                <div class="text_arquivos">
-                  <h3 class="title">Título: " {{ video.titulo }} "</h3>
-
-                  <div class="link">
-                    <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link: </h4>
-                    <a id="link" target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
-                  </div>
-                  <div class="like">
-                    <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{video.hora_publicacao}}</h4>
-
-                    {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
-                    <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
-                  </div>
-                </div>
-
-              </div>
+        <div class="videos arquivos , vid" data-link="{{ video.link }}">
+            <div class="image">
+                <i style="font-size: 3em;" class="bi bi-person-video2"></i>
             </div>
-          {% endfor %}
+
+            <div class="div_space">
+                <div class="usuarios">
+                    <h3 class="title">Título: " {{ video.titulo }} "</h3>
+                </div>
+
+                <div class="text_arquivos">
+                    <div class="link">
+                        <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link: </h4>
+                        <a class="abre_link" target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
+                    </div>
+                    <div class="like">
+                        <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{ video.hora_publicacao }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <i class="bi bi-hand-thumbs-up" class="joia"></i>
+                <i class="bi bi-exclamation-triangle" class="denunciar"></i>
+                <i class="bi bi-trash" class="deletar"></i>
+            </div>
+        </div>
+    {% endfor %}
         </div>
       </div>
     </div>
+
+  <script>
+    
+    document.querySelectorAll('.videos').forEach(videoDiv => {
+      videoDiv.addEventListener('click', (e) => {
+          var buttons = videoDiv.querySelector('.buttons');
+
+          if (buttons.contains(e.target)) {
+              console.log('sou um botao');
+              e.stopPropagation(); // Stop the event from propagating to the parent
+          } else {
+              var link = videoDiv.getAttribute('data-link');
+              window.open("https://" + link, '_blank');
+          }
+      });
+  });
+
+  </script>  
 
     {% if messages %}
             {% for message in messages %}

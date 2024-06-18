@@ -87,7 +87,7 @@ function nomeConfirmaValidade() {
 }
 
 function nomeValidade() {
-    if (campos[1].value.length < 3 || campos[1].value.length > 12) {
+    if (campos[1].value.length < 3 || campos[1].value.length > 12 || campos[1].value.includes(' ')) {
         
         console.log('O NOME NÃO ESTÁ DENTRO DAS DIRETRIZES');
         setError(1);
