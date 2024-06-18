@@ -16,7 +16,9 @@ class PerfilUsuario(models.Model):
     curso = models.CharField(max_length=100, blank=True, null=True)
     descricao = models.CharField(max_length=200, blank=True, null=True)
     semestre = models.CharField(max_length=15, blank=True, null=True)
-    # foto = models.CharField(max_length=1, default=0)
+    foto = models.IntegerField(default=0)
+    privacidade = models.BooleanField(default=True)
+    
     def __str__(self):
         return  self.user.username
 
