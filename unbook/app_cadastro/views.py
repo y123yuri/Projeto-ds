@@ -83,13 +83,14 @@ def sucesso(request):
                     messages.error(request, 'O email já existe!!') 
                     print('Ja existe email')
 
-
+                    return redirect('../')
                 else:
                     user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
                     user.is_active = False 
                     user.save()
                     send_activation_email(user, request)
                     return JsonResponse({'success': True, 'username': user.username}) 
+                
             else:
                 messages.error(request, 'Erro no cadastro!!') 
 
@@ -98,7 +99,7 @@ def sucesso(request):
             
         else:
             request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
-            return JsonResponse({'success': False, 'error': 'Formulário inválidoaa'})
+            return JsonResponse({'success': False, 'error': 'Formulário inválido'})
     
     return render(request, "html/VerificaEmail.html")
 
