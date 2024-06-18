@@ -27,7 +27,7 @@ from .models import Cursos_unb
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.contrib.auth import update_session_auth_hash
-
+from django.contrib import messages
 
 
 
@@ -78,12 +78,17 @@ def sucesso(request):
             email_variavel = dados['email']
             senha_variavel = dados['password']
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
-            if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) < 12:
-                user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
-                user.is_active = False 
-                user.save()
-                send_activation_email(user, request)
-                return JsonResponse({'success': True, 'username': user.username}) 
+            if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12:
+                if User.objects.filter(email=dados[1]).exists():
+                    messages.error(request, 'O email já existe!!') 
+
+
+                else:
+                    user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
+                    user.is_active = False 
+                    user.save()
+                    send_activation_email(user, request)
+                    return JsonResponse({'success': True, 'username': user.username}) 
             else:
                 request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
                 return JsonResponse({'success': False, 'error': 'Formulário inválido'})
@@ -174,6 +179,7 @@ def usuario(request):
             curso = request.POST.get('curso')
             semestre = request.POST.get('semestre')
             bio = request.POST.get('bio')
+            visibilidade = request.POST.get('visibilidade')
             # foto =  request.POST.get('foto')
 
             print('caraio',curso, 'pinto', 'lixo')
@@ -188,9 +194,10 @@ def usuario(request):
             if bio:
                 perfil.descricao = bio
                 print(perfil.descricao)
-            # if foto:
-            #     perfil.foto = foto
-            #     print(perfil.foto)
+            if visibilidade:
+                print('entrei nessa merda')
+                # perfil.visibilidade = visibilidade
+                print(visibilidade)
             
             perfil.save()
             return redirect('../', context) , JsonResponse({'status':'sucess'})

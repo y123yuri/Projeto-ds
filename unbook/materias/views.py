@@ -352,7 +352,6 @@ def professor(request, nome):
         context["aval_didatica"] = 0
         context["aprovacao"] = 0
     context["quant_aval"] = total
-
     return render(request, "Professor.html", context)
     
 
@@ -559,11 +558,23 @@ def avaliacao(request):
     obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
 
     # Separe os dados da lista
+    lista_gorda = []
     separacao = lista.split(',')
-    # print(separacao)
-    dificuldade_dados = int(float(separacao[0])*2)  # Converta para float
-    apoio_dados = int(float(separacao[1])*2)
-    didatica_dados = int(float(separacao[2])*2)
+    
+    cont_ava= 0
+    for i in separacao:
+        if i == '':
+            print('porra') 
+            x='0'
+            lista_gorda.append(x)
+        else:
+            lista_gorda.append(i)
+        cont_ava += 1
+    print(lista_gorda)
+    dificuldade_dados = int(float(lista_gorda[0])*2)  # Converta para float
+    apoio_dados = int(float(lista_gorda[1])*2)
+    didatica_dados = int(float(lista_gorda[2])*2)
+        
     joinha = int(separacao[3])
     
     # Verifique se o usuário já avaliou esta turma
@@ -627,7 +638,7 @@ def avaliacao(request):
         'avaliacao_apoio_aluno': resposta_apoio,
         'avaliacao_didatica': resposta_didatica,
     }
-
+    
     return HttpResponse(f'{resposta_dificuldade}, {resposta_apoio}, {resposta_didatica}')
     
 

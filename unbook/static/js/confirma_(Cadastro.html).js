@@ -47,6 +47,9 @@ function verifica() {
         console.log('Todos os campos verificados');
         enviarFormulario();
     }
+    else {
+        refresh();
+    }
 }
 
 function enviarFormulario() {
@@ -87,7 +90,7 @@ function nomeConfirmaValidade() {
 }
 
 function nomeValidade() {
-    if (campos[1].value.length < 3 || campos[1].value.length > 12) {
+    if (campos[1].value.length < 3 || campos[1].value.length > 12 || campos[1].value.includes(' ')) {
         
         console.log('O NOME NÃO ESTÁ DENTRO DAS DIRETRIZES');
         setError(1);
@@ -127,6 +130,12 @@ function senhaValidade() {
     }
 }
 
+//APOS VERIFICADO, SE ERRADO RELOAD PAGINA
+function refresh() {
+
+    history.go(-2);
+
+}
 //VERIFICAR SE A SENHA É A MESMA DA DE CIMA
 function confirmasenhaValidade() {
     if (campos[3].value == campos[4].value && campos[4].value.length >= 2) {

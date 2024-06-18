@@ -45,10 +45,10 @@ a .UnBook_logo_mini {
 
 #boxes {
   background-color: #f5f5f5c8;
-  box-shadow: -10px 10px 1px #5b5b5bc8;
+  box-shadow: -5px 5px 1px #5b5b5bc8;
   border-radius: 50px;
   border-top-left-radius: 0;
-  width: 90em;
+  width: 85em;
   height: 35em;
   display: flex;
   flex-direction: row;
@@ -285,7 +285,7 @@ a .UnBook_logo_mini {
 
 #Profile {
   background-color: #f5f5f5;
-  width: 65em;
+  width: 60em;
   height: 33em;
   border-radius: 50px;
   box-shadow: 0 0 5px rgb(255, 255, 255);
@@ -329,6 +329,14 @@ a .UnBook_logo_mini {
   text-shadow: 0 0 2px #0b4c8c;
 }
 
+.botoes#Logout:hover {
+  background-color: #d43b5a;
+}
+
+.botoes#atualizar:hover {
+  background-color: #008940;
+}
+
 .botoes {
   position: relative;
   width: auto;
@@ -336,7 +344,7 @@ a .UnBook_logo_mini {
 
   border: none;
   border-radius: 50px;
-  background-color: #0b4c9c;
+  background-color: #0b4c8c;
 
   margin-top: 30px;
   margin-right: 1em;
@@ -507,6 +515,7 @@ a .UnBook_logo_mini {
 #submit:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px #0b4c8c;
+  background-color: green;
 }
 
 #submit:active {
@@ -894,29 +903,37 @@ a .UnBook_logo_mini {
   text-align: center;
 }
 
-#bolas {
+#privs_button {
   width: 100%;
+  padding: 1em;
   height: auto;
-  background-color: #d9d9d9;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.img {
-  width: 4em;
-  height: 4em;
-  background: whitesmoke;
+.perfil_visivel {
+  width: 7em;
+  height: 2em;
+  padding: 0.5em 0.5em;
+  color: black;
+  background-color: whitesmoke;
   border: solid 1px black;
-  margin: 0.5em;
-
+  box-shadow: -1px 1px 2px #d9d9d9;
+  font-size: 1.5em;
+  font-weight: 600;
+  border-radius: 15px;
+  cursor: pointer;
   transition: all 0.3s ease;
+  margin: 0 1em;
 }
 
-.img:hover {
-  filter: brightness(80%);
-  border: solid 2px whitesmoke;
+.perfil_visivel:hover {
+  transform: scale(1.05);
+  border: solid 2px #008940;
+  color: whitesmoke;
+  background-color: #008940;
 }
 
 @media screen and (max-width: 767px) {
@@ -1184,7 +1201,8 @@ a .UnBook_logo_mini {
 
   #user:hover {
     text-shadow: 0 0 2px #0b4c8c;
-  }
+    }
+  
   .botoes {
     position: relative;
     width: auto;
@@ -1192,7 +1210,7 @@ a .UnBook_logo_mini {
 
     border: none;
     border-radius: 50px;
-    background-color: #0b4c9c;
+    background-color: blue;
 
     margin-top: 10em;
     margin-right: auto;

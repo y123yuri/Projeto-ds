@@ -97,20 +97,15 @@
             </div>
 
             <div class="boxes_modal" id="box_modal_4">
-              <h2 class="CampoFalado2_modal">Selecione uma foto</h2>
-              <h4 class="CampoFalado3_modal">Clique em uma das fotos para selecioná-la</h4>
+              <h2 class="CampoFalado2_modal">Visibilidade do perfil</h2>
+              <h4 class="CampoFalado3_modal">Deseja que seu perfil seja:</h4>
               <hr style="margin: 1em 5em" />
               
-              <div id="bolas">
-                <div class="img" id="id_1"></div>
-                <div class="img" id="id_2"></div>
-                <div class="img" id="id_3"></div>
-                <div class="img" id="id_4"></div>
-                <div class="img" id="id_5"></div>
-                <div class="img" id="id_6"></div>
-                <div class="img" id="id_7"></div>
-                <div class="img" id="id_8"></div>
+              <div id="privs_button">
+                <div class="perfil_visivel" id="priv"  onclick="setVisibility(1)" > Privado</div>
+                <div class="perfil_visivel" id="public" onclick="setVisibility(0)" > Público</div>
               </div>
+              <input type="hidden" id="perfil_visibilidade" name="perfil_visibilidade" value="1">
 
               <div class="espaco_buttons">
                 <h2 class="back_button" id="back_button_3">Voltar</h2>
@@ -179,7 +174,7 @@
               <span id="user">{{ user.username }}</span>
             </h1>
             {% if user.is_authenticated %}
-              <a id="Logout" class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
+              <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           </div>
           <hr style="margin: 0 2em" />

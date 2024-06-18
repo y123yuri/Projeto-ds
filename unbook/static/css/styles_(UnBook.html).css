@@ -352,6 +352,26 @@ nav {
 }
 
 
+.alerta {
+    background: whitesmoke;
+    box-shadow: -2px 2px 2px black;
+    cursor: pointer;
+  
+    width: fit-content;
+    height: auto;
+    padding: 1em;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+  
+    border-radius: 25px;
+    animation: abrir_janelas 0.3s;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .alerta:hover {
+    transform: scale(1.05);
+  }
 
 
 
@@ -396,7 +416,7 @@ div .janela_pesquisa {
 
 .CampoProcura {
     width: 570px;
-    height: 10em;
+    height: 15em;
 
     display: block;
     margin: auto;

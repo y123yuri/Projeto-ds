@@ -50,18 +50,26 @@
             <nav>
                 <a href="#inicio"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
     
-                <div class="Login_icon">
+            {% if user.is_authenticated %} 
+
+                <a href="../cadastro/login"><div class="Login_icon">
                     
                     <div id="user"><img class="user" src="{% static "image/usuario.png" %}" alt="user"></div>
     
-                    {% if user.is_authenticated %}
-    
                         <a class="authentic" href="../cadastro/login"><h2>{{user.username}}</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
-                    {% else %}
-                        <a class="authentic" href="../cadastro/login"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
-                    {% endif %}
     
-                </div>
+                </div></a>
+
+            {% else %}
+
+                <a href="../cadastro/login"><div class="Login_icon">
+                    
+                    <div id="user"><img class="user" src="{% static "image/usuario.png" %}" alt="user"></div>
+                        <a class="authentic" href="../cadastro/login"><h2>Login</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                        
+                </div></a>
+            {% endif %}
+
             </nav>
 
 
@@ -115,6 +123,8 @@
                         <li><a onclick="abrirModal_Materia2('DESEVOLVIMENTO DE SOFTWARE') , abrir_turmas('FGA0084', csrf_token)"> DESEVOLVIMENTO DE SOFTWARE (FGA0084) </a></li>
 
                         <li><a onclick="abrirModal_Materia2('ESTUDO DO TURISMO 1') , abrir_turmas('CET0038', csrf_token)"> ESTUDO DO TURISMO 1 (CET0038) </a></li>
+
+                        <li><a onclick="abrirModal_Materia2('CAFE: CIÊNCIA') , abrir_turmas('CEM0145', csrf_token)"> CAFE: CIÊNCIA (CEM0145) </a></li>
                     </ul>
                 </div>
 
@@ -132,6 +142,9 @@
                 <h2 class="CampoFalado4"> 2024.1 </h2>
 
     </section>
+
+
+
 
     <!-- LINK PARA ARQUIVOS JS-->
     <script src="{% static "js/script_(UnBook.html).js"%}"></script>

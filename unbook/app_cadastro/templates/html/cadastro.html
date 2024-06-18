@@ -14,7 +14,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="{% static "css/styles_cadastro.css" %}">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
 </head>
 
 <body>
@@ -22,22 +22,24 @@
 
   <form class="form" id="form" action="./sucesso/" method="post" name="contact-form">
     {% csrf_token %}
-    <h1 style="font-size: 2em;
-    padding: 40px 5px 5px 40px;">Cadastro</h1>
 
+    <div style="display: flex; flex-direction: row; padding: 40px 40px 5px 40px; justify-content: space-between;">
+      <h1 style="font-size: 3em;">Cadastro</h1>
+      <a href="./login"><img style="width:3em; height:3em" src="{% static "image/Arrow_back.png"%}"/></a>
+    </div>
 
     <h3 class="campoFalado">Insira seu nome completo:</h3>
 
     <label>
       {{form.name}} 
-      <span class="spans_required"> Digite um nome com mais de 3 caracteres</span>
+      <span class="spans_required"> Digite um nome com mais de 3 caracteres </span>
     </label>
 
     <h3 class="campoFalado">Insira um nome para o usuario:</h3>
 
     <label>
       {{form.username}}
-      <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres</span>
+      <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres, que não contenha espaço </span>
     </label>
 
     <h3 class="campoFalado">Insira seu e-mail:</h3>
@@ -61,8 +63,8 @@
       <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
-
-    <input type="submit" id="submit" >
+    
+    <input type="submit" id="submit" onclick="window.location.reload()">
 
         <div class="loading">
           <div class="progress"></div>
@@ -71,11 +73,21 @@
       </div>
     
     <div>{{request.session.erro}}</div>
-
+    {% if messages %}
+            {% for message in messages %}
+                <h3 class="alerta" onclick="RetirarAlerta(this)">{{ message }}</h3>
+            {% endfor %}
+    {% endif %}
+  </body>
 
   </form>
 
   <script src="{% static "js/confirma_(Cadastro.html).js" %}"></script>
+  <script>
+    function back() {
+      history.back()
+    }
+  </script>
 </body>
 
 </html>

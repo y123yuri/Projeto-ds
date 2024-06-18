@@ -320,11 +320,14 @@ function selecionado(semestre) {
     const text_menu = document.getElementById("CampoFalado_menu");
     text_menu.textContent = semestre.textContent;
     // Chama a função enviarDados com o semestre
-    enviarDados(null, semestre.textContent, null);
+    enviarDados(null, semestre.textContent, null, null);
 }
 
+function setVisibilit(element) {
+    enviarDados(null, null, null, element);
+}
 
-function enviarDados(curso, semestre, bio) {
+function enviarDados(curso, semestre, bio, visibilidade) {
     console.log('recebeu enviarDados');
     let csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
@@ -335,7 +338,8 @@ function enviarDados(curso, semestre, bio) {
             csrfmiddlewaretoken: csrf_token,
             curso: curso,
             semestre: semestre,
-            bio: bio
+            bio: bio,
+            visibilidade: visibilidade
         },
         success: function(response) {
             console.log("Dados enviados com sucesso:", response);
@@ -354,8 +358,9 @@ document.getElementById('prox_button_4').addEventListener('click', (e)=> {
     const curso = document.getElementById('input_cursos').value;
     const semestre = document.getElementById('CampoFalado_menu').innerText;
     const bio = document.getElementById('bio').value;
+    const visibilidade = document.getElementById('perfil_visibilidade').value;
     
-    enviarDados(curso, semestre, bio);
+    enviarDados(curso, semestre, bio, visibilidade);
     window.location.reload(true);
 });
 

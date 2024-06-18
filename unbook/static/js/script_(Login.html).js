@@ -23,6 +23,12 @@ function removeError(index) {
 function verifica() {
     emailValidade();
     senhaValidade();
+    refresh();
+}
+ 
+//DAR F5 NA PAGINA DEPOIS DE VERIFICAR
+function refresh() {
+    window.location.reload();
 }
 
 //VERIFICAR SENHA
