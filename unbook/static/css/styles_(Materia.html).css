@@ -251,6 +251,8 @@ ul {
     text-align: center;
 }
 
+
+
 #box_modal_4 .espaco_buttons {
     display: flex;
     justify-content: space-between;
@@ -1319,7 +1321,6 @@ table caption {
     top:2em;
     width: 100%;
     height: 6em;
-    
     position: relative;
 }
 

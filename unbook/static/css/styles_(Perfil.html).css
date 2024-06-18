@@ -319,7 +319,7 @@ a .UnBook_logo_mini {
 
 #user {
   position: relative;
-  font-size: 2em;
+  font-size: 1.35em;
   color: #0b4c9c;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -639,6 +639,10 @@ a .UnBook_logo_mini {
 
 .button:active {
   transform: scale(0.95);
+}
+
+.not_selected {
+  opacity: 0.25;
 }
 
 #modal_atualizacao {

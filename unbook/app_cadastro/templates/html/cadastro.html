@@ -64,7 +64,7 @@
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>
     
-    <input type="submit" id="submit" onclick="window.location.reload()">
+    <input type="submit" id="submit" >
 
         <div class="loading">
           <div class="progress"></div>
@@ -72,10 +72,10 @@
 
       </div>
     
-    <div>{{request.session.erro}}</div>
+    {% comment %} <div>{{request.session.erro}}</div> {% endcomment %}
     {% if messages %}
             {% for message in messages %}
-                <h3 class="alerta" onclick="RetirarAlerta(this)">{{ message }}</h3>
+                <h3 class="alerta" onclick="RetirarAlerta(this)">{{message}}</h3>
             {% endfor %}
     {% endif %}
   </body>

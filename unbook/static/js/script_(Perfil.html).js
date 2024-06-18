@@ -323,9 +323,9 @@ function selecionado(semestre) {
     enviarDados(null, semestre.textContent, null, null);
 }
 
-function setVisibilit(element) {
-    enviarDados(null, null, null, element);
-}
+// function setVisibilit(element) {
+//     enviarDados(null, null, null, element);
+// }
 
 function enviarDados(curso, semestre, bio, visibilidade) {
     console.log('recebeu enviarDados');
@@ -358,9 +358,30 @@ document.getElementById('prox_button_4').addEventListener('click', (e)=> {
     const curso = document.getElementById('input_cursos').value;
     const semestre = document.getElementById('CampoFalado_menu').innerText;
     const bio = document.getElementById('bio').value;
-    const visibilidade = document.getElementById('perfil_visibilidade').value;
     
+    console.log(visibilidade)
     enviarDados(curso, semestre, bio, visibilidade);
     window.location.reload(true);
 });
 
+
+// aaaaaquiiiiiiiiii
+function setVisibility(element, valor){
+
+        // Primeiro, remover a classe 'not_selected' de todos os botões
+        document.querySelectorAll('.perfil_visivel').forEach(btn => {
+            btn.classList.remove('not_selected');
+            btn.style.backgroundColor = "#81E28B"
+
+            enviarDados(null, null, null, valor);
+        });
+
+        // Adicionar a classe 'not_selected' a todos os botões que não foram clicados
+        document.querySelectorAll('.perfil_visivel').forEach(btn => {
+            if (btn !== element) {
+                btn.classList.add('not_selected');
+                btn.style.backgroundColor = "whitesmoke"
+            }
+        });
+    
+}

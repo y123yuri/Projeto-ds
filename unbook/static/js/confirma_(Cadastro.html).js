@@ -47,9 +47,6 @@ function verifica() {
         console.log('Todos os campos verificados');
         enviarFormulario();
     }
-    else {
-        refresh();
-    }
 }
 
 function enviarFormulario() {
@@ -130,12 +127,6 @@ function senhaValidade() {
     }
 }
 
-//APOS VERIFICADO, SE ERRADO RELOAD PAGINA
-function refresh() {
-
-    history.go(-2);
-
-}
 //VERIFICAR SE A SENHA É A MESMA DA DE CIMA
 function confirmasenhaValidade() {
     if (campos[3].value == campos[4].value && campos[4].value.length >= 2) {
