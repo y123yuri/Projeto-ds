@@ -126,29 +126,39 @@
     <div id="boxes">
       <div id="modal_imgs">
         <div style="margin: auto; display: flex; flex-direction: row;">
-          <img  onclick="escolha_img(this)" class="balls" id="model_1" src="{% static "image/profiles/1.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_2" src="{% static "image/profiles/2.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_3" src="{% static "image/profiles/3.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_4" src="{% static "image/profiles/4.jpg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_5" src="{% static "image/profiles/5.jpeg" %}"/>
+          <img  onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="1" src="{% static "image/profiles/1.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="2" src="{% static "image/profiles/2.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="3" src="{% static "image/profiles/3.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="4" src="{% static "image/profiles/4.jpg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="5" src="{% static "image/profiles/5.jpeg" %}"/>
         </div>
         
         <div style="margin: auto; display: flex; flex-direction: row;">
-          <img onclick="escolha_img(this)" class="balls" id="model_6" src="{% static "image/profiles/6.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_7" src="{% static "image/profiles/7.jpg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_8" src="{% static "image/profiles/8.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_9" src="{% static "image/profiles/9.jpeg" %}"/>
-          <img onclick="escolha_img(this)" class="balls" id="model_10" src="{% static "image/profiles/10.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="6" src="{% static "image/profiles/6.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="7" src="{% static "image/profiles/7.jpg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="8" src="{% static "image/profiles/8.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="9" src="{% static "image/profiles/9.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="10" src="{% static "image/profiles/10.jpeg" %}"/>
         </div>
       </div>
 
       <div id="box1">
         <div id="espace_img_user">
           <a href="../../" id="voltar">x</a>
+          
+          
           <div id="img_user">
             <i id="edit" class="bi bi-pencil-square"></i>
+            
+            {% if perfil.foto == 0 %}
+                <img id="img_img" src="{% static 'image/profiles/10.jpeg' %}">
+            {% else %}
+                {% comment %} <h2>{{ perfil.foto }}</h2> {% endcomment %}
+                <img id="img_img" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg">
+            {% endif %}
+        </div>
 
-          </div>
+
         </div>
 
         <div id="CampoEscrito_box1">

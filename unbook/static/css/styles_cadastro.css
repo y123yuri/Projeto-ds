@@ -50,6 +50,8 @@ ul {
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
+
+  padding: 1em 0.5em;
 }
 .campoEscrito {
   font-size: 20px;
@@ -130,6 +132,15 @@ ul {
 #submit:active {
   transform: scale(0.9);
 }
+
+#error-message {
+  font-size: 1.25em;
+  color: black;
+  position: relative;
+  left: 2em;
+  text-decoration: dashed;
+}
+
 
 .loading {
   display: block;
