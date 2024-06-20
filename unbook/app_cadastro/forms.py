@@ -8,11 +8,11 @@ class CadastroForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CadastroForm, self).__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs = {'class':"campoEscrito , required", "name":"Nome", "type":"text", "placeholder":"Seu nome completo" , "oninput":"nomeConfirmaValidade()"}
+        self.fields['name'].widget.attrs = {'class':"campoEscrito , required", 'autocomplete':"off", "name":"Nome", "type":"text", "placeholder":"Seu nome completo" , "oninput":"nomeConfirmaValidade()"}
 
-        self.fields['username'].widget.attrs = {'class':"campoEscrito , required","id":"CampoNome", "name":"Usuario", "type":"text", "placeholder":"Usuario" , "oninput":"nomeValidade()"}
+        self.fields['username'].widget.attrs = {'class':"campoEscrito , required","id":"CampoNome", 'autocomplete':"off", "name":"Usuario", "type":"text", "placeholder":"Usuario" , "oninput":"nomeValidade()"}
 
-        self.fields['email'].widget.attrs = {"class":"campoEscrito , required", "name":"Email", "type":"email", "placeholder":"Matrícula@aluno.unb.com" , "oninput":"emailValidade()"}
+        self.fields['email'].widget.attrs = {"class":"campoEscrito , required", 'autocomplete':"off", "name":"Email", "type":"email", "placeholder":"Matrícula@aluno.unb.com" , "oninput":"emailValidade()"}
     
         self.fields['password'].widget = forms.PasswordInput()
         # nn estou conseguindo o confirma senha

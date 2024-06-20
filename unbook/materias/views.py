@@ -292,9 +292,12 @@ def materia(request, codigo, nome):
         
         #conserta o caso T6
         for f in dias:
-            if f[2] == '6':
-                print('tem 6')
-                dias.append(f[0]+'N'+'12')
+            try:
+                if f[2] == '6':
+                    print('tem 6')
+                    dias.append(f[0]+'N'+'12')
+            except IndexError:
+                print("Horario quebrado")
         
         
         # limpando as lista DIAS denovo 
