@@ -51,11 +51,15 @@
                 <a href="#inicio"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
     
             {% if user.is_authenticated %} 
-
+                
                 <a href="../cadastro/login"><div class="Login_icon">
                     
-                    <div id="user"><img class="user" src="{% static "image/usuario.png" %}" alt="user"></div>
-    
+                {% if perfil.foto == 0 %}
+                    <div id="user"><img class="user" src="{% static "image/profiles/10.jpeg" %}" alt="user"></div>
+                {% else %}
+                    <div id="user"><img class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>
+                {% endif %}
+
                         <a class="authentic" href="../cadastro/login"><h2>{{user.username}}</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
     
                 </div></a>

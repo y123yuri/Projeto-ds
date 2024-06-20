@@ -40,10 +40,10 @@
 
     <label>
       {{form.username}}
-      <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres, que não contenha espaço </span>
+      <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres, que não contenha espaço e símbolos (.#*&%!)</span>
     </label>
 
-    <h3 class="campoFalado">Insira seu e-mail:</h3>
+    <h3 class="campoFalado">Insira seu e-mail institucional: <span style="color: grey; font-size: 0.75em">(123456789@aluno.unb.br)</span></h3>
 
     <label>
       {{form.email}}
@@ -60,7 +60,6 @@
     <h3 class="campoFalado">Confirme sua senha:</h3>
 
     <label>
-      {{form.confirm}}
       <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
       <span class="spans_required"> Sua senha está diferente da anterior</span>
     </label>

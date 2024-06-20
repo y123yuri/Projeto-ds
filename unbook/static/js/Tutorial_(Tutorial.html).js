@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const textoArray = elemento.innerHTML.split('');
             elemento.innerHTML = '';
             textoArray.forEach((letra, i) => {
-                setTimeout(() => { elemento.innerHTML += letra; }, 50 * i)
+                setTimeout(() => { elemento.innerHTML += letra; }, 35 * i)
             });
         }
 

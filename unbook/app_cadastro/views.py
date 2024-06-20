@@ -29,8 +29,6 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 
-
-
 # Create your views here.
 
 def cadastro(request):
@@ -75,10 +73,16 @@ def sucesso(request):
             dados = context['resposta']
             name_variavel = dados['name']
             nome_variavel = dados['username']
-            email_variavel = dados['email']
+            email_variavel = dados['email'] 
             senha_variavel = dados['password']
+            print(len(email_variavel))
+            try:
+                email_numero = int(email_variavel[:9])
+            except:
+                email_numero = str(email_variavel[:9])
+            print(email_numero, type(email_numero))
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
-            if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12:
+            if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12  and type(email_numero)==int and len(email_variavel) == 22 :
                 if User.objects.filter(email=dados[1]).exists() or User.objects.filter(username=dados[0]).exists():
                     messages.error(request, 'O email ou usuário já existe!!') 
                     print('Ja existe email')
@@ -99,7 +103,7 @@ def sucesso(request):
             
         else:
             request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
-            return JsonResponse({'success': False, 'error': 'O email ou usuário já existe!!'})
+            return JsonResponse({'success': False, 'error': 'Erro no cadastro, alguns requisitos não foram corretamente enviados!!'})
     
     return render(request, "html/VerificaEmail.html")
 
@@ -124,6 +128,7 @@ def login_func(request):
         context = {
           'perfil': perfil_existente
         }
+
         return render(request, "html/Perfil.html", context) 
 
 

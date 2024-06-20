@@ -44,21 +44,13 @@ function verifica() {
     confirmasenhaValidade();
 
     if (etapaNomeCompleto && etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
+        console.log('aaaaaaaa' + etapaConfirmaSenha)
         console.log('Todos os campos verificados');
-        enviarFormulario();
+        // enviarFormulario();
     }
 }
 
-// function email_ja_existe() {
-//     $.ajax({
-//         type: "GET"
-//         url: "/cadastro/sucesso"
-//         data: {
-//             csrfmiddlewaretoken: csrf_token,
-            
-//         }
-//     })
-// }
+
 
 function enviarFormulario() {
     const formData = new FormData(document.querySelector('form'));
@@ -86,11 +78,11 @@ function enviarFormulario() {
 
 //VERIFICAR NOME (TALVEZ COM ERRO - ANALISAR)
 function nomeConfirmaValidade() {
-    if (campos[0].value.length < 3) {
+    if (campos[0].value.length < 3) { 
         console.log('O NOME TA PEQUENO');
         setError(0);
     }
-    else if (campos[0].value.length > 3) {
+    else if (campos[0].value.length >= 3) {
         console.log('VALIDADO O NOME');
         removeError(0);
         etapaNomeCompleto = true;
@@ -98,7 +90,7 @@ function nomeConfirmaValidade() {
 }
 
 function nomeValidade() {
-    if (campos[1].value.length < 3 || campos[1].value.length > 12 || campos[1].value.includes(' ')) {
+    if (campos[1].value.length < 3 || campos[1].value.length > 12 || campos[1].value.includes(' ') || campos[1].value.includes('.')) {
         
         console.log('O NOME NÃO ESTÁ DENTRO DAS DIRETRIZES');
         setError(1);
@@ -151,47 +143,10 @@ function confirmasenhaValidade() {
     }
 }
 
-// RECARREGAR PAGINA
-function refresh() {
-
-    history.go(-2);
-
-}
-
 //FUNÇÃO PARA PASSAR O NOME DO USUÁRIO PARA PROXIMA PÁGINA (CADASTRO_SUCESSO)
 function reproduzirNome() {
 
     var pegaNome = document.getElementById('CampoNome').value;
     localStorage.setItem("StorageNome", pegaNome);
 
-}
-
-if (etapaNomeCompleto && etapaNome && etapaEmail && etapaSenha && etapaConfirmaSenha) {
-
-    console.log('Todos os campos verificados');
-    loading();
-}
-
-//FUNÇÃO DE CARREGAMENTO PARA ENVIO DOS DADOS
-function loading() {
-    const progress = document.querySelector('.progress');
-
-    let count = 1;
-    let x = 16;
-
-    const loading = setInterval(animate, 60);
-
-    function animate() {
-        if (count === 100 && x === 400) {
-            clearInterval(loading);
-            window.location.href = "/login"
-        } else {
-            x += 4;
-            count++;
-
-            progress.style.display = 'block';
-            progress.style.width = `${x}px`;
-            progress.style.window = '${count}%';
-        }
-    }
 }

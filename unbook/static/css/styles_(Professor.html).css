@@ -175,6 +175,12 @@ ul {
   height: 1em;
 }
 
+#notas_Dificuldade {
+  top:0.5em;
+  font-size: 1.25em;
+}
+
+
 /* BOX 2 */
 
 #box2 {
@@ -537,6 +543,10 @@ ul {
     display: block;
 
     height: 1em;
+  }
+
+  #notas_Dificuldade {
+    top:1em;
   }
 
   /* BOX 2 */

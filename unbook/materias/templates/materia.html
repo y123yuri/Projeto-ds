@@ -251,6 +251,11 @@
               <input type="radio" id="star1_Dificuldade-media" name="rating_Dificuldade-media" value="1" /><label id="estrela_1_dificuldade" for="star1_Dificuldade-media" class="full" title="Awesome"></label>
               <input type="radio" id="star0.5_Dificuldade-media" name="rating_Dificuldade-media" value="0.5" /><label id="estrela_0.5_dificuldade" for="star0.5_Dificuldade-media" class="half" title="Awesome"></label>
 
+              <div style="position:relative; flex; flex-direction: row; justify-content: space-between; width: 100%;">
+                <h4 style="position: absolute; top:2.5em; left:0.5em"> Fácil</h4>
+                <h4 style="position: absolute; top:2.5em; right:0em"> Difícil</h4>
+              </div>
+
               <h3 id="notas_dificuldade-media">{{ avaliacao_dificuldade }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
@@ -445,7 +450,6 @@
                   
                   <div id="comentario_buttons">
                     <div class="curtidas">
-                      <h3 class="text">Gostei</h3>
                       <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')"><i class="fa-solid fa-heart"></i></button>
                       <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
                     </div>|

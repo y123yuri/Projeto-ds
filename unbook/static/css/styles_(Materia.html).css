@@ -162,7 +162,11 @@ ul {
     background-color: #81E28B;
 }
 
+#notas_dificuldade-media {
 
+    position: relative;
+    top:0.5em;
+}
 
 #boxes_modal {
     display: flex;
@@ -1322,6 +1326,12 @@ table caption {
     width: 100%;
     height: 6em;
     position: relative;
+}
+
+#notas_dificuldade-media {
+
+    position: relative;
+    top:1.25em;
 }
 
 .rating_modal {

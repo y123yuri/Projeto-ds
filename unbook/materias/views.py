@@ -12,12 +12,22 @@ from .models import Comentario
 from .models import Comentario_deletado
 from django.http import JsonResponse
 from django.contrib import messages
+from app_cadastro.models import PerfilUsuario
 
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'UnBook.html')
+    user= request.user
+    if request.user.is_authenticated:
+        perfil_existente = PerfilUsuario.objects.filter(user=user).first()
+        context = {
+            'perfil': perfil_existente
+            }
+        return render(request, 'UnBook.html', context)
+    else: 
+        pass
+        return render(request, 'UnBook.html')
 
 def somos(request):
     return render(request, 'Quem_somos.html')
