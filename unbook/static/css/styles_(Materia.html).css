@@ -633,6 +633,23 @@ table caption {
     flex-direction: column;
 }
 
+#checked {
+    display: block;
+    text-align: left; 
+    font-size: 1.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+#votou {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    position: absolute;
+    top:0.5em;
+    left: 1.5em;
+}
+
 #retry {
     display: block;
     text-align: right;

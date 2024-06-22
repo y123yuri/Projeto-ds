@@ -75,7 +75,8 @@ def sucesso(request):
             nome_variavel = dados['username']
             email_variavel = dados['email'] 
             senha_variavel = dados['password']
-            print(len(email_variavel))
+            senha_confirma_variavel = ['senha_confirma']
+            print(senha_confirma_variavel)
             try:
                 email_numero = int(email_variavel[:9])
             except:
@@ -89,11 +90,14 @@ def sucesso(request):
                     return JsonResponse({'success': False, 'error': 'O email ou usuário já existe!!'})
                    
                 else:
-                    user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
-                    user.is_active = False 
-                    user.save()
-                    send_activation_email(user, request)
-                    return JsonResponse({'success': True, 'username': user.username}) 
+                    if senha_variavel != senha_confirma_variavel:
+                        return JsonResponse({'success': False, 'error': 'Senhas não coincidem!!'})
+                    else:
+                        user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
+                        user.is_active = False 
+                        user.save()
+                        send_activation_email(user, request)
+                        return JsonResponse({'success': True, 'username': user.username}) 
                 
             else:
                 messages.error(request, 'Erro no cadastro!!') 

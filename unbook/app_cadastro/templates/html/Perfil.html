@@ -189,13 +189,30 @@
           </div>
           <hr style="margin: 0 2em" />
           <div id="space_2_1_Profile">
-            <h2 class="CampoFalado_Profile">Curso: <span class="respostas">{{ perfil.curso }}</span></h2>
-            <h2 class="CampoFalado_Profile">Semestre: <span class="respostas">{{ perfil.semestre }}</span></h2>
+            
+            {%if perfil.curso == None %}
+              <h2 class="CampoFalado_Profile">Curso: <span style="font-size:1em; color:grey" class="respostas">Atualize seu curso</span></h2>
+            {% else %}
+              <h2 class="CampoFalado_Profile">Curso: <span class="respostas">{{ perfil.curso }}</span></h2>
+            {% endif %}
+
+            {%if perfil.semestre == None %}
+              <h2 class="CampoFalado_Profile">Semestre: <span style="font-size:1em ; color:grey" class="respostas">Atualize seu semestre</span></h2>
+            {%else%}
+              <h2 class="CampoFalado_Profile">Semestre: <span class="respostas">{{ perfil.semestre }}</span></h2>
+            {% endif %}
+            
+            
           </div>
           <hr style="margin: 0 5em" />
           <div id="space_2_2_Profile">
             <h2 class="CampoFalado_Profile">Sobre você:</h2>
-            <h2 class="respostas2">{{ perfil.descricao }}</h2>
+            {%if perfil.descricao == None %}
+              <h2 style="font-size:1em ; color:grey" class="respostas2">Atualize sua descrição</h2>
+            {%else%}
+              <h2 class="respostas2">{{ perfil.descricao }}</h2>
+            {% endif %}
+              
           </div>
           <div id="space_2_3_Profile">
             <h2 class="botoes" id="atualizar">Atualizar informações</h2>

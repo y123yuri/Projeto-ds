@@ -26,15 +26,53 @@
   <h1>Termos de Uso</h1>
 
   <article>
-    Você aceitando nossos termos nos autoriza a utilizar seus dados para financiar uma moto em seu nome, muito agradecido!
+<b>Termo de Consentimento e Informação de Tratamento de Dados
+Pessoais</b>
+<br><br>
+Ao participar deste projeto de coleta de dados de avaliações de professores, você está
+concordando com o compartilhamento de suas informações pessoais e a publicação de
+suas avaliações. Gostaríamos de esclarecer os seguintes pontos importantes:
+Coleta de Dados Pessoais
+<br><br>
+Durante o processo de coleta de dados, solicitaremos que você forneça seu nome completo
+e e-mail institucional. Estas informações são necessárias para a autenticação e validação
+das avaliações, garantindo a veracidade e a integridade dos dados coletados.
+Publicação das Avaliações
+<br><br>
+As avaliações dos professores realizadas por você serão públicas. Isso significa que
+qualquer pessoa que acessar o projeto/site poderá visualizar suas avaliações. No entanto,
+os dados pessoais como seu nome completo e e-mail institucional não serão divulgados
+publicamente e serão utilizados apenas para fins de validação interna.
+
+<br><br><br>
+<b>Conformidade com a Lei Geral de Proteção de Dados (LGPD)</b>
+<br><br>
+O projeto/site está em total conformidade com a Lei Geral de Proteção de Dados (Lei nº
+13.709/2018), que regula o tratamento de dados pessoais no Brasil. Nós seguimos
+rigorosamente todas as diretrizes da LGPD para garantir a proteção e a privacidade dos
+seus dados pessoais. Isso inclui, mas não se limita a:
+<br><br><br>
+1. Transparência: Informamos claramente como seus dados serão utilizados e
+compartilhados.<br>
+2. Segurança: Implementamos medidas de segurança para proteger seus dados
+contra acessos não autorizados, perdas ou divulgações acidentais.<br>
+3. Consentimento: Solicitamos seu consentimento explícito para a coleta e o uso dos
+seus dados.<br>
+4. Finalidade: Utilizamos seus dados apenas para os fins específicos e legítimos para
+os quais foram coletados.<br>
+5. Direitos dos Titulares: Você tem o direito de acessar, corrigir, ou solicitar a
+exclusão dos seus dados pessoais a qualquer momento.
+<br><br><br>
+Ao prosseguir, você está confirmando que leu e compreendeu as informações acima e
+consente com o tratamento dos seus dados pessoais conforme descrito.
+<br><br>
+Agradecemos sua colaboração e participação neste projeto acadêmico. Caso tenha
+qualquer dúvida ou queira exercer seus direitos como titular de dados, entre em contato
+conosco através do e-mail fornecido.
   </article>
 
   <button> Voltar </button>
 </div>
-
-
-
-
 
 {% comment %} termos {% endcomment %}
 
@@ -80,14 +118,14 @@
       <h3 class="campoFalado">Confirme sua senha:</h3>
 
       <label>
-        <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
+        {{form.senha_confirma}}
         <span class="spans_required"> Sua senha está diferente da anterior</span>
       </label>
     </main>
 
 
     <div id="termos_box">
-        <h2> Concordo com os <span onclick="abrir_termos()"id="termos">termos de uso</span></h2>
+        <h2> Declaro que li e concordo com os <span onclick="abrir_termos()"id="termos">termos de uso</span></h2>
         <input type="checkbox" id="check_termos">
     </div>
 

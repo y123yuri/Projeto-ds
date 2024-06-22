@@ -386,6 +386,19 @@
       <div id="box3">
         <div id="acesso">
           <div id="dados_materia">
+
+            {% if materia_votou == 'sim'%}
+              <div id="votou">
+                <h2> Você já avaliou essa matéria </h2>
+                <i id="checked" class="bi bi-clipboard2-check-fill"></i>
+              </div>
+            {% else %}
+              <div id="votou">
+                <h2> Ainda não foi avaliado </h2>
+                <i id="checked" class="bi bi-clipboard2-check-fill"></i>
+              </div>
+            {% endif%}
+
             <a onclick="back()"><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
             <h1 id="Materia" class="CampoFalado1">{{ turma.materia.nome }} - ({{ turma.materia.codigo }})</h1>
             <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
@@ -418,7 +431,7 @@
             </ul>
           </div>
         </div>
-
+        
         <hr />
 
         <div id="modal_apagar_comentario">
@@ -463,13 +476,14 @@
               {% endfor %} <!-- SE APERTAR ELE VAI ABRIR PARA RESPONDER O COMENTÁRIO NO INPUT -->
             </div>
           </div>
+          <div id="error-message"></div>
 
           <div id="comentar_box">
             <input id="comentar_input" type="text" placeholder="Fazer comentário" />
             <img onclick="postar_comentario()" id="send_button" src="{% static 'image/Email Send.png' %}" />
           </div>
         </div>
-      </div>
+      </div> 
     </div>
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
@@ -485,6 +499,27 @@
   <!-- LINK PARA ARQUIVOS JS -->
   <script src="{% static 'js/materia_(materia.html).js' %}"></script>
   <script src="{% static 'js/avaliacao_de_estrelas_(Matéria.html).js' %}"></script>
+  <script>
+    $(document).ready(function() {
+        $('#send_button').on('submit', function(event) {
+            event.preventDefault(); // Previne o envio do formulário padrão
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (!response.success) {
+                        $('#error-message').text(response.error);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Ocorreu um erro ao processar a solicitação.');
+                }
+            });
+        });
+    });
+  </script>
   <script>
     function getCookie(name) {
         let cookieValue = null;

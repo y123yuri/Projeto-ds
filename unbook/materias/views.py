@@ -324,6 +324,13 @@ def materia(request, codigo, nome):
             if f not in possibilidades:
                 dias = possibilidades           
 
+       
+        if obj_turma.avaliadores.filter(id=request.user.id).exists():
+            context['materia_votou'] = 'sim'
+            print(context['materia_votou'])
+        else:
+            pass
+            
         #enviar
         context["dias"] =  dias
         print(context['dias'])
@@ -587,8 +594,7 @@ def avaliacao(request):
     dificuldade_dados = int(float(lista_gorda[0])*2)  # Converta para float
     apoio_dados = int(float(lista_gorda[1])*2)
     didatica_dados = int(float(lista_gorda[2])*2)
-        
-    joinha = int(separacao[3])
+    joinha = int(lista_gorda[3])
     
     # Verifique se o usuário já avaliou esta turma
     user = request.user
@@ -705,12 +711,13 @@ def comentarios(request):
         comentario_corrigido += f'{palavra2} ' 
 
    
-    if len(comentario_corrigido)>2:
+    if len(comentario_corrigido)>2 and len(comentario_corrigido)<450:
         novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido)
         novo_comentario.save()
         return HttpResponse("ok")
     else:
-        return HttpResponse("nao ok")
+        return HttpResponse('nao ok')
+       
     
     
 

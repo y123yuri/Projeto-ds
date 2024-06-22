@@ -18,9 +18,13 @@ class CadastroForm(ModelForm):
         # nn estou conseguindo o confirma senha
         self.fields['password'].widget.attrs = {"class":"campoEscrito , required",  "name":"Senha", "type":"password", "placeholder":"*******" , "oninput":"senhaValidade()"}
 
+        self.fields['senha_confirma'].widget = forms.PasswordInput()
+        # nn estou conseguindo o confirma senha
+        self.fields['senha_confirma'].widget.attrs = {"class":"campoEscrito , required",  "name":"Confirm", "type":"password", "placeholder":"*******" , "oninput":"confirmasenhaValidade()"}
+
     class Meta:
         model = Cadastro
-        fields = ['name' ,'username', 'email', 'password']
+        fields = ['name' ,'username', 'email', 'password','senha_confirma']
 
 
 class LoginForm(ModelForm):
