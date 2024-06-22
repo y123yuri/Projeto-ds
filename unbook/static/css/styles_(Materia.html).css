@@ -133,7 +133,8 @@ ul {
 }
 
 #nao {
-    background-color: #E95959;
+    background-color: #ea3939;
+    box-shadow: -2px 2px 2px #c43131;
 }
 
 .button {
@@ -159,7 +160,8 @@ ul {
 }
 
 #sim {
-    background-color: #81E28B;
+    background-color: #49da57;
+    box-shadow: -2px 2px 2px #308e39;
 }
 
 #notas_dificuldade-media {

@@ -1,3 +1,9 @@
+:root {
+  --azul: #0b4c9c; 
+  --vermelho: #ff0000;
+  --campoEscrito: #d9d9d9;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +20,9 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -25,6 +34,17 @@ ul {
   top: 0;
   left: 0;
   right: 0;
+}
+
+#fundo_blur {
+  width: 100%;
+  height: 150vh;
+  position: fixed;
+
+  display: none;
+  background-color: #000000cc;
+  backdrop-filter: blur(50px);
+  z-index: 2;
 }
 
 .UnBook_logo_mini {
@@ -44,15 +64,22 @@ ul {
   width: 40em;
   height: auto;
   border-radius: 50px;
-  box-shadow: 0 0 5px rgb(255, 255, 255);
+  box-shadow: 0 0 5px whitesmoke;
 
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
-
+  position: relative;
+  top:-3em;
   padding: 1em 0.5em;
 }
+
+main {
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
 .campoEscrito {
   font-size: 20px;
   border: none;
@@ -60,7 +87,7 @@ ul {
 
   width: 550px;
   height: 2em;
-  background-color: #d9d9d9;
+  background-color: var(--campoEscrito);
 
   text-align: left;
   justify-content: center;
@@ -84,7 +111,7 @@ ul {
 
   border: none;
   border-radius: 20px;
-  background-color: #0b4c9c;
+  background-color: var(--azul);
 
   margin-top: 30px;
   margin-left: auto;
@@ -101,6 +128,94 @@ ul {
   transition: all 0.3s ease;
 }
 
+#termos_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+  height: 3em;
+}
+
+#termos_box h2 {
+  font-size: 1em;
+  width: auto;
+}
+
+#termos {
+  color: var(--azul);
+  cursor:pointer;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+#termos:hover {
+  transform: scale(1.05);
+}
+
+#ler_termos {
+  background-color: whitesmoke;
+  width: 40em;
+  height: 30em;
+  border-radius: 50px;
+  box-shadow: 0 0 5px whitesmoke;
+  margin: auto;
+
+  display: none;
+  flex-direction: column;
+
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  position: fixed;
+  padding: 2em;
+
+  z-index: 3;
+}
+
+#ler_termos article {
+  width: 100%;
+  height: 20em;
+
+  position: relative;
+  top: 1em;
+  border-radius: 25px;
+  border-top-right-radius: none;
+  border-top-left-radius: none;
+  padding: 1em;
+  background-color: var(--campoEscrito);
+  overflow-y: scroll;
+}
+
+#ler_termos button {
+  position: absolute;
+  background-color: transparent;
+  right: 2em;
+  bottom: 1em;
+  border: none;
+  font-size: 1.5em;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+#ler_termos button:hover {
+  transform: scale(1.05);
+}
+#ler_termos button:active {
+  transform: scale(0.95);
+}
+
+#check_termos {
+  width: 1.25em;
+  height: 1.25em;
+  position: relative;
+  left: 1em
+}
+
 #submit {
   display: block;
   width: 15rem;
@@ -108,11 +223,10 @@ ul {
 
   border: none;
   border-radius: 20px;
-  background-color: #0b4c9c;
+  background-color: var(--azul);
 
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  position: relative;
 
   color: white;
   font-size: 2em;
@@ -126,7 +240,6 @@ ul {
 
 #submit:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px #0b4c8c;
 }
 
 #submit:active {
@@ -184,7 +297,7 @@ ul {
     width: auto;
     height: auto;
     border-radius: 50px;
-    box-shadow: 0 0 5px rgb(255, 255, 255);
+    box-shadow: 0 0 5px whitesmoke;
 
     display: block;
     margin: 1em;
@@ -197,7 +310,7 @@ ul {
 
     width: 80%;
     height: auto;
-    background-color: #d9d9d9;
+    background-color: var(--campoEscrito);;
 
     text-align: left;
     justify-content: center;
@@ -221,7 +334,7 @@ ul {
 
     border: none;
     border-radius: 20px;
-    background-color: #0b329c;
+    background-color: var(--azul);
 
     margin-top: 30px;
     margin-left: auto;
@@ -245,7 +358,7 @@ ul {
 
     border: none;
     border-radius: 20px;
-    background-color: #0b4c9c;
+    background-color: var(--azul);
 
     margin-top: 30px;
     margin-left: auto;
@@ -263,7 +376,7 @@ ul {
 
   #submit:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px #0b4c8c;
+    box-shadow: 0 0 25px var(--azul);
   }
 
   #submit:active {
@@ -288,7 +401,7 @@ ul {
   }
 
   .spans_required {
-    color: #ff0000;
+    color: var(--vermelho);
     margin-left: 3em;
     display: none;
     font-size: 0.75em;

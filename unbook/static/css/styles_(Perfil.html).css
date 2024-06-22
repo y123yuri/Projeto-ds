@@ -305,7 +305,7 @@ a .UnBook_logo_mini {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 10em;
+  height: auto;
 }
 
 .CampoEscrito_profile {
@@ -366,6 +366,10 @@ a .UnBook_logo_mini {
 }
 .botoes:active {
   transform: scale(1);
+}
+
+.botoes#Logout {
+  font-weight: 700;
 }
 
 #space_2_Profile {
@@ -730,7 +734,7 @@ a .UnBook_logo_mini {
 
 #cursos {
   width: 80%;
-  height: 4em;
+  height: 4.75em;
   margin: auto;
   margin-top: 0.5em;
   padding: 0.5em 1em;
@@ -1308,6 +1312,7 @@ a .UnBook_logo_mini {
     margin-top: 22em;
     margin-left: 1.75em;
     width: 11em;
+    font-weight: 500;
   }
 
   .abrir {

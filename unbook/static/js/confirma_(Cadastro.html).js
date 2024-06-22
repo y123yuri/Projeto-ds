@@ -150,3 +150,42 @@ function reproduzirNome() {
     localStorage.setItem("StorageNome", pegaNome);
 
 }
+
+function abrir_termos(){
+    var blur = document.getElementById('fundo_blur')
+    blur.style.display = "flex"
+
+    var termos = document.getElementById('ler_termos')
+    termos.style.display = "flex"
+
+    blur.addEventListener('click',(e)=> {
+    if(e.target.contains(blur)){
+        e.preventDefault()
+        blur.style.display = "none"
+        termos.style.display = "none"
+    }
+    })
+
+    document.querySelector('#ler_termos button').addEventListener('click', (e)=> {
+        blur.style.display = "none"
+        termos.style.display = "none"
+    })
+}
+
+function toggleSubmit() {
+    var check = document.getElementById('check_termos');
+    var submit = document.getElementById('submit');
+    if (check.checked) {
+        submit.disabled = false;
+        submit.style.backgroundColor = "#0b4c9c"; // azul
+    } else {
+        submit.disabled = true;
+        submit.style.backgroundColor = "#000000cc"; // cinzinha
+    }
+}
+
+window.onload = function() {
+    var check = document.getElementById('check_termos');
+    check.addEventListener('change', toggleSubmit);
+    toggleSubmit();
+}

@@ -19,6 +19,25 @@
 </head>
 
 <body>
+
+<div id="fundo_blur"></div>
+
+<div id="ler_termos">
+  <h1>Termos de Uso</h1>
+
+  <article>
+    Você aceitando nossos termos nos autoriza a utilizar seus dados para financiar uma moto em seu nome, muito agradecido!
+  </article>
+
+  <button> Voltar </button>
+</div>
+
+
+
+
+
+{% comment %} termos {% endcomment %}
+
   <a href="/"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
 
   <form class="form" id="form" action="./sucesso/" method="post" name="contact-form">
@@ -28,51 +47,52 @@
       <h1 style="font-size: 3em;">Cadastro</h1>
       <a href="./login"><img style="width:3em; height:3em" src="{% static "image/Arrow_back.png"%}"/></a>
     </div>
-
-    <h3 class="campoFalado">Insira seu nome completo:</h3>
-
-    <label>
-      {{form.name}} 
-      <span class="spans_required"> Digite um nome com mais de 3 caracteres </span>
-    </label>
-
-    <h3 class="campoFalado">Insira um nome para o usuario:</h3>
-
-    <label>
-      {{form.username}}
-      <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres, que não contenha espaço e símbolos (.#*&%!)</span>
-    </label>
-
-    <h3 class="campoFalado">Insira seu e-mail institucional: <span style="color: grey; font-size: 0.75em">(123456789@aluno.unb.br)</span></h3>
-
-    <label>
-      {{form.email}}
-      <span class="spans_required"> Digite um e-mail válido</span>
-    </label>
-
-    <h3 class="campoFalado">Crie uma senha:</h3>
-
-    <label>
-      {{form.password}}
-      <span class="spans_required"> Sua senha está fraca</span>
-    </label>
-
-    <h3 class="campoFalado">Confirme sua senha:</h3>
-
-    <label>
-      <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
-      <span class="spans_required"> Sua senha está diferente da anterior</span>
-    </label>
     
-    <input type="submit" id="submit" >
+    <main>
+      <h3 class="campoFalado">Insira seu nome completo:</h3>
 
-        <div class="loading">
-          <div class="progress"></div>
-        </div>
-    
-    
+      <label>
+        {{form.name}} 
+        <span class="spans_required"> Digite um nome com mais de 3 caracteres </span>
+      </label>
+
+      <h3 class="campoFalado">Insira um nome para o usuario:</h3>
+
+      <label>
+        {{form.username}}
+        <span class="spans_required"> Digite um nome maior que 3 caracteres ou menor que 12 caracteres, que não contenha espaço e símbolos (.#*&%!)</span>
+      </label>
+
+      <h3 class="campoFalado">Insira seu e-mail institucional: <span style="color: grey; font-size: 0.75em">(123456789@aluno.unb.br)</span></h3>
+
+      <label>
+        {{form.email}}
+        <span class="spans_required"> Digite um e-mail válido</span>
+      </label>
+
+      <h3 class="campoFalado">Crie uma senha:</h3>
+
+      <label>
+        {{form.password}}
+        <span class="spans_required"> Sua senha está fraca</span>
+      </label>
+
+      <h3 class="campoFalado">Confirme sua senha:</h3>
+
+      <label>
+        <input class="campoEscrito , required" name="Confirm" type="password" placeholder="*******" oninput="confirmasenhaValidade()">
+        <span class="spans_required"> Sua senha está diferente da anterior</span>
+      </label>
+    </main>
+
+
+    <div id="termos_box">
+        <h2> Concordo com os <span onclick="abrir_termos()"id="termos">termos de uso</span></h2>
+        <input type="checkbox" id="check_termos">
+    </div>
+
+    <input type="submit" id="submit" disable>
         <div id="error-message"></div>
-
 
       </div>
     

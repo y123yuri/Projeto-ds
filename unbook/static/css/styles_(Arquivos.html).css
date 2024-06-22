@@ -412,7 +412,7 @@ a#Prof {
   background-color: #cde4df;
   padding: 0.25em 0.5em;
   border-radius: 15px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .buttons i {
@@ -444,17 +444,21 @@ a#Prof {
 #modal_upload {
   position: fixed;
   display: none;
-  width: 40em;
-  height: 28em;
+  flex-direction: column;
+
+  width: 60em;
+  height: auto;
+  padding: 1em;
   background-color: #cde4df;
   border-radius: 25px;
   box-shadow: 0 0 10px black;
   z-index: 4;
 
-  justify-content: center;
+  justify-content: left;
 
-  top: 10em;
-  left: 30%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
 
 #CampoFaladoModal1 {
@@ -467,58 +471,71 @@ a#Prof {
   text-align: left;
   position: relative;
   margin: 1.5em 0 0.25em 2em;
+  font-size: 1.5em;
 }
 
 .inputs {
-  width: 90%;
-  height: 3em;
+  width: 50%;
+  height: auto;
 
-  font-size: 1.5em;
+  font-size: 1.25em;
 
   position: relative;
   background-color: whitesmoke;
-  box-shadow: 0 0 10px black;
-  border-radius: 25px;
+  box-shadow: -1px 1px 1px rgb(122, 122, 122);
+  border-radius: 15px;
   color: #0b4c8c;
 
-  padding-left: 1em;
+  padding: 0.5em;
+  padding-left: 2em;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-#enviar {
+.btn {
   width: 40%;
-  height: 3em;
+  height: auto;
 
-  font-size: 1.5em;
-  font-weight: 600;
+  font-size: 1.25em;
+  font-weight: 700;
   text-align: center;
-  padding-top: 0.8em;
 
   position: relative;
-  background-color: #0b4c8c;
-  box-shadow: 0 0 10px black;
-  border-radius: 25px;
-  text-decoration: none;
-  color: whitesmoke;
+  padding: 0.5em;
+
+  border-radius: 15px;
 
   top: 1em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;
 }
 
-#enviar:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 5px whitesmoke;
+#enviar {
+  background-color: #0b4c8c;
+  box-shadow: -1px 1px 1px #0c36a1;  
+  color: whitesmoke;
 }
-#enviar:active {
+
+#cancelar {
+  background-color: whitesmoke;
+  box-shadow: -1px 1px 1px #9BABA6;
+  color: black;
+}
+
+#enviar:hover , #cancelar:hover{
+  transform: scale(1.05);
+}
+#enviar:active , #cancelar:active{
   transform: scale(0.95);
 }
+
+#buttones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
 
 .nomeURL {
   display: inline-block;
@@ -551,18 +568,16 @@ a#Prof {
 @keyframes abrir_janelas {
   from {
     opacity: 0;
-    transform: translate3d(0, -5px, -20px);
   }
 
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
 }
 
 .abrir {
   animation: abrir_janelas 0.3s;
-  display: block;
+  display: flex;
 }
 
 @media screen and (max-width: 767px) {
@@ -884,6 +899,6 @@ a#Prof {
 
   .abrir {
     animation: abrir_janelas 0.3s;
-    display: block;
+    display: flex;
   }
 }

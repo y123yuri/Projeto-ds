@@ -28,7 +28,6 @@ var modal = document.getElementById('modal_upload');
 function abrir_modal () {
 
     fundo_blur.style.display = 'block';
-
     modal.classList.add('abrir');
     modal.style.display = 'block'
 
