@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from .models import Cadastro
 from .models import Username_trocado
+from .models import Senha_trocada
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -244,6 +245,10 @@ def trocar_senha(request):
             return redirect('login_func')
         request.user.set_password(senha_nova)
         request.user.save()
+        Senha_trocada.objects.create(
+                            user=user,
+                            data_troca=timezone.now()  
+                        )
         update_session_auth_hash(request, request.user)  
         messages.success(request, 'Senha alterada com sucesso!')
         return redirect('login_func')  

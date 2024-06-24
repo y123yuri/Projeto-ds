@@ -63,3 +63,10 @@ class Username_trocado(models.Model):
 
     def __str__(self):
         return f' {self.username_antigo} : {self.novo_username}'
+
+class Senha_trocada(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  default=1 )
+    data_troca = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f' {self.user} : {self.data_troca}'
