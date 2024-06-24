@@ -5,6 +5,7 @@ from .forms import Esqueceu_senhaForm
 from django.http import JsonResponse
 from django.http import HttpResponse
 from .models import Cadastro
+from .models import Username_trocado
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -28,7 +29,10 @@ from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-
+from datetime import timezone
+import json
+from django.utils.timezone import make_aware
+from django.utils import timezone
 # Create your views here.
 
 def cadastro(request):
@@ -318,6 +322,34 @@ def novaSenha(request, token):
     
     context["form"] = form
     return render(request, "html/Nova_senha.html", context)
+
+
+def username(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_username = data.get('username')
+        print(new_username)
+
+        if new_username and request.user.is_authenticated:
+            if User.objects.filter(username=new_username).exists(): ### verifica se ja existe
+                return JsonResponse({'success': False, 'error': 'Usuario já existente, escolha outro!'})
+            else:
+                if 2< len(new_username) <12:
+                    user = request.user # descobrir o nome dele
+                    username_antigo = user #salvar a trroca no banco de dados
+                    user.username = new_username #novo username
+                    user.save()
+                    Username_trocado.objects.create(
+                            user=user,
+                            username_antigo=username_antigo,
+                            novo_username=new_username,
+                            data_troca=timezone.now()  
+                        )
+                    return JsonResponse({'status': 'success'}, status=200)
+        return JsonResponse({'status': 'error', 'message': 'Falha em trocar o username'}, status=400)
+    
+    return JsonResponse({'status': 'error', 'message': 'Erro no formulário'}, status=405)
 
 
 

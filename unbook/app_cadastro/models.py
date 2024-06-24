@@ -54,3 +54,12 @@ class Cursos_unb(models.Model):
     
     def __str__(self):
         return self.curso
+
+class Username_trocado(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  default=1 )
+    username_antigo = models.CharField(max_length=150)
+    novo_username = models.CharField(max_length=150)
+    data_troca = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f' {self.username_antigo} : {self.novo_username}'

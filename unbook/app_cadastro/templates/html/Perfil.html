@@ -280,7 +280,7 @@
               <h1> Alterar Username </h1> 
               <hr style="margin: 0.5em 1em 0.5em 0" />
 
-              <form method="POST" action="{% url 'trocar_senha' %}">  
+              <form id="usernameForm" >  
                 {% csrf_token %}
                   <h2 class="CampoFalado_Config">Mudar Username</h2>
                   <input class="forms" type="text" id="username" required />

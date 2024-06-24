@@ -18,5 +18,6 @@ urlpatterns = [
     path('login/usuario/', views.usuario, name='usuario'),
     path('usuario/', views.usuario, name='usuario'),
     path('trocar_senha/', views.trocar_senha, name='trocar_senha'),
+    path('login/username/', views.username, name='username'),
     
 ]

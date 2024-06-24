@@ -5,6 +5,35 @@ window.onload = () => {
     editar_perfil.style.color = 'whitesmoke';
 }
 
+$(document).ready(function() {
+    $('#usernameForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        var csrfToken = $('[name=csrfmiddlewaretoken]').val();
+        var newUsername = $('#username').val();
+
+        $.ajax({
+            type: 'POST',
+            url: "username/",
+            headers: { 'X-CSRFToken': csrfToken },
+            data: JSON.stringify({ 'username': newUsername }),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Username alterado com sucesso!');
+                    window.location.reload();
+
+                } else {
+                    alert('Erro: Usuario já existente');
+                }
+            },
+            error: function(response) {
+                alert('Erro: ' + response.responseJSON.message);
+            }
+        });
+    });
+});
+
 function abrir_modal(id) {
 
     var others = document.querySelectorAll('.pages')

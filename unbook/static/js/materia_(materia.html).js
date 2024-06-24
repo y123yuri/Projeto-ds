@@ -414,7 +414,7 @@ function postar_comentario() {
         }
 
         var Gostei = document.createElement('h3');
-        Gostei.innerText = "Gostei";
+        Gostei.innerText = "";
         
         const gosteiEstilo = document.querySelector('.text ');
     if (gosteiEstilo) {
