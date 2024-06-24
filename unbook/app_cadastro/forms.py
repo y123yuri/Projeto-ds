@@ -78,7 +78,6 @@ class PerfilForm(ModelForm):
         self.fields['semestre'].widget.attrs = {"class":"forms", "type":"text", "id":"semestre" }
         self.fields['descricao'].widget.attrs = {"class":"forms", "type":"text", "id":"descricao" }
 
-
     class Meta:
         model = PerfilUsuario
         fields = ['curso', 'semestre', 'descricao']

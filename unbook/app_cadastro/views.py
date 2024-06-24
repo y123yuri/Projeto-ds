@@ -208,6 +208,7 @@ def usuario(request):
                 perfil.descricao = bio
                 print(perfil.descricao)
             if visibilidade:
+                
                 if visibilidade == '0':
                     print('entrei nessa merda')
                     print(visibilidade)

@@ -162,6 +162,26 @@
         </div>
 
         <div id="CampoEscrito_box1">
+
+        
+        <div id="visib_modal">
+          {% if perfil.privacidade == 1 %}
+            <h4> Seu perfil pode ser visto por outras pessoas!</h4>
+          {% elif perfil.privacidade == 0 %}
+              <h4> Seu perfil é privado!</h4>
+            {% endif%}
+        </div>
+
+        {% if perfil.privacidade == 1 %}
+          <i  id="lampinha" class="lampinha , bi bi-lightbulb-fill"></i>
+        {% elif perfil.privacidade == 0 %}
+          <i id="lampinha" class="lampinha , bi bi-lightbulb-off-fill"></i>
+        {% endif%}
+
+
+
+
+
           <h1 id="user_box1">@{{ user.username }}</h1>
           <h2 class="CampoEscrito2_box1">{{ user.email }}</h2>
         </div>
@@ -170,7 +190,7 @@
 
         <div id="scroll">
           <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_profile">Perfil</h2>
-          <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_senha">Senha</h2>
+          <h2 class="pages" onclick="abrir_modal(this.id)" id="edit_Config">Configurações</h2>
           <h2 class="pages" onclick="abrir_modal(this.id)" id="estatistica">Estatística</h2>
         </div>
       </div>
@@ -219,26 +239,53 @@
           </div>
         </div>
 
-        <div class="boxs" id="Senha">
+        <div class="boxs" id="Config">
           {% csrf_token %}
-          <div id="space_1_Senha">
-            <h1 class="CampoEscrito_Senha">Senha</h1>
-            {% comment %} {% if user.is_authenticated %}
-              <a class="botoes" type="button" href="{% url 'logout' %}">Logout</a>
-            {% endif %} {% endcomment %}
+          <div id="space_1_Config">
+            <h1 class="CampoEscrito_Config">Configurações</h1>
           </div>
           <hr style="margin: 0 2em" />
-          <div id="space_2_Senha">
+          
+          <div id="separa_confs">
+
+            <div id="space_2_1_Config">
+                <h1> Alterar Senha </h1>  
+                <hr style="margin: 0.5em 1em 0.5em 0" />
+
+              <form method="POST" action="{% url 'trocar_senha' %}">  
+                  {% csrf_token %}
+                    <h2 class="CampoFalado_Config">Senha antiga</h2>
+                    <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
+
+                    <h2 class="CampoFalado_Config">Senha Nova</h2>
+                    <input class="forms" type="password" id="senha_nova" name="senha_nova" required />
+
+                    <h2 class="CampoFalado_Config">Confirmar senha nova</h2>
+                    <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
+                    
+                    <button id="submit" type="submit">Mudar senha</button>
+                </form>
+                
+                  {% if messages %}
+                      <ul>
+                        {% for message in messages %}
+                          <li>{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+            </div>
+
+            <div id="space_2_2_Config">
+
+              <h1> Alterar Username </h1> 
+              <hr style="margin: 0.5em 1em 0.5em 0" />
+
               <form method="POST" action="{% url 'trocar_senha' %}">  
                 {% csrf_token %}
-                  <h2 class="CampoFalado_Senha">Senha antiga</h2>
-                  <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
-                  <h2 class="CampoFalado_Senha">Senha Nova</h2>
-                  <input class="forms" type="password" id="senha_nova" name="senha_nova" required />
-                  <h2 class="CampoFalado_Senha">Confirmar senha nova</h2>
-                  <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
+                  <h2 class="CampoFalado_Config">Mudar Username</h2>
+                  <input class="forms" type="text" id="username" required />
                   
-                  <button id="submit" type="submit">Mudar senha</button>
+                  <button id="submit" type="submit">Mudar Username</button>
               </form>
               
                 {% if messages %}
@@ -249,6 +296,12 @@
                     </ul>
                 {% endif %}
           </div>
+
+
+
+
+          </div>
+
         </div>
 
         <div class="boxs" id="Estatistica">

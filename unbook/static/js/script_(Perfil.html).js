@@ -32,13 +32,13 @@ function abrir_modal(id) {
 
     }
 
-    else if (id === 'edit_senha') {
+    else if (id === 'edit_Config') {
 
         others_boxes.forEach(element => {
             element.style.display = "none";
         })
 
-        var Senha = document.getElementById('Senha')
+        var Senha = document.getElementById('Config')
         Senha.style.display = "flex";
     }
 
@@ -54,6 +54,19 @@ function abrir_modal(id) {
     }
 
 }
+
+var modal_visib = document.getElementById('visib_modal')
+var lampinha = document.getElementById('lampinha')
+lampinha.addEventListener('mouseover', (e)=> {
+    e.preventDefault()   
+        modal_visib.style.display	= "flex"
+});
+
+lampinha.addEventListener('mouseout', (e)=> {
+        modal_visib.style.display = "none"
+        e.stopPropagation()     
+});   
+
 
 // document.addEventListener('click', (e) => {
 //     if (!e.target.closest('#boxes') && !e.target.closest('#modal_imgs')) {

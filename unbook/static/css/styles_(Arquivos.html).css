@@ -448,7 +448,7 @@ a#Prof {
 
   width: 60em;
   height: auto;
-  padding: 1em;
+  padding: 2em 1em;
   background-color: #cde4df;
   border-radius: 25px;
   box-shadow: 0 0 10px black;
@@ -462,33 +462,51 @@ a#Prof {
 }
 
 #CampoFaladoModal1 {
-  text-align: center;
+  text-align: left;
   position: relative;
-  top: 0.5em;
+}
+
+#div_1_modal {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+#div_1_1_modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom:2em;
+}
+
+#div_1_2_modal .inputs {
+  width: 70%;
 }
 
 #CampoFaladoModal2 {
   text-align: left;
   position: relative;
-  margin: 1.5em 0 0.25em 2em;
   font-size: 1.5em;
 }
 
 .inputs {
-  width: 50%;
-  height: auto;
+  width: 30%;
+  height: fit-content;
 
   font-size: 1.25em;
 
   position: relative;
   background-color: whitesmoke;
-  box-shadow: -1px 1px 1px rgb(122, 122, 122);
   border-radius: 15px;
+  border-color: whitesmoke;
   color: #0b4c8c;
 
-  padding: 0.5em;
-  padding-left: 2em;
+  padding: 0.25em;
   display: block;
+  box-shadow: -1px 1px 1px #9BABA6;
+  border: 0 none;
+  outline: 0;
 }
 
 .btn {

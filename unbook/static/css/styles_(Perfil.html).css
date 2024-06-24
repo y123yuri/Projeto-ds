@@ -203,9 +203,44 @@ a .UnBook_logo_mini {
 #CampoEscrito_box1 {
   position: relative;
   width: 100%;
-  height: 15%;
+  height: 6.5em;
   top: 0.5em;
 }
+
+.lampinha {
+  position: absolute;
+  color:#eed64b;
+  cursor:pointer;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  right: 4em;
+  top: 0.05em;
+  z-index: 3;
+
+  width: 2em;
+  height: 2em;
+  text-align: center;
+}
+
+#visib_modal {
+  display: none;
+  position: absolute;
+  left: 17em;
+  top:-1em;
+
+  width: 14em;
+  height: auto;
+  padding: 0.5em;
+  border-radius: 15px;
+  background-color: #d9d9d9f6;
+  z-index: 4;
+}
+
+#visib_modal h4 {
+  font-size: 1em;
+}
+
+
 
 #user_box1 {
   color: #0b4c9c;
@@ -387,16 +422,6 @@ a .UnBook_logo_mini {
   color: black;
 }
 
-#descricao {
-  width: 30em;
-  height: 10em;
-  padding: 0.5em 20px;
-  font-size: 1em;
-  font-weight: 500;
-  background-color: #d9d9d9;
-  border: none;
-}
-
 .respostas {
   position: relative;
   font-size: 1.5em;
@@ -450,9 +475,15 @@ a .UnBook_logo_mini {
   }
 }
 
-#Senha {
+#separa_confs {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#Config {
   background-color: #f5f5f5;
-  width: 65em;
+  width: 60em;
   height: 33em;
   border-radius: 50px;
   box-shadow: 0 0 5px rgb(255, 255, 255);
@@ -465,7 +496,7 @@ a .UnBook_logo_mini {
   z-index: 2;
 }
 
-#space_1_Senha {
+#space_1_config {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -473,43 +504,50 @@ a .UnBook_logo_mini {
   height: 7em;
 }
 
-.CampoEscrito_Senha {
+.CampoEscrito_Config {
   position: relative;
   font-size: 3em;
   padding: 40px 5px 5px 40px;
 }
 
-.CampoFalado_Senha {
+.CampoFalado_Config {
   position: relative;
   margin-top: 0.5em;
   font-size: 1.5em;
   color: black;
 }
 
-#space_2_Senha {
+#space_2_1_Config {
   display: flex;
   flex-direction: column;
-  padding: 0 2em;
-  width: 100%;
-  height: 80%;
+  padding: 0.5em 2em;
+  width: fit-content;
+  height: 26em;
+
+}
+
+#space_2_2_Config {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 2em;
+  width: fit-content;
+  height: 26em;
+
 }
 
 #submit {
-  position: absolute;
+  position: relative;
 
-  width: 10em;
+  width: auto;
   height: 2em;
 
   border: none;
   border-radius: 20px;
   background-color: #0b4c9c;
 
-  bottom: 2em;
-  right: 4em;
-
   color: white;
   font-size: 1.5em;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   text-align: center;
   padding: 0.5em 1em;
@@ -521,7 +559,6 @@ a .UnBook_logo_mini {
 #submit:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px #0b4c8c;
-  background-color: green;
 }
 
 #submit:active {
@@ -530,7 +567,7 @@ a .UnBook_logo_mini {
 
 #Estatistica {
   background-color: #f5f5f5;
-  width: 65em;
+  width: 60em;
   height: 33em;
   border-radius: 50px;
   box-shadow: 0 0 5px rgb(255, 255, 255);
