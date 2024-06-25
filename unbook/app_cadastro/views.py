@@ -80,8 +80,7 @@ def sucesso(request):
             nome_variavel = dados['username']
             email_variavel = dados['email'] 
             senha_variavel = dados['password']
-            senha_confirma_variavel = ['senha_confirma']
-            print(senha_confirma_variavel)
+            senha_confirma_variavel = dados['senha_confirma']
             try:
                 email_numero = int(email_variavel[:9])
             except:
