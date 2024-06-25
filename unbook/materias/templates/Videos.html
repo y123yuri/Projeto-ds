@@ -110,7 +110,7 @@
         <hr style="margin: 1em 4em;" />
 
         <div id="posta_link">
-          {% for video in videos %}
+        {% for video in videos %}
         <div class="videos arquivos , vid" data-link="{{ video.link }}">
             <div class="image">
                 <i style="font-size: 3em;" class="bi bi-person-video2"></i>
@@ -133,9 +133,11 @@
             </div>
 
             <div class="buttons">
-                <i class="bi bi-hand-thumbs-up" class="joia"></i>
-                <i class="bi bi-exclamation-triangle" class="denunciar"></i>
-                <i class="bi bi-trash" class="deletar"></i>
+                <i id="curtir{{ video.id }}" class="bi bi-hand-thumbs-up" 
+                class="joia" onclick=curtir("{{ video.id }}")></i>
+                <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
+                onclick=denunciar("{{ video.id }}")></i>
+                <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
             </div>
         </div>
     {% endfor %}

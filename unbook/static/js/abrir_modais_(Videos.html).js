@@ -171,6 +171,34 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
   }
 
   // Adicionar evento de submit ao formulário
-  const linkForm = document.getElementById("linkForm");
+  const linkForm = document.getElementById("enviar");
   linkForm.addEventListener("submit", handleFormSubmit);
 });
+
+// curtir links
+function curtir(id) {
+  console.log('oi')
+  elemento = document.getElementById(`curtir${id}`)
+  $.ajax({
+    type: "POST",
+    url: "../../../../curtir_video/",
+    data: {
+      csrfmiddlewaretoken: csrf_token,
+      id_video: id,
+    },
+    success: function (response) {
+      console.log(response)
+      if (response === "add"){
+        console.log("ola")
+        // consertar o css
+        elemento.style.color = "#81E28B"
+        elemento.style.stroke = "2px whitesmoke;"
+      }
+      else {
+        elemento.style.color = "grey"
+      }
+
+    }
+  })
+}
+

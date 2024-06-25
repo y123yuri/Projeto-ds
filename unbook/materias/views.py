@@ -445,6 +445,20 @@ def add_video(request): #ajax function
     else:
         return HttpResponse("erro")
 
+def like_video(request):
+    id = request.POST["id_video"]
+    video = Video.objects.get(id=id)
+
+    if video.curtidas.filter(id=request.user.id).exists():
+        print("vou remover o user")
+        video.curtidas.remove(request.user)
+        return HttpResponse("remove")
+    else:
+        print("vou adicionar o user")
+        video.curtidas.add(request.user)
+        return HttpResponse("add")
+    
+    
 
 
 
