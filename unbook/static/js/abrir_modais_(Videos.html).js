@@ -21,6 +21,25 @@
 //     }
 // }
 
+window.onload = function () {
+     // colocando quant de likes
+     for (i=0;i<quant_likes.length;i++){
+         element = document.getElementById(`quant_likes${i}`)
+         console.log(element)
+         element.innerText = `cont: ${quant_likes[i]}`
+
+         elements = document.getElementById(`curtir${i}`);
+
+         if (curtidas[i] == 1){
+            console.log("ele curtiu")
+            elements.style = "color: #81E28B";
+         } else{
+            console.log("não curtiu :(")
+            elements.style = "color: grey";
+         }
+     }
+}
+
 var fundo_blur = document.getElementById("fundo_blur");
 var modal = document.getElementById("modal_upload");
 
@@ -176,9 +195,10 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
 });
 
 // curtir links
-function curtir(id) {
-  console.log('oi')
-  elemento = document.getElementById(`curtir${id}`)
+function curtir(id, id_elemento) {
+  console.log(id_elemento)
+
+  elemento = document.getElementById(id_elemento)
   $.ajax({
     type: "POST",
     url: "../../../../curtir_video/",

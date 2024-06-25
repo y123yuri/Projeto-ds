@@ -133,10 +133,12 @@
             </div>
 
             <div class="buttons">
-                <i id="curtir{{ video.id }}" class="bi bi-hand-thumbs-up" 
-                class="joia" onclick=curtir("{{ video.id }}")></i>
+                <p id="quant_likes{{ forloop.counter0 }}" style="font-size: 20px"></p>
+                
+                <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
+                class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
                 <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
-                onclick=denunciar("{{ video.id }}")></i>
+                onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
                 <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
             </div>
         </div>

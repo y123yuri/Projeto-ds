@@ -405,7 +405,7 @@ def videos(request, nome,codigo) :
             lista_bool_curtiu.append( 1 if video.curtidas.filter(id=request.user.id).exists() else 0)
 
         # dps implementar ordenação em uma FUNÇÃO
-
+        print(lista_bool_curtiu)
         context["videos"] = lista_videos
         context["bool_curtiu"] = lista_bool_curtiu
         context["quant_curtidas"] = lista_quant_curtida
@@ -448,7 +448,7 @@ def add_video(request): #ajax function
 def like_video(request):
     id = request.POST["id_video"]
     video = Video.objects.get(id=id)
-
+    print(video.titulo)
     if video.curtidas.filter(id=request.user.id).exists():
         print("vou remover o user")
         video.curtidas.remove(request.user)
