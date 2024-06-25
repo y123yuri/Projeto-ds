@@ -351,7 +351,7 @@ def username(request):
                             data_troca=timezone.now()  
                         )
                     return JsonResponse({'status': 'success'}, status=200)
-        return JsonResponse({'status': 'error', 'message': 'Falha em trocar o username'}, status=400)
+        return JsonResponse({'status': 'error', 'message': 'Falha ao trocar o username'}, status=400)
     
     return JsonResponse({'status': 'error', 'message': 'Erro no formulário'}, status=405)
 
