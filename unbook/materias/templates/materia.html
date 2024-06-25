@@ -983,6 +983,17 @@
 
               <div id="comentario{{ forloop.counter0 }}">
                 {% if comentario.autor.username == user.username %}
+                
+              <div class="divs_coments">
+                <div
+                  class="editar_div"
+                  id="editar"
+                  data-comentario-id="{{ comentario.id }}"
+                  >
+                  <h2 class="editar">Editar</h2>
+                  <i class="bi bi-pencil-fill , edits"></i>
+                </div>
+                
                 <div
                   class="deletar_div"
                   id="deletar"
@@ -991,7 +1002,10 @@
                   <h2 class="deletar">Deletar</h2>
                   <i class="bi bi-trash-fill , lixin"></i>
                 </div>
+            </div>
                 {% endif %}
+
+                
                 <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
                 <h3 class="comentarios">
                   {{ comentario.texto }} <br />
