@@ -470,6 +470,16 @@ a#Prof {
   display: flex;
   flex-direction: column;
   margin: 1em;
+  text-align: center;
+}
+
+#div_1_0_modal {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  margin-bottom:1em;
+  background-color: #b1c5c0;
+  box-shadow: -1px 1px 1px #9BABA6;
 }
 
 #div_1_1_modal {
@@ -481,13 +491,67 @@ a#Prof {
 }
 
 #div_1_2_modal .inputs {
-  width: 70%;
+  margin-top: 10px;
+  width: 100%;
 }
 
 #CampoFaladoModal2 {
   text-align: left;
   position: relative;
   font-size: 1.5em;
+}
+
+#selec {
+  background-color: whitesmoke;
+  box-shadow: -1px 1px 1px #9BABA6;
+  padding: 0.25em 3em;
+  width: 10.75em;
+  font-size: 1.25em;
+  cursor: pointer;
+  border: 0 none;
+  outline: 0;
+
+  transition: all 0.3s ease;
+}
+
+#selec:hover {
+  background-color: #d9d9d9;
+  transform: scale(1.025);
+}
+
+#selec_space {
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  border-radius: 6px;
+  position: absolute;
+  text-align: center;
+
+  right: 2.6em;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  width: 14em;
+  height: 3em;
+
+  translate: 0 -12px;
+  overflow-y: auto;
+}
+
+#selec_space.open {
+  visibility: visible;
+  opacity: 1;
+  translate: 0 12px;
+  z-index: 4;
+  padding: 1em 0.5em;
+  overflow-y: auto;
+  height: 4em;
+}
+
+#selec_space.open li {
+  cursor:pointer;
+  margin: 5px;
 }
 
 .inputs {
@@ -498,7 +562,6 @@ a#Prof {
 
   position: relative;
   background-color: whitesmoke;
-  border-radius: 15px;
   border-color: whitesmoke;
   color: #0b4c8c;
 

@@ -53,13 +53,32 @@ function enviar() {
   var link_enviado = document.getElementById("poe_links").value;
   var nome_link = document.getElementById("queLinkéEsse").value;
 
-  if (link_enviado !== "" && nome_link !== "") {
+  if (link_enviado !== "" && nome_link !== "" && selec.textContent != '') {
     envia_link_back(nome_link, link_enviado);
     fechar_modal();
   } else {
-    alert("Tem que ter um link ai dentro man");
+    alert("Por favor preencha os campos!");
   }
 }
+
+var selec = document.getElementById('selec');
+var selec_space = document.getElementById('selec_space')
+selec.addEventListener('click', (e)=> {
+  selec.classList.toggle('open')
+  selec_space.classList.toggle('open');
+
+    if (!selec_space.contains(e.target) && !selec.contains(e.target)) {
+      selec_space.classList.remove('open')
+      selec_space.textContent = 'Selecionar'
+    }
+})
+
+function selec_selecionado(element) {
+  selec.textContent = element.textContent
+  selec_space.classList.remove('open')
+}
+
+
 
 function envia_link_back(nome_link, link) {
   // Remover "https://" e "www." do link
@@ -147,6 +166,25 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
     }
   });
 
+  buttons.addEventListener("click", (event) => {
+    const targetIcon = event.target.closest("i");
+    if (!targetIcon) return; // Retorna se o elemento alvo não for um ícone
+
+    if (targetIcon.classList.contains("bi-hand-thumbs-up")) {
+      targetIcon.classList.remove("bi-hand-thumbs-up");
+      targetIcon.classList.add("bi-hand-thumbs-up-fill");
+      targetIcon.style.color = "#81E28B";
+    } else if (targetIcon.classList.contains("bi-exclamation-triangle")) {
+      targetIcon.classList.remove("bi-exclamation-triangle");
+      targetIcon.classList.add("bi-exclamation-triangle-fill");
+      targetIcon.style.color = "#E95959";
+    } else if (targetIcon.classList.contains("bi-trash")) {
+      targetIcon.classList.remove("bi-trash");
+      targetIcon.classList.add("bi-trash-fill");
+      targetIcon.style.color = "#E95959";
+    }
+  });
+
   // Lista de domínios permitidos
   const dominiosPermitidos = ["https://www.youtube.com/"];
 
@@ -192,13 +230,14 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
   // Adicionar evento de submit ao formulário
   const linkForm = document.getElementById("enviar");
   linkForm.addEventListener("submit", handleFormSubmit);
+
 });
 
 // curtir links
 function curtir(id, id_elemento) {
-  console.log(id_elemento)
+  console.log(id_elemento);
 
-  elemento = document.getElementById(id_elemento)
+  var elemento = document.getElementById(id_elemento);
   $.ajax({
     type: "POST",
     url: "../../../../curtir_video/",
@@ -207,18 +246,27 @@ function curtir(id, id_elemento) {
       id_video: id,
     },
     success: function (response) {
-      console.log(response)
-      if (response === "add"){
-        console.log("ola")
+      console.log(response);
+      if (response === "add") {
+        console.log("ola");
         // consertar o css
-        elemento.style.color = "#81E28B"
-        elemento.style.stroke = "2px whitesmoke;"
+        if (elemento.classList.contains("bi-hand-thumbs-up")) {
+          elemento.classList.remove("bi-hand-thumbs-up");
+          elemento.classList.add("bi-hand-thumbs-up-fill");
+          elemento.style.color = "#81E28B";
+        } else if (elemento.classList.contains("bi-exclamation-triangle")) {
+          elemento.classList.remove("bi-exclamation-triangle");
+          elemento.classList.add("bi-exclamation-triangle-fill");
+          elemento.style.color = "#E95959";
+        } else if (elemento.classList.contains("bi-trash")) {
+          elemento.classList.remove("bi-trash");
+          elemento.classList.add("bi-trash-fill");
+          elemento.style.color = "#E95959";
+        }
+        elemento.style.color = "#81E28B"; // Reapplies color if conditions above do not match
+      } else {
+        elemento.style.color = "grey";
       }
-      else {
-        elemento.style.color = "grey"
-      }
-
     }
-  })
+  });
 }
-

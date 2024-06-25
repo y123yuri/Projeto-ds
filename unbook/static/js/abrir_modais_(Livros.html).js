@@ -46,6 +46,23 @@ function enviar() {
   }
 }
 
+var selec = document.getElementById('selec');
+var selec_space = document.getElementById('selec_space')
+selec.addEventListener('click', (e)=> {
+  selec.classList.toggle('open')
+  selec_space.classList.toggle('open');
+
+    if (!selec_space.contains(e.target) && !selec.contains(e.target)) {
+      selec_space.classList.remove('open')
+      selec_space.textContent = 'Selecionar'
+    }
+})
+
+function selec_selecionado(element) {
+  selec.textContent = element.textContent
+  selec_space.classList.remove('open')
+}
+
 function envia_link_back(nome_link, link) {
   // Remover "https://" e "www." do link
   link = link.replace(/^(https?:\/\/)?(www\.)?/, "");
