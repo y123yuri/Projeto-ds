@@ -235,12 +235,6 @@ function pintar_estrela_tela(nota, categoria){
     }
 }
 
-document.querySelector('#comentar_input').addEventListener('keydown', function (event) {
-    if (event.keyCode === 13) {
-        postar_comentario();
-    }
-}); // quando apertar ENTER no teclado ele envia o comentário
-
 function like(element, pk) {
     id = element.id
     id = id.replace("coracao", "")
@@ -481,6 +475,53 @@ function postar_comentario() {
 
 }
 
+//aumentar conforme o texto aumente
+const textarea = document.getElementById('comentar_input');
+    const contador = document.getElementById('contador');
+
+    textarea.addEventListener('input', () => {
+      autoResize();
+      updateCounter();
+    });
+
+    function autoResize() {
+      textarea.style.height = 'auto'; // Resetar a altura
+      textarea.style.height = textarea.scrollHeight + 'px'; // Ajustar altura para o conteúdo
+    }
+
+    function updateCounter() {
+      const charCount = textarea.value.length;
+      contador.textContent = `${charCount} / 450`;
+
+      if (charCount >= 450){
+        textarea.style.backgroundColor = "#ea3939"
+        alert('você excedeu o limite de caracteres')
+      } else {
+        textarea.style.backgroundColor = "#e8e7e8"
+      }
+    }
+
+    // Garantir que o cursor comece no início ao clicar no textarea
+textarea.addEventListener('focus', (event) => {
+    if (textarea.value === '') {
+      textarea.setSelectionRange(0, 0);
+    }
+  });
+  
+  // Garantir que o textarea esteja vazio ao carregar a página
+  document.addEventListener('DOMContentLoaded', () => {
+    textarea.value = ''; // Limpar o valor do textarea
+    autoResize();
+    updateCounter();
+  });
+
+    document.querySelector('#comentar_input').addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+            postar_comentario();
+            autoResize.call(textarea);
+        }
+    }); // quando apertar ENTER no teclado ele envia o comentário
+
 function comentario_back(conteudo){
 
     $.ajax({
@@ -494,6 +535,7 @@ function comentario_back(conteudo){
         }, 
         success: function (response)  {
             console.log("salvei, comentário")
+            window.location.reload(true)
         }
     })
 }
