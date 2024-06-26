@@ -608,7 +608,11 @@ def avaliacao(request):
     dificuldade_dados = int(float(lista_gorda[0])*2)  # Converta para float
     apoio_dados = int(float(lista_gorda[1])*2)
     didatica_dados = int(float(lista_gorda[2])*2)
-    joinha = int(lista_gorda[3])
+    try:
+        joinha = int(lista_gorda[3])
+    except:
+        joinha = 0
+    
     
     # Verifique se o usuário já avaliou esta turma
     user = request.user

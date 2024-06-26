@@ -238,24 +238,24 @@ function pintar_estrela_tela(nota, categoria){
 function like(element, pk) {
     id = element.id
     id = id.replace("coracao", "")
-    contador = document.getElementById(`like${id}`)
-    num = Number(contador.innerText)
+    contador_like = document.getElementById(`like${id}`)
+    num = Number(contador_like.innerText)
     
     if (element.style.color === "red") {
         element.style.color = "grey";
         element.classList.remove('animation');
         
         if (num === 0) {
-            contador.innerText = `${num}`
+            contador_like.innerText = `${num}`
         } 
         else if (num !== 0){
-            contador.innerText = `${num-1}`
+            contador_like.innerText = `${num-1}`
         }
         
     } else {
         element.style.color = "red";
         element.classList.add('animation');
-        contador.innerText = `${num+1}`
+        contador_like.innerText = `${num+1}`
     }
     
     $.ajax({
