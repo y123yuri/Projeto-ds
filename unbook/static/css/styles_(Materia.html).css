@@ -819,6 +819,19 @@ table caption {
   cursor: pointer;
 }
 
+.perfil_div_1 {
+  width: 100%;
+  position: relative;
+  left: 1em;
+}
+
+.img_img {
+  width: fit-content;
+  height: 5em;
+  object-fit: cover; 
+  border-radius: 100%; 
+}
+
 .perfil {
   display: none;
   flex-direction: column;
@@ -843,14 +856,17 @@ table caption {
   background-image: linear-gradient(135deg, #0c36a1, #008940);
   width: 100%;
   height: fit-content;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   padding: 2em;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  align-items: center;
 }
 
 .perfil_2 {
-  padding: 0 2em;
+  padding: 1em 2em;
 }
 
 .voltar {

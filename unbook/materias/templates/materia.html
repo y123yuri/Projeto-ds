@@ -999,14 +999,25 @@
                   <div class="perfil">
                     <div class="perfil_1">
                       <a class="voltar">x</a>
-                      <h1>@{{ comentario.autor.username }}</h1>
-                      {% if comentario.autor.perfil.curso == None %}
-                        <h3 style="font-size:1.5em;"> Não declarado</h3>
-                      {% else %}
-                        <h3 style="font-size:1.5em;"> {{ comentario.autor.perfil.curso }} </h3>
-                      {% endif %}
+
+                      <div class="img_user">
+                        {% if comentario.autor.perfil.foto == 0 %}
+                          <img class="img_img" src="{% static 'image/profiles/10.jpeg' %}">
+                        {% else %}
+                          <img class="img_img" src="{% static 'image/profiles/' %}{{ comentario.autor.perfil.foto }}.jpeg">
+                        {% endif %}
+                      </div>
+
+                      <div class="perfil_div_1">
+                        <h1>@{{ comentario.autor.username }}</h1>
+                        {% if comentario.autor.perfil.curso == None %}
+                          <h3 style="font-size:1.5em;"> Não declarado</h3>
+                        {% else %}
+                          <h3 style="font-size:1.5em;"> {{ comentario.autor.perfil.curso }} </h3>
+                        {% endif %}
+                      </div>
                     </div>
-                    <hr style="margin: 0.5em 2em;">
+
                     <div class="perfil_2">
                       {% if comentario.autor.perfil.descricao == None %}
                         <h2>Descrição:</h2><h4 style="font-size:1.5em; color:grey"> Não declarado</h4>
