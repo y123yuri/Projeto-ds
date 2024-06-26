@@ -74,6 +74,61 @@ function apagarComentario() {
     })
 }
 
+// Selecionar todos os elementos h2 com a classe 'usuarios'
+var usuarios = document.querySelectorAll('.usuarios');
+
+usuarios.forEach(usuario => {
+    usuario.addEventListener('mouseenter', (e) => {
+        e.preventDefault();
+        // Encontrar a div .perfil_mostrar associada
+        var perfil_mostrar = usuario.previousElementSibling;
+        if (perfil_mostrar && perfil_mostrar.classList.contains('perfil_mostrar')) {
+            perfil_mostrar.style.display = 'flex';
+
+            perfil_mostrar.addEventListener('mouseenter', () => {
+                perfil_mostrar.style.display = 'flex';
+            });
+
+            perfil_mostrar.addEventListener('mouseleave', () => {
+                perfil_mostrar.style.display = 'none';
+            });
+
+            perfil_mostrar.addEventListener('click', (e) => {
+                e.preventDefault();
+                var perfil_div = usuario.nextElementSibling; // Supondo que perfil_div está logo após h2
+                if (perfil_div && perfil_div.classList.contains('perfil')) {
+                    perfil_div.style.display = 'flex';
+                    perfil_mostrar.style.display = 'none';
+
+                    // Encontrar o botão "voltar" dentro do perfil_div
+                    var voltar_btn = perfil_div.querySelector('.voltar');
+                    if (voltar_btn) {
+                        voltar_btn.addEventListener('click', () => {
+                            perfil_div.style.display = 'none';
+                        });
+                    }
+                }
+            });
+        }
+    });
+
+    usuario.addEventListener('mouseleave', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        // Encontrar a div .perfil_mostrar associada
+        var perfil_mostrar = usuario.previousElementSibling;
+        if (perfil_mostrar && perfil_mostrar.classList.contains('perfil_mostrar')) {
+            // Usar setTimeout para garantir que o evento mouseenter na div tenha tempo de ser registrado
+            setTimeout(() => {
+                if (!perfil_mostrar.matches(':hover') && !usuario.matches(':hover')) {
+                    perfil_mostrar.style.display = 'none';
+                }
+            }, 100);
+        }
+    });
+});
+
+
 // Função auxiliar para obter o CSRF token
 function getCookie(name) {
     let cookieValue = null;
@@ -172,7 +227,7 @@ else {
 //FUNÇÃO PARA TER O ID IGUAL AO NOME DO USUÁRIO
 window.onload = function () {
     var h2Elements = document.querySelectorAll('.usuarios'); // Seleciona o elemento h2 dentro de scroll na página
-    console.log(h2Elements)
+    // console.log(h2Elements)
 
     if (h2Elements.length >= 0) {
         for (let i = 0; i < h2Elements.length; i++) {
@@ -205,7 +260,8 @@ window.onload = function () {
         element.innerText = `${quant_likes[i]}`
          // numero de likes (oi)
         
-        elements = document.getElementById(`coracao${i}`);console.log(elements) // coraçao botao
+        elements = document.getElementById(`coracao${i}`);
+        //console.log(elements) // coraçao botao
         
         if (curtidas[i] === "True"){
             elements.style.color = "red";

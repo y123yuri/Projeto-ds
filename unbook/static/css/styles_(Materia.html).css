@@ -803,6 +803,86 @@ table caption {
   animation: abrir_janelas 0.3s;
 }
 
+.perfil_mostrar {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  left:1em;
+
+  width: fit-content;
+  height: auto;
+  padding: 1em 2em;
+  background-color: #e8e7e8;
+  box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.164);
+  border-radius: 15px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.perfil {
+  display: none;
+  flex-direction: column;
+  width: 65%;
+  height: 20em;
+  background-color: #e8e7e8;
+  box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.164);
+  position: fixed;
+  border-radius: 15px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+
+.perfil h1 , .perfil h3{
+  color:whitesmoke;
+  text-shadow: 0 0 2px black;
+}
+
+.perfil_1 {
+  background-image: linear-gradient(135deg, #0c36a1, #008940);
+  width: 100%;
+  height: fit-content;
+
+  padding: 2em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.perfil_2 {
+  padding: 0 2em;
+}
+
+.voltar {
+  background-color: #f5f5f5;
+  box-shadow: -2px 2px 1px #5b5b5bc8;
+  border-radius: 5px;
+  border: solid 2px #5b5b5bc8;
+  z-index: 6;
+  width: fit-content;
+  padding: 0 0.5em;
+
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  transition: all 0.3s ease;
+  cursor:pointer;
+  color:#d43b5a;
+  font-size: 2em;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  transform: scale(1.025);
+  background-color: #d43b5a;
+  color: whitesmoke;
+}
+.voltar:active {
+  transform: scale(0.95);
+}
+
 #comentarios {
   display: flex;
   flex-direction: column;
