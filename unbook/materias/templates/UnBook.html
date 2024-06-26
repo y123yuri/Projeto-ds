@@ -57,10 +57,18 @@
                 {% if perfil.foto == 0 %}
                     <div id="user"><img class="user" src="{% static "image/profiles/10.jpeg" %}" alt="user"></div>
                 {% else %}
-                    <div id="user"><img class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>
+                    {% if user.is_superuser %}
+                        <div id="user"><img style="border: 5px solid gold" class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>
+                    {% else %}
+                        <div id="user"><img class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>
+                    {% endif %}
                 {% endif %}
 
-                        <a class="authentic" href="../cadastro/login"><h2>{{user.username}}</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                {% if user.is_superuser %}
+                    <a style="color: gold; text-shadow: 0 0 1px gold;"class="authentic" href="../cadastro/login"><h2>{{user.username}}</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                {% else %}
+                    <a class="authentic" href="../cadastro/login"><h2>{{user.username}}</h2></a> <!--LINK PARA ACESSAR A PÁGINA LOGIN-->
+                {% endif %}
     
                 </div></a>
 

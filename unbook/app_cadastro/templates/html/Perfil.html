@@ -179,7 +179,12 @@
           <i id="lampinha" class="lampinha , bi bi-lightbulb-off-fill"></i>
         {% endif%}
 
+        {% if user.is_superuser %}
+            <h1 style="color:gold; text-shadow: 0 0 1px gold;" id="user_box1">@{{ user.username }}</h1>
+        {% else %}
           <h1 id="user_box1">@{{ user.username }}</h1>
+        {% endif %}
+
           <h2 class="CampoEscrito2_box1">{{ user.email }}</h2>
         </div>
 
@@ -200,8 +205,8 @@
               Seja bem-vindo <br />
 
               {% if user.is_superuser %}
-              <span style="color:gold; text-shadow: 0 0 3px gold;" id="user">{{ user.first_name }}</span>
-              <i style="color:gold; text-shadow: 0 0 3px gold;" class="fas fa-crown"></i>
+              <span style="color:gold; text-shadow: 0 0 1px gold;" id="user">{{ user.first_name }}</span>
+              <i style="color:gold; text-shadow: 0 0 2px gold;" class="fas fa-crown"></i>
               {% else %}
               <span id="user">{{ user.first_name }}</span>
               {% endif %}
