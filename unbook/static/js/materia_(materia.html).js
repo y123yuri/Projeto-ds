@@ -129,6 +129,21 @@ usuarios.forEach(usuario => {
 });
 
 
+//  FUNÇÃO PARA EDITAR COMENTÁRIO!!!
+
+document.querySelector('.editar_div').addEventListener('click', (e)=> {
+    var modal_editar = document.getElementById('modal_editar')
+    modal_editar.style.display = 'flex'
+    fundoblur.style.display = 'block'
+
+    fundoblur.addEventListener('click', (e)=> {
+        e.preventDefault()
+        e.stopPropagation()
+        modal_editar.style.display = 'none'
+        fundoblur.style.display = 'none'
+    }) 
+})
+
 // Função auxiliar para obter o CSRF token
 function getCookie(name) {
     let cookieValue = null;

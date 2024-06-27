@@ -848,6 +848,18 @@ table caption {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 6;
+  animation: abrir_perfil 0.1s ease;
+}
+
+@keyframes abrir_perfil {
+  from {
+    opacity: 0;
+    transform: translate3d(-10px);
+  } 
+  to {
+    opacity: 1;
+    transform: translate3d(10px);
+  }
 }
 
 .perfil h1,
@@ -960,7 +972,7 @@ table caption {
   padding: 1em 1em 2em 1em;
   width: 30em;
   height: 20em;
-  background-color: #cde4df;
+  background-color: #e8e7e8;
   border-radius: 25px;
   box-shadow: -5px 5px 1px rgb(115, 115, 115);
   z-index: 3;
@@ -989,10 +1001,12 @@ table caption {
 }
 
 #nao_c {
-  background-color: #e95959;
+  background-color: #ea3939;
+  box-shadow: -2px 2px 2px #c43131;
 }
 #sim_c {
-  background-color: #81e28b;
+  background-color: #49da57;
+  box-shadow: -2px 2px 2px #308e39;
 }
 
 .button_c {
@@ -1092,6 +1106,61 @@ table caption {
   color: #777d89;
 }
 
+#modal_editar {
+    display: none;
+    flex-direction: column;
+    width: 55%;
+    height: 22.5em;
+    background-color: #e8e7e8;
+    box-shadow: -7.5px 7.5px 1px rgba(0, 0, 0, 0.164);
+    
+    padding: 2em;
+    position: fixed;
+    border-radius: 15px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    animation: abrir_perfil 0.1s ease;
+}
+
+#modal_editar textarea {
+  position: relative;
+  top:1em;
+  height: 10em;
+  padding: 0.5em;
+  font-size: 1.25em;
+  box-shadow: 0 -2.5px 1px rgba(0, 0, 0, 0.164);
+  border-radius: 15px;
+  border: none;
+  resize: none;
+}
+
+.button_editar {
+  width: 7em;
+  height: 2em;
+  padding: 0.5em 1em;
+  color: whitesmoke;
+  background-color: #0b4c8c;
+  font-size: 1.5em;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+
+  position: absolute;
+  right: 1em;
+  bottom: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 1em;
+}
+
+.button_editar:hover {
+  transform: scale(1.05);
+}
+.button_editar:active {
+  transform: scale(0.95);
+}
 .comentarios {
   font-size: 1.25em;
   margin-left: 2em;
@@ -1535,7 +1604,8 @@ table caption {
   }
 
   #nao {
-    background-color: #e95959;
+    background-color: #ea3939;
+    box-shadow: -2px 2px 2px #c43131;
   }
 
   .button {
@@ -1561,7 +1631,8 @@ table caption {
   }
 
   #sim {
-    background-color: #81e28b;
+    background-color: #49da57;
+    box-shadow: -2px 2px 2px #308e39;
   }
 
   #boxes_modal {
