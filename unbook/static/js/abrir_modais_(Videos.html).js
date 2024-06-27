@@ -22,23 +22,23 @@
 // }
 
 window.onload = function () {
-     // colocando quant de likes
-     for (i=0;i<quant_likes.length;i++){
-         element = document.getElementById(`quant_likes${i}`)
-         console.log(element)
-         element.innerText = `cont: ${quant_likes[i]}`
+  // colocando quant de likes
+  for (i = 0; i < quant_likes.length; i++) {
+    element = document.getElementById(`quant_likes${i}`);
+    console.log(element);
+    element.innerText = `cont: ${quant_likes[i]}`;
 
-         elements = document.getElementById(`curtir${i}`);
+    elements = document.getElementById(`curtir${i}`);
 
-         if (curtidas[i] == 1){
-            console.log("ele curtiu")
-            elements.style = "color: #81E28B";
-         } else{
-            console.log("não curtiu :(")
-            elements.style = "color: grey";
-         }
-     }
-}
+    if (curtidas[i] == 1) {
+      console.log("ele curtiu");
+      elements.style = "color: #81E28B";
+    } else {
+      console.log("não curtiu :(");
+      elements.style = "color: grey";
+    }
+  }
+};
 
 var fundo_blur = document.getElementById("fundo_blur");
 var modal = document.getElementById("modal_upload");
@@ -53,7 +53,7 @@ function enviar() {
   var link_enviado = document.getElementById("poe_links").value;
   var nome_link = document.getElementById("queLinkéEsse").value;
 
-  if (link_enviado !== "" && nome_link !== "" && selec.textContent != '') {
+  if (link_enviado !== "" && nome_link !== "" && selec.textContent != "") {
     envia_link_back(nome_link, link_enviado);
     fechar_modal();
   } else {
@@ -61,24 +61,22 @@ function enviar() {
   }
 }
 
-var selec = document.getElementById('selec');
-var selec_space = document.getElementById('selec_space')
-selec.addEventListener('click', (e)=> {
-  selec.classList.toggle('open')
-  selec_space.classList.toggle('open');
+var selec = document.getElementById("selec");
+var selec_space = document.getElementById("selec_space");
+selec.addEventListener("click", (e) => {
+  selec.classList.toggle("open");
+  selec_space.classList.toggle("open");
 
-    if (!selec_space.contains(e.target) && !selec.contains(e.target)) {
-      selec_space.classList.remove('open')
-      selec_space.textContent = 'Selecionar'
-    }
-})
+  if (!selec_space.contains(e.target) && !selec.contains(e.target)) {
+    selec_space.classList.remove("open");
+    selec_space.textContent = "Selecionar";
+  }
+});
 
 function selec_selecionado(element) {
-  selec.textContent = element.textContent
-  selec_space.classList.remove('open')
+  selec.textContent = element.textContent;
+  selec_space.classList.remove("open");
 }
-
-
 
 function envia_link_back(nome_link, link) {
   // Remover "https://" e "www." do link
@@ -186,7 +184,10 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
   });
 
   // Lista de domínios permitidos
-  const dominiosPermitidos = ["https://www.youtube.com/"];
+  const dominiosPermitidos = [
+    "https://www.youtube.com",
+    "https://drive.google.com",
+  ];
 
   // Função para verificar se o link é permitido
   function isLinkPermitido(link) {
@@ -230,7 +231,6 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
   // Adicionar evento de submit ao formulário
   const linkForm = document.getElementById("enviar");
   linkForm.addEventListener("submit", handleFormSubmit);
-
 });
 
 // curtir links
@@ -267,6 +267,6 @@ function curtir(id, id_elemento) {
       } else {
         elemento.style.color = "grey";
       }
-    }
+    },
   });
 }

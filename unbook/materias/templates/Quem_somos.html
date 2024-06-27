@@ -223,78 +223,94 @@
         <i class="bi bi-arrow-down"></i>
       </h1>
 
-      <div id="div_1" style="margin-left: 0em">
-        <section class="povo" id="Duque">
-          <h2 class="title">Duque</h2>
+      <div id="geral">
+        <div id="div_1">
+          <section class="povo" id="Duque">
+            <h2 class="title">Duque</h2>
 
-          <div class="image">
-            <img src="{% static "image/Yuri.jpg" %}" alt="" />
+            <div class="image">
+              <img src="{% static "image/Yuri.jpg" %}" alt="" />
+            </div>
+            <h2 id="nomes">Yuri</h2>
+          </section>
+
+          <section class="povo" id="Conselheiro">
+            <h2 class="title">Conselheiro</h2>
+            <div class="image">
+              <img src="{% static "image/Pedro.jpg" %}" alt="" />
+            </div>
+            <h2 id="nomes">Pedrão</h2>
+          </section>
+        </div>
+
+        <div id="geral2">
+          <div id="div_2">
+            <header id="equipes">
+              <h1 class="title">Front-End</h1>
+            </header>
+
+            <div id="ajuste">
+              <div id="space_front">
+                <section>
+                  <div class="image">
+                    <img src="{% static 'image/Matheus.jpg' %}" alt="" />
+                  </div>
+                  <h2 id="nomes">Matheus</h2>
+                </section>
+
+                <section>
+                  <div class="image">
+                    <img src="{% static "image/Joao.jpg" %}" alt="" />
+                  </div>
+                  <h2 id="nomes">João</h2>
+                </section>
+
+                <section>
+                  <div class="image">
+                    <img src="{% static 'image/Breno.jpg' %}" alt="" />
+                  </div>
+                  <h2 id="nomes">Breno</h2>
+                </section>
+              </div>
+            </div>
           </div>
-          <h2 id="nomes">Yuri</h2>
-        </section>
 
-        <section class="povo" id="Conselheiro">
-          <h2 class="title">Conselheiro</h2>
-          <div class="image">
-            <img src="{% static "image/Pedro.jpg" %}" alt="" />
-          </div>
-          <h2 id="nomes">Pedrão</h2>
-        </section>
-      </div>
+          <div id="div_3">
+            <header id="equipes">
+              <h1 class="title">Back-End</h1>
+            </header>
 
-      <div id="div_2">
-        <header id="equipes">
-          <h1 class="title" style="margin-left: -19em">Front-End</h1>
-        </header>
+            <div id="ajuste">
+              <div id="space_back">
+                <section>
+                  <div class="image">
+                    <img src="{% static 'image/GG.jpg' %}" alt="" />
+                  </div>
+                  <h2 id="nomes">GG</h2>
+                </section>
 
-        <div id="ajuste">
-          <div id="space_front">
-            <section>
-              <div class="image">
-                <img src="{% static 'image/Matheus.jpg' %}" alt="" />
+                <section>
+                  <div class="image">
+                    <img src="{% static "image/Shneider.jpg" %}" alt="" />
+                  </div>
+                  <h2 id="nomes">Schneider</h2>
+                </section>
               </div>
-              <h2 id="nomes">Matheus</h2>
-            </section>
-
-            <section>
-              <div class="image">
-                <img src="{% static "image/Joao.jpg" %}" alt="" />
-              </div>
-              <h2 id="nomes">João</h2>
-            </section>
-
-            <section>
-              <div class="image">
-                <img src="{% static 'image/Breno.jpg' %}" alt="" />
-              </div>
-              <h2 id="nomes">Breno</h2>
-            </section>
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="div_3">
-        <header id="equipes">
-          <h1 class="title" style="margin-left: -27em">Back-End</h1>
-        </header>
+      <div id="arvore1">
+        <img
+          style="width: 800px; height: 800px"
+          src="{% static 'image\cerejas.png' %}" />
+      </div>
 
-        <div id="ajuste">
-          <div id="space_back">
-            <section>
-              <div class="image">
-                <img src="{% static 'image/GG.jpg' %}" alt="" />
-              </div>
-              <h2 id="nomes">GG</h2>
-            </section>
-
-            <section>
-              <div class="image">
-                <img src="{% static "image/Shneider.jpg" %}" alt="" />
-              </div>
-              <h2 id="nomes">Shcneider</h2>
-            </section>
-          </div>
-        </div>
+      <div id="arvore2">
+        <img
+          style="width: 800px; height: 1000px"
+          src="{% static 'image\cerejas.png' %}" />
       </div>
     </main>
   </body>

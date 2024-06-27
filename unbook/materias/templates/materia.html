@@ -18,7 +18,11 @@
       rel="stylesheet" />
     <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous" />
 
     <link
       rel="stylesheet"
@@ -747,7 +751,13 @@
                 title="Awesome"></label>
 
               <div
-                style="position:relative; flex; flex-direction: row; justify-content: space-between; width: 100%;">
+                style="
+                  position: relative;
+                  flex: auto;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  width: 100%;
+                ">
                 <h4 style="position: absolute; top: 2.5em; left: 0.5em">
                   Fácil
                 </h4>
@@ -975,81 +985,107 @@
           <div id="box_comentarios">
             <div id="scroll">
               {% for comentario in comentarios %}
-                <div id="comentario{{ forloop.counter0 }}">
-                  {% if comentario.autor.username == user.username %}
-                    <div class="divs_coments">
-                      <div class="editar_div" id="editar" data-comentario-id="{{ comentario.id }}">
-                        <h2 class="editar">Editar</h2>
-                        <i class="bi bi-pencil-fill , edits"></i>
-                      </div>
-                      <div class="deletar_div" id="deletar" data-comentario-id="{{ comentario.id }}" onclick="certeza()">
-                        <h2 class="deletar">Deletar</h2>
-                        <i class="bi bi-trash-fill , lixin"></i>
-                      </div>
-                    </div>
-                  {% endif %}
-                  {% if comentario.autor.perfil.privacidade == 1 %}
-                    <div class="perfil_mostrar">
-                      <h2>@{{ comentario.autor.username }}</h2>
-                    </div>
-                    <h2 style="color:cadetblue" class="usuarios">@{{ comentario.autor.username }}</h2>
-                  {% else %}
-                    <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
-                  {% endif %}
-                  <div class="perfil">
-                    <div class="perfil_1">
-                      <a class="voltar">x</a>
+              <div id="comentario{{ forloop.counter0 }}">
+                {% if comentario.autor.username == user.username %}
+                <div class="divs_coments">
+                  <div
+                    class="editar_div"
+                    id="editar"
+                    data-comentario-id="{{ comentario.id }}">
+                    <h2 class="editar">Editar</h2>
+                    <i class="bi bi-pencil-fill , edits"></i>
+                  </div>
+                  <div
+                    class="deletar_div"
+                    id="deletar"
+                    data-comentario-id="{{ comentario.id }}"
+                    onclick="certeza()">
+                    <h2 class="deletar">Deletar</h2>
+                    <i class="bi bi-trash-fill , lixin"></i>
+                  </div>
+                </div>
+                {% endif %} {% if comentario.autor.perfil.privacidade == 1 %}
+                <div class="perfil_mostrar">
+                  <h2>@{{ comentario.autor.username }}</h2>
+                </div>
+                <h2 style="color: cadetblue" class="usuarios">
+                  @{{ comentario.autor.username }}
+                </h2>
+                {% else %}
+                <h2 class="usuarios">@{{ comentario.autor.username }}</h2>
+                {% endif %}
+                <div class="perfil">
+                  <div class="perfil_1">
+                    <a class="voltar">x</a>
 
-                      <div class="img_user">
-                        {% if comentario.autor.perfil.foto == 0 %}
-                          <img class="img_img" src="{% static 'image/profiles/10.jpeg' %}">
-                        {% else %}
-                          <img class="img_img" src="{% static 'image/profiles/' %}{{ comentario.autor.perfil.foto }}.jpeg">
-                        {% endif %}
-                      </div>
-
-                      <div class="perfil_div_1">
-                        <h1>@{{ comentario.autor.username }}</h1>
-                        {% if comentario.autor.perfil.curso == None %}
-                          <h3 style="font-size:1.5em;"> Não declarado</h3>
-                        {% else %}
-                          <h3 style="font-size:1.5em;"> {{ comentario.autor.perfil.curso }} </h3>
-                        {% endif %}
-                      </div>
-                    </div>
-
-                    <div class="perfil_2">
-                      {% if comentario.autor.perfil.descricao == None %}
-                        <h2>Descrição:</h2><h4 style="font-size:1.5em; color:grey"> Não declarado</h4>
+                    <div class="img_user">
+                      {% if comentario.autor.perfil.foto == 0 %}
+                      <img
+                        class="img_img"
+                        src="{% static 'image/profiles/10.jpeg' %}" />
                       {% else %}
-                        <h2>Descrição:</h2><h4 style="font-size:1.5em; color:grey"> {{ comentario.autor.perfil.descricao }} </h4>
+                      <img
+                        class="img_img"
+                        src="{% static 'image/profiles/' %}{{ comentario.autor.perfil.foto }}.jpeg" />
+                      {% endif %}
+                    </div>
+
+                    <div class="perfil_div_1">
+                      <h1>@{{ comentario.autor.username }}</h1>
+                      {% if comentario.autor.perfil.curso == None %}
+                      <h3 style="font-size: 1.5em">Não declarado</h3>
+                      {% else %}
+                      <h3 style="font-size: 1.5em">
+                        {{ comentario.autor.perfil.curso }}
+                      </h3>
                       {% endif %}
                     </div>
                   </div>
 
-                  <h3 class="comentarios">
-                    {{ comentario.texto }} <br />
-                    <span style="font-size: 0.75em">- {{ comentario.hora_publicacao }}</span>
-                  </h3>
-                  <div id="comentario_buttons">
-                    <div class="curtidas">
-                      <button id="coracao{{ forloop.counter0 }}" class="like" type="button" onclick="like(this, '{{ comentario.pk }}')">
-                        <i class="fa-solid fa-heart"></i>
-                      </button>
-                      <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
-                    </div> |
-                    <div class="report" onclick="modal_report(this, '{{ comentario.pk }}')">
-                      <h3 class="text">Reportar</h3>
-                      <button id="report" type="button">
-                        <i class="bi bi-flag-fill"></i>
-                      </button>
-                    </div>
+                  <div class="perfil_2">
+                    {% if comentario.autor.perfil.descricao == None %}
+                    <h2>Descrição:</h2>
+                    <h4 style="font-size: 1.5em; color: grey">Não declarado</h4>
+                    {% else %}
+                    <h2>Descrição:</h2>
+                    <h4 style="font-size: 1.5em; color: grey">
+                      {{ comentario.autor.perfil.descricao }}
+                    </h4>
+                    {% endif %}
                   </div>
                 </div>
-                <hr style="margin: 2em 2em 0 2em" />
+
+                <h3 class="comentarios">
+                  {{ comentario.texto }} <br />
+                  <span style="font-size: 0.75em"
+                    >- {{ comentario.hora_publicacao }}</span
+                  >
+                </h3>
+                <div id="comentario_buttons">
+                  <div class="curtidas">
+                    <button
+                      id="coracao{{ forloop.counter0 }}"
+                      class="like"
+                      type="button"
+                      onclick="like(this, '{{ comentario.pk }}')">
+                      <i class="fa-solid fa-heart"></i>
+                    </button>
+                    <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
+                  </div>
+                  |
+                  <div
+                    class="report"
+                    onclick="modal_report(this, '{{ comentario.pk }}')">
+                    <h3 class="text">Reportar</h3>
+                    <button id="report" type="button">
+                      <i class="bi bi-flag-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin: 2em 2em 0 2em" />
               {% endfor %}
             </div>
-            
           </div>
           <div id="error-message"></div>
 
@@ -1057,9 +1093,9 @@
             <textarea
               id="comentar_input"
               type="text"
-              placeholder="Fazer comentário" >
+              placeholder="Fazer comentário">
             </textarea>
-            <h3 id="contador"> 0 / 450</h3>
+            <h3 id="contador">0 / 450</h3>
             <img
               onclick="postar_comentario()"
               id="send_button"
@@ -1071,7 +1107,6 @@
 
     <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
     <a style="display: none" id="User_js">{{ user.username }}</a>
-
   </body>
 
   <script>

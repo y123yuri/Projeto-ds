@@ -150,20 +150,11 @@ ul {
   cursor: pointer;
 }
 
-/* ESTRELA CINZA */
+.full {
+  text-shadow: 1px 1px 5px black;
+}
 
-/* .rating > input:checked ~ label,
-.rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label{
-	color: #ffd000;
-} /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
-/* 
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label{
-	color: #ffd000;
-} CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
+/* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
 
 #notas_Dificuldade,
 #notas_Monitoria,
@@ -176,10 +167,9 @@ ul {
 }
 
 #notas_Dificuldade {
-  top:0.5em;
+  top: 0.5em;
   font-size: 1.25em;
 }
-
 
 /* BOX 2 */
 
@@ -546,7 +536,7 @@ ul {
   }
 
   #notas_Dificuldade {
-    top:1em;
+    top: 1em;
   }
 
   /* BOX 2 */

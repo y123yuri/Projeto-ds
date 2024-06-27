@@ -351,7 +351,7 @@ ul {
 .rating_modal > input:checked ~ label,
 .rating_modal:not(:checked) > label:hover,
 .rating_modal:not(:checked) > label:hover ~ label {
-  color: #ffd000;
+  color: #ffdc42;
 }
 
 /* HOVER PARA PINTAR A ESTRELA SELECIONADA DE AMARELA E AS ANTES DELA */
@@ -360,7 +360,10 @@ ul {
 .rating_modal > input:checked ~ label:hover,
 .rating_modal > label:hover ~ input:checked ~ label,
 .rating_modal > input:checked ~ label:hover ~ label {
-  color: #ffd000;
+  color: #ffdc42;
+}
+.full {
+  text-shadow: 1px 1px 5px black;
 }
 
 /* CONFIRMAR A ESTRELA DE AMARELA QUANDO É CLICADA */
@@ -807,7 +810,7 @@ table caption {
   display: none;
   position: absolute;
   flex-direction: column;
-  left:1em;
+  left: 1em;
 
   width: fit-content;
   height: auto;
@@ -828,8 +831,8 @@ table caption {
 .img_img {
   width: fit-content;
   height: 5em;
-  object-fit: cover; 
-  border-radius: 100%; 
+  object-fit: cover;
+  border-radius: 100%;
 }
 
 .perfil {
@@ -847,8 +850,9 @@ table caption {
   z-index: 6;
 }
 
-.perfil h1 , .perfil h3{
-  color:whitesmoke;
+.perfil h1,
+.perfil h3 {
+  color: whitesmoke;
   text-shadow: 0 0 2px black;
 }
 
@@ -883,8 +887,8 @@ table caption {
   top: 10px;
 
   transition: all 0.3s ease;
-  cursor:pointer;
-  color:#d43b5a;
+  cursor: pointer;
+  color: #d43b5a;
   font-size: 2em;
   font-weight: 700;
   text-decoration: none;
@@ -1036,14 +1040,15 @@ table caption {
   z-index: 2;
 }
 
-.deletar_div , .editar_div {
+.deletar_div,
+.editar_div {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-
-.deletar , .editar {
+.deletar,
+.editar {
   position: relative;
   font-size: 1.25em;
   display: block;
@@ -1059,15 +1064,19 @@ table caption {
 }
 
 .deletar:hover,
-.lixin:hover , .editar:hover , .edits:hover{
+.lixin:hover,
+.editar:hover,
+.edits:hover {
   transform: scale(1.05);
 }
 
-.deletar:active .lixin:active , .editar:active .edits:active{
+.deletar:active .lixin:active,
+.editar:active .edits:active {
   transform: scale(0.95);
 }
 
-.lixin , .edits{
+.lixin,
+.edits {
   position: relative;
   font-size: 1.25em;
   display: block;
@@ -1082,9 +1091,6 @@ table caption {
 .edits {
   color: #777d89;
 }
-
-
-
 
 .comentarios {
   font-size: 1.25em;
@@ -1372,7 +1378,7 @@ table caption {
   padding: 0 0.5em;
   border-radius: 25px;
   font-size: 10px;
-  color:#ea3939;
+  color: #ea3939;
 }
 
 #send_button {
