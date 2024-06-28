@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="{% static 'css/styles_(Perfil.html).css' %}" />
 
@@ -145,8 +147,7 @@
       <div id="box1">
         <div id="espace_img_user">
           <a href="../../" id="voltar">x</a>
-          
-          
+
           <div id="img_user">
             <i id="edit" class="bi bi-pencil-square"></i>
             
@@ -178,11 +179,12 @@
           <i id="lampinha" class="lampinha , bi bi-lightbulb-off-fill"></i>
         {% endif%}
 
-
-
-
-
+        {% if user.is_superuser %}
+            <h1 style="color:gold; text-shadow: 0 0 1px gold;" id="user_box1">@{{ user.username }}</h1>
+        {% else %}
           <h1 id="user_box1">@{{ user.username }}</h1>
+        {% endif %}
+
           <h2 class="CampoEscrito2_box1">{{ user.email }}</h2>
         </div>
 
@@ -201,7 +203,14 @@
           <div id="espace_1">
             <h1 class="CampoEscrito_profile">
               Seja bem-vindo <br />
+
+              {% if user.is_superuser %}
+              <span style="color:gold; text-shadow: 0 0 1px gold;" id="user">{{ user.first_name }}</span>
+              <i style="color:gold; text-shadow: 0 0 2px gold;" class="fas fa-crown"></i>
+              {% else %}
               <span id="user">{{ user.first_name }}</span>
+              {% endif %}
+              
             </h1>
             {% if user.is_authenticated %}
               <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
@@ -263,7 +272,7 @@
                     <h2 class="CampoFalado_Config">Confirmar senha nova</h2>
                     <input class="forms" type="password" id="senha_nova_confirma" name="senha_nova_confirma" required />
                     
-                    <button id="submit" type="submit">Mudar senha</button>
+                    <button id="submit1" type="submit">Mudar senha</button>
                 </form>
                 
                   {% if messages %}
@@ -285,7 +294,7 @@
                   <h2 class="CampoFalado_Config">Mudar Username</h2>
                   <input class="forms" type="text" id="username" required />
                   
-                  <button id="submit" type="submit">Mudar Username</button>
+                  <button id="submit2" type="submit">Mudar Username</button>
               </form>
               
                 {% if messages %}

@@ -80,8 +80,7 @@ def sucesso(request):
             nome_variavel = dados['username']
             email_variavel = dados['email'] 
             senha_variavel = dados['password']
-            senha_confirma_variavel = ['senha_confirma']
-            print(senha_confirma_variavel)
+            senha_confirma_variavel = dados['senha_confirma']
             try:
                 email_numero = int(email_variavel[:9])
             except:
@@ -335,12 +334,21 @@ def username(request):
         data = json.loads(request.body)
         new_username = data.get('username')
         print(new_username)
-
+        new_username=new_username.strip()
+        print(new_username)
         if new_username and request.user.is_authenticated:
             if User.objects.filter(username=new_username).exists(): ### verifica se ja existe
                 return JsonResponse({'success': False, 'error': 'Usuario já existente, escolha outro!'})
             else:
                 if 2< len(new_username) <12:
+                    for i in new_username:
+                        if i == '.':
+                            return JsonResponse({'status': 'error', 'message': 'Usuario não pode conter ponto "."'}, status=400)
+                            break
+                        elif i == ' ':
+                            return JsonResponse({'status': 'error', 'message': 'Usuario não pode conter espaço '}, status=400)
+                        else:
+                            pass
                     user = request.user # descobrir o nome dele
                     username_antigo = user #salvar a trroca no banco de dados
                     user.username = new_username #novo username
@@ -352,7 +360,9 @@ def username(request):
                             data_troca=timezone.now()  
                         )
                     return JsonResponse({'status': 'success'}, status=200)
-        return JsonResponse({'status': 'error', 'message': 'Falha em trocar o username'}, status=400)
+                else:
+                    return JsonResponse({'status': 'error', 'message': 'Usuario menor que 3 caracteres ou maior que 12! '}, status=400)
+        return JsonResponse({'status': 'error', 'message': 'Falha ao trocar o username'}, status=400)
     
     return JsonResponse({'status': 'error', 'message': 'Erro no formulário'}, status=405)
 

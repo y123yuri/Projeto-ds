@@ -229,15 +229,15 @@ a:hover {
 }
 
 #fundo_verde {
-  background-color: #f7b9c4;
+  background-color: #333748;
   width: 100%;
-  height: 180vh;
+  height: 140vh;
   position: relative;
   display: block;
   top: 100vh;
   z-index: 20;
   text-align: center;
-  align-items: end;
+  align-items: center;
 }
 
 #titlao {
@@ -254,27 +254,44 @@ a:hover {
   transform: scale(1.05);
 }
 
-#div_1 {
+#geral {
   display: flex;
   flex-direction: row;
+  margin: auto;
+  width: fit-content;
+  z-index: 22;
+}
+
+#geral2 {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+  z-index: 22;
+}
+
+#div_1 {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   justify-content: space-around;
   width: 40%;
   height: 28em;
   position: relative;
-  top: -3em;
+  top: 2em;
+  z-index: 22;
 }
 
 #div_2 {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: center;
+  width: fit-content;
   height: 25em;
   position: relative;
-  top: -3em;
-  margin-left: 19em;
+  margin-bottom: 1em;
+  top: 1.75em;
+  z-index: 22;
 }
 
 #div_3 {
@@ -282,11 +299,11 @@ a:hover {
   flex-direction: column;
   margin: auto;
   justify-content: space-evenly;
-  width: 100%;
+  width: fit-content;
   height: 25em;
   position: relative;
-  top: 0em;
-  margin-left: 27em;
+  top: 0.75em;
+  z-index: 22;
 }
 
 #equipes {
@@ -299,7 +316,6 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 6em 1em 0.5em;
 }
 
 #space_front {
@@ -316,10 +332,13 @@ a:hover {
   flex-direction: row;
 }
 
+#nomes {
+  color: whitesmoke;
+}
 .title {
   font-size: 2em;
-  color: whitesmoke;
-  margin: 0.5em;
+  color: #de93a1;
+  text-shadow: 1px 1px 1px whitesmoke;
 }
 
 .povo {
@@ -361,6 +380,26 @@ a:hover {
 }
 #div_3 section {
   margin: 0 1em;
+}
+
+#arvore1 {
+  display: fixed;
+  position: absolute;
+  top: 20em;
+  left: 1em;
+  opacity: 0.5;
+  z-index: 21;
+  transform: scaleX(-1);
+}
+
+#arvore2 {
+  display: fixed;
+  position: absolute;
+  top: -10em;
+  right: 0em;
+  opacity: 0.5;
+
+  z-index: 21;
 }
 
 @media screen and (max-width: 767px) {

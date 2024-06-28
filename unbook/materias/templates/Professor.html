@@ -5,22 +5,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'image/UnBook_page.ico' %}"
+      type="image/x-icon" />
     <title>Professor</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
+    <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS) -->
 
-    <link rel="stylesheet" href="{% static 'css/styles_(Professor.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
+    <link
+      rel="stylesheet"
+      href="{% static 'css/styles_(Professor.html).css' %}" />
+    <!-- LINK PARA PARA CSS DA PÁGINA -->
   </head>
 
   <body>
-    <a href="../"><img class="UnBook_logo_mini" src=" {% static 'image/UnBook_loguinho.png' %} " /></a>
-    <!-- LINK PARA VOLTAR A UNBOOK --> <!-- UNBOOK LOGUINHO BRANCO -->
+    <a href="../"
+      ><img
+        class="UnBook_logo_mini"
+        src=" {% static 'image/UnBook_loguinho.png' %} "
+    /></a>
+    <!-- LINK PARA VOLTAR A UNBOOK -->
+    <!-- UNBOOK LOGUINHO BRANCO -->
 
     <div class="boxes">
       <div class="box1_2">
@@ -30,63 +46,317 @@
 
             <h2 class="CampoFalado2">Didática</h2>
             <fieldset class="rating" id="didatica">
-              <input type="radio" id="star5_didatica" name="rating_didatica" value="5" /><label id="estrela_5_didatica" for="star5_didatica" class="full" title="Awesome"></label>
-              <input type="radio" id="star4.5_didatica" name="rating_didatica" value="4.5" /><label id="estrela_4.5_didatica" for="star4.5_didatica" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_didatica" name="rating_didatica" value="4" /><label id="estrela_4_didatica" for="star4_didatica" class="full" title="Awesome"></label>
-              <input type="radio" id="star3.5_didatica" name="rating_didatica" value="3.5" /><label id="estrela_3.5_didatica" for="star3.5_didatica" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_didatica" name="rating_didatica" value="3" /><label id="estrela_3_didatica" for="star3_didatica" class="full" title="Awesome"></label>
-              <input type="radio" id="star2.5_didatica" name="rating_didatica" value="2.5" /><label id="estrela_2.5_didatica" for="star2.5_didatica" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_didatica" name="rating_didatica" value="2" /><label id="estrela_2_didatica" for="star2_didatica" class="full" title="Awesome"></label>
-              <input type="radio" id="star1.5_didatica" name="rating_didatica" value="1.5" /><label id="estrela_1.5_didatica" for="star1.5_didatica" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_didatica" name="rating_didatica" value="1" /><label id="estrela_1_didatica" for="star1_didatica" class="full" title="Awesome"></label>
-              <input type="radio" id="star0.5_didatica" name="rating_didatica" value="0.5" /><label id="estrela_0.5_didatica" for="star0.5_didatica" class="half" title="Awesome"></label>
+              <input
+                type="radio"
+                id="star5_didatica"
+                name="rating_didatica"
+                value="5" /><label
+                id="estrela_5_didatica"
+                for="star5_didatica"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4.5_didatica"
+                name="rating_didatica"
+                value="4.5" /><label
+                id="estrela_4.5_didatica"
+                for="star4.5_didatica"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4_didatica"
+                name="rating_didatica"
+                value="4" /><label
+                id="estrela_4_didatica"
+                for="star4_didatica"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3.5_didatica"
+                name="rating_didatica"
+                value="3.5" /><label
+                id="estrela_3.5_didatica"
+                for="star3.5_didatica"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3_didatica"
+                name="rating_didatica"
+                value="3" /><label
+                id="estrela_3_didatica"
+                for="star3_didatica"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2.5_didatica"
+                name="rating_didatica"
+                value="2.5" /><label
+                id="estrela_2.5_didatica"
+                for="star2.5_didatica"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2_didatica"
+                name="rating_didatica"
+                value="2" /><label
+                id="estrela_2_didatica"
+                for="star2_didatica"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1.5_didatica"
+                name="rating_didatica"
+                value="1.5" /><label
+                id="estrela_1.5_didatica"
+                for="star1.5_didatica"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1_didatica"
+                name="rating_didatica"
+                value="1" /><label
+                id="estrela_1_didatica"
+                for="star1_didatica"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star0.5_didatica"
+                name="rating_didatica"
+                value="0.5" /><label
+                id="estrela_0.5_didatica"
+                for="star0.5_didatica"
+                class="half"
+                title="Awesome"></label>
 
-              <h3 id="notas_didatica">{{ aval_didatica }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_didatica">{{ aval_didatica }} de 5</h3>
+              <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
-            <div style="height: 5em;"></div>
+            <div style="height: 5em"></div>
 
             <h2 class="CampoFalado2">Apoio ao aluno</h2>
             <fieldset class="rating" id="apoio">
-              <input type="radio" id="star5_apoio" name="rating_apoio" value="5" /><label id="estrela_5_apoio" for="star5_apoio" class="full" title="Awesome"></label>
-              <input type="radio" id="star4.5_apoio" name="rating_apoio" value="4.5" /><label id="estrela_4.5_apoio" for="star4.5_apoio" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_apoio" name="rating_apoio" value="4" /><label id="estrela_4_apoio" for="star4_apoio" class="full" title="Awesome"></label>
-              <input type="radio" id="star3.5_apoio" name="rating_apoio" value="3.5" /><label id="estrela_3.5_apoio" for="star3.5_apoio" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_apoio" name="rating_apoio" value="3" /><label id="estrela_3_apoio" for="star3_apoio" class="full" title="Awesome"></label>
-              <input type="radio" id="star2.5_apoio" name="rating_apoio" value="2.5" /><label id="estrela_2.5_apoio" for="star2.5_apoio" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_apoio" name="rating_apoio" value="2" /><label id="estrela_2_apoio" for="star2_apoio" class="full" title="Awesome"></label>
-              <input type="radio" id="star1.5_apoio" name="rating_apoio" value="1.5" /><label id="estrela_1.5_apoio" for="star1.5_apoio" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_apoio" name="rating_apoio" value="1" /><label id="estrela_1_apoio" for="star1_apoio" class="full" title="Awesome"></label>
-              <input type="radio" id="star0.5_apoio" name="rating_apoio" value="0.5" /><label id="estrela_0.5_apoio" for="star0.5_apoio" class="half" title="Awesome"></label>
+              <input
+                type="radio"
+                id="star5_apoio"
+                name="rating_apoio"
+                value="5" /><label
+                id="estrela_5_apoio"
+                for="star5_apoio"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4.5_apoio"
+                name="rating_apoio"
+                value="4.5" /><label
+                id="estrela_4.5_apoio"
+                for="star4.5_apoio"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4_apoio"
+                name="rating_apoio"
+                value="4" /><label
+                id="estrela_4_apoio"
+                for="star4_apoio"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3.5_apoio"
+                name="rating_apoio"
+                value="3.5" /><label
+                id="estrela_3.5_apoio"
+                for="star3.5_apoio"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3_apoio"
+                name="rating_apoio"
+                value="3" /><label
+                id="estrela_3_apoio"
+                for="star3_apoio"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2.5_apoio"
+                name="rating_apoio"
+                value="2.5" /><label
+                id="estrela_2.5_apoio"
+                for="star2.5_apoio"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2_apoio"
+                name="rating_apoio"
+                value="2" /><label
+                id="estrela_2_apoio"
+                for="star2_apoio"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1.5_apoio"
+                name="rating_apoio"
+                value="1.5" /><label
+                id="estrela_1.5_apoio"
+                for="star1.5_apoio"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1_apoio"
+                name="rating_apoio"
+                value="1" /><label
+                id="estrela_1_apoio"
+                for="star1_apoio"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star0.5_apoio"
+                name="rating_apoio"
+                value="0.5" /><label
+                id="estrela_0.5_apoio"
+                for="star0.5_apoio"
+                class="half"
+                title="Awesome"></label>
 
-              <h3 id="notas_apoio">{{ aval_apoio }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_apoio">{{ aval_apoio }} de 5</h3>
+              <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
-            <div style="height: 5em;"></div>
+            <div style="height: 5em"></div>
 
             <h2 class="CampoFalado2">Dificuldade</h2>
             <fieldset class="rating" id="Dificuldade">
-              <input type="radio" id="star5_Dificuldade" name="rating_Dificuldade" value="5" /><label id="estrela_5_dificuldade" for="star5_Dificuldade" class="full" title="Awesome"></label>
-              <input type="radio" id="star4.5_Dificuldade" name="rating_Dificuldade" value="4.5" /><label id="estrela_4.5_dificuldade" for="star4.5_Dificuldade" class="half" title="Awesome"></label>
-              <input type="radio" id="star4_Dificuldade" name="rating_Dificuldade" value="4" /><label id="estrela_4_dificuldade" for="star4_Dificuldade" class="full" title="Awesome"></label>
-              <input type="radio" id="star3.5_Dificuldade" name="rating_Dificuldade" value="3.5" /><label id="estrela_3.5_dificuldade" for="star3.5_Dificuldade" class="half" title="Awesome"></label>
-              <input type="radio" id="star3_Dificuldade" name="rating_Dificuldade" value="3" /><label id="estrela_3_dificuldade" for="star3_Dificuldade" class="full" title="Awesome"></label>
-              <input type="radio" id="star2.5_Dificuldade" name="rating_Dificuldade" value="2.5" /><label id="estrela_2.5_dificuldade" for="star2.5_Dificuldade" class="half" title="Awesome"></label>
-              <input type="radio" id="star2_Dificuldade" name="rating_Dificuldade" value="2" /><label id="estrela_2_dificuldade" for="star2_Dificuldade" class="full" title="Awesome"></label>
-              <input type="radio" id="star1.5_Dificuldade" name="rating_Dificuldade" value="1.5" /><label id="estrela_1.5_dificuldade" for="star1.5_Dificuldade" class="half" title="Awesome"></label>
-              <input type="radio" id="star1_Dificuldade" name="rating_Dificuldade" value="1" /><label id="estrela_1_dificuldade" for="star1_Dificuldade" class="full" title="Awesome"></label>
-              <input type="radio" id="star0.5_Dificuldade" name="rating_Dificuldade" value="0.5" /><label id="estrela_0.5_dificuldade" for="star0.5_Dificuldade" class="half" title="Awesome"></label>
+              <input
+                type="radio"
+                id="star5_Dificuldade"
+                name="rating_Dificuldade"
+                value="5" /><label
+                id="estrela_5_dificuldade"
+                for="star5_Dificuldade"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4.5_Dificuldade"
+                name="rating_Dificuldade"
+                value="4.5" /><label
+                id="estrela_4.5_dificuldade"
+                for="star4.5_Dificuldade"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star4_Dificuldade"
+                name="rating_Dificuldade"
+                value="4" /><label
+                id="estrela_4_dificuldade"
+                for="star4_Dificuldade"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3.5_Dificuldade"
+                name="rating_Dificuldade"
+                value="3.5" /><label
+                id="estrela_3.5_dificuldade"
+                for="star3.5_Dificuldade"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star3_Dificuldade"
+                name="rating_Dificuldade"
+                value="3" /><label
+                id="estrela_3_dificuldade"
+                for="star3_Dificuldade"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2.5_Dificuldade"
+                name="rating_Dificuldade"
+                value="2.5" /><label
+                id="estrela_2.5_dificuldade"
+                for="star2.5_Dificuldade"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star2_Dificuldade"
+                name="rating_Dificuldade"
+                value="2" /><label
+                id="estrela_2_dificuldade"
+                for="star2_Dificuldade"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1.5_Dificuldade"
+                name="rating_Dificuldade"
+                value="1.5" /><label
+                id="estrela_1.5_dificuldade"
+                for="star1.5_Dificuldade"
+                class="half"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star1_Dificuldade"
+                name="rating_Dificuldade"
+                value="1" /><label
+                id="estrela_1_dificuldade"
+                for="star1_Dificuldade"
+                class="full"
+                title="Awesome"></label>
+              <input
+                type="radio"
+                id="star0.5_Dificuldade"
+                name="rating_Dificuldade"
+                value="0.5" /><label
+                id="estrela_0.5_dificuldade"
+                for="star0.5_Dificuldade"
+                class="half"
+                title="Awesome"></label>
 
-              <div style="position:relative; flex; flex-direction: row; justify-content: space-between; width: 100%;">
-                <h4 style="position: absolute; top:2.5em; left:0.5em"> Fácil</h4>
-                <h4 style="position: absolute; top:2.5em; right:0em"> Difícil</h4>
+              <div
+                style="
+                  position: relative;
+                  flex: auto;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  width: 100%;
+                ">
+                <h4 style="position: absolute; top: 2.5em; left: 0.5em">
+                  Fácil
+                </h4>
+                <h4 style="position: absolute; top: 2.5em; right: 0em">
+                  Difícil
+                </h4>
               </div>
 
-              <h3 id="notas_Dificuldade">{{ aval_dificuldade }} de 5</h3> <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
+              <h3 id="notas_Dificuldade">{{ aval_dificuldade }} de 5</h3>
+              <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
             </fieldset>
 
-            <div style="height: 5em;"></div>
-            <h2 style="text-align:center;">avaliações: {{ quant_aval }}</h2>
+            <div style="height: 5em"></div>
+            <h2 style="text-align: center">avaliações: {{ quant_aval }}</h2>
           </div>
         </div>
 
@@ -101,7 +371,9 @@
       </div>
 
       <div id="box3">
-        <a onclick="back()"><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
+        <a onclick="back()"
+          ><img src="{% static 'image/Arrow_back.png' %}" id="retry"
+        /></a>
         <div id="div1">
           <div id="div1_1">
             <img id="foto_professor" src="{{ foto }}" />
@@ -119,16 +391,20 @@
           <h1 id="Materias_ofertadas">Matérias ofertadas</h1>
 
           <div id="scroll_materias">
-
-            {% for turma in lista_turmas %}
-
-              {% if user.is_authenticated %}
-              <a class="materias" href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}">{{ turma.materia.codigo }} {{ turma.materia.nome }}</a>
-              {% else %}
-              <a class="materias" onclick="alert('Você precisa estar logado!')" href="../cadastro/login">{{ turma.materia.codigo }} {{ turma.materia.nome }}</a>
-              {% endif %}
-              
-            {% endfor %}
+            {% for turma in lista_turmas %} {% if user.is_authenticated %}
+            <a
+              class="materias"
+              href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}"
+              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
+            >
+            {% else %}
+            <a
+              class="materias"
+              onclick="alert('Você precisa estar logado!')"
+              href="../cadastro/login"
+              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
+            >
+            {% endif %} {% endfor %}
           </div>
         </div>
       </div>
@@ -136,16 +412,16 @@
   </body>
 
   <script type="text/javascript">
-    nota_didatica = Number('{{aval_didatica}}'.replace(',', '.'))
-    nota_apoio = Number('{{aval_apoio}}'.replace(',', '.'))
-    nota_dificuldade = Number('{{aval_dificuldade}}'.replace(',', '.'))
+    nota_didatica = Number("{{aval_didatica}}".replace(",", "."));
+    nota_apoio = Number("{{aval_apoio}}".replace(",", "."));
+    nota_dificuldade = Number("{{aval_dificuldade}}".replace(",", "."));
   </script>
 
-<script>
-  function back(){
-    history.back();
-  }
-</script>
+  <script>
+    function back() {
+      history.back();
+    }
+  </script>
 
   <!-- LINK PARA ARQUIVOS JS -->
   <script src="{% static 'js/pintar_estrela_(professor.html).js' %}"></script>

@@ -40,14 +40,50 @@
     <div id="fundo_blur"></div>
 
     <div id="modal_upload">
+
       <h1 id="CampoFaladoModal1">Upload de links</h1>
 
-      <h2 id="CampoFaladoModal2">O que é o seu link:</h2>
-      <input class="inputs" id="queLinkéEsse" type="text" placeholder="Tente descrever em um única palavra :)" />
+      <hr style="margin: 0.5em 5em 0 0">
 
-      <h2 id="CampoFaladoModal2">Deposite seu link no campo abaixo:</h2>
-      <input class="inputs" id="poe_links" type="text" />
-      <div id="enviar" onclick="enviar()">Fazer upload</div>
+      <div id="div_1_modal" >
+
+        <div id="div_1_0_modal">
+          <h3> Nesse Campo você pode enviar seus links! Pedimos por favor que tenha consciência e responsabilidade ao enviá-los, vale relembrar que aceitamos somente links com diretório: [ <b>youtube.com</b> ] , [ <b>drive.google.com</b> ] , [ <b>docs.google.com</b> ] e [ <b>teams.microsoft.com</b> ]. </h3>
+        </div>
+
+        <hr style="margin: 0 1em 2em 1em">
+
+        <div id="div_1_1_modal">
+          <h2 id="CampoFaladoModal2">Título</h2>
+          <input class="inputs" id="queLinkéEsse" type="text" placeholder="Vídeo sobre pipi popopo" />
+    |
+          <h2 id="CampoFaladoModal2">Tipo de arquivo</h2>
+          
+          <button id="selec"> Selecionar </button>
+          
+          <div id="selec_space">
+            <ul>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-youtube"></i> Youtube</li>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-google"></i> Drive</li>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-microsoft-teams"></i> Microsoft</li>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-file-earmark-word"></i> Docs</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div id="div_1_2_modal">
+          <h2 id="CampoFaladoModal2">Deposite seu link no campo abaixo:</h2>
+          <input class="inputs" id="poe_links" type="url" placeholder="Insira seu link nesse campo"/>
+        </div>
+
+      </div>
+
+
+      <div id="buttones">
+        <div class="btn" id="cancelar" onclick="fechar_modal()">Cancelar</div>
+        <div class="btn" id="enviar" onclick="enviar()">Fazer upload</div>
+      </div>
     </div>
 
     <a href="../../../"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" /></a>
@@ -60,7 +96,7 @@
         </div>
 
         <div id="box2">
-          <label for="Upload" onclick="abrir_modal()">Upload de arquivos</label>
+          <label for="Upload" onclick="abrir_modal()">Upload de links</label>
         </div>
       </div>
 

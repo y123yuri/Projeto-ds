@@ -38,6 +38,15 @@ html::-webkit-scrollbar {
 /* inicio das paginas */
 /*PAGINA1*/
 
+.fa-crown {
+    font-size: 2em;
+    color: gold; 
+    top:0.25em;
+    left: 2.85em;
+    position: relative;
+    transform: rotate(30deg);
+  }
+
 #nav {
     display: flex;
     flex-direction: row;

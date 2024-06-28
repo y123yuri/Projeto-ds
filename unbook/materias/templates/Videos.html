@@ -47,14 +47,31 @@
 
       <h1 id="CampoFaladoModal1">Upload de links</h1>
 
+      <hr style="margin: 0.5em 5em 0 0">
+
       <div id="div_1_modal" >
+
+        <div id="div_1_0_modal">
+          <h3> Nesse Campo você pode enviar seus links! Pedimos por favor que tenha consciência e responsabilidade ao enviá-los, vale relembrar que aceitamos somente links com diretório: [ <b>youtube.com</b> ] e [ <b>drive.google.com</b> ] . </h3>
+        </div>
+
+        <hr style="margin: 0 1em 2em 1em">
 
         <div id="div_1_1_modal">
           <h2 id="CampoFaladoModal2">Título</h2>
           <input class="inputs" id="queLinkéEsse" type="text" placeholder="Vídeo sobre pipi popopo" />
-    
+    |
           <h2 id="CampoFaladoModal2">Tipo de arquivo</h2>
-          <input class="inputs" id="queLinkéEsse" type="" placeholder="Vídeo sobre pipi popopo" />
+          
+          <button id="selec"> Selecionar </button>
+          
+          <div id="selec_space">
+            <ul>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-youtube"></i> Youtube</li>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-google"></i> Drive</li>
+            </ul>
+          </div>
+
         </div>
 
         <div id="div_1_2_modal">
@@ -71,22 +88,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <a href="../../../"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" /></a>
     <!-- LINK PARA VOLTAR A UNBOOK --> <!-- UNBOOK LOGUINHO BRANCO -->
 
@@ -97,7 +98,7 @@
         </div>
 
         <div id="box2">
-          <label for="Upload" onclick="abrir_modal()">Upload de arquivos</label>
+          <label for="Upload" onclick="abrir_modal()">Upload de links</label>
         </div>
       </div>
 

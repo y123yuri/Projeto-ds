@@ -31,6 +31,15 @@ ul {
 /* inicio das paginas */
 /*PAGINA1*/
 
+.fa-crown {
+  font-size: 1em;
+  color: gold;
+  top: -0.75em;
+  left: -0.5em;
+  position: relative;
+  transform: rotate(30deg);
+}
+
 a .UnBook_logo_mini {
   display: block;
 
@@ -86,8 +95,8 @@ a .UnBook_logo_mini {
   margin-top: 10px;
 
   transition: all 0.3s ease;
-  
-  color:#d43b5a;
+
+  color: #d43b5a;
   font-size: 2em;
   font-weight: 700;
   text-decoration: none;
@@ -133,7 +142,7 @@ a .UnBook_logo_mini {
   position: absolute;
   font-size: 4em;
   left: 50%;
-  top:50%;
+  top: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -192,9 +201,8 @@ a .UnBook_logo_mini {
 
 .balls:hover {
   filter: brightness(70%);
-  border: solid 5px #0B4C9C;
+  border: solid 5px #0b4c9c;
 }
-
 
 .balls#model_1 {
   margin-left: 3em;
@@ -209,11 +217,11 @@ a .UnBook_logo_mini {
 
 .lampinha {
   position: absolute;
-  color:#eed64b;
-  cursor:pointer;
+  color: #eed64b;
+  cursor: pointer;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
-  right: 4em;
+  right: 2.75em;
   top: 0.05em;
   z-index: 3;
 
@@ -226,7 +234,7 @@ a .UnBook_logo_mini {
   display: none;
   position: absolute;
   left: 17em;
-  top:-1em;
+  top: -1em;
 
   width: 14em;
   height: auto;
@@ -239,8 +247,6 @@ a .UnBook_logo_mini {
 #visib_modal h4 {
   font-size: 1em;
 }
-
-
 
 #user_box1 {
   color: #0b4c9c;
@@ -478,7 +484,6 @@ a .UnBook_logo_mini {
 #separa_confs {
   display: flex;
   flex-direction: row;
-
 }
 
 #Config {
@@ -523,7 +528,6 @@ a .UnBook_logo_mini {
   padding: 0.5em 2em;
   width: fit-content;
   height: 26em;
-
 }
 
 #space_2_2_Config {
@@ -532,10 +536,10 @@ a .UnBook_logo_mini {
   padding: 0.5em 2em;
   width: fit-content;
   height: 26em;
-
 }
 
-#submit {
+#submit1,
+#submit2 {
   position: relative;
 
   width: auto;
@@ -1248,8 +1252,8 @@ a .UnBook_logo_mini {
 
   #user:hover {
     text-shadow: 0 0 2px #0b4c8c;
-    }
-  
+  }
+
   .botoes {
     position: relative;
     width: auto;
@@ -1257,7 +1261,7 @@ a .UnBook_logo_mini {
 
     border: none;
     border-radius: 50px;
-    background-color: blue;
+    background-color: #0b4c8c;
 
     margin-top: 10em;
     margin-right: auto;
