@@ -855,7 +855,7 @@ table caption {
   from {
     opacity: 0;
     transform: translate3d(-10px);
-  } 
+  }
   to {
     opacity: 1;
     transform: translate3d(10px);
@@ -1107,26 +1107,26 @@ table caption {
 }
 
 #modal_editar {
-    display: none;
-    flex-direction: column;
-    width: 55%;
-    height: 22.5em;
-    background-color: #e8e7e8;
-    box-shadow: -7.5px 7.5px 1px rgba(0, 0, 0, 0.164);
-    
-    padding: 2em;
-    position: fixed;
-    border-radius: 15px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-    animation: abrir_perfil 0.1s ease;
+  display: none;
+  flex-direction: column;
+  width: 55%;
+  height: 22.5em;
+  background-color: #e8e7e8;
+  box-shadow: -7.5px 7.5px 1px rgba(0, 0, 0, 0.164);
+
+  padding: 2em;
+  position: fixed;
+  border-radius: 15px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  animation: abrir_perfil 0.1s ease;
 }
 
 #modal_editar textarea {
   position: relative;
-  top:1em;
+  top: 1em;
   height: 10em;
   padding: 0.5em;
   font-size: 1.25em;
