@@ -1,0 +1,425 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <title>Quem somos?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <!-- LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="{% static 'css/styles_(qmsomos.html).css' %}" />
+    <!-- LINK PARA O CSS DA PAGINA -->
+  </head>
+
+  <body>
+    <div id="sun">
+      <a id="voltar" href="../">Voltar</a>
+    </div>
+
+    <div id="all">
+      <div id="fundo_branco">
+        <div id="f1">
+          <p id="primeiro">Olá, muito prazer! Nós somos a UnBook e ficamos muito felizes por você querer saber mais sobre nós e sobre nosso projeto!</p>
+
+          <p class="p_escondido">Nós pertencemos ao feudo Flor de Cerejeira, um dos feudos participantes da matéria "Desenvolvimento de software", regida pelo professor Sérgio Antônio.</p>
+
+          <p class="p_escondido">Nessa matéria os alunos são desafiados ao decorrer do semestre a criar um produto de software,
+
+            talvez seja por isso o nome da matéria ser... enfim,</p>
+
+          <p class="p_escondido">E nesse caso...</p>
+
+          <p class="p_escondido">Criamos a UnBook,
+
+            um site interativo e inteligente, que foi criado com a finalidade de falicitar a comunicação e o acesso a informações entre professores e alunos da Universidade de Brasília.</p>
+
+          <p class="p_escondido">Uma vez que, o site concede as informações relevantes sobre a matéria e, além disso permite que os alunos possam disponibilizar em domínio público materiais que possam ajudar outros alunos, como links de vídeos, livros, PDFs e atividades...</p>
+
+          <p class="p_escondido">Por fim...</p>
+
+          <p class="p_escondido">Expressamos profunda gratidão pela sua atenção e confiança em nosso projeto. Desejamos que sua pesquisa seja excepcional e que você se sinta verdadeiramente acolhido ao explorar o site UnBook!</p>
+
+          <div id="prox" onclick="proximo()">Avançar</div>
+
+          <h2 id="contador">0 de 7</h2>
+        </div>
+
+        <div id="f2">
+          <div id="f2_text">
+            <h1>Nos siga no instagram tbm!</h1>
+
+            <img id="qrCode" src="{% static 'image/unbook.com.br_qr.png' %}" alt="" />
+
+            <a target="_blank" style="text-decoration: none; color:black" href="https://www.instagram.com/unbook.com.br/"><h1>@unbook.com.br</h1></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="content">
+        <i id="nuvem_1" class="bi bi-cloudy-fill , animation_nuvem"></i>
+        <i id="nuvem_2" class="bi bi-cloudy-fill , animation_nuvem"></i>
+
+        <div id="shadow_montain">
+          <div class="shadows" id="shadow_1"></div>
+          <div class="shadows" id="shadow_2"></div>
+          <div class="shadows" id="shadow_3"></div>
+          <div class="shadows" id="shadow_4"></div>
+          <div class="shadows" id="shadow_5"></div>
+        </div>
+        <div id="montain"></div>
+
+        <div id="montain_2">
+          <div id="monts">
+            <div id="mont_1"></div>
+            <div id="mont_2"></div>
+            <div id="mont_3"></div>
+            <div id="mont_4"></div>
+            <div id="mont_5"></div>
+            <div id="mont_6"></div>
+            <div id="mont_7"></div>
+            <div id="mont_8"></div>
+            <div id="mont_9"></div>
+            <div id="mont_10"></div>
+          </div>
+
+          <div id="base_montain_2"></div>
+        </div>
+
+        <div id="tree_fundo">
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+          <i class="bi bi-tree-fill , trees_fundo"></i>
+        </div>
+
+        <div id="tree_fundo_2">
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+          <i class="bi bi-tree-fill , trees_fundo_2"></i>
+        </div>
+
+        <div id="tree_fundo_3">
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+          <i class="bi bi-tree-fill , trees_fundo_3"></i>
+        </div>
+
+        <div id="tree_fundo_4">
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+          <i class="bi bi-tree-fill , trees_fundo_4"></i>
+        </div>
+
+        <div class="birds front">
+          <!-- Front Birds -->
+          <div class="bird b1">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b2">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b3">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b4">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b5">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b6">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b7">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b8">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b9">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b10">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b11">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b12">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="birds back">
+          <!-- Back Birds -->
+          <div class="bird b1">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b2">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b3">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b4">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b5">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b6">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b7">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b8">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b9">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b10">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b11">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bird b12">
+            <div class="body"></div>
+            <div class="wing1">
+              <div class="wing2">
+                <div class="wing3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="colaboradores">
+          <main id="colaboradores_space">
+            <h1 id="title">Colaboradores</h1>
+            <h2 id="subtitle">A equipe da <span id="UnBook">UnBook</span> é composta por 7 componentes, possuindo <span id="UnBook">1 líder</span>, <span id="UnBook">1 conselheiro</span> e duas equipes, nas quais são a equipe do <span id="UnBook">Front-End</span> e do <span id="UnBook">Back-End</span></h2>
+
+            <div id="caixa_1">
+              <h1 class="equipe">Líderes</h1>
+
+              <div id="buttons">
+                <div id="back">
+                  <i class="bi bi-arrow-left-square"></i>
+                </div>
+                <div id="next">
+                  <i class="bi bi-arrow-right-square"></i>
+                </div>
+              </div>
+
+              <div class="scroll">
+
+                <div class="each">
+                  <div class="pessoas">
+                    <h1 class="nome">Yuri</h1>
+                    <h2 class="subnome">Líder</h2>
+                    <img src="{% static 'image/Yuri.jpg' %}" alt="" />
+                  </div>
+
+                  <div class="pessoas">
+                    <h1 class="nome">Pedro</h1>
+                    <h2 class="subnome">Conselheiro</h2>
+                    <img src="{% static 'image/Pedro.jpg' %}" alt="" />
+                  </div>
+                </div>
+
+                <div class="each">
+                  <div class="pessoas">
+                    <h1 class="nome">Matheus</h1>
+                    <h2 class="subnome">Front-End</h2>
+                    <img src="{% static 'image/Matheus.jpg' %}" alt="" />
+                  </div>
+
+                  <div class="pessoas">
+                    <h1 class="nome">João</h1>
+                    <h2 class="subnome">Front-End</h2>
+                    <img src="{% static 'image/Joao.jpg' %}" alt="" />
+                  </div>
+
+                  <div class="pessoas">
+                    <h1 class="nome">Breno</h1>
+                    <h2 class="subnome">Front-End</h2>
+                    <img src="{% static 'image/Breno.jpg' %}" alt="" />
+                  </div>
+                </div>
+
+                <div class="each">
+                  <div class="pessoas">
+                    <h1 class="nome">Giovani</h1>
+                    <h2 class="subnome">Back-End</h2>
+                    <img src="{% static 'image/GG.jpg' %}" alt="" />
+                  </div>
+                  <div class="pessoas">
+                    <h1 class="nome">Henrique</h1>
+                    <h2 class="subnome">Back-End</h2>
+                    <img src="{% static 'image/Shneider.jpg' %}" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="{% static 'js/digitar_(qmsomos.html).js' %}"></script>
+</html>

@@ -30,7 +30,10 @@ def home(request):
         return render(request, 'UnBook.html')
 
 def somos(request):
-    return render(request, 'Quem_somos.html')
+    return render(request, 'qmsomos.html')
+
+def teste(request):
+    return render(request, 'teste.html')
 
 def tutorial(request):
     return render(request, 'Tutorial.html')

@@ -22,58 +22,6 @@ modal.addEventListener('click', (e) => {
     e.stopPropagation(); // Impede que o clique no modal se propague para o fundo_blur
 });
 
-
-function certeza() {
-    fundoblur.style.display = "block";
-    fundoblur.classList.add('abrir');
-    var modal = document.getElementById('modal_apagar_comentario')
-    modal.style.display = "block";
-
-    fundoblur.addEventListener('click', (e) => {
-        if (e.target === fundoblur) {
-            fundoblur.style.display = "none";
-            modal.style.display = "none";
-        }
-    });
-
-    document.getElementById('nao_c').addEventListener('click',(e)=>{
-        e.preventDefault()
-        fundoblur.style.display = "none";
-        modal.style.display = "none";
-    })
-
-    document.getElementById('sim_c').addEventListener('click',(e)=>{
-        e.preventDefault()
-        fundoblur.style.display = "none";
-        modal.style.display = "none";
-        apagarComentario()
-    })
-
-}
-
-function apagarComentario() {
-    const comentarioId = document.querySelector('.deletar_div').dataset.comentarioId; // Adicione o id do comentário ao elemento
-
-    fetch(`/deletar/${comentarioId}/`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Comentário deletado com sucesso!');
-            location.reload();
-            // Opcional: Remover o comentário da lista de comentários no DOM
-            document.getElementById(`comentario-${comentarioId}`).remove();
-        
-        } else {
-            alert('Erro ao deletar o comentário.');
-        }
-    })
-}
-
 // Selecionar todos os elementos h2 com a classe 'usuarios'
 var usuarios = document.querySelectorAll('.usuarios');
 
@@ -127,22 +75,6 @@ usuarios.forEach(usuario => {
         }
     });
 });
-
-
-//  FUNÇÃO PARA EDITAR COMENTÁRIO!!!
-
-document.querySelector('.editar_div').addEventListener('click', (e)=> {
-    var modal_editar = document.getElementById('modal_editar')
-    modal_editar.style.display = 'flex'
-    fundoblur.style.display = 'block'
-
-    fundoblur.addEventListener('click', (e)=> {
-        e.preventDefault()
-        e.stopPropagation()
-        modal_editar.style.display = 'none'
-        fundoblur.style.display = 'none'
-    }) 
-})
 
 // Função auxiliar para obter o CSRF token
 function getCookie(name) {
@@ -668,7 +600,70 @@ document.querySelectorAll('.button').forEach(button => {
     });
 });
 
+//  FUNÇÃO PARA EDITAR COMENTÁRIO!!!
 
+function editar(element) {
+    var modal_editar = document.getElementById('modal_editar')
+    modal_editar.style.display = 'flex'
+    fundoblur.style.display = 'block'
 
+    fundoblur.addEventListener('click', (e)=> {
+        e.preventDefault()
+        e.stopPropagation()
+        modal_editar.style.display = 'none'
+        fundoblur.style.display = 'none'
+    }) 
+}
+
+function certeza(element) {
+    fundoblur.style.display = "block";
+    fundoblur.classList.add('abrir');
+    var modal = document.getElementById('modal_apagar_comentario')
+    modal.style.display = "block";
+
+    fundoblur.addEventListener('click', (e) => {
+        if (e.target === fundoblur) {
+            fundoblur.style.display = "none";
+            modal.style.display = "none";
+        }
+    });
+
+    document.getElementById('nao_c').addEventListener('click',(e)=>{
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+    })
+
+    document.getElementById('sim_c').addEventListener('click',(e)=>{
+        e.preventDefault()
+        fundoblur.style.display = "none";
+        modal.style.display = "none";
+        apagarComentario(element)
+    })
+
+}
+
+function apagarComentario() {
+    const comentarioId = document.querySelector('.deletar_div').dataset.comentarioId; // Adicione o id do comentário ao elemento
+
+    fetch(`/deletar/${comentarioId}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Comentário deletado com sucesso!');
+            location.reload();
+            // Opcional: Remover o comentário da lista de comentários no DOM
+            document.getElementById(`comentario-${comentarioId}`).remove();
+        
+        } else {
+            alert('Erro ao deletar o comentário.');
+        }
+    })
+}
 
 
