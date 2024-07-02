@@ -431,7 +431,7 @@ def add_video(request): #ajax function
     print(f"link: {link}; nome:{nome_link} video")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de videos
-        if not Video.objects.filter(link=link).exists():
+        if not Video.objects.filter(link=link,turma=turma).exists() :
             print("oi")
             video = Video(
                 turma=turma,
@@ -504,7 +504,7 @@ def add_resumo(request): #ajax function
     print(f"link: {link}; nome:{nome_link} resumo")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com':
         #filtro de resumo
-        if not Resumo.objects.filter(link=link).exists():
+        if not Resumo.objects.filter(link=link, turma=turma).exists():
             print("oi")
             resumo = Resumo(
                 turma=turma,
@@ -563,7 +563,7 @@ def add_atividade(request):
     print(f"link: {link}; nome:{nome_link} atividade")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de atividade
-        if not Atividade.objects.filter(link=link).exists():
+        if not Atividade.objects.filter(link=link,turma=turma).exists():
             print("oi")
             atividade = Atividade(
                 turma=turma,
