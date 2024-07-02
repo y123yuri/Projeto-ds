@@ -646,7 +646,7 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
-        if user not in obj_prof.aprovacoes.all() and lista[3]:
+        if user not in obj_prof.aprovacoes.all():
             if joinha == 1 :
                 obj_prof.aprovacoes.add(user)
 
