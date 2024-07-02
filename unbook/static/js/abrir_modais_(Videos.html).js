@@ -182,7 +182,7 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
       targetIcon.style.color = "#E95959";
     }
   });
-
+});
 // curtir links
 function curtir(id, id_elemento) {
   console.log(id_elemento);
