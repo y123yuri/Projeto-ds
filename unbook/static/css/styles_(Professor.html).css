@@ -436,7 +436,6 @@ ul {
 
   .boxes {
     position: relative;
-    top: 1em;
     display: flex;
     flex-direction: column;
   }
@@ -745,6 +744,7 @@ ul {
     text-align: center;
     justify-items: center;
     overflow-y: auto;
+    overflow-x:hidden;
   }
 
   #scroll_materias::-webkit-scrollbar {

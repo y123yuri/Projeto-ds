@@ -55,7 +55,6 @@
         <div id="div_1_1_modal">
           <h2 id="CampoFaladoModal2">Título</h2>
           <input class="inputs" id="queLinkéEsse" type="text" placeholder="Vídeo sobre pipi popopo" />
-    |
           <h2 id="CampoFaladoModal2">Tipo de arquivo</h2>
           
           <button id="selec"> Selecionar </button>
@@ -109,33 +108,37 @@
 
         <div id="posta_link">
           {% for atividade in atividades %}
-            <div id="atividades" class="arquivos" onclick="https://{{ atividade.link }}">
+          <div class="videos arquivos , ativ" data-link="{{ atividade.link }}">
               <div class="image">
-                <i style="font-size: 3em;" class="bi bi-pencil-square"></i>
+                  <i class="bi bi-pencil-square"></i>
               </div>
-
+  
               <div class="div_space">
-                <div class="usuarios">
-                  <h2>@{{ atividade.autor }}</h2>
-                </div>
-
-                <div class="text_arquivos">
-                  <h3 class="title">Título: " {{ atividade.titulo }} "</h3>
-
-                  <div class="link">
-                    <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link:</h4>
-                    <a id="link" target="_blank" href="https://{{ atividade.link }}">{{ atividade.link }}</a>
+                  <div class="usuarios">
+                      <h3 class="title">Título: " {{ atividade.titulo }} "</h3>
                   </div>
-
-                  <div class="like">
-                    <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{ atividade.hora_publicacao }}</h4>
-
-                    {% comment %} <button id="heart{{ forloop.counter0 }}" class="heart" type="button"><i class="bi bi-heart-fill"></i></button>
-                    <h4 style="font-weight: 400; margin-left: 1em;" id="cont_link{{ forloop.counter0 }}"></h4> {% endcomment %}
+  
+                  <div class="text_arquivos">
+                      <div class="link">
+                          <h4 style="font-weight: 500; margin-right: 1em">Clique para acessar o link: </h4>
+                          <a class="abre_link" target="_blank" href="https://{{ atividade.link }}">{{ atividade.link }}</a>
+                      </div>
+                      <div class="like">
+                          <h4 style="font-weight: 400; margin-right: 1em;">Horário da publicação: {{ atividade.hora_publicacao }}</h4>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
+  
+              <div class="buttons">
+                  <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p>
+                  
+                  <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
+                  class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
+                  <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
+                  onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
+                  <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
+              </div>
+          </div>
           {% endfor %}
         </div>
       </div>

@@ -2814,7 +2814,6 @@ table caption {
   .img_img {
     width: fit-content;
     height: 5em;
-    object-fit: cover;
     border-radius: 100%;
   }
   

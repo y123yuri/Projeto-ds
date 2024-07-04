@@ -60,7 +60,7 @@
         <div id="div_1_1_modal">
           <h2 id="CampoFaladoModal2">Título</h2>
           <input class="inputs" id="queLinkéEsse" type="text" placeholder="Vídeo sobre (ex: Limites)" />
-    |
+    
           <h2 id="CampoFaladoModal2">Tipo de arquivo</h2>
           
           <button id="selec"> Selecionar </button>
@@ -84,7 +84,7 @@
 
       <div id="buttones">
         <div class="btn" id="cancelar" onclick="fechar_modal()">Cancelar</div>
-        <div class="btn" id="enviar" onclick="enviar()">Fazer upload</div>
+        <div class="btn" id="enviar" onclick="enviar()">Upload</div>
       </div>
     </div>
 
@@ -114,7 +114,7 @@
         {% for video in videos %}
         <div class="videos arquivos , vid" data-link="{{ video.link }}">
             <div class="image">
-                <i style="font-size: 3em;" class="bi bi-person-video2"></i>
+                <i class="bi bi-person-video2"></i>
             </div>
 
             <div class="div_space">
@@ -128,13 +128,13 @@
                         <a class="abre_link" target="_blank" href="https://{{ video.link }}">{{ video.link }}</a>
                     </div>
                     <div class="like">
-                        <h4 style="font-size: 1em; font-weight: 400; margin-right: 1em;">Horário da publicação: {{ video.hora_publicacao }}</h4>
+                        <h4 style="font-weight: 400; margin-right: 1em;">Horário da publicação: {{ video.hora_publicacao }}</h4>
                     </div>
                 </div>
             </div>
 
             <div class="buttons">
-                <p id="quant_likes{{ forloop.counter0 }}" style="font-size: 20px"></p>
+                <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p>
                 
                 <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
                 class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
