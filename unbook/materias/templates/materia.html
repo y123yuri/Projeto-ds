@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c36a1">
     <title>Matéria</title>
 
     <link
@@ -323,7 +324,7 @@
               </div>
 
               <div id="stars">
-                <h4 style="position: absolute; bottom: 7em; left: 2em">
+                <h4 style="left: 2em">
                   Fácil
                 </h4>
                 <fieldset class="rating_modal" id="Dificuldade">
@@ -412,7 +413,7 @@
                   <h3 id="notas_Dificuldade">0 de 5</h3>
                   <!-- SERÁ EXIBIDO O TANTO DE ESTRELAS PINTADAS AQUI -->
                 </fieldset>
-                <h4 style="position: absolute; bottom: 7em; right: 2em">
+                <h4 style="right: 2em">
                   Dificil
                 </h4>
               </div>
@@ -1032,11 +1033,11 @@
                     </div>
 
                     <div class="perfil_div_1">
-                      <h1>@{{ comentario.autor.username }}</h1>
+                      <h1 class="usuarios_perfil">@{{ comentario.autor.username }}</h1>
                       {% if comentario.autor.perfil.curso == None %}
-                      <h3 style="font-size: 1.5em">Não declarado</h3>
+                      <h3 class="descricao_perfil">Não declarado</h3>
                       {% else %}
-                      <h3 style="font-size: 1.5em">
+                      <h3 class="descricao_perfil">
                         {{ comentario.autor.perfil.curso }}
                       </h3>
                       {% endif %}
@@ -1108,7 +1109,7 @@
 
 
     <div id="modal_editar">
-      <h1> Editar Comentário</h1>
+      <h1 class="title_e"> Editar Comentário</h1>
       <textarea class="editar_comentario"></textarea>
       <button class="button_editar" id="submit_editar">Editar</button>
     </div>

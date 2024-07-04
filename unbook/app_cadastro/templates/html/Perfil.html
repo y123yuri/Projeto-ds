@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c36a1">
     <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
     <title>Perfil</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
@@ -127,7 +128,7 @@
 
     <div id="boxes">
       <div id="modal_imgs">
-        <div style="margin: auto; display: flex; flex-direction: row;">
+        <div class="imgs_modal">
           <img  onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="1" src="{% static "image/profiles/1.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="2" src="{% static "image/profiles/2.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="3" src="{% static "image/profiles/3.jpeg" %}"/>
@@ -135,7 +136,7 @@
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="5" src="{% static "image/profiles/5.jpeg" %}"/>
         </div>
         
-        <div style="margin: auto; display: flex; flex-direction: row;">
+        <div class="imgs_modal">
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="6" src="{% static "image/profiles/6.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="7" src="{% static "image/profiles/7.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="8" src="{% static "image/profiles/8.jpeg" %}"/>
@@ -206,15 +207,12 @@
 
               {% if user.is_superuser %}
               <span style="color:gold; text-shadow: 0 0 1px gold;" id="user">{{ user.first_name }}</span>
-              <i style="color:gold; text-shadow: 0 0 2px gold;" class="fas fa-crown"></i>
+              {% comment %} <i style="color:gold; text-shadow: 0 0 2px gold;" class="fas fa-crown"></i> {% endcomment %}
               {% else %}
               <span id="user">{{ user.first_name }}</span>
               {% endif %}
               
             </h1>
-            {% if user.is_authenticated %}
-              <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
-            {% endif %}
           </div>
           <hr style="margin: 0 2em" />
           <div id="space_2_1_Profile">
@@ -245,6 +243,9 @@
           </div>
           <div id="space_2_3_Profile">
             <h2 class="botoes" id="atualizar">Atualizar informações</h2>
+            {% if user.is_authenticated %}
+              <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
           </div>
         </div>
 
@@ -258,7 +259,7 @@
           <div id="separa_confs">
 
             <div id="space_2_1_Config">
-                <h1> Alterar Senha </h1>  
+                <h1 class="alterar"> Alterar Senha </h1>  
                 <hr style="margin: 0.5em 1em 0.5em 0" />
 
               <form method="POST" action="{% url 'trocar_senha' %}">  
@@ -286,7 +287,7 @@
 
             <div id="space_2_2_Config">
 
-              <h1> Alterar Username </h1> 
+              <h1  class="alterar"> Alterar Username </h1> 
               <hr style="margin: 0.5em 1em 0.5em 0" />
 
               <form id="usernameForm" >  

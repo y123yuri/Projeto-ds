@@ -164,6 +164,12 @@ a .UnBook_logo_mini {
   margin: auto;
 }
 
+.imgs_modal {
+  margin: auto; 
+  display: flex;
+  flex-direction: row;
+}
+
 @keyframes aparecer_modal_img {
   0% {
     width: 0em;
@@ -988,6 +994,17 @@ a .UnBook_logo_mini {
 }
 
 @media screen and (max-width: 767px) {
+  html {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #0c36a1, #008940);
+    width: 100%;
+    background-attachment: fixed;
+  
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+
   a .UnBook_logo_mini {
     display: block;
 
@@ -997,7 +1014,7 @@ a .UnBook_logo_mini {
     position: relative;
 
     margin-left: 10px;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     top: 20px;
   }
 
@@ -1048,26 +1065,31 @@ a .UnBook_logo_mini {
     display: none;
     flex-direction: row;
     top: 0.5em;
-    left: 2em;
-    width: 80em;
-    height: 15em;
+    width: 90%;
+    height: 40em;
+    margin: 0 auto;
     z-index: 20;
     background-color: whitesmoke;
     box-shadow: -10px 10px 1px #5b5b5bc8;
-    border-radius: 150px;
+    border-radius: 75px;
     transition: all 0.3s ease;
-    animation: aparecer_modal_img 0.3s ease-in;
+    animation: aparecer_modal_img2 0.3s ease-in;
     padding: 0.5em;
-    margin: 1em;
   }
 
-  @keyframes aparecer_modal_img {
+  .imgs_modal {
+    margin: auto; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes aparecer_modal_img2 {
     0% {
-      width: 0em;
+      height: 0em;
     }
 
     100% {
-      width: 80em;
+      height: 80em;
     }
   }
 
@@ -1082,11 +1104,29 @@ a .UnBook_logo_mini {
     }
   }
 
+  #visib_modal {
+    display: none;
+    position: absolute;
+    right: 20em;
+    top: -1em;
+  
+    width: 14em;
+    height: auto;
+    padding: 0.5em;
+    border-radius: 15px;
+    background-color: #d9d9d9f6;
+    z-index: 4;
+  }
+  
+  #visib_modal h4 {
+    font-size: 1em;
+  }
+
   .balls {
     position: relative;
     display: block;
-    width: 13em;
-    height: 13em;
+    width: 6.5em;
+    height: 6.5em;
     margin: 0.5em 1em;
 
     text-align: center;
@@ -1127,7 +1167,8 @@ a .UnBook_logo_mini {
   #CampoEscrito_box1 {
     position: relative;
     width: 100%;
-    height: 15%;
+    height: auto;
+    padding: 0.5em;
     top: 0.5em;
   }
 
@@ -1228,7 +1269,7 @@ a .UnBook_logo_mini {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 8em;
+    height: fit-content;
   }
 
   .CampoEscrito_profile {
@@ -1281,10 +1322,6 @@ a .UnBook_logo_mini {
   }
   .botoes:active {
     transform: scale(1);
-  }
-  .botoes#atualizar {
-    margin-top: 10em;
-    padding-top: 2%;
   }
 
   #space_2_Profile {
@@ -1344,16 +1381,28 @@ a .UnBook_logo_mini {
 
   #space_2_3_Profile {
     display: flex;
-    position: relative;
-    justify-content: flex-end;
+    position: absolute;
+    flex-direction: column;
+    width: fit-content;
+    height: auto;
+    bottom: 1em;
     padding: 1.5em 2em;
     margin-left: 0em;
+    justify-content: space-between;
+  }
+  .botoes#atualizar {
+    height: fit-content;
+    position: relative;
+    margin: auto;
+    font-size: 1.3em;
+    bottom: 0.5em;
   }
   .botoes#Logout {
-    margin-top: 22em;
-    margin-left: 1.75em;
+    margin: auto;
     width: 11em;
-    font-weight: 500;
+    height: auto;
+    font-weight: 700;
+    position: relative;
   }
 
   .abrir {
@@ -1819,9 +1868,8 @@ a .UnBook_logo_mini {
   .back_button:active {
     transform: scale(0.95);
   }
-}
-
-#box_modal_4 .espaco_buttons {
+  
+  #box_modal_4 .espaco_buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1833,28 +1881,111 @@ a .UnBook_logo_mini {
   text-align: center;
 }
 
-#bolas {
-  width: 70%;
+#privs_button {
+  width: fit-content;
+  padding: 1em;
   height: auto;
-  margin: 1em auto;
-  background-color: #d9d9d9;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 1em auto;
   flex-wrap: wrap;
 }
 
-.img {
-  width: 2em;
-  height: 2em;
-  background: whitesmoke;
-  border: solid 1px black;
-  margin: 0.5em;
+#public {
+  margin-top: 10px;
+}
 
+
+#separa_confs {
+  display: flex;
+  flex-direction: column;
+}
+
+#Config {
+  background-color: #f5f5f5;
+  width: 97.5%;
+  height: 45em;
+  margin: auto;
+  border-radius: 50px;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+  display: none;
+  flex-direction: column;
+
+  z-index: 2;
+}
+
+#space_1_config {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 7em;
+}
+
+.CampoEscrito_Config {
+  position: relative;
+  font-size: 2em;
+  padding: 40px 5px 5px 40px;
+}
+
+.CampoFalado_Config {
+  position: relative;
+  margin-top: 0.5em;
+  font-size: 1.25em;
+  color: black;
+}
+
+#space_2_1_Config {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 2em;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 1em;
+}
+
+#space_2_2_Config {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1.5em;
+  width: fit-content;
+  height: 26em;
+}
+
+#submit1,
+#submit2 {
+  position: relative;
+  
+  width: auto;
+  height: 2em;
+  
+  border: none;
+  border-radius: 20px;
+  background-color: #0b4c9c;
+
+  color: white;
+  font-size: 1.25em;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  
   transition: all 0.3s ease;
 }
 
-.img:hover {
-  filter: brightness(80%);
-  border: solid 2px whitesmoke;
+#submit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0b4c8c;
+}
+
+#submit:active {
+  transform: scale(0.9);
+}
+
+.alterar{
+  font-size: 1.5em;
+}
 }
