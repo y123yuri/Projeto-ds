@@ -128,7 +128,8 @@ a#FAC , a#qmsomos {
     display: block;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 
-    background: var(--fundobranco, linear-gradient(0deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0.31) 100%), linear-gradient(230deg, rgba(0, 0, 0, 0.00) 22.37%, rgba(0, 194, 255, 0.11) 62.11%), linear-gradient(125deg, rgba(179, 40, 244, 0.03) 61.39%, rgba(255, 0, 199, 0.12) 79.2%), #F8F8F8);
+    /* background: var(--fundobranco, linear-gradient(0deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0.31) 100%), linear-gradient(230deg, rgba(0, 0, 0, 0.00) 22.37%, rgba(0, 194, 255, 0.11) 62.11%), linear-gradient(125deg, rgba(179, 40, 244, 0.03) 61.39%, rgba(255, 0, 199, 0.12) 79.2%), #F8F8F8); */
+    background-color: whitesmoke;
 
     z-index: -1;
     margin-top: -1em;
@@ -784,7 +785,8 @@ div .janela_pesquisa {
         display: block;
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     
-        background: var(--fundobranco, linear-gradient(0deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0.31) 100%), linear-gradient(230deg, rgba(0, 0, 0, 0.00) 22.37%, rgba(0, 194, 255, 0.11) 62.11%), linear-gradient(125deg, rgba(179, 40, 244, 0.03) 61.39%, rgba(255, 0, 199, 0.12) 79.2%), #F8F8F8);
+        /* background: var(--fundobranco, linear-gradient(0deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0.31) 100%), linear-gradient(230deg, rgba(0, 0, 0, 0.00) 22.37%, rgba(0, 194, 255, 0.11) 62.11%), linear-gradient(125deg, rgba(179, 40, 244, 0.03) 61.39%, rgba(255, 0, 199, 0.12) 79.2%), #F8F8F8); */
+        background-color: #f5f5f5;
         z-index: -1;
         margin-top: -1em;
     }
@@ -937,7 +939,6 @@ nav {
 
     display: block;
     border-radius: 50%;
-    padding-top: 0.5em;
 
 }
     

@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f5f5">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f5f5f5">
     <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
     <title>UnBook</title>
 
@@ -61,7 +63,6 @@
                     <div id="user"><img class="user" src="{% static "image/profiles/10.jpeg" %}" alt="user"></div>
                 {% else %}
                     {% if user.is_superuser %}
-                        <i style="color:gold; text-shadow: 0 0 2px gold;" class="fas fa-crown"></i>
                         <div id="user"><img style="border: 5px solid gold" class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>
                     {% else %}
                         <div id="user"><img class="user" src="{% static 'image/profiles/' %}{{ perfil.foto }}.jpeg"></div>

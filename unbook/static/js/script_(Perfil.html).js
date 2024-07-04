@@ -92,8 +92,7 @@ lampinha.addEventListener('mouseover', (e)=> {
 });
 
 lampinha.addEventListener('mouseout', (e)=> {
-        modal_visib.style.display = "none"
-        e.stopPropagation()     
+        modal_visib.style.display = "none"    
 });   
 
 
