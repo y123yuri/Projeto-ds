@@ -768,7 +768,20 @@ def comentarios(request):
     comentario_corrigido = ''.join(comentario_corrigido) #remove da lista pro django conseguir ler
 
     if len(comentario_corrigido)>2 and len(comentario_corrigido)<450: #checa se o tamanho bate com as especificações
-            novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido) #manda o comentario pro banco de dados
+        if Comentario.objects.filter(turma=obj_turma, autor=user).exists():
+            lista_numero=[]
+            nova_lista=[]
+            for numero in Comentario.objects.filter(turma=obj_turma, autor=user):
+                numero= numero.indentificacao
+                lista_numero.append(numero)
+            nova_lista = sorted(lista_numero, reverse=True)
+            comentario_id = int(nova_lista[0]) + 1
+            novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido, indentificacao=comentario_id) #manda o comentario pro banco de dados
+            novo_comentario.save() #Fim :D
+            return HttpResponse("ok")
+            
+        else:
+            novo_comentario = Comentario(autor=user, hora_publicacao=timezone.now(), turma=obj_turma, texto=comentario_corrigido, indentificacao=1) #manda o comentario pro banco de dados
             novo_comentario.save() #Fim :D
             return HttpResponse("ok")
     else:
@@ -782,6 +795,7 @@ def deletar_comentario(request, comentario_id):
     try:
         comentario = Comentario.objects.get(id=comentario_id, autor=request.user)
         comentario_text = str(comentario)
+        print(comentario)
         comentario.delete()
         comentario_salvar = comentario_text.split(' ')
         models_delete = Comentario_deletado(autor=comentario_salvar[4], hora=comentario_salvar[3], texto=comentario_salvar[6], dia=comentario_salvar[2], dia_deletado= timezone.now())

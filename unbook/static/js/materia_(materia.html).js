@@ -643,8 +643,12 @@ function certeza(element) {
 
 }
 
-function apagarComentario() {
-    const comentarioId = document.querySelector('.deletar_div').dataset.comentarioId; // Adicione o id do comentário ao elemento
+function apagarComentario(element) {
+    const comentarioId = element.dataset.comentarioId;
+    const identificacao = element.dataset.identificacao; // Certifique-se de que isso está correto
+
+    // Adicione logs para depuração
+    console.log(`Tentando deletar comentarioId: ${comentarioId}, identificacao: ${identificacao}`);
 
     fetch(`/deletar/${comentarioId}/`, {
         method: 'DELETE',
@@ -659,11 +663,11 @@ function apagarComentario() {
             location.reload();
             // Opcional: Remover o comentário da lista de comentários no DOM
             document.getElementById(`comentario-${comentarioId}`).remove();
-        
         } else {
             alert('Erro ao deletar o comentário.');
         }
-    })
+    });
 }
+
 
 

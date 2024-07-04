@@ -68,9 +68,10 @@ class Comentario(models.Model):
     turma = models.ForeignKey("Turma", on_delete=models.CASCADE, default=None)
     ativo = models.BooleanField(default=True)
     denuncia = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="denuncia_comentario")
+    indentificacao = models.IntegerField(default=0)
     
     def __str__(self):
-        return f'{self.ativo} : {self.hora_publicacao}: {self.autor} : {self.texto}'
+        return f'{self.id}: {self.indentificacao} : {self.ativo} : {self.hora_publicacao}: {self.autor} : {self.texto}'
 
 class Comentario_deletado(models.Model):
     autor = models.CharField(max_length=50)
