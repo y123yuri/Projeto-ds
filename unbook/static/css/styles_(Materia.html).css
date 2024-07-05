@@ -1669,7 +1669,7 @@ table caption {
     text-align: center;
     justify-content: center;
     padding: 0em 1em 2em 1em;
-    width: 95%;
+    width: 90%;
     height: 30em;
     background-color: #cde4df;
     border-radius: 25px;
@@ -2452,7 +2452,7 @@ table caption {
     top: 1em;
     height: 5em;
     padding: 0.5em;
-    font-size: 1.25em;
+    font-size: 1em;
     box-shadow: 0 -2.5px 1px rgba(0, 0, 0, 0.164);
     border-radius: 15px;
     border: none;
@@ -2501,7 +2501,7 @@ table caption {
     text-align: center;
     justify-content: center;
     padding: 1em 1em 2em 1em;
-    width: 40em;
+    width: 90%;
     height: 40em;
     background-color: #cde4df;
     border-radius: 25px;
@@ -2604,13 +2604,7 @@ table caption {
   }
 
   .CampoFalado4_modal_denuncia {
-    font-size: 1em;
-    margin: 0 2em;
-
-    width: auto;
-    height: fit-content;
-    padding: 0.5em;
-    color: #50545c;
+    display: none;
   }
 
   #why {
@@ -2624,10 +2618,11 @@ table caption {
     background-color: #b1c5c0;
   }
 
-  #submit {
+  #submit_denuncia {
     display: block;
-    font-size: 1.5em;
+    font-size: 1.75em;
     background-color: #0b4c8c;
+    border: none;
     border-radius: 15px;
     color: whitesmoke;
     width: 7em;
@@ -2635,11 +2630,11 @@ table caption {
     text-align: center;
     z-index: 10;
     padding: 0.5em 1em;
-
+  
     position: absolute;
     bottom: 1em;
     right: 1em;
-
+  
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 15px;
@@ -2671,7 +2666,7 @@ table caption {
     position: absolute;
     right: 1em;
     border-radius: 15px;
-    margin-top: 2em;
+    margin-top: 1.5em;
     z-index: 2;
   }
   
@@ -2813,8 +2808,8 @@ table caption {
   }
   
   .img_img {
-    width: fit-content;
-    height: 5em;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
   }
   
