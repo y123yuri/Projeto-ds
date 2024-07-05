@@ -82,7 +82,15 @@ class Comentario_deletado(models.Model):
 
     def __str__(self):
         return f' {self.autor} : {self.texto}'
-    
+
+class Comentario_editado(models.Model):
+    autor = models.CharField(max_length=50)
+    texto_antigo = models.CharField(max_length=450)
+    texto_novo = models.CharField(max_length=450)
+    dia_editado = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f' {self.autor} : {self.texto}'
 
 class Turma(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)

@@ -612,6 +612,11 @@ function editar(element) {
         e.stopPropagation()
         modal_editar.style.display = 'none'
         fundoblur.style.display = 'none'
+
+        var textarea = document.querySelector('.editar_comentario')
+        textarea.textContent = element.textContent;
+
+
     }) 
 }
 
