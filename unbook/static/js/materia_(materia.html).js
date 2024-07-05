@@ -564,8 +564,8 @@ document.querySelectorAll('tbody th').forEach(item => {
                 h2.textContent = itemID;
 
                 // Calcula a posição do modal com base nas coordenadas do elemento
-                const modalTop = itemRect.top + window.scrollY - 1080;
-                const modalLeft = itemRect.left + window.scrollX - 10;
+                const modalTop = itemRect.bottom + window.scrollY -1280;
+                const modalLeft = itemRect.left + window.scrollX;
 
                 // Define a posição do modal
                 modal.style.top = `${modalTop}px`;
