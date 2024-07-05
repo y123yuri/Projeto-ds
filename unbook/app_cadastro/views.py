@@ -148,13 +148,13 @@ def envio_novo(request):
 
     
 def login_func(request):
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated or not request.user.is_active:
         context = {}
         form = LoginForm()
         context["form"] = form
         
         return render(request, "html/Login.html", context)
-    elif request.user.is_authenticated:
+    elif request.user.is_authenticated or request.user.is_active:
         context = {}
         form = PerfilForm()
         context["form"] = form

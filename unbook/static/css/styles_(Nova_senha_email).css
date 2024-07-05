@@ -190,15 +190,15 @@ ul {
   }
 
   .login {
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 40px 5px 5px 40px;
     margin-left: -0.5em;
   }
 
   .campoFalado1 {
     font-size: 1em;
-    padding-top: 15px;
-
+    top: -2em;
+    position: relative;
     margin: 0 2em;
     display: block;
     text-align: center;

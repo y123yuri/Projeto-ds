@@ -152,7 +152,7 @@ ul {
   display: none;
 }
 
-@media screen and (max-width:828px){
+@media screen and (max-width:767px){
   .UnBook_logo_mini{
     display: inline;
     
