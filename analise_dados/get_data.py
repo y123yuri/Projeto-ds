@@ -15,6 +15,7 @@ print(f'Coletamos  {len(professor_df)} professores e {len(materias_df)} materias
 print('--'*25)
 print(f'Tivemos {len(users_df)} cadastros feitos, {len(comentario_df)} comentários feitos. Tivemos {turmas_df["numero_avaliacoes"].sum()} avaliaçõesde matérias')
 print("-="*25)
+print(f"taxa de {(len(comentario_df)/len(users_df)):.2f} comentário por usuário. 1.79 de avaliações por usuário")
 print(comentario_df.columns)
 texto = ''
 for e in comentario_df.iterrows():
@@ -22,8 +23,8 @@ for e in comentario_df.iterrows():
 
 texto = texto.replace(" que", " ")
 
-with open("texto_comentarios.txt", "w", encoding="utf-8") as fp:
-    fp.write(texto)
+#with open("texto_comentarios.txt", "w", encoding="utf-8") as fp:
+#    fp.write(texto)
   
 #print(turmas_df.columns)
 
