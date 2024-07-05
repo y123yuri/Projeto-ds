@@ -134,7 +134,7 @@
             </div>
 
             <div class="buttons">
-                <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p>
+                {% comment %} <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> {% endcomment %}
                 
                 <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
                 class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>

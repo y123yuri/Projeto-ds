@@ -124,6 +124,15 @@ ul {
 }
 
 @media screen and (max-width:828px){
+    html {
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to bottom, #0c36a1, #008940);
+        width: 100%;
+      
+        height: 100vh;
+        scroll-behavior: smooth;
+      }
     .UnBook_logo_mini{
       display: inline;
       

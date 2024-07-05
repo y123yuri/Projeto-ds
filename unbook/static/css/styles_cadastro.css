@@ -283,6 +283,16 @@ main {
 }
 
 @media screen and (max-width: 767px) {
+  html {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #0c36a1, #008940);
+    width: 100%;
+    background-attachment: fixed;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+  
   .UnBook_logo_mini {
     display: inline;
 
@@ -440,11 +450,11 @@ main {
 }
 
 #ler_termos h1 {
-  font-size: 1em;
+  font-size: 1.25em;
 }
 #ler_termos article {
   width: 100%;
-  height: 20em;
+  height: 15em;
 
   position: relative;
   top: 1em;
@@ -474,5 +484,29 @@ main {
 }
 #ler_termos button:active {
   transform: scale(0.95);
+}
+
+#check_termos {
+  width: 1.25em;
+  height: 1.25em;
+  position: relative;
+  left: -1em
+}
+
+
+#termos_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+  height: 3em;
+}
+
+#termos_box h2 {
+  font-size: 0.85em;
+  width: auto;
+  width:15em;
 }
 }

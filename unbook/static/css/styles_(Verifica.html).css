@@ -211,7 +211,7 @@ i {
     html {
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(135deg, #0C36A1, #008940);
+        background-image: linear-gradient(to bottom, #0C36A1, #008940);
         width: 100%;
         background-attachment: fixed;
 

@@ -148,7 +148,7 @@ def envio_novo(request):
 
     
 def login_func(request):
-    if not request.user.is_authenticated or not request.user.is_active:
+    if not request.user.is_authenticated:
         context = {}
         form = LoginForm()
         context["form"] = form
@@ -169,7 +169,7 @@ def login_func(request):
         }
 
         return render(request, "html/Perfil.html", context) 
-
+    
 
 
 
@@ -186,10 +186,14 @@ def logado(request):
         # print(User.objects.get(email=f'{email_variavel}'))
         
         try:
-            v1 = User.objects.get(email=f'{email_variavel}').username
+            user = User.objects.get(email=f'{email_variavel}')
+            if not user.is_active:
+                print("nao está ativo")
+                return render(request, "html/VerificaEmail.html")
+            v1 = user.username
             user = authenticate(username=f'{v1}', password=f'{senha_variavel}')
             print(v1)
-            if user:
+            if user:  
                 login(request, user)
                 return redirect('login_func')
             else:
