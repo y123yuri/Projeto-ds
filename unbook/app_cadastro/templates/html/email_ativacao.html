@@ -1,4 +1,74 @@
 <!-- myapp/templates/activation_email.html -->
-Olá
-Clique nesse link para ativar sua conta:
-<p><a href="{{ link_ativacao }}"></a></p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
+    <title>Pagina de login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+<link rel="stylesheet" href="{% static "css/styles_(Login.html).css" %}"> <!--LINK PARA O CSS DA PAGINA -->
+
+<style>
+    #button {
+        display: block;
+        width: 15rem;
+        height: auto;
+      
+        border: none;
+        border-radius: 20px;
+        background-color: #0b4c9c;
+      
+        margin-top: 2em;
+        margin-left: auto;
+        margin-right: auto;
+      
+        color: white;
+        font-size: 2em;
+        font-size: 700;
+      
+        cursor: pointer;
+        text-align: center;
+        padding: 0.5em 2em;
+        text-decoration: none;
+      
+        transition: all 0.3s ease;
+      }
+      
+      #button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #0b4c8c;
+      }
+      
+      .button:active {
+        transform: scale(0.9);
+      }
+
+</style>
+
+</head>
+
+<body>
+
+    <a><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
+    <!--LINK PARA VOLTAR PARA O UNBOOK-->
+
+    <main>
+        Olá 
+        <br>
+        Aqui está seu link de ativação!
+        <br><br>
+        Clique no botão para ativar sua conta!
+        <br>
+        <a id="button" href="{{ link_ativacao }}"> Ativar Conta </a>
+
+    </main>
+
+</body>
+
+</html>

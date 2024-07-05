@@ -604,21 +604,49 @@ document.querySelectorAll('.button').forEach(button => {
 
 function editar(element) {
     var modal_editar = document.getElementById('modal_editar')
+    var comentario_text = document.querySelector('.comentarios')
+    const comentarioId = element.dataset.comentarioId;
+    texto_antigo = document.getElementById(`texto${comentarioId}`).textContent.trim()
+    document.getElementById("texto_edita").value = texto_antigo.substr(0, texto_antigo.indexOf('        '));
+    
     modal_editar.style.display = 'flex'
     fundoblur.style.display = 'block'
+    
+
 
     fundoblur.addEventListener('click', (e)=> {
         e.preventDefault()
         e.stopPropagation()
         modal_editar.style.display = 'none'
         fundoblur.style.display = 'none'
+    }) //fechar modal
 
-        var textarea = document.querySelector('.editar_comentario')
-        textarea.textContent = element.textContent;
+    
 
 
-    }) 
+
+    document.getElementById('submit_editar').addEventListener('click', ()=> {
+        novo_texto = document.getElementById("texto_edita").value
+        console.log(novo_texto)
+        $.ajax({
+            type: "POST",
+            url: `../../../editar-comentario/${comentarioId}/`,
+            data: {
+                csrfmiddlewaretoken: csrf_token,
+                texto_novo: novo_texto,
+                
+            },
+            success: function (response) {
+                console.log(response)
+                location.reload();
+            }
+        })
+    });
+    
 }
+
+
+
 
 function certeza(element) {
     fundoblur.style.display = "block";

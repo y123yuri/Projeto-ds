@@ -183,34 +183,27 @@ def materia(request, codigo, nome):
         
         # print(obj_turma.turno)
         for turno in lista_turno: #processa cada turno separado
-            print(turno, 'turno inteiro')
             #tamanho do turno
             for i in range(len(turno)): # ler cada digito do turno
                 if not turno[i].isdigit():
                     index = i  ### manha tarde ou noite, posicao onde esta a letra
-                    print(index, 'index')
                     arg = index + 1
-                    print(arg, 'arg')
             if ("(" not in turno) and (")" not in turno) and ("/" not in turno) and '-' not in turno:
 #
                 for n in range(index): ###  pegar dia da semana
                     arg = index + 1
-                    print(n, 'passou')
                     tamanho = len(turno)
-                    print(tamanho, 'tamanho')
                     if tamanho >= 4: #horaio diferente e dia diferent
                         for i in range(len(turno[index:])+1):
                             try:
                                 dia = turno[n]+turno[index]+turno[arg]
                                 arg += 1
-                                print(dia, 'dia if', i)
                                 dias.append(dia)
                             except IndexError:
-                                print('IndexError')
+                                print(' ')
                                 
                     else: #mesmo horario porem dias diferentes
                         dia = turno[n]+turno[index:]
-                        print(dia, 'dia else')
                         dias.append(dia)
             
             else: #para estagios com filtro fodido
@@ -680,21 +673,28 @@ def comentarios(request):
     #a
 def editar_comentario(request, comentario_id):
     comentario = get_object_or_404(Comentario, id=comentario_id)
-
+    print(comentario)
+    print(request.method)
     if request.method == 'POST':
+        print('ola mundo')
+        
         texto_novo = request.POST.get('texto_novo')
+        print(texto_novo)
         if texto_novo and texto_novo != comentario.texto:
             Comentario_editado.objects.create(
                 autor=comentario.autor,
                 texto_antigo=comentario.texto,
                 texto_novo=texto_novo,
                 dia_editado=timezone.now().strftime('%Y-%m-%d %H:%M:%S'),
-                indentificacao=comentario.id
+    
             )
             comentario.texto = texto_novo
             comentario.save()
             return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'error'})
+   
+    else:
+        print('entrei aqui')
+        return JsonResponse({'status': 'error'})
 
 
 @require_http_methods(["DELETE"])

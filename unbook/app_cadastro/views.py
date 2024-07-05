@@ -115,7 +115,38 @@ def sucesso(request):
     
     return render(request, "html/VerificaEmail.html")
 
+def nao_recebi(request):
+    context = {}
+    form = Esqueceu_senhaForm()
+    context["form"] = form
+    return render(request, "html/recebiEmailNN.html", context)
 
+def envio_novo(request):
+    if request.method == 'POST':
+        context = {}
+        f = Esqueceu_senhaForm(request.POST)
+        if f.is_valid():
+            context["resposta"] = f.cleaned_data
+            print(context['resposta'])
+            email = context["resposta"]["email"]
+            usuario = User.objects.filter(email=email)
+            if usuario:
+                usuario = usuario[0]
+                if User.objects.filter(email=email).exists() and not usuario.is_active:
+                    send_activation_email(usuario, request)
+                    return redirect('../../') # cadastro/sucesso
+                else:
+                    request.session['erro'] = "usuario já esta ativo"
+                    return redirect('../../../', request) #"cadastro"
+            else:
+                request.session['erro'] = "usuario não existe"
+                return redirect('../../../', request) #"cadastro"
+            
+        return JsonResponse({'success': False, 'error': 'Erro no sistema, 909!!'})
+    else:           
+        return JsonResponse({'success': False, 'error': 'isso não vai acontecer!!'})
+
+    
 def login_func(request):
     if not request.user.is_authenticated:
         context = {}

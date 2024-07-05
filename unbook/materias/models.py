@@ -90,7 +90,7 @@ class Comentario_editado(models.Model):
     dia_editado = models.CharField(max_length=100)
 
     def __str__(self):
-        return f' {self.autor} : {self.texto}'
+        return f' {self.autor} '
 
 class Turma(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)

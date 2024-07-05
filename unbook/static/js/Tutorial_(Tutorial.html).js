@@ -67,7 +67,7 @@ var videos = document.querySelectorAll('.video-container video');
             "Pesquisar por professor",
             "Página professor",
             "Pesquisar por matéria",
-            "Depositar ou acessor arquivos",
+            "Depositar ou acessar arquivos",
             "Avaliações",
             "Calendário",
             "Comentar",

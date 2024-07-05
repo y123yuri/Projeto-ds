@@ -282,7 +282,7 @@ main {
   margin-right: 2em;
 }
 
-@media screen and (max-width: 828px) {
+@media screen and (max-width: 767px) {
   .UnBook_logo_mini {
     display: inline;
 
@@ -297,14 +297,15 @@ main {
 
   .form {
     background-color: whitesmoke;
-    width: auto;
+    width: 95%;
     height: auto;
     border-radius: 50px;
     box-shadow: 0 0 5px whitesmoke;
 
     display: block;
-    margin: 1em;
-    margin-top: 8%;
+    margin: auto;
+    margin-top: 20%;
+    padding: 20px;
   }
   .campoEscrito {
     font-size: 0.75em;
@@ -375,8 +376,14 @@ main {
     padding: 1rem 2rem;
     text-decoration: none;
     transition: all 0.3s ease;
-  }
 
+  }
+  #check_termos {
+    width: 1.25em;
+    height: 1.25em;
+    position: relative;
+    left: 0.5em
+  }
   #submit:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px var(--azul);

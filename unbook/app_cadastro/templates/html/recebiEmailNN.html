@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href= "{% static "image/UnBook_page.ico" %}" type="image/x-icon">
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> <!--LINK PARA O FONT MONSTSERRAT USADO NA PAGINA -->
+
+    <link rel="stylesheet" href="{% static "/css/styles_(Nova_senha_email).css" %}"> <!--LINK PARA O CSS DA PAGINA -->
+
+</head>
+
+<body>
+
+    <a href="/"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a>
+    <!--LINK PARA VOLTAR PARA O UNBOOK-->
+
+    <div id="box" class="box">
+        <form class="form" id="form" action="./nao-recebi/envio/" method="post" name="contact-form">
+            {% csrf_token %}
+
+            <div style="display: flex; flex-direction: row; padding: 40px 40px 40px 40px; justify-content: space-between;">
+                <h1 style="font-size:3em"> Ainda não recebeu? </h1>
+                <a href="../../login"><img style="width:3em; height:3em" src="{% static "image/Arrow_back.png"%}"/></a>
+            </div>
+            
+            
+
+            <h3 class="campoFalado1"> Sentimos muito pelo ocorrido, pedimos por gentileza que informe seu e-mail novamente no campo abaixo.</h3>
+            <h3 class="campoFalado2"> Insira seu e-mail abaixo:</h3>
+
+            <label>
+                {{form.email}} 
+                <span class="spanEmail"> Digite um e-mail válido</span>
+            </label>
+            
+            <input type="submit" id="submit" class="botao_enviar"> <!--BOTAO/LINK PARA ABRIR A FUNÇÃO VERIFICA() QUE VERIFICA AS FUNÇÃO EMAIL-->
+            <div>{{request.session.erro}}</div>
+        </form>
+       
+    </div>
+    <div id="error-message"></div>
+</body>
+
+<script src="{% static "js/pegaEmail_(Nova_senha_email).js" %}"></script>
+
+</html>

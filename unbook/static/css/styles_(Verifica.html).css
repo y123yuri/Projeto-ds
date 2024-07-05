@@ -221,16 +221,16 @@ i {
 
     body {
         font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
+        font-size: 15px;
 
     }
 
     ul {
         background-color: transparent;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 10;
+        left: 10;
+        right: 10;
     }
 
     /* inicio das paginas */
@@ -258,7 +258,7 @@ i {
     .box {
         background-color: whitesmoke;
         width: 80%;
-        height: 24em;
+        height: 32em;
         border-radius: 50px;
         box-shadow: 0 0 5px rgb(255, 255, 255);
 
@@ -268,6 +268,7 @@ i {
 
         position: relative;
         top: 4em;
+        
     }
 
     .login {
@@ -278,7 +279,6 @@ i {
     .campoFalado {
         font-size: 1em;
         padding-top: 15px;
-        padding: 20px 5px 5px 40px;
     }
 
     .campoEscrito {
@@ -286,7 +286,7 @@ i {
         border: none;
         padding: 0.5em 1em;
 
-        width: 80%;
+        width: 90%;
         height: auto;
         background-color: #D9D9D9;
 
@@ -337,7 +337,7 @@ i {
         margin-top: 1em;
         color: #0C36A1;
         font-size: 0.5em;
-        width: 10em;
+        width: 12em;
         height: auto;
     }
 
@@ -357,5 +357,28 @@ i {
         color: #ff0000;
         margin-left: 3em;
         display: none;
+    }
+
+    .icons {
+        width: 40%;
+        height: 10em;
+        font-size: 0.75em;
+        padding: 10px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+    
+    .icons i {
+        position: absolute;
+        transition: opacity 0.2s ease;
+        opacity: 0;
+        left: 5px;
+    }
+    
+    .icons i.visivel {
+        opacity: 1;
     }
 }

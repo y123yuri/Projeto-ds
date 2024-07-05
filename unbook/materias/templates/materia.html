@@ -1098,6 +1098,15 @@
                       </h3>
                       {% endif %}
                     </div>
+
+                    {% if comentario.autor.perfil.semestre == None %}
+                    <h3 class="descricao_perfil">Não declarado</h3>
+                    {% else %}
+                    <h3 class="descricao_perfil">
+                      {{ comentario.autor.perfil.semestre }}
+                    </h3>
+                    {% endif %}
+
                   </div>
 
                   <div class="perfil_2">
@@ -1113,7 +1122,7 @@
                   </div>
                 </div>
 
-                <h3 class="comentarios">
+                <h3 class="comentarios" id="texto{{ comentario.id }}">
                   {{ comentario.texto }} <br />
                   <span style="font-size: 0.75em"
                     >- {{ comentario.hora_publicacao }}</span
@@ -1166,7 +1175,7 @@
 
     <div id="modal_editar">
       <h1 class="title_e"> Editar Comentário</h1>
-      <textarea class="editar_comentario"></textarea>
+      <textarea id="texto_edita" class="editar_comentario" data-comentario-id="{{ comentario.id }}" >{{comentario.texto}}</textarea>
       <button class="button_editar" id="submit_editar">Editar</button>
     </div>
 
