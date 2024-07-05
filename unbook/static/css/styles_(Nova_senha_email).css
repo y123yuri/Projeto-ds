@@ -170,11 +170,14 @@ ul {
     margin-left: 10px;
     top: 20px;
   }
-
+  body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+  }
   .box {
     background-color: whitesmoke;
     width: 85%;
-    height: 24em;
+    height:30em;
     border-radius: 50px;
     box-shadow: 0 0 5px rgb(255, 255, 255);
 

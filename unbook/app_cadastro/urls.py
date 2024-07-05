@@ -19,7 +19,7 @@ urlpatterns = [
     path('usuario/', views.usuario, name='usuario'),
     path('trocar_senha/', views.trocar_senha, name='trocar_senha'),
     path('login/username/', views.username, name='username'),
-    path('sucesso/nao-recebi', views.nao_recebi, name="nao_recebi"),
+    path('sucesso/nao-recebi/', views.nao_recebi, name="nao_recebi"),
     path('sucesso/nao-recebi/envio/', views.envio_novo, name="envio_novo"),
     
 ]

@@ -97,7 +97,7 @@ ul {
     font-size: 1em;
     display: block;
     position: relative;
-    margin: 1em 4em;
+    margin: 1em 2em;
     text-align: justify;
 }
 
@@ -381,4 +381,5 @@ i {
     .icons i.visivel {
         opacity: 1;
     }
+    
 }
