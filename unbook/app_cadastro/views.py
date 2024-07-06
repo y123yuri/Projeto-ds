@@ -92,16 +92,19 @@ def sucesso(request):
                     messages.error(request, 'O email ou usuário já existe!!') 
                     print('Ja existe email')
                     return JsonResponse({'success': False, 'error': 'O email ou usuário já existe!!'})
-                   
+                
                 else:
                     if senha_variavel != senha_confirma_variavel:
                         return JsonResponse({'success': False, 'error': 'Senhas não coincidem!!'})
                     else:
                         user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
+                        print("User Criado")
                         user.is_active = False 
                         user.save()
                         send_activation_email(user, request)
-                        return JsonResponse({'success': True, 'username': user.username}) 
+                        print("Enviou email de ativação")
+                        return JsonResponse({'success': True, 'username': user.username})
+                
                 
             else:
                 messages.error(request, 'Erro no cadastro!!') 
@@ -111,7 +114,7 @@ def sucesso(request):
             
         else:
             request.session['erro'] = "Já existe um cadastro com o email ou nome de usuario"
-            return JsonResponse({'success': False, 'error': 'Erro no cadastro, alguns requisitos não foram corretamente enviados!!'})
+            return JsonResponse({'success': False, 'error': 'Erro no cadastro, alguns requisitos não foram devidamente enviados!!'})
     
     return render(request, "html/VerificaEmail.html")
 
@@ -165,7 +168,7 @@ def login_func(request):
             pass  # Ou alguma lógica alternativa caso o perfil não exista
     
         context = {
-          'perfil': perfil_existente
+            'perfil': perfil_existente
         }
 
         return render(request, "html/Perfil.html", context) 
@@ -202,8 +205,9 @@ def logado(request):
     
             return redirect("../")
         except User.DoesNotExist:
-             request.session['erro'] = "Login invalido2"
-             return redirect("../")
+            print("Usuário não existe")
+            request.session['erro'] = "Login invalido, usuário não existe"
+            return redirect("../")
 
     
 def logout(request):
@@ -339,7 +343,6 @@ def novaSenha(request, token):
     # Verifica se o token é válido
     if not token_obj.is_valid():
         context["erro"] = "Token inválido ou expirado"
-       
         return render(request, "html/Nova_senha_email.html", context)
         
     # Se o método da requisição for POST, processa o formulário

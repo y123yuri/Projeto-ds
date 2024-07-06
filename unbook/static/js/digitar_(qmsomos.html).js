@@ -45,23 +45,47 @@ document.addEventListener("DOMContentLoaded", function() {
     const backButton = document.getElementById('back');
     const equipe = document.querySelector('.equipe')
 
-    nextButton.addEventListener('click', () => {
-        scrollContainer.scrollBy({ left: 930, behavior: 'smooth' });
-    });
+    if(window.matchMedia("(max-width:767px)").matches) {
+        nextButton.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: 325, behavior: 'smooth' });
+        });
+    
+        backButton.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: -325, behavior: 'smooth' });
+        });
+    
+        scrollContainer.addEventListener('scroll', () => {
+            const scrollLeft = scrollContainer.scrollLeft;
+    
+            if (scrollLeft === 0) {
+                equipe.textContent = 'Líderes';
+            } else if (scrollLeft >= 325 && scrollLeft < 350) {
+                equipe.textContent = 'Front-End';
+            } else if (scrollLeft >= 360) {
+                equipe.textContent = 'Back-End';
+            }
+        });
+    } else {
 
-    backButton.addEventListener('click', () => {
-        scrollContainer.scrollBy({ left: -930, behavior: 'smooth' });
-    });
+        nextButton.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: 930, behavior: 'smooth' });
+        });
+    
+        backButton.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: -930, behavior: 'smooth' });
+        });
+    
+        scrollContainer.addEventListener('scroll', () => {
+            const scrollLeft = scrollContainer.scrollLeft;
+    
+            if (scrollLeft === 0) {
+                equipe.textContent = 'Líderes';
+            } else if (scrollLeft >= 930 && scrollLeft < 1780) {
+                equipe.textContent = 'Front-End';
+            } else if (scrollLeft >= 1850) {
+                equipe.textContent = 'Back-End';
+            }
+        });
+    }
 
-    scrollContainer.addEventListener('scroll', () => {
-        const scrollLeft = scrollContainer.scrollLeft;
-
-        if (scrollLeft === 0) {
-            equipe.textContent = 'Líderes';
-        } else if (scrollLeft >= 930 && scrollLeft < 1780) {
-            equipe.textContent = 'Front-End';
-        } else if (scrollLeft >= 1850) {
-            equipe.textContent = 'Back-End';
-        }
-    });
 });
