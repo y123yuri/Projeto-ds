@@ -28,12 +28,12 @@
       
       <h3 class="campoFalado">
           Olá,
-          <span style="font-size: 1.25em; color:#0B4C8C">{{ user }}</span>,
+          <span style="font-size: 1.25em; color:#0B4C8C"></span>
           
-          seja bem vindo! Sua conta foi ativada com sucesso, agora você pode navegar pela Unbook!
+        seja bem vindo! Sua conta foi ativada com sucesso, agora você pode navegar pela Unbook, faça login!
         </h3>
         
-        <a style="font-weight: 700"class="botao_entrar" href="/"> Começar pesquisa </a>
+        <a style="font-weight: 700"class="botao_entrar" href="{% url 'login_func' %}"> Login </a>
         
     </div>
   </body>

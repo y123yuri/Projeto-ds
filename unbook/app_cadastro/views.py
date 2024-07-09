@@ -50,9 +50,8 @@ def verificar(request, uidb64, token):
         user = None
 
     if user is not None and default_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
+        user.is_active = True #ativa o usuário
+        user.save() #salva o usuario e nao loga
         messages.success(request, 'Sua conta foi ativada com sucesso!')
         return redirect('/cadastro/verificar/ativado')
     else:
@@ -118,13 +117,13 @@ def sucesso(request):
     
     return render(request, "html/VerificaEmail.html")
 
-def nao_recebi(request):
+def nao_recebi(request): #Nao recebi o email de ativacao 
     context = {}
     form = Esqueceu_senhaForm()
     context["form"] = form
     return render(request, "html/recebiEmailNN.html", context)
 
-def envio_novo(request):
+def envio_novo(request): #envia o email de ativacao pra quem nao recebeu o email de ativacao
     if request.method == 'POST':
         context = {}
         f = Esqueceu_senhaForm(request.POST)
@@ -140,10 +139,10 @@ def envio_novo(request):
                     return redirect('../../') # cadastro/sucesso
                 else:
                     request.session['erro'] = "usuario já esta ativo"
-                    return redirect('../../../', request) #"cadastro"
+                    return redirect('/cadastro/login', request) #retorna para a aba de login em caso de email já ativado (usuario ja ativado)
             else:
                 request.session['erro'] = "usuario não existe"
-                return redirect('../../../', request) #"cadastro"
+                return redirect('../../../', request) #retorna para a aba de cadastro em caso de email nao existente (usuario nao existe)
             
         return JsonResponse({'success': False, 'error': 'Erro no sistema, 909!!'})
     else:           
@@ -325,7 +324,7 @@ def email_recupera(request):
             'user': user,
             'reset_url': reset_url
         })
-        send_mail(subject, message, 'django.core.mail.backends.console.EmailBackend', [reset_url] ,[user.email])
+        send_mail(subject, message, 'django.core.mail.backends.smtp.EmailBackend', [reset_url] ,[user.email])
 
         return render(request, 'html/Nova_senha_confirma.html', context)
 

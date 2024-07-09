@@ -14,6 +14,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
+import re
 
 # Create your views here.
 
@@ -565,7 +566,6 @@ def avaliacao(request):
     return HttpResponse(f'{resposta_dificuldade}, {resposta_apoio}, {resposta_didatica}')
     
 
-
 def comentarios(request):
     comentario_usuario = request.POST['comentario']
     codigo_materia = request.POST['materia']
@@ -581,7 +581,6 @@ def comentarios(request):
     ##################################
 
 ####################################### Arrumei Saporra
-    import re
 
     lista_proibida = ['merda', 'porra', 'caralho', 'buceta', 'puta', 'foda se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombada', 'viado', 'cu', 'pau no cu', 'piranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'cabrão', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'paspalho', 'mané', 'boceta', 'trouxa', 'besta', 'ralé', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'fedido', 'pau mole', 'pinto', 'pintudo', 'rabo', 'rabo de saia', 'safado', 'sem-vergonha', 'vagaba', 'bobo da corte', 'espermatozóide', 'cuspidor', 'coxinha', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'esquema', 'casca de ferida', 'bagulho', 'mentecapto', 'caga-regra', 'saco', 'saco cheio', 'capeta', 'inferno', 'tornozelo', 'babaca', 'panaca', 'fela da puta', 'fuder', 'velha', 'foder', 'sexo', 'fds', 'africano', 'aleijado', 'analfabeto', 'anus', 'anão', 'apenado', 'baba-ovo', 'babaca', 'babaovo', 'bacura', 'bagos', 'baianada', 'baitola', 'barbeiro', 'barraco', 'beata', 'bebum', 'besta', 'bicha', 'bisca', 'bixa', 'boazuda', 'boceta', 'boco', 'boiola', 'bolagato', 'bolcat', 'boquete', 'bosseta', 'bosta', 'bostana', 'branquelo', 'brecha', 'brexa', 'brioco', 'bronha', 'buca', 'buceta', 'bugre', 'bunda', 'bunduda', 'burra', 'burro', 'busseta', 'bárbaro', 'bêbado', 'cachorra', 'cachorro', 'cadela', 'caga', 'cagado', 'cagao', 'cagona', 'caipira', 'canalha', 'canceroso', 'caralho', 'casseta', 'cassete', 'ceguinho', 'checheca', 'chereca', 'chibumba', 'chibumbo', 'chifruda', 'chifrudo', 'chochota', 'chota', 'chupada', 'chupado', 'ciganos', 'clitoris', 'cocaina', 'coco', 
     'comunista', 'corna', 'corno', 'cornuda', 'cornudo', 'corrupta', 'corrupto', 'coxo', 'cretina', 'cretino', 'crioulo', 'cruz-credo', 'cu', 'culhao', 'curalho', 'cuzao', 'cuzuda', 'cuzudo', 'debil', 'debiloide', 'deficiente', 'defunto', 'demonio', 'denegrir', 'detento', 'difunto', 'doida', 'doido', 'egua', 'elemento', 'encostado', 'esclerosado', 'escrota', 'escroto', 'esporrada', 'esporrado', 'esporro', 'estupida', 'estupidez', 'estupido', 'fanático', 'fascista', 'fedida', 'fedido', 'fedor', 'fedorenta', 'feia', 'feio', 'feiosa', 'feioso', 'feioza', 'feiozo', 'felacao', 'fenda', 'fode', 'fodida', 'fodido', 'fornica', 'fornição', 'fudendo', 'fudeção', 'fudida', 'fudido', 'furada', 'furado', 'furnica', 'furnicar', 'furo', 'furona', 'furão', 'gaiata', 'gaiato', 'gay', 'gilete', 'goianada', 'gonorrea', 'gonorreia', 'gosmenta', 
@@ -614,17 +613,21 @@ def comentarios(request):
                 val = list(palavra1)
                 for c in val:
                     if c.isdigit():
-                        index = val.index(c) # posicao do numero na palavra
-                        val = ''.join(val[0:index]) # inicio ate o numero (1)
-                        val1 = ''.join(val[index::]) #numero ate o final (2)
-                        for a in lista_proibida:
-                            if re.search(f"^{val}.*{val1}", a): # pesquisa se existe palavra que comeaç com (1) e termina com (2)
-                                print('Filtro Numero', a)
-                                try:
-                                    censura = re.sub(r"\w", "*", palavra) #censura
-                                    comentario_split[comentario_split.index(palavra)] = censura
-                                except ValueError:
-                                    print('Já filtrou')
+                        try:
+                            index = val.index(c) # posicao do numero na palavra
+                            val = ''.join(val[0:index]) # inicio ate o numero (1)
+                            val1 = ''.join(val[index::]) #numero ate o final (2)
+                        except ValueError:
+                            print("ValueError, numero sozinho")
+                        if val and val1 != '':
+                            for a in lista_proibida:
+                                if re.search(f"^{val}.*{val1}", a): # pesquisa se existe palavra que comeaç com (1) e termina com (2)
+                                    print('Filtro Numero', a)
+                                    try:
+                                        censura = re.sub(r"\w", "*", palavra) #censura
+                                        comentario_split[comentario_split.index(palavra)] = censura
+                                    except ValueError:
+                                        print('Já filtrou')
             else:
                 val = list(palavra1) #lista a palavra
                 if len(val) > 3:
@@ -649,6 +652,7 @@ def comentarios(request):
         comentario_corrigido.append(' ')
 
     comentario_corrigido = ''.join(comentario_corrigido) #remove da lista pro django conseguir ler
+    # return comentario_corrigido
 
     if len(comentario_corrigido)>2 and len(comentario_corrigido)<450: #checa se o tamanho bate com as especificações
         if Comentario.objects.filter(turma=obj_turma, autor=user).exists():
