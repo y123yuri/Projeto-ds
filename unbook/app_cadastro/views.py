@@ -324,9 +324,12 @@ def email_recupera(request):
             'user': user,
             'reset_url': reset_url
         })
-        send_mail(subject, message, 'django.core.mail.backends.smtp.EmailBackend', [reset_url] ,[user.email])
-
-        return render(request, 'html/Nova_senha_confirma.html', context)
+        try:
+            send_mail(subject, message, 'unbook.br@gmail.com', [user.email])
+            return render(request, 'html/Nova_senha_confirma.html', context)
+        except Exception as e:
+            context['erro'] = "Erro ao enviar o email: " + str(e)
+            return redirect('./')
 
     else:
         request.session['erro'] = "Email invalido"
