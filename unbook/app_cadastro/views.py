@@ -34,6 +34,8 @@ from datetime import timezone
 import json
 from django.utils.timezone import make_aware
 from django.utils import timezone
+from materias.views import filtro
+import re
 # Create your views here.
 
 def cadastro(request):
@@ -86,6 +88,15 @@ def sucesso(request):
                 email_numero = str(email_variavel[:9])
             print(email_numero, type(email_numero))
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
+
+            nome_usuario = dados[0] #etapa de filtragem do nome
+
+            filtragem = filtro(nome_usuario) #filtro nome de usuario
+            
+            if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
+                messages.error(request, "Nome de usuário impróprio!!")
+                return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
+
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12  and type(email_numero)==int and len(email_variavel) == 22 :
                 if User.objects.filter(email=dados[1]).exists() or User.objects.filter(username=dados[0]).exists():
                     messages.error(request, 'O email ou usuário já existe!!') 
@@ -164,6 +175,7 @@ def login_func(request):
         try:
             perfil_existente = PerfilUsuario.objects.filter(user=user).first()
         except PerfilUsuario.DoesNotExist:
+            print("PerfilUsuario não existe")
             pass  # Ou alguma lógica alternativa caso o perfil não exista
     
         context = {
@@ -379,6 +391,12 @@ def username(request):
         if new_username and request.user.is_authenticated:
             if User.objects.filter(username=new_username).exists(): ### verifica se ja existe
                 return JsonResponse({'success': False, 'error': 'Usuario já existente, escolha outro!'})
+            
+            filtragem = filtro(new_username) #filtro nome de usuario
+            if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
+                messages.error(request, "Nome de usuário impróprio!!")
+                return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
+
             else:
                 if 2< len(new_username) <12:
                     for i in new_username:

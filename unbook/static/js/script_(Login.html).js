@@ -33,7 +33,7 @@ function refresh() {
 
 //VERIFICAR SENHA
 function senhaValidade() {
-    if (campos[1].value.length < 8) {
+    if (campos[1].value.length < 3) {
         console.log('DEU ERRADO A SENHA');
         setError(1);
     }
