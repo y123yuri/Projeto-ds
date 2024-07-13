@@ -36,7 +36,7 @@ def send_password_reset_email(user, request):
     })
 
     try:
-        send_mail(subject, message, 'unbook.br@gmail.com', [user.email])
+        send_mail(subject, message, 'django.core.mail.backends.console.EmailBackend', [user.email])
       
     except Exception as e:
 
