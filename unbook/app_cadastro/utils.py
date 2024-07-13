@@ -37,7 +37,7 @@ def send_password_reset_email(user, request):
     })
     print(message, 'essa é a mensagem')
     try:
-        send_mail(subject, message, 'django.core.mail.backends.console.EmailBackend', [user.email])
+        send_mail(subject, message, 'unbook.br@gmail.com', [user.email])
         print('consegui enviar o email pra view')
     except Exception as e:
         print('nao consegui enviar o email pra view')
