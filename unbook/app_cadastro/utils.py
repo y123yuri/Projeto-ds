@@ -20,13 +20,14 @@ from django.core.mail import send_mail
 
 def send_password_reset_email(user, request):
     token = default_token_generator.make_token(user)
-    
+    print('gerei o token')
     try:
         reset_url = request.build_absolute_uri(
             reverse('novaSenha', kwargs={'token': token})
         )
+        print('consegui fazer o link de trocar')
     except Exception as e: 
- 
+        print('não consegui fazer o link de ativacao')
         raise e       
 
     subject = "Redefinição de senha"
@@ -34,12 +35,12 @@ def send_password_reset_email(user, request):
         'user': user,
         'reset_url': reset_url
     })
-
+    print(message, 'essa é a mensagem')
     try:
         send_mail(subject, message, 'django.core.mail.backends.console.EmailBackend', [user.email])
-      
+        print('consegui enviar o email pra view')
     except Exception as e:
-
+        print('nao consegui enviar o email pra view')
         raise e
 
 def send_activation_email(user, request):
