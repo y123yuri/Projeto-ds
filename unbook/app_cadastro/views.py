@@ -23,6 +23,7 @@ from django.shortcuts import get_object_or_404
 from .forms import Nova_senhaForm
 from django.contrib import messages
 from .utils import send_activation_email
+from .utils import send_password_reset_email
 from .forms import PerfilForm
 from .models import PerfilUsuario
 from .models import Cursos_unb
@@ -34,6 +35,8 @@ from datetime import timezone
 import json
 from django.utils.timezone import make_aware
 from django.utils import timezone
+from materias.views import filtro
+import re
 # Create your views here.
 
 def cadastro(request):
@@ -86,6 +89,15 @@ def sucesso(request):
                 email_numero = str(email_variavel[:9])
             print(email_numero, type(email_numero))
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
+
+            nome_usuario = dados[0] #etapa de filtragem do nome
+
+            filtragem = filtro(nome_usuario) #filtro nome de usuario
+            
+            if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
+                messages.error(request, "Nome de usuário impróprio!!")
+                return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
+
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12  and type(email_numero)==int and len(email_variavel) == 22 :
                 if User.objects.filter(email=dados[1]).exists() or User.objects.filter(username=dados[0]).exists():
                     messages.error(request, 'O email ou usuário já existe!!') 
@@ -164,6 +176,7 @@ def login_func(request):
         try:
             perfil_existente = PerfilUsuario.objects.filter(user=user).first()
         except PerfilUsuario.DoesNotExist:
+            print("PerfilUsuario não existe")
             pass  # Ou alguma lógica alternativa caso o perfil não exista
     
         context = {
@@ -310,24 +323,17 @@ def email_recupera(request):
         
         try:
             user = User.objects.get(email=email_variavel)
+            
         except User.DoesNotExist:
             request.session['erro'] = "Email não encontrado"
             return render(request, 'html/Nova_senha_email.html') #nova senha de botar o email para recuperar
-        token = PasswordResetToken.objects.create(user=user)
 
-        reset_url = request.build_absolute_uri(
-            reverse('novaSenha', kwargs={'token': str(token.token)})
-        )
-
-        subject = "Redefinição de senha"
-        message = render_to_string('html/redefinição.html', {
-            'user': user,
-            'reset_url': reset_url
-        })
         try:
-            send_mail(subject, message, 'unbook.br@gmail.com', [user.email])
+            send_password_reset_email(user, request)
+            print('consegui enviar o email')
             return render(request, 'html/Nova_senha_confirma.html', context)
         except Exception as e:
+            print('view nao consegui enviarf')
             context['erro'] = "Erro ao enviar o email: " + str(e)
             return redirect('./')
 
@@ -379,6 +385,12 @@ def username(request):
         if new_username and request.user.is_authenticated:
             if User.objects.filter(username=new_username).exists(): ### verifica se ja existe
                 return JsonResponse({'success': False, 'error': 'Usuario já existente, escolha outro!'})
+            
+            filtragem = filtro(new_username) #filtro nome de usuario
+            if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
+                messages.error(request, "Nome de usuário impróprio!!")
+                return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
+
             else:
                 if 2< len(new_username) <12:
                     for i in new_username:
