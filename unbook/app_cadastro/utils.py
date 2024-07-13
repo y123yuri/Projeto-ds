@@ -25,7 +25,7 @@ def send_password_reset_email(user, request):
         reset_url = request.build_absolute_uri(
             reverse('novaSenha', kwargs={'token': token})
         )
-        print('consegui fazer o link de trocar')
+        print(reset_url,'consegui fazer o link de trocar')
     except Exception as e: 
         print('não consegui fazer o link de ativacao')
         raise e       
