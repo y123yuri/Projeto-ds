@@ -31,8 +31,7 @@ def send_password_reset_email(user, request):
         raise e       
 
     subject = "Redefinição de senha"
-    message = render_to_string('html/redefinição.html', {
-        'user': user,
+    message = render_to_string('html/redefinicao.html', {
         'reset_url': reset_url
     })
     print(message, 'essa é a mensagem')
