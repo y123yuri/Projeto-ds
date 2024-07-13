@@ -17,6 +17,7 @@ import sys
 # caution: path[0] is reserved for script path (or '' in REPL)
 sys.path.insert(1, '/home/ubuntu')
 
+from segredo import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
