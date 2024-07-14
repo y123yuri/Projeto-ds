@@ -23,6 +23,7 @@ from django.shortcuts import get_object_or_404
 from .forms import Nova_senhaForm
 from django.contrib import messages
 from .utils import send_activation_email
+from .utils import send_password_reset_email
 from .forms import PerfilForm
 from .models import PerfilUsuario
 from .models import Cursos_unb
@@ -322,24 +323,17 @@ def email_recupera(request):
         
         try:
             user = User.objects.get(email=email_variavel)
+            
         except User.DoesNotExist:
             request.session['erro'] = "Email não encontrado"
             return render(request, 'html/Nova_senha_email.html') #nova senha de botar o email para recuperar
-        token = PasswordResetToken.objects.create(user=user)
 
-        reset_url = request.build_absolute_uri(
-            reverse('novaSenha', kwargs={'token': str(token.token)})
-        )
-
-        subject = "Redefinição de senha"
-        message = render_to_string('html/redefinição.html', {
-            'user': user,
-            'reset_url': reset_url
-        })
         try:
-            send_mail(subject, message, 'unbook.br@gmail.com', [user.email])
+            send_password_reset_email(user, request)
+            print('consegui enviar o email')
             return render(request, 'html/Nova_senha_confirma.html', context)
         except Exception as e:
+            print('view nao consegui enviarf')
             context['erro'] = "Erro ao enviar o email: " + str(e)
             return redirect('./')
 
