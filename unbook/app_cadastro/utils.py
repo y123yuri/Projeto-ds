@@ -17,13 +17,19 @@ from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
+from .models import PasswordResetToken
+
 
 def send_password_reset_email(user, request):
     token = default_token_generator.make_token(user)
     print('gerei o token')
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    print('gerei o uid:', uid)
+    
+    token_obj = PasswordResetToken.objects.create(user=user, token=token)
     try:
         reset_url = request.build_absolute_uri(
-            reverse('novaSenha', kwargs={'token': token})
+            reverse('novaSenha', kwargs={'uidb64': uid,'token': token})
         )
         print(reset_url,'consegui fazer o link de trocar')
     except Exception as e: 

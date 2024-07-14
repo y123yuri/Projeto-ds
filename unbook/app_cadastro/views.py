@@ -36,6 +36,7 @@ import json
 from django.utils.timezone import make_aware
 from django.utils import timezone
 from materias.views import filtro
+from django.utils.encoding import force_str
 import re
 # Create your views here.
 
@@ -341,7 +342,7 @@ def email_recupera(request):
         request.session['erro'] = "Email invalido"
         return redirect("./")
     
-def novaSenha(request, token):
+def novaSenha(request, uidb64,  token):
     context = {}
     token_obj = get_object_or_404(PasswordResetToken, token=token)
     
@@ -349,27 +350,38 @@ def novaSenha(request, token):
     context = {}
 
     # Verifica se o token é válido
+    print('entrei na view')
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        print('entrei na view passei aqui')
+        
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+        
     if not token_obj.is_valid():
         context["erro"] = "Token inválido ou expirado"
+        print('nao deu i')
         return render(request, "html/Nova_senha_email.html", context)
-        
-    # Se o método da requisição for POST, processa o formulário
-    if token_obj.is_valid():
-        form = Nova_senhaForm(request.POST)
-        if form.is_valid():
-            new_password = form.cleaned_data.get("password")
-            token_obj.user.set_password(new_password)
-            token_obj.user.save()
-            return redirect("login_func")
+    if user is not None and default_token_generator.check_token(user, token):
+        print('passei aqui')
+        if request.method == "POST":
+            print('passei aqui2')
+            form = Nova_senhaForm(request.POST)
+            if form.is_valid():
+                new_password = form.cleaned_data.get("password")
+                user.set_password(new_password)
+                print('passei aqui3')
+                user.save()
+                return redirect("login_func")
+            else:
+                context["erro"] = "Erro ao processar o formulário. Por favor, tente novamente."
         else:
-            
-            context["erro"] = "Erro ao processar o formulário. Por favor, tente novamente."
-    
-    # Se o método da requisição for GET, exibe o formulário
+            form = Nova_senhaForm()
     else:
-        form = Nova_senhaForm()
-        
-    
+        context["erro"] = "Token inválido ou expirado"
+        form = None
+
     context["form"] = form
     return render(request, "html/Nova_senha.html", context)
 

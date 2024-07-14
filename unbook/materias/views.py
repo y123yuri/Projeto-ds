@@ -574,6 +574,11 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
     'troxa', 'tuberculoso', 'tupiniquim', 'turco', 'vaca', 'vadia', 'vagabunda', 'vagabundo', 'vagina', 'veada', 'veadao', 'veado', 'viada', 'viadao', 'víado', 'xana', 'xaninha', 'xavasca', 'xerereca', 'xexeca', 'xibiu', 'xibumba', 'xiíta', 'xochota', 'xota', 'xoxota', 'bebum', 'bêbedo', 'denigrir', 'leproso', 'mongolóide', 'índio', 'merda', 
     'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão', 'viadinho', 'viadaopiranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra', 'disgrama', 'puta', 'putinha', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra', 'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça capeta', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 'babaca', 'merda', 'escroto', 'chato', 'puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga', 'mocreia', 'rababaca', 'pentelho', 'merdinha', 'pau mole', 'chifrudo', 'desgraça', 'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'covarde', 'vtnc', 'canalha', 'safado', 'estúpido', 'tapado', 'macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato', 'daputa', 'puta', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela', 'desgraçado', 'desgraçada', 'fodase']
 
+    lista_nao_proibida = ['Ela', 'Ele', 'Elu', 'acanalado', 'acanalador', 'acanaladura', 'acanalar', 'acanale', 'acanalhado', 'acanalhador', 'acanalhamento', 'acanalhante', 'acanalhar', 'acanalhe', 'analabo', 'analagmático', 'analampo', 'analandense', 'analcima', 'analcimo', 'analcita', 'analdia', 'analecta', 'analector', 'analectos', 'analectário', 'analema', 'analemático', 'analepse', 'analepsia', 'analfa', 'analfabetismo', 'analfabetização', 'analfabetizações', 'analfabético', 
+    'analgene', 'analgesia', 'analgesina', 'analgia', 'analgésico', 'analgético', 'analisabilidade', 'analisadas', 'analisado', 'analisador', 'analisando', 'analisar', 'analise', 'analista', 'analisável', 'analiticamente', 'analitismo', 'analogamente', 'analogia', 'analogicamente', 'analogismo', 'analogista', 'analogético', 'analogístico', 'analose', 'analto', 'analuvião', 'analático', 'analéptica', 'analéptico', 'analérgico', 'analítica', 'analítico', 'analógica', 'analógico', 'analógio', 'artesanal', 'avelanal', 'baculejo', 'bacurau', 'bacuri', 'badanal', 'baiacu', 'baianal', 'banal', 'banalidade', 'banalizador', 'banalizante', 'banalizar', 'banalização', 'bananal', 'bardanal', 'barracuda', 'biscuit', 'biscuit', 'biscuit', 'bissemanal', 'brancura', 'butanal', 'cabanal', 'canal', 'canalar', 'canaleta', 'canalete', 'canalhada', 'canalhice', 'canalhismo', 'canalhocracia', 'canalhocrático', 'canaliculado', 'canaliculação', 'canaliforme', 'canalizador', 'canalizar', 'canalização', 'canalizável', 'canalículo', 'canalífero', 'cascudo', 'criptoanalisar', 'cura', 'curado', 'curador', 'curadoria', 'curanchim', 'curandeiro', 'curar', 'curarização', 'curatela', 'curatelado', 'curativo', 'curau', 'cuspe', 'cuspida', 'cuspir', 'cuspo', 'decanal', 'desanalfabetizar', 'desanalfabetização', 'desbanalizar', 'ela', 'ela', 'ele', 'elu', 'encanalhar', 'epanalepse', 'escudar', 'escudeira', 'escudeiro', 'escudela', 'escuderia', 'escudo', 'esculachado', 'esculachar', 'esculacho', 'esculhambado', 'esculhambar', 'esculhambação', 'esculpido', 'esculpir', 'escultor', 
+    'escultura', 'escultural', 'escultórico', 'esculápio', 'escuma', 'escumadeira', 'escumalha', 'escumar', 'escuna', 'escupir', 'escura', 'escuras', 'escurecer', 'escuridade', 'escuridão', 'escuro', 'escusa', 'escusado', 'escusar', 'escuso', 'escusável', 'escuta', 'escutar', 'espadanal', 'especula', 'especulador', 'especular', 'especulativa', 'especulativo', 'especulação', 'espetacular', 'espetacularização', 'espetaculoso', 'espetáculo', 'fanal', 'fasciculado', 'fascículo', 'fontanal', 'germanal', 'granal', 'granalha', 'hemianalgesia', 'humanal', 'inanalisável', 'incubada', 'incubado', 'incubadora', 'incubar', 'incubação', 'inculca', 'inculcar', 'inculpado', 'inculpar', 'inculpável', 'inculto', 'inculto', 'incultura', 'inculturação', 'incumbente', 'incumbido', 'incumbir', 'incumbência', 'incumprimento', 'incunábulo', 'incursa', 'incursionar', 'incurso', 'incursão', 'incurável', 'incutir', 'infecundo', 'infecundo', 'isquianal', 'janal', 'loucura', 'macuco', 'maculado', 'macular', 'maculação', 'maculelê', 'macumba', 'macumbeiro', 'macumbeiro', 'macunaíma', 'macuru', 'macuxi', 'manalha', 'manalvo', 'metanal', 'mielanalose', 'molecular', 'molecular', 'mundanal', 'mundanalidade', 'mundanalmente', 'nanal', 'paganal', 'panal', 'pandanale', 'pantanal', 'pentáculo', 'pentáculo', 
+    'pentáculo', 'perianal', 'pirarucu', 'pirarucu', 'planaltino', 'planalto', 'platanal', 'prossecução', 'prossecução', 'prossecução', 'prossecução', 'psicanalisado', 'psicanalisando', 'psicanalisar', 'psicanalismo', 'psicanalista', 'psicanalítico', 'psicoanaléptico', 'quadrissemanal', 'rabanal', 'radioanalisador', 'raquianalgesia', 'raquianalgésico', 'reanalisado', 'reanalisar', 'recanalizar', 'semanal', 'semanalmente', 'semianalfabeto', 'suburbanal', 'tanalbina', 'tercanal', 'termanalgesia', 'termanalgésico', 'timpanal', 'tocanalgesia', 'tocanalgésico', 'transversanal', 'trissemanal', 'tuberculose', 'tuberculoso', 'tuberculoso', 'uanalcuri', 'veranal']
+    
     lista_proibida = set(lista_proibida) #tirando duplicatas
 
     comentario_split = re.split(r"\s", mensagem) # separa cada palavra na lista
@@ -582,6 +587,7 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
     for palavra in comentario_split: #FILTRO PRINCIPAL
         palavra1 = palavra.lower() #deixa minusculo pro filtro pegar, caso não esteja no filtro a palavra não sofre alteração
         print(palavra1)
+        
         if palavra1 in lista_proibida: #está na lista Proibida
             print('Na lista')
             try:
@@ -591,6 +597,7 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
                 print('Já filtrou')
             
         else:
+            
             if re.search("[0-9]", palavra): #tem numero na palavra a ser censurada
                 print('Tem numero ou caractere', palavra)
                 val = list(palavra1)
@@ -612,22 +619,25 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
                                     except ValueError:
                                         print('Já filtrou')
             else:
-                val = list(palavra1) #lista a palavra
-                if len(val) > 3:
-                    val = val[:4] #divide mais ou menos na metade (1)
-                    val2 = val[5:] #pega o final (2)
-                    palavra_inic = ''.join(val)
-                    palavra_final = ''.join(val2)
-                    print(palavra_inic) 
-                    for a in lista_proibida:
-                        if re.search(fr"^{palavra_inic}.*{palavra_final}$", a): # procura palavra que comece com (1) e termine com (2)
-                            print('Filtro Sem Numero', a)
-                            try:
-                                censura = re.sub(r"\w", "*", palavra) #censura
-                                comentario_split[comentario_split.index(palavra)] = censura
-                                print('censura')
-                            except ValueError:
-                                print('Já filtrou')
+                if palavra1 in lista_nao_proibida:
+                    print("lista nao proibida")
+                else:
+                    val = list(palavra1) #lista a palavra
+                    if len(val) > 3:
+                        val = val[:4] #divide mais ou menos na metade (1)
+                        val2 = val[5:] #pega o final (2)
+                        palavra_inic = ''.join(val)
+                        palavra_final = ''.join(val2)
+                        print(palavra_inic) 
+                        for a in lista_proibida:
+                            if re.search(fr"^{palavra_inic}.*{palavra_final}$", a): # procura palavra que comece com (1) e termine com (2)
+                                print('Filtro Sem Numero', a)
+                                try:
+                                    censura = re.sub(r"\w", "*", palavra) #censura
+                                    comentario_split[comentario_split.index(palavra)] = censura
+                                    print('censura')
+                                except ValueError:
+                                    print('Já filtrou')
                             
     return comentario_split
 
@@ -685,7 +695,13 @@ def editar_comentario(request, comentario_id):
         print('ola mundo')
         
         texto_novo = request.POST.get('texto_novo')
+        print(texto_novo, "Texto novo")
+        
+        filtragem = filtro(texto_novo)
+        texto_novo = ' '.join(filtragem)
+        
         print(texto_novo)
+
         if texto_novo and texto_novo != comentario.texto:
             Comentario_editado.objects.create(
                 autor=comentario.autor,
@@ -697,7 +713,7 @@ def editar_comentario(request, comentario_id):
             comentario.texto = texto_novo
             comentario.save()
             return JsonResponse({'status': 'success'})
-   
+
     else:
         print('entrei aqui')
         return JsonResponse({'status': 'error'})
