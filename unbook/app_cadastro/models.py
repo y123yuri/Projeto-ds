@@ -73,3 +73,12 @@ class Senha_trocada(models.Model):
 
     def __str__(self):
         return f' {self.user} : {self.data_troca}'
+
+class Usuarios_deletados(models.Model):
+    user_deletado = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    email_deletado = models.EmailField()
+    username_deletado = models.CharField(max_length=15)
+    data_deletado = models.DateTimeField(default=timezone.now)
+    # comentarios = 
+    #todos os comentarios
+    #todos os professores avaliados
