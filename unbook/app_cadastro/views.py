@@ -227,9 +227,16 @@ def logout(request):
     auth.logout(request)
     return redirect('login_func')
 
+def deletar_usuario(request, username):
+    try:
+        usuario = User.objects.get(username=username)
+        usuario.delete()
+    except Exception as e:
+        return JsonResponse({'success' : False, 'error' : 'não conseguimos deletar o usuário.'})
+    return JsonResponse({'success': True})
 def usuario(request):
     context = {}
-
+    
     if request.method == 'POST':
         # Pesquisa de cursos
         if 'input_cursos' in request.POST:

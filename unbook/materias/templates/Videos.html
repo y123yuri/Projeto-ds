@@ -143,7 +143,9 @@
                 class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
                 <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
                 onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
+                {% if video.autor.username == user.username %}
                 <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
+                {%endif%}
             </div>
         </div>
     {% endfor %}
