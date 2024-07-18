@@ -69,6 +69,7 @@ class Comentario(models.Model):
     ativo = models.BooleanField(default=True)
     denuncia = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="denuncia_comentario")
     indentificacao = models.IntegerField(default=0)
+    editado = models.BooleanField(default=False) 
     
     def __str__(self):
         return f'{self.id}: {self.indentificacao} : {self.ativo} : {self.hora_publicacao}: {self.autor} : {self.texto}'
@@ -78,7 +79,7 @@ class Comentario_deletado(models.Model):
     dia = models.CharField(max_length=50)
     hora = models.CharField(max_length=50)
     texto = models.CharField(max_length=250)
-    dia_deletado = models.CharField(max_length=100)
+    dia_deletado = models.CharField(max_length=100) 
 
     def __str__(self):
         return f' {self.autor} : {self.texto}'
@@ -88,6 +89,7 @@ class Comentario_editado(models.Model):
     texto_antigo = models.CharField(max_length=450)
     texto_novo = models.CharField(max_length=450)
     dia_editado = models.CharField(max_length=100)
+    
 
     def __str__(self):
         return f' {self.autor} '

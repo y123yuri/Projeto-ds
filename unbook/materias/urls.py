@@ -25,6 +25,7 @@ urlpatterns = [
     path("resumo/", views.add_resumo, name="resumo"),
     path('deletar/<int:comentario_id>/', views.deletar_comentario, name='deletar_comentario'),
     path('curtir_video/', views.like_video , name='curtir_video'),
+    path('curtir_resumo/', views.like_resumo , name='curtir_resumo'),
     path('editar-comentario/<int:comentario_id>/', views.editar_comentario, name='editar_comentario'),
     
 

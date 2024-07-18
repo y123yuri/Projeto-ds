@@ -229,11 +229,15 @@ def logout(request):
 
 def deletar_usuario(request, username):
     try:
+        
         usuario = User.objects.get(username=username)
         usuario.delete()
+        print("Usuario deletado")
     except Exception as e:
         return JsonResponse({'success' : False, 'error' : 'não conseguimos deletar o usuário.'})
     return JsonResponse({'success': True})
+
+
 def usuario(request):
     context = {}
     

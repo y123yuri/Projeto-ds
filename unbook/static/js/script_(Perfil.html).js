@@ -105,6 +105,27 @@ lampinha.addEventListener('mouseout', (e)=> {
 
 //se clicar na tela ele vai pra tela inicial
 // })
+function certeza() {
+
+        var modal_certeza = document.getElementById('modal_certeza')
+        modal_certeza.style.display = 'flex'
+        fundo_blur.style.display = 'block'
+
+    fundo_blur.addEventListener('click', (e)=> {
+        e.preventDefault()
+        modal_certeza.style.display = 'none'
+        fundo_blur.style.display = 'none'
+    })
+
+    var botao_nao = document.getElementById('nao_c').addEventListener('click', (e)=>{
+        e.preventDefault()
+        modal_certeza.style.display = 'none'
+        fundo_blur.style.display = 'none'
+    })
+}
+
+
+
 
 var img = document.getElementById('img_user');
 var modal_img = document.getElementById('modal_imgs');

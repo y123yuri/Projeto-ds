@@ -86,6 +86,8 @@ def pesquisa_materias(request):
 
 
 def materia(request, codigo, nome):
+    lista_posicao = []
+    cont = 0
     if request.user.is_authenticated:
         # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
@@ -125,62 +127,54 @@ def materia(request, codigo, nome):
                 pre_context_curtida.append(comentario.curtidas.count())
 
                 
-                
                 if comentario.curtidas.filter(id=request.user.id).exists():
-                    contador_true+=1
-                    lista_curtidas.append(True)
+                    comentario = str(comentario)
+                    comentario_divisao = comentario.split(":")
+                    
+                    comentario_id = comentario_divisao[0]+"C" #para diferenciar dos não curtidos
+                    lista_curtidas.append(comentario_id)
                 else:
-                    contador_true+=1
-                    lista_curtidas.append(False)
-    
-        for c in lista_curtidas:
-            if c == True:
-                lista_fodase.append(1)
-            else:
-                lista_fodase.append(0)
-        lista_fodase.sort(reverse=True)
-        for c in lista_fodase:
-            if c == 1:
-                context["curtidas"].append(True)
-            if c == 0:
-                 context["curtidas"].append(False)
+                    comentario = str(comentario)
+                    comentario_divisao = comentario.split(":")
+                    
+                    comentario_id = comentario_divisao[0]
+                    lista_curtidas.append(comentario_id)
+                
+###########################################
+                
+       
 
-        # print(context['curtidas'])
-        
-        
-        
-        for c in range(0,len(pre_context_curtida)):
+                
+#################################################
+        for c in range(0,len(pre_context_curtida)): #deixa os cometarios em ordem
             nova = [pre_context[c]],[pre_context_curtida[c]]
             lista_tudao.append(nova)
         
-        nova_lista = sorted(lista_tudao, key=lambda lista_tudao:lista_tudao[1], reverse=True) 
-        
+        nova_lista = sorted(lista_tudao, key=lambda lista_tudao:lista_tudao[1], reverse=True) ######### deixa em ordem
 
-
-        
-
+    
         for c in nova_lista:
-            comentarios_nova_lista=c[0]
-            curtidas_nova_lista=c[1]
+            
+            comentarios_nova_lista=c[0] #####comentario
+            curtidas_nova_lista=c[1] ###comentario curtida
             
             context_comentario_final.append(comentarios_nova_lista)
             context_curtida_final.append(curtidas_nova_lista)
+            if c[0][0].curtidas.filter(id=request.user.id).exists():
+                context["curtidas"].append(True)
+            else:
+                context["curtidas"].append(False)
+                
         
         for d in context_comentario_final:
             x= d[0]
-            context["comentarios"].append(x)
+            context["comentarios"].append(x) ####context com a ordem certa somente dos comentarios
 
         for e in context_curtida_final:
             x= e[0]
-            context["quant_like"].append(x)
-            
-        
+            context["quant_like"].append(x) ### context com as curtidas dos comentários em ordem
 
-
-        
-
-        
-        
+####################################################   CALENDARIO     
         index =0
         lista_turno = obj_turma.turno.split(" ")
         dias = []
@@ -389,7 +383,8 @@ def add_resumo(request): #ajax function
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
     print(f"link: {link}; nome:{nome_link} resumo")
-    if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com':
+    if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com' or link[:7] == '1drv.ms':
+        print(link, "link")
         #filtro de resumo
         if not Resumo.objects.filter(link=link, turma=turma).exists():
             print("oi")
@@ -404,11 +399,22 @@ def add_resumo(request): #ajax function
         else:
             messages.error(request, 'O link postado já existe ou é inválido.')
             return HttpResponse("ok")
-        return HttpResponse("erro")
     else:
+        print("Link não adequado")
         return HttpResponse("erro")
 
-
+def like_resumo(request):
+    id = request.POST["id_resumo"]
+    resumo = Resumo.objects.get(id=id)
+    print(resumo.titulo)
+    if resumo.curtidas.filter(id=request.user.id).exists():
+        print("vou remover o user")
+        resumo.curtidas.remove(request.user)
+        return HttpResponse("remove")
+    else:
+        print("vou adicionar o user")
+        resumo.curtidas.add(request.user)
+        return HttpResponse("add")
 
 
 def atividades(request, nome,codigo) :
@@ -720,8 +726,11 @@ def editar_comentario(request, comentario_id):
                 dia_editado=timezone.now().strftime('%Y-%m-%d %H:%M:%S'),
     
             )
+            comentario.editado = True
             comentario.texto = texto_novo
+            comentario.hora_publicacao = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
             comentario.save()
+
             return JsonResponse({'status': 'success'})
 
     else:
