@@ -15,6 +15,7 @@
       type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet" />
@@ -1126,8 +1127,15 @@
                 <h3 class="comentarios" id="texto{{ comentario.id }}">
                   {{ comentario.texto }} <br />
                   <span style="font-size: 0.75em"
+                  {% if comentario.editado == False %}
                     >- {{ comentario.hora_publicacao }}</span
                   >
+                  {%endif%}
+
+                  {% if comentario.editado == True %}
+                    >- {{ comentario.hora_publicacao }} (Comentário editado)
+                    
+                  {%endif%}
                 </h3>
                 <div id="comentario_buttons">
                   <div class="curtidas">
@@ -1138,7 +1146,7 @@
                       onclick="like(this, '{{ comentario.pk }}')">
                       <i class="fa-solid fa-heart"></i>
                     </button>
-                    <h3 class="text" id="like{{ forloop.counter0 }}">oi</h3>
+                    <h3 class="text" id="like{{ forloop.counter0 }}"></h3>
                   </div>
                   |
                   <div

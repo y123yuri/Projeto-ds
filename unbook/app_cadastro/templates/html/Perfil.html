@@ -23,6 +23,22 @@
   <body>
     <div id="fundo_blur"></div>
 
+    <div id="modal_certeza">
+        <h2 id="title_c">Tem certeza que deseja apagar sua conta?</h2>
+        
+        <figure class="gif">
+          <img id="dog" src="{% static "image/dog-sad.gif" %}">
+        </figure>
+
+        <div id="espace_buttons">
+          <a type="button" class="button_c" id="sim_c" href="#" >Sim</a> 
+          {% comment %} href="{% url 'excluir_usuario' username=user.username %}" {% endcomment %}
+          <a type="button" class="button_c" id="nao_c" href="">Não</a>
+        </div>
+        
+    </div>  
+
+
     <div id="modal_atualizacao">
       <div id="avaliacao">
         <h1 class="CampoFalado1_modal">Atualizar perfil</h1>
@@ -135,14 +151,25 @@
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="3" src="{% static "image/profiles/3.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="4" src="{% static "image/profiles/4.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="5" src="{% static "image/profiles/5.jpeg" %}"/>
-        </div>
-        
-        <div class="imgs_modal">
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="6" src="{% static "image/profiles/6.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="7" src="{% static "image/profiles/7.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="8" src="{% static "image/profiles/8.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="9" src="{% static "image/profiles/9.jpeg" %}"/>
           <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="10" src="{% static "image/profiles/10.jpeg" %}"/>
+
+        </div>
+        
+        <div class="imgs_modal">
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="11" src="{% static "image/profiles/11.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="12" src="{% static "image/profiles/12.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="13" src="{% static "image/profiles/13.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="14" src="{% static "image/profiles/14.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="15" src="{% static "image/profiles/15.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="16" src="{% static "image/profiles/16.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="17" src="{% static "image/profiles/17.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="18" src="{% static "image/profiles/18.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="19" src="{% static "image/profiles/19.jpeg" %}"/>
+          <img onclick="escolha_img(this, '{{ csrf_token }}')" class="balls" id="20" src="{% static "image/profiles/20.jpeg" %}"/>
         </div>
       </div>
 
@@ -246,6 +273,7 @@
             <h2 class="botoes" id="atualizar">Atualizar informações</h2>
             {% if user.is_authenticated %}
               <a class="botoes" id="Logout" type="button" href="{% url 'logout' %}">Logout</a>
+              <a class="botoes" id="Deletar" type="button" onclick="certeza()">Excluir Usuário</a>
             {% endif %}
           </div>
         </div>

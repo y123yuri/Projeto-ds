@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from .models import Cadastro
 from .models import Username_trocado
+from .models import Usuarios_deletados
 from .models import Senha_trocada
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -38,6 +39,8 @@ from django.utils import timezone
 from materias.views import filtro
 from django.utils.encoding import force_str
 import re
+from django.conf import settings
+from datetime import datetime
 # Create your views here.
 
 def cadastro(request):
@@ -199,7 +202,7 @@ def logado(request):
         email_variavel = f.cleaned_data["email"]
         senha_variavel = f.cleaned_data["password"]
         dados = [email_variavel, senha_variavel] #tratamento de dados
-        # print(User.objects.get(email=f'{email_variavel}'))
+        
         
         try:
             user = User.objects.get(email=f'{email_variavel}')
@@ -227,13 +230,37 @@ def logout(request):
     auth.logout(request)
     return redirect('login_func')
 
-def deletar_usuario(request, username):
-    try:
-        usuario = User.objects.get(username=username)
-        usuario.delete()
-    except Exception as e:
-        return JsonResponse({'success' : False, 'error' : 'não conseguimos deletar o usuário.'})
-    return JsonResponse({'success': True})
+def deletar_usuario(request):
+    if request.method == 'POST':
+        usuario = request.user
+        
+        try:
+            print(usuario)
+            usuario_email = usuario.email
+            Usuarios_deletados.objects.create(
+                            email_deletado=usuario_email,
+                            data_deletado=timezone.now()  
+                        )
+            usuario.delete() 
+            print("Usuario deletado")
+            data = datetime.now().strftime('%d/%m/%Y - %H:%M:%S')
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+            send_mail(
+                'Conta Deletada',## titulo do email
+                f'Sua conta foi deletada com sucesso.\nDeletado em: {data}', #### mensagem
+                settings.DEFAULT_FROM_EMAIL,
+                [usuario_email],
+                fail_silently=False, #isso daqui é pra caso o email der eerro, a gente possa saber aonde
+            )
+            return JsonResponse({'success': True})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Usuário não encontrado.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Método de requisição inválido.'})
+
+
 def usuario(request):
     context = {}
     

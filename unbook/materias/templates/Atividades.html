@@ -132,14 +132,17 @@
               </div>
   
               <div class="buttons">
-                  {% comment %} <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> {% endcomment %}
-                  
-                  <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
-                  class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
-                  <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
-                  onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
-                  <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
-              </div>
+                <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> 
+  
+                <i id="curtir{{ forloop.counter0 }}" class="fa-solid fa-heart" onclick=curtir("{{ atividade.id }}","curtir{{ forloop.counter0 }}")></i>
+                
+                <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" 
+                onclick=denunciar("{{ atividade.id }}", "denunciar{{ forloop.counter0 }}")></i>
+                
+                {% if video.autor.username == user.username %}
+                <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash"  onclick=deletar("{{ atividade.id }}")></i>
+                {%endif%}
+            </div>
           </div>
           {% endfor %}
         </div>

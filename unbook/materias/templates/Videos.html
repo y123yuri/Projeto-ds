@@ -8,20 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0c36a1">
     <title>Vídeos</title>
+
     <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="{% static 'css/styles_(Arquivos.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
+    <!-- LINK PARA FONTE MONSTSERRAT -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+    <!-- LINK PARA FONTE AWESOME (USADO NAS ESTRELAS) -->
+
+
+      <link rel="stylesheet" href="{% static 'css/styles_(Arquivos.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
   </head>
 
   <body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
       csrf_token = '{{ csrf_token }}'
       nome = '{{ turma.professor.nome }}'
@@ -40,7 +54,6 @@
     </script>
 
     <div id="fundo_blur"></div>
-
 
 
 
@@ -135,16 +148,17 @@
                     </div>
                 </div>
             </div>
-
+ 
             <div class="buttons">
-                {% comment %} <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> {% endcomment %}
+                <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> 
+
+                <i id="curtir{{ forloop.counter0 }}" class="fa-solid fa-heart" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
                 
-                <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
-                class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
-                <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
+                <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" 
                 onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
+                
                 {% if video.autor.username == user.username %}
-                <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
+                <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash"  onclick=deletar("{{ video.id }}")></i>
                 {%endif%}
             </div>
         </div>

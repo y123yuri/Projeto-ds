@@ -24,18 +24,16 @@
 window.onload = function () {
   // colocando quant de likes
   for (i = 0; i < quant_likes.length; i++) {
-    element = document.getElementById(`quant_likes${i}`);
-    console.log(element);
-    element.innerText = `cont: ${quant_likes[i]}`;
-
-    elements = document.getElementById(`curtir${i}`);
+    var element = document.getElementById(`quant_likes${i}`);
+    element.innerText = `${quant_likes[i]}`;
+    element = document.getElementById(`curtir${i}`);
 
     if (curtidas[i] == 1) {
       console.log("ele curtiu");
-      elements.style = "color: #81E28B";
+      element.style = "color: red";
     } else {
       console.log("não curtiu :(");
-      elements.style = "color: grey";
+      element.style = "color: grey";
     }
   }
 };
@@ -133,15 +131,15 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
     if (targetIcon.classList.contains("bi-hand-thumbs-up")) {
       targetIcon.classList.remove("bi-hand-thumbs-up");
       targetIcon.classList.add("bi-hand-thumbs-up-fill");
-      targetIcon.style.color = "#81E28B";
+      targetIcon.style.color = "red";
     } else if (targetIcon.classList.contains("bi-exclamation-triangle")) {
       targetIcon.classList.remove("bi-exclamation-triangle");
       targetIcon.classList.add("bi-exclamation-triangle-fill");
-      targetIcon.style.color = "#E95959";
+      targetIcon.style.color = "black";
     } else if (targetIcon.classList.contains("bi-trash")) {
       targetIcon.classList.remove("bi-trash");
       targetIcon.classList.add("bi-trash-fill");
-      targetIcon.style.color = "#E95959";
+      targetIcon.style.color = "black";
     }
   });
 
@@ -171,18 +169,19 @@ document.querySelectorAll(".buttons").forEach((buttons) => {
     if (targetIcon.classList.contains("bi-hand-thumbs-up")) {
       targetIcon.classList.remove("bi-hand-thumbs-up");
       targetIcon.classList.add("bi-hand-thumbs-up-fill");
-      targetIcon.style.color = "#81E28B";
+      targetIcon.style.color = "red";
     } else if (targetIcon.classList.contains("bi-exclamation-triangle")) {
       targetIcon.classList.remove("bi-exclamation-triangle");
       targetIcon.classList.add("bi-exclamation-triangle-fill");
-      targetIcon.style.color = "#E95959";
+      targetIcon.style.color = "black";
     } else if (targetIcon.classList.contains("bi-trash")) {
       targetIcon.classList.remove("bi-trash");
       targetIcon.classList.add("bi-trash-fill");
-      targetIcon.style.color = "#E95959";
+      targetIcon.style.color = "black";
     }
   });
 });
+
 // curtir links
 function curtir(id, id_elemento) {
   console.log(id_elemento);
@@ -200,21 +199,29 @@ function curtir(id, id_elemento) {
       if (response === "add") {
         console.log("ola");
         // consertar o css
-        if (elemento.classList.contains("bi-hand-thumbs-up")) {
-          elemento.classList.remove("bi-hand-thumbs-up");
-          elemento.classList.add("bi-hand-thumbs-up-fill");
-          elemento.style.color = "#81E28B";
+        if (elemento.id.startsWith("curtir")) {
+            console.log("novo like");
+            var texto = id_elemento.replace("curtir", "quant_likes");
+            var element = document.getElementById(texto);
+            element.innerText = `${Number(element.innerText)+1}`; 
+            elemento.style.color = "red";
         } else if (elemento.classList.contains("bi-exclamation-triangle")) {
           elemento.classList.remove("bi-exclamation-triangle");
           elemento.classList.add("bi-exclamation-triangle-fill");
-          elemento.style.color = "#E95959";
+          elemento.style.color = "black";
         } else if (elemento.classList.contains("bi-trash")) {
           elemento.classList.remove("bi-trash");
           elemento.classList.add("bi-trash-fill");
-          elemento.style.color = "#E95959";
+          elemento.style.color = "black";
         }
-        elemento.style.color = "#81E28B"; // Reapplies color if conditions above do not match
+        elemento.style.color = "red"; // Reapplies color if conditions above do not match
       } else {
+        if (elemento.id.startsWith("curtir")) {
+          var texto = id_elemento.replace("curtir", "quant_likes");
+          var element = document.getElementById(texto);
+          element.innerText = `${Number(element.innerText)-1}`;
+        }
+        
         elemento.style.color = "grey";
       }
     },

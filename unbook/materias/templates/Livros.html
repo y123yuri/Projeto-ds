@@ -69,6 +69,7 @@
               <li onclick="selec_selecionado(this)"><i class="bi bi-google"></i> Drive</li>
               <li onclick="selec_selecionado(this)"><i class="bi bi-microsoft-teams"></i> Microsoft</li>
               <li onclick="selec_selecionado(this)"><i class="bi bi-file-earmark-word"></i> Docs</li>
+              <li onclick="selec_selecionado(this)"><i class="bi bi-"></i> OneDrive</li>
             </ul>
           </div>
 
@@ -134,14 +135,17 @@
             </div>
 
             <div class="buttons">
-                {% comment %} <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> {% endcomment %}
-                
-                <i id="curtir{{ forloop.counter0 }}" class="bi bi-hand-thumbs-up" 
-                class="joia" onclick=curtir("{{ video.id }}","curtir{{ forloop.counter0 }}")></i>
-                <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" class="denunciar"
-                onclick=denunciar("{{ video.id }}", "denunciar{{ forloop.counter0 }}")></i>
-                <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash" class="deletar" onclick=deletar("{{ video.id }}")></i>
-            </div>
+              <p id="quant_likes{{ forloop.counter0 }}" class="qnt_like"></p> 
+
+              <i id="curtir{{ forloop.counter0 }}" class="fa-solid fa-heart" onclick=curtir("{{ resumo.id }}","curtir{{ forloop.counter0 }}")></i>
+              
+              <i id="denunciar{{ forloop.counter0 }}" class="bi bi-exclamation-triangle" 
+              onclick=denunciar("{{ resumo.id }}", "denunciar{{ forloop.counter0 }}")></i>
+              
+              {% if video.autor.username == user.username %}
+              <i id="deletar{{ forloop.counter0 }}" class="bi bi-trash"  onclick=deletar("{{ resumo.id }}")></i>
+              {%endif%}
+          </div>
             </div>
           {% endfor %}
         </div>

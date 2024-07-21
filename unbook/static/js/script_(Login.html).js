@@ -34,7 +34,7 @@ function refresh() {
 //VERIFICAR SENHA
 function senhaValidade() {
     if (campos[1].value.length < 3) {
-        console.log('DEU ERRADO A SENHA');
+        console.log('SENHA INVALIDADA');
         setError(1);
     }
     else {
@@ -56,7 +56,7 @@ function emailValidade() {
     }
     else {
 
-        console.log('DEUERRADO O EMAIL');
+        console.log('EMAIL INVALIDADO');
         setError(0);
     }
 }

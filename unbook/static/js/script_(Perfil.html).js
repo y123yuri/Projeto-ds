@@ -105,6 +105,27 @@ lampinha.addEventListener('mouseout', (e)=> {
 
 //se clicar na tela ele vai pra tela inicial
 // })
+function certeza() {
+
+        var modal_certeza = document.getElementById('modal_certeza')
+        modal_certeza.style.display = 'flex'
+        fundo_blur.style.display = 'block'
+
+    fundo_blur.addEventListener('click', (e)=> {
+        e.preventDefault()
+        modal_certeza.style.display = 'none'
+        fundo_blur.style.display = 'none'
+    })
+
+    var botao_nao = document.getElementById('nao_c').addEventListener('click', (e)=>{
+        e.preventDefault()
+        modal_certeza.style.display = 'none'
+        fundo_blur.style.display = 'none'
+    })
+}
+
+
+
 
 var img = document.getElementById('img_user');
 var modal_img = document.getElementById('modal_imgs');
@@ -442,3 +463,47 @@ function setVisibility(element, valor){
         });
     
 }
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const csrftoken = getCookie('csrftoken');
+
+
+$(document).ready(function() {
+    $('#sim_c').click(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "excluir_usuario/", // url ajax
+            type: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert("Sua conta foi deletada com sucesso.");
+                    window.location.href = "/";
+                } else {
+                    alert("Houve um erro ao deletar sua conta: " + response.error);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+                alert("Houve um erro ao deletar sua conta: " + errmsg);
+            }
+        });
+    });
+});
