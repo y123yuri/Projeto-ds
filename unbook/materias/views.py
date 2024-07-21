@@ -607,33 +607,23 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
             
         else:
             
-            if re.search("[0-9]", palavra): #tem numero na palavra a ser censurada
+            if re.search("[a-zA-Z]..[0-999\W]|[0-999\W]..[a-zA-z]", palavra1): #tem numero na palavra a ser censurada
                 print('Tem numero ou caractere', palavra)
                 val = list(palavra1)
                 for c in val:
-                    if c.isdigit():
-                        try:
-                            index = val.index(c) # posicao do numero na palavra
-                            val = ''.join(val[0:index]) # inicio ate o numero (1)
-                            val1 = ''.join(val[index::]) #numero ate o final (2)
-                            print(val1, val)
-                            if re.search(f"^{val}.*{val1}", palavra):
+                    if c.isdigit() or c in ['@', '#', '*']:
+                        index = val.index(c) # posicao do numero na palavra
+                        val = ''.join(val[0:index]) # inicio ate o numero (1)
+                        val1 = ''.join(val[index::]) #numero ate o final (2)
+                        print(val1, val)
+                        for a in lista_proibida:
+                            if re.search(f"^{val}.*{val1}", a): # pesquisa se existe palavra que comeaç com (1) e termina com (2)
+                                print('Filtro Numero', a)
                                 try:
-                                    censura = re.sub(r"\w", "*", palavra) #censura
+                                    censura = re.sub(r"\w|['@ # *']", "*", palavra) #censura
                                     comentario_split[comentario_split.index(palavra)] = censura
                                 except ValueError:
                                     print('Já filtrou')
-                        except ValueError:
-                            print("ValueError, numero sozinho")
-                        if val and val1 != '':
-                            for a in lista_proibida:
-                                if re.search(f"^{val}.*{val1}", a): # pesquisa se existe palavra que comeaç com (1) e termina com (2)
-                                    print('Filtro Numero', a)
-                                    try:
-                                        censura = re.sub(r"\w", "*", palavra) #censura
-                                        comentario_split[comentario_split.index(palavra)] = censura
-                                    except ValueError:
-                                        print('Já filtrou')
             else:
                 if palavra1 in lista_nao_proibida:
                     print("lista nao proibida")
@@ -654,7 +644,7 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
                                     print('censura')
                                 except ValueError:
                                     print('Já filtrou')
-                            
+    print(comentario_split)
     return comentario_split
 
 def comentarios(request):
