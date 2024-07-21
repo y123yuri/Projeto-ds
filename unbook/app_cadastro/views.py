@@ -202,7 +202,7 @@ def logado(request):
         email_variavel = f.cleaned_data["email"]
         senha_variavel = f.cleaned_data["password"]
         dados = [email_variavel, senha_variavel] #tratamento de dados
-        # print(User.objects.get(email=f'{email_variavel}'))
+        
         
         try:
             user = User.objects.get(email=f'{email_variavel}')
@@ -244,7 +244,7 @@ def deletar_usuario(request):
             usuario.delete() 
             print("Usuario deletado")
             data = datetime.now().strftime('%d/%m/%Y - %H:%M:%S')
-            print(data, '###############')
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
             send_mail(
                 'Conta Deletada',## titulo do email
