@@ -21,6 +21,6 @@ urlpatterns = [
     path('login/username/', views.username, name='username'),
     path('sucesso/nao-recebi/', views.nao_recebi, name="nao_recebi"),
     path('sucesso/nao-recebi/envio/', views.envio_novo, name="envio_novo"),
-    path('excluido/<str:username>/', views.deletar_usuario, name="excluir_usuario")
+    path('login/excluir_usuario/', views.deletar_usuario, name="excluir_usuario")
     
 ]
