@@ -16,6 +16,8 @@ from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
 import re
 
+SEMESTRE_ATUAL = "2024.1"
+
 # Create your views here.
 
 def home(request):
@@ -231,6 +233,7 @@ def professor(request, nome):
     ob_prof = Professor.objects.get(nome=nome)
     lista_turma = Turma.objects.filter(professor=ob_prof)
     context = {}
+    context["semestre"] = SEMESTRE_ATUAL #semestre atual
     context["lista_turmas"] = list(lista_turma)
     context["nome"] = nome
     context["foto"] = ob_prof.foto

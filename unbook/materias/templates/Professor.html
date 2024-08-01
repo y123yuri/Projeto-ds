@@ -32,6 +32,21 @@
   </head>
 
   <body>
+    <script>
+      lista_turma_codigo = []
+      lista_turma_nome_prof = []
+      lista_turma_semestre = []
+      lista_turma_nome_materia = []
+      {% for turma in lista_turmas %}
+        lista_turma_codigo.push("{{turma.materia.codigo}}")
+        lista_turma_nome_prof.push("{{turma.professor.nome}}")
+        lista_turma_semestre.push("{{turma.semestre}}")
+        lista_turma_nome_materia.push("{{turma.materia.nome}}")
+      {% endfor %}
+
+    </script>
+
+
     <a href="../"
       ><img
         class="UnBook_logo_mini"
@@ -384,6 +399,19 @@
           <div id="div1_2">
             <h1 id="Professor">Prof. {{ nome }}</h1>
             <h3 id="Faculdade">Faculdade UnB</h3>
+            <select name="semestre" id="semestre" onchange=troca_semestre()>
+              {% if semestre ==  "2024.1" %}
+              <option value="2024.1" selected>2024.1</option>
+              {% else %}
+              <option value="2024.1">2024.1</option>
+              {% endif %}
+
+              {% if semestre ==  "2024.2" %}
+              <option value="2024.2" selected>2024.2</option>
+              {% else %}
+              <option value="2024.2">2024.2</option>
+              {% endif %}
+            </select>
           </div>
         </div>
 
@@ -393,12 +421,15 @@
           <h1 id="Materias_ofertadas">Matérias ofertadas</h1>
 
           <div id="scroll_materias">
-            {% for turma in lista_turmas %} {% if user.is_authenticated %}
+            {% for turma in lista_turmas %} 
+            {% if user.is_authenticated %}
+            {% if turma.semestre == semestre %}
             <a
               class="materias"
-              href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}"
+              href="../../materia/{{turma.semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}"
               >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
             >
+            {% endif %}
             {% else %}
             <a
               class="materias"
