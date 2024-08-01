@@ -17,9 +17,9 @@ unidade_select = Select(unidade_elemento)
 turmas_lista = []
 professores = []
 materias = []
-
-
+print(unidade_select)
 for op in range(1,len(unidade_select.options)):
+
     start_time = time.time()
     unidade_elemento = driver.find_element("xpath", '//*[@id="formTurma:inputDepto"]')
     unidade_select = Select(unidade_elemento)
@@ -51,7 +51,15 @@ for op in range(1,len(unidade_select.options)):
             else: #turma
                 info = linha.find_elements('tag name', 'td') # n°turma/periodo/nome_prof/horario/quantvagas/quantvagasOcupadas/local
                 if '(' in info[2].text:
+                    texto_completo = info[2].text
                     info[2] = info[2].text[:info[2].text.index('(')-1]
+                    index = texto_completo.index(')')+2
+                    while len(texto_completo)> index:
+                        texto_completo = texto_completo[index:]
+                        print(texto_completo[:texto_completo.index('(')-1])
+                        info[2] += ";" + texto_completo[:texto_completo.index('(')-1]
+                        index = texto_completo.index(')')+2
+                        print(index, len(texto_completo))
                 else:
                     info[2] = info[2].text
 
@@ -70,6 +78,7 @@ for op in range(1,len(unidade_select.options)):
         unidade_select = Select(unidade_elemento)
         print(unidade_select.options[op].text)
         print("--- %s seconds ---" % (time.time() - start_time))
+
 
 with open("turmas.txt", 'w') as fp:
     for t in turmas_lista:
