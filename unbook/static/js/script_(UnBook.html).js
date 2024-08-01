@@ -12,7 +12,6 @@ function pesquisa_prof(csrf_token) {
     let input = document.getElementById("searchbar_prof").value
     input = input.toUpperCase()
     if (input.length > 2) {
-        console.log(input.length + "; " + input)
         $.ajax({
             type: "POST",
             url: "pesquisa_prof/",
@@ -21,7 +20,6 @@ function pesquisa_prof(csrf_token) {
                 termo_pesquisa: input
             },
             success: function (response) {
-                //console.log(response)
                 lista_obj = response.split(";")
                 lista_resultado = []
                 for (i = 0; i < lista_obj.length; i++) {
@@ -118,7 +116,6 @@ function pesquisa_materia(csrf_token) {
             termo_pesquisa_materias: input
         },
         success: function (response) {
-            console.log("respota:" + response)
             lista_obj_materia = response.split(";")
             lista_resultado_materia = []
 
@@ -135,6 +132,7 @@ function pesquisa_materia(csrf_token) {
 
             for (let i = 0; i < lista_obj_materia.length; i++) {
                 //percorrer todos e conferir se é igual ao da barra de pesquisa
+                var semestre = document.getElementById("semestre").value
 
                 var materias = document.createElement("li")
 
@@ -158,11 +156,6 @@ function pesquisa_materia(csrf_token) {
                     abrirModal_Materia2(lista_resultado_materia[i][1]);
                     abrir_turmas(lista_resultado_materia[i][0], csrf_token);
 
-                    console.log(lista_resultado_materia[i][0])
-                    console.log(lista_resultado_materia[i][1])
-
-                    var professor1 = document.getElementById('professor_1_materia')
-                    professor1.href = 'materia/' + lista_resultado_materia[i][0] + '/' + lista_resultado_materia[i][1];
 
                 })
 
@@ -200,6 +193,8 @@ function pesquisa_materia(csrf_token) {
 }
 
 function abrir_turmas(materia_codigo, csrf_token) {
+    var semestre = document.getElementById("semestre").value
+    console.log(`semestre: ${semestre}`)
     $.ajax({
         type: "POST",
         url: "pesquisa_turma/",
@@ -214,7 +209,6 @@ function abrir_turmas(materia_codigo, csrf_token) {
             for (i = 0; i < lista_obj_turma.length; i++) {
                 lista_resultado_turma.push(lista_obj_turma[i].split(','))
             }; //percorrer todos e separar em arrays
-            console.log(lista_resultado_turma)
             scroll_div = document.getElementById('scroll')
             scroll_div.innerHTML = ""
 
@@ -267,15 +261,16 @@ function abrir_turmas(materia_codigo, csrf_token) {
     
                     ancora = document.createElement("a")
                     texto = document.createElement("p")
+                    semestre = document.getElementById("semestre").value
                     texto.textContent = `${lista_resultado_turma[i][1]}`
                     texto.style = classe_professores
     
-    
+                    
                     ancora.innerHTML = `<img style=${box_img} src="${lista_resultado_turma[i][0]}">`
                     ancora.appendChild(texto)
     
     
-                    ancora.href = `../materia/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
+                    ancora.href = `../materia/${semestre}/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
                     ancora.style = professor
     
                     ancora.addEventListener("mouseenter", function () {
@@ -358,7 +353,7 @@ function abrir_turmas(materia_codigo, csrf_token) {
                 ancora.appendChild(texto)
 
 
-                ancora.href = `../materia/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
+                ancora.href = `../materia/${semestre}/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
                 ancora.style = professor
 
                 ancora.addEventListener("mouseenter", function () {
@@ -402,10 +397,9 @@ function abrirModal_Materia2(textoMateria) {
     Materia.classList.remove('abrir');
 
     var CampoFalado2 = document.getElementById('nome_materia');
-    console.log(CampoFalado2)
     CampoFalado2.innerText = textoMateria;
-    console.log('esse' + textoMateria)
 }
+
 
 //FUNÇÃO PARA FECHAR CASO CLIQUE FORA DO MODAL
 document.addEventListener('click', e => {

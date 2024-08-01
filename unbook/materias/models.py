@@ -99,6 +99,7 @@ class Turma(models.Model):
     materia = models.ForeignKey("Materia", on_delete=models.CASCADE)
     turno = models.CharField(max_length=30, default="NA")
     local = models.CharField(max_length=30, default="NA")
+    semestre = models.CharField(max_length=6, default="2024.1")
     
     numero_avaliacoes = models.PositiveIntegerField(default=0)
 

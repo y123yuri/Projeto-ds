@@ -85,7 +85,7 @@ def pesquisa_materias(request):
     return HttpResponse(resposta)
 
 
-def materia(request, codigo, nome):
+def materia(request, semestre, codigo, nome):
     lista_posicao = []
     cont = 0
     if request.user.is_authenticated:
@@ -93,7 +93,7 @@ def materia(request, codigo, nome):
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
@@ -272,12 +272,12 @@ def pesquisa_turma(request):
     return HttpResponse(resposta)
 
 
-def videos(request, nome,codigo) :
+def videos(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         lista_videos = []
@@ -347,12 +347,12 @@ def like_video(request):
 
 
 
-def resumos(request, nome,codigo) :
+def resumos(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         lista_resumos = []
@@ -417,12 +417,12 @@ def like_resumo(request):
         return HttpResponse("add")
 
 
-def atividades(request, nome,codigo) :
+def atividades(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         lista_atividades = []
