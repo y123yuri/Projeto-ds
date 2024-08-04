@@ -979,7 +979,7 @@
             <h1 id="Materia" class="CampoFalado1">
               {{ turma.materia.nome }} - ({{ turma.materia.codigo }})
             </h1>
-            <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}"
+            <a id="Prof" href=" ../../../professor/{{ turma.professor.nome }}"
               >(Prof. {{ turma.professor.nome }})</a
             >
           </div>
@@ -991,10 +991,10 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
+                href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
                 <li
                   id="videos"
-                  href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
+                  href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
                   <img
                     class="imagens"
                     src="{% static 'image/Video Conference.png' %}" />
@@ -1005,7 +1005,7 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/resumos">
+                href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/resumos">
                 <li id="resumos">
                   <img
                     class="imagens"
@@ -1017,7 +1017,7 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/atividades">
+                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/atividades">
                 <li id="atividades">
                   <img
                     class="imagens"

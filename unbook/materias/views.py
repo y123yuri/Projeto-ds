@@ -90,6 +90,9 @@ def pesquisa_materias(request):
 
 def materia(request, semestre, codigo, nome):
     lista_posicao = []
+    context = {
+        "semestre": SEMESTRE_ATUAL
+    }
     cont = 0
     if request.user.is_authenticated:
         # print(codigo, nome)
@@ -97,7 +100,7 @@ def materia(request, semestre, codigo, nome):
         obj_prof = Professor.objects.get(nome=nome)
 
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
-        context = {}
+        
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
         context["avaliacao_dificuldade"] = obj_turma.avaliacao_dificuldade/2
