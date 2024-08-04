@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <section class="page1">
 
         <div class="fundo_branco" id="inicio">
@@ -144,9 +144,17 @@
 
                 </div>
 
-                <select class="CampoFalado4" name="semestre" id="semestre">
+                <select class="CampoFalado4" name="semestre" id="semestre" onchange="coloca_turma()">
+                    {%if semestre == '2024.1' %}
+                    <option value="2024.1" selected>2024.1</option>
+                    {% else %}
                     <option value="2024.1">2024.1</option>
+                    {% endif %}
+                    {%if semestre == '2024.2' %}
+                    <option value="2024.2" selected>2024.2</option>
+                    {% else %}
                     <option value="2024.2">2024.2</option>
+                    {% endif %}
                 </select>
 
     </section>

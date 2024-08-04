@@ -191,7 +191,7 @@ function pesquisa_materia(csrf_token) {
 
     })
 }
-
+turmas = []
 function abrir_turmas(materia_codigo, csrf_token) {
     var semestre = document.getElementById("semestre").value
     console.log(`semestre: ${semestre}`)
@@ -203,177 +203,156 @@ function abrir_turmas(materia_codigo, csrf_token) {
             codigo: materia_codigo
         },
         success: function (response) {
-            console.log(response)
             lista_obj_turma = response.split(";")
             lista_resultado_turma = []
             for (i = 0; i < lista_obj_turma.length; i++) {
                 lista_resultado_turma.push(lista_obj_turma[i].split(','))
-            }; //percorrer todos e separar em arrays
-            scroll_div = document.getElementById('scroll')
-            scroll_div.innerHTML = ""
-
-            if(window.matchMedia("(max-width:764px)").matches) {
-
-                for (let i = 0; i < lista_resultado_turma.length; i++) {
-
-                    let professor = `display: block;
-    
-                    position: relative;
-                    width: auto;
-                    height: auto;
-                    align-items: center;
-                    background-color: rgba(255, 255, 255, 0.1);
-                    border-radius: 25px;
-                    box-shadow: 0 0 10px black;
-                    margin: 1em;
-                    padding: 1em 1em;
-                    text-decoration: none;
-                
-                    transition: all 0.3s ease-in-out;`
-    
-                    let classe_professores = `display: inline-block;
-                    
-                    position: relative;
-                    top: -1.5em;
-                    margin-left: 4em;
-                    
-                    font-weight: 600;
-                    font-size: 0.80em;
-                    color: black;
-                    text-align:center;
-                    padding: 0 0.5em;
-                    width:90%;`
-
-                    let box_style = `"display: inline-block;
-                    cursor: pointer;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: #008940;
-                    width: 5em;
-                    height: 2.5em;"`
-                    
-                    let box_img = `"display: block;
-                        
-                        width: 3em;
-                        height: 3em;
-                        position: relative;
-                        top: 0.8em;"`
-    
-                    ancora = document.createElement("a")
-                    texto = document.createElement("p")
-                    semestre = document.getElementById("semestre").value
-                    texto.textContent = `${lista_resultado_turma[i][1]}`
-                    texto.style = classe_professores
-    
-                    
-                    ancora.innerHTML = `<img style=${box_img} src="${lista_resultado_turma[i][0]}">`
-                    ancora.appendChild(texto)
-    
-    
-                    ancora.href = `../materia/${semestre}/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
-                    ancora.style = professor
-    
-                    ancora.addEventListener("mouseenter", function () {
-                        // Adicionar a classe 'hover' quando o mouse entrar no link
-                        this.style.transform = "scale(1.01)"
-                    });
-    
-                    ancora.addEventListener("mouseleave", function () {
-                        // Remover a classe 'hover' quando o mouse sair do link
-                        this.style.transform = "scale(1)"
-                    });
-    
-                    scroll_div.appendChild(ancora)
-    
-                }
-
-
-
-
-
-
-            }
-
-            if(window.matchMedia("(min-width:765px)").matches) {
-
-            for (let i = 0; i < lista_resultado_turma.length; i++) {
-
-
-                let professor = `display: block;
-
-    position: relative;
-    width: auto;
-    height: auto;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    box-shadow: 0 0 10px black;
-    margin: 1em;
-    padding: 1em 1em;
-    text-decoration: none;
-
-    transition: all 0.3s ease-in-out;`
-
-                let classe_professores = `display: inline-block;
-                
-                position: relative;
-                top: -1.8em;
-                margin-left: 4em;
-                font-size:4em;
-                font-weight: 600;
-                font-size: 1.2em;
-                color: black;
-                text-align:center;
-                width:90%;`
-                let box_style = `"display: inline-block;
-                cursor: pointer;
-                justify-content: center;
-                align-items: center;
-                background-color: #008940;
-                width: 5em;
-                height: 5em;"`
-                let box_img = `"display: block;
-                    
-                    width: 5em;
-                    height: 5em;
-                    position: relative;
-                    top: 0.8em;
-                    left: 0.8em;"`
-
-
-
-
-                ancora = document.createElement("a")
-                texto = document.createElement("p")
-                texto.textContent = `${lista_resultado_turma[i][1]}`
-                texto.style = classe_professores
-
-
-                ancora.innerHTML = `<img style=${box_img} src="${lista_resultado_turma[i][0]}">`
-                ancora.appendChild(texto)
-
-
-                ancora.href = `../materia/${semestre}/${lista_resultado_turma[i][3]}/${lista_resultado_turma[i][1]}`
-                ancora.style = professor
-
-                ancora.addEventListener("mouseenter", function () {
-                    // Adicionar a classe 'hover' quando o mouse entrar no link
-                    this.style.transform = "scale(1.01)"
-                });
-
-                ancora.addEventListener("mouseleave", function () {
-                    // Remover a classe 'hover' quando o mouse sair do link
-                    this.style.transform = "scale(1)"
-                });
-
-                scroll_div.appendChild(ancora)
-
-            }
-        }
+            }; //percorrer todos e separar em arrays [foto, nome_prof, turno, codigo, semestre]
+            turmas = lista_resultado_turma
+            console.log(turmas)
+            coloca_turma()
+            
     }
     })
 
 }
+
+function coloca_turma(){
+    console.log("oi")
+    scroll_div = document.getElementById('scroll')
+    scroll_div.innerHTML = ""
+    semestre = document.getElementById("semestre").value
+    if(window.matchMedia("(max-width:764px)").matches) {
+        professor = `display: block;
+
+        position: relative;
+        width: auto;
+        height: auto;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        box-shadow: 0 0 10px black;
+        margin: 1em;
+        padding: 1em 1em;
+        text-decoration: none;
+    
+        transition: all 0.3s ease-in-out;`
+
+        classe_professores = `display: inline-block;
+        
+        position: relative;
+        top: -1.5em;
+        margin-left: 4em;
+        
+        font-weight: 600;
+        font-size: 0.80em;
+        color: black;
+        text-align:center;
+        padding: 0 0.5em;
+        width:90%;`
+
+        box_style = `"display: inline-block;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        background-color: #008940;
+        width: 5em;
+        height: 2.5em;"`
+        
+        box_img = `"display: block;
+            
+            width: 3em;
+            height: 3em;
+            position: relative;
+            top: 0.8em;"`
+    } else if(window.matchMedia("(min-width:765px)").matches) {
+        professor = `display: block;
+
+        position: relative;
+        width: auto;
+        height: auto;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        box-shadow: 0 0 10px black;
+        margin: 1em;
+        padding: 1em 1em;
+        text-decoration: none;
+        
+        transition: all 0.3s ease-in-out;`
+        
+        classe_professores = `display: inline-block;
+        
+        position: relative;
+        top: -1.8em;
+        margin-left: 4em;
+        font-size:4em;
+        font-weight: 600;
+        font-size: 1.2em;
+        color: black;
+        text-align:center;
+        width:90%;`
+        box_style = `"display: inline-block;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        background-color: #008940;
+        width: 5em;
+        height: 5em;"`
+        box_img = `"display: block;
+        width: 5em;
+        height: 5em;
+        position: relative;
+        top: 0.8em;
+        left: 0.8em;"`
+    }
+
+    for (let i = 0; i < turmas.length; i++) {
+        
+        ancora = document.createElement("a")
+        texto = document.createElement("p")
+        texto.textContent = `${turmas[i][1]}`
+        texto.style = classe_professores
+
+
+        ancora.innerHTML = `<img style=${box_img} src="${turmas[i][0]}">`
+        ancora.appendChild(texto)
+
+
+        ancora.href = `../materia/${semestre}/${turmas[i][3]}/${turmas[i][1]}`
+        ancora.style = professor
+        ancora.style.box_shadow = 0
+        ancora.addEventListener("mouseenter", function () {
+            // Adicionar a classe 'hover' quando o mouse entrar no link
+            this.style.transform = "scale(1.01)"
+        });
+
+        ancora.addEventListener("mouseleave", function () {
+            // Remover a classe 'hover' quando o mouse sair do link
+            this.style.transform = "scale(1)"
+        });
+
+        if (semestre === turmas[i][4]){
+            console.log(`${semestre}, ${turmas[i][4]}`)
+            scroll_div.appendChild(ancora)
+        }
+
+    }
+    
+
+if (scroll_div.innerHTML == ""){
+    console.log("tem ninguem :(")
+    ancora = document.createElement("a")
+    texto = document.createElement("p")
+    texto.textContent = "SEM PROFESSORES NESSE SEMESTRE"
+    ancora.innerHTML = `<img style=${box_img} src="static/image/dog-sad.gif">`
+    ancora.appendChild(texto)
+    ancora.style = professor
+    texto.style = classe_professores
+    scroll_div.appendChild(ancora)
+    }
+}
+
 
 //FUNÇÕES PARA ABRIR MODAIS
 function abrirModal_Professor() {

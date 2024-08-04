@@ -37,6 +37,7 @@
       lista_turma_nome_prof = []
       lista_turma_semestre = []
       lista_turma_nome_materia = []
+      
       {% for turma in lista_turmas %}
         lista_turma_codigo.push("{{turma.materia.codigo}}")
         lista_turma_nome_prof.push("{{turma.professor.nome}}")

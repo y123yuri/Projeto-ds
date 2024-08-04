@@ -25,7 +25,8 @@ def home(request):
     if request.user.is_authenticated:
         perfil_existente = PerfilUsuario.objects.filter(user=user).first()
         context = {
-            'perfil': perfil_existente
+            'perfil': perfil_existente,
+            'semestre': SEMESTRE_ATUAL
             }
         return render(request, 'UnBook.html', context)
     else: 
@@ -268,10 +269,10 @@ def pesquisa_turma(request):
     lista_turmas = list(Turma.objects.filter(materia=materia))
     resposta = ''
     if len(lista_turmas)>0:
-        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo
+        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo+','+lista_turmas[0].semestre
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
-                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
+                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo+','+obj.semestre
     return HttpResponse(resposta)
 
 
