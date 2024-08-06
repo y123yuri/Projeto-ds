@@ -96,10 +96,7 @@ class Comentario_editado(models.Model):
 
 class Turma(models.Model):
     professor = models.ManyToManyField(Professor, name="professor")
-    nome_professor = models.CharField(max_length=100,default="")
     materia = models.ForeignKey("Materia", on_delete=models.CASCADE)
-    turno = models.CharField(max_length=30, default="NA")
-    local = models.CharField(max_length=30, default="NA")
     
     numero_avaliacoes = models.PositiveIntegerField(default=0)
 
