@@ -95,11 +95,8 @@ class Comentario_editado(models.Model):
         return f' {self.autor} '
 
 class Turma(models.Model):
-    professor = models.ForeignKey("Professor", on_delete=models.CASCADE)
+    professor = models.ManyToManyField(Professor, name="professor")
     materia = models.ForeignKey("Materia", on_delete=models.CASCADE)
-    turno = models.CharField(max_length=30, default="NA")
-    local = models.CharField(max_length=30, default="NA")
-    semestre = models.CharField(max_length=6, default="2024.1")
     
     numero_avaliacoes = models.PositiveIntegerField(default=0)
 
@@ -110,7 +107,17 @@ class Turma(models.Model):
     avaliadores = models.ManyToManyField(settings.AUTH_USER_MODEL, default=None)
 
     def __str__(self):
-        return self.materia.codigo + "/" + self.professor.nome
+        nome_prof = ""
+        for p in self.professor.all():
+            nome_prof += p.nome +', '
+        return self.materia.codigo + "/" + nome_prof
+    
+class Info_semestre(models.Model):
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    turno = models.CharField(max_length=30, default="NA")
+    local = models.CharField(max_length=30, default="NA")
+    semestre = models.CharField(max_length=6, default="2024.1")
+
 
 class Report(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
