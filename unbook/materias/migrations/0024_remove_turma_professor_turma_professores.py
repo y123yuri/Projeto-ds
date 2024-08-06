@@ -3,6 +3,11 @@
 from django.db import migrations, models
 
 
+def add_professores():
+    for t in Turma.object.all():
+            t.professores.add(Professor.objects.get(t.professor.nome))
+            t.save()
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,13 +15,17 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='turma',
-            name='professor',
-        ),
         migrations.AddField(
             model_name='turma',
             name='professores',
             field=models.ManyToManyField(to='materias.professor'),
+        ),
+
+        migrations.RunPython(add_professores),
+        
+        
+        migrations.RemoveField(
+            model_name='turma',
+            name='professor',
         ),
     ]

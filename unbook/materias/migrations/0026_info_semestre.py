@@ -3,6 +3,10 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
+def popular():
+    for t in Turmas.objects.all():
+        Info_semestre.objects.create(turma=t, turno=t.turno, local=t.local)
+        
 
 class Migration(migrations.Migration):
 
@@ -21,4 +25,6 @@ class Migration(migrations.Migration):
                 ('turma', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='materias.turma')),
             ],
         ),
+
+        migrations.RunPython(popular)
     ]
