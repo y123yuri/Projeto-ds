@@ -118,6 +118,9 @@ class Info_semestre(models.Model):
     local = models.CharField(max_length=30, default="NA")
     semestre = models.CharField(max_length=6, default="2024.1")
 
+    def __str__(self):
+        return self.turma.materia.codigo +"/" +self.semestre
+
 
 class Report(models.Model):
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
