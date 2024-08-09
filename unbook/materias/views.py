@@ -272,10 +272,21 @@ def pesquisa_turma(request):
     lista_turmas = list(Turma.objects.filter(materia=materia))
     resposta = ''
     if len(lista_turmas)>0:
-        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo+','+lista_turmas[0].semestre
+        infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+        
+        for info in infos:
+            if info ==infos[0]:
+                resposta = lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+            else:
+                resposta += ";"+lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
-                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo+','+obj.semestre
+                
+                infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+                
+                for info in infos:
+                    print(info.semestre)
+                    resposta += ";"+obj.professor.all()[0].foto+','+obj.professor.all()[0].nome+','+info.turno+','+obj.materia.codigo+','+info.semestre
     return HttpResponse(resposta)
 
 
