@@ -11,7 +11,7 @@ def add_2024_2(apps, schema_editor):
     Professor = apps.get_model('materias',"Professor")
     Info = apps.get_model('materias', "Info_semestre")
     #adiciona materias novas
-    with open('arquivos_txt/2024_02/materias_2024.02.txt', 'r') as fp:
+    with open('arquivos_txt/2024_02/materias_2024.02.txt', 'r', encoding='utf-8') as fp: 
         linha = fp.readline().split(',')
         while len(linha)>1:
             print(linha)
@@ -21,7 +21,7 @@ def add_2024_2(apps, schema_editor):
             linha = fp.readline().split(',')
     print('-='*25) 
     # adiciona professores novos  
-    with open('arquivos_txt/2024_02/prof_2024.02.txt', 'r') as fp:
+    with open('arquivos_txt/2024_02/prof_2024.02.txt', 'r', encoding='utf-8') as fp:
         linha = fp.readline().split(',')
         while len(linha)>1:
             if not Professor.objects.filter(nome=linha[0]).exists():
