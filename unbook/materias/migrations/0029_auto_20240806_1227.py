@@ -17,20 +17,28 @@ def add_turmas(apps, schema_editor):
                 if not Professor.objects.filter(nome=i).exists():
                         Professor.objects.create(nome=i, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
                 profs.append(Professor.objects.get(nome=i))
+                
 
 
             materia = Materia.objects.get(codigo=linha[0])
-            if not Turma.objects.filter(materia=materia,professor=profs).exists():
+            existe_nome = ""
+            for nome in profs_nome:
+                busca = Turma.objects.filter(materia=materia.codigo,professor=nome)
+                if len(busca)>0:
+                    print(f"achei a turma {busca[0].materia.codigo}")
+                    existe_nome = nome
+            
+            if existe_nome == "":
                 print(f'criei uma Turma: {materia}:{profs}')
                 turma = Turma.objects.create(materia=materia)
                 for p in profs:
-                    if not Professor.objects.filter(nome=p).exists():
-                        Professor.objects.create(nome=p, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
-                    prof = Professor.objects.get(nome=p)
+                    if not Professor.objects.filter(nome=p.nome).exists():
+                        Professor.objects.create(nome=p.nome, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
+                    prof = Professor.objects.get(nome=p.nome)
                     turma.professor.add(prof)
                 turma.save()
             else:
-                turma = Turma.objects.get(materia=materia, professor=profs)
+                turma = Turma.objects.get(materia=materia.codigo, professor=existe_nome) # se pa esse é o problema
             Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
 
             linha = fp.readline().split(',')

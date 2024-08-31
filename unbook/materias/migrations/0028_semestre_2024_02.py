@@ -10,6 +10,7 @@ def add_2024_2(apps, schema_editor):
     Materia = apps.get_model('materias', "Materia")
     Professor = apps.get_model('materias',"Professor")
     Info = apps.get_model('materias', "Info_semestre")
+
     #adiciona materias novas
     with open('arquivos_txt/2024_02/materias_2024.02.txt', 'r') as fp:
         linha = fp.readline().split(',')
@@ -19,7 +20,8 @@ def add_2024_2(apps, schema_editor):
                 print(f'criei matéria: {linha[0]}/{linha[1]}')
                 Materia.objects.create(codigo=linha[0], nome=linha[1])
             linha = fp.readline().split(',')
-    print('-='*25) 
+    print('-='*25)
+    
     # adiciona professores novos  
     with open('arquivos_txt/2024_02/prof_2024.02.txt', 'r') as fp:
         linha = fp.readline().split(',')
