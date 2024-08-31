@@ -42,14 +42,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
       csrf_token = '{{ csrf_token }}'
-      nome = '{{ turma.professor.nome }}'
+      nomes = []
       codigo = '{{ turma.materia.codigo }}'
       nota_dificuldade = '{{ turma.avaliacao_dificuldade }}'
       nota_apoio = '{{ turma.avaliacao_apoio_aluno}}'
       nota_didatica = '{{ turma.avaliacao_didatica}}'
       quant_likes = []
       curtidas = []
-
+ 
+     
       {% for likes in quant_like %}
       quant_likes.push(Number("{{ likes }}"))
       {% endfor %}

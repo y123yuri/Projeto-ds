@@ -91,16 +91,19 @@ def pesquisa_materias(request):
 def materia(request, semestre, codigo, nome):
     lista_posicao = []
     context = {
-        "semestre": SEMESTRE_ATUAL
+        "semestre": semestre
     }
     cont = 0
     if request.user.is_authenticated:
         # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_semestre = Info_semestre.objects.get (turma=obj_turma, semestre=semestre)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
+
         
+            
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
         context["avaliacao_dificuldade"] = obj_turma.avaliacao_dificuldade/2
@@ -182,7 +185,7 @@ def materia(request, semestre, codigo, nome):
 
 ####################################################   CALENDARIO     
         index =0
-        lista_turno = obj_turma.turno.split(" ")
+        lista_turno = obj_semestre.turno.split(" ")
         dias = []
         
         # print(obj_turma.turno)
