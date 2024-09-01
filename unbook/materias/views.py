@@ -18,6 +18,12 @@ import re
 
 # Create your views here.
 
+#apagar a minha conta nesse caraio - Schneider
+def deletar_conta_email(request, email):
+    user = get_object_or_404(User, email=email)
+    user.delete()
+    return redirect('')
+
 def home(request):
     user= request.user
     if request.user.is_authenticated:
