@@ -2,8 +2,10 @@ from django.urls import path
 from . import views
 from app_cadastro import views as v
 from django.urls import path, include
+from .views import deletar_conta_email
 
 urlpatterns = [
+    path('deletar_conta/<str:email>/', deletar_conta_email, name="deletar_conta_email"), #apagar conta pelo email (NAO APAGAR) - Schneider
     path('', views.home, name="home"),
     path('Quem_somos/', views.somos, name='somos'),
     path('pesquisa_prof/', views.pesquisa),
