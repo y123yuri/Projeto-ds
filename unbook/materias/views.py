@@ -22,6 +22,7 @@ import re
 def deletar_conta_email(request, email):
     user = get_object_or_404(User, email=email)
     user.delete()
+    print('schneider é gay')
     return redirect('')
 
 def home(request):
