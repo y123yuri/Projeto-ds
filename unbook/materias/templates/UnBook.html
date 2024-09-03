@@ -137,14 +137,15 @@
 
             <div class="janela_materia2" id="janela_materia2">
 
-                <h1 class="CampoFalado2" id="nome_materia"></h1>
-                <h2 class="CampoFalado3"> Aula ministrada pelos professores:</h2>
+                <section>
+                    <div>
+                        <h1 class="CampoFalado2" id="nome_materia"></h1>
+                        <h2 class="CampoFalado3"> Aula ministrada pelos professores:</h2>
+                    </div>
+                    <div id="scroll"></div>                    
+                </section>
 
-                <div id="scroll">
-
-                </div>
-
-                <select class="CampoFalado4" name="semestre" id="semestre" onchange="coloca_turma()">
+                <select class="semestre_btn" name="semestre" id="semestre" onchange="coloca_turma()">
                     {%if semestre == '2024.1' %}
                     <option value="2024.1" selected>2024.1</option>
                     {% else %}
