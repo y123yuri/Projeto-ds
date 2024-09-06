@@ -17,8 +17,8 @@ def add_2024_2(apps, schema_editor):
         while len(linha)>1:
             print(linha)
             if not Materia.objects.filter(codigo=linha[0]).exists():
-                print(f'criei matéria: {linha[0]}/{linha[1]}')
-                Materia.objects.create(codigo=linha[0], nome=linha[1])
+                print(f'criei matéria: {linha[0]}/{linha[1][1:-1]}')
+                Materia.objects.create(codigo=linha[0], nome=linha[1][1:-1])
             linha = fp.readline().split(',')
     print('-='*25)
     

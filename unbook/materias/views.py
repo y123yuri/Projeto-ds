@@ -102,7 +102,6 @@ def materia(request, semestre, codigo, nome):
         obj_semestre = Info_semestre.objects.get (turma=obj_turma, semestre=semestre)
 
 
-        
             
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
@@ -239,9 +238,22 @@ def professor(request, nome):
     
     ob_prof = Professor.objects.get(nome=nome)
     lista_turma = Turma.objects.filter(professor=ob_prof)
+
     context = {}
     context["semestre"] = SEMESTRE_ATUAL #semestre atual
-    context["lista_turmas"] = list(lista_turma)
+    context["lista_turmas"] = []
+    lista_infos_semestre =  []
+
+    for t in lista_turma:
+        
+        busca_info = list(Info_semestre.objects.filter(turma=t.id))
+        for e in range(len(busca_info)):
+            context["lista_turmas"].append(t)
+        lista_infos_semestre += busca_info
+        print(lista_infos_semestre)
+    
+    context["info_semestre"] =  lista_infos_semestre
+
     context["nome"] = nome
     context["foto"] = ob_prof.foto
     aval_didatica = 0
@@ -368,7 +380,7 @@ def like_video(request):
 
 
 
-def resumos(request, semestre, nome,codigo) :
+def resumos(request, semestre, nome,codigo):
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)

@@ -33,18 +33,19 @@
 
   <body>
     <script>
-      lista_turma_codigo = []
-      lista_turma_nome_prof = []
-      lista_turma_semestre = []
-      lista_turma_nome_materia = []
-      
+      var lista_turma_codigo = []
+      var nome_prof = "{{ nome }}" 
+      var lista_turma_semestre = []
+      var lista_turma_nome_materia = []
       {% for turma in lista_turmas %}
-        lista_turma_codigo.push("{{turma.materia.codigo}}")
-        lista_turma_nome_prof.push("{{turma.professor.nome}}")
-        lista_turma_semestre.push("{{turma.semestre}}")
-        lista_turma_nome_materia.push("{{turma.materia.nome}}")
+      lista_turma_codigo.push("{{ turma.materia.codigo }}")
+      lista_turma_nome_materia.push("{{ turma.materia.nome }}")
       {% endfor %}
 
+
+      {% for info in info_semestre %}
+      lista_turma_semestre.push("{{info.semestre}}");
+      {% endfor %}
     </script>
 
 
@@ -423,23 +424,7 @@
           <h1 id="Materias_ofertadas">Matérias ofertadas</h1>
 
           <div id="scroll_materias">
-            {% for turma in lista_turmas %} 
-            {% if user.is_authenticated %}
-            {% if turma.semestre == semestre %}
-            <a
-              class="materias"
-              href="../../materia/{{turma.semestre}}/{{ turma.materia.codigo }}/{{ turma.professor.nome }}"
-              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
-            >
-            {% endif %}
-            {% else %}
-            <a
-              class="materias"
-              onclick="alert('Você precisa estar logado!')"
-              href="../cadastro/login"
-              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
-            >
-            {% endif %} {% endfor %}
+            
           </div>
         </div>
       </div>

@@ -7,6 +7,9 @@ window.onload = function () {
   pintar_estrela_tela(nota_didatica, "didatica");
   pintar_estrela_tela(nota_apoio, "apoio");
   pintar_estrela_tela(nota_dificuldade, "dificuldade");
+
+  // colocar materias
+  troca_semestre()
 };
 
 function pintar_estrela_tela(nota, categoria) {
@@ -60,19 +63,23 @@ if (indice !== 0) {
 
 // função para trocar as matérias do semestre
 function troca_semestre(){
-  console.log("oi")
   semestre = document.getElementById("semestre").value;
   // repintar_estrela() ?
   
   // trocar as turmas
   var_scroll = document.getElementById("scroll_materias")
   var_scroll.innerHTML = ""
-  console.log(lista_turma_codigo.length)
+  
   for (i=0;i<lista_turma_codigo.length;i++){
-    console.log(`/${lista_turma_codigo[i]}}/${lista_turma_nome_prof[i]}">${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`)
-    if (lista_turma_semestre == semestre){
-      var_scroll.innerHTML += `
-      <a class="materias" href="../../materia/${semestre}/${lista_turma_codigo[i]}/${lista_turma_nome_prof[i]}">${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}</a>`
+    console.log(`${lista_turma_semestre[i]}; ${semestre}`)
+    if (lista_turma_semestre[i] == semestre){
+      console.log(`/${lista_turma_codigo[i]}}/${nome_prof}">${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`)
+      var ancora = document.createElement('a')
+      ancora.classList.add('materias')
+      ancora.href =  `../../materia/${semestre}/${lista_turma_codigo[i]}/${nome_prof}`
+      ancora.text = `${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`
+      var_scroll.appendChild(ancora)
+      
     }
     
   }
