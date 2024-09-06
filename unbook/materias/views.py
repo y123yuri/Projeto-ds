@@ -100,6 +100,7 @@ def materia(request, semestre, codigo, nome):
         obj_prof = Professor.objects.get(nome=nome)
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
         obj_semestre = Info_semestre.objects.get (turma=obj_turma, semestre=semestre)
+        
 
 
             
@@ -112,6 +113,7 @@ def materia(request, semestre, codigo, nome):
         context["comentarios"] = []
         context["quant_like"] = []
         context["curtidas"] = []
+        context["professor"] = obj_prof
         pre_context = []
         pre_context_curtida = []
         contador_comentario = 0 
@@ -309,10 +311,13 @@ def videos(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
+        
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        
         context = {}
         context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor"] = obj_prof
         lista_videos = []
         lista_quant_curtida = []
         lista_bool_curtiu = []
