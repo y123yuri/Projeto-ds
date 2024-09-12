@@ -798,16 +798,7 @@ div .janela_pesquisa {
     
     
     .unbloguinho {
-        position: absolute;
-        max-width: 12%;
-        max-height: 12%;
-    
-        width: auto;
-        height: auto;
-    
-        top: 10px;
-        right: 10px;
-        display: block;
+        display: none;
     }
     
     a#botao_arrasta {
@@ -1183,7 +1174,7 @@ nav {
     
     .janela_materia2 {
         width: 90%;
-        height: 100%;
+        height: fit-content;
         display: block;
     
         display: none;
@@ -1194,6 +1185,18 @@ nav {
         border: none;
         margin-top: 4em;
     }
+
+    .semestre_btn {
+        display: block;
+        text-align: center;
+        box-shadow: -1px 1px 1px rgb(30, 30, 30);
+        border-radius: 5px;
+        margin: 0 auto;
+        width: 80%;
+        font-size: 1.2em;
+        color: black;
+    }
+    
     
     .CampoFalado2 {
         display: block;
