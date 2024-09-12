@@ -336,7 +336,7 @@ def trocar_senha(request):
                         )
         update_session_auth_hash(request, request.user)  
         messages.success(request, 'Senha alterada com sucesso!')
-        return redirect('login_func')  
+        return redirect('../')  
 
 
 def esqueceu(request):
