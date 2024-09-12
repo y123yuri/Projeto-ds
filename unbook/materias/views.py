@@ -16,7 +16,7 @@ from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
 import re
 
-SEMESTRE_ATUAL = "2024.1"
+SEMESTRE_ATUAL = "2024.2"
 
 # Create your views here.
 
@@ -113,7 +113,10 @@ def materia(request, semestre, codigo, nome):
         context["comentarios"] = []
         context["quant_like"] = []
         context["curtidas"] = []
-        context["professor"] = obj_prof
+        context["professor"] = []
+        for prof in obj_turma.professor.all():
+            context["professor"].append(prof)
+        context["professor_unico"] = obj_prof
         pre_context = []
         pre_context_curtida = []
         contador_comentario = 0 

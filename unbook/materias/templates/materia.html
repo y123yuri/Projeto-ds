@@ -430,7 +430,9 @@
             <div class="boxes_modal" id="box_modal_4">
               <div id="space_text">
                 <h4 class="CampoFalado3_modal">
-                  Você indicaria "{{ professor.nome }}" como um(a)
+                  {% for prof in professor %}
+                  Você indicaria "{{ prof.nome }}" como um(a)
+                  {% endfor %}
                   professor(a):
                 </h4>
               </div>
@@ -980,9 +982,11 @@
             <h1 id="Materia" class="CampoFalado1">
               {{ turma.materia.nome }} - ({{ turma.materia.codigo }})
             </h1>
-            <a id="Prof" href=" ../../../professor/{{ professor.nome }}"
-              >(Prof. {{ professor.nome }})</a
+            {% for prof in professor %}
+            <a id="Prof" href=" ../../../professor/{{ prof.nome }}"
+              >(Prof. {{ prof.nome }})</a
             >
+            {% endfor %}
           </div>
 
           <hr style="position: relative; top: 0" />
@@ -992,10 +996,12 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor.nome }}/videos"> 
+                
+                href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico.nome }}/videos">
+
                 <li
                   id="videos"
-                  href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor.nome }}/videos">
+                  href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico.nome }}/videos">
                   <img
                     class="imagens"
                     src="{% static 'image/Video Conference.png' %}" />
@@ -1006,7 +1012,7 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor.nome }}/resumos"> 
+                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico.nome }}/resumos"> 
                 <li id="resumos">
                   <img
                     class="imagens"
@@ -1018,7 +1024,7 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor.nome }}/atividades">
+                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico.nome }}/atividades">
                 <li id="atividades">
                   <img
                     class="imagens"
@@ -1190,8 +1196,9 @@
     </div>
 
 
-
-    <a style="display: none" id="Prof_js">{{ professor.nome }}</a>
+    {% for prof in professor %}
+    <a style="display: none" id="Prof_js">{{ prof.nome }}</a>
+    {% endfor %}
     <a style="display: none" id="User_js">{{ user.username }}</a>
   </body>
 
