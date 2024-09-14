@@ -16,6 +16,8 @@ from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
 import re
 
+SEMESTRE_ATUAL = "2024.2"
+
 # Create your views here.
 
 #apagar a minha conta nesse caraio - Schneider
@@ -29,7 +31,8 @@ def home(request):
     if request.user.is_authenticated:
         perfil_existente = PerfilUsuario.objects.filter(user=user).first()
         context = {
-            'perfil': perfil_existente
+            'perfil': perfil_existente,
+            'semestre': SEMESTRE_ATUAL
             }
         return render(request, 'UnBook.html', context)
     else: 
@@ -91,16 +94,22 @@ def pesquisa_materias(request):
     return HttpResponse(resposta)
 
 
-def materia(request, codigo, nome):
+def materia(request, semestre, codigo, nome):
     lista_posicao = []
+    context = {
+        "semestre": semestre
+    }
     cont = 0
     if request.user.is_authenticated:
         # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
-
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        context = {}
+        obj_semestre = Info_semestre.objects.get (turma=obj_turma, semestre=semestre)
+        
+
+
+            
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
         context["avaliacao_dificuldade"] = obj_turma.avaliacao_dificuldade/2
@@ -110,6 +119,10 @@ def materia(request, codigo, nome):
         context["comentarios"] = []
         context["quant_like"] = []
         context["curtidas"] = []
+        context["professor"] = []
+        for prof in obj_turma.professor.all():
+            context["professor"].append(prof)
+        context["professor_unico"] = obj_prof
         pre_context = []
         pre_context_curtida = []
         contador_comentario = 0 
@@ -182,7 +195,7 @@ def materia(request, codigo, nome):
 
 ####################################################   CALENDARIO     
         index =0
-        lista_turno = obj_turma.turno.split(" ")
+        lista_turno = obj_semestre.turno.split(" ")
         dias = []
         
         # print(obj_turma.turno)
@@ -236,8 +249,22 @@ def professor(request, nome):
     
     ob_prof = Professor.objects.get(nome=nome)
     lista_turma = Turma.objects.filter(professor=ob_prof)
+
     context = {}
-    context["lista_turmas"] = list(lista_turma)
+    context["semestre"] = SEMESTRE_ATUAL #semestre atual
+    context["lista_turmas"] = []
+    lista_infos_semestre =  []
+
+    for t in lista_turma:
+        
+        busca_info = list(Info_semestre.objects.filter(turma=t.id))
+        for e in range(len(busca_info)):
+            context["lista_turmas"].append(t)
+        lista_infos_semestre += busca_info
+        print(lista_infos_semestre)
+    
+    context["info_semestre"] =  lista_infos_semestre
+
     context["nome"] = nome
     context["foto"] = ob_prof.foto
     aval_didatica = 0
@@ -271,21 +298,35 @@ def pesquisa_turma(request):
     lista_turmas = list(Turma.objects.filter(materia=materia))
     resposta = ''
     if len(lista_turmas)>0:
-        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo
+        infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+        
+        for info in infos:
+            if info ==infos[0]:
+                resposta = lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+            else:
+                resposta += ";"+lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
-                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
+                
+                infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+                
+                for info in infos:
+                    print(info.semestre)
+                    resposta += ";"+obj.professor.all()[0].foto+','+obj.professor.all()[0].nome+','+info.turno+','+obj.materia.codigo+','+info.semestre
     return HttpResponse(resposta)
 
 
-def videos(request, nome,codigo) :
+def videos(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
-
+        
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        
         context = {}
         context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor"] = obj_prof
         lista_videos = []
         lista_quant_curtida = []
         lista_bool_curtiu = []
@@ -353,12 +394,12 @@ def like_video(request):
 
 
 
-def resumos(request, nome,codigo) :
+def resumos(request, semestre, nome,codigo):
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         lista_resumos = []
@@ -423,12 +464,12 @@ def like_resumo(request):
         return HttpResponse("add")
 
 
-def atividades(request, nome,codigo) :
+def atividades(request, semestre, nome,codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
         context = {}
         context["turma"] = obj_turma
         lista_atividades = []
