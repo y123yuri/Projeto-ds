@@ -338,7 +338,7 @@ def trocar_senha(request):
         request.user.save()
         print("salvei as  novas senha")
         Senha_trocada.objects.create(
-                            user=user,
+                            user=request.user,
                             data_troca=timezone.now()
                         )
         print("salvei modal")
