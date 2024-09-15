@@ -1,25 +1,3 @@
-// window.onload = function () {
-//     // colocando quant de likes
-//     console.log("entrei!" +quant_likes.length)
-//     for (i=0;i<quant_likes.length;i++){
-//         console.log(`cont_link${i}`)
-//         element = document.getElementById(`cont_link${i}`)
-//         console.log(element)
-//         element.innerText = `cont: ${quant_likes[i]}`
-//          // numero de likes (oi)
-
-//         elements = document.getElementById(`coracao${i}`);
-//         console.log(elements) // coraçao botao
-
-//         if (curtidas[i] === 1){
-//             elements.style.color = "red";
-//             elements.classList.add('heart');
-//         } else{
-//             elements.style.color = "grey";
-//             elements.classList.remove('heart');  //AAAAAAAAAAAAAA RRRRRRRRRRRUUUUUUUUUUMMMMMMMMMMMAAAAAAAAAAARRRR
-//         }
-//     }
-// }
 
 window.onload = function () {
   // colocando quant de likes
@@ -56,9 +34,6 @@ function enviar() {
   if (link_enviado !== "" && nome_link !== "") {
     envia_link_back(nome_link, link_enviado);
     fechar_modal();
-
-    // window.location.reload();
-    // window.location.reload(true);
   } else {
     alert("Por favor, insira um nome ou um link.");
   }
@@ -110,7 +85,7 @@ function envia_link_back(nome_link, link) {
       console.error("Erro na requisição AJAX:", status, error);
     },
   });
-  // window.location.reload(true);
+  window.location.reload(true);
 }
 
 document.addEventListener("click", function (e) {

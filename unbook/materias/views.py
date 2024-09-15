@@ -318,7 +318,7 @@ def pesquisa_turma(request):
     return HttpResponse(resposta)
 
 
-def videos(request, semestre, nome,codigo) :
+def videos(request, semestre, nome, codigo) :
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
@@ -329,9 +329,11 @@ def videos(request, semestre, nome,codigo) :
         context["turma"] = obj_turma
         context["semestre"] = semestre
         context["professor"] = obj_prof
+
         lista_videos = []
         lista_quant_curtida = []
         lista_bool_curtiu = []
+
         for video in Video.objects.filter(turma=obj_turma):
             lista_videos.append(video)
             lista_quant_curtida.append(video.curtidas.count())
@@ -351,6 +353,76 @@ def videos(request, semestre, nome,codigo) :
         context["erro"] = "Você precisa estar logado" 
         return redirect('../../cadastro/login', context)
 
+def atividades(request, semestre, nome, codigo) :
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
+
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+
+        context = {}
+
+        context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor"] = obj_prof
+
+        lista_atividades = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+
+        for atividade in Atividade.objects.filter(turma=obj_turma):
+            lista_atividades.append(atividade)
+            lista_quant_curtida.append(atividade.curtidas.count())
+            lista_bool_curtiu.append( 1 if atividade.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+        print(lista_bool_curtiu)
+        
+        context["atividades"] = lista_atividades
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
+
+        return render(request, "Atividades.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
+
+def resumos(request, semestre, nome,codigo):
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_prof = Professor.objects.get(nome=nome)
+        
+        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        print(obj_turma)
+        context = {}
+
+        context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor"] = obj_prof
+
+        lista_resumos = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+        for resumo in Resumo.objects.filter(turma=obj_turma):
+            lista_resumos.append(resumo)
+            lista_quant_curtida.append(resumo.curtidas.count())
+            lista_bool_curtiu.append( 1 if resumo.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+
+        context["resumos"] = lista_resumos
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
+
+        return render(request, "Livros.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
+
+
+        
 def add_video(request): #ajax function
     materia = Materia.objects.get(codigo=request.POST["materia"])
     professor = Professor.objects.get(nome=request.POST["professor"])
@@ -396,33 +468,6 @@ def like_video(request):
 
 
 
-def resumos(request, semestre, nome,codigo):
-    if request.user.is_authenticated:
-        obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
-        context = {}
-        context["turma"] = obj_turma
-        lista_resumos = []
-        lista_quant_curtida = []
-        lista_bool_curtiu = []
-        for resumo in Resumo.objects.filter(turma=obj_turma):
-            lista_resumos.append(resumo)
-            lista_quant_curtida.append(resumo.curtidas.count())
-            lista_bool_curtiu.append( 1 if resumo.curtidas.filter(id=request.user.id).exists() else 0)
-
-        # dps implementar ordenação em uma FUNÇÃO
-
-        context["resumos"] = lista_resumos
-        context["bool_curtiu"] = lista_bool_curtiu
-        context["quant_curtidas"] = lista_quant_curtida
-
-        return render(request, "Livros.html", context)
-    else:
-        context = {}
-        context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
 
 def add_resumo(request): #ajax function
     materia = Materia.objects.get(codigo=request.POST["materia"])
@@ -466,33 +511,6 @@ def like_resumo(request):
         return HttpResponse("add")
 
 
-def atividades(request, semestre, nome,codigo) :
-    if request.user.is_authenticated:
-        obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof, semestre=semestre)
-        context = {}
-        context["turma"] = obj_turma
-        lista_atividades = []
-        lista_quant_curtida = []
-        lista_bool_curtiu = []
-        for atividade in Atividade.objects.filter(turma=obj_turma):
-            lista_atividades.append(atividade)
-            lista_quant_curtida.append(atividade.curtidas.count())
-            lista_bool_curtiu.append( 1 if atividade.curtidas.filter(id=request.user.id).exists() else 0)
-
-        # dps implementar ordenação em uma FUNÇÃO
-
-        context["atividades"] = lista_atividades
-        context["bool_curtiu"] = lista_bool_curtiu
-        context["quant_curtidas"] = lista_quant_curtida
-
-        return render(request, "Atividades.html", context)
-    else:
-        context = {}
-        context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
 
 
 def add_atividade(request):
