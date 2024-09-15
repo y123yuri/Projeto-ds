@@ -330,11 +330,13 @@ def trocar_senha(request):
             return redirect('login_func')
         request.user.set_password(senha_nova)
         request.user.save()
+        print('troquei e salvei a senha')
         Senha_trocada.objects.create(
-                            user=user,
-                            data_troca=timezone.now()  
+                            user=user 
                         )
+        print('criei model')
         update_session_auth_hash(request, request.user)  
+        print('criptografei')
         messages.success(request, 'Senha alterada com sucesso!')
         return redirect('../')  
 
