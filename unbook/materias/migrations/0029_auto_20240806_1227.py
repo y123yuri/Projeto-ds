@@ -36,8 +36,16 @@ def add_turmas(apps, schema_editor):
                         Professor.objects.create(nome=p.nome, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
                     prof = Professor.objects.get(nome=p.nome)
                     turma.professor.add(prof)
+                    
                 turma.save()
             else:
+
+                for p in profs:
+                    if p not in Turma.objects.all():
+                        prof = Professor.objects.get(nome=p.nome)
+                        if not Turma.objects.filter(materia=materia.codigo, professor=prof.nome).exists():
+                            turma.professor.add(prof)
+                
                 turma = Turma.objects.get(materia=materia.codigo, professor=existe_nome) # se pa esse é o problema
             
             if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():

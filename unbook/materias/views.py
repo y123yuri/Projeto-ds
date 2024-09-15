@@ -105,7 +105,7 @@ def materia(request, semestre, codigo, nome):
         obj_materia = Materia.objects.get(codigo=codigo)
         obj_prof = Professor.objects.get(nome=nome)
         obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        obj_semestre = Info_semestre.objects.get (turma=obj_turma, semestre=semestre)
+        obj_semestre = Info_semestre.objects.get(turma=obj_turma, semestre=semestre)
         
 
 
