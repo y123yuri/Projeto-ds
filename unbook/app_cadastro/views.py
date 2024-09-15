@@ -187,8 +187,9 @@ def login_func(request):
             'perfil': perfil_existente
         }
 
-        return render(request, "html/Perfil.html", context) 
-    
+        return render(request, "html/Perfil.html", context)
+
+    return "oi"
 
 
 
