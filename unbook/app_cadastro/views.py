@@ -319,7 +319,7 @@ def usuario(request):
         return JsonResponse({'status': 'fail'}, status=400)
 
 def trocar_senha(request):
-    print("entre an funcao")
+    print("entrei na funcao")
     if request.method == 'POST':
         print("entrei na função")
         senha_antiga = request.POST.get('senha_antiga')
