@@ -34,6 +34,42 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#mudar_senha_form').on('submit', function(event) {
+        event.preventDefault();
+
+        var csrfToken = $('[name=csrfmiddlewaretoken]').val();
+        var newpassword = $('#senha_nova').val();
+        var confirma = $('#senha_nova_confirma').val();
+        var antiga = $('#senha_antiga').val();
+
+        $.ajax({
+            type: 'POST',
+            url: "trocar_senha/",
+            headers: { 'X-CSRFToken': csrfToken },
+            data: JSON.stringify({ 'senha_nova': newpassword,
+                'senha_nova_confirma': confirma,
+                'senha_antiga': antiga,
+             }),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Senha alterada com sucesso!');
+                    window.location.reload();
+
+                } else {
+                    alert('Erro: erro no sistema');
+                }
+            },
+            error: function(response) {
+                alert('Erro: ' + response.responseJSON.message);
+            }
+        });
+    });
+});
+
+
+
 function abrir_modal(id) {
 
     var others = document.querySelectorAll('.pages')
