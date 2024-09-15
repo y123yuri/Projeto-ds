@@ -302,13 +302,15 @@ def pesquisa_turma(request):
         
         for info in infos:
             if info ==infos[0]:
-                resposta = lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+                resposta = lista_turmas[0].professor.all()[0].foto +','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
             else:
                 resposta += ";"+lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+        
+        
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
                 
-                infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+                infos = list(Info_semestre.objects.filter(turma=obj))
                 
                 for info in infos:
                     print(info.semestre)

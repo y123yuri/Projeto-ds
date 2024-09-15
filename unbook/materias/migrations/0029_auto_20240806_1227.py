@@ -40,7 +40,7 @@ def add_turmas(apps, schema_editor):
             else:
                 turma = Turma.objects.get(materia=materia.codigo, professor=existe_nome) # se pa esse é o problema
             
-            if not  Info.objects.filter(semestre="2024.2", turma=turma).exists():
+            if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
                 Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
 
             linha = fp.readline().split('$')
