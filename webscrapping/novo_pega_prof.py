@@ -47,5 +47,5 @@ for op in range(0,len(unidade_select.options)):
 
 with open("turmas.txt", 'w') as fp:
     for prof in prof_lista:
-        fp.write(','.join(prof))
+        fp.write('$'.join(prof))
         fp.write('\n')

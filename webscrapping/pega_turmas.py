@@ -82,12 +82,12 @@ for op in range(1,len(unidade_select.options)):
 
 with open("turmas.txt", 'w') as fp:
     for t in turmas_lista:
-        fp.write(','.join(list(t.values())))
+        fp.write('$'.join(list(t.values())))
         fp.write('\n')
 
 with open("materias.txt", "w") as fp:
     for m in materias:
-        fp.write(",".join(m))
+        fp.write("$".join(m))
         fp.write('\n')
 
 

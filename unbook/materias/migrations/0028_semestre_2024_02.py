@@ -13,23 +13,23 @@ def add_2024_2(apps, schema_editor):
 
     #adiciona materias novas
     with open('arquivos_txt/2024_02/materias_2024.02.txt', 'r', encoding='utf-8') as fp: 
-        linha = fp.readline().split(',')
+        linha = fp.readline().split('$')
         while len(linha)>1:
             print(linha)
             if not Materia.objects.filter(codigo=linha[0]).exists():
                 print(f'criei matéria: {linha[0]}/{linha[1][1:-1]}')
                 Materia.objects.create(codigo=linha[0], nome=linha[1][1:-1])
-            linha = fp.readline().split(',')
+            linha = fp.readline().split('$')
     print('-='*25)
     
     # adiciona professores novos  
     with open('arquivos_txt/2024_02/prof_2024.02.txt', 'r', encoding='utf-8') as fp:
-        linha = fp.readline().split(',')
+        linha = fp.readline().split('$')
         while len(linha)>1:
             if not Professor.objects.filter(nome=linha[0]).exists():
                 print(f'criei professor: {linha[0]}')
                 Professor.objects.create(nome=linha[0], foto=linha[1])
-            linha = fp.readline().split(',')
+            linha = fp.readline().split('$')
     print('-='*25)
     
 

@@ -9,7 +9,7 @@ def add_turmas(apps, schema_editor):
     Info = apps.get_model('materias', "Info_semestre")
     # adiciona novas turmas
     with open('arquivos_txt/2024_02/turmas2024.02.txt', 'r', encoding='utf-8') as fp:
-        linha = fp.readline().split(',')
+        linha = fp.readline().split('$')
         while len(linha)>1:
             profs_nome = linha[1].split(';')
             profs = []
@@ -43,7 +43,7 @@ def add_turmas(apps, schema_editor):
             if not  Info.objects.filter(semestre="2024.2", turma=turma).exists():
                 Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
 
-            linha = fp.readline().split(',')
+            linha = fp.readline().split('$')
 
 class Migration(migrations.Migration):
 
