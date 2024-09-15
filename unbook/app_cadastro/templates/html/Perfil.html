@@ -291,7 +291,7 @@
                 <h1 class="alterar"> Alterar Senha </h1>  
                 <hr style="margin: 0.5em 1em 0.5em 0" />
 
-              <form method="POST" action="login/{% url 'trocar_senha' %}">  
+              <form method="POST" action="{% url 'trocar_senha' %}">  
                   {% csrf_token %}
                     <h2 class="CampoFalado_Config">Senha antiga</h2>
                     <input class="forms" type="password" id="senha_antiga" name="senha_antiga" required />
