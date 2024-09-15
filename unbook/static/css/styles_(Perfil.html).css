@@ -1070,6 +1070,79 @@ a .UnBook_logo_mini {
     scroll-behavior: smooth;
   }
 
+  #modal_certeza {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    text-align: center;
+    padding: 2em;
+    width: 90%;
+    height: fit-content;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    box-shadow: -5px 5px 1px #737373;
+    z-index: 3;
+  }
+  
+  #title_c {
+    margin: 0 1em;
+    font-size: 1.5em;
+  }
+  
+  #dog {
+    margin: 1em auto;
+    width: 200px;
+    height: 200px;
+  }
+  
+  #espace_buttons {
+    margin: auto;
+    align-items: center;
+  
+    width: 70%;
+    height: 5em;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+  
+  
+    background-color: #0000002a;
+    border: 1px solid gray;
+  }
+  
+  a.button_c {
+    position: relative;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  a.button_c:hover {
+    transform: scale(1.05);
+  }
+  a.button_c:active {
+    transform: scale(0.95);
+  }
+  
+  #nao_c {
+    background-color: #ea3939;
+    box-shadow: -2px 2px 2px #c43131;
+  }
+  #sim_c {
+    background-color: #49da57;
+    box-shadow: -2px 2px 2px #308e39;
+  }
+
   a .UnBook_logo_mini {
     display: block;
 
@@ -1441,7 +1514,8 @@ a .UnBook_logo_mini {
     display: flex;
     position: relative;
     flex-direction: column;
-    height: 0em;
+    height: fit-content;
+    max-height: 12em;
     padding: 1.5em 2em;
   }
 
@@ -1449,11 +1523,11 @@ a .UnBook_logo_mini {
     display: flex;
     position: absolute;
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
     height: auto;
+    margin: 0 auto;
     bottom: 1em;
     padding: 1.5em 2em;
-    margin-left: 0em;
     justify-content: space-between;
   }
   .botoes#atualizar {
@@ -1463,10 +1537,11 @@ a .UnBook_logo_mini {
     font-size: 1.3em;
     bottom: 0.5em;
   }
-  .botoes#Logout {
+  .botoes#Logout , .botoes#Deletar{
     margin: auto;
     width: 11em;
     height: auto;
+    margin-bottom: 0.5em;
     font-weight: 700;
     position: relative;
   }
