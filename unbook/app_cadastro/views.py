@@ -322,18 +322,17 @@ def trocar_senha(request):
         senha_antiga = request.POST.get('senha_antiga')
         senha_nova = request.POST.get('senha_nova')
         senha_nova_confirma = request.POST.get('senha_nova_confirma')
+        print('estou aqui e to bem')
         if not request.user.check_password(senha_antiga):
             messages.error(request, 'Senha antiga incorreta.')
             return redirect('login_func')
+        print('estou aqui e to bem2')
         if senha_nova != senha_nova_confirma:
             messages.error(request, 'As novas senhas não coincidem.')
             return redirect('login_func')
+        print('estou aqui e to bem3')
         request.user.set_password(senha_nova)
         request.user.save()
-        Senha_trocada.objects.create(
-                            user=user,
-                            data_troca=timezone.now()  
-                        )
         update_session_auth_hash(request, request.user)  
         messages.success(request, 'Senha alterada com sucesso!')
         return redirect('login_func')  
