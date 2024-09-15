@@ -187,9 +187,8 @@ def login_func(request):
             'perfil': perfil_existente
         }
 
-        return render(request, "html/Perfil.html", context)
-
-    return "oi"
+        return render(request, "html/Perfil.html", context) 
+    
 
 
 
@@ -319,35 +318,25 @@ def usuario(request):
         return JsonResponse({'status': 'fail'}, status=400)
 
 def trocar_senha(request):
-    print("entrei na funcao")
     if request.method == 'POST':
-        data = json.loads(request.body)
-        print("entrei na função")
-        senha_antiga = data.get('senha_antiga')
-        senha_nova = data.get('senha_nova')
-        senha_nova_confirma = data.get('senha_nova_confirma')
-        print('sei quais sao as senhas')
+        senha_antiga = request.POST.get('senha_antiga')
+        senha_nova = request.POST.get('senha_nova')
+        senha_nova_confirma = request.POST.get('senha_nova_confirma')
         if not request.user.check_password(senha_antiga):
             messages.error(request, 'Senha antiga incorreta.')
-            return JsonResponse("erro")
+            return redirect('login_func')
         if senha_nova != senha_nova_confirma:
             messages.error(request, 'As novas senhas não coincidem.')
-            return JsonResponse("erro")
-        print('cheguei para trocar as senhas')
+            return redirect('login_func')
         request.user.set_password(senha_nova)
-        print('setei senhas')
         request.user.save()
-        print("salvei as  novas senha")
         Senha_trocada.objects.create(
-                            user=request.user,
-                            data_troca=timezone.now()
+                            user=user,
+                            data_troca=timezone.now()  
                         )
-        print("salvei modal")
-        update_session_auth_hash(request, request.user)
-        print('criptografei')
+        update_session_auth_hash(request, request.user)  
         messages.success(request, 'Senha alterada com sucesso!')
-        print('passei a aqui')
-        return JsonResponse("Senha alterada com sucesso!")
+        return redirect('login_func')  
 
 
 def esqueceu(request):
