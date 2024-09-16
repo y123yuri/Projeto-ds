@@ -8,10 +8,11 @@ def add_turmas(apps, schema_editor):
     Professor = apps.get_model('materias',"Professor")
     Info = apps.get_model('materias', "Info_semestre")
     # adiciona novas turmas
-    with open('arquivos_txt/2024_02/turmas2024.02.txt', 'r', encoding='utf-8') as fp:
+    with open('arquivos_txt/2024_02/turmas2024.02.txt', 'r', encoding='utf-8') as fp: 
         linha = fp.readline().split('$')
         while len(linha)>1:
             profs_nome = linha[1].split(';')
+            
             profs = []
             for i in profs_nome:
                 if not Professor.objects.filter(nome=i).exists():
@@ -21,38 +22,70 @@ def add_turmas(apps, schema_editor):
 
 
             materia = Materia.objects.get(codigo=linha[0])
-            existe_nome = ""
-            for nome in profs_nome:
-                busca = Turma.objects.filter(materia=materia.codigo,professor=nome)
-                if len(busca)>0:
-                    print(f"achei a turma {busca[0].materia.codigo}")
-                    existe_nome = nome
+            turmas_existentes = Turma.objects.filter(materia=materia).distinct()
+            turma_encontrada = None
+            for turma in turmas_existentes:
+                
+                professores_turma = list(turma.professor.all())
+                if set(profs) == set(professores_turma):
+                    turma_encontrada = turma
+                    break
             
-            if existe_nome == "":
-                print(f'criei uma Turma: {materia}:{profs}')
+            
+            if not turma_encontrada:
+                print(f'Criando nova turma: {materia.codigo} com professores {profs_nome}')
                 turma = Turma.objects.create(materia=materia)
-                for p in profs:
-                    if not Professor.objects.filter(nome=p.nome).exists():
-                        Professor.objects.create(nome=p.nome, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
-                    prof = Professor.objects.get(nome=p.nome)
-
-                    turma.professor.add(prof)
-                    
+                turma.professor.set(profs) 
                 turma.save()
             else:
+                print(f'Turma já existente: {materia.codigo} com professores {profs_nome}')
+                turma = turma_encontrada
 
-                for p in profs:
-                    if p not in Turma.objects.all():
-                        prof = Professor.objects.get(nome=p.nome)
-                        if not Turma.objects.filter(materia=materia.codigo, professor=prof.nome).exists():
-                            turma.professor.add(prof)
-                
-                turma = Turma.objects.get(materia=materia.codigo, professor=existe_nome) # se pa esse é o problema
+            
+            if not Info.objects.filter(semestre="2024.2", turma=turma).exists():
+                Info.objects.create(
+                    turma=turma, 
+                    turno=linha[2], 
+                    local=linha[3], 
+                    semestre='2024.2'
+                )
 
-            if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
-                Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
-
+            
             linha = fp.readline().split('$')
+
+
+            # existe_nome = ""
+            # for nome in profs_nome:
+            #     busca = Turma.objects.filter(materia=materia.codigo,professor=nome)
+            #     if len(busca)>0:
+            #         print(f"achei a turma {busca[0].materia.codigo}")
+            #         existe_nome = nome
+            
+            # if existe_nome == "":
+            #     print(f'criei uma Turma: {materia}:{profs}')
+            #     turma = Turma.objects.create(materia=materia)
+            #     for p in profs:
+            #         if not Professor.objects.filter(nome=p.nome).exists():
+            #             Professor.objects.create(nome=p.nome, foto="https://sigaa.unb.br/sigaa/img/no_picture.png")
+            #         prof = Professor.objects.get(nome=p.nome)
+
+            #         turma.professor.add(prof)
+                    
+            #     turma.save()
+            # else:
+
+            #     for p in profs:
+            #         if p not in Turma.objects.all():
+            #             prof = Professor.objects.get(nome=p.nome)
+            #             if not Turma.objects.filter(materia=materia.codigo, professor=prof.nome).exists():
+            #                 turma.professor.add(prof)
+                
+            #     turma = Turma.objects.get(materia=materia.codigo, professor=existe_nome) # se pa esse é o problema
+
+            # if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
+            #     Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
+
+            # linha = fp.readline().split('$')
 
 class Migration(migrations.Migration):
 

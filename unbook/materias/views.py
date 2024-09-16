@@ -108,7 +108,9 @@ def materia(request, semestre, codigo, nome):
         obj_semestre = Info_semestre.objects.get(turma=obj_turma, semestre=semestre)
         
 
+        
 
+  ##puxar pelo id da turma
             
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
@@ -122,7 +124,11 @@ def materia(request, semestre, codigo, nome):
         context["professor"] = []
         for prof in obj_turma.professor.all():
             context["professor"].append(prof)
+            print(prof)
+        
         context["professor_unico"] = obj_prof
+       #puxar o professor que bnao da duas aulas da mesma turma
+
         pre_context = []
         pre_context_curtida = []
         contador_comentario = 0 
