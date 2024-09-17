@@ -553,12 +553,15 @@ def avaliacao(request):
     # Obtenha os dados do POST
     lista = request.POST['avaliacao']
     codigo_materia = request.POST['materia']
-    nome_prof = request.POST['professor']
+    nomes_prof = request.POST['professor']
 
     # Obtenha os objetos necessários
     obj_materia = Materia.objects.get(codigo=codigo_materia)
-    obj_prof = Professor.objects.get(nome=nome_prof)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    for nome in nomes_prof:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+    obj_turma = Turma.objects.get(materia=obj_materia, professor__in=obj_profs)
 
     # Separe os dados da lista
     lista_gorda = []
@@ -598,12 +601,13 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) // numero_avaliacoes
-        if user in obj_prof.aprovacoes.all():
-            if joinha == 0 :
-                obj_prof.aprovacoes.remove(user)
-            else:
-                if user not in obj_prof.aprovacoes:
-                    obj_prof.aprovacoes.add(user)
+        for prof in obj_profs:
+            if user in prof.aprovacoes.all():
+                if joinha == 0 :
+                    prof.aprovacoes.remove(user)
+                else:
+                    if user not in obj_prof.aprovacoes:
+                        prof.aprovacoes.add(user)
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
