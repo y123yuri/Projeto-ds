@@ -375,7 +375,13 @@ def videos(request, semestre, nome, codigo) :
         obj_turma = Turma.objects.filter(materia=obj_materia)
         for prof in obj_profs:
             obj_turma = obj_turma.filter(professor=prof)
-        obj_turma = obj_turma.get()
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
         
         context = {}
         context["turma"] = obj_turma
@@ -418,7 +424,13 @@ def atividades(request, semestre, nome, codigo) :
         obj_turma = Turma.objects.filter(materia=obj_materia)
         for prof in obj_profs:
             obj_turma = obj_turma.filter(professor=prof)
-        obj_turma = obj_turma.get()
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
 
         context = {}
 
@@ -461,7 +473,13 @@ def resumos(request, semestre, nome,codigo):
         obj_turma = Turma.objects.filter(materia=obj_materia)
         for prof in obj_profs:
             obj_turma = obj_turma.filter(professor=prof)
-        obj_turma = obj_turma.get()
+        if len(obj_turma.all())>1:
+                for obj in obj_turma.all():
+                    if len(nomes) == len(obj.professor.all()):
+                        obj_turma = obj
+                        break
+        else:
+            obj_turma = obj_turma.get()
 
         context = {}
 
@@ -809,7 +827,13 @@ def comentarios(request):
     obj_turma = Turma.objects.filter(materia=obj_materia)
     for prof in obj_profs:
         obj_turma = obj_turma.filter(professor=prof)
-    obj_turma = obj_turma.get()
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
 
     user = request.user
     # print(comentario_usuario)
