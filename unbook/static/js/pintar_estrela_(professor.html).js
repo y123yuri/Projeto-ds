@@ -80,7 +80,7 @@ function troca_semestre(){
       ancora.href =  `../../materia/${semestre}/${lista_turma_codigo[i]}/${lista_professores[i]}`
       ancora.innerHTML = `${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`
       if (professores.length !=1) {
-        ancora.innerHTML += `<p style="color:black"> junto com:`
+        ancora.innerHTML += `<p style="color:black"> Junto com:`
         for (const n of professores){
           if (n != nome_prof){
             ancora.innerHTML += '<p style="color:black">' +n + " "
