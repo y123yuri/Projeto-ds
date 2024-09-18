@@ -141,7 +141,7 @@ def materia(request, semestre, codigo, nome):
             context["professor"].append(prof)
             print(prof)
         
-        context["professor_unico"] = obj_prof
+        context["professor_unico"] = nome
        #puxar o professor que bnao da duas aulas da mesma turma
 
         pre_context = []
@@ -365,16 +365,25 @@ def pesquisa_turma(request):
 
 
 def videos(request, semestre, nome, codigo) :
+    nomes = nome.split("$")
     if request.user.is_authenticated:
-        obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
         
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        obj_turma = obj_turma.get()
         
         context = {}
         context["turma"] = obj_turma
         context["semestre"] = semestre
-        context["professor"] = obj_prof
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
 
         lista_videos = []
         lista_quant_curtida = []
@@ -400,17 +409,25 @@ def videos(request, semestre, nome, codigo) :
         return redirect('../../cadastro/login', context)
 
 def atividades(request, semestre, nome, codigo) :
+    nomes = nome.split("$")
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        obj_turma = obj_turma.get()
 
         context = {}
 
         context["turma"] = obj_turma
         context["semestre"] = semestre
-        context["professor"] = obj_prof
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
 
         lista_atividades = []
         lista_quant_curtida = []
@@ -435,17 +452,26 @@ def atividades(request, semestre, nome, codigo) :
         return redirect('../../cadastro/login', context)
 
 def resumos(request, semestre, nome,codigo):
+    nomes = nome.split("$")
     if request.user.is_authenticated:
         obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-        
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        print(obj_turma)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        obj_turma = obj_turma.get()
+
         context = {}
 
         context["turma"] = obj_turma
         context["semestre"] = semestre
-        context["professor"] = obj_prof
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
+
 
         lista_resumos = []
         lista_quant_curtida = []
