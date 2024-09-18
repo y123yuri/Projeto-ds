@@ -260,7 +260,10 @@ function like(element, pk) {
         element.classList.add('animation');
         contador_like.innerText = `${num+1}`
     }
-    
+    nome_link = nomes[0]
+    for (const n of nomes.slice(1)){
+        nome_link += "$"+n
+    }
     $.ajax({
         type: "POST",
         url: "../../../like/",
@@ -268,7 +271,7 @@ function like(element, pk) {
             csrfmiddlewaretoken: csrf_token,
             comentario: pk,
             materia: codigo,
-            professor: nome,
+            professor: nome_link,
         }, 
         success: function (response)  {
             console.log("")
@@ -333,7 +336,10 @@ function envia_denuncia(modal, pk) {
     })
 
     obs = modal.querySelector("#why").textContent
-
+    nome_link = nomes[0]
+    for (const n of nomes.slice(1)){
+        nome_link += "$"+n
+    }
     $.ajax({
         type: "POST",
         url: "../../../denuncia/",
@@ -341,7 +347,7 @@ function envia_denuncia(modal, pk) {
             csrfmiddlewaretoken: csrf_token,
             comentario: pk,
             materia: codigo,
-            professor: nome,
+            professor: nome_link,
             pq: outra_lista,
             obs: obs,
         }, 
@@ -526,14 +532,17 @@ textarea.addEventListener('focus', (event) => {
     }); // quando apertar ENTER no teclado ele envia o comentário
 
 function comentario_back(conteudo){
-
+    nome_link = nomes[0]
+    for (const n of nomes.slice(1)){
+        nome_link += "$"+n
+    }
     $.ajax({
         type: "POST",
         url: "../../../comentario/",
         data: {
             csrfmiddlewaretoken: csrf_token,
             comentario: conteudo,
-            professor: nome,
+            professor: nome_link,
             materia: codigo,
         }, 
         success: function (response)  {
@@ -628,6 +637,7 @@ function editar(element) {
     document.getElementById('submit_editar').addEventListener('click', ()=> {
         novo_texto = document.getElementById("texto_edita").value
         console.log(novo_texto)
+
         $.ajax({
             type: "POST",
             url: `../../../editar-comentario/${comentarioId}/`,

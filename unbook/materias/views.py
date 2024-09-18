@@ -799,12 +799,17 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
 def comentarios(request):
     comentario_usuario = request.POST['comentario']
     codigo_materia = request.POST['materia']
-    nome_prof = request.POST['professor']
+    nomes = request.POST['professor'].split("$")
 
     # Obtenha os objetos necessários
     obj_materia = Materia.objects.get(codigo=codigo_materia)
-    obj_prof = Professor.objects.get(nome=nome_prof)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    for n in nomes:
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    obj_turma = obj_turma.get()
 
     user = request.user
     # print(comentario_usuario)
