@@ -37,11 +37,15 @@
       var nome_prof = "{{ nome }}" 
       var lista_turma_semestre = []
       var lista_turma_nome_materia = []
+      var lista_professores = []
       {% for turma in lista_turmas %}
       lista_turma_codigo.push("{{ turma.materia.codigo }}")
       lista_turma_nome_materia.push("{{ turma.materia.nome }}")
       {% endfor %}
 
+      {% for prof in professores %}
+      lista_professores.push("{{ prof }}")
+      {% endfor %}
 
       {% for info in info_semestre %}
       lista_turma_semestre.push("{{info.semestre}}");

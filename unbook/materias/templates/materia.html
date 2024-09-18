@@ -49,7 +49,9 @@
       nota_didatica = '{{ turma.avaliacao_didatica}}'
       quant_likes = []
       curtidas = []
- 
+      {% for prof in professor %}
+      nomes.push("{{ prof.nome }}")
+      {% endfor %}
      
       {% for likes in quant_like %}
       quant_likes.push(Number("{{ likes }}"))
@@ -430,9 +432,10 @@
             <div class="boxes_modal" id="box_modal_4">
               <div id="space_text">
                 <h4 class="CampoFalado3_modal">
+                  Você indicaria 
                   {% for prof in professor %}
-                  Você indicaria "{{ prof.nome }}" como um(a)
-                  {% endfor %}
+                  "{{ prof.nome }}" 
+                  {% endfor %}como um(a)
                   professor(a):
                 </h4>
               </div>

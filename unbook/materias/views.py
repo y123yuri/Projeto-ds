@@ -95,6 +95,7 @@ def pesquisa_materias(request):
 
 
 def materia(request, semestre, codigo, nome):
+    nomes = nome.split("$")
     lista_posicao = []
     context = {
         "semestre": semestre
@@ -103,8 +104,22 @@ def materia(request, semestre, codigo, nome):
     if request.user.is_authenticated:
         # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        professores = []
+        for n in nomes:
+            obj_prof = Professor.objects.get(nome=n)
+            professores.append(obj_prof)
+        
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in professores:
+            obj_turma = obj_turma.filter(professor=prof)
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
+        
         obj_semestre = Info_semestre.objects.get(turma=obj_turma, semestre=semestre)
         
 
@@ -260,12 +275,18 @@ def professor(request, nome):
     context["semestre"] = SEMESTRE_ATUAL #semestre atual
     context["lista_turmas"] = []
     lista_infos_semestre =  []
+    context["professores"] = []
 
     for t in lista_turma:
         
         busca_info = list(Info_semestre.objects.filter(turma=t.id))
         for e in range(len(busca_info)):
             context["lista_turmas"].append(t)
+            lista_prof = t.professor.all()[0].nome
+            for prof in t.professor.all()[1:]:
+                lista_prof += "$"+prof.nome
+            context["professores"].append(lista_prof)
+        
         lista_infos_semestre += busca_info
         print(lista_infos_semestre)
     
@@ -307,10 +328,22 @@ def pesquisa_turma(request):
         infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
         
         for info in infos:
-            if info ==infos[0]:
-                resposta = lista_turmas[0].professor.all()[0].foto +','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+            if info == infos[0]:
+                resposta = lista_turmas[0].professor.all()[0].foto
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.foto
+                resposta += ','+lista_turmas[0].professor.all()[0].nome
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.nome
+                resposta += ','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
             else:
-                resposta += ";"+lista_turmas[0].professor.all()[0].foto+','+lista_turmas[0].professor.all()[0].nome+','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+                resposta +=  ";"+lista_turmas[0].professor.all()[0].foto
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.foto
+                resposta += ','+lista_turmas[0].professor.all()[0].nome
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.nome
+                resposta += ','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
         
         
         if (len(lista_turmas)>1):
@@ -320,7 +353,14 @@ def pesquisa_turma(request):
                 
                 for info in infos:
                     print(info.semestre)
-                    resposta += ";"+obj.professor.all()[0].foto+','+obj.professor.all()[0].nome+','+info.turno+','+obj.materia.codigo+','+info.semestre
+                    resposta +=  ";"+obj.professor.all()[0].foto
+                    for prof in obj.professor.all()[1:]:
+                        resposta += "$"+prof.foto
+                    resposta += ','+obj.professor.all()[0].nome
+                    for prof in obj.professor.all()[1:]:
+                        resposta += "$"+prof.nome
+                    resposta += ','+info.turno+','+obj.materia.codigo+','+info.semestre
+            
     return HttpResponse(resposta)
 
 
@@ -553,15 +593,18 @@ def avaliacao(request):
     # Obtenha os dados do POST
     lista = request.POST['avaliacao']
     codigo_materia = request.POST['materia']
-    nomes_prof = request.POST['professor']
+    nomes_prof = request.POST['professor'].split(',')[:-1]
+    print(nomes_prof)
 
     # Obtenha os objetos necessários
     obj_materia = Materia.objects.get(codigo=codigo_materia)
     obj_profs = []
+    obj_turma = Turma.objects.filter(materia=obj_materia)
     for nome in nomes_prof:
         obj_prof = Professor.objects.get(nome=nome)
         obj_profs.append(obj_prof)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor__in=obj_profs)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    obj_turma = obj_turma.get()
 
     # Separe os dados da lista
     lista_gorda = []
@@ -605,9 +648,10 @@ def avaliacao(request):
             if user in prof.aprovacoes.all():
                 if joinha == 0 :
                     prof.aprovacoes.remove(user)
-                else:
-                    if user not in obj_prof.aprovacoes:
-                        prof.aprovacoes.add(user)
+                    print(f"+1 reprovacao {prof}")
+            else:
+                prof.aprovacoes.add(user)
+                print(f"+1 aprovação {prof}")
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
@@ -616,9 +660,11 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
-        if user not in obj_prof.aprovacoes.all():
-            if joinha == 1 :
-                obj_prof.aprovacoes.add(user)
+        for prof in obj_profs:
+            if user not in prof.aprovacoes.all():
+                if joinha == 1 :
+                    prof.aprovacoes.add(user)
+                    print(f"+1 aprovação {prof}")
 
 
         # Adicione o usuário aos avaliadores

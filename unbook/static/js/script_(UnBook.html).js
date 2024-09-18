@@ -308,18 +308,26 @@ function coloca_turma(){
     }
 
     for (let i = 0; i < turmas.length; i++) {
-        
+        // turmas[0] = foto; [1] = nome do prof; [2] = turno; [3] = codigo; [4] = semestre
         ancora = document.createElement("a")
         texto = document.createElement("p")
-        texto.textContent = `${turmas[i][1]}`
+        nome_professores = turmas[i][1].split("$")
+        texto.textContent = `${nome_professores[0]}`
+        for (const n of nome_professores.slice(1)) {
+            texto.textContent += ` e ${n}`
+        }
+        
         texto.style = classe_professores
 
 
-        ancora.innerHTML = `<img style=${box_img} src="${turmas[i][0]}">`
+        ancora.innerHTML = `<img style=${box_img} src="${turmas[i][0].split("$")[0]}">`
         ancora.appendChild(texto)
 
 
-        ancora.href = `../materia/${semestre}/${turmas[i][3]}/${turmas[i][1]}`
+        ancora.href = `../materia/${semestre}/${turmas[i][3]}/${nome_professores[0]}`
+        for (const n of nome_professores.slice(1)) {
+            ancora.href += `$${n}`
+        }
         ancora.style = professor
         ancora.style.box_shadow = 0
         ancora.addEventListener("mouseenter", function () {

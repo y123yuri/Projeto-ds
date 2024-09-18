@@ -80,13 +80,17 @@ button_finalizar.addEventListener('click', () => {
 
 function enviar_para_back(lista) {
     lista = lista.join(',');
+    nomes_string = ""
+    for (var i=0;i<nomes.length;i++){
+        nomes_string += `${nomes[i]},`
+    }
     $.ajax({
         type: "POST",
         url: "../../../avaliacao/",
         data: {
             csrfmiddlewaretoken: csrf_token,
             avaliacao: lista,
-            professor: nome,
+            professor: nomes_string,
             materia: codigo,
         },
         success: function (response) {

@@ -22,7 +22,9 @@ def add_turmas(apps, schema_editor):
 
 
             materia = Materia.objects.get(codigo=linha[0])
-            turma_encontrada = Turma.objects.filter(materia=materia, professor__in=profs_nome)
+            turma_encontrada = Turma.objects.filter(materia=materia)
+            for prof in profs_nome:
+                turma_encontrada = turma_encontrada.filter(professor=prof)
             
             
             if len(turma_encontrada) == 0:
@@ -33,19 +35,17 @@ def add_turmas(apps, schema_editor):
                 turma.save()
             else:
                 print(f'Turma já existente: {materia.codigo} com professores {profs_nome}')
-                turma = turma_encontrada[0]
-
+                for t in turma_encontrada.all():
+                    if len(t.professor.all()) == len(profs_nome):
+                        turma = t
             
             if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
                 Info.objects.create(
-                    turma=turma, 
+                    turma=turma,
                     turno=linha[2], 
                     local=linha[3], 
                     semestre='2024.2'
                 )
-
-            
-            linha = fp.readline().split('$')
 
 
             existe_nome = ""
@@ -54,6 +54,7 @@ def add_turmas(apps, schema_editor):
                 if len(busca)>0:
                     print(f"achei a turma {busca[0].materia.codigo}")
                     existe_nome = nome
+                    break
             
             if existe_nome == "":
                 print(f'criei uma Turma: {materia}:{profs}')
@@ -76,8 +77,6 @@ def add_turmas(apps, schema_editor):
                         if not Turma.objects.filter(materia=materia.codigo, professor=prof.nome).exists():
                             turma.professor.add(prof)
                 
-                turma = Turma.objects.get(materia=materia.codigo, professor=prof)
-
             if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
                 Info.objects.create(turma=turma, turno=linha[2], local=linha[3], semestre='2024.2')
 

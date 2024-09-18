@@ -64,7 +64,6 @@ if (indice !== 0) {
 // função para trocar as matérias do semestre
 function troca_semestre(){
   semestre = document.getElementById("semestre").value;
-  // repintar_estrela() ?
   
   // trocar as turmas
   var_scroll = document.getElementById("scroll_materias")
@@ -74,10 +73,20 @@ function troca_semestre(){
     console.log(`${lista_turma_semestre[i]}; ${semestre}`)
     if (lista_turma_semestre[i] == semestre){
       console.log(`/${lista_turma_codigo[i]}}/${nome_prof}">${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`)
+      var professores = lista_professores[i].split("$")
+      
       var ancora = document.createElement('a')
       ancora.classList.add('materias')
-      ancora.href =  `../../materia/${semestre}/${lista_turma_codigo[i]}/${nome_prof}`
-      ancora.text = `${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`
+      ancora.href =  `../../materia/${semestre}/${lista_turma_codigo[i]}/${lista_professores[i]}`
+      ancora.innerHTML = `${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`
+      if (professores.length !=1) {
+        ancora.innerHTML += `<p style="color:black"> junto com:`
+        for (const n of professores){
+          if (n != nome_prof){
+            ancora.innerHTML += '<p style="color:black">' +n + " "
+          }
+        }
+      }
       var_scroll.appendChild(ancora)
       
     }
