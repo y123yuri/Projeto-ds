@@ -643,7 +643,16 @@ div .janela_pesquisa {
     font-size: 2em;
     color: black;
 }
+#caixinha_de_pesquisa1 {
+    text-align: center;
+    color: gray;
+    margin-top: 2em;
+}
 
+#caixinha_de_pesquisa2 {
+    text-align: center;
+    color: gray;
+}
 /* FIM DA JANELA MATERIA2 */
 
 @keyframes abrir_janelas {
