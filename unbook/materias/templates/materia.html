@@ -432,11 +432,16 @@
             <div class="boxes_modal" id="box_modal_4">
               <div id="space_text">
                 <h4 class="CampoFalado3_modal">
+                  {% if prof <= 3 %}
                   Você indicaria 
                   {% for prof in professor %}
                   "{{ prof.nome }}" 
-                  {% endfor %}como um(a)
-                  professor(a):
+                  {% endfor %}
+
+                  {% else %}
+                  Você indicaria os professores dessa matéria?
+
+                  {%endif%}
                 </h4>
               </div>
 
