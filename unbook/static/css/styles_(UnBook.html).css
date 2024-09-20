@@ -118,7 +118,16 @@ a#FAC , a#qmsomos {
     margin-right: auto;
 
     margin-top: 5%;
+}
 
+#div_logo {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#div_logo h2 {
+    position: relative;
+    top: -2em
 }
 
 .fundo_branco {
