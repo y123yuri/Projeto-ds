@@ -139,7 +139,7 @@ def materia(request, semestre, codigo, nome):
         context["professor"] = []
         for prof in obj_turma.professor.all():
             context["professor"].append(prof)
-            print(prof)
+    
         
         context["professor_unico"] = nome
        #puxar o professor que bnao da duas aulas da mesma turma
@@ -514,19 +514,37 @@ def resumos(request, semestre, nome,codigo):
 
         
 def add_video(request): #ajax function
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"].split("$")
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    obj_profs = []
+    for n in nomes:
+        print(n)
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
+
     link = request.POST["link"].replace("https://", "").replace("www.", "")
-    
     print(f"link: {link}; nome:{nome_link} video")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de videos
-        if not Video.objects.filter(link=link,turma=turma).exists() :
+        if not Video.objects.filter(link=link,turma=obj_turma).exists() :
             print("oi")
             video = Video(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -560,9 +578,33 @@ def like_video(request):
 
 
 def add_resumo(request): #ajax function
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"]
+    lista_professores = nomes.strip('[]').split(', ')
+
+    nomes_formatados = [prof.replace('&lt;Professor: ', '').replace('&gt;', '').strip() for prof in lista_professores]
+
+    print(nomes_formatados)
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    
+    obj_profs = []
+
+    for n in nomes_formatados:
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
@@ -570,10 +612,10 @@ def add_resumo(request): #ajax function
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com' or link[:7] == '1drv.ms':
         print(link, "link")
         #filtro de resumo
-        if not Resumo.objects.filter(link=link, turma=turma).exists():
+        if not Resumo.objects.filter(link=link, turma=obj_turma).exists():
             print("oi")
             resumo = Resumo(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -604,19 +646,37 @@ def like_resumo(request):
 
 
 def add_atividade(request):
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"].split("$")
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    obj_profs = []
+    for n in nomes:
+        print(n)
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     context = {}
     print(f"link: {link}; nome:{nome_link} atividade")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de atividade
-        if not Atividade.objects.filter(link=link,turma=turma).exists():
+        if not Atividade.objects.filter(link=link,turma=obj_turma).exists():
             print("oi")
             atividade = Atividade(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -744,11 +804,11 @@ def avaliacao(request):
 def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada em qualquer outro função
     lista_proibida = ['merda', 'porra', 'caralho', 'buceta', 'puta', 'foda se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombada', 'viado', 'cu', 'pau no cu', 'piranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'cabrão', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'paspalho', 'mané', 'boceta', 'trouxa', 'besta', 'ralé', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'fedido', 'pau mole', 'pinto', 'pintudo', 'rabo', 'rabo de saia', 'safado', 'sem-vergonha', 'vagaba', 'bobo da corte', 'espermatozóide', 'cuspidor', 'coxinha', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'esquema', 'casca de ferida', 'bagulho', 'mentecapto', 'caga-regra', 'saco', 'saco cheio', 'capeta', 'inferno', 'tornozelo', 'babaca', 'panaca', 'fela da puta', 'fuder', 'velha', 'foder', 'sexo', 'fds', 'africano', 'aleijado', 'analfabeto', 'anus', 'anão', 'apenado', 'baba-ovo', 'babaca', 'babaovo', 'bacura', 'bagos', 'baianada', 'baitola', 'barbeiro', 'barraco', 'beata', 'bebum', 'besta', 'bicha', 'bisca', 'bixa', 'boazuda', 'boceta', 'boco', 'boiola', 'bolagato', 'bolcat', 'boquete', 'bosseta', 'bosta', 'bostana', 'branquelo', 'brecha', 'brexa', 'brioco', 'bronha', 'buca', 'buceta', 'bugre', 'bunda', 'bunduda', 'burra', 'burro', 'busseta', 'bárbaro', 'bêbado', 'cachorra', 'cachorro', 'cadela', 'caga', 'cagado', 'cagao', 'cagona', 'caipira', 'canalha', 'canceroso', 'caralho', 'casseta', 'cassete', 'ceguinho', 'checheca', 'chereca', 'chibumba', 'chibumbo', 'chifruda', 'chifrudo', 'chochota', 'chota', 'chupada', 'chupado', 'ciganos', 'clitoris', 'cocaina', 'coco', 
     'comunista', 'corna', 'corno', 'cornuda', 'cornudo', 'corrupta', 'corrupto', 'coxo', 'cretina', 'cretino', 'crioulo', 'cruz-credo', 'cu', 'culhao', 'curalho', 'cuzao', 'cuzuda', 'cuzudo', 'debil', 'debiloide', 'deficiente', 'defunto', 'demonio', 'denegrir', 'detento', 'difunto', 'doida', 'doido', 'egua', 'elemento', 'encostado', 'esclerosado', 'escrota', 'escroto', 'esporrada', 'esporrado', 'esporro', 'estupida', 'estupidez', 'estupido', 'fanático', 'fascista', 'fedida', 'fedido', 'fedor', 'fedorenta', 'feia', 'feio', 'feiosa', 'feioso', 'feioza', 'feiozo', 'felacao', 'fenda', 'fode', 'fodida', 'fodido', 'fornica', 'fornição', 'fudendo', 'fudeção', 'fudida', 'fudido', 'furada', 'furado', 'furnica', 'furnicar', 'furo', 'furona', 'furão', 'gaiata', 'gaiato','gilete', 'goianada', 'gonorrea', 'gonorreia', 'gosmenta', 
-    'gosmento', 'grelinho', 'grelo', 'gringo', 'homo-sexual', 'homossexual', 'homossexualismo', 'idiota', 'idiotice', 'imbecil', 'inculto', 'iscrota', 'iscroto', 'japa', 'judiar', 'ladra', 'ladrao', 'ladroeira', 'ladrona', 'ladrão', 'lalau', 'lazarento', 'leprosa', 'leproso', 'louco', 'lésbica', 'macaca', 'macaco', 'machona', 'macumbeiro', 'malandro', 'maluco', 'maneta', 'marginal', 'masturba', 'meleca', 'meliante', 'merda', 'mija', 'mijada', 'mijado', 'mijo', 'minorias', 'mocrea', 'mocreia', 'moleca', 'moleque', 'mondronga', 'mondrongo', 'mongol', 'mulato', 'naba', 'nadega', 'nazista', 'negro', 'nojeira', 'nojenta', 'nojento', 'nojo', 'olhota', 'otaria', 'otario', 'otária', 
+    'gosmento', 'grelinho', 'grelo', 'homo-sexual', 'homossexual', 'homossexualismo', 'idiota', 'idiotice', 'imbecil', 'inculto', 'iscrota', 'iscroto', 'judiar', 'ladra', 'ladrao', 'ladroeira', 'ladrona', 'ladrão', 'lalau', 'lazarento', 'leprosa', 'leproso', 'louco', 'lésbica', 'macaca', 'macaco', 'machona', 'macumbeiro', 'malandro', 'maluco', 'maneta', 'marginal', 'masturba', 'meleca', 'meliante', 'merda', 'mija', 'mijada', 'mijado', 'mijo', 'minorias', 'mocrea', 'mocreia', 'moleca', 'moleque', 'mondronga', 'mondrongo', 'mongol', 'mulato', 'naba', 'nadega', 'nazista', 'negro', 'nojeira', 'nojenta', 'nojento', 'nojo', 'olhota', 'otaria', 'otario', 'otária', 
     'otário', 'paca', 'palhaço', 'paspalha', 'paspalhao', 'paspalho', 'pau', 'peia', 'peido', 'pemba', 'pentelha', 'pentelho', 'perereca', 'perneta', 'peru', 'peão', 'pica', 
     'picao', 'pilantra', 'pinel', 'piranha', 'piroca', 'piroco', 'piru', 'pivete', 'político', 'porra', 'prega', 'preso', 'prost-bulo', 'prostibulo', 'prostituta', 'prostituto', 'punheta', 'punhetao', 'pus', 'pustula', 'puta', 'puto', 'puxa-saco', 'puxasaco', 'pênis', 'rabao', 'rabo', 'rabuda', 'rabudao', 'rabudo', 'rabudona', 'racha', 'rachada', 'rachadao', 'rachadinha', 'rachadinho', 'rachado', 'ramela', 'remela', 'retardada', 'retardado', 'roceiro', 'rola', 'rolinha', 'rosca', 'sacana', 'safada', 'safado', 'sapatao', 'sapatão', 'sifilis', 'siririca', 'tarada', 'tarado', 'tesuda', 'tezao', 'tezuda', 'tezudo', 'traveco', 'trocha', 'trolha', 'troucha', 'trouxa', 
     'troxa', 'tuberculoso', 'tupiniquim', 'turco', 'vaca', 'vadia', 'vagabunda', 'vagabundo', 'vagina', 'veada', 'veadao', 'veado', 'viada', 'viadao', 'víado', 'xana', 'xaninha', 'xavasca', 'xerereca', 'xexeca', 'xibiu', 'xibumba', 'xiíta', 'xochota', 'xota', 'xoxota', 'bebum', 'bêbedo', 'denigrir', 'leproso', 'mongolóide', 'índio', 'merda', 
-    'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão', 'viadinho', 'viadaopiranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra', 'disgrama', 'puta', 'putinha', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra', 'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça capeta', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 'babaca', 'merda', 'escroto', 'chato', 'puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga', 'mocreia', 'rababaca', 'pentelho', 'merdinha', 'pau mole', 'chifrudo', 'desgraça', 'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'covarde', 'vtnc', 'canalha', 'safado', 'estúpido', 'tapado', 'macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato', 'daputa', 'puta', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela', 'desgraçado', 'desgraçada', 'fodase']
+    'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão', 'viadinho', 'viadaopiranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra', 'disgrama', 'puta', 'putinha', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra', 'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça capeta', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 'babaca', 'merda', 'escroto', 'chato', 'puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga', 'mocreia', 'rababaca', 'pentelho', 'merdinha', 'pau mole', 'chifrudo', 'desgraça', 'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'covarde', 'vtnc', 'canalha', 'safado', 'estúpido', 'tapado', 'macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato', 'daputa', 'puta', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela', 'desgraçado', 'desgraçada', 'fodase', 'niger', 'nigger']
 
     lista_nao_proibida = ['Ela', 'Ele', 'Elu', 'acanalado', 'acanalador', 'acanaladura', 'acanalar', 'acanale', 'acanalhado', 'acanalhador', 'acanalhamento', 'acanalhante', 'acanalhar', 'acanalhe', 'analabo', 'analagmático', 'analampo', 'analandense', 'analcima', 'analcimo', 'analcita', 'analdia', 'analecta', 'analector', 'analectos', 'analectário', 'analema', 'analemático', 'analepse', 'analepsia', 'analfa', 'analfabetismo', 'analfabetização', 'analfabetizações', 'analfabético', 
     'analgene', 'analgesia', 'analgesina', 'analgia', 'analgésico', 'analgético', 'analisabilidade', 'analisadas', 'analisado', 'analisador', 'analisando', 'analisar', 'analise', 'analista', 'analisável', 'analiticamente', 'analitismo', 'analogamente', 'analogia', 'analogicamente', 'analogismo', 'analogista', 'analogético', 'analogístico', 'analose', 'analto', 'analuvião', 'analático', 'analéptica', 'analéptico', 'analérgico', 'analítica', 'analítico', 'analógica', 'analógico', 'analógio', 'artesanal', 'avelanal', 'baculejo', 'bacurau', 'bacuri', 'badanal', 'baiacu', 'baianal', 'banal', 'banalidade', 'banalizador', 'banalizante', 'banalizar', 'banalização', 'bananal', 'bardanal', 'barracuda', 'biscuit', 'biscuit', 'biscuit', 'bissemanal', 'brancura', 'butanal', 'cabanal', 'canal', 'canalar', 'canaleta', 'canalete', 'canalhada', 'canalhice', 'canalhismo', 'canalhocracia', 'canalhocrático', 'canaliculado', 'canaliculação', 'canaliforme', 'canalizador', 'canalizar', 'canalização', 'canalizável', 'canalículo', 'canalífero', 'cascudo', 'criptoanalisar', 'cura', 'curado', 'curador', 'curadoria', 'curanchim', 'curandeiro', 'curar', 'curarização', 'curatela', 'curatelado', 'curativo', 'curau', 'cuspe', 'cuspida', 'cuspir', 'cuspo', 'decanal', 'desanalfabetizar', 'desanalfabetização', 'desbanalizar', 'ela', 'ela', 'ele', 'elu', 'encanalhar', 'epanalepse', 'escudar', 'escudeira', 'escudeiro', 'escudela', 'escuderia', 'escudo', 'esculachado', 'esculachar', 'esculacho', 'esculhambado', 'esculhambar', 'esculhambação', 'esculpido', 'esculpir', 'escultor', 
@@ -955,15 +1015,30 @@ def like(request):
 def denuncia(request):
     user = request.user
     pk_comentario = request.POST["comentario"]
-    nome = request.POST["professor"]
+    
+    nomes = request.POST["professor"].split("$")
+    obj_profs = []
+
     codigo = request.POST["materia"]
     tipos = request.POST["pq"].split(" ")[:-1]
     traducao = {'1':True, '0':False}
-    obs = request.POST["obs"]
+    obs = request.POST["obs"] ### certo ate aqui
+
+
 
     obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+
+    
+    for nome in nomes:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    
+    obj_turma = obj_turma.get()
+
+
     comentario = Comentario.objects.get(pk=pk_comentario)
     
     # desativar comentário se tiver mais do q 20

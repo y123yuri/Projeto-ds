@@ -432,11 +432,11 @@
             <div class="boxes_modal" id="box_modal_4">
               <div id="space_text">
                 <h4 class="CampoFalado3_modal">
-                  {% if prof <= 3 %}
+                  {% if professor|length < 3 %}
                   Você indicaria 
-                  {% for prof in professor %}
-                  "{{ prof.nome }}" 
-                  {% endfor %}
+                    {% for prof in professor %}
+                      "{{ prof.nome }}"? 
+                    {% endfor %}
 
                   {% else %}
                   Você indicaria os professores dessa matéria?
