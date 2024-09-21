@@ -928,12 +928,20 @@ def deletar_comentario(request, comentario_id):
 def like(request):
     user = request.user
     pk_comentario = request.POST["comentario"]
-    nome = request.POST["professor"]
+    nomes = request.POST["professor"].split("$")
+    
     codigo = request.POST["materia"]
 
     obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for nome in nomes:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    
+    obj_turma = obj_turma.get()
+
     comentario = Comentario.objects.get(pk=pk_comentario)
     # print(obj_turma, obj_prof, comentario)
     if comentario.curtidas.filter(id=user.id).exists():
