@@ -38,7 +38,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
       csrf_token = '{{ csrf_token }}'
-      nome = '{{ turma.professor.nome }}'
+      nome = '{{ professor_link }}'
       codigo = '{{ turma.materia.codigo }}'
       quant_likes = []
       curtidas = []
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <a href="../../../"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" /></a>
+    <a href="../../../../"><img class="UnBook_logo_mini" src="{% static 'image/UnBook_loguinho.png' %}" /></a>
     <!-- LINK PARA VOLTAR A UNBOOK --> <!-- UNBOOK LOGUINHO BRANCO -->
 
     <div class="boxes">
@@ -122,8 +122,11 @@
         <a onclick="back()"><img src="{% static 'image/Arrow_back.png' %}" id="retry" /></a>
         <h1 id="Videos">Videos de apoio</h1>
         <h1 id="Materia" class="CampoFalado1">Materia: {{ turma.materia.nome }}</h1>
-        <a id="Prof" href=" ../../../professor/{{ turma.professor.nome }}">(Prof. {{ turma.professor.nome }})</a>
-
+        {% for prof in professor %}
+            <a id="Prof" href=" ../../../../professor/{{ prof.nome }}"
+              >(Prof. {{ prof.nome }})</a
+            >
+        {% endfor %}
         <hr style="margin: 1em 4em;" />
 
         <div id="posta_link">

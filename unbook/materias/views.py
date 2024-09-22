@@ -16,6 +16,8 @@ from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
 import re
 
+SEMESTRE_ATUAL = "2024.2"
+
 # Create your views here.
 
 #apagar a minha conta nesse caraio - Schneider
@@ -30,7 +32,8 @@ def home(request):
     if request.user.is_authenticated:
         perfil_existente = PerfilUsuario.objects.filter(user=user).first()
         context = {
-            'perfil': perfil_existente
+            'perfil': perfil_existente,
+            'semestre': SEMESTRE_ATUAL
             }
         return render(request, 'UnBook.html', context)
     else: 
@@ -92,16 +95,39 @@ def pesquisa_materias(request):
     return HttpResponse(resposta)
 
 
-def materia(request, codigo, nome):
+def materia(request, semestre, codigo, nome):
+    nomes = nome.split("$")
     lista_posicao = []
+    context = {
+        "semestre": semestre
+    }
     cont = 0
     if request.user.is_authenticated:
         # print(codigo, nome)
         obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
+        professores = []
+        for n in nomes:
+            obj_prof = Professor.objects.get(nome=n)
+            professores.append(obj_prof)
+        
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in professores:
+            obj_turma = obj_turma.filter(professor=prof)
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
+        
+        obj_semestre = Info_semestre.objects.get(turma=obj_turma, semestre=semestre)
+        
 
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        context = {}
+        
+
+  ##puxar pelo id da turma
+            
         context["turma"] = obj_turma
         context["avaliacao_didatica"] = obj_turma.avaliacao_didatica/2
         context["avaliacao_dificuldade"] = obj_turma.avaliacao_dificuldade/2
@@ -111,6 +137,14 @@ def materia(request, codigo, nome):
         context["comentarios"] = []
         context["quant_like"] = []
         context["curtidas"] = []
+        context["professor"] = []
+        for prof in obj_turma.professor.all():
+            context["professor"].append(prof)
+    
+        
+        context["professor_unico"] = nome
+       #puxar o professor que bnao da duas aulas da mesma turma
+
         pre_context = []
         pre_context_curtida = []
         contador_comentario = 0 
@@ -183,7 +217,7 @@ def materia(request, codigo, nome):
 
 ####################################################   CALENDARIO     
         index =0
-        lista_turno = obj_turma.turno.split(" ")
+        lista_turno = obj_semestre.turno.split(" ")
         dias = []
         
         # print(obj_turma.turno)
@@ -237,8 +271,28 @@ def professor(request, nome):
     
     ob_prof = Professor.objects.get(nome=nome)
     lista_turma = Turma.objects.filter(professor=ob_prof)
+
     context = {}
-    context["lista_turmas"] = list(lista_turma)
+    context["semestre"] = SEMESTRE_ATUAL #semestre atual
+    context["lista_turmas"] = []
+    lista_infos_semestre =  []
+    context["professores"] = []
+
+    for t in lista_turma:
+        
+        busca_info = list(Info_semestre.objects.filter(turma=t.id))
+        for e in range(len(busca_info)):
+            context["lista_turmas"].append(t)
+            lista_prof = t.professor.all()[0].nome
+            for prof in t.professor.all()[1:]:
+                lista_prof += "$"+prof.nome
+            context["professores"].append(lista_prof)
+        
+        lista_infos_semestre += busca_info
+        print(lista_infos_semestre)
+    
+    context["info_semestre"] =  lista_infos_semestre
+
     context["nome"] = nome
     context["foto"] = ob_prof.foto
     aval_didatica = 0
@@ -272,24 +326,76 @@ def pesquisa_turma(request):
     lista_turmas = list(Turma.objects.filter(materia=materia))
     resposta = ''
     if len(lista_turmas)>0:
-        resposta = lista_turmas[0].professor.foto+','+lista_turmas[0].professor.nome+','+lista_turmas[0].turno+','+lista_turmas[0].materia.codigo
+        infos = list(Info_semestre.objects.filter(turma=lista_turmas[0]))
+        
+        for info in infos:
+            if info == infos[0]:
+                resposta = lista_turmas[0].professor.all()[0].foto
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.foto
+                resposta += ','+lista_turmas[0].professor.all()[0].nome
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.nome
+                resposta += ','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+            else:
+                resposta +=  ";"+lista_turmas[0].professor.all()[0].foto
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.foto
+                resposta += ','+lista_turmas[0].professor.all()[0].nome
+                for prof in lista_turmas[0].professor.all()[1:]:
+                    resposta += "$"+prof.nome
+                resposta += ','+info.turno+','+lista_turmas[0].materia.codigo+','+info.semestre
+        
+        
         if (len(lista_turmas)>1):
             for obj in lista_turmas[1:]:
-                resposta += ";"+obj.professor.foto+','+obj.professor.nome+','+obj.turno+','+obj.materia.codigo
+                
+                infos = list(Info_semestre.objects.filter(turma=obj))
+                
+                for info in infos:
+                    print(info.semestre)
+                    resposta +=  ";"+obj.professor.all()[0].foto
+                    for prof in obj.professor.all()[1:]:
+                        resposta += "$"+prof.foto
+                    resposta += ','+obj.professor.all()[0].nome
+                    for prof in obj.professor.all()[1:]:
+                        resposta += "$"+prof.nome
+                    resposta += ','+info.turno+','+obj.materia.codigo+','+info.semestre
+            
     return HttpResponse(resposta)
 
 
-def videos(request, nome,codigo) :
+def videos(request, semestre, nome, codigo) :
+    nomes = nome.split("$")
     if request.user.is_authenticated:
+        
         obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
+        
         context = {}
         context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
+
         lista_videos = []
         lista_quant_curtida = []
         lista_bool_curtiu = []
+
         for video in Video.objects.filter(turma=obj_turma):
             lista_videos.append(video)
             lista_quant_curtida.append(video.curtidas.count())
@@ -309,20 +415,137 @@ def videos(request, nome,codigo) :
         context["erro"] = "Você precisa estar logado" 
         return redirect('../../cadastro/login', context)
 
+def atividades(request, semestre, nome, codigo) :
+    nomes = nome.split("$")
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+        else:
+            obj_turma = obj_turma.get()
+
+        context = {}
+
+        context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
+
+        lista_atividades = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+
+        for atividade in Atividade.objects.filter(turma=obj_turma):
+            lista_atividades.append(atividade)
+            lista_quant_curtida.append(atividade.curtidas.count())
+            lista_bool_curtiu.append( 1 if atividade.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+        print(lista_bool_curtiu)
+        
+        context["atividades"] = lista_atividades
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
+
+        return render(request, "Atividades.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
+
+def resumos(request, semestre, nome,codigo):
+    nomes = nome.split("$")
+    if request.user.is_authenticated:
+        obj_materia = Materia.objects.get(codigo=codigo)
+        obj_profs = []
+        for n in nomes:
+            obj_profs.append(Professor.objects.get(nome=n))
+        obj_turma = Turma.objects.filter(materia=obj_materia)
+        for prof in obj_profs:
+            obj_turma = obj_turma.filter(professor=prof)
+        if len(obj_turma.all())>1:
+                for obj in obj_turma.all():
+                    if len(nomes) == len(obj.professor.all()):
+                        obj_turma = obj
+                        break
+        else:
+            obj_turma = obj_turma.get()
+
+        context = {}
+
+        context["turma"] = obj_turma
+        context["semestre"] = semestre
+        context["professor_link"] = obj_profs[0].nome
+        for p in obj_profs[1:]:
+            context["professor_link"] += "$"+p.nome
+        context["professor"] = obj_profs
+
+
+        lista_resumos = []
+        lista_quant_curtida = []
+        lista_bool_curtiu = []
+        for resumo in Resumo.objects.filter(turma=obj_turma):
+            lista_resumos.append(resumo)
+            lista_quant_curtida.append(resumo.curtidas.count())
+            lista_bool_curtiu.append( 1 if resumo.curtidas.filter(id=request.user.id).exists() else 0)
+
+        # dps implementar ordenação em uma FUNÇÃO
+
+        context["resumos"] = lista_resumos
+        context["bool_curtiu"] = lista_bool_curtiu
+        context["quant_curtidas"] = lista_quant_curtida
+
+        return render(request, "Livros.html", context)
+    else:
+        context = {}
+        context["erro"] = "Você precisa estar logado" 
+        return redirect('../../cadastro/login', context)
+
+
+        
 def add_video(request): #ajax function
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"].split("$")
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    obj_profs = []
+    for n in nomes:
+        print(n)
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
+
     link = request.POST["link"].replace("https://", "").replace("www.", "")
-    
     print(f"link: {link}; nome:{nome_link} video")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de videos
-        if not Video.objects.filter(link=link,turma=turma).exists() :
+        if not Video.objects.filter(link=link,turma=obj_turma).exists() :
             print("oi")
             video = Video(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -354,38 +577,35 @@ def like_video(request):
 
 
 
-def resumos(request, nome,codigo) :
-    if request.user.is_authenticated:
-        obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        context = {}
-        context["turma"] = obj_turma
-        lista_resumos = []
-        lista_quant_curtida = []
-        lista_bool_curtiu = []
-        for resumo in Resumo.objects.filter(turma=obj_turma):
-            lista_resumos.append(resumo)
-            lista_quant_curtida.append(resumo.curtidas.count())
-            lista_bool_curtiu.append( 1 if resumo.curtidas.filter(id=request.user.id).exists() else 0)
-
-        # dps implementar ordenação em uma FUNÇÃO
-
-        context["resumos"] = lista_resumos
-        context["bool_curtiu"] = lista_bool_curtiu
-        context["quant_curtidas"] = lista_quant_curtida
-
-        return render(request, "Livros.html", context)
-    else:
-        context = {}
-        context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
 
 def add_resumo(request): #ajax function
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"]
+    lista_professores = nomes.strip('[]').split(', ')
+
+    nomes_formatados = [prof.replace('&lt;Professor: ', '').replace('&gt;', '').strip() for prof in lista_professores]
+
+    print(nomes_formatados)
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    
+    obj_profs = []
+
+    for n in nomes_formatados:
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     
@@ -393,10 +613,10 @@ def add_resumo(request): #ajax function
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com" or link[:15] =='docs.google.com' or link[:19] == 'teams.microsoft.com' or link[:7] == '1drv.ms':
         print(link, "link")
         #filtro de resumo
-        if not Resumo.objects.filter(link=link, turma=turma).exists():
+        if not Resumo.objects.filter(link=link, turma=obj_turma).exists():
             print("oi")
             resumo = Resumo(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -424,49 +644,40 @@ def like_resumo(request):
         return HttpResponse("add")
 
 
-def atividades(request, nome,codigo) :
-    if request.user.is_authenticated:
-        obj_materia = Materia.objects.get(codigo=codigo)
-        obj_prof = Professor.objects.get(nome=nome)
-
-        obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
-        context = {}
-        context["turma"] = obj_turma
-        lista_atividades = []
-        lista_quant_curtida = []
-        lista_bool_curtiu = []
-        for atividade in Atividade.objects.filter(turma=obj_turma):
-            lista_atividades.append(atividade)
-            lista_quant_curtida.append(atividade.curtidas.count())
-            lista_bool_curtiu.append( 1 if atividade.curtidas.filter(id=request.user.id).exists() else 0)
-
-        # dps implementar ordenação em uma FUNÇÃO
-
-        context["atividades"] = lista_atividades
-        context["bool_curtiu"] = lista_bool_curtiu
-        context["quant_curtidas"] = lista_quant_curtida
-
-        return render(request, "Atividades.html", context)
-    else:
-        context = {}
-        context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
 
 
 def add_atividade(request):
-    materia = Materia.objects.get(codigo=request.POST["materia"])
-    professor = Professor.objects.get(nome=request.POST["professor"])
-    turma = Turma.objects.get(materia=materia, professor=professor)
+    codigo_materia = request.POST["materia"]
+
+    nomes = request.POST["professor"].split("$")
+
+    obj_materia = Materia.objects.get(codigo=codigo_materia)
+    obj_profs = []
+    for n in nomes:
+        print(n)
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
+
+
     nome_link = request.POST["titulo"]
     link = request.POST["link"].replace("https://", "").replace("www.", "")
     context = {}
     print(f"link: {link}; nome:{nome_link} atividade")
     if link[:11] == "youtube.com" or link[:16] == "drive.google.com":
         #filtro de atividade
-        if not Atividade.objects.filter(link=link,turma=turma).exists():
+        if not Atividade.objects.filter(link=link,turma=obj_turma).exists():
             print("oi")
             atividade = Atividade(
-                turma=turma,
+                turma=obj_turma,
                 hora_publicacao=timezone.now(),
                 titulo=nome_link,
                 link=link,
@@ -487,12 +698,18 @@ def avaliacao(request):
     # Obtenha os dados do POST
     lista = request.POST['avaliacao']
     codigo_materia = request.POST['materia']
-    nome_prof = request.POST['professor']
+    nomes_prof = request.POST['professor'].split(',')[:-1]
+    print(nomes_prof)
 
     # Obtenha os objetos necessários
     obj_materia = Materia.objects.get(codigo=codigo_materia)
-    obj_prof = Professor.objects.get(nome=nome_prof)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for nome in nomes_prof:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    obj_turma = obj_turma.get()
 
     # Separe os dados da lista
     lista_gorda = []
@@ -532,12 +749,14 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * numero_avaliacoes) - avaliacao_anterior + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * numero_avaliacoes) - apoio_anterior + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * numero_avaliacoes) - didatica_anterior + didatica_dados) // numero_avaliacoes
-        if user in obj_prof.aprovacoes.all():
-            if joinha == 0 :
-                obj_prof.aprovacoes.remove(user)
+        for prof in obj_profs:
+            if user in prof.aprovacoes.all():
+                if joinha == 0 :
+                    prof.aprovacoes.remove(user)
+                    print(f"+1 reprovacao {prof}")
             else:
-                if user not in obj_prof.aprovacoes:
-                    obj_prof.aprovacoes.add(user)
+                prof.aprovacoes.add(user)
+                print(f"+1 aprovação {prof}")
     else:
         # O usuário não avaliou, então adicionamos a avaliação e incrementamos o contador
         numero_avaliacoes += 1
@@ -546,9 +765,11 @@ def avaliacao(request):
         nova_dificuldade = ((obj_turma.avaliacao_dificuldade * (numero_avaliacoes - 1)) + dificuldade_dados) // numero_avaliacoes
         nova_apoio = ((obj_turma.avaliacao_apoio_aluno * (numero_avaliacoes - 1)) + apoio_dados) // numero_avaliacoes
         nova_didatica = ((obj_turma.avaliacao_didatica * (numero_avaliacoes - 1)) + didatica_dados) // numero_avaliacoes
-        if user not in obj_prof.aprovacoes.all():
-            if joinha == 1 :
-                obj_prof.aprovacoes.add(user)
+        for prof in obj_profs:
+            if user not in prof.aprovacoes.all():
+                if joinha == 1 :
+                    prof.aprovacoes.add(user)
+                    print(f"+1 aprovação {prof}")
 
 
         # Adicione o usuário aos avaliadores
@@ -584,11 +805,11 @@ def avaliacao(request):
 def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada em qualquer outro função
     lista_proibida = ['merda', 'porra', 'caralho', 'buceta', 'puta', 'foda se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombada', 'viado', 'cu', 'pau no cu', 'piranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'cabrão', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'paspalho', 'mané', 'boceta', 'trouxa', 'besta', 'ralé', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'fedido', 'pau mole', 'pinto', 'pintudo', 'rabo', 'rabo de saia', 'safado', 'sem-vergonha', 'vagaba', 'bobo da corte', 'espermatozóide', 'cuspidor', 'coxinha', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'esquema', 'casca de ferida', 'bagulho', 'mentecapto', 'caga-regra', 'saco', 'saco cheio', 'capeta', 'inferno', 'tornozelo', 'babaca', 'panaca', 'fela da puta', 'fuder', 'velha', 'foder', 'sexo', 'fds', 'africano', 'aleijado', 'analfabeto', 'anus', 'anão', 'apenado', 'baba-ovo', 'babaca', 'babaovo', 'bacura', 'bagos', 'baianada', 'baitola', 'barbeiro', 'barraco', 'beata', 'bebum', 'besta', 'bicha', 'bisca', 'bixa', 'boazuda', 'boceta', 'boco', 'boiola', 'bolagato', 'bolcat', 'boquete', 'bosseta', 'bosta', 'bostana', 'branquelo', 'brecha', 'brexa', 'brioco', 'bronha', 'buca', 'buceta', 'bugre', 'bunda', 'bunduda', 'burra', 'burro', 'busseta', 'bárbaro', 'bêbado', 'cachorra', 'cachorro', 'cadela', 'caga', 'cagado', 'cagao', 'cagona', 'caipira', 'canalha', 'canceroso', 'caralho', 'casseta', 'cassete', 'ceguinho', 'checheca', 'chereca', 'chibumba', 'chibumbo', 'chifruda', 'chifrudo', 'chochota', 'chota', 'chupada', 'chupado', 'ciganos', 'clitoris', 'cocaina', 'coco', 
     'comunista', 'corna', 'corno', 'cornuda', 'cornudo', 'corrupta', 'corrupto', 'coxo', 'cretina', 'cretino', 'crioulo', 'cruz-credo', 'cu', 'culhao', 'curalho', 'cuzao', 'cuzuda', 'cuzudo', 'debil', 'debiloide', 'deficiente', 'defunto', 'demonio', 'denegrir', 'detento', 'difunto', 'doida', 'doido', 'egua', 'elemento', 'encostado', 'esclerosado', 'escrota', 'escroto', 'esporrada', 'esporrado', 'esporro', 'estupida', 'estupidez', 'estupido', 'fanático', 'fascista', 'fedida', 'fedido', 'fedor', 'fedorenta', 'feia', 'feio', 'feiosa', 'feioso', 'feioza', 'feiozo', 'felacao', 'fenda', 'fode', 'fodida', 'fodido', 'fornica', 'fornição', 'fudendo', 'fudeção', 'fudida', 'fudido', 'furada', 'furado', 'furnica', 'furnicar', 'furo', 'furona', 'furão', 'gaiata', 'gaiato','gilete', 'goianada', 'gonorrea', 'gonorreia', 'gosmenta', 
-    'gosmento', 'grelinho', 'grelo', 'gringo', 'homo-sexual', 'homossexual', 'homossexualismo', 'idiota', 'idiotice', 'imbecil', 'inculto', 'iscrota', 'iscroto', 'japa', 'judiar', 'ladra', 'ladrao', 'ladroeira', 'ladrona', 'ladrão', 'lalau', 'lazarento', 'leprosa', 'leproso', 'louco', 'lésbica', 'macaca', 'macaco', 'machona', 'macumbeiro', 'malandro', 'maluco', 'maneta', 'marginal', 'masturba', 'meleca', 'meliante', 'merda', 'mija', 'mijada', 'mijado', 'mijo', 'minorias', 'mocrea', 'mocreia', 'moleca', 'moleque', 'mondronga', 'mondrongo', 'mongol', 'mulato', 'naba', 'nadega', 'nazista', 'negro', 'nojeira', 'nojenta', 'nojento', 'nojo', 'olhota', 'otaria', 'otario', 'otária', 
+    'gosmento', 'grelinho', 'grelo', 'homo-sexual', 'homossexual', 'homossexualismo', 'idiota', 'idiotice', 'imbecil', 'inculto', 'iscrota', 'iscroto', 'judiar', 'ladra', 'ladrao', 'ladroeira', 'ladrona', 'ladrão', 'lalau', 'lazarento', 'leprosa', 'leproso', 'louco', 'lésbica', 'macaca', 'macaco', 'machona', 'macumbeiro', 'malandro', 'maluco', 'maneta', 'marginal', 'masturba', 'meleca', 'meliante', 'merda', 'mija', 'mijada', 'mijado', 'mijo', 'minorias', 'mocrea', 'mocreia', 'moleca', 'moleque', 'mondronga', 'mondrongo', 'mongol', 'mulato', 'naba', 'nadega', 'nazista', 'negro', 'nojeira', 'nojenta', 'nojento', 'nojo', 'olhota', 'otaria', 'otario', 'otária', 
     'otário', 'paca', 'palhaço', 'paspalha', 'paspalhao', 'paspalho', 'pau', 'peia', 'peido', 'pemba', 'pentelha', 'pentelho', 'perereca', 'perneta', 'peru', 'peão', 'pica', 
     'picao', 'pilantra', 'pinel', 'piranha', 'piroca', 'piroco', 'piru', 'pivete', 'político', 'porra', 'prega', 'preso', 'prost-bulo', 'prostibulo', 'prostituta', 'prostituto', 'punheta', 'punhetao', 'pus', 'pustula', 'puta', 'puto', 'puxa-saco', 'puxasaco', 'pênis', 'rabao', 'rabo', 'rabuda', 'rabudao', 'rabudo', 'rabudona', 'racha', 'rachada', 'rachadao', 'rachadinha', 'rachadinho', 'rachado', 'ramela', 'remela', 'retardada', 'retardado', 'roceiro', 'rola', 'rolinha', 'rosca', 'sacana', 'safada', 'safado', 'sapatao', 'sapatão', 'sifilis', 'siririca', 'tarada', 'tarado', 'tesuda', 'tezao', 'tezuda', 'tezudo', 'traveco', 'trocha', 'trolha', 'troucha', 'trouxa', 
     'troxa', 'tuberculoso', 'tupiniquim', 'turco', 'vaca', 'vadia', 'vagabunda', 'vagabundo', 'vagina', 'veada', 'veadao', 'veado', 'viada', 'viadao', 'víado', 'xana', 'xaninha', 'xavasca', 'xerereca', 'xexeca', 'xibiu', 'xibumba', 'xiíta', 'xochota', 'xota', 'xoxota', 'bebum', 'bêbedo', 'denigrir', 'leproso', 'mongolóide', 'índio', 'merda', 
-    'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão', 'viadinho', 'viadaopiranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra', 'disgrama', 'puta', 'putinha', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra', 'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça capeta', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 'babaca', 'merda', 'escroto', 'chato', 'puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga', 'mocreia', 'rababaca', 'pentelho', 'merdinha', 'pau mole', 'chifrudo', 'desgraça', 'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'covarde', 'vtnc', 'canalha', 'safado', 'estúpido', 'tapado', 'macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato', 'daputa', 'puta', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela', 'desgraçado', 'desgraçada', 'fodase']
+    'porra', 'caralho', 'buceta', 'puta', 'foda-se', 'cacete', 'desgraça', 'vagabunda', 'puta', 'arrombado', 'viado', 'cu', 'pau no cu', 'viadão', 'viadinho', 'viadaopiranha', 'puta que pariu', 'puta merda', 'pqp', 'babaca', 'cuzão', 'escroto', 'fdp', 'bosta', 'fudido', 'caralha', 'corno', 'fudido', 'retardado', 'biscate', 'cachorra', 'pilantra', 'disgrama', 'puta', 'putinha', 'bicha', 'boquete', 'vagabundo', 'meretriz', 'arrombada', 'boiola', 'chupa', 'escrota', 'trouxa', 'otário', 'xota', 'xoxota', 'zorra', 'cabrona', 'puta que te pariu', 'caralho de asa', 'puta', 'cornudo', 'caralhudo', 'escrotão', 'fode', 'maldito', 'jumento', 'panaca', 'retardado', 'bct', 'caralho a quatro', 'samerda', 'saporra', 'boceta', 'bouceta', 'meretriz', 'chupa rola', 'rola', 'puta velha', 'chifrudo', 'bostinha', 'merdinha', 'cagão', 'boiolinha', 'lixo', 'merdoso', 'bundão', 'lambisgóia', 'pau mole', 'pinto', 'pintudo', 'rabo', 'safado', 'sem-vergonha', 'vagaba', 'cabaço', 'fedorento', 'peido', 'peidão', 'vagabundinho', 'rapariga', 'disgraça capeta', 'babaca', 'panaca', 'fela da puta', 'burro', 'imbecil', 'babaca', 'merda', 'escroto', 'chato', 'puta', 'cuzão', 'otário', 'pau no cu', 'desgraçado', 'vagabundo', 'lixo', 'porra', 'corno', 'foda-se', 'babaca', 'arrombado', 'bosta', 'cretino', 'fudido', 'trouxa', 'besta', 'retardado', 'nojento', 'fedido', 'inútil', 'bosta seca', 'cagão', 'fi de rapariga', 'fiderapariga', 'mocreia', 'rababaca', 'pentelho', 'merdinha', 'pau mole', 'chifrudo', 'desgraça', 'mentiroso', 'mau caráter', 'mequetrefe', 'idiota completo', 'vagaba', 'infeliz', 'paspalho', 'covarde', 'vtnc', 'canalha', 'safado', 'estúpido', 'tapado', 'macaco', 'preto', 'crioulo', 'neguinho', 'sarna preta', 'negão', 'tição', 'escurinho', 'urubu', 'mucama', 'peste negra', 'cabeça chata', 'negrada', 'pé de barro', 'favelado', 'moreno', 'pardo', 'mulato', 'daputa', 'puta', 'fdp', 'vsf', 'vaisefuder', 'sefuder', 'vaicfuder', 'tomanocu', 'tomarnocu', 'nocu', 'paunocu', 'feladaputa', 'filadaputa', 'vaosefuder', 'vãosefuder', 'm3rd@', 'm3rd4', 'p0rr4', 'p0rr@', 'vai se fuder', 'vão se fuder', 'sefude', 'arromb4do', 'sexo', 'rapariga', 'cadela', 'desgraçado', 'desgraçada', 'fodase', 'niger', 'nigger']
 
     lista_nao_proibida = ['Ela', 'Ele', 'Elu', 'acanalado', 'acanalador', 'acanaladura', 'acanalar', 'acanale', 'acanalhado', 'acanalhador', 'acanalhamento', 'acanalhante', 'acanalhar', 'acanalhe', 'analabo', 'analagmático', 'analampo', 'analandense', 'analcima', 'analcimo', 'analcita', 'analdia', 'analecta', 'analector', 'analectos', 'analectário', 'analema', 'analemático', 'analepse', 'analepsia', 'analfa', 'analfabetismo', 'analfabetização', 'analfabetizações', 'analfabético', 
     'analgene', 'analgesia', 'analgesina', 'analgia', 'analgésico', 'analgético', 'analisabilidade', 'analisadas', 'analisado', 'analisador', 'analisando', 'analisar', 'analise', 'analista', 'analisável', 'analiticamente', 'analitismo', 'analogamente', 'analogia', 'analogicamente', 'analogismo', 'analogista', 'analogético', 'analogístico', 'analose', 'analto', 'analuvião', 'analático', 'analéptica', 'analéptico', 'analérgico', 'analítica', 'analítico', 'analógica', 'analógico', 'analógio', 'artesanal', 'avelanal', 'baculejo', 'bacurau', 'bacuri', 'badanal', 'baiacu', 'baianal', 'banal', 'banalidade', 'banalizador', 'banalizante', 'banalizar', 'banalização', 'bananal', 'bardanal', 'barracuda', 'biscuit', 'biscuit', 'biscuit', 'bissemanal', 'brancura', 'butanal', 'cabanal', 'canal', 'canalar', 'canaleta', 'canalete', 'canalhada', 'canalhice', 'canalhismo', 'canalhocracia', 'canalhocrático', 'canaliculado', 'canaliculação', 'canaliforme', 'canalizador', 'canalizar', 'canalização', 'canalizável', 'canalículo', 'canalífero', 'cascudo', 'criptoanalisar', 'cura', 'curado', 'curador', 'curadoria', 'curanchim', 'curandeiro', 'curar', 'curarização', 'curatela', 'curatelado', 'curativo', 'curau', 'cuspe', 'cuspida', 'cuspir', 'cuspo', 'decanal', 'desanalfabetizar', 'desanalfabetização', 'desbanalizar', 'ela', 'ela', 'ele', 'elu', 'encanalhar', 'epanalepse', 'escudar', 'escudeira', 'escudeiro', 'escudela', 'escuderia', 'escudo', 'esculachado', 'esculachar', 'esculacho', 'esculhambado', 'esculhambar', 'esculhambação', 'esculpido', 'esculpir', 'escultor', 
@@ -657,12 +878,23 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
 def comentarios(request):
     comentario_usuario = request.POST['comentario']
     codigo_materia = request.POST['materia']
-    nome_prof = request.POST['professor']
+    nomes = request.POST['professor'].split("$")
 
     # Obtenha os objetos necessários
     obj_materia = Materia.objects.get(codigo=codigo_materia)
-    obj_prof = Professor.objects.get(nome=nome_prof)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    for n in nomes:
+        obj_profs.append(Professor.objects.get(nome=n))
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for prof in obj_profs:
+        obj_turma = obj_turma.filter(professor=prof)
+    if len(obj_turma.all())>1:
+            for obj in obj_turma.all():
+                if len(nomes) == len(obj.professor.all()):
+                    obj_turma = obj
+                    break
+    else:
+        obj_turma = obj_turma.get()
 
     user = request.user
     # print(comentario_usuario)
@@ -757,12 +989,20 @@ def deletar_comentario(request, comentario_id):
 def like(request):
     user = request.user
     pk_comentario = request.POST["comentario"]
-    nome = request.POST["professor"]
+    nomes = request.POST["professor"].split("$")
+    
     codigo = request.POST["materia"]
 
     obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    obj_profs = []
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+    for nome in nomes:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    
+    obj_turma = obj_turma.get()
+
     comentario = Comentario.objects.get(pk=pk_comentario)
     # print(obj_turma, obj_prof, comentario)
     if comentario.curtidas.filter(id=user.id).exists():
@@ -776,15 +1016,30 @@ def like(request):
 def denuncia(request):
     user = request.user
     pk_comentario = request.POST["comentario"]
-    nome = request.POST["professor"]
+    
+    nomes = request.POST["professor"].split("$")
+    obj_profs = []
+
     codigo = request.POST["materia"]
     tipos = request.POST["pq"].split(" ")[:-1]
     traducao = {'1':True, '0':False}
-    obs = request.POST["obs"]
+    obs = request.POST["obs"] ### certo ate aqui
+
+
 
     obj_materia = Materia.objects.get(codigo=codigo)
-    obj_prof = Professor.objects.get(nome=nome)
-    obj_turma = Turma.objects.get(materia=obj_materia, professor=obj_prof)
+    
+    obj_turma = Turma.objects.filter(materia=obj_materia)
+
+    
+    for nome in nomes:
+        obj_prof = Professor.objects.get(nome=nome)
+        obj_profs.append(obj_prof)
+        obj_turma = obj_turma.filter(professor=obj_prof)
+    
+    obj_turma = obj_turma.get()
+
+
     comentario = Comentario.objects.get(pk=pk_comentario)
     
     # desativar comentário se tiver mais do q 20

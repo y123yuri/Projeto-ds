@@ -66,7 +66,7 @@ for op in range(0,len(unidade_select.options)):
     print(unidade_select.options[op].text)
     print("--- %s seconds ---" % (time.time() - start_time))
 
-with open("turmas.txt", 'w') as fp:
+with open("professor.txt", 'w') as fp:
     for prof in prof_lista:
-        fp.write(','.join(prof))
+        fp.write('$'.join(prof))
         fp.write('\n')

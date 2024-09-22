@@ -42,14 +42,17 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
       csrf_token = '{{ csrf_token }}'
-      nome = '{{ turma.professor.nome }}'
+      nomes = []
       codigo = '{{ turma.materia.codigo }}'
       nota_dificuldade = '{{ turma.avaliacao_dificuldade }}'
       nota_apoio = '{{ turma.avaliacao_apoio_aluno}}'
       nota_didatica = '{{ turma.avaliacao_didatica}}'
       quant_likes = []
       curtidas = []
-
+      {% for prof in professor %}
+      nomes.push("{{ prof.nome }}")
+      {% endfor %}
+     
       {% for likes in quant_like %}
       quant_likes.push(Number("{{ likes }}"))
       {% endfor %}
@@ -429,8 +432,16 @@
             <div class="boxes_modal" id="box_modal_4">
               <div id="space_text">
                 <h4 class="CampoFalado3_modal">
-                  Você indicaria "{{ turma.professor.nome }}" como um(a)
-                  professor(a):
+                  {% if professor|length < 3 %}
+                  Você indicaria 
+                    {% for prof in professor %}
+                      "{{ prof.nome }}"? 
+                    {% endfor %}
+
+                  {% else %}
+                  Você indicaria os professores dessa matéria?
+
+                  {%endif%}
                 </h4>
               </div>
 
@@ -948,7 +959,7 @@
             </script>
 
             <caption>
-              Semestre: 2024.1
+              Semestre: {{ semestre }}
             </caption>
           </table>
 
@@ -979,9 +990,11 @@
             <h1 id="Materia" class="CampoFalado1">
               {{ turma.materia.nome }} - ({{ turma.materia.codigo }})
             </h1>
-            <a id="Prof" href=" ../../professor/{{ turma.professor.nome }}"
-              >(Prof. {{ turma.professor.nome }})</a
+            {% for prof in professor %}
+            <a id="Prof" href=" ../../../professor/{{ prof.nome }}"
+              >(Prof. {{ prof.nome }})</a
             >
+            {% endfor %}
           </div>
 
           <hr style="position: relative; top: 0" />
@@ -991,21 +1004,23 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
+                
+                href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico }}/videos">
+
                 <li
                   id="videos"
-                  href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/videos">
+                  href=" ../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico }}/videos">
                   <img
                     class="imagens"
                     src="{% static 'image/Video Conference.png' %}" />
-                  <h3 class="texto">Vídeos</h3>
+                  <h3 class="texto"> Vídeos</h3>
                 </li>
               </a>
 
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href=" ../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/resumos">
+                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico }}/resumos"> 
                 <li id="resumos">
                   <img
                     class="imagens"
@@ -1017,7 +1032,7 @@
               <a
                 class="boxes_biblioteca"
                 style="text-decoration: none"
-                href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}/atividades">
+                href="../../../materia/{{semestre}}/{{ turma.materia.codigo }}/{{ professor_unico }}/atividades">
                 <li id="atividades">
                   <img
                     class="imagens"
@@ -1189,8 +1204,9 @@
     </div>
 
 
-
-    <a style="display: none" id="Prof_js">{{ turma.professor.nome }}</a>
+    {% for prof in professor %}
+    <a style="display: none" id="Prof_js">{{ prof.nome }}</a>
+    {% endfor %}
     <a style="display: none" id="User_js">{{ user.username }}</a>
   </body>
 

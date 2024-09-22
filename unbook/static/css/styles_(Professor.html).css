@@ -284,6 +284,23 @@ ul {
   width: auto;
   height: 10em;
 }
+#semestre {
+  position: relative;
+  top: 1em;
+  font-size: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: -1px 1px 2px black;
+  padding: 0.5rem;
+  width: 50%;
+  text-align: center;
+}
+
+#semestre option {
+  box-shadow: -1px 1px 2px black;
+  padding: 0.5rem;
+}
+
 
 #retry {
   display: block;
@@ -662,6 +679,23 @@ ul {
     position: static;
     width: auto;
     height: 10em;
+  }
+
+  #semestre {
+    position: relative;
+    top: 1em;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: -1px 1px 2px black;
+    padding: 2.5px 5px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  #semestre option {
+    box-shadow: -1px 1px 2px black;
+    padding: 1.5px 5px;
   }
 
   #retry {

@@ -32,6 +32,27 @@
   </head>
 
   <body>
+    <script>
+      var lista_turma_codigo = []
+      var nome_prof = "{{ nome }}" 
+      var lista_turma_semestre = []
+      var lista_turma_nome_materia = []
+      var lista_professores = []
+      {% for turma in lista_turmas %}
+      lista_turma_codigo.push("{{ turma.materia.codigo }}")
+      lista_turma_nome_materia.push("{{ turma.materia.nome }}")
+      {% endfor %}
+      
+      {% for prof in professores %}
+      lista_professores.push("{{ prof }}")
+      {% endfor %}
+
+      {% for info in info_semestre %}
+      lista_turma_semestre.push("{{info.semestre}}");
+      {% endfor %}
+    </script>
+
+
     <a href="../"
       ><img
         class="UnBook_logo_mini"
@@ -384,6 +405,20 @@
           <div id="div1_2">
             <h1 id="Professor">Prof. {{ nome }}</h1>
             <h3 id="Faculdade">Faculdade UnB</h3>
+            
+            <select name="semestre" id="semestre" onchange=troca_semestre()>
+              {% if semestre ==  "2024.1" %}
+              <option value="2024.1" selected>2024.1</option>
+              {% else %}
+              <option value="2024.1">2024.1</option>
+              {% endif %}
+
+              {% if semestre ==  "2024.2" %}
+              <option value="2024.2" selected>2024.2</option>
+              {% else %}
+              <option value="2024.2">2024.2</option>
+              {% endif %}
+            </select>
           </div>
         </div>
 
@@ -393,20 +428,7 @@
           <h1 id="Materias_ofertadas">Matérias ofertadas</h1>
 
           <div id="scroll_materias">
-            {% for turma in lista_turmas %} {% if user.is_authenticated %}
-            <a
-              class="materias"
-              href="../../materia/{{ turma.materia.codigo }}/{{ turma.professor.nome }}"
-              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
-            >
-            {% else %}
-            <a
-              class="materias"
-              onclick="alert('Você precisa estar logado!')"
-              href="../cadastro/login"
-              >{{ turma.materia.codigo }} {{ turma.materia.nome }}</a
-            >
-            {% endif %} {% endfor %}
+            
           </div>
         </div>
       </div>

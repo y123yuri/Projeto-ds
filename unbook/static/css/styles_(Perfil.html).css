@@ -1083,6 +1083,25 @@ a .UnBook_logo_mini {
     top: 20px;
   }
 
+  #modal_certeza {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    text-align: center;
+    padding: 2em;
+    width: 90%;
+    height: fit-content;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    box-shadow: -5px 5px 1px #737373;
+    z-index: 3;
+  }
+
+
   #boxes {
     background-color: #f5f5f5c8;
     box-shadow: -2px 2px 1px #5b5b5bc8;
@@ -1465,6 +1484,14 @@ a .UnBook_logo_mini {
   }
   .botoes#Logout {
     margin: auto;
+    width: 11em;
+    height: auto;
+    font-weight: 700;
+    position: relative;
+  }
+  .botoes#Deletar {
+    margin: auto;
+    margin-top: 10px;
     width: 11em;
     height: auto;
     font-weight: 700;

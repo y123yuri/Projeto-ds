@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
@@ -355,29 +355,17 @@
             <h2 id="subtitle">A equipe da <span id="UnBook">UnBook</span> é composta por 7 componentes, possuindo <span id="UnBook">1 líder</span>, <span id="UnBook">1 conselheiro</span> e duas equipes, nas quais são a equipe do <span id="UnBook">Front-End</span> e do <span id="UnBook">Back-End</span></h2>
 
             <div id="caixa_1">
-              <h1 class="equipe">Líderes</h1>
-
-              <div id="buttons">
-                <div id="back">
-                  <i class="bi bi-arrow-left-square"></i>
-                </div>
-                <div id="next">
-                  <i class="bi bi-arrow-right-square"></i>
-                </div>
-              </div>
+              <h1 class="equipe">Desenvolvedores</h1>
 
               <div class="scroll">
-
                 <div class="each">
                   <div class="pessoas">
                     <h1 class="nome">Yuri</h1>
-                    <h2 class="subnome">Líder</h2>
                     <img src="{% static 'image/Yuri.jpg' %}" alt="" />
                   </div>
 
                   <div class="pessoas">
                     <h1 class="nome">Pedro</h1>
-                    <h2 class="subnome">Conselheiro</h2>
                     <img src="{% static 'image/Pedro.jpg' %}" alt="" />
                   </div>
                 </div>
@@ -385,35 +373,44 @@
                 <div class="each">
                   <div class="pessoas">
                     <h1 class="nome">Matheus</h1>
-                    <h2 class="subnome">Front-End</h2>
                     <img src="{% static 'image/Matheus.jpg' %}" alt="" />
                   </div>
 
                   <div class="pessoas">
                     <h1 class="nome">João</h1>
-                    <h2 class="subnome">Front-End</h2>
                     <img src="{% static 'image/Joao.jpg' %}" alt="" />
                   </div>
 
                   <div class="pessoas">
                     <h1 class="nome">Breno</h1>
-                    <h2 class="subnome">Front-End</h2>
                     <img src="{% static 'image/Breno.jpg' %}" alt="" />
                   </div>
                 </div>
 
                 <div class="each">
                   <div class="pessoas">
+<<<<<<< HEAD
                     <h1 class="nome">Giovanni</h1>
                     <h2 class="subnome">Back-End</h2>
+=======
+                    <h1 class="nome">Giovani</h1>
+>>>>>>> desenvolvimento
                     <img src="{% static 'image/GG.jpg' %}" alt="" />
                   </div>
                   <div class="pessoas">
                     <h1 class="nome">Henrique</h1>
-                    <h2 class="subnome">Back-End</h2>
                     <img src="{% static 'image/Shneider.jpg' %}" alt="" />
                   </div>
                 </div>
+
+                <script>
+                  var scrollContainer = document.querySelector('.scroll');
+                  var copy = scrollContainer.innerHTML; // Clona o conteúdo interno
+                  scrollContainer.innerHTML += copy; // Duplica o conteúdo adicionando ao final
+                </script>
+                
+                
+
               </div>
             </div>
           </main>

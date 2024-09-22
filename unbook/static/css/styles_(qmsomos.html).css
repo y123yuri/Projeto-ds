@@ -599,63 +599,43 @@ p {
 .scroll {
     position: relative;
     padding: 1em;
-    width: 100%;
+    width: 47.29em; /* Tamanho fixo do contêiner */
     height: fit-content;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #dddddd;
     border-radius: 15px;
-    overflow-x: auto;
+    overflow: hidden; /* Oculta elementos fora da área visível */
 }
 
-.scroll .each  {
+.scroll .each {
     display: flex;
     flex-direction: row;
-    margin: 0 6em;
 }
 
-#buttons {
-    width: 38em;
-    top:7.5em;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    z-index: 5;
+.scroll .pessoas {
+    flex: 0 0 auto; /* Impede a flexibilidade no tamanho */
+    width: 10em; /* Define uma largura fixa para cada item */
+    animation: slider 22s infinite linear; /* Ajustei a duração da animação para ser mais rápida */
 }
 
-#buttons div {
-    background-color: #dddddd;
-    box-shadow: -2px 2px 1px grey;
-    border-radius: 15px;
-    padding: 0.5em 0.25em;
-    color: black;
-    font-size: 2em;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-#buttons div:hover {
-    transform: scale(1.05);
-}
-
-#buttons div:active {
-    transform: scale(1);
+@keyframes slider {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-110em); /* Ajuste para deslocar metade do conteúdo, incluindo o clone */
+    }
 }
 
 .pessoas {
     text-align: center;
-    margin:0 5px;
+    margin: 0 5px;
 }
 
 .nome {
     font-size: 2em;
-}
-
-.subnome {
-    position: relative;
-    top: -0.5em;
-    font-size: 1em;
 }
 
 .equipe {
@@ -668,6 +648,8 @@ p {
     border-radius: 15px;
 }
 
+
+
 @media screen and (max-width: 767px) {
     * {
         margin: 0;
@@ -676,13 +658,13 @@ p {
     }
     
     html {
-        width: 100%;
+        width: fit-content;
         height: 100%;
         background-color: bisque;
         width: 100%;
         background-attachment: fixed;
         height: 100vh;
-        overflow: auto;
+        overflow: none;
     }
     
     body ::-webkit-scrollbar {
@@ -692,6 +674,7 @@ p {
     body {
         font-family: 'Montserrat', sans-serif;
         font-size: 16px;
+        max-width: 750px;
     
     }
     
@@ -818,21 +801,11 @@ p {
     }
     
     #nuvem_1 {
-        font-size: 8em;
-        color: whitesmoke;
-        position: absolute;
-        left: -2em;
-        top:2em;
-        z-index: 1;
+        display: none;
     }
     
     #nuvem_2 {
-        font-size: 10em;
-        color: whitesmoke;
-        position: absolute;
-        left: 0;
-        top:1em;
-        z-index: 1;
+        display: none;
     }
     
     .animation_nuvem {
@@ -844,7 +817,7 @@ p {
             transform: translateX(-200px);
         }
         to {
-            transform: translateX(1500px);
+            transform: translateX(800px);
         }
     }
     
@@ -967,64 +940,22 @@ p {
         top:10px;
     }
     #mont_5 {
-        border-bottom: 60px solid #311a2b;
-        border-left: 120px solid transparent;
-        border-right: 220px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-300px;
-        top:10px;
+        display: none;
     }
     #mont_6 {
-        border-bottom: 60px solid #311a2b;
-        border-left: 100px solid transparent;
-        border-right: 60px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-450px;
-        top:-10px;
+        display: none;
     }
     #mont_7 {
-        border-bottom: 60px solid #311a2b;
-        border-left: 30px solid transparent;
-        border-right: 140px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-450px;
-        top:15px;
+        display: none;
     }
     #mont_8 {
-        border-bottom: 50px solid #311a2b;
-        border-left: 100px solid transparent;
-        border-right: 60px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-500px;
-        top:10px;
+        display: none;
     }
     #mont_9 {
-        border-bottom: 70px solid #311a2b;
-        border-left: 100px solid transparent;
-        border-right: 72.5px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-600px;
-        top:-15px;
+        display: none;
     }
     #mont_10 {
-        border-bottom: 70px solid #311a2b;
-        border-left: 120px solid transparent;
-        border-right: 72.5px solid transparent; 
-        width: 0;
-        height: 0;
-        position: relative;
-        left:-580px;
-        top:-15px;
+        display: none;
     }
     
     #base_montain_2 {
@@ -1117,12 +1048,22 @@ p {
         left: -30px;
         width: fit-content;
     }
+
+    .trees_fundo_4:nth-child(even) {
+        display: none;
+    }
+    .trees_fundo_3:nth-child(even) {
+        display: none;
+    }
+    .trees_fundo_2:nth-child(even) {
+        display: none;
+    }
+    .trees_fundo:nth-child(even) {
+        display: none;
+    }
     
     .birds {
-        position: absolute;
-        z-index: 998;
-        width: 100px;
-        height: 100px;
+        display: none;
     
         &.front {
             animation: flyFront 6s linear;
@@ -1210,7 +1151,7 @@ p {
             transform: translate3d(0, 0, 0) rotate(15deg);
         }
         100% {
-            transform: translate3d(-1200px, -90px, 0) rotate(15deg);
+            transform: translate3d(-800px, -90px, 0) rotate(15deg);
         }
     }
     
@@ -1219,7 +1160,7 @@ p {
             transform: translate3d(0, 0, 0) scale(.6) scaleX(-1) rotate(-15deg);
         }
         100% {
-            transform: translate3d(1400px, -50px, 0) scale(.6) scaleX(-1) rotate(15deg);
+            transform: translate3d(800px, -50px, 0) scale(.6) scaleX(-1) rotate(15deg);
         }
     }
     
