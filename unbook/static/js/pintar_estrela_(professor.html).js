@@ -7,6 +7,9 @@ window.onload = function () {
   pintar_estrela_tela(nota_didatica, "didatica");
   pintar_estrela_tela(nota_apoio, "apoio");
   pintar_estrela_tela(nota_dificuldade, "dificuldade");
+
+  // colocar materias
+  troca_semestre()
 };
 
 function pintar_estrela_tela(nota, categoria) {
@@ -57,3 +60,39 @@ if (indice !== 0) {
     }
   }, speed);
 }
+
+// função para trocar as matérias do semestre
+function troca_semestre(){
+  semestre = document.getElementById("semestre").value;
+  
+  // trocar as turmas
+  var_scroll = document.getElementById("scroll_materias")
+  var_scroll.innerHTML = ""
+  
+  for (i=0;i<lista_turma_codigo.length;i++){
+    console.log(`${lista_turma_semestre[i]}; ${semestre}`)
+    if (lista_turma_semestre[i] == semestre){
+      console.log(`/${lista_turma_codigo[i]}}/${nome_prof}">${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`)
+      var professores = lista_professores[i].split("$")
+      
+      var ancora = document.createElement('a')
+      ancora.classList.add('materias')
+      ancora.href =  `../../materia/${semestre}/${lista_turma_codigo[i]}/${lista_professores[i]}`
+      ancora.innerHTML = `${lista_turma_codigo[i]} ${lista_turma_nome_materia[i]}`
+      if (professores.length !=1) {
+        ancora.innerHTML += `<p style="color:black"> Junto com:`
+        for (const n of professores){
+          if (n != nome_prof){
+            ancora.innerHTML += '<p style="color:black">' +n + " "
+          }
+        }
+      }
+      var_scroll.appendChild(ancora)
+      
+    }
+    
+  }
+
+}
+
+

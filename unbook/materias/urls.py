@@ -12,10 +12,10 @@ urlpatterns = [
     path('perfil/', views.perfil, name="perfil"),
     path("professor/<str:nome>", views.professor, name="professor"),
     path('pesquisa_turma/', views.pesquisa_turma),
-    path("materia/<str:codigo>/<str:nome>", views.materia, name='materia'),
-    path("materia/<str:codigo>/<str:nome>/videos", views.videos, name='videos'),
-    path("materia/<str:codigo>/<str:nome>/resumos", views.resumos, name='resumos'),
-    path("materia/<str:codigo>/<str:nome>/atividades", views.atividades, name='atividades'),
+    path("materia/<str:semestre>/<str:codigo>/<str:nome>", views.materia, name='materia'),
+    path("materia/<str:semestre>/<str:codigo>/<str:nome>/videos", views.videos, name='videos'),
+    path("materia/<str:semestre>/<str:codigo>/<str:nome>/resumos", views.resumos, name='resumos'),
+    path("materia/<str:semestre>/<str:codigo>/<str:nome>/atividades", views.atividades, name='atividades'),
     path("avaliacao/", views.avaliacao, name="avaliacao"),
     path("denuncia/", views.denuncia, name="denuncia"),
     path("comentario/", views.comentarios, name='comentarios'),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('curtir_video/', views.like_video , name='curtir_video'),
     path('curtir_resumo/', views.like_resumo , name='curtir_resumo'),
     path('editar-comentario/<int:comentario_id>/', views.editar_comentario, name='editar_comentario'),
+    #path('professor/<str:semestre>;<str:')
     
 
 ]

@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <section class="page1">
 
         <div class="fundo_branco" id="inicio">
@@ -36,8 +36,7 @@
                 <img class="unbloguinho" src="{% static "image\UnB_logo.png"%}"> <!-- UNB LOGO-->
             </div>
 
-            <img class="UnBookLogo" src="{% static 'image\UnBook_logao.png'%}"> <!-- UNBOOK LOGO-->
-
+                <img class="UnBookLogo" src="{% static 'image\UnBook_logao_beta.png'%}"> <!-- UNBOOK LOGO-->
 
         </div>
         
@@ -112,15 +111,10 @@
                 <input class="barra_pesquisa" type="text" placeholder="pesquisar" id="searchbar_prof" onkeyup=pesquisa_prof("{{csrf_token}}") autocomplete="off"></input>
                 <div class="CampoProcura">
                     
-                    <ul id="list_professores">
+                    <ul id="list_professores"></ul>
+                    <h1 id="caixinha_de_pesquisa1"> Pesquise o professor </h1>
                         
-                        <li><img src="https://arquivos.unb.br/arquivos/202215922233cf25756177289cb19cd21/foto2.Sergio.sem_fundo.v2.jpg"><a href="professor/SERGIO ANTONIO ANDRADE DE FREITAS" class="lista_professores">SERGIO ANTONIO ANDRADE DE FREITAS</a></li>
-
-                        <li><img src="https://arquivos.unb.br/arquivos/202017816372c620536050f8cc68c0fea/Foto_Gabriela_Neves_Delgado_-_2020.JPG"><a href="professor/GABRIELA NEVES DELGADO">GABRIELA NEVES DELGADO</a></li>
-
-                        <li><img src="https://arquivos.unb.br/arquivos/202003024440042055259d3e41418077d/Screenshot_20200807-080033_Facebook.jpg"><a href="professor/RICARDO RAMOS FRAGELLI" class="lista_professores">RICARDO RAMOS FRAGELLI</a></li>
-
-                    </ul>
+                    
                 </div>
             </div>
 
@@ -135,29 +129,35 @@
                 </script>
 
                 <div class="CampoProcura">
-                    <ul id="list_materias"> 
-                        <li><a onclick="abrirModal_Materia2('CÁLCULO 1') , abrir_turmas('MAT0025', csrf_token)"> CÁLCULO 1 (MAT0025)</a></li>
-
-                        <li><a onclick="abrirModal_Materia2('DESEVOLVIMENTO DE SOFTWARE') , abrir_turmas('FGA0084', csrf_token)"> DESEVOLVIMENTO DE SOFTWARE (FGA0084) </a></li>
-
-                        <li><a onclick="abrirModal_Materia2('ESTUDO DO TURISMO 1') , abrir_turmas('CET0038', csrf_token)"> ESTUDO DO TURISMO 1 (CET0038) </a></li>
-
-                        <li><a onclick="abrirModal_Materia2('CAFE: CIÊNCIA') , abrir_turmas('CEM0145', csrf_token)"> CAFE: CIÊNCIA (CEM0145) </a></li>
-                    </ul>
+                    <ul id="list_materias"></ul>
+                    <h1 id="caixinha_de_pesquisa2"> Pesquise a matéria </h1>
+                    
                 </div>
 
             </div>
 
             <div class="janela_materia2" id="janela_materia2">
 
-                <h1 class="CampoFalado2" id="nome_materia"></h1>
-                <h2 class="CampoFalado3"> Aula ministrada pelos professores:</h2>
+                <section>
+                    <div>
+                        <h1 class="CampoFalado2" id="nome_materia"></h1>
+                        <h2 class="CampoFalado3"> Aula ministrada pelos professores:</h2>
+                    </div>
+                    <div id="scroll"></div>                    
+                </section>
 
-                <div id="scroll">
-
-                </div>
-
-                <h2 class="CampoFalado4"> 2024.1 </h2>
+                <select class="semestre_btn" name="semestre" id="semestre" onchange="coloca_turma()">
+                    {%if semestre == '2024.1' %}
+                    <option value="2024.1" selected>2024.1</option>
+                    {% else %}
+                    <option value="2024.1">2024.1</option>
+                    {% endif %}
+                    {%if semestre == '2024.2' %}
+                    <option value="2024.2" selected>2024.2</option>
+                    {% else %}
+                    <option value="2024.2">2024.2</option>
+                    {% endif %}
+                </select>
 
     </section>
 
