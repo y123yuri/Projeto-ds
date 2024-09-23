@@ -56,7 +56,7 @@ def feedback(request):
 def enviar_feedback(request):
     titulo = str(datetime.now())
     titulo += "_"+ request.POST["titulo"].strip().capitalize()
-    caminho = os.path.join(os.path.abspath("/home/pfc15/Documents/Projeto-ds/unbook/feedback"), f'{titulo}.txt')
+    caminho = os.path.join(os.path.abspath("/home/ubuntu/feedback"), f'{titulo}.txt')
     titulo = titulo.replace(" ", "_")
     corpo = request.POST["corpo"]
         
