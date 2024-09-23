@@ -56,7 +56,7 @@ html::-webkit-scrollbar {
 
 }
 
-a#FAC , a#qmsomos {
+a#FAC , a#qmsomos , a#feed {
     text-decoration: none;
     font-size: 1.75em;
     font-weight: bolder;
@@ -78,14 +78,14 @@ a#FAC , a#qmsomos {
     overflow: hidden;
 }
 
-#qmsomos:hover , #FAC:hover {
+#qmsomos:hover , #FAC:hover , #feed:hover {
     transform: scale(1.05);
 }
-#qmsomos:active , #FAC:active {
+#qmsomos:active , #FAC:active , #feed:active {
     transform: scale(0.95);
 }
 
-#qmsomos:after , #FAC:after {
+#qmsomos:after , #FAC:after , #feed:after {
     background: #0B4C8C;
     content: "";
     height: 155px;
@@ -99,7 +99,7 @@ a#FAC , a#qmsomos {
     z-index: -10;
   }
   
-#qmsomos:hover:after , #FAC:hover:after {
+#qmsomos:hover:after , #FAC:hover:after , #feed:hover:after {
     left: 120%;
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
@@ -738,13 +738,15 @@ div .janela_pesquisa {
     
     }
     
-    a#qmsomos , a#FAC {
+    a#qmsomos , a#FAC , a#feed {
         text-decoration: none;
-        font-size: 0.75em;
+        font-size: 0.65em;
         font-weight: bolder;
-    
+        padding: auto;
         color: black;
-    
+        padding: 0 2px;
+        display: flex;
+        align-items: center;
         position: relative;
         text-align: center;
     
@@ -761,11 +763,15 @@ div .janela_pesquisa {
     
         overflow: hidden;
     }
+
+    #feed {
+        margin: 0 7.5px;
+    }
     
-   #qmsomos:hover , #FAC:hover {
+   #qmsomos:hover , #FAC:hover , #feed:hover {
         transform: scale(1.05);
     }
-    #qmsomos:active , #FAC:active {
+    #qmsomos:active , #FAC:active , #feed:active {
         transform: scale(0.95);
     }
     
