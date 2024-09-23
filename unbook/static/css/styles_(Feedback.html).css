@@ -142,20 +142,146 @@ ul li a:hover {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .container {
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(to bottom, #0c36a1, #008940); /* Cor de fundo antiga */
+        color: #fff;
+        display: flex;
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center;     /* Centraliza verticalmente */
+        text-align: center;
         padding: 20px;
     }
 
+    .UnBook_logo_mini {
+        display: none;
+      }
+    
+    nav {
+        margin-bottom: auto;
+        justify-content: space-evenly;
+        margin: 0 25em;
+    }
+    
+    .unbloguinho {
+        display: none;
+    }
+    body {
+        margin: 0;
+        height: 100vh;  /* Garantir que o body ocupe toda a tela */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Estilização do container */
+    .container {
+        background-color: rgba(255, 255, 255, 1); /* Transparência para o fundo */
+        color:black;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 600px;
+        width: 100%;
+        height: fit-content;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra leve */
+    }
+    
     header h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    header p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+    
+    .feedback-form {
+        margin-bottom: 30px;
+    }
+    
+    .feedback-form h2 {
+        margin-bottom: 10px;
         font-size: 1.5em;
+        font-weight: 700;
+    }
+    
+    .feedback-form textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        border-radius: 5px;
+        border-color: black;
+        resize: none;/* Fundo branco transparente */
+        font-size: 1em;
+        color: #333;
+    }
+    
+    /* Botão */
+    button[type="submit"] {
+        background-color: #0c36a1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #008940; /* Muda de cor ao passar o mouse */
+    }
+    
+    /* Links de contato */
+    ul {
+        list-style: none;
+        margin-top: 20px;
+        padding: 0;
+    }
+    
+    ul li {
+        margin: 10px 0;
+        font-size: 1em;
+        font-weight: 500;
+    }
+    
+    ul li a {
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    ul li a:hover {
+        transition: all 0.3s ease;
+        color: #0B4C9C;
+        font-weight: 700;
+    }
+    
+    
+    .container {
+        padding: 20px;
+        width: 90%;
+        position: fixed;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+    }
+
+    header h1 {
+        font-size: 1.2em;
     }
 
     .feedback-form h2 {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     button[type="submit"] {
         padding: 8px 16px;
-        font-size: 1em;
+        font-size: 0.75em;
     }
 }
