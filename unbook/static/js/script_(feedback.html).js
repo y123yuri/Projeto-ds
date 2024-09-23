@@ -1,7 +1,6 @@
 function enviar_feedback(){
     const titulo = document.getElementById("titulo").value
     const corpo = document.getElementById("corpo").value
-    alert("Feedback enviado com sucesso! Muito obrigado!.")
     $.ajax({
         type: "POST",
         url: "../enviar_feedback",
@@ -12,7 +11,7 @@ function enviar_feedback(){
         },
         success: function (response) {
             console.log(response);
-            alert("Feedback enviado com sucesso! Muito obrigado!.")
+            alert("Feedback enviado com sucesso! Muito obrigado!")
         }
     })
 }
