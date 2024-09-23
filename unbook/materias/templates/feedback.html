@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c36a1">
+    <title>Feedback</title>
+    <link rel="shortcut icon" href="{% static 'image/UnBook_page.ico' %}" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
+
+    <link rel="stylesheet" href="{% static 'css/styles_(Feedback.html).css' %}" /> <!-- LINK PARA PARA CSS DA PÁGINA -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" /> <!-- LINK PARA FONTE MONSTSERRAT -->
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <nav>
+    <img class="unbloguinho" src="{% static "image\UnB_logo.png"%}"> <!-- UNB LOGO-->
+    <a href="../"><img class="UnBook_logo_mini" src="{% static "image/UnBook_loguinho.png" %}" alt=""></a> <!--LINK PARA VOLTAR PARA O INICIO PAGINA--> <!-- UNBOOK LOGUINHO BRANCO-->
+    </nav>
+    
+    <script>
+        csrf_token = '{{ csrf_token }}'
+    </script>
+
+    <div class="container">
+        <header>
+            <h1>Olá Usuário!</h1>
+            <p><strong>Esta é a nossa área de feedback.</strong></p>
+        </header>
+        
+        <div class="feedback-form">
+            <h2>Qual é o problema?</h2>
+            <textarea id="titulo" placeholder="Digite o título do problema aqui..."></textarea>
+
+            <h2>Descreva o problema</h2>
+            <textarea id="corpo" placeholder="Descreva o problema aqui..."></textarea>
+
+            <button onclick="enviar_feedback()">Enviar Feedback</button>
+        </div>
+        
+        <h2>Outros contatos: </h2>
+        
+        <ul class="redes-sociais">
+            <h2>
+            <li><a href="https://www.instagram.com/unbook.com.br?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a></li>
+        
+            <li><a >E-mail</a> --- unbook.br@gmail.com</li>
+            <li>Contato institucional: (61) 9 9642-4804</li>
+            </h2>   
+        </ul>
+    </div>
+
+    <script src="{% static 'js/script_(feedback.html).js' %}"></script>
+</body>
+
+</html>
