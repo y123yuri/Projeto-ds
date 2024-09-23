@@ -15,6 +15,7 @@ from django.contrib import messages
 from app_cadastro.models import PerfilUsuario
 from django.shortcuts import get_object_or_404
 import re
+import os
 
 SEMESTRE_ATUAL = "2024.2"
 
@@ -55,6 +56,7 @@ def feedback(request):
 def enviar_feedback(request):
     titulo = str(datetime.now())
     titulo += "_"+ request.POST["titulo"].strip().capitalize()
+    caminho = os.path.join(os.path.dirname("/home/ubuntu/feedback"), f'{titulo}.txt')
     titulo = titulo.replace(" ", "_")
     corpo = request.POST["corpo"]
         
@@ -63,7 +65,7 @@ def enviar_feedback(request):
     print('--'*25)
     print(corpo)
     
-    with open(f"/home/ubuntu/feedback/{titulo}.txt", "w") as fp:
+    with open(caminho, "w") as fp: #
         fp.write(corpo)
     
     return HttpResponse("enviado")
