@@ -282,7 +282,7 @@ def materia(request, semestre, codigo, nome):
     else:
         context = {}
         context["erro"] = "Você precisa estar logado" 
-        return redirect('../../cadastro/login', context)
+        return redirect('../../../cadastro/login', context)
 
 def professor(request, nome):
     
