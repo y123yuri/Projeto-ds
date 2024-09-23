@@ -46,9 +46,12 @@
       {% for prof in professores %}
       lista_professores.push("{{ prof }}")
       {% endfor %}
-
+      
+  
       {% for info in info_semestre %}
-      lista_turma_semestre.push("{{info.semestre}}");
+        {% if loop.counter <= 3 %}
+
+        lista_turma_semestre.push("{{info.semestre}}");
       {% endfor %}
     </script>
 

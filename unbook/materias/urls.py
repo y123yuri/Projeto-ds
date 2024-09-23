@@ -29,6 +29,8 @@ urlpatterns = [
     path('curtir_video/', views.like_video , name='curtir_video'),
     path('curtir_resumo/', views.like_resumo , name='curtir_resumo'),
     path('editar-comentario/<int:comentario_id>/', views.editar_comentario, name='editar_comentario'),
+    path('Feedback', views.feedback, name='feedback'),
+    path('enviar_feedback', views.enviar_feedback, name='enviar_feedback')
     #path('professor/<str:semestre>;<str:')
     
 

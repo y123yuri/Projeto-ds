@@ -49,8 +49,24 @@ def tutorial(request):
 def perfil(request):
     return render(request, "html/Perfil.html")    
 
+def feedback(request):
+    return render(request, "feedback.html")
 
+def enviar_feedback(request):
+    titulo = str(datetime.now())
+    titulo += "_"+ request.POST["titulo"].strip().capitalize()
+    titulo = titulo.replace(" ", "_")
+    corpo = request.POST["corpo"]
+        
+    print('-='*25)
+    print(titulo)
+    print('--'*25)
+    print(corpo)
     
+    with open(f"/home/ubuntu/feedback/{titulo}.txt", "w") as fp:
+        fp.write(corpo)
+    
+    return HttpResponse("enviado")
 
 def pesquisa(request):
     termo_pesquisa = request.POST['termo_pesquisa']
