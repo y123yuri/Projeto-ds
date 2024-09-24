@@ -54,20 +54,13 @@ def feedback(request):
     return render(request, "feedback.html")
 
 def enviar_feedback(request):
-    titulo = str(datetime.now())
-    titulo += "_"+ request.POST["titulo"].strip().capitalize()
-    caminho = os.path.join(os.path.abspath("/home/ubuntu/feedback"), f'{titulo}.txt')
-    titulo = titulo.replace(" ", "_")
+    
+    titulo = request.POST["titulo"]
     corpo = request.POST["corpo"]
-        
-    print('-='*25)
-    print(titulo)
-    print('--'*25)
-    print(corpo)
-    
-    with open(caminho, "w") as fp: #
-        fp.write(corpo)
-    
+    data = timezone.now()
+    feedback = Feedback(titulo = titulo, texto = corpo, data = data)
+    feedback.save()
+
     return HttpResponse("enviado")
 
 def pesquisa(request):
