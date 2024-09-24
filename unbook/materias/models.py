@@ -173,3 +173,12 @@ class Atividade(models.Model):
 
     def __str__(self):
         return f'{self.ativo} : {self.titulo} : {self.autor}'
+    
+
+class Feedback(models.Model):
+    titulo = models.CharField(max_length=100)
+    texto = models.CharField(max_length=1000)
+    data = models.DateTimeField()
+    
+    def __str__(self):
+        return f"Título --- {self.titulo}"
