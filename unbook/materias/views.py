@@ -829,6 +829,9 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
     lista_proibida = set(lista_proibida) #tirando duplicatas
 
     comentario_split = re.split(r"\s", mensagem) # separa cada palavra na lista
+    print(mensagem)
+    with open("filtro.txt", 'a') as fp:
+        fp.write(f"{mensagem}\nPalavras censuradas:\n")
 
 
     for palavra in comentario_split: #FILTRO PRINCIPAL
@@ -840,6 +843,10 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
             try:
                 censura = re.sub(r"\w", "*", palavra) #censura
                 comentario_split[comentario_split.index(palavra)] = censura #troca o elemento a ser censurado pela censura
+                print(palavra)
+                with open("filtro.txt", 'a') as fp:
+                    fp.write(f"{palavra}\n")
+                
             except ValueError:
                 print('Já filtrou')
             
@@ -860,6 +867,9 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
                                 try:
                                     censura = re.sub(r"\w|['@ # *']", "*", palavra) #censura
                                     comentario_split[comentario_split.index(palavra)] = censura
+                                    print(palavra)
+                                    with open("filtro.txt", 'a') as fp:
+                                        fp.write(f"{palavra}\n")
                                 except ValueError:
                                     print('Já filtrou')
             else:
@@ -879,11 +889,17 @@ def filtro(mensagem): #filtro é uma função separada que pode ser reutilizada 
                                 try:
                                     censura = re.sub(r"\w", "*", palavra) #censura
                                     comentario_split[comentario_split.index(palavra)] = censura
+                                    print(palavra)
+                                    with open("filtro.txt", "a") as fp:
+                                        fp.write(f"{palavra}\n")
                                     print('censura')
                                 except ValueError:
                                     print('Já filtrou')
     print(comentario_split)
+    with open("filtro.txt", "a") as fp:
+        fp.write(f"{comentario_split}\n\n\n")
     return comentario_split
+
 
 def comentarios(request):
     comentario_usuario = request.POST['comentario']
