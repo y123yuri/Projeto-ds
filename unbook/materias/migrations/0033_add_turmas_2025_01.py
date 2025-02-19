@@ -39,12 +39,12 @@ def add_turmas(apps, schema_editor):
                     if len(t.professor.all()) == len(profs_nome):
                         turma = t
             
-            if not Info.objects.filter(semestre="2024.2", turma=turma.id).exists():
+            if not Info.objects.filter(semestre="2025.1", turma=turma.id).exists():
                 Info.objects.create(
                     turma=turma,
                     turno=linha[2], 
                     local=linha[3], 
-                    semestre='2024.2'
+                    semestre='2025.1'
                 )
 
 
