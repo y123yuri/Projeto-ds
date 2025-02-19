@@ -17,7 +17,7 @@ from django.shortcuts import get_object_or_404
 import re
 import os
 
-SEMESTRE_ATUAL = "2024.2"
+SEMESTRE_ATUAL = "2025.1"
 
 # Create your views here.
 
