@@ -97,7 +97,7 @@ def sucesso(request):
             nome_usuario = dados[0] #etapa de filtragem do nome
 
             filtragem = filtro(nome_usuario) #filtro nome de usuario
-            
+            print("cheguei antes dos if")
             if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
                 messages.error(request, "Nome de usuário impróprio!!")
                 return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
@@ -112,6 +112,8 @@ def sucesso(request):
                     if senha_variavel != senha_confirma_variavel:
                         return JsonResponse({'success': False, 'error': 'Senhas não coincidem!!'})
                     else:
+                        print("entrei para fazer o cadastro")
+
                         user = User.objects.create_user(username=dados[0], email=dados[1], password=dados[2], first_name=dados[3])
                         print("User Criado")
                         user.is_active = False 
