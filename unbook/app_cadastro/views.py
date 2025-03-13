@@ -96,12 +96,12 @@ def sucesso(request):
 
             nome_usuario = dados[0] #etapa de filtragem do nome
             print("se eu parar aqui é pq quebrei no filtro")
-            filtragem = filtro(nome_usuario) #filtro nome de usuario
-            print("cheguei antes dos if")
-            if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
-                messages.error(request, "Nome de usuário impróprio!!")
-                return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
-
+            # filtragem = filtro(nome_usuario) #filtro nome de usuario
+            # print("cheguei antes dos if")
+            # if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
+            #     messages.error(request, "Nome de usuário impróprio!!")
+            #     return JsonResponse({'success': False, 'error': 'Nome de usuário impróprio!!'})
+            print("outro if")
             if dados[1][dados[1].index('@'):] == "@aluno.unb.br" and len(dados[0]) <= 12  and type(email_numero)==int and len(email_variavel) == 22 :
                 if User.objects.filter(email=dados[1]).exists() or User.objects.filter(username=dados[0]).exists():
                     messages.error(request, 'O email ou usuário já existe!!') 
