@@ -95,7 +95,7 @@ def sucesso(request):
             dados = [nome_variavel, email_variavel, senha_variavel, name_variavel]
 
             nome_usuario = dados[0] #etapa de filtragem do nome
-
+            print("se eu parar aqui é pq quebrei no filtro")
             filtragem = filtro(nome_usuario) #filtro nome de usuario
             print("cheguei antes dos if")
             if re.match(r"\*", filtragem[0]): #se pegar no filtro, trava o usuario
